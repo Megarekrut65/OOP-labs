@@ -1,7 +1,32 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+template<class T>
+void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2)
+{
+    for (std::size_t i = 0; i < array2.size(); i++) array1.push_back(array2[i]);
+}
+template<class T>
+std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& array2)
+{
+    std::vector<T> array3;
+    vectorCopy(array3, array1);
+    vectorCopy(array3, array2);
 
+    return array3;
+}
+template<class T>
+std::vector<T> operator % (const int& random, const std::vector<T>& array1)
+{
+    std::vector<T> array2;
+    std::size_t size = random % array1.size();
+    for (std::size_t i = 0; i < size; i++)
+    {
+        array2.push_back(array1[i]);
+    }
+
+    return array2;
+}
 template<class T>
 struct Edge
 {
@@ -11,7 +36,6 @@ struct Edge
     Edge()
     {
         contiguity = false;
-        value = 0;
     }
     Edge(bool contiguity, T value)
     {
@@ -20,14 +44,14 @@ struct Edge
     }
 };
 template<class T>
-struct GraphMatrix
+class GraphMatrix
 {
     std::vector<std::vector<Edge<T>>> matrix;
     std::size_t numberOfVertices;
     std::size_t numberOfEdges;
     bool orientation;
-private:
-    bool is_index(std::size_t index)
+
+    bool isIndex(std::size_t index)//if vectex with index is in graph then return true, else - false
     {
         if (index >= numberOfVertices)
         {
@@ -36,7 +60,7 @@ private:
         }
         return true;
     }
-    bool do_add_index(std::vector<std::size_t>& indexes, std::size_t index)
+    bool doAddIndex(std::vector<std::size_t>& indexes, std::size_t index)// if index is not in indexes then function adds index to indexes
     {
         for (std::size_t i = 0; i < indexes.size(); i++)
         {
@@ -46,52 +70,40 @@ private:
 
         return true;
     }
-    void swap(T& a, T& b)
+    void swap(T& value1, T& value2)
     {
-        T temp = a;
-        a = b;
-        b = temp;
+        T value3 = value1;
+        value1 = value2;
+        value2 = value3;
     }
-    std::vector<std::size_t> create_numbers(std::size_t index, bool mode)
+    std::vector<std::size_t> createNumbers()//creates array with indexes of vertexes
     {
         std::vector<std::size_t> numbers;
-        std::vector<Edge<T>> line = matrix[index];
         for (std::size_t i = 0; i < numberOfVertices; i++) numbers.push_back(i);
-        if (!mode) return numbers;
-        for (std::size_t i = 0; i < numberOfVertices; i++)
-        {
-            for (std::size_t j = 0; j < (numberOfVertices - 1 - i); j++)
-            {
-                if (line[j].value > line[j + 1].value)
-                {
-                    swap(line[j].value, line[j + 1].value);
-                    swap(numbers[j], numbers[j + 1]);
-                }
-            }
-        }
+
         return numbers;
     }
-    void is_connected_current(std::vector<std::size_t>& indexes, std::size_t index, bool mode)
+    void isConnectedRelativeToTheVertex(std::vector<std::size_t>& indexes, std::size_t index)//the function checks whether the graph is connected starting from a given index of vertex
     {
-        std::vector<std::size_t> numbers = create_numbers(index, mode);
+        std::vector<std::size_t> numbers = createNumbers();
         for (std::size_t j = 0; j < numberOfVertices; j++)
         {
             if (matrix[index][numbers[j]].contiguity)
             {
-                do_add_index(indexes, index);
+                doAddIndex(indexes, index);
                 if (index == numbers[j]) continue;
-                if (do_add_index(indexes, numbers[j]))
+                if (doAddIndex(indexes, numbers[j]))
                 {
-                    is_connected_current(indexes, numbers[j], mode);
+                    isConnectedRelativeToTheVertex(indexes, numbers[j]);
                 }
             }
         }
     }
-    bool is_connected(std::vector<std::size_t>& indexes, bool mode)
+    bool isConnected(std::vector<std::size_t>& indexes)//the function checks whether the graph is connected with respect to all vertices
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            is_connected_current(indexes, i, mode);
+            isConnectedRelativeToTheVertex(indexes, i);
             if (indexes.size() == numberOfVertices)
             {
                 return true;
@@ -101,7 +113,7 @@ private:
 
         return false;
     }
-    std::size_t min_distance(int* distance, bool* is_set)
+   /* std::size_t minDistance(T* distance, bool* is_set)
     {
         int min = INT_MAX;
         std::size_t index = 0;
@@ -118,7 +130,7 @@ private:
     }
     int* dijkstra(std::size_t begin_index)
     {
-        int* distance = new int[numberOfVertices];
+        T* distance = new T[numberOfVertices];
         bool* is_set = new bool[numberOfVertices];
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -128,7 +140,7 @@ private:
         distance[begin_index] = 0;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            std::size_t index = min_distance(distance, is_set);
+            std::size_t index = minDistance(distance, is_set);
             is_set[index] = true;
             for (std::size_t j = 0; j < numberOfVertices; j++)
             {
@@ -140,18 +152,18 @@ private:
         }
         delete[]is_set;
         return distance;
-    }
-    bool connected_graph(bool show)
+    }*/
+    bool connectedGraph(bool show)//checks if the graph is connected
     {
         std::vector<std::size_t> indexes;
-        if (!is_connected(indexes, false))
+        if (!isConnected(indexes))
         {
             if (show) std::cout << "\nThe graph isn't connected!" << std::endl;
             return false;
         }
         return true;
     }
-    std::vector<std::vector<std::size_t>> create_set()
+    std::vector<std::vector<std::size_t>> createSet()//creates a set consisting only of connected vertices
     {
         std::vector<std::vector<std::size_t>> set(numberOfVertices);
         for (std::size_t i = 0; i < numberOfVertices; i++)
@@ -163,7 +175,7 @@ private:
         }
         return set;
     }
-    void edit_set(std::vector<std::vector<std::size_t>>& set, std::size_t index)
+    void editSet(std::vector<std::vector<std::size_t>>& set, std::size_t index)//remove index from set
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -177,7 +189,7 @@ private:
             }
         }
     }
-    bool is_in_indexes(std::vector<std::size_t> indexes, std::size_t index)
+    bool isInIndexes(std::vector<std::size_t> indexes, std::size_t index)//checks if there is an index in the array 
     {
         for (std::size_t i = 0; i < indexes.size(); i++)
         {
@@ -185,25 +197,24 @@ private:
         }
         return false;
     }
-    void create_spanning_tree_current(GraphMatrix<T>& spanning_tree, std::vector<std::size_t>& indexes, std::size_t index, bool mode, int& total_weight)
+    void createSpanningTreeCurrent(GraphMatrix<T>& spanning_tree, std::vector<std::size_t>& indexes, std::size_t index)
     {
-        std::vector<std::size_t> numbers = create_numbers(index, mode);
-        for (std::size_t j = 0; j < numberOfVertices; j++)
+        std::vector<std::size_t> numbers = createNumbers(index);
+        for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if (matrix[index][numbers[j]].contiguity)
+            if (matrix[index][numbers[i]].contiguity)
             {
-                do_add_index(indexes, index);
-                if (index == numbers[j]) continue;
-                if (do_add_index(indexes, numbers[j]))
+                doAddIndex(indexes, index);
+                if (index == numbers[i]) continue;
+                if (doAddIndex(indexes, numbers[i]))
                 {
-                    spanning_tree.add_edge(index, numbers[j], matrix[index][numbers[j]].value, false);
-                    total_weight += matrix[index][numbers[j]].value;
-                    create_spanning_tree_current(spanning_tree, indexes, numbers[j], mode, total_weight);
+                    spanning_tree.addEdge(index, numbers[i], matrix[index][numbers[i]].value, false);
+                    createSpanningTreeCurrent(spanning_tree, indexes, numbers[i]);
                 }
             }
         }
     }
-    GraphMatrix kruskal()
+    /*GraphMatrix kruskal()
     {
         GraphMatrix spanning_tree(numberOfVertices, false);
         std::vector<std::size_t> belongs(numberOfVertices);
@@ -231,7 +242,7 @@ private:
             }
             if (belongs[first_index] != belongs[second_index])
             {
-                spanning_tree.add_edge(first_index, second_index, min, false);
+                spanning_tree.addEdge(first_index, second_index, min, false);
                 std::size_t temp = belongs[second_index];
                 belongs[second_index] = belongs[first_index];
                 for (std::size_t i = 0; i < numberOfVertices; i++)
@@ -244,8 +255,8 @@ private:
             }
         }
         return spanning_tree;
-    }
-    void create_graph(std::size_t numberOfVertices, bool orientation)
+    }*/
+    void createGraph(std::size_t numberOfVertices, bool orientation)
     {
         this->numberOfVertices = numberOfVertices;
         numberOfEdges = 0;
@@ -256,10 +267,10 @@ private:
             matrix.push_back(new_line);
         }
     }
-    bool create_random(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, int max_weight)
+    bool createRandom(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T max_value)
     {
-        clear();
-        create_graph(numberOfVertices, orientation);
+        delete this;
+        createGraph(numberOfVertices, orientation);
         srand(unsigned(time(0)));
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -268,7 +279,7 @@ private:
                 if (this->numberOfEdges >= numberOfEdges) return true;
                 if ((i != j) && !matrix[i][j].contiguity)
                 {
-                    add_edge(i, j, rand() % max_weight, false);//?
+                    addEdge(i, j, rand() % max_value, false);
                 }
             }
         }
@@ -279,20 +290,25 @@ private:
                 if (this->numberOfEdges >= numberOfEdges) return true;
                 if (!matrix[i][i].contiguity)
                 {
-                    add_edge(i, i, rand() % max_weight, false);
+                    addEdge(i, i, rand() % max_value, false);
                 }
             }
         }
         if (this->numberOfEdges < numberOfEdges)
         {
             std::cout << "\nThere are too many edges!" << std::endl;
-            clear();
-            return false;
+            delete this;
         }
 
         return false;
     }
 public:
+    GraphMatrix()
+    {
+        numberOfVertices = 0;
+        numberOfEdges = 0;
+        orientation = false;
+    }
     GraphMatrix(bool orientation)
     {
         numberOfVertices = 0;
@@ -301,9 +317,9 @@ public:
     }
     GraphMatrix(std::size_t numberOfVertices, bool orientation)
     {
-        create_graph(numberOfVertices, orientation);
+        createGraph(numberOfVertices, orientation);
     }
-    void add_vertex(bool show = true)
+    void addVertex(bool show = true)
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -314,9 +330,9 @@ public:
         matrix.push_back(new_line);
         if (show) std::cout << "\nThe vertex is added!" << std::endl;
     }
-    void add_edge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = true)
+    void addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = true)
     {
-        if (!is_index(beginIndex) || !is_index(endIndex)) return;
+        if (!isIndex(beginIndex) || !isIndex(endIndex)) return;
         if (matrix[beginIndex][endIndex].contiguity)
         {
             if (show) std::cout << "\nThe edge already exists between the vertices!" << std::endl;
@@ -328,7 +344,7 @@ public:
         numberOfEdges++;
         if (show) std::cout << "\nThe edge added!" << std::endl;
     }
-    void write_graph()
+    void printGraph()
     {
         if (numberOfVertices == 0)
         {
@@ -349,26 +365,26 @@ public:
         std::cout << "\nVertices: " << numberOfVertices << std::endl;
         std::cout << "Edges: " << numberOfEdges << std::endl;
     }
-    void create_random_graph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, int max_weight, bool show = true)
+    void createRandomGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, int max_weight, bool show = true)
     {
-        if (create_random(numberOfVertices, numberOfEdges, orientation, max_weight))
+        if (createRandom(numberOfVertices, numberOfEdges, orientation, max_weight))
         {
             if (!show) return;
             std::cout << "\nThe graph is created!" << std::endl;
-            write_graph();
+            printGraph();
         }
     }
-    void checking_the_connectivity_of_graph(bool show = true)
+    void checkingTheConnectivity(bool show = true)
     {
-        if (connected_graph(show))
+        if (connectedGraph(show))
         {
             if (show) std::cout << "\nThe graph is connected!" << std::endl;
         }
     }
-    void depth_first_search(bool mode, bool show = true)
+    void depthFirstSearch(bool show = true)
     {
         std::vector<std::size_t> indexes;
-        if (is_connected(indexes, mode))
+        if (isConnected(indexes))
         {
             if (!show) return;
             std::cout << "\nSearch is finished!\nVertex: " << std::endl;
@@ -383,9 +399,9 @@ public:
             if (show) std::cout << "\nThe graph isn't connected!" << std::endl;
         }
     }
-    void find_paths_between_two_vertices(std::size_t beginIndex, std::size_t endIndex, bool show = true)
+   /* void findPathsBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = true)
     {
-        if (!connected_graph(show)) return;
+        if (!connectedGraph(show)) return;
         int* distance = dijkstra(beginIndex);
         if (distance[endIndex] == INT_MAX)
         {
@@ -399,9 +415,9 @@ public:
         }
         delete[]distance;
     }
-    void find_path_from_the_vertex_to_everyone_else(std::size_t beginIndex, bool show = true)
+    void findPathFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = true)
     {
-        if (!connected_graph(show)) return;
+        if (!connectedGraph(show)) return;
         int* distance = dijkstra(beginIndex);
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -418,32 +434,32 @@ public:
         }
         delete[]distance;
     }
-    void find_paths_between_all_vertices(bool show = true)
+    void findPathsBetweenAllVertices(bool show = true)
     {
-        if (!connected_graph(show)) return;
+        if (!connectedGraph(show)) return;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
             if (show) std::cout << "\nVertex: " << i << "." << std::endl;
-            find_path_from_the_vertex_to_everyone_else(i, show);
+            findPathFromTheVertexToEveryoneElse(i, show);
         }
-    }
-    void topological_sorting(bool show = true)
+    }*/
+    void topologicalSorting(bool show = true)
     {
         if (!orientation)
         {
             if (show) std::cout << "\nTopological sorting for directed graph only" << std::endl;
             return;
         }
-        if (!connected_graph(show)) return;
+        if (!connectedGraph(show)) return;
         std::vector<std::size_t> indexes;
-        std::vector<std::vector<std::size_t>> set = create_set();
+        std::vector<std::vector<std::size_t>> set = createSet();
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if ((set[i].size() == 0) && (!is_in_indexes(indexes, i)))
+            if ((set[i].size() == 0) && (!isInIndexes(indexes, i)))
             {
                 indexes.push_back(i);
-                edit_set(set, i);
-                i = -1;
+                editSet(set, i);
+                break;
             }
         }
         if (indexes.size() != numberOfVertices)
@@ -459,7 +475,7 @@ public:
         }
         std::cout << std::endl;
     }
-    void create_spanning_tree(bool mode, bool show = true)
+    void createSpanningTree(bool show = true)
     {
         if (orientation)
         {
@@ -468,40 +484,34 @@ public:
         }
         GraphMatrix<T> spanning_tree(numberOfVertices, false);
         std::vector<std::size_t> indexes;
-        int total_weight = 0;
-        create_spanning_tree_current(spanning_tree, indexes, 0, mode, total_weight);
+        createSpanningTreeCurrent(spanning_tree, indexes, 0);
         if (indexes.size() != numberOfVertices)
         {
             if (show) std::cout << "\nThe graph isn't connected!" << std::endl;
             return;
         }
-        if (show) std::cout << "\nThe spanning tree is created!" << std::endl;
-        if (show) spanning_tree.write_graph();
-        spanning_tree.clear();
+        if (show)
+        {
+            std::cout << "\nThe spanning tree is created!" << std::endl;
+            spanning_tree.printGraph();
+        }
     }
-    void create_the_smallest_spanning_tree(bool show = true)
+   /* void createTheSmallestSpanningTree(bool show = true)
     {
         if (orientation)
         {
             if (show) std::cout << "\nSpanning tree for undirected graph only" << std::endl;
             return;
         }
-        if (!connected_graph(show)) return;
+        if (!connectedGraph(show)) return;
         GraphMatrix<T> spanning_tree = kruskal();
-        if (show) std::cout << "\nThe spanning tree is created!" << std::endl;
-        if (show) spanning_tree.write_graph();
-        spanning_tree.clear();
-    }
-    std::size_t get_size()
-    {
-        std::size_t size = 0;
-        size += numberOfVertices * numberOfVertices * sizeof(Edge)
-            + sizeof(numberOfVertices) + sizeof(numberOfEdges)
-            + sizeof(orientation);
-
-        return size;
-    }
-    void clear()
+        if (show)
+        {
+            std::cout << "\nThe spanning tree is created!" << std::endl;
+            spanning_tree.printGraph();
+        }
+    }   */
+    ~GraphMatrix()
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -514,7 +524,7 @@ public:
     }
 };
 
-struct Vertex_node
+/*struct Vertex_node
 {
     std::size_t index;
     Vertex_node* next;
@@ -1102,26 +1112,26 @@ public:
         orientation = false;
         total_weight = 0;
     }
-};
+};*/
 
-void printV(std::vector <int> arr)
-{
-    for (std::size_t i = 0; i < arr.size(); i++) std::cout << arr[i] << " ";
-    std::cout << std::endl;
-}
 int main()
 {
-    std::vector <int> a = { 1, 2, 3 ,4 }, b;
-    std::cout << "A:\n";
-    printV(a);
-    b = a;
-    std::cout << "B:\n";
-    printV(b);
-    a[2] = 10;
-    a[0] = -99;
-    std::cout << "A:\n";
-    printV(a);
-    std::cout << "B:\n";
-    printV(b);
+    GraphMatrix<std::vector<int>> matrix(true);
+    std::vector<int> a(4), b(5), c(6);
+    matrix.addVertex();
+    matrix.addVertex();
+    matrix.addVertex();
+    matrix.addVertex();
+    matrix.addVertex();
+    matrix.addEdge(0, 1, a);
+    matrix.addEdge(1, 2, b);
+    matrix.addEdge(2, 3, c);
+    matrix.addEdge(3, 4, c);
+    matrix.printGraph();
+    matrix.checkingTheConnectivity();
+    matrix.depthFirstSearch();
+    matrix.topologicalSorting();
     std::cout << "Hello World!\n";
+
+    return 0;
 }
