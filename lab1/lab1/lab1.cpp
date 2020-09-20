@@ -76,25 +76,17 @@ class GraphMatrix
         value1 = value2;
         value2 = value3;
     }
-    std::vector<std::size_t> createNumbers()//creates array with indexes of vertexes
-    {
-        std::vector<std::size_t> numbers;
-        for (std::size_t i = 0; i < numberOfVertices; i++) numbers.push_back(i);
-
-        return numbers;
-    }
     void isConnectedRelativeToTheVertex(std::vector<std::size_t>& indexes, std::size_t index)//the function checks whether the graph is connected starting from a given index of vertex
     {
-        std::vector<std::size_t> numbers = createNumbers();
-        for (std::size_t j = 0; j < numberOfVertices; j++)
+        for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if (matrix[index][numbers[j]].contiguity)
+            if (matrix[index][i].contiguity)
             {
                 doAddIndex(indexes, index);
-                if (index == numbers[j]) continue;
-                if (doAddIndex(indexes, numbers[j]))
+                if (index == i) continue;
+                if (doAddIndex(indexes, i))
                 {
-                    isConnectedRelativeToTheVertex(indexes, numbers[j]);
+                    isConnectedRelativeToTheVertex(indexes, i);
                 }
             }
         }
@@ -170,7 +162,7 @@ class GraphMatrix
         {
             for (std::size_t j = 0; j < numberOfVertices; j++)
             {
-                if (matrix[i][j].contiguity) set[j].push_back(i);
+                if (matrix[i][j].contiguity) set[j].push_back(i);                
             }
         }
         return set;
@@ -197,19 +189,19 @@ class GraphMatrix
         }
         return false;
     }
-    void createSpanningTreeCurrent(GraphMatrix<T>& spanning_tree, std::vector<std::size_t>& indexes, std::size_t index)
+    void createSpanningTree(GraphMatrix<T>& spanning_tree, std::vector<std::size_t>& indexes, std::size_t index)
     {
-        std::vector<std::size_t> numbers = createNumbers(index);
+        if (indexes.size() == numberOfVertices) return;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if (matrix[index][numbers[i]].contiguity)
+            if (matrix[index][i].contiguity)
             {
                 doAddIndex(indexes, index);
-                if (index == numbers[i]) continue;
-                if (doAddIndex(indexes, numbers[i]))
+                if (index == i) continue;
+                if (doAddIndex(indexes, i))
                 {
-                    spanning_tree.addEdge(index, numbers[i], matrix[index][numbers[i]].value, false);
-                    createSpanningTreeCurrent(spanning_tree, indexes, numbers[i]);
+                    spanning_tree.addEdge(index, i, matrix[index][i].value, false);
+                    createSpanningTree(spanning_tree, indexes, i);
                 }
             }
         }
@@ -455,11 +447,11 @@ public:
         std::vector<std::vector<std::size_t>> set = createSet();
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if ((set[i].size() == 0) && (!isInIndexes(indexes, i)))
+            if ((set[i].size() == 0) && !isInIndexes(indexes, i))
             {
                 indexes.push_back(i);
                 editSet(set, i);
-                break;
+                i = -1;
             }
         }
         if (indexes.size() != numberOfVertices)
@@ -475,16 +467,16 @@ public:
         }
         std::cout << std::endl;
     }
-    void createSpanningTree(bool show = true)
+    void getSpanningTree(bool show = true)
     {
         if (orientation)
         {
             if (show) std::cout << "\nSpanning tree for undirected graph only" << std::endl;
             return;
         }
-        GraphMatrix<T> spanning_tree(numberOfVertices, false);
+        GraphMatrix<T> spanningTree(numberOfVertices, false);
         std::vector<std::size_t> indexes;
-        createSpanningTreeCurrent(spanning_tree, indexes, 0);
+        createSpanningTree(spanningTree, indexes, 0);
         if (indexes.size() != numberOfVertices)
         {
             if (show) std::cout << "\nThe graph isn't connected!" << std::endl;
@@ -493,7 +485,7 @@ public:
         if (show)
         {
             std::cout << "\nThe spanning tree is created!" << std::endl;
-            spanning_tree.printGraph();
+            spanningTree.printGraph();
         }
     }
    /* void createTheSmallestSpanningTree(bool show = true)
@@ -1116,7 +1108,7 @@ public:
 
 int main()
 {
-    GraphMatrix<std::vector<int>> matrix(true);
+    GraphMatrix<std::vector<int>> matrix;
     std::vector<int> a(4), b(5), c(6);
     matrix.addVertex();
     matrix.addVertex();
@@ -1126,11 +1118,13 @@ int main()
     matrix.addEdge(0, 1, a);
     matrix.addEdge(1, 2, b);
     matrix.addEdge(2, 3, c);
-    matrix.addEdge(3, 4, c);
+    matrix.addEdge(4, 0, c);
+    matrix.addEdge(4, 2, c);
+    matrix.addEdge(3, 1, c);
     matrix.printGraph();
-    matrix.checkingTheConnectivity();
-    matrix.depthFirstSearch();
-    matrix.topologicalSorting();
+    /*matrix.checkingTheConnectivity();
+    matrix.depthFirstSearch();*/
+    matrix.getSpanningTree();
     std::cout << "Hello World!\n";
 
     return 0;
