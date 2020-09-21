@@ -2,6 +2,13 @@
 #include <vector>
 #include <ctime>
 template<class T>
+std::ostream& operator<< (std::ostream& out, const std::vector<T>& array)
+{
+    out << array.size();
+
+    return out;
+}
+template<class T>
 void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2)
 {
     for (std::size_t i = 0; i < array2.size(); i++) array1.push_back(array2[i]);
@@ -12,8 +19,13 @@ std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& a
     std::vector<T> array3;
     vectorCopy(array3, array1);
     vectorCopy(array3, array2);
-
+    std::cout << array1 << "+" << array2 << "=" << array3 << std::endl;
     return array3;
+}
+template<class T>
+std::size_t operator + (const std::size_t& value, const std::vector<T>& array1)
+{
+    return (value + array1.size());
 }
 template<class T>
 std::vector<T> operator % (const int& random, const std::vector<T>& array1)
@@ -28,20 +40,44 @@ std::vector<T> operator % (const int& random, const std::vector<T>& array1)
     return array2;
 }
 template<class T>
-struct Edge
+bool operator < (const std::vector<T>& array1, const std::vector<T>& array2)
+{
+    return (array1.size() < array2.size());
+}
+template<class T>
+bool operator <= (const std::vector<T>& array1, const std::vector<T>& array2)
+{
+    return (array1.size() <= array2.size());
+}
+template<class T>
+bool operator > (const std::vector<T>& array1, const std::vector<T>& array2)
+{
+    return (array1.size() > array2.size());
+}
+template<class T>
+bool operator >= (const std::vector<T>& array1, const std::vector<T>& array2)
+{
+    return (array1.size() >= array2.size());
+}
+template<class T>
+bool operator == (const std::vector<T>& array1, const std::vector<T>& array2)
+{
+    return (array1.size() == array2.size());
+}
+template<class T>
+class Edge
 {
     bool contiguity;
     T value;
-
-    Edge()
-    {
-        contiguity = false;
-    }
+public:
+    Edge() : contiguity(false), value(T()) {}
     Edge(bool contiguity, T value)
     {
         this->contiguity = contiguity;
         this->value = value;
     }
+    template<class T> 
+    friend class GraphMatrix;
 };
 template<class T>
 class GraphMatrix
@@ -105,14 +141,16 @@ class GraphMatrix
 
         return false;
     }
-   /* std::size_t minDistance(T* distance, bool* is_set)
+    std::size_t minDistance(T* distance, bool* isChecked)
     {
-        int min = INT_MAX;
+        T min = T();
+        bool isMax = true;
         std::size_t index = 0;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if (!is_set[i] && distance[i] <= min)
+            if (!isChecked[i] && (isMax || distance[i] <= min))
             {
+                isMax = false;
                 min = distance[i];
                 index = i;
             }
@@ -120,31 +158,35 @@ class GraphMatrix
 
         return index;
     }
-    int* dijkstra(std::size_t begin_index)
+    T* dijkstra(std::size_t beginIndex, bool* isMax)
     {
         T* distance = new T[numberOfVertices];
-        bool* is_set = new bool[numberOfVertices];
+        bool* isChecked = new bool[numberOfVertices];
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            distance[i] = INT_MAX;
-            is_set[i] = false;
+            isMax[i] = true;
+            isChecked[i] = false;
         }
-        distance[begin_index] = 0;
+        distance[beginIndex] = std::numeric_limits<T>::min();
+        isMax[beginIndex] = false;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            std::size_t index = minDistance(distance, is_set);
-            is_set[index] = true;
+            std::size_t index = minDistance(distance, isChecked);
+            isChecked[index] = true;
             for (std::size_t j = 0; j < numberOfVertices; j++)
             {
-                if (!is_set[j] && matrix[index][j].contiguity
-                    && distance[index] != INT_MAX
+                if (!isChecked[j] && matrix[index][j].contiguity && !isMax[index]
                     && distance[index] + matrix[index][j].value < distance[j])
+                {
                     distance[j] = distance[index] + matrix[index][j].value;
+                    isMax[j] = false;
+                }                   
             }
         }
-        delete[]is_set;
+        std::cout << "max: " << isMax[1] << std::endl;
+        delete[] isChecked;
         return distance;
-    }*/
+    }   
     bool connectedGraph(bool show)//checks if the graph is connected
     {
         std::vector<std::size_t> indexes;
@@ -189,7 +231,7 @@ class GraphMatrix
         }
         return false;
     }
-    void createSpanningTree(GraphMatrix<T>& spanning_tree, std::vector<std::size_t>& indexes, std::size_t index)
+    void createSpanningTree(GraphMatrix<T>& spanningTree, std::vector<std::size_t>& indexes, std::size_t index)
     {
         if (indexes.size() == numberOfVertices) return;
         for (std::size_t i = 0; i < numberOfVertices; i++)
@@ -200,55 +242,13 @@ class GraphMatrix
                 if (index == i) continue;
                 if (doAddIndex(indexes, i))
                 {
-                    spanning_tree.addEdge(index, i, matrix[index][i].value, false);
-                    createSpanningTree(spanning_tree, indexes, i);
+                    spanningTree.addEdge(index, i, matrix[index][i].value, false);
+                    createSpanningTree(spanningTree, indexes, i);
                 }
             }
         }
-    }
-    /*GraphMatrix kruskal()
-    {
-        GraphMatrix spanning_tree(numberOfVertices, false);
-        std::vector<std::size_t> belongs(numberOfVertices);
-        for (std::size_t i = 0; i < numberOfVertices; i++)
-        {
-            belongs[i] = i;
-        }
-        std::size_t first_index;
-        std::size_t second_index;
-        for (std::size_t vertices = 1; vertices < numberOfVertices; vertices++)
-        {
-            int min = INT_MAX;
-            for (std::size_t i = 0; i < numberOfVertices; i++)
-            {
-                for (std::size_t j = 0; j < numberOfVertices; j++)
-                {
-                    if (matrix[i][j].contiguity && (min > matrix[i][j].value)
-                        && (belongs[i] != belongs[j]))
-                    {
-                        min = matrix[i][j].value;
-                        first_index = i;
-                        second_index = j;
-                    }
-                }
-            }
-            if (belongs[first_index] != belongs[second_index])
-            {
-                spanning_tree.addEdge(first_index, second_index, min, false);
-                std::size_t temp = belongs[second_index];
-                belongs[second_index] = belongs[first_index];
-                for (std::size_t i = 0; i < numberOfVertices; i++)
-                {
-                    if (belongs[i] == temp)
-                    {
-                        belongs[i] = belongs[first_index];
-                    }
-                }
-            }
-        }
-        return spanning_tree;
-    }*/
-    void createGraph(std::size_t numberOfVertices, bool orientation)
+    }    
+    void createEmptyGraph(std::size_t numberOfVertices, bool orientation)//adds vertices to new graph
     {
         this->numberOfVertices = numberOfVertices;
         numberOfEdges = 0;
@@ -259,10 +259,10 @@ class GraphMatrix
             matrix.push_back(new_line);
         }
     }
-    bool createRandom(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T max_value)
+    bool createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
     {
         delete this;
-        createGraph(numberOfVertices, orientation);
+        createEmptyGraph(numberOfVertices, orientation);     
         srand(unsigned(time(0)));
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -271,7 +271,7 @@ class GraphMatrix
                 if (this->numberOfEdges >= numberOfEdges) return true;
                 if ((i != j) && !matrix[i][j].contiguity)
                 {
-                    addEdge(i, j, rand() % max_value, false);
+                    addEdge(i, j, rand() % maxValue, false);
                 }
             }
         }
@@ -282,7 +282,7 @@ class GraphMatrix
                 if (this->numberOfEdges >= numberOfEdges) return true;
                 if (!matrix[i][i].contiguity)
                 {
-                    addEdge(i, i, rand() % max_value, false);
+                    addEdge(i, i, rand() % maxValue, false);
                 }
             }
         }
@@ -309,7 +309,7 @@ public:
     }
     GraphMatrix(std::size_t numberOfVertices, bool orientation)
     {
-        createGraph(numberOfVertices, orientation);
+        createEmptyGraph(numberOfVertices, orientation);
     }
     void addVertex(bool show = true)
     {
@@ -357,9 +357,9 @@ public:
         std::cout << "\nVertices: " << numberOfVertices << std::endl;
         std::cout << "Edges: " << numberOfEdges << std::endl;
     }
-    void createRandomGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, int max_weight, bool show = true)
+    void createRandomGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue, bool show = true)
     {
-        if (createRandom(numberOfVertices, numberOfEdges, orientation, max_weight))
+        if (createGraph(numberOfVertices, numberOfEdges, orientation, maxValue))
         {
             if (!show) return;
             std::cout << "\nThe graph is created!" << std::endl;
@@ -391,11 +391,12 @@ public:
             if (show) std::cout << "\nThe graph isn't connected!" << std::endl;
         }
     }
-   /* void findPathsBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = true)
+    void findPathsBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = true)
     {
         if (!connectedGraph(show)) return;
-        int* distance = dijkstra(beginIndex);
-        if (distance[endIndex] == INT_MAX)
+        bool* isMax = new bool[numberOfVertices];
+        T* distance = dijkstra(beginIndex, isMax);
+        if (!isMax || isMax[endIndex])
         {
             if (show) std::cout << "\nThe graph is poorly oriented so it cannot be reached from " << beginIndex
                 << " to " << endIndex << "." << std::endl;
@@ -405,7 +406,8 @@ public:
             if (show) std::cout << "\nThe smallest distance from " << beginIndex
                 << " to " << endIndex << " = " << distance[endIndex] << "." << std::endl;
         }
-        delete[]distance;
+        if(distance) delete[]distance;
+        if(isMax) delete[] isMax;
     }
     void findPathFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = true)
     {
@@ -434,7 +436,7 @@ public:
             if (show) std::cout << "\nVertex: " << i << "." << std::endl;
             findPathFromTheVertexToEveryoneElse(i, show);
         }
-    }*/
+    }
     void topologicalSorting(bool show = true)
     {
         if (!orientation)
@@ -515,7 +517,6 @@ public:
         orientation = false;
     }
 };
-
 /*struct Vertex_node
 {
     std::size_t index;
@@ -1108,23 +1109,21 @@ public:
 
 int main()
 {
-    GraphMatrix<std::vector<int>> matrix;
-    std::vector<int> a(4), b(5), c(6);
-    matrix.addVertex();
-    matrix.addVertex();
-    matrix.addVertex();
-    matrix.addVertex();
-    matrix.addVertex();
-    matrix.addEdge(0, 1, a);
-    matrix.addEdge(1, 2, b);
-    matrix.addEdge(2, 3, c);
-    matrix.addEdge(4, 0, c);
-    matrix.addEdge(4, 2, c);
-    matrix.addEdge(3, 1, c);
-    matrix.printGraph();
-    /*matrix.checkingTheConnectivity();
-    matrix.depthFirstSearch();*/
-    matrix.getSpanningTree();
+    GraphMatrix<std::vector<int>> graph(false);
+    std::vector<int> arr1(1), arr2(1), arr3(1),arr4(1), arr5(14), arr6(1);
+    graph.addVertex(false);
+    graph.addVertex(false);
+    graph.addVertex(false);
+    graph.addVertex(false);
+    graph.addVertex(false);
+    graph.addEdge(0, 1, arr5, false);
+    graph.addEdge(1, 2, arr1, false);
+    graph.addEdge(2, 3, arr2, false);
+    graph.addEdge(0, 4, arr3, false);
+    graph.addEdge(4, 2, arr4, false);
+    graph.addEdge(3, 1, arr6, false);
+    graph.printGraph();
+    graph.findPathsBetweenTwoVertices(0, 1);
     std::cout << "Hello World!\n";
 
     return 0;
