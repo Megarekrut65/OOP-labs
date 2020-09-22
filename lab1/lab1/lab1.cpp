@@ -19,7 +19,6 @@ std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& a
     std::vector<T> array3;
     vectorCopy(array3, array1);
     vectorCopy(array3, array2);
-    std::cout << array1 << "+" << array2 << "=" << array3 << std::endl;
     return array3;
 }
 template<class T>
@@ -141,16 +140,16 @@ class GraphMatrix
 
         return false;
     }
-    std::size_t minDistance(T* distance, bool* isChecked)
+    std::size_t minDistance(T* distance, bool* isChecked, bool* isMax)
     {
         T min = T();
-        bool isMax = true;
+        bool max = true;
         std::size_t index = 0;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if (!isChecked[i] && (isMax || distance[i] <= min))
+            if (!isChecked[i] && !isMax[i] && (max || distance[i] <= min))
             {
-                isMax = false;
+                max = false;
                 min = distance[i];
                 index = i;
             }
@@ -171,19 +170,18 @@ class GraphMatrix
         isMax[beginIndex] = false;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            std::size_t index = minDistance(distance, isChecked);
+            std::size_t index = minDistance(distance, isChecked, isMax);
             isChecked[index] = true;
             for (std::size_t j = 0; j < numberOfVertices; j++)
             {
                 if (!isChecked[j] && matrix[index][j].contiguity && !isMax[index]
-                    && distance[index] + matrix[index][j].value < distance[j])
+                    && (isMax[j] || (distance[index] + matrix[index][j].value < distance[j])))
                 {
                     distance[j] = distance[index] + matrix[index][j].value;
                     isMax[j] = false;
                 }                   
             }
         }
-        std::cout << "max: " << isMax[1] << std::endl;
         delete[] isChecked;
         return distance;
     }   
@@ -1110,7 +1108,7 @@ public:
 int main()
 {
     GraphMatrix<std::vector<int>> graph(false);
-    std::vector<int> arr1(1), arr2(1), arr3(1),arr4(1), arr5(14), arr6(1);
+    std::vector<int> arr1(7), arr2(4), arr3(7),arr4(1), arr5(16), arr6(2);
     graph.addVertex(false);
     graph.addVertex(false);
     graph.addVertex(false);
