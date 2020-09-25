@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+/*template<typename T>
+std::size_t operator + (const std::size_t& value, const std::vector<T>& array1)
+{
+    return (value + array1.size());
+}*/
 template<typename T>
 std::ostream& operator<< (std::ostream& out, const std::vector<T>& array)
 {
@@ -21,11 +26,6 @@ std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& a
     vectorCopy(array3, array1);
     vectorCopy(array3, array2);
     return array3;
-}
-template<typename T>
-std::size_t operator + (const std::size_t& value, const std::vector<T>& array1)
-{
-    return (value + array1.size());
 }
 template<typename T>
 std::vector<T> operator % (const int& random, const std::vector<T>& array1)
@@ -308,22 +308,26 @@ class GraphMatrix
             }
         }
     }    
-    void createEmptyGraph(std::size_t numberOfVertices, bool orientation)//adds vertices to new graph
+    void createRandomVertices(std::size_t numberOfVertices, T maxValue)//adds vertices to new graph
     {
-        this->numberOfVertices = numberOfVertices;
-        numberOfEdges = 0;
-        this->orientation = orientation;
-        std::vector<Edge<T>> new_line(numberOfVertices, Edge<T>());
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            matrix.push_back(new_line);
+            addVertex(rand() % maxValue, false);
         }
     }
-    bool createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
+    bool createRandomEdges(std::size_t numberOfEdges, T maxValue)//adds edges to new graph
     {
-        delete this;
-        createEmptyGraph(numberOfVertices, orientation);     
-        srand(unsigned(time(0)));
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            for (std::size_t j = 0; j < numberOfVertices; j++)
+            {
+                if (this->numberOfEdges >= numberOfEdges) return true;
+                if (!matrix[i][j].contiguity)
+                {
+                    addEdge(rand()% numberOfVertices, rand() % numberOfVertices, rand() % maxValue, false);
+                }
+            }
+        }
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
             for (std::size_t j = 0; j < numberOfVertices; j++)
@@ -346,13 +350,16 @@ class GraphMatrix
                 }
             }
         }
-        if (this->numberOfEdges < numberOfEdges)
-        {
-            std::cout << "\nThere are too many edges!" << std::endl;
-            delete this;
-        }
-
+        std::cout << "\nThere are too many edges!" << std::endl;
+        
         return false;
+    }
+    bool createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
+    {    
+        srand(unsigned(time(0)));
+        this->orientation = orientation;
+        createRandomVertices(numberOfVertices, maxValue);
+        return createRandomEdges(numberOfEdges, maxValue);
     }
     void insertVertexToVertices(std::size_t index, T value)//insert a vertex in vertices by index
     {
@@ -388,9 +395,9 @@ public:
         numberOfEdges = 0;
         this->orientation = orientation;
     }
-    GraphMatrix(std::size_t numberOfVertices, bool orientation)
+    GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)//create random graph
     {
-        createEmptyGraph(numberOfVertices, orientation);
+        if (!createGraph(numberOfVertices, numberOfEdges, orientation, maxValue)) delete this;
     }
     ~GraphMatrix()
     {
@@ -456,15 +463,6 @@ public:
             std::cout << i << ") index: " << vertices[i].index << ", value: {" << vertices[i].value << "}." <<  std::endl;
         }
         std::cout << std::endl;
-    }
-    void createRandomGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue, bool show = true)
-    {
-        if (createGraph(numberOfVertices, numberOfEdges, orientation, maxValue))
-        {
-            if (!show) return;
-            std::cout << "\nThe graph is created!" << std::endl;
-            print();
-        }
     }
     void checkingTheConnectivity(bool show = true)
     {
@@ -1183,9 +1181,9 @@ public:
 
 int main()
 {
-    GraphMatrix< std::vector<int>> graph(false);
-    std::vector<int> arr1(7), arr2(4), arr3(7),arr4(1), arr5(16), arr6(2);
-    graph.addVertex(arr4, false);
+    std::vector<int> arr1(7), arr2(4), arr3(7), arr4(1), arr5(16), arr6(2);
+    GraphMatrix< std::vector<int>> graph(30, 400, false, arr5);
+    /*graph.addVertex(arr4, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr2, false);
     graph.addVertex(arr1, false);
@@ -1197,7 +1195,8 @@ int main()
     graph.addEdge(4, 2, arr4, false);
     graph.addEdge(3, 1, arr6, false);
     graph.print();
-    graph.getPathsFromTheVertexToEveryoneElse(2).print();
+    graph.getPathsFromTheVertexToEveryoneElse(2).print();*/
+    graph.print();
     std::cout << "Hello World!\n";
 
     return 0;
