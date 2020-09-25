@@ -143,7 +143,7 @@ class GraphMatrix
 
         return false;
     }
-    std::size_t minDistance(T* distance, bool* isChecked, bool* isMax)
+    std::size_t minDistance(T* distance, bool* isChecked, bool* isMax)//find min distance 
     {
         T min = T();
         bool max = true;
@@ -169,7 +169,7 @@ class GraphMatrix
             isMax[i] = true;
             isChecked[i] = false;
         }
-        distance[beginIndex] = std::numeric_limits<T>::min();
+        distance[beginIndex] = T();
         isMax[beginIndex] = false;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -441,10 +441,11 @@ public:
     void findPathFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = true)
     {
         if (!connectedGraph(show)) return;
-        int* distance = dijkstra(beginIndex);
+        bool* isMax = new bool[numberOfVertices];
+        T* distance = dijkstra(beginIndex, isMax);
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if (distance[i] == INT_MAX)
+            if (isMax[i])
             {
                 if (show) std::cout << "\nThe graph is poorly oriented so it cannot be reached from " << beginIndex
                     << " to " << i << "." << std::endl;
@@ -455,7 +456,8 @@ public:
                     << " to " << i << " = " << distance[i] << "." << std::endl;
             }
         }
-        delete[]distance;
+        if (distance) delete[] distance;
+        if (isMax) delete[] isMax;
     }
     void findPathsBetweenAllVertices(bool show = true)
     {
@@ -542,6 +544,7 @@ public:
             matrix[i].clear();
         }
         matrix.clear();
+        vertices.clear();
         numberOfVertices = 0;
         numberOfEdges = 0;
         orientation = false;
@@ -1139,21 +1142,21 @@ public:
 
 int main()
 {
-    GraphMatrix<int> graph(false);
-    //std::vector<int> arr1(7), arr2(4), arr3(7),arr4(1), arr5(16), arr6(2);
-    graph.addVertex(14, false);
-    graph.addVertex(11, false);
-    graph.addVertex(12, false);
-    graph.addVertex(31, false);
-    graph.addVertex(41, false);
-    graph.addEdge(0, 1, 5, false);
-    graph.addEdge(1, 2, 1, false);
-    graph.addEdge(2, 3, 2, false);
-    graph.addEdge(0, 4, 3, false);
-    graph.addEdge(4, 2, 4, false);
-    graph.addEdge(3, 1, 6, false);
+    GraphMatrix< std::vector<int>> graph(false);
+    std::vector<int> arr1(7), arr2(4), arr3(7),arr4(1), arr5(16), arr6(2);
+    graph.addVertex(arr4, false);
+    graph.addVertex(arr1, false);
+    graph.addVertex(arr2, false);
+    graph.addVertex(arr1, false);
+    graph.addVertex(arr1, false);
+    graph.addEdge(0, 1, arr5, false);
+    graph.addEdge(1, 2, arr1, false);
+    graph.addEdge(2, 3, arr2, false);
+    graph.addEdge(0, 4, arr3, false);
+    graph.addEdge(4, 2, arr4, false);
+    graph.addEdge(3, 1, arr6, false);
     graph.print();
-    graph.findPathsBetweenTwoVertices(1, 2);
+    graph.findPathFromTheVertexToEveryoneElse(0);
     std::cout << "Hello World!\n";
 
     return 0;
