@@ -81,6 +81,66 @@ struct Vertex
 
 };
 template<typename T>
+struct PathsBetweenVertices
+{
+    T* distance;
+    bool* isMax;
+    std::size_t size;
+    std::size_t beginIndex;
+    PathsBetweenVertices() : distance(nullptr), isMax(nullptr), size(0), beginIndex(0) {}
+    PathsBetweenVertices(std::size_t size, std::size_t beginIndex)
+    {
+        this->size = size;
+        this->beginIndex = beginIndex;
+        distance = new T[size];
+        isMax = new bool[size];
+    }
+    PathsBetweenVertices(PathsBetweenVertices&& paths)
+    noexcept
+    {
+        distance = paths.distance;
+        paths.distance = nullptr;
+        isMax = paths.isMax;
+        paths.isMax = nullptr;
+        size = paths.size;
+        paths.size = 0;
+        beginIndex = paths.beginIndex;
+        paths.beginIndex = 0;
+    }
+   ~PathsBetweenVertices()
+    {
+       std::cout << "start~\n";
+        if (distance) delete[]distance;
+        if (isMax) delete[]isMax;
+        distance = nullptr;
+        isMax = nullptr;
+        size = 0;
+        beginIndex = 0;
+        std::cout << "end~\n";
+    }
+   void print(bool show = true)
+   {
+       if (!distance || !isMax)
+       {
+           std::cout << "\nThere aren't paths between vertices!" << std::endl;
+           return;
+       }
+       for (std::size_t i = 0; i < size; i++)
+       {
+           if (isMax[i])
+           {
+               if (show) std::cout << "\nThe graph is poorly oriented so it cannot be reached from " << beginIndex
+                   << " to " << i << "." << std::endl;
+           }
+           else
+           {
+               if (show) std::cout << "\nThe smallest distance from " << beginIndex
+                   << " to " << i << " = " << distance[i] << "." << std::endl;
+           }
+       }
+   }
+};
+template<typename T>
 class GraphMatrix
 {
     std::vector<std::vector<Edge<T>>> matrix;
@@ -143,50 +203,48 @@ class GraphMatrix
 
         return false;
     }
-    std::size_t minDistance(T* distance, bool* isChecked, bool* isMax)//find min distance 
+    std::size_t minDistance(PathsBetweenVertices<T>& paths, bool* isChecked)//find min distance 
     {
         T min = T();
         bool max = true;
         std::size_t index = 0;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if (!isChecked[i] && !isMax[i] && (max || distance[i] <= min))
+            if (!isChecked[i] && !paths.isMax[i] && (max || paths.distance[i] <= min))
             {
                 max = false;
-                min = distance[i];
+                min = paths.distance[i];
                 index = i;
             }
         }
 
         return index;
     }
-    T* dijkstra(std::size_t beginIndex, bool* isMax)
+    void dijkstra(PathsBetweenVertices<T>& paths)
     {
-        T* distance = new T[numberOfVertices];
         bool* isChecked = new bool[numberOfVertices];
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            isMax[i] = true;
+            paths.isMax[i] = true;
             isChecked[i] = false;
         }
-        distance[beginIndex] = T();
-        isMax[beginIndex] = false;
+        paths.distance[paths.beginIndex] = T();
+        paths.isMax[paths.beginIndex] = false;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            std::size_t index = minDistance(distance, isChecked, isMax);
+            std::size_t index = minDistance(paths, isChecked);
             isChecked[index] = true;
             for (std::size_t j = 0; j < numberOfVertices; j++)
             {
-                if (!isChecked[j] && matrix[index][j].contiguity && !isMax[index]
-                    && (isMax[j] || (distance[index] + matrix[index][j].value < distance[j])))
+                if (!isChecked[j] && matrix[index][j].contiguity && !paths.isMax[index]
+                    && (paths.isMax[j] || (paths.distance[index] + matrix[index][j].value < paths.distance[j])))
                 {
-                    distance[j] = distance[index] + matrix[index][j].value;
-                    isMax[j] = false;
+                    paths.distance[j] = paths.distance[index] + matrix[index][j].value;
+                    paths.isMax[j] = false;
                 }                   
             }
         }
         delete[] isChecked;
-        return distance;
     }   
     bool connectedGraph(bool show)//checks if the graph is connected
     {
@@ -420,53 +478,35 @@ public:
             if (show) std::cout << "\nThe graph isn't connected!" << std::endl;
         }
     }
-    void findPathsBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = true)
+    T getPathBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = true)
     {
-        if (!connectedGraph(show)) return;
-        bool* isMax = new bool[numberOfVertices];
-        T* distance = dijkstra(beginIndex, isMax);
-        if (!isMax || isMax[endIndex])
+        if (!connectedGraph(show)) return T();
+        T result;
+        PathsBetweenVertices<T> paths(numberOfVertices, beginIndex);
+        dijkstra(paths);
+        if (paths.isMax[endIndex])
         {
             if (show) std::cout << "\nThe graph is poorly oriented so it cannot be reached from " << beginIndex
                 << " to " << endIndex << "." << std::endl;
         }
         else
         {
+            result = paths.distance[endIndex];
             if (show) std::cout << "\nThe smallest distance from " << beginIndex
-                << " to " << endIndex << " = " << distance[endIndex] << "." << std::endl;
+                << " to " << endIndex << " was found!" << std::endl;
         }
-        if(distance) delete[]distance;
-        if(isMax) delete[] isMax;
+
+        return result;
     }
-    void findPathFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = true)
+    PathsBetweenVertices<T> getPathsFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = true)
     {
-        if (!connectedGraph(show)) return;
-        bool* isMax = new bool[numberOfVertices];
-        T* distance = dijkstra(beginIndex, isMax);
-        for (std::size_t i = 0; i < numberOfVertices; i++)
-        {
-            if (isMax[i])
-            {
-                if (show) std::cout << "\nThe graph is poorly oriented so it cannot be reached from " << beginIndex
-                    << " to " << i << "." << std::endl;
-            }
-            else
-            {
-                if (show) std::cout << "\nThe smallest distance from " << beginIndex
-                    << " to " << i << " = " << distance[i] << "." << std::endl;
-            }
-        }
-        if (distance) delete[] distance;
-        if (isMax) delete[] isMax;
-    }
-    void findPathsBetweenAllVertices(bool show = true)
-    {
-        if (!connectedGraph(show)) return;
-        for (std::size_t i = 0; i < numberOfVertices; i++)
-        {
-            if (show) std::cout << "\nVertex: " << i << "." << std::endl;
-            findPathFromTheVertexToEveryoneElse(i, show);
-        }
+        if (!connectedGraph(show)) return PathsBetweenVertices<T>();
+        PathsBetweenVertices<T> paths(numberOfVertices, beginIndex);
+        dijkstra(paths);
+        if (show) std::cout << "\nThe smallest distance from " << beginIndex
+            << " to to everyone else was found!" << std::endl;
+
+        return paths;
     }
     void topologicalSorting(bool show = true)
     {
@@ -1156,7 +1196,7 @@ int main()
     graph.addEdge(4, 2, arr4, false);
     graph.addEdge(3, 1, arr6, false);
     graph.print();
-    graph.findPathFromTheVertexToEveryoneElse(0);
+    graph.getPathsFromTheVertexToEveryoneElse(2).print();
     std::cout << "Hello World!\n";
 
     return 0;
