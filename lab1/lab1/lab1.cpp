@@ -4,7 +4,8 @@
 template<typename T>
 std::ostream& operator<< (std::ostream& out, const std::vector<T>& array)
 {
-    out << array.size();
+    out << "Size: " << array.size() << ", array: ";
+    for (std::size_t i = 0; i < array.size(); i++) out << array[i] << " ";
 
     return out;
 }
@@ -118,7 +119,7 @@ struct PathsBetweenVertices
         beginIndex = 0;
         std::cout << "end~\n";
     }
-   void print(bool show = true)
+    void print(bool show = true)
    {
        if (!distance || !isMax)
        {
@@ -135,7 +136,7 @@ struct PathsBetweenVertices
            else
            {
                if (show) std::cout << "\nThe smallest distance from " << beginIndex
-                   << " to " << i << " = " << distance[i] << "." << std::endl;
+                   << " to " << i << " = {" << distance[i] << "}." << std::endl;
            }
        }
    }
@@ -391,6 +392,18 @@ public:
     {
         createEmptyGraph(numberOfVertices, orientation);
     }
+    ~GraphMatrix()
+    {
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            matrix[i].clear();
+        }
+        matrix.clear();
+        vertices.clear();
+        numberOfVertices = 0;
+        numberOfEdges = 0;
+        orientation = false;
+    }
     void addVertex(T value, bool show = true)//adds a vertex with the lowest available index and value
     {
         addVertexToVertices(value);
@@ -440,7 +453,7 @@ public:
         std::cout << std::endl;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            std::cout << i << ") index: " << vertices[i].index << ", value: " << vertices[i].value << std::endl;
+            std::cout << i << ") index: " << vertices[i].index << ", value: {" << vertices[i].value << "}." <<  std::endl;
         }
         std::cout << std::endl;
     }
@@ -577,18 +590,6 @@ public:
             spanning_tree.printGraph();
         }
     }   */
-    ~GraphMatrix()
-    {
-        for (std::size_t i = 0; i < numberOfVertices; i++)
-        {
-            matrix[i].clear();
-        }
-        matrix.clear();
-        vertices.clear();
-        numberOfVertices = 0;
-        numberOfEdges = 0;
-        orientation = false;
-    }
 };
 /*struct Vertex_node
 {
