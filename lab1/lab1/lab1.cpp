@@ -359,13 +359,15 @@ public:
         numberOfEdges++;
         if (show) std::cout << "\nThe edge added!" << std::endl;
     }
-    void printGraph()
+    void print()
     {
         if (numberOfVertices == 0)
         {
             std::cout << "\nThe graph is empty!" << std::endl;
             return;
         }
+        std::cout << "\nVertices: " << numberOfVertices << std::endl;
+        std::cout << "Edges: " << numberOfEdges << std::endl;
         std::cout << "\nGraph:\n" << std::endl;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -377,8 +379,12 @@ public:
             }
             std::cout << "|" << std::endl;
         }
-        std::cout << "\nVertices: " << numberOfVertices << std::endl;
-        std::cout << "Edges: " << numberOfEdges << std::endl;
+        std::cout << std::endl;
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            std::cout << i << ") index: " << vertices[i].index << ", value: " << vertices[i].value << std::endl;
+        }
+        std::cout << std::endl;
     }
     void createRandomGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue, bool show = true)
     {
@@ -386,7 +392,7 @@ public:
         {
             if (!show) return;
             std::cout << "\nThe graph is created!" << std::endl;
-            printGraph();
+            print();
         }
     }
     void checkingTheConnectivity(bool show = true)
@@ -1133,21 +1139,21 @@ public:
 
 int main()
 {
-    GraphMatrix<std::vector<int>> graph(false);
-    std::vector<int> arr1(7), arr2(4), arr3(7),arr4(1), arr5(16), arr6(2);
-    graph.addVertex(arr1, false);
-    graph.addVertex(arr1, false);
-    graph.addVertex(arr1, false);
-    graph.addVertex(arr1, false);
-    graph.addVertex(arr1, false);
-    graph.addEdge(0, 1, arr5, false);
-    graph.addEdge(1, 2, arr1, false);
-    graph.addEdge(2, 3, arr2, false);
-    graph.addEdge(0, 4, arr3, false);
-    graph.addEdge(4, 2, arr4, false);
-    graph.addEdge(3, 1, arr6, false);
-    graph.printGraph();
-    graph.findPathsBetweenTwoVertices(1, 1);
+    GraphMatrix<int> graph(false);
+    //std::vector<int> arr1(7), arr2(4), arr3(7),arr4(1), arr5(16), arr6(2);
+    graph.addVertex(14, false);
+    graph.addVertex(11, false);
+    graph.addVertex(12, false);
+    graph.addVertex(31, false);
+    graph.addVertex(41, false);
+    graph.addEdge(0, 1, 5, false);
+    graph.addEdge(1, 2, 1, false);
+    graph.addEdge(2, 3, 2, false);
+    graph.addEdge(0, 4, 3, false);
+    graph.addEdge(4, 2, 4, false);
+    graph.addEdge(3, 1, 6, false);
+    graph.print();
+    graph.findPathsBetweenTwoVertices(1, 2);
     std::cout << "Hello World!\n";
 
     return 0;
