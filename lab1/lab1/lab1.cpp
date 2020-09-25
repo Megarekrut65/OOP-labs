@@ -1,19 +1,19 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
-template<class T>
+template<typename T>
 std::ostream& operator<< (std::ostream& out, const std::vector<T>& array)
 {
     out << array.size();
 
     return out;
 }
-template<class T>
+template<typename T>
 void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2)
 {
     for (std::size_t i = 0; i < array2.size(); i++) array1.push_back(array2[i]);
 }
-template<class T>
+template<typename T>
 std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& array2)
 {
     std::vector<T> array3;
@@ -21,12 +21,12 @@ std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& a
     vectorCopy(array3, array2);
     return array3;
 }
-template<class T>
+template<typename T>
 std::size_t operator + (const std::size_t& value, const std::vector<T>& array1)
 {
     return (value + array1.size());
 }
-template<class T>
+template<typename T>
 std::vector<T> operator % (const int& random, const std::vector<T>& array1)
 {
     std::vector<T> array2;
@@ -38,50 +38,53 @@ std::vector<T> operator % (const int& random, const std::vector<T>& array1)
 
     return array2;
 }
-template<class T>
+template<typename T>
 bool operator < (const std::vector<T>& array1, const std::vector<T>& array2)
 {
     return (array1.size() < array2.size());
 }
-template<class T>
+template<typename T>
 bool operator <= (const std::vector<T>& array1, const std::vector<T>& array2)
 {
     return (array1.size() <= array2.size());
 }
-template<class T>
+template<typename T>
 bool operator > (const std::vector<T>& array1, const std::vector<T>& array2)
 {
     return (array1.size() > array2.size());
 }
-template<class T>
+template<typename T>
 bool operator >= (const std::vector<T>& array1, const std::vector<T>& array2)
 {
     return (array1.size() >= array2.size());
 }
-template<class T>
+template<typename T>
 bool operator == (const std::vector<T>& array1, const std::vector<T>& array2)
 {
     return (array1.size() == array2.size());
 }
-template<class T>
-class Edge
+template<typename T>
+struct Edge
 {
     bool contiguity;
     T value;
-public:
     Edge() : contiguity(false), value(T()) {}
-    Edge(bool contiguity, T value)
-    {
-        this->contiguity = contiguity;
-        this->value = value;
-    }
-    template<class T> 
-    friend class GraphMatrix;
+    Edge(bool contiguity, T value): contiguity(contiguity), value(value) {}
 };
-template<class T>
+template<typename T>
+struct Vertex
+{
+    std::size_t index;
+    T value;
+    Vertex(): index(0), value(T()) {}
+    Vertex(std::size_t index, T value): index(index), value(value) {}
+
+};
+template<typename T>
 class GraphMatrix
 {
     std::vector<std::vector<Edge<T>>> matrix;
+    std::vector<Vertex<T>> vertices;
     std::size_t numberOfVertices;
     std::size_t numberOfEdges;
     bool orientation;
@@ -292,6 +295,27 @@ class GraphMatrix
 
         return false;
     }
+    void insertVertexToVertices(std::size_t index, T value)//insert a vertex in vertices by index
+    {
+        vertices.push_back(Vertex<T>());
+        for (std::size_t i = numberOfVertices; i > index; i--)
+        {
+            vertices[i] = vertices[i - 1];
+        }
+        vertices[index] = Vertex<T>(index, value);
+    }
+    void addVertexToVertices(T value)//add vertex in vertices by index or to end
+    {
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            if (vertices[i].index != i)
+            {
+                insertVertexToVertices(i, value);
+                return;
+            }
+        }
+        vertices.push_back(Vertex<T>(numberOfVertices, value));
+    }
 public:
     GraphMatrix()
     {
@@ -309,15 +333,16 @@ public:
     {
         createEmptyGraph(numberOfVertices, orientation);
     }
-    void addVertex(bool show = true)
+    void addVertex(T value, bool show = true)//adds a vertex with the lowest available index and value
     {
+        addVertexToVertices(value);
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
             matrix[i].push_back(Edge<T>());
         }
         numberOfVertices++;
-        std::vector<Edge<T>> new_line(numberOfVertices, Edge<T>());
-        matrix.push_back(new_line);
+        std::vector<Edge<T>> newLine(numberOfVertices, Edge<T>());
+        matrix.push_back(newLine);                       
         if (show) std::cout << "\nThe vertex is added!" << std::endl;
     }
     void addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = true)
@@ -467,12 +492,12 @@ public:
         }
         std::cout << std::endl;
     }
-    void getSpanningTree(bool show = true)
+    GraphMatrix<T> getSpanningTree(bool show = true)
     {
         if (orientation)
         {
             if (show) std::cout << "\nSpanning tree for undirected graph only" << std::endl;
-            return;
+            return GraphMatrix();
         }
         GraphMatrix<T> spanningTree(numberOfVertices, false);
         std::vector<std::size_t> indexes;
@@ -480,13 +505,14 @@ public:
         if (indexes.size() != numberOfVertices)
         {
             if (show) std::cout << "\nThe graph isn't connected!" << std::endl;
-            return;
+            return GraphMatrix();
         }
         if (show)
         {
             std::cout << "\nThe spanning tree is created!" << std::endl;
-            spanningTree.printGraph();
         }
+
+        return spanningTree;
     }
    /* void createTheSmallestSpanningTree(bool show = true)
     {
@@ -1109,11 +1135,11 @@ int main()
 {
     GraphMatrix<std::vector<int>> graph(false);
     std::vector<int> arr1(7), arr2(4), arr3(7),arr4(1), arr5(16), arr6(2);
-    graph.addVertex(false);
-    graph.addVertex(false);
-    graph.addVertex(false);
-    graph.addVertex(false);
-    graph.addVertex(false);
+    graph.addVertex(arr1, false);
+    graph.addVertex(arr1, false);
+    graph.addVertex(arr1, false);
+    graph.addVertex(arr1, false);
+    graph.addVertex(arr1, false);
     graph.addEdge(0, 1, arr5, false);
     graph.addEdge(1, 2, arr1, false);
     graph.addEdge(2, 3, arr2, false);
@@ -1121,7 +1147,7 @@ int main()
     graph.addEdge(4, 2, arr4, false);
     graph.addEdge(3, 1, arr6, false);
     graph.printGraph();
-    graph.findPathsBetweenTwoVertices(0, 1);
+    graph.findPathsBetweenTwoVertices(1, 1);
     std::cout << "Hello World!\n";
 
     return 0;
