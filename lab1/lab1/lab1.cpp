@@ -72,7 +72,7 @@ struct Edge
     Edge() : contiguity(false), value(T()) {}
     Edge(bool contiguity, T value): contiguity(contiguity), value(value) {}
 };
-template<typename T>
+/*template<typename T>
 struct Vertex
 {
     std::size_t index;
@@ -80,7 +80,7 @@ struct Vertex
     Vertex(): index(0), value(T()) {}
     Vertex(std::size_t index, T value): index(index), value(value) {}
 
-};
+};*/
 template<typename T>
 struct PathsBetweenVertices
 {
@@ -110,14 +110,12 @@ struct PathsBetweenVertices
     }
    ~PathsBetweenVertices()
     {
-       std::cout << "start~\n";
         if (distance) delete[]distance;
         if (isMax) delete[]isMax;
         distance = nullptr;
         isMax = nullptr;
         size = 0;
         beginIndex = 0;
-        std::cout << "end~\n";
     }
     void print(bool show = true)
    {
@@ -145,7 +143,7 @@ template<typename T>
 class GraphMatrix
 {
     std::vector<std::vector<Edge<T>>> matrix;
-    std::vector<Vertex<T>> vertices;
+    std::vector<T> vertices;
     std::size_t numberOfVertices;
     std::size_t numberOfEdges;
     bool orientation;
@@ -157,6 +155,11 @@ class GraphMatrix
             std::cout << "\nVertex with index: " << index << " isn't in Graph!" << std::endl;
             return false;
         }
+        /*for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            if(index == vertices[i].index)  return true;
+        }*/
+       
         return true;
     }
     bool doAddIndex(std::vector<std::size_t>& indexes, std::size_t index)// if index is not in indexes then function adds index to indexes
@@ -169,12 +172,12 @@ class GraphMatrix
 
         return true;
     }
-    void swap(T& value1, T& value2)
+    /*void swap(T& value1, T& value2)
     {
         T value3 = value1;
         value1 = value2;
         value2 = value3;
-    }
+    }*/
     void isConnectedRelativeToTheVertex(std::vector<std::size_t>& indexes, std::size_t index)//the function checks whether the graph is connected starting from a given index of vertex
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
@@ -361,7 +364,7 @@ class GraphMatrix
         createRandomVertices(numberOfVertices, maxValue);
         return createRandomEdges(numberOfEdges, maxValue);
     }
-    void insertVertexToVertices(std::size_t index, T value)//insert a vertex in vertices by index
+   /* void insertVertexToVertices(std::size_t index, T value)//insert a vertex in vertices by index
     {
         vertices.push_back(Vertex<T>());
         for (std::size_t i = numberOfVertices; i > index; i--)
@@ -381,7 +384,7 @@ class GraphMatrix
             }
         }
         vertices.push_back(Vertex<T>(numberOfVertices, value));
-    }
+    }*/
 public:
     GraphMatrix()
     {
@@ -411,9 +414,10 @@ public:
         numberOfEdges = 0;
         orientation = false;
     }
-    void addVertex(T value, bool show = true)//adds a vertex with the lowest available index and value
+    void addVertex(T value, bool show = true)//adds a vertex with the value to vertices
     {
-        addVertexToVertices(value);
+        //addVertexToVertices(value);
+        vertices.push_back(value);
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
             matrix[i].push_back(Edge<T>());
@@ -457,37 +461,30 @@ public:
             }
             std::cout << "|" << std::endl;
         }
-        std::cout << std::endl;
+        std::cout << "Vertices:" << std::endl;
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            std::cout << i << ") index: " << vertices[i].index << ", value: {" << vertices[i].value << "}." <<  std::endl;
+            std::cout << i << ")value: {" << vertices[i]<< "}." <<  std::endl;
         }
         std::cout << std::endl;
     }
-    void checkingTheConnectivity(bool show = true)
+    bool checkingTheConnectivity(bool show = true)
     {
-        if (connectedGraph(show))
-        {
-            if (show) std::cout << "\nThe graph is connected!" << std::endl;
-        }
+        return connectedGraph(show);
     }
-    void depthFirstSearch(bool show = true)
+    std::vector<std::size_t> depthFirstSearch(bool show = true)
     {
         std::vector<std::size_t> indexes;
         if (isConnected(indexes))
         {
-            if (!show) return;
-            std::cout << "\nSearch is finished!\nVertex: " << std::endl;
-            for (std::size_t i = 0; i < numberOfVertices; i++)
-            {
-                std::cout << indexes[i] << " ";
-            }
-            std::cout << std::endl;
+            if (show) std::cout << "\nSearch is finished!" << std::endl;
         }
         else
         {
             if (show) std::cout << "\nThe graph isn't connected!" << std::endl;
+            indexes.clear();
         }
+        return indexes;
     }
     T getPathBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = true)
     {
@@ -519,15 +516,15 @@ public:
 
         return paths;
     }
-    void topologicalSorting(bool show = true)
+    std::vector<std::size_t> topologicalSorting(bool show = true)
     {
+        std::vector<std::size_t> indexes;
         if (!orientation)
         {
             if (show) std::cout << "\nTopological sorting for directed graph only" << std::endl;
-            return;
+            return indexes;
         }
-        if (!connectedGraph(show)) return;
-        std::vector<std::size_t> indexes;
+        if (!connectedGraph(show)) return indexes;
         std::vector<std::vector<std::size_t>> set = createSet();
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -541,15 +538,10 @@ public:
         if (indexes.size() != numberOfVertices)
         {
             if (show) std::cout << "\nThe graph has a cycle!" << std::endl;
-            return;
+            indexes.clear();
         }
-        if (!show) return;
-        std::cout << "\nResult: ";
-        for (std::size_t i = 0; i < numberOfVertices; i++)
-        {
-            std::cout << indexes[i] << " ";
-        }
-        std::cout << std::endl;
+        else if (show) std::cout << "\nTopological sorting is finished!" << std::endl;     
+        return indexes;
     }
     GraphMatrix<T> getSpanningTree(bool show = true)
     {
@@ -1182,21 +1174,22 @@ public:
 int main()
 {
     std::vector<int> arr1(7), arr2(4), arr3(7), arr4(1), arr5(16), arr6(2);
-    GraphMatrix< std::vector<int>> graph(30, 400, false, arr5);
-    /*graph.addVertex(arr4, false);
+    GraphMatrix< std::vector<int>> graph(true);
+    graph.addVertex(arr4, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr2, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr1, false);
-    graph.addEdge(0, 1, arr5, false);
-    graph.addEdge(1, 2, arr1, false);
+    //graph.addEdge(0, 1, arr5, false);
+    //graph.addEdge(1, 2, arr1, false);
     graph.addEdge(2, 3, arr2, false);
     graph.addEdge(0, 4, arr3, false);
     graph.addEdge(4, 2, arr4, false);
     graph.addEdge(3, 1, arr6, false);
     graph.print();
-    graph.getPathsFromTheVertexToEveryoneElse(2).print();*/
-    graph.print();
+    //graph.getPathsFromTheVertexToEveryoneElse(2).print();
+    std::cout << graph.depthFirstSearch();
+    std::cout << graph.topologicalSorting();
     std::cout << "Hello World!\n";
 
     return 0;
