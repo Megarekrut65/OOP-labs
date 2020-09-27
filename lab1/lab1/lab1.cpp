@@ -1209,7 +1209,7 @@ public:
 int main()
 {
     std::vector<int> arr1(7), arr2(4), arr3(7), arr4(1), arr5(16), arr6(2);
-    GraphMatrix< std::vector<int>> graph(false);
+    GraphMatrix< std::vector<int>> graph(true);
     graph.addVertex(arr4, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr2, false);
