@@ -1,11 +1,26 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+#include <string>
 /*template<typename T>
 std::size_t operator + (const std::size_t& value, const std::vector<T>& array1)
 {
     return (value + array1.size());
 }*/
+template<typename T>
+std::string toString(const std::vector<T>& array)
+{
+    std::string result = "";
+    result+= "Size: " + std::to_string(array.size()) + ", array: ";
+    for (std::size_t i = 0; i < array.size(); i++) result += std::to_string(array[i]) + " ";
+
+    return result;
+}
+template<typename T>
+std::string toString(const T& value)
+{
+    return std::to_string(value);
+}
 template<typename T>
 std::ostream& operator<< (std::ostream& out, const std::vector<T>& array)
 {
@@ -476,32 +491,34 @@ public:
         else if (show) std::cout << "\nThere isn't the edge between vertices " 
                 << beginIndex << " and " << endIndex << "!" << std::endl;       
     }
-    void print()
+    std::string getTextRepresentation()
     {
+        std::string result = "";
         if (numberOfVertices == 0)
         {
-            std::cout << "\nThe graph is empty!" << std::endl;
-            return;
+            return "\nThe graph is empty!";
         }
-        std::cout << "\nVertices: " << numberOfVertices << std::endl;
-        std::cout << "Edges: " << numberOfEdges << std::endl;
-        std::cout << "\nGraph:\n" << std::endl;
+        result += "\nNumber of vertices: " + toString(numberOfVertices) + "\n";
+        result += "Number of edges: " + toString(numberOfEdges) + "\n";
+        result += "\nGraph:\n\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            std::cout << "| ";
+            result += "| ";
             for (std::size_t j = 0; j < numberOfVertices; j++)
             {
-                if (matrix[i][j].contiguity) std::cout << "1 ";
-                else std::cout << "0 ";
+                if (matrix[i][j].contiguity) result += "1 ";
+                else result += "0 ";
             }
-            std::cout << "|" << std::endl;
+            result += "|\n";
         }
-        std::cout << "Vertices:" << std::endl;
+        result += "\nVertices:\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            std::cout << i << ")value: {" << vertices[i]<< "}." <<  std::endl;
+            result += toString(i) + ")value: {" + toString(vertices[i]) + "}.\n";
         }
-        std::cout << std::endl;
+        result += "\n";
+
+        return result;
     }
     bool checkingTheConnectivity(bool show = true)
     {
@@ -1221,15 +1238,15 @@ int main()
     graph.addEdge(0, 4, arr3, false);
     graph.addEdge(4, 2, arr4, false);
     graph.addEdge(3, 1, arr6, false);
-    graph.print();
+    std::cout << graph.getTextRepresentation();
     graph.removeEdge(3, 1);
     graph.removeVertex(2);
-    graph.print();
+    std::cout << graph.getTextRepresentation();
     graph.addVertex(arr1, false);
     graph.addVertex(arr1, false);
     graph.addEdge(4, 5, arr4, false);
     graph.addEdge(1, 5, arr6, false);
-    graph.print();
+    std::cout << graph.getTextRepresentation();
     //graph.getPathsFromTheVertexToEveryoneElse(2).print();
     //std::cout << graph.depthFirstSearch();
     //std::cout << graph.topologicalSorting();
