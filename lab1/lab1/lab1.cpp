@@ -162,7 +162,7 @@ class GraphMatrix
     std::size_t numberOfVertices;
     std::size_t numberOfEdges;
     bool orientation;
-
+    T totalValue;
     bool isIndex(std::size_t index)//if vectex with index is in graph then return true, else - false
     {
         if (index >= numberOfVertices)
@@ -326,6 +326,55 @@ class GraphMatrix
             }
         }
     }    
+    GraphMatrix<T> kruskal()
+    {
+        GraphMatrix<T> spanningTree(false);
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            spanningTree.addVertex(vertices[i], false);
+        }
+        std::vector<std::size_t> belongs(numberOfVertices);
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            belongs[i] = i;
+        }
+        std::size_t firstIndex;
+        std::size_t secondIndex;
+        for (std::size_t vertexIndex = 1; vertexIndex < numberOfVertices; vertexIndex++)
+        {
+            T min = T();
+            bool isMax = true;
+            for (std::size_t i = 0; i < numberOfVertices; i++)
+            {
+                for (std::size_t j = 0; j < numberOfVertices; j++)
+                {
+                    if (matrix[i][j].contiguity && (isMax || min > matrix[i][j].value)
+                        && (belongs[i] != belongs[j]))
+                    {
+                        min = matrix[i][j].value;
+                        isMax = false;
+                        firstIndex = i;
+                        secondIndex = j;
+                    }
+                }
+            }
+            if (belongs[firstIndex] != belongs[secondIndex])
+            {
+                spanningTree.addEdge(firstIndex, secondIndex, min, false);
+                std::size_t tempIndex = belongs[secondIndex];
+                belongs[secondIndex] = belongs[firstIndex];
+                for (std::size_t i = 0; i < numberOfVertices; i++)
+                {
+                    if (belongs[i] == tempIndex)
+                    {
+                        belongs[i] = belongs[firstIndex];
+                    }
+                }
+            }
+        }
+
+        return spanningTree;
+    }
     void createRandomVertices(std::size_t numberOfVertices, T maxValue)//adds vertices to new graph
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
@@ -462,6 +511,7 @@ public:
         matrix[beginIndex][endIndex] = node;
         if (!orientation) matrix[endIndex][beginIndex] = node;
         numberOfEdges++;
+        totalValue = totalValue + value;
         if (show) std::cout << "\nThe edge added!" << std::endl;
     }
     void removeVertex(std::size_t index, bool show = true)
@@ -500,6 +550,7 @@ public:
         }
         result += "\nNumber of vertices: " + toString(numberOfVertices) + "\n";
         result += "Number of edges: " + toString(numberOfEdges) + "\n";
+        result += "Total value: " + toString(totalValue) + "\n";
         result += "\nGraph:\n\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -602,7 +653,11 @@ public:
             if (show) std::cout << "\nSpanning tree for undirected graph only" << std::endl;
             return GraphMatrix();
         }
-        GraphMatrix<T> spanningTree(numberOfVertices, false);
+        GraphMatrix<T> spanningTree(false);
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            spanningTree.addVertex(vertices[i], false);
+        }
         std::vector<std::size_t> indexes;
         createSpanningTree(spanningTree, indexes, 0);
         if (indexes.size() != numberOfVertices)
@@ -617,21 +672,19 @@ public:
 
         return spanningTree;
     }
-   /* void createTheSmallestSpanningTree(bool show = true)
+    GraphMatrix<T> getTheSmallestSpanningTree(bool show = true)
     {
         if (orientation)
         {
             if (show) std::cout << "\nSpanning tree for undirected graph only" << std::endl;
-            return;
+            return GraphMatrix<T>();
         }
-        if (!connectedGraph(show)) return;
-        GraphMatrix<T> spanning_tree = kruskal();
-        if (show)
-        {
-            std::cout << "\nThe spanning tree is created!" << std::endl;
-            spanning_tree.printGraph();
-        }
-    }   */
+        if (!connectedGraph(show)) return GraphMatrix<T>();
+        GraphMatrix<T> spanningTree = kruskal();
+        if (show) std::cout << "\nThe smallest spanning tree is created!" << std::endl;
+        
+        return spanningTree;
+    }   
 };
 /*struct Vertex_node
 {
@@ -1226,7 +1279,7 @@ public:
 int main()
 {
     std::vector<int> arr1(7), arr2(4), arr3(7), arr4(1), arr5(16), arr6(2);
-    GraphMatrix< std::vector<int>> graph(true);
+    GraphMatrix< std::vector<int>> graph(false);
     graph.addVertex(arr4, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr2, false);
@@ -1239,7 +1292,7 @@ int main()
     graph.addEdge(4, 2, arr4, false);
     graph.addEdge(3, 1, arr6, false);
     std::cout << graph.getTextRepresentation();
-    graph.removeEdge(3, 1);
+    /*graph.removeEdge(3, 1);
     graph.removeVertex(2);
     std::cout << graph.getTextRepresentation();
     graph.addVertex(arr1, false);
@@ -1249,7 +1302,9 @@ int main()
     std::cout << graph.getTextRepresentation();
     //graph.getPathsFromTheVertexToEveryoneElse(2).print();
     //std::cout << graph.depthFirstSearch();
-    //std::cout << graph.topologicalSorting();
+    //std::cout << graph.topologicalSorting();*/
+    //std::cout << graph.getSpanningTree().getTextRepresentation();
+    std::cout << graph.getTheSmallestSpanningTree().getTextRepresentation();
     std::cout << "Hello World!\n";
 
     return 0;
