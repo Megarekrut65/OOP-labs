@@ -461,6 +461,21 @@ public:
         numberOfVertices--;
         if (show) std::cout << "\nThe vertex with index " << index << " was removed!" << std::endl;
     }
+    void removeEdge(std::size_t beginIndex, std::size_t endIndex, bool show = true)
+    {
+        if (!isIndex(beginIndex) || !isIndex(endIndex)) return;
+        if (matrix[beginIndex][endIndex].contiguity)
+        {
+            matrix[beginIndex][endIndex].contiguity = false;
+            numberOfEdges--;
+            if(!orientation) matrix[endIndex][beginIndex].contiguity = false;
+            if (show) std::cout << "\nThe edge between vertices "
+                << beginIndex << " and " << endIndex 
+                << " was removed!" <<  std::endl;
+        }
+        else if (show) std::cout << "\nThere isn't the edge between vertices " 
+                << beginIndex << " and " << endIndex << "!" << std::endl;       
+    }
     void print()
     {
         if (numberOfVertices == 0)
@@ -1194,7 +1209,7 @@ public:
 int main()
 {
     std::vector<int> arr1(7), arr2(4), arr3(7), arr4(1), arr5(16), arr6(2);
-    GraphMatrix< std::vector<int>> graph(true);
+    GraphMatrix< std::vector<int>> graph(false);
     graph.addVertex(arr4, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr2, false);
@@ -1207,12 +1222,13 @@ int main()
     graph.addEdge(4, 2, arr4, false);
     graph.addEdge(3, 1, arr6, false);
     graph.print();
+    graph.removeEdge(3, 1);
     graph.removeVertex(2);
     graph.print();
     graph.addVertex(arr1, false);
     graph.addVertex(arr1, false);
     graph.addEdge(4, 5, arr4, false);
-    graph.addEdge(1, 2, arr6, false);
+    graph.addEdge(1, 5, arr6, false);
     graph.print();
     //graph.getPathsFromTheVertexToEveryoneElse(2).print();
     //std::cout << graph.depthFirstSearch();
