@@ -6,17 +6,17 @@
 namespace ofo//override functions and operators
 {
 	template<typename T>
-	std::string toString(const std::vector<T>& array);
+	std::string toString(const std::vector<T>& array);//to_string for a vector
 	template<typename T>
-	std::string toString(const T& value);
+	std::string toString(const T& value);//edit name of function std::to_sting 
 	template<typename T>
 	std::ostream& operator<< (std::ostream& out, const std::vector<T>& array);
 	template<typename T>
-	void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2);
+	void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2);//array2 append to array1
 	template<typename T>
 	std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& array2);
 	template<typename T>
-	std::vector<T> operator % (const int& random, const std::vector<T>& array1);
+	std::vector<T> operator % (const int& random, const std::vector<T>& array1);// use for rand()%std::vector<T>
 	template<typename T>
 	bool operator < (const std::vector<T>& array1, const std::vector<T>& array2);
 	template<typename T>
@@ -31,7 +31,7 @@ namespace ofo//override functions and operators
 namespace ofo
 {
     template<typename T>
-    std::string toString(const std::vector<T>& array)//to_string for a vector
+    std::string toString(const std::vector<T>& array)
     {
         std::string result = "";
         result += "Size: " + std::to_string(array.size()) + ", array: ";
@@ -40,7 +40,7 @@ namespace ofo
         return result;
     }
     template<typename T>
-    std::string toString(const T& value)//edit name of function std::to_sting 
+    std::string toString(const T& value)
     {
         return std::to_string(value);
     }
@@ -53,7 +53,7 @@ namespace ofo
         return out;
     }
     template<typename T>
-    void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2)//array2 append to array1
+    void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2)
     {
         for (std::size_t i = 0; i < array2.size(); i++) array1.push_back(array2[i]);
     }
@@ -66,7 +66,7 @@ namespace ofo
         return array3;
     }
     template<typename T>
-    std::vector<T> operator % (const int& random, const std::vector<T>& array1)// use for rand()%std::vector<T>
+    std::vector<T> operator % (const int& random, const std::vector<T>& array1)
     {
         std::vector<T> array2;
         std::size_t size = random % (array1.size() + 1);

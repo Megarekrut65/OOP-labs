@@ -18,15 +18,12 @@
     <ClCompile Include="lab1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="my_matrix_graph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="my_matrix_graph.h">
+    <ClInclude Include="my_override_functions_and_operators.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="my_override_functions_and_operators.h">
+    <ClInclude Include="my_graph_matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
