@@ -2,83 +2,10 @@
 #include <vector>
 #include <ctime>
 #include <string>
-/*template<typename T>
-std::size_t operator + (const std::size_t& value, const std::vector<T>& array1)
-{
-    return (value + array1.size());
-}*/
-template<typename T>
-std::string toString(const std::vector<T>& array)
-{
-    std::string result = "";
-    result+= "Size: " + std::to_string(array.size()) + ", array: ";
-    for (std::size_t i = 0; i < array.size(); i++) result += std::to_string(array[i]) + " ";
+#include "my_override_functions_and_operators.h"
 
-    return result;
-}
-template<typename T>
-std::string toString(const T& value)
-{
-    return std::to_string(value);
-}
-template<typename T>
-std::ostream& operator<< (std::ostream& out, const std::vector<T>& array)
-{
-    out << "Size: " << array.size() << ", array: ";
-    for (std::size_t i = 0; i < array.size(); i++) out << array[i] << " ";
+using namespace ofo;
 
-    return out;
-}
-template<typename T>
-void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2)
-{
-    for (std::size_t i = 0; i < array2.size(); i++) array1.push_back(array2[i]);
-}
-template<typename T>
-std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& array2)
-{
-    std::vector<T> array3;
-    vectorCopy(array3, array1);
-    vectorCopy(array3, array2);
-    return array3;
-}
-template<typename T>
-std::vector<T> operator % (const int& random, const std::vector<T>& array1)
-{
-    std::vector<T> array2;
-    std::size_t size = random % array1.size();
-    for (std::size_t i = 0; i < size; i++)
-    {
-        array2.push_back(array1[i]);
-    }
-
-    return array2;
-}
-template<typename T>
-bool operator < (const std::vector<T>& array1, const std::vector<T>& array2)
-{
-    return (array1.size() < array2.size());
-}
-template<typename T>
-bool operator <= (const std::vector<T>& array1, const std::vector<T>& array2)
-{
-    return (array1.size() <= array2.size());
-}
-template<typename T>
-bool operator > (const std::vector<T>& array1, const std::vector<T>& array2)
-{
-    return (array1.size() > array2.size());
-}
-template<typename T>
-bool operator >= (const std::vector<T>& array1, const std::vector<T>& array2)
-{
-    return (array1.size() >= array2.size());
-}
-template<typename T>
-bool operator == (const std::vector<T>& array1, const std::vector<T>& array2)
-{
-    return (array1.size() == array2.size());
-}
 template<typename T>
 struct Edge
 {
@@ -1278,7 +1205,8 @@ public:
 
 int main()
 {
-    std::vector<int> arr1(7), arr2(4), arr3(7), arr4(1), arr5(16), arr6(2);
+    srand(unsigned(time(0)));
+    std::vector<int> arr1 = {10, 14, 15, 5, 2 ,5, 1, 3, 9, 6}, arr2 = rand() % arr1, arr3 = rand() % arr1, arr4 = rand() % arr1, arr5 = rand() % arr1, arr6 = rand() % arr1;
     GraphMatrix< std::vector<int>> graph(false);
     graph.addVertex(arr4, false);
     graph.addVertex(arr1, false);

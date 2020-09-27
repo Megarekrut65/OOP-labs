@@ -140,6 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lab1.cpp" />
+    <ClCompile Include="my_matrix_graph.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="my_matrix_graph.h" />
+    <ClInclude Include="my_override_functions_and_operators.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
