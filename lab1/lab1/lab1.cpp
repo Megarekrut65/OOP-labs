@@ -364,7 +364,15 @@ class GraphMatrix
         createRandomVertices(numberOfVertices, maxValue);
         return createRandomEdges(numberOfEdges, maxValue);
     }
-   /* void insertVertexToVertices(std::size_t index, T value)//insert a vertex in vertices by index
+    void deleteEdges(std::size_t index)//when removes vertex need delete its edges
+    {
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            if (matrix[i][index].contiguity) numberOfEdges--;
+            if (orientation && i != index && matrix[index][i].contiguity) numberOfEdges--;
+        }
+    }
+    /* void insertVertexToVertices(std::size_t index, T value)//insert a vertex in vertices by index
     {
         vertices.push_back(Vertex<T>());
         for (std::size_t i = numberOfVertices; i > index; i--)
@@ -444,10 +452,9 @@ public:
     void removeVertex(std::size_t index, bool show = true)
     {
         if(!isIndex(index)) return;
+        deleteEdges(index);
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            if (matrix[i][index].contiguity) numberOfEdges--;
-            if (orientation && matrix[index][i].contiguity) numberOfEdges--;
             matrix[i].erase(matrix[i].begin() + index);
         }
         matrix.erase(matrix.begin() + index);
@@ -1187,7 +1194,7 @@ public:
 int main()
 {
     std::vector<int> arr1(7), arr2(4), arr3(7), arr4(1), arr5(16), arr6(2);
-    GraphMatrix< std::vector<int>> graph(false);
+    GraphMatrix< std::vector<int>> graph(true);
     graph.addVertex(arr4, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr2, false);
