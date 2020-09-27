@@ -15,6 +15,8 @@ namespace ofo//override functions and operators
 	void vectorCopy(std::vector<T>& array1, const std::vector<T>& array2);//array2 append to array1
 	template<typename T>
 	std::vector<T> operator + (const std::vector<T>& array1, const std::vector<T>& array2);
+    template<typename T>
+    std::vector<T> operator - (const std::vector<T>& array1, const std::vector<T>& array2);
 	template<typename T>
 	std::vector<T> operator % (const int& random, const std::vector<T>& array1);// use for rand()%std::vector<T>
 	template<typename T>
@@ -63,6 +65,18 @@ namespace ofo
         std::vector<T> array3;
         vectorCopy(array3, array1);
         vectorCopy(array3, array2);
+        return array3;
+    }
+    template<typename T>
+    std::vector<T> operator - (const std::vector<T>& array1, const std::vector<T>& array2)
+    {
+        std::vector<T> array3;
+        std::size_t size1 = array1.size(), size2 = array2.size();
+        if (size2 >= size1) return array3;
+        std::size_t newSize = size1 - size2;
+        vectorCopy(array3, array1);
+        array3.erase(array3.begin() + newSize, array3.begin() + size1 - 1);
+
         return array3;
     }
     template<typename T>

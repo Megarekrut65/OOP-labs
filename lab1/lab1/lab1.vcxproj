@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_graph_matrix.h" />
+    <ClInclude Include="my_graph_structure.h" />
     <ClInclude Include="my_override_functions_and_operators.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
