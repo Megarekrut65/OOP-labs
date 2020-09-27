@@ -441,6 +441,19 @@ public:
         numberOfEdges++;
         if (show) std::cout << "\nThe edge added!" << std::endl;
     }
+    void removeVertex(std::size_t index, bool show = true)
+    {
+        if(!isIndex(index)) return;
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            if (matrix[i][index].contiguity) numberOfEdges--;
+            if (orientation && matrix[index][i].contiguity) numberOfEdges--;
+            matrix[i].erase(matrix[i].begin() + index);
+        }
+        matrix.erase(matrix.begin() + index);
+        numberOfVertices--;
+        if (show) std::cout << "\nThe vertex with index " << index << " was removed!" << std::endl;
+    }
     void print()
     {
         if (numberOfVertices == 0)
@@ -1174,22 +1187,29 @@ public:
 int main()
 {
     std::vector<int> arr1(7), arr2(4), arr3(7), arr4(1), arr5(16), arr6(2);
-    GraphMatrix< std::vector<int>> graph(true);
+    GraphMatrix< std::vector<int>> graph(false);
     graph.addVertex(arr4, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr2, false);
     graph.addVertex(arr1, false);
     graph.addVertex(arr1, false);
-    //graph.addEdge(0, 1, arr5, false);
-    //graph.addEdge(1, 2, arr1, false);
+    graph.addEdge(0, 1, arr5, false);
+    graph.addEdge(1, 2, arr1, false);
     graph.addEdge(2, 3, arr2, false);
     graph.addEdge(0, 4, arr3, false);
     graph.addEdge(4, 2, arr4, false);
     graph.addEdge(3, 1, arr6, false);
     graph.print();
+    graph.removeVertex(2);
+    graph.print();
+    graph.addVertex(arr1, false);
+    graph.addVertex(arr1, false);
+    graph.addEdge(4, 5, arr4, false);
+    graph.addEdge(1, 2, arr6, false);
+    graph.print();
     //graph.getPathsFromTheVertexToEveryoneElse(2).print();
-    std::cout << graph.depthFirstSearch();
-    std::cout << graph.topologicalSorting();
+    //std::cout << graph.depthFirstSearch();
+    //std::cout << graph.topologicalSorting();
     std::cout << "Hello World!\n";
 
     return 0;
