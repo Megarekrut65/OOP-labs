@@ -55,6 +55,8 @@ namespace gm//graph matrix
         std::size_t getNumberOfVertices();
         std::size_t getNumberOfEdges();
         T getTotalValue();
+        T getVertexValue(std::size_t index);
+        T getEdgeValue(std::size_t beginIndex, std::size_t endIndex);
         std::string getTextRepresentation();//converts a graph to a string for example to output to the console
         bool checkingTheConnectivity(bool show = false);//returns true if the graph is connected else return false
         std::vector<std::size_t> depthFirstSearch(bool show = false);// algorithm for traversing or searching graph
@@ -450,6 +452,18 @@ namespace gm
     T GraphMatrix<T>::getTotalValue()
     {
         return totalValue;
+    }
+    template<typename T>
+    T GraphMatrix<T>::getVertexValue(std::size_t index)
+    {
+        if (!isIndex(index)) return T();
+        return vertices[index];
+    }
+    template<typename T>
+    T GraphMatrix<T>::getEdgeValue(std::size_t beginIndex, std::size_t endIndex)
+    {
+        if (!isIndex(beginIndex) || !isIndex(endIndex)) return T();
+        return matrix[beginIndex][endIndex].value;
     }
     template<typename T>
     std::string GraphMatrix<T>::getTextRepresentation()

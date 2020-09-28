@@ -60,6 +60,8 @@ namespace gs//graph structure
         std::size_t getNumberOfVertices();
         std::size_t getNumberOfEdges();
         T getTotalValue();
+        T getVertexValue(std::size_t index);
+        T getEdgeValue(std::size_t beginIndex, std::size_t endIndex);
         std::string getTextRepresentation();//converts a graph to a string for example to output to the console
         bool checkingTheConnectivity(bool show = false);//returns true if the graph is connected else return false
         std::vector<std::size_t> depthFirstSearch(bool show = false);// algorithm for traversing or searching graph
@@ -547,6 +549,25 @@ namespace gs
     T GraphStructure<T>::getTotalValue()
     {
         return totalValue;
+    }
+    template<typename T>
+    T GraphStructure<T>::getVertexValue(std::size_t index)
+    {
+        if (!isIndex(index)) return T();
+        return list[index]->value;
+    }
+    template<typename T>
+    T GraphStructure<T>::getEdgeValue(std::size_t beginIndex, std::size_t endIndex)
+    {
+        if (!isIndex(beginIndex) || !isIndex(endIndex)) return T();
+        for (VertexNode<T>* current = list[beginIndex]->next; current; current = current->next)
+        {
+            if (current->index == endIndex)
+            {
+                return current->value;
+            }
+        }
+        return T();
     }
     template<typename T>
     std::string GraphStructure<T>::getTextRepresentation()

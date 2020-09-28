@@ -14,6 +14,9 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
         REQUIRE(graph.getNumberOfVertices() == 3);
         REQUIRE(graph.getNumberOfEdges() == 0);
         REQUIRE(graph.getTotalValue() == 0);
+        CHECK(graph.getVertexValue(0) == 10);
+        CHECK(graph.getVertexValue(1) == 5);
+        CHECK(graph.getVertexValue(2) == 447);
         SUBCASE("adding edge between added vertices")
         {
             graph.addEdge(0, 1, 100);
@@ -22,6 +25,9 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             CHECK(graph.getNumberOfVertices() == 3);
             CHECK(graph.getNumberOfEdges() == 3);
             CHECK(graph.getTotalValue() == 154);
+            CHECK(graph.getEdgeValue(0, 1) == 100);
+            CHECK(graph.getEdgeValue(1, 0) == 6);
+            CHECK(graph.getEdgeValue(0, 2) == 48);
         }
         SUBCASE("adding edge between non-existent vertices")
         {
@@ -31,12 +37,18 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             CHECK(graph.getNumberOfVertices() == 3);
             CHECK(graph.getNumberOfEdges() == 0);
             CHECK(graph.getTotalValue() == 0);
+            CHECK(graph.getEdgeValue(5, 7) == 0);
+            CHECK(graph.getEdgeValue(154, 362) == 0);
+            CHECK(graph.getEdgeValue(4, 44) == 0);
         }
         SUBCASE("adding already added edge")
         {
             graph.addEdge(0, 1, 100);
+            CHECK(graph.getEdgeValue(0, 1) == 100);
             graph.addEdge(0, 1, 6);
+            CHECK(graph.getEdgeValue(0, 1) == 100);
             graph.addEdge(1, 0, 48);
+            CHECK(graph.getEdgeValue(1, 0) == 48);
             CHECK(graph.getNumberOfVertices() == 3);
             CHECK(graph.getNumberOfEdges() == 2);
             CHECK(graph.getTotalValue() == 148);
@@ -51,6 +63,9 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
         REQUIRE(graph.getNumberOfVertices() == 3);
         REQUIRE(graph.getNumberOfEdges() == 0);
         REQUIRE(graph.getTotalValue() == 0);
+        CHECK(graph.getVertexValue(0) == 10);
+        CHECK(graph.getVertexValue(1) == 5);
+        CHECK(graph.getVertexValue(2) == 447);
         SUBCASE("adding edge between added vertices")
         {
             graph.addEdge(0, 1, 100);
@@ -59,6 +74,9 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             CHECK(graph.getNumberOfVertices() == 3);
             CHECK(graph.getNumberOfEdges() == 3);
             CHECK(graph.getTotalValue() == 154);
+            CHECK(graph.getEdgeValue(0, 1) == 100);
+            CHECK(graph.getEdgeValue(1, 1) == 6);
+            CHECK(graph.getEdgeValue(0, 2) == 48);
         }
         SUBCASE("adding edge between non-existent vertices")
         {
@@ -68,12 +86,18 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             CHECK(graph.getNumberOfVertices() == 3);
             CHECK(graph.getNumberOfEdges() == 0);
             CHECK(graph.getTotalValue() == 0);
+            CHECK(graph.getEdgeValue(5, 7) == 0);
+            CHECK(graph.getEdgeValue(154, 362) == 0);
+            CHECK(graph.getEdgeValue(4, 44) == 0);
         }
         SUBCASE("adding already added edge")
         {
             graph.addEdge(0, 1, 100);
+            CHECK(graph.getEdgeValue(0, 1) == 100);
             graph.addEdge(0, 1, 6);
+            CHECK(graph.getEdgeValue(0, 1) == 100);
             graph.addEdge(1, 0, 48);
+            CHECK(graph.getEdgeValue(1, 0) == 100);
             CHECK(graph.getNumberOfVertices() == 3);
             CHECK(graph.getNumberOfEdges() == 1);
             CHECK(graph.getTotalValue() == 100);
@@ -411,6 +435,64 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
         }
     }
 }
+TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
+{
+    gm::GraphMatrix<int> graph(true);
+    graph.addVertex(10);
+    graph.addVertex(5);
+    graph.addVertex(44);
+    graph.addVertex(13);
+    graph.addVertex(2);
+    graph.addEdge(1, 0, 17);
+    graph.addEdge(3, 2, 10);
+    graph.addEdge(2, 1, 19);
+    graph.addEdge(3, 4, 42);
+    graph.addEdge(2, 4, 7);
+    graph.addEdge(2, 0, 50);
+    REQUIRE(graph.getNumberOfVertices() == 5);
+    REQUIRE(graph.getNumberOfEdges() == 6);
+    REQUIRE(graph.getTotalValue() == 145);
+    std::vector<std::size_t> array = { 3, 2, 1, 0, 4 }, getArray = graph.topologicalSorting();
+    CHECK(array.size() == getArray.size());
+    for (std::size_t i = 0; i < 5; i++)
+    {
+        CHECK(array[i] == getArray[i]);
+    }
+}
+TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> only")
+{
+    gm::GraphMatrix<int> graph(false);
+    graph.addVertex(10);
+    graph.addVertex(5);
+    graph.addVertex(44);
+    graph.addVertex(13);
+    graph.addVertex(2);
+    graph.addEdge(1, 0, 17);
+    graph.addEdge(3, 2, 10);
+    graph.addEdge(2, 1, 19);
+    graph.addEdge(3, 4, 42);
+    graph.addEdge(2, 4, 7);
+    graph.addEdge(2, 0, 50);
+    REQUIRE(graph.getNumberOfVertices() == 5);
+    REQUIRE(graph.getNumberOfEdges() == 6);
+    REQUIRE(graph.getTotalValue() == 145);
+    SUBCASE("normal spanning tree")//using depth First Search
+    {
+        gm::GraphMatrix<int> spanningTree(graph.getSpanningTree());
+        CHECK(spanningTree.getNumberOfVertices() == 5);
+        CHECK(spanningTree.getNumberOfEdges() == 4);
+        CHECK(spanningTree.getTotalValue() == 88);
+    }
+    SUBCASE("the smallest spanning tree")
+    {
+        gm::GraphMatrix<int> spanningTree(graph.getTheSmallestSpanningTree());
+        CHECK(spanningTree.getNumberOfVertices() == 5);
+        CHECK(spanningTree.getNumberOfEdges() == 4);
+        CHECK(spanningTree.getTotalValue() == 53);
+    }
+    
+}
+
 int main(int argc, char** argv) 
 {
     doctest::Context context;
