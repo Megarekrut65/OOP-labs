@@ -142,6 +142,7 @@
     <ClCompile Include="lab1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="doctest.h" />
     <ClInclude Include="my_graph_matrix.h" />
     <ClInclude Include="my_graph_structure.h" />
     <ClInclude Include="my_override_functions_and_operators.h" />

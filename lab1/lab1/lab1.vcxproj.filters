@@ -29,5 +29,8 @@
     <ClInclude Include="my_graph_structure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="doctest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
