@@ -53,17 +53,18 @@ namespace gs//graph structure
         void createSpanningTree(GraphStructure<T>& spanningTree, std::vector<std::size_t>& indexes, std::size_t index);//algorithm for create spanning tree from graph
         GraphStructure<T> kruskal();//algorithm for create minimum spanning tree from graph
         void createRandomVertices(std::size_t numberOfVertices, T maxValue);//adds vertices to new graph
-        bool createRandomEdges(std::size_t numberOfEdges, T maxValue);//adds edges to new graph
-        bool createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue);//create graph with numberOfVertices vertices and numberOfEdges edges
+        void createRandomEdges(std::size_t numberOfEdges, T maxValue);//adds edges to new graph
+        void createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue);//create graph with numberOfVertices vertices and numberOfEdges edges
         void deleteEdges(std::size_t index);//when removes vertex need delete its edges
-        void clearNode(std::size_t index);
-        bool addNode(std::size_t beginIndex, std::size_t endIndex, T value);
-        bool isEdge(std::size_t beginIndex, std::size_t endIndex);
-        T findAndRemoveEdge(std::size_t beginIndex, std::size_t endIndex, bool& isFound);
+        void clearNode(std::size_t index);//clear all edges of list[index]
+        bool addNode(std::size_t beginIndex, std::size_t endIndex, T value);//add node(edge from beginIndex to endIndex) to list[beginIndex]
+        bool isEdge(std::size_t beginIndex, std::size_t endIndex);//returns true if is edge from beginIndex to endIndex else returns false
+        T findAndRemoveEdge(std::size_t beginIndex, std::size_t endIndex, bool& isFound);//removes edge(node) from list[beginIndex] and returns value of edge
     public:
         GraphStructure();
         GraphStructure(bool orientation);
         GraphStructure(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue);//create random graph
+        GraphStructure(GraphStructure&& graph);
         ~GraphStructure();
         void addVertex(T value, bool show = true);//adds a vertex with the value to vertices
         void addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = true);//adds edge from beginIndex to endIndex in graph
@@ -321,8 +322,8 @@ namespace gs
         {
             belongs[i] = i;
         }
-        std::size_t firstIndex;
-        std::size_t secondIndex;
+        std::size_t firstIndex = 0;
+        std::size_t secondIndex = 0;
         for (std::size_t vertexIndex = 1; vertexIndex < numberOfVertices; vertexIndex++)
         {
             T min = T();
@@ -368,9 +369,9 @@ namespace gs
         }
     }
     template<typename T>
-    bool GraphStructure<T>::createRandomEdges(std::size_t numberOfEdges, T maxValue)
+    void GraphStructure<T>::createRandomEdges(std::size_t numberOfEdges, T maxValue)
     {
-        if (numberOfEdges <= (numberOfVertices * (numberOfVertices + 1)) / 2)
+        if (orientation && (numberOfEdges <= numberOfVertices * numberOfVertices) || numberOfEdges <= (numberOfVertices * (numberOfVertices + 1)) / 2)
         {
             while (this->numberOfEdges < numberOfEdges)
             {
@@ -380,19 +381,18 @@ namespace gs
                     addEdge(i, j, rand() % maxValue, false);
                 }
             }
+            return;
         }
         std::cout << "\nThere are too many edges!" << std::endl;
-
-        return false;
     }
     template<typename T>
-    bool GraphStructure<T>::createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
+    void GraphStructure<T>::createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
     {
         srand(unsigned(time(0)));
         this->orientation = orientation;
         totalValue = T();
         createRandomVertices(numberOfVertices, maxValue);
-        return createRandomEdges(numberOfEdges, maxValue);
+        createRandomEdges(numberOfEdges, maxValue);
     }
     template<typename T>
     void GraphStructure<T>::deleteEdges(std::size_t index)
@@ -499,9 +499,24 @@ namespace gs
     template<typename T>
     GraphStructure<T>::GraphStructure(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
     {
-        if (!createGraph(numberOfVertices, numberOfEdges, orientation, maxValue))
-            delete this;
+        createGraph(numberOfVertices, numberOfEdges, orientation, maxValue);
     }  
+    template<typename T>
+    GraphStructure<T>::GraphStructure(GraphStructure&& graph)
+    {
+        for (std::size_t i = 0; i < graph.numberOfVertices; i++)
+        {
+            list.push_back(graph.list[i]);
+            graph.list[i] = nullptr;
+        }
+        orientation = graph.orientation;
+        totalValue = graph.totalValue;
+        numberOfVertices = graph.numberOfVertices;
+        numberOfEdges = graph.numberOfEdges;
+        graph.numberOfVertices = 0;
+        graph.numberOfEdges = 0;
+        graph.totalValue = T();
+    }
     template<typename T>
     GraphStructure<T>::~GraphStructure()
     {
@@ -592,19 +607,19 @@ namespace gs
         {
             return "\nThe graph is empty!\n";
         }
+        result += "\nGraph:\n";
         result += "\nNumber of vertices: " + toString(numberOfVertices) + "\n";
         result += "Number of edges: " + toString(numberOfEdges) + "\n";
-        result += "Total value: " + toString(totalValue) + "\n";
-        result += "\nGraph:\n\n";
+        result += "Total value: " + toString(totalValue) + "\n\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
             result += "Index: " + toString(list[i]->index) + ", value: {" 
-                + toString(list[i]->value) + "} => [ {i: ";
+                + toString(list[i]->value) + "} => [ ";
             for (VertexNode<T>* current = list[i]->next; current; current = current->next)
             {
-                result += toString(current->index) + ", v: " + toString(current->value) + "} -> {i: ";
+                result += "{i: " +  toString(current->index) + ", v: " + toString(current->value) + "} -> ";
             }
-            result += "#} ].\n";
+            result += "# ].\n";
         }       
         result += "\n";
 
