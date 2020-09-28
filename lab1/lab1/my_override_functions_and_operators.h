@@ -29,6 +29,8 @@ namespace ofo//override functions and operators
 	bool operator >= (const std::vector<T>& array1, const std::vector<T>& array2);
 	template<typename T>
 	bool operator == (const std::vector<T>& array1, const std::vector<T>& array2);
+    template<typename T>
+    bool operator != (const std::vector<T>& array1, const std::vector<T>& array2);
 }
 namespace ofo
 {
@@ -114,6 +116,23 @@ namespace ofo
     template<typename T>
     bool operator == (const std::vector<T>& array1, const std::vector<T>& array2)
     {
-        return (array1.size() == array2.size());
+        if (array1.size() != array2.size()) return false;
+        for (std::size_t i = 0; i < array1.size(); i++)
+        {
+            if (array1[i] != array2[i]) return false;
+        }
+
+        return true;
+    }
+    template<typename T>
+    bool operator != (const std::vector<T>& array1, const std::vector<T>& array2)
+    {
+        if (array1.size() != array2.size()) return true;
+        for (std::size_t i = 0; i < array1.size(); i++)
+        {
+            if (array1[i] != array2[i]) return true;
+        }
+
+        return false;
     }
 }
