@@ -534,7 +534,7 @@ namespace gs
         }
         if (!orientation && (beginIndex != endIndex))
         {
-            if (!addNode(beginIndex, endIndex, value))
+            if (!addNode(endIndex, beginIndex, value))
             {
                 if (show) std::cout << message << std::endl;
                 return;
