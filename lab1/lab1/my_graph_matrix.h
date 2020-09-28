@@ -40,13 +40,13 @@ namespace gm//graph matrix
         bool orientation;
         T totalValue;
 
-        bool isIndex(std::size_t index);//if vectex with index is in graph then return true, else - false
+        bool isIndex(std::size_t index, bool show = false);//if vectex with index is in graph then return true, else - false
         bool doAddIndex(std::vector<std::size_t>& indexes, std::size_t index);// if index is not in indexes then function adds index to indexes
         void isConnectedRelativeToTheVertex(std::vector<std::size_t>& indexes, std::size_t index);//the function checks whether the graph is connected starting from a given index of vertex
         bool isConnected(std::vector<std::size_t>& indexes);//the function checks whether the graph is connected with respect to all vertices
         std::size_t minDistance(PathsBetweenVertices<T>& paths, bool* isChecked);//find min distance 
         void dijkstra(PathsBetweenVertices<T>& paths);// algorithm for finding the shortest paths between vertices in a graph
-        bool connectedGraph(bool show);//if the graph isn't connected the function messeges about it
+        bool connectedGraph(bool show = false);//if the graph isn't connected the function messeges about it
         std::vector<std::vector<std::size_t>> createSet();//creates a set consisting only of connected vertices
         void editSet(std::vector<std::vector<std::size_t>>& set, std::size_t index);//remove index from set
         bool isInIndexes(std::vector<std::size_t> indexes, std::size_t index);//checks if there is an index in the array 
@@ -61,18 +61,21 @@ namespace gm//graph matrix
         GraphMatrix(bool orientation);
         GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue);//create random graph
         ~GraphMatrix();
-        void addVertex(T value, bool show = true);//adds a vertex with the value to vertices
-        void addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = true);//adds edge from beginIndex to endIndex in graph
-        void removeVertex(std::size_t index, bool show = true);//remove the vertex with index from graph
-        void removeEdge(std::size_t beginIndex, std::size_t endIndex, bool show = true);//remove the edge from beginIndex to endIndex from graph
+        void addVertex(T value, bool show = false);//adds a vertex with the value to vertices
+        void addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = false);//adds edge from beginIndex to endIndex in graph
+        void removeVertex(std::size_t index, bool show = false);//remove the vertex with index from graph
+        void removeEdge(std::size_t beginIndex, std::size_t endIndex, bool show = false);//remove the edge from beginIndex to endIndex from graph
+        std::size_t getNumberOfVertices();
+        std::size_t getNumberOfEdges();
+        T getTotalValue();
         std::string getTextRepresentation();//converts a graph to a string for example to output to the console
-        bool checkingTheConnectivity(bool show = true);//returns true if the graph is connected else return false
-        std::vector<std::size_t> depthFirstSearch(bool show = true);// algorithm for traversing or searching graph
-        T getPathBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = true);//finds the smallest way from beginIndex to endIndex
-        PathsBetweenVertices<T> getPathsFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = true);//finds the smallest way from beginIndex to endIndex to everyone else
-        std::vector<std::size_t> topologicalSorting(bool show = true);// the function linearly arranges the vertices of the graph
-        GraphMatrix<T> getSpanningTree(bool show = true);//creates spanning tree from the graph
-        GraphMatrix<T> getTheSmallestSpanningTree(bool show = true);//creates minimum spanning tree from the graph
+        bool checkingTheConnectivity(bool show = false);//returns true if the graph is connected else return false
+        std::vector<std::size_t> depthFirstSearch(bool show = false);// algorithm for traversing or searching graph
+        T getPathBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = false);//finds the smallest way from beginIndex to endIndex
+        PathsBetweenVertices<T> getPathsFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = false);//finds the smallest way from beginIndex to endIndex to everyone else
+        std::vector<std::size_t> topologicalSorting(bool show = false);// the function linearly arranges the vertices of the graph
+        GraphMatrix<T> getSpanningTree(bool show = false);//creates spanning tree from the graph
+        GraphMatrix<T> getTheSmallestSpanningTree(bool show = false);//creates minimum spanning tree from the graph
     };
 }
 namespace gm
@@ -141,11 +144,11 @@ namespace gm
     //GraphMatrix
     //private
     template<typename T>
-    bool GraphMatrix<T>:: isIndex(std::size_t index)
+    bool GraphMatrix<T>:: isIndex(std::size_t index, bool show)
     {
         if (index >= numberOfVertices)
         {
-            std::cout << "\nVertex with index: " << index << " isn't in Graph!" << std::endl;
+            if(show) std::cout << "\nVertex with index: " << index << " isn't in Graph!" << std::endl;
             return false;
         }
 
@@ -459,7 +462,7 @@ namespace gm
     template<typename T>
     void GraphMatrix<T>::addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show)
     {
-        if (!isIndex(beginIndex) || !isIndex(endIndex)) return;
+        if (!isIndex(beginIndex, show) || !isIndex(endIndex, show)) return;
         if (matrix[beginIndex][endIndex].contiguity)
         {
             if (show) std::cout << "\nThe edge already exists between the vertices!" << std::endl;
@@ -501,6 +504,21 @@ namespace gm
         }
         else if (show) std::cout << "\nThere isn't the edge between vertices "
             << beginIndex << " and " << endIndex << "!" << std::endl;
+    }
+    template<typename T>
+    std::size_t GraphMatrix<T>::getNumberOfVertices()
+    {
+        return numberOfVertices;
+    }
+    template<typename T>
+    std::size_t GraphMatrix<T>::getNumberOfEdges()
+    {
+        return numberOfEdges;
+    }
+    template<typename T>
+    T GraphMatrix<T>::getTotalValue()
+    {
+        return totalValue;
     }
     template<typename T>
     std::string GraphMatrix<T>::getTextRepresentation()
