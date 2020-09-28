@@ -472,7 +472,7 @@ namespace gm
         totalValue = totalValue + value;
         if (show) std::cout << "\nThe edge added!" << std::endl;
     }
-    template<typename T>//при видаленні зменшувати вагу!!!!!!!!!!!
+    template<typename T>
     void GraphMatrix<T>::removeVertex(std::size_t index, bool show)
     {
         if (!isIndex(index)) return;

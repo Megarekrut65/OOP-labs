@@ -399,7 +399,7 @@ namespace gs
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            removeEdge(i, index);
+            removeEdge(i, index, false);
         }
         if (orientation)
         {
@@ -518,6 +518,20 @@ namespace gs
     template<typename T>
     void GraphStructure<T>::addVertex(T value, bool show) 
     {
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            if (list[i]->index != i)
+            {
+                list.push_back(new VertexNode<T>());
+                for (std::size_t j = numberOfVertices; j > i; j--)
+                {
+                    list[j] = list[j - 1];
+                }
+                list[i] = new VertexNode<T>(i, nullptr, value);
+                numberOfVertices++;
+                return;
+            }
+        }
         list.push_back(new VertexNode<T>(numberOfVertices, nullptr, value));
         numberOfVertices++;
         if (show) std::cout << "\nThe vertex is added!" << std::endl;       
@@ -534,11 +548,7 @@ namespace gs
         }
         if (!orientation && (beginIndex != endIndex))
         {
-            if (!addNode(endIndex, beginIndex, value))
-            {
-                if (show) std::cout << message << std::endl;
-                return;
-            }
+            addNode(endIndex, beginIndex, value);
         }
         numberOfEdges++;
         totalValue = totalValue + value;
@@ -560,7 +570,11 @@ namespace gs
         if (!isIndex(beginIndex) || !isIndex(endIndex)) return;
         bool isFound = false;
         totalValue = totalValue - findAndRemoveEdge(beginIndex, endIndex, isFound);
-        if (!orientation) findAndRemoveEdge(endIndex, beginIndex, isFound);
+        if (!orientation)
+        {
+            numberOfEdges++;
+            findAndRemoveEdge(endIndex, beginIndex, isFound);
+        }
         if (show)
         {
             if(isFound) std::cout << "\nThe edge between vertices "
@@ -584,13 +598,13 @@ namespace gs
         result += "\nGraph:\n\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            result += toString(list[i]->index) + ") value: {" 
-                + toString(list[i]->value) + "}-> [ {";
+            result += "Index: " + toString(list[i]->index) + ", value: {" 
+                + toString(list[i]->value) + "} => [ {i: ";
             for (VertexNode<T>* current = list[i]->next; current; current = current->next)
             {
-                result += toString(current->index) + "} -> {";
+                result += toString(current->index) + ", v: " + toString(current->value) + "} -> {i: ";
             }
-            result += "#} ]\n";
+            result += "#} ].\n";
         }       
         result += "\n";
 

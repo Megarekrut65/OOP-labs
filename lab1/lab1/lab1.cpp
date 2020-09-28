@@ -12,20 +12,24 @@ int main()
     srand(unsigned(time(0)));
     //std::vector<int> arr1 = {10, 14, 15, 5, 2 ,5, 1, 3, 9, 6}, arr2 = rand() % arr1, arr3 = rand() % arr1, arr4 = rand() % arr1, arr5 = rand() % arr1, arr6 = rand() % arr1;
     GraphStructure< int> graph(false);
-    graph.addVertex(4);
-    graph.addVertex(6);
-    graph.addVertex(4);
-    graph.addVertex(1);
-    graph.addVertex(2);
-    graph.addEdge(0, 1, 3);
-    graph.addEdge(1, 2, 6);
-    graph.addEdge(2, 3, 2);
-    graph.addEdge(0, 4, 3);
-    graph.addEdge(4, 2, 4);
-    graph.addEdge(3, 1, 8);
+    graph.addVertex(40);
+    graph.addVertex(60);
+    graph.addVertex(40);
+    graph.addVertex(10);
+    graph.addVertex(20);
+    graph.addEdge(0, 1, 30);
+    graph.addEdge(1, 2, 60);
+    graph.addEdge(2, 3, 20);
+    graph.addEdge(0, 4, 30);
+    graph.addEdge(4, 2, 40);
+    graph.addEdge(3, 1, 80);
     std::cout << graph.getTextRepresentation();
-    /*graph.removeEdge(3, 1);
+    graph.removeEdge(3, 1);
     graph.removeVertex(2);
+    graph.addVertex(15);
+   // graph.addEdge(4, 2, 40);
+   // graph.addEdge(3, 1, 80);
+   /*
     std::cout << graph.getTextRepresentation();
     graph.addVertex(arr1, false);
     graph.addVertex(arr1, false);
@@ -37,6 +41,7 @@ int main()
     //std::cout << graph.topologicalSorting();*/
     //std::cout << graph.getSpanningTree().getTextRepresentation();
     //std::cout << graph.getTheSmallestSpanningTree().getTextRepresentation();
+    std::cout << graph.getTextRepresentation();
     std::cout << "Hello World!\n";
 
     return 0;
