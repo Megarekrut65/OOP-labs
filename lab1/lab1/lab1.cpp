@@ -253,12 +253,12 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
         graph.addEdge(0, 2, 12);
         graph.addEdge(4, 1, 6);
         graph.addEdge(0, 3, 68);
-        graph.addEdge(1, 3, 100);
+        graph.addEdge(1, 0, 100);
         graph.addEdge(2, 4, 33);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 5);
         REQUIRE(graph.getTotalValue() == 219);
-        std::vector<std::size_t> search = graph.depthFirstSearch(), array = { 0, 1, 4, 2, 3 };
+        std::vector<std::size_t> search = graph.depthFirstSearch(), array = { 0, 2, 4, 1, 3 };
         REQUIRE(search.size() == 5);
         for (std::size_t i = 0; i < search.size(); i++)
         {
@@ -276,7 +276,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
         graph.addEdge(0, 2, 12);
         graph.addEdge(4, 1, 6);
         graph.addEdge(0, 3, 68);
-        graph.addEdge(1, 3, 100);
+        graph.addEdge(1, 0, 100);
         graph.addEdge(2, 4, 33);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 5);
@@ -289,6 +289,127 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
         }
     }
    
+}
+TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
+{
+    SUBCASE("oriented graph")
+    {
+        gm::GraphMatrix<int> graph(true);
+        graph.addVertex(10);
+        graph.addVertex(5);
+        graph.addVertex(44);
+        graph.addVertex(13);
+        graph.addVertex(2);
+        graph.addEdge(0, 1, 12);
+        graph.addEdge(0, 3, 17);
+        graph.addEdge(2, 1, 6);
+        graph.addEdge(4, 0, 68);
+        REQUIRE(graph.getNumberOfVertices() == 5);
+        REQUIRE(graph.getNumberOfEdges() == 4);
+        REQUIRE(graph.getTotalValue() == 103);
+        SUBCASE("the direct path is the shortest")
+        {
+            graph.addEdge(4, 2, 50);
+            graph.addEdge(0, 2, 10);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 50);
+        }
+        SUBCASE("bypass through other vertices is the shortest")
+        {
+            graph.addEdge(4, 2, 100);
+            graph.addEdge(0, 2, 10);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 78);
+        }
+        SUBCASE("features in the oriented graph")
+        {        
+            graph.addEdge(4, 2, 100);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 100);        
+        }
+    }
+    SUBCASE("non-oriented graph")
+    {
+        gm::GraphMatrix<int> graph(false);
+        graph.addVertex(10);
+        graph.addVertex(5);
+        graph.addVertex(44);
+        graph.addVertex(13);
+        graph.addVertex(2);
+        graph.addEdge(0, 1, 12);
+        graph.addEdge(0, 3, 17);
+        graph.addEdge(2, 1, 6);
+        graph.addEdge(4, 0, 68);
+        REQUIRE(graph.getNumberOfVertices() == 5);
+        REQUIRE(graph.getNumberOfEdges() == 4);
+        REQUIRE(graph.getTotalValue() == 103);
+        SUBCASE("the direct path is the shortest")
+        {
+            graph.addEdge(4, 2, 50);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 50);
+        }
+        SUBCASE("bypass through other vertices is the shortest")
+        {
+            graph.addEdge(4, 2, 100);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 86);
+        }
+    }
+}
+TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<int>")
+{
+    SUBCASE("oriented graph")
+    {
+        gm::GraphMatrix<int> graph(true);
+        graph.addVertex(10);
+        graph.addVertex(5);
+        graph.addVertex(44);
+        graph.addVertex(13);
+        graph.addVertex(2);
+        graph.addEdge(1, 0, 17);
+        graph.addEdge(3, 2, 10);
+        graph.addEdge(2, 1, 19);
+        graph.addEdge(3, 4, 42);
+        graph.addEdge(2, 4, 7);
+        graph.addEdge(2, 0, 50);
+        REQUIRE(graph.getNumberOfVertices() == 5);
+        REQUIRE(graph.getNumberOfEdges() == 6);
+        REQUIRE(graph.getTotalValue() == 145);
+        int* distance = new int[5] { 46, 29, 10, 0 , 17 };
+        bool* isMax = new bool[5] { false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
+        pbv::PathsBetweenVertices<int> paths( distance , isMax, 5, 3 ), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+        REQUIRE(getPaths.size == paths.size);
+        REQUIRE(getPaths.beginIndex == paths.beginIndex);
+        for (std::size_t i = 0; i < 5; i++)
+        {
+            CHECK(getPaths.distance[i] == paths.distance[i]);
+            CHECK(getPaths.isMax[i] == paths.isMax[i]);
+        }         
+    }
+    SUBCASE("non-oriented graph")
+    {
+        gm::GraphMatrix<int> graph(false);
+        graph.addVertex(10);
+        graph.addVertex(5);
+        graph.addVertex(44);
+        graph.addVertex(13);
+        graph.addVertex(2);
+        graph.addEdge(1, 0, 17);
+        graph.addEdge(3, 2, 10);
+        graph.addEdge(2, 1, 19);
+        graph.addEdge(3, 4, 42);
+        graph.addEdge(2, 4, 7);
+        graph.addEdge(2, 0, 50);
+        REQUIRE(graph.getNumberOfVertices() == 5);
+        REQUIRE(graph.getNumberOfEdges() == 6);
+        REQUIRE(graph.getTotalValue() == 145);
+        int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
+        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
+        pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+        REQUIRE(getPaths.size == paths.size);
+        REQUIRE(getPaths.beginIndex == paths.beginIndex);
+        for (std::size_t i = 0; i < 5; i++)
+        {
+            CHECK(getPaths.distance[i] == paths.distance[i]);
+            CHECK(getPaths.isMax[i] == paths.isMax[i]);
+        }
+    }
 }
 int main(int argc, char** argv) 
 {

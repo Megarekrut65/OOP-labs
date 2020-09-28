@@ -1,7 +1,9 @@
 #pragma once
 #include "my_override_functions_and_operators.h"
+#include "my_paths_between_vertices.h"
 
 using namespace ofo;
+using namespace pbv;
 
 namespace gm//graph matrix
 {
@@ -13,22 +15,7 @@ namespace gm//graph matrix
 
         Edge();
         Edge(bool contiguity, T value);
-    };
-    template<typename T>
-    struct PathsBetweenVertices
-    {
-        T* distance;
-        bool* isMax;
-        std::size_t size;
-        std::size_t beginIndex;
-
-        PathsBetweenVertices();
-        PathsBetweenVertices(std::size_t size, std::size_t beginIndex);
-        PathsBetweenVertices(PathsBetweenVertices&& paths) 
-            noexcept;
-        ~PathsBetweenVertices();
-        void print(bool show = true);//print the distance from vertex with beginIndex to all vertices in graph
-    };
+    };  
     template<typename T>
     class GraphMatrix
     {
@@ -84,63 +71,7 @@ namespace gm
     template<typename T>
     Edge<T>::Edge() : contiguity(false), value(T()) {}
     template<typename T>
-    Edge<T>::Edge(bool contiguity, T value) : contiguity(contiguity), value(value) {}
-    //PathsBetweenVertices
-    template<typename T>
-    PathsBetweenVertices<T>::PathsBetweenVertices() : distance(nullptr), isMax(nullptr), size(0), beginIndex(0) {}
-    template<typename T>
-    PathsBetweenVertices<T>::PathsBetweenVertices(std::size_t size, std::size_t beginIndex)
-    {
-        this->size = size;
-        this->beginIndex = beginIndex;
-        distance = new T[size];
-        isMax = new bool[size];
-    }
-    template<typename T>
-    PathsBetweenVertices<T>::PathsBetweenVertices(PathsBetweenVertices&& paths)
-        noexcept
-    {
-        distance = paths.distance;
-        paths.distance = nullptr;
-        isMax = paths.isMax;
-        paths.isMax = nullptr;
-        size = paths.size;
-        paths.size = 0;
-        beginIndex = paths.beginIndex;
-        paths.beginIndex = 0;
-    }
-    template<typename T>
-    PathsBetweenVertices<T>::~PathsBetweenVertices()
-    {
-        if (distance) delete[]distance;
-        if (isMax) delete[]isMax;
-        distance = nullptr;
-        isMax = nullptr;
-        size = 0;
-        beginIndex = 0;
-    }
-    template<typename T>
-    void PathsBetweenVertices<T>::print(bool show)
-    {
-        if (!distance || !isMax)
-        {
-            std::cout << "\nThere aren't paths between vertices!" << std::endl;
-            return;
-        }
-        for (std::size_t i = 0; i < size; i++)
-        {
-            if (isMax[i])
-            {
-                if (show) std::cout << "\nThe graph is poorly oriented so it cannot be reached from " << beginIndex
-                    << " to " << i << "." << std::endl;
-            }
-            else
-            {
-                if (show) std::cout << "\nThe smallest distance from " << beginIndex
-                    << " to " << i << " = {" << distance[i] << "}." << std::endl;
-            }
-        }
-    }
+    Edge<T>::Edge(bool contiguity, T value) : contiguity(contiguity), value(value) {}   
     //GraphMatrix
     //private
     template<typename T>
@@ -575,7 +506,7 @@ namespace gm
     T GraphMatrix<T>::getPathBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show)
     {
         if (!connectedGraph(show)) return T();
-        T result;
+        T result = T();
         PathsBetweenVertices<T> paths(numberOfVertices, beginIndex);
         dijkstra(paths);
         if (paths.isMax[endIndex])
