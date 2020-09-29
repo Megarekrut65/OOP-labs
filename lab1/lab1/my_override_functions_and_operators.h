@@ -7,9 +7,10 @@ namespace ofo//override functions and operators
 {
 	template<typename T>
 	std::string toString(const std::vector<T>& array);//to_string for std::vector<T>
-    std::string toString(const std::string& line);//to_string for std::string
 	template<typename T>
 	std::string toString(const T& value);//edit name of function std::to_sting 
+    template<>
+    std::string toString(const std::string& line);//to_string for std::string
 	template<typename T>
 	std::ostream& operator<< (std::ostream& out, const std::vector<T>& array);
 	template<typename T>
@@ -46,6 +47,7 @@ namespace ofo
 
         return result;
     }
+    template<>
     std::string toString(const std::string& line)
     {
         return line;

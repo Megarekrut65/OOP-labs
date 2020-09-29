@@ -378,62 +378,39 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
 }
 TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<int>")
 {
+    gm::GraphMatrix<int> graph;
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(1, 0, 17);
-        graph.addEdge(3, 2, 10);
-        graph.addEdge(2, 1, 19);
-        graph.addEdge(3, 4, 42);
-        graph.addEdge(2, 4, 7);
-        graph.addEdge(2, 0, 50);
-        REQUIRE(graph.getNumberOfVertices() == 5);
-        REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == 145);
-        int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
-        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
-        REQUIRE(getPaths.size == paths.size);
-        REQUIRE(getPaths.beginIndex == paths.beginIndex);
-        for (std::size_t i = 0; i < 5; i++)
-        {
-            CHECK(getPaths.distance[i] == paths.distance[i]);
-            CHECK(getPaths.isMax[i] == paths.isMax[i]);
-        }
+        graph = gm::GraphMatrix<int>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(1, 0, 17);
-        graph.addEdge(3, 2, 10);
-        graph.addEdge(2, 1, 19);
-        graph.addEdge(3, 4, 42);
-        graph.addEdge(2, 4, 7);
-        graph.addEdge(2, 0, 50);
-        REQUIRE(graph.getNumberOfVertices() == 5);
-        REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == 145);
-        int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
-        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
-        REQUIRE(getPaths.size == paths.size);
-        REQUIRE(getPaths.beginIndex == paths.beginIndex);
-        for (std::size_t i = 0; i < 5; i++)
-        {
-            CHECK(getPaths.distance[i] == paths.distance[i]);
-            CHECK(getPaths.isMax[i] == paths.isMax[i]);
-        }
+        graph = gm::GraphMatrix<int>(false);
     }
+    graph.addVertex(10);
+    graph.addVertex(5);
+    graph.addVertex(44);
+    graph.addVertex(13);
+    graph.addVertex(2);
+    graph.addEdge(1, 0, 17);
+    graph.addEdge(3, 2, 10);
+    graph.addEdge(2, 1, 19);
+    graph.addEdge(3, 4, 42);
+    graph.addEdge(2, 4, 7);
+    graph.addEdge(2, 0, 50);
+    REQUIRE(graph.getNumberOfVertices() == 5);
+    REQUIRE(graph.getNumberOfEdges() == 6);
+    REQUIRE(graph.getTotalValue() == 145);
+    int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
+    bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
+    pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+    REQUIRE(getPaths.size == paths.size);
+    REQUIRE(getPaths.beginIndex == paths.beginIndex);
+    for (std::size_t i = 0; i < 5; i++)
+    {
+        CHECK(getPaths.distance[i] == paths.distance[i]);
+        CHECK(getPaths.isMax[i] == paths.isMax[i]);
+    }    
 }
 TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
 {
@@ -867,62 +844,39 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<double>
 }
 TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<double>")
 {
+    gm::GraphMatrix<double> graph;
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<double> graph(true);
-        graph.addVertex(10.9);
-        graph.addVertex(5.2);
-        graph.addVertex(4.4);
-        graph.addVertex(1.3);
-        graph.addVertex(0.2);
-        graph.addEdge(1, 0, 1.7);
-        graph.addEdge(3, 2, 10.8);
-        graph.addEdge(2, 1, 1.9);
-        graph.addEdge(3, 4, 4.2);
-        graph.addEdge(2, 4, 7.3);
-        graph.addEdge(2, 0, 5.8);
-        REQUIRE(graph.getNumberOfVertices() == 5);
-        REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == doctest::Approx(31.7));
-        double* distance = new double[5]{ 14.4, 12.7, 10.8, 0 , 4.2 };
-        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<double> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
-        REQUIRE(getPaths.size == paths.size);
-        REQUIRE(getPaths.beginIndex == paths.beginIndex);
-        for (std::size_t i = 0; i < 5; i++)
-        {
-            CHECK(getPaths.distance[i] == doctest::Approx(paths.distance[i]));
-            CHECK(getPaths.isMax[i] == paths.isMax[i]);
-        }
+         graph = gm::GraphMatrix<double>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<double> graph(false);
-        graph.addVertex(10.9);
-        graph.addVertex(5.2);
-        graph.addVertex(4.4);
-        graph.addVertex(1.3);
-        graph.addVertex(0.2);
-        graph.addEdge(1, 0, 1.7);
-        graph.addEdge(3, 2, 10.8);
-        graph.addEdge(2, 1, 1.9);
-        graph.addEdge(3, 4, 4.2);
-        graph.addEdge(2, 4, 7.3);
-        graph.addEdge(2, 0, 5.8);
-        REQUIRE(graph.getNumberOfVertices() == 5);
-        REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == doctest::Approx(31.7));
-        double* distance = new double[5]{ 14.4, 12.7, 10.8, 0 , 4.2 };
-        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<double> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
-        REQUIRE(getPaths.size == paths.size);
-        REQUIRE(getPaths.beginIndex == paths.beginIndex);
-        for (std::size_t i = 0; i < 5; i++)
-        {
-            CHECK(getPaths.distance[i] == doctest::Approx(paths.distance[i]));
-            CHECK(getPaths.isMax[i] == paths.isMax[i]);
-        }
+        graph = gm::GraphMatrix<double>(false);
     }
+    graph.addVertex(10.9);
+    graph.addVertex(5.2);
+    graph.addVertex(4.4);
+    graph.addVertex(1.3);
+    graph.addVertex(0.2);
+    graph.addEdge(1, 0, 1.7);
+    graph.addEdge(3, 2, 10.8);
+    graph.addEdge(2, 1, 1.9);
+    graph.addEdge(3, 4, 4.2);
+    graph.addEdge(2, 4, 7.3);
+    graph.addEdge(2, 0, 5.8);
+    REQUIRE(graph.getNumberOfVertices() == 5);
+    REQUIRE(graph.getNumberOfEdges() == 6);
+    REQUIRE(graph.getTotalValue() == doctest::Approx(31.7));
+    double* distance = new double[5]{ 14.4, 12.7, 10.8, 0 , 4.2 };
+    bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
+    pbv::PathsBetweenVertices<double> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+    REQUIRE(getPaths.size == paths.size);
+    REQUIRE(getPaths.beginIndex == paths.beginIndex);
+    for (std::size_t i = 0; i < 5; i++)
+    {
+        CHECK(getPaths.distance[i] == doctest::Approx(paths.distance[i]));
+        CHECK(getPaths.isMax[i] == paths.isMax[i]);
+    }  
 }
 TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
 {
@@ -1373,63 +1327,39 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::ve
 TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<std::vector<int>>")
 {
     std::vector<int> arr0, arr10(10), arr7(7), arr17(17), arr19(19), arr42(42), arr50(50);
-
+    gm::GraphMatrix<std::vector<int>> graph;
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(true);
-        graph.addVertex(arr0);
-        graph.addVertex(arr10);
-        graph.addVertex(arr17);
-        graph.addVertex(arr50);
-        graph.addVertex(arr0);
-        graph.addEdge(1, 0, arr17);
-        graph.addEdge(3, 2, arr10);
-        graph.addEdge(2, 1, arr19);
-        graph.addEdge(3, 4, arr42);
-        graph.addEdge(2, 4, arr7);
-        graph.addEdge(2, 0, arr50);
-        REQUIRE(graph.getNumberOfVertices() == 5);
-        REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == (arr17 + arr10 + arr19 + arr42 + arr7 + arr50));
-        std::vector<int>* distance = new std::vector<int>[5]{ arr10 + arr19 + arr17, arr10 + arr19, arr10, arr0 , arr10 + arr7 };
-        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<std::vector<int>> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
-        REQUIRE(getPaths.size == paths.size);
-        REQUIRE(getPaths.beginIndex == paths.beginIndex);
-        for (std::size_t i = 0; i < 5; i++)
-        {
-            CHECK(getPaths.distance[i] == paths.distance[i]);
-            CHECK(getPaths.isMax[i] == paths.isMax[i]);
-        }
+        graph = gm::GraphMatrix<std::vector<int>>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(false);
-        graph.addVertex(arr0);
-        graph.addVertex(arr10);
-        graph.addVertex(arr17);
-        graph.addVertex(arr50);
-        graph.addVertex(arr0);
-        graph.addEdge(1, 0, arr17);
-        graph.addEdge(3, 2, arr10);
-        graph.addEdge(2, 1, arr19);
-        graph.addEdge(3, 4, arr42);
-        graph.addEdge(2, 4, arr7);
-        graph.addEdge(2, 0, arr50);
-        REQUIRE(graph.getNumberOfVertices() == 5);
-        REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == (arr17 + arr10 + arr19 + arr42 + arr7 + arr50));
-        std::vector<int>* distance = new std::vector<int>[5]{ arr10 + arr19 + arr17, arr10 + arr19, arr10, arr0 , arr10 + arr7 };
-        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<std::vector<int>> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
-        REQUIRE(getPaths.size == paths.size);
-        REQUIRE(getPaths.beginIndex == paths.beginIndex);
-        for (std::size_t i = 0; i < 5; i++)
-        {
-            CHECK(getPaths.distance[i] == paths.distance[i]);
-            CHECK(getPaths.isMax[i] == paths.isMax[i]);
-        }
+        graph = gm::GraphMatrix<std::vector<int>>(false);
     }
+    graph.addVertex(arr0);
+    graph.addVertex(arr10);
+    graph.addVertex(arr17);
+    graph.addVertex(arr50);
+    graph.addVertex(arr0);
+    graph.addEdge(1, 0, arr17);
+    graph.addEdge(3, 2, arr10);
+    graph.addEdge(2, 1, arr19);
+    graph.addEdge(3, 4, arr42);
+    graph.addEdge(2, 4, arr7);
+    graph.addEdge(2, 0, arr50);
+    REQUIRE(graph.getNumberOfVertices() == 5);
+    REQUIRE(graph.getNumberOfEdges() == 6);
+    REQUIRE(graph.getTotalValue() == (arr17 + arr10 + arr19 + arr42 + arr7 + arr50));
+    std::vector<int>* distance = new std::vector<int>[5]{ arr10 + arr19 + arr17, arr10 + arr19, arr10, arr0 , arr10 + arr7 };
+    bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
+    pbv::PathsBetweenVertices<std::vector<int>> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+    REQUIRE(getPaths.size == paths.size);
+    REQUIRE(getPaths.beginIndex == paths.beginIndex);
+    for (std::size_t i = 0; i < 5; i++)
+    {
+        CHECK(getPaths.distance[i] == paths.distance[i]);
+        CHECK(getPaths.isMax[i] == paths.isMax[i]);
+    }   
 }
 TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::vector<int>> only")
 {
@@ -1865,82 +1795,59 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::st
         }
     }
 }
-TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<int>")
+TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<std::string>")
 {
+    gm::GraphMatrix<std::string> graph;
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(1, 0, 17);
-        graph.addEdge(3, 2, 10);
-        graph.addEdge(2, 1, 19);
-        graph.addEdge(3, 4, 42);
-        graph.addEdge(2, 4, 7);
-        graph.addEdge(2, 0, 50);
-        REQUIRE(graph.getNumberOfVertices() == 5);
-        REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == 145);
-        int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
-        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
-        REQUIRE(getPaths.size == paths.size);
-        REQUIRE(getPaths.beginIndex == paths.beginIndex);
-        for (std::size_t i = 0; i < 5; i++)
-        {
-            CHECK(getPaths.distance[i] == paths.distance[i]);
-            CHECK(getPaths.isMax[i] == paths.isMax[i]);
-        }
+        graph = gm::GraphMatrix<std::string>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(1, 0, 17);
-        graph.addEdge(3, 2, 10);
-        graph.addEdge(2, 1, 19);
-        graph.addEdge(3, 4, 42);
-        graph.addEdge(2, 4, 7);
-        graph.addEdge(2, 0, 50);
-        REQUIRE(graph.getNumberOfVertices() == 5);
-        REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == 145);
-        int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
-        bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
-        REQUIRE(getPaths.size == paths.size);
-        REQUIRE(getPaths.beginIndex == paths.beginIndex);
-        for (std::size_t i = 0; i < 5; i++)
-        {
-            CHECK(getPaths.distance[i] == paths.distance[i]);
-            CHECK(getPaths.isMax[i] == paths.isMax[i]);
-        }
+        graph = gm::GraphMatrix<std::string>(false);
     }
-}
-TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
-{
-    gm::GraphMatrix<int> graph(true);
-    graph.addVertex(10);
-    graph.addVertex(5);
-    graph.addVertex(44);
-    graph.addVertex(13);
-    graph.addVertex(2);
-    graph.addEdge(1, 0, 17);
-    graph.addEdge(3, 2, 10);
-    graph.addEdge(2, 1, 19);
-    graph.addEdge(3, 4, 42);
-    graph.addEdge(2, 4, 7);
-    graph.addEdge(2, 0, 50);
+    graph.addVertex("a");
+    graph.addVertex("b");
+    graph.addVertex("c");
+    graph.addVertex("d");
+    graph.addVertex("e");
+    graph.addEdge(1, 0, "ccc");
+    graph.addEdge(3, 2, "bb");
+    graph.addEdge(2, 1, "dddd");
+    graph.addEdge(3, 4, "eeeee");
+    graph.addEdge(2, 4, "a");
+    graph.addEdge(2, 0, "zzzzzz");
     REQUIRE(graph.getNumberOfVertices() == 5);
     REQUIRE(graph.getNumberOfEdges() == 6);
-    REQUIRE(graph.getTotalValue() == 145);
+    REQUIRE(graph.getTotalValue() == "cccbbddddeeeeeazzzzzz");
+    std::string* distance = new std::string[5]{ "bbddddccc", "bbdddd", "bb", "" , "bba" };
+    bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
+    pbv::PathsBetweenVertices<std::string> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+    REQUIRE(getPaths.size == paths.size);
+    REQUIRE(getPaths.beginIndex == paths.beginIndex);
+    for (std::size_t i = 0; i < 5; i++)
+    {
+        CHECK(getPaths.distance[i] == paths.distance[i]);
+        CHECK(getPaths.isMax[i] == paths.isMax[i]);
+    }
+}
+TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::string> only")
+{
+    gm::GraphMatrix<std::string> graph(true);
+    graph.addVertex("a");
+    graph.addVertex("b");
+    graph.addVertex("c");
+    graph.addVertex("d");
+    graph.addVertex("e");
+    graph.addEdge(1, 0, "ccc");
+    graph.addEdge(3, 2, "bb");
+    graph.addEdge(2, 1, "dddd");
+    graph.addEdge(3, 4, "eeeee");
+    graph.addEdge(2, 4, "a");
+    graph.addEdge(2, 0, "zzzzzz");
+    REQUIRE(graph.getNumberOfVertices() == 5);
+    REQUIRE(graph.getNumberOfEdges() == 6);
+    REQUIRE(graph.getTotalValue() == "cccbbddddeeeeeazzzzzz");
     std::vector<std::size_t> array = { 3, 2, 1, 0, 4 }, getArray = graph.topologicalSorting();
     CHECK(array.size() == getArray.size());
     for (std::size_t i = 0; i < 5; i++)
@@ -1948,36 +1855,36 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
         CHECK(array[i] == getArray[i]);
     }
 }
-TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> only")
+TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::string> only")
 {
-    gm::GraphMatrix<int> graph(false);
-    graph.addVertex(10);
-    graph.addVertex(5);
-    graph.addVertex(44);
-    graph.addVertex(13);
-    graph.addVertex(2);
-    graph.addEdge(1, 0, 17);
-    graph.addEdge(3, 2, 10);
-    graph.addEdge(2, 1, 19);
-    graph.addEdge(3, 4, 42);
-    graph.addEdge(2, 4, 7);
-    graph.addEdge(2, 0, 50);
+    gm::GraphMatrix<std::string> graph(false);
+    graph.addVertex("a");
+    graph.addVertex("b");
+    graph.addVertex("c");
+    graph.addVertex("d");
+    graph.addVertex("e");
+    graph.addEdge(1, 0, "ccc");
+    graph.addEdge(3, 2, "bb");
+    graph.addEdge(2, 1, "dddd");
+    graph.addEdge(3, 4, "eeeee");
+    graph.addEdge(2, 4, "a");
+    graph.addEdge(2, 0, "zzzzzz");
     REQUIRE(graph.getNumberOfVertices() == 5);
     REQUIRE(graph.getNumberOfEdges() == 6);
-    REQUIRE(graph.getTotalValue() == 145);
+    REQUIRE(graph.getTotalValue() == "cccbbddddeeeeeazzzzzz");
     SUBCASE("normal spanning tree")//using depth First Search
     {
-        gm::GraphMatrix<int> spanningTree(graph.getSpanningTree());
+        gm::GraphMatrix<std::string> spanningTree(graph.getSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == 88);
+        CHECK(spanningTree.getTotalValue() == "cccddddbbeeeee");
     }
     SUBCASE("the smallest spanning tree")
     {
-        gm::GraphMatrix<int> spanningTree(graph.getTheSmallestSpanningTree());
+        gm::GraphMatrix<std::string> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == 53);
+        CHECK(spanningTree.getTotalValue() == "abbcccdddd");
     }
 
 }
