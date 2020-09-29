@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <math.h>
 
 namespace ofo//override functions and operators
 {
@@ -20,8 +21,6 @@ namespace ofo//override functions and operators
     template<typename T>
     std::vector<T> operator - (const std::vector<T>& array1, const std::vector<T>& array2);
 	template<typename T>
-	std::vector<T> operator % (const int& random, const std::vector<T>& array1);// use for rand() % std::vector<T>
-	template<typename T>
 	bool operator < (const std::vector<T>& array1, const std::vector<T>& array2);
 	template<typename T>
 	bool operator <= (const std::vector<T>& array1, const std::vector<T>& array2);
@@ -34,8 +33,15 @@ namespace ofo//override functions and operators
     template<typename T>
     bool operator != (const std::vector<T>& array1, const std::vector<T>& array2);
     std::string operator - (const std::string& line1, const std::string& line2);
-    std::string operator % (const int& random, const std::string& line1);// use for rand() % std::string
-}
+    template<typename T>
+    T randomValue(const T& maxValue);
+    template<>
+    double randomValue(const double& maxValue);
+    template<>
+    std::string randomValue(const std::string& maxValue);
+    template<typename T>
+    std::vector<T> randomValue(const std::vector<T>& maxValue);
+ }
 namespace ofo
 {
     template<typename T>
@@ -89,19 +95,7 @@ namespace ofo
         array3.erase(array3.begin() + newSize, array3.end());
 
         return array3;
-    }
-    template<typename T>
-    std::vector<T> operator % (const int& random, const std::vector<T>& array1)
-    {
-        std::vector<T> array2;
-        std::size_t size = random % (array1.size() + 1);
-        for (std::size_t i = 0; i < size; i++)
-        {
-            array2.push_back(rand() % (array1[i] + 1));
-        }
-
-        return array2;
-    }
+    }    
     template<typename T>
     bool operator < (const std::vector<T>& array1, const std::vector<T>& array2)
     {
@@ -153,16 +147,39 @@ namespace ofo
         line3.erase(index, + line2.size());
 
         return line3;
-    }
-    std::string operator % (const int& random, const std::string& line1)
+    } 
+    template<typename T>
+    T randomValue(const T& maxValue)
     {
-        std::string line2;
-        std::size_t size = random % (line1.size() + 1);
+        return rand() % (maxValue + 1);
+    }
+    template<>
+    double randomValue(const double& maxValue)
+    {
+        return (double)(rand())/RAND_MAX * maxValue;
+    }
+    template<>
+    std::string randomValue(const std::string& maxValue)
+    {
+        std::size_t size = rand() % (maxValue.size() + 1);
+        std::string line = "";
         for (std::size_t i = 0; i < size; i++)
         {
-            line2.push_back(rand() % 'Z');
+            line.push_back(rand() % 'Z');
         }
 
-        return line2;
-    }    
+        return line;
+    }
+    template<typename T>
+    std::vector<T> randomValue(const std::vector<T>& maxValue)
+    {
+        std::vector<T> array;
+        std::size_t size = rand() % (maxValue.size() + 1);
+        for (std::size_t i = 0; i < size; i++)
+        {
+            array.push_back(rand() % (abs(maxValue[i]) + 1));
+        }
+
+        return array;
+    }
 }

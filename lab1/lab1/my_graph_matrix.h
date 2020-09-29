@@ -39,17 +39,17 @@ namespace gm//graph matrix
         bool isInIndexes(std::vector<std::size_t> indexes, std::size_t index);//checks if there is an index in the array 
         void createSpanningTree(GraphMatrix<T>& spanningTree, std::vector<std::size_t>& indexes, std::size_t index);//algorithm for create spanning tree from graph
         GraphMatrix<T> kruskal();//algorithm for create minimum spanning tree from graph
-        void createRandomVertices(std::size_t numberOfVertices, T maxValue);//adds vertices to new graph
-        bool createRandomEdges(std::size_t numberOfEdges, T maxValue);//adds edges to new graph
-        bool createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue);//create graph with numberOfVertices vertices and numberOfEdges edges
+        void createRandomVertices(std::size_t numberOfVertices, const T& maxValue);//adds vertices to new graph
+        void createRandomEdges(std::size_t numberOfEdges, const T& maxValue);//adds edges to new graph
+        void createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue);//create graph with numberOfVertices vertices and numberOfEdges edges
         void deleteEdges(std::size_t index);//when removes vertex need delete its edges
     public:
         GraphMatrix();
         GraphMatrix(bool orientation);
-        GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue);//create random graph
+        GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue);//create random graph
         ~GraphMatrix();
-        void addVertex(T value, bool show = false);//adds a vertex with the value to vertices
-        void addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = false);//adds edge from beginIndex to endIndex in graph
+        void addVertex(const T& value, bool show = false);//adds a vertex with the value to vertices
+        void addEdge(std::size_t beginIndex, std::size_t endIndex, const T& value, bool show = false);//adds edge from beginIndex to endIndex in graph
         void removeVertex(std::size_t index, bool show = false);//remove the vertex with index from graph
         void removeEdge(std::size_t beginIndex, std::size_t endIndex, bool show = false);//remove the edge from beginIndex to endIndex from graph
         std::size_t getNumberOfVertices();
@@ -291,15 +291,15 @@ namespace gm
         return spanningTree;
     }
     template<typename T>
-    void GraphMatrix<T>::createRandomVertices(std::size_t numberOfVertices, T maxValue)
+    void GraphMatrix<T>::createRandomVertices(std::size_t numberOfVertices, const T& maxValue)
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            addVertex(rand() % maxValue, false);
+            addVertex(randomValue(maxValue));
         }
     }
     template<typename T>
-    bool GraphMatrix<T>::createRandomEdges(std::size_t numberOfEdges, T maxValue)
+    void GraphMatrix<T>::createRandomEdges(std::size_t numberOfEdges, const T& maxValue)
     {
         if (numberOfEdges <= (numberOfVertices * (numberOfVertices + 1)) / 2)
         {
@@ -308,22 +308,23 @@ namespace gm
                 std::size_t i = rand() % numberOfVertices, j = rand() % numberOfVertices;
                 if (!matrix[i][j].contiguity)
                 {
-                    addEdge(i, j, rand() % maxValue, false);
+                    addEdge(i, j, randomValue(maxValue));
                 }
-            }                                                         
+            }  
+            return;
         }              
         std::cout << "\nThere are too many edges!" << std::endl;
-
-        return false;
     }
     template<typename T>
-    bool GraphMatrix<T>::createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
+    void GraphMatrix<T>::createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue)
     {
         srand(unsigned(time(0)));
         this->orientation = orientation;
+        this->numberOfVertices = 0;
+        this->numberOfEdges = 0;
         totalValue = T();
         createRandomVertices(numberOfVertices, maxValue);
-        return createRandomEdges(numberOfEdges, maxValue);
+        createRandomEdges(numberOfEdges, maxValue);
     }
     template<typename T>
     void GraphMatrix<T>::deleteEdges(std::size_t index)
@@ -367,10 +368,9 @@ namespace gm
         totalValue = T();
     }
     template<typename T>
-    GraphMatrix<T>::GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
+    GraphMatrix<T>::GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue)
     {
-        if (!createGraph(numberOfVertices, numberOfEdges, orientation, maxValue))
-            delete this;
+        createGraph(numberOfVertices, numberOfEdges, orientation, maxValue);
     }
     template<typename T>
     GraphMatrix<T>::~GraphMatrix()
@@ -387,7 +387,7 @@ namespace gm
         totalValue = T();
     }
     template<typename T>
-    void GraphMatrix<T>::addVertex(T value, bool show) 
+    void GraphMatrix<T>::addVertex(const T& value, bool show)
     {
         vertices.push_back(value);
         for (std::size_t i = 0; i < numberOfVertices; i++)
@@ -400,7 +400,7 @@ namespace gm
         if (show) std::cout << "\nThe vertex is added!" << std::endl;
     }
     template<typename T>
-    void GraphMatrix<T>::addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show)
+    void GraphMatrix<T>::addEdge(std::size_t beginIndex, std::size_t endIndex, const T& value, bool show)
     {
         if (!isIndex(beginIndex, show) || !isIndex(endIndex, show)) return;
         if (matrix[beginIndex][endIndex].contiguity)

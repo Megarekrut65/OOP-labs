@@ -301,7 +301,7 @@ namespace gs
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            addVertex(rand() % maxValue, false);
+            addVertex(randomValue(maxValue));
         }
     }
     template<typename T>
@@ -314,7 +314,7 @@ namespace gs
                 std::size_t i = rand() % numberOfVertices, j = rand() % numberOfVertices;
                 if (!isEdge(i, j))
                 {
-                    addEdge(i, j, rand() % maxValue, false);
+                    addEdge(i, j, randomValue(maxValue));
                 }
             }
             return;

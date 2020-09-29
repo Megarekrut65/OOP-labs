@@ -103,7 +103,6 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             CHECK(graph.getTotalValue() == 100);
         }
     }
-
 }
 TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
 {
@@ -201,7 +200,6 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             CHECK(graph.getTotalValue() == 60);
         }
     }
-
 }
 TEST_CASE("testing the checking the connectivity of GraphMatrix<int>")
 {
@@ -262,7 +260,6 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<int>")
             CHECK(!graph.checkingTheConnectivity());
         }
     }
-
 }
 TEST_CASE("testing the depth First Search for GraphMatrix<int>")
 {
@@ -312,7 +309,6 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
             CHECK(search[i] == array[i]);
         }
     }
-
 }
 TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
 {
@@ -467,7 +463,86 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> o
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == 53);
     }
-
+}
+TEST_CASE("testing the creating GraphMatrix<int>")
+{
+    gm::GraphMatrix<int> graph;
+    SUBCASE("oriented graph")
+    {
+        graph = gm::GraphMatrix<int>(10, 29, true, 100);
+    }
+    SUBCASE("non-oriented graph")
+    {
+        graph = gm::GraphMatrix<int>(10, 29, false, 100);
+    }
+    REQUIRE(graph.getNumberOfVertices() == 10);
+    REQUIRE(graph.getNumberOfEdges() == 29);
+    REQUIRE(graph.getTotalValue() > 0);
+}
+TEST_CASE("testing the getting text representation of GraphMatrix<int>")
+{
+    SUBCASE("oriented graph")
+    {
+        gm::GraphMatrix<int> graph(true);
+        std::string graphStr = "";
+        SUBCASE("created graph")
+        {
+            graph.addVertex(5);
+            graph.addVertex(6);
+            graph.addVertex(7);
+            graph.addVertex(8);
+            graph.addEdge(1, 0, 10);
+            graph.addEdge(0, 1, 20);
+            graph.addEdge(1, 1, 30);
+            graph.addEdge(3, 2, 40);
+            graph.addEdge(2, 1, 60);
+            REQUIRE(graph.getNumberOfVertices() == 4);
+            REQUIRE(graph.getNumberOfEdges() == 5);
+            REQUIRE(graph.getTotalValue() == 160);
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: 160\n\n";
+            graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
+            graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
+        }
+        SUBCASE("empty graph")
+        {
+            graphStr = "\nThe graph is empty!\n";
+            REQUIRE(graph.getNumberOfVertices() == 0);
+            REQUIRE(graph.getNumberOfEdges() == 0);
+            REQUIRE(graph.getTotalValue() == 0);
+        }
+        CHECK(graph.getTextRepresentation() == graphStr);
+    }
+    SUBCASE("non-oriented graph")
+    {
+        gm::GraphMatrix<int> graph(false);
+        std::string graphStr = "";
+        SUBCASE("created graph")
+        {
+            graph.addVertex(5);
+            graph.addVertex(6);
+            graph.addVertex(7);
+            graph.addVertex(8);
+            graph.addEdge(1, 0, 10);
+            graph.addEdge(0, 1, 20);
+            graph.addEdge(1, 1, 30);
+            graph.addEdge(3, 2, 40);
+            graph.addEdge(2, 1, 60);
+            REQUIRE(graph.getNumberOfVertices() == 4);
+            REQUIRE(graph.getNumberOfEdges() == 4);
+            REQUIRE(graph.getTotalValue() == 140);
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: 140\n\n";
+            graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
+            graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
+        }
+        SUBCASE("empty graph")
+        {
+            graphStr = "\nThe graph is empty!\n";
+            REQUIRE(graph.getNumberOfVertices() == 0);
+            REQUIRE(graph.getNumberOfEdges() == 0);
+            REQUIRE(graph.getTotalValue() == 0);
+        }
+        CHECK(graph.getTextRepresentation() == graphStr);
+    }  
 }
 //tests for double
 TEST_CASE("testing the adding vertices and edges to GraphMatrix<double>")
@@ -878,7 +953,7 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
         CHECK(getPaths.isMax[i] == paths.isMax[i]);
     }  
 }
-TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
+TEST_CASE("testing the topological sorting for oriented GraphMatrix<double> only")
 {
     gm::GraphMatrix<double> graph(true);
     graph.addVertex(10.7);
@@ -902,7 +977,7 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
         CHECK(array[i] == getArray[i]);
     }
 }
-TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> only")
+TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<double> only")
 {
     gm::GraphMatrix<double> graph(false);
     graph.addVertex(10.8);
@@ -934,6 +1009,86 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> o
         CHECK(spanningTree.getTotalValue() == doctest::Approx(6.9));
     }
 
+}
+TEST_CASE("testing the creating GraphMatrix<double>")
+{
+    gm::GraphMatrix<double> graph;
+    SUBCASE("oriented graph")
+    {
+        graph = gm::GraphMatrix<double>(10, 29, true, 100);
+    }
+    SUBCASE("non-oriented graph")
+    {
+        graph = gm::GraphMatrix<double>(10, 29, false, 100);
+    }
+    REQUIRE(graph.getNumberOfVertices() == 10);
+    REQUIRE(graph.getNumberOfEdges() == 29);
+    REQUIRE(graph.getTotalValue() > 0);
+}
+TEST_CASE("testing the getting text representation of GraphMatrix<double>")
+{
+    SUBCASE("oriented graph")
+    {
+        gm::GraphMatrix<double> graph(true);
+        std::string graphStr = "";
+        SUBCASE("created graph")
+        {
+            graph.addVertex(5.8123);
+            graph.addVertex(6.7123);
+            graph.addVertex(7.6123);
+            graph.addVertex(8.5123);
+            graph.addEdge(1, 0, 10.6123);
+            graph.addEdge(0, 1, 20.4123);
+            graph.addEdge(1, 1, 30.3123);
+            graph.addEdge(3, 2, 40.2123);
+            graph.addEdge(2, 1, 60.1123);
+            REQUIRE(graph.getNumberOfVertices() == 4);
+            REQUIRE(graph.getNumberOfEdges() == 5);
+            REQUIRE(graph.getTotalValue() == doctest::Approx(161.6615));
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: 161.661500\n\n";
+            graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
+            graphStr += "0)value: {5.812300}.\n1)value: {6.712300}.\n2)value: {7.612300}.\n3)value: {8.512300}.\n\n";
+        }
+        SUBCASE("empty graph")
+        {
+            graphStr = "\nThe graph is empty!\n";
+            REQUIRE(graph.getNumberOfVertices() == 0);
+            REQUIRE(graph.getNumberOfEdges() == 0);
+            REQUIRE(graph.getTotalValue() == doctest::Approx(0));
+        }
+        CHECK(graph.getTextRepresentation() == graphStr);
+    }
+    SUBCASE("non-oriented graph")
+    {
+        gm::GraphMatrix<int> graph(false);
+        std::string graphStr = "";
+        SUBCASE("created graph")
+        {
+            graph.addVertex(5);
+            graph.addVertex(6);
+            graph.addVertex(7);
+            graph.addVertex(8);
+            graph.addEdge(1, 0, 10);
+            graph.addEdge(0, 1, 20);
+            graph.addEdge(1, 1, 30);
+            graph.addEdge(3, 2, 40);
+            graph.addEdge(2, 1, 60);
+            REQUIRE(graph.getNumberOfVertices() == 4);
+            REQUIRE(graph.getNumberOfEdges() == 4);
+            REQUIRE(graph.getTotalValue() == 140);
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: 140\n\n";
+            graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
+            graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
+        }
+        SUBCASE("empty graph")
+        {
+            graphStr = "\nThe graph is empty!\n";
+            REQUIRE(graph.getNumberOfVertices() == 0);
+            REQUIRE(graph.getNumberOfEdges() == 0);
+            REQUIRE(graph.getTotalValue() == 0);
+        }
+        CHECK(graph.getTextRepresentation() == graphStr);
+    }
 }
 //tests for std::vector<int>. Other types can be used instead of int. Because the methods are defined for std::vector<T>
 TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>>")
@@ -1886,5 +2041,4 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::s
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == "abbcccdddd");
     }
-
 }
