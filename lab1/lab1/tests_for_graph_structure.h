@@ -480,7 +480,7 @@ TEST_CASE("testing the creating GraphStructure<int>")
     REQUIRE(graph.getNumberOfEdges() == 29);
     REQUIRE(graph.getTotalValue() > 0);
 }
-/*TEST_CASE("testing the getting text representation of GraphMatrix<int>")
+TEST_CASE("testing the getting text representation of GraphMatrix<int>")
 {
     SUBCASE("oriented graph")
     {
@@ -501,8 +501,10 @@ TEST_CASE("testing the creating GraphStructure<int>")
             REQUIRE(graph.getNumberOfEdges() == 5);
             REQUIRE(graph.getTotalValue() == 160);
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {160}\n\n";
-            graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
+            graphStr += "Index: 0, value: {5} => [ {i: 1, v: 20} -> # ].\n";
+            graphStr += "Index: 1, value: {6} => [ {i: 0, v: 10} -> {i: 1, v: 30} -> # ].\n";
+            graphStr += "Index: 2, value: {7} => [ {i: 1, v: 60} -> # ].\n";
+            graphStr += "Index: 3, value: {8} => [ {i: 2, v: 40} -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {
@@ -532,8 +534,10 @@ TEST_CASE("testing the creating GraphStructure<int>")
             REQUIRE(graph.getNumberOfEdges() == 4);
             REQUIRE(graph.getTotalValue() == 140);
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {140}\n\n";
-            graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
+            graphStr += "Index: 0, value: {5} => [ {i: 1, v: 10} -> # ].\n";
+            graphStr += "Index: 1, value: {6} => [ {i: 0, v: 10} -> {i: 1, v: 30} -> {i: 2, v: 60} -> # ].\n";
+            graphStr += "Index: 2, value: {7} => [ {i: 1, v: 60} -> {i: 3, v: 40} -> # ].\n";
+            graphStr += "Index: 3, value: {8} => [ {i: 2, v: 40} -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {
