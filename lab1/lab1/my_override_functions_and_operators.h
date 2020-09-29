@@ -146,9 +146,9 @@ namespace ofo
     {
         std::string line3;     
         std::size_t index = line1.find(line2, 0);
-        if (index + 1 == 0) return line3;
+        if (index + 1 == 0) return line1;
         line3 = line1;
-        line3.erase(line3.begin() + index, line3.begin() + index + line2.size() - 1);
+        line3.erase(index, + line2.size());
 
         return line3;
     }

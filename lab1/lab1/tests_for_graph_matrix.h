@@ -1596,28 +1596,28 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::string>")
     }
 
 }
-TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
+TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(41);
-        graph.addEdge(0, 1, 10);
-        graph.addEdge(1, 2, 6);
-        graph.addEdge(0, 3, 44);
+        gm::GraphMatrix<std::string> graph(true);
+        graph.addVertex("h");
+        graph.addVertex("e");
+        graph.addVertex("ll");
+        graph.addVertex("o");
+        graph.addEdge(0, 1, "hello");
+        graph.addEdge(1, 2, ",");
+        graph.addEdge(0, 3, "world!");
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 3);
-        REQUIRE(graph.getTotalValue() == 60);
+        REQUIRE(graph.getTotalValue() == "hello,world!");
         SUBCASE("removing existent vertices")//after removing vertex indexes of all vertices edited(example: vertices: 0, 1, 2; remove(0); vertices: 0, 1;)
         {
             graph.removeVertex(0);
             graph.removeVertex(0);
             CHECK(graph.getNumberOfVertices() == 2);
             CHECK(graph.getNumberOfEdges() == 0);
-            CHECK(graph.getTotalValue() == 0);
+            CHECK(graph.getTotalValue() == "");
         }
         SUBCASE("removing non-existent vertices")
         {
@@ -1626,15 +1626,15 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeVertex(4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == "hello,world!");
         }
-        SUBCASE("removing existent edges")
+        SUBCASE("removing existent edges")//the substring with the value of the removed edge is removed from the totalValue
         {
-            graph.removeEdge(0, 3);
             graph.removeEdge(1, 2);
+            graph.removeEdge(0, 3);        
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 1);
-            CHECK(graph.getTotalValue() == 10);
+            CHECK(graph.getTotalValue() == "hello");
         }
         SUBCASE("removing non-existent edges")
         {
@@ -1642,29 +1642,29 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeEdge(15, 22);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == "hello,world!");
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(41);
-        graph.addEdge(0, 1, 10);
-        graph.addEdge(1, 2, 6);
-        graph.addEdge(0, 3, 44);
+        gm::GraphMatrix<std::string> graph(false);
+        graph.addVertex("h");
+        graph.addVertex("e");
+        graph.addVertex("ll");
+        graph.addVertex("o");
+        graph.addEdge(0, 1, "hello");
+        graph.addEdge(1, 2, ",");
+        graph.addEdge(0, 3, "world!");
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 3);
-        REQUIRE(graph.getTotalValue() == 60);
+        REQUIRE(graph.getTotalValue() == "hello,world!");
         SUBCASE("removing existent vertices")//after removing vertex indexes of all vertices edited(example: vertices: 0, 1, 2; remove(0); vertices: 0, 1;)
         {
             graph.removeVertex(0);
             graph.removeVertex(0);
             CHECK(graph.getNumberOfVertices() == 2);
             CHECK(graph.getNumberOfEdges() == 0);
-            CHECK(graph.getTotalValue() == 0);
+            CHECK(graph.getTotalValue() == "");
         }
         SUBCASE("removing non-existent vertices")
         {
@@ -1673,15 +1673,15 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeVertex(4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == "hello,world!");
         }
-        SUBCASE("removing existent edges")
+        SUBCASE("removing existent edges")//the substring with the value of the removed edge is removed from the totalValue
         {
-            graph.removeEdge(0, 3);
             graph.removeEdge(1, 2);
+            graph.removeEdge(0, 3);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 1);
-            CHECK(graph.getTotalValue() == 10);
+            CHECK(graph.getTotalValue() == "hello");
         }
         SUBCASE("removing non-existent edges")
         {
@@ -1689,7 +1689,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeEdge(15, 22);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == "hello,world!");
         }
     }
 
