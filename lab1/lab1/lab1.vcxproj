@@ -148,6 +148,7 @@
     <ClInclude Include="my_override_functions_and_operators.h" />
     <ClInclude Include="my_paths_between_vertices.h" />
     <ClInclude Include="tests_for_graph_matrix.h" />
+    <ClInclude Include="tests_for_graph_structure.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

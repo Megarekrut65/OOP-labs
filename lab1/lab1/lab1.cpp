@@ -1,6 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "doctest.h"
 #include "tests_for_graph_matrix.h"
+#include "tests_for_graph_structure.h"
 
 int main(int argc, char** argv) 
 {

@@ -39,19 +39,20 @@ namespace gs//graph structure
         bool isInIndexes(std::vector<std::size_t> indexes, std::size_t index);//checks if there is an index in the array 
         void createSpanningTree(GraphStructure<T>& spanningTree, std::vector<std::size_t>& indexes, std::size_t index);//algorithm for create spanning tree from graph
         GraphStructure<T> kruskal();//algorithm for create minimum spanning tree from graph
-        void createRandomVertices(std::size_t numberOfVertices, T maxValue);//adds vertices to new graph
-        void createRandomEdges(std::size_t numberOfEdges, T maxValue);//adds edges to new graph
-        void createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue);//create graph with numberOfVertices vertices and numberOfEdges edges
+        void createRandomVertices(std::size_t numberOfVertices, const T& maxValue);//adds vertices to new graph
+        void createRandomEdges(std::size_t numberOfEdges, const T& maxValue);//adds edges to new graph
+        void createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue);//create graph with numberOfVertices vertices and numberOfEdges edges
         void deleteEdges(std::size_t index);//when removes vertex need delete its edges
         void clearNode(std::size_t index);//clear all edges of list[index]
         bool addNode(std::size_t beginIndex, std::size_t endIndex, T value);//add node(edge from beginIndex to endIndex) to list[beginIndex]
         bool isEdge(std::size_t beginIndex, std::size_t endIndex);//returns true if is edge from beginIndex to endIndex else returns false
         T findAndRemoveEdge(std::size_t beginIndex, std::size_t endIndex, bool& isFound);//removes edge(node) from list[beginIndex] and returns value of edge
+        void editIndexesOfVertices(std::size_t removedIndex);
     public:
         GraphStructure();
         GraphStructure(bool orientation);
-        GraphStructure(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue);//create random graph
-        GraphStructure(GraphStructure&& graph);
+        GraphStructure(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue);//create random graph
+        GraphStructure(const GraphStructure& graph);
         ~GraphStructure();
         void addVertex(T value, bool show = false);//adds a vertex with the value to vertices
         void addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = false);//adds edge from beginIndex to endIndex in graph
@@ -70,7 +71,6 @@ namespace gs//graph structure
         std::vector<std::size_t> topologicalSorting(bool show = false);// the function linearly arranges the vertices of the graph
         GraphStructure<T> getSpanningTree(bool show = false);//creates spanning tree from the graph
         GraphStructure<T> getTheSmallestSpanningTree(bool show = false);//creates minimum spanning tree from the graph
-
     };
 }
 namespace gs
@@ -297,7 +297,7 @@ namespace gs
         return spanningTree;
     }
     template<typename T>
-    void GraphStructure<T>::createRandomVertices(std::size_t numberOfVertices, T maxValue)
+    void GraphStructure<T>::createRandomVertices(std::size_t numberOfVertices, const T& maxValue)
     {
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
@@ -305,7 +305,7 @@ namespace gs
         }
     }
     template<typename T>
-    void GraphStructure<T>::createRandomEdges(std::size_t numberOfEdges, T maxValue)
+    void GraphStructure<T>::createRandomEdges(std::size_t numberOfEdges, const T& maxValue)
     {
         if (orientation && (numberOfEdges <= numberOfVertices * numberOfVertices) || numberOfEdges <= (numberOfVertices * (numberOfVertices + 1)) / 2)
         {
@@ -322,11 +322,13 @@ namespace gs
         std::cout << "\nThere are too many edges!" << std::endl;
     }
     template<typename T>
-    void GraphStructure<T>::createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
+    void GraphStructure<T>::createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue)
     {
         srand(unsigned(time(0)));
         this->orientation = orientation;
         totalValue = T();
+        this->numberOfVertices = 0;
+        this->numberOfEdges = 0;
         createRandomVertices(numberOfVertices, maxValue);
         createRandomEdges(numberOfEdges, maxValue);
     }
@@ -415,6 +417,18 @@ namespace gs
         isFound = false;
         return T();
     }
+    template<typename T>
+    void GraphStructure<T>::editIndexesOfVertices(std::size_t removedIndex)
+    {
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            for (VertexNode<T>* current = list[i]->next; current; current = current->next)
+            {
+                if (current->index > removedIndex) current->index--;
+            }
+            if (list[i]->index > removedIndex) list[i]->index--;
+        }
+    }
     //public
     template<typename T>
     GraphStructure<T>::GraphStructure()
@@ -433,25 +447,29 @@ namespace gs
         totalValue = T();
     }
     template<typename T>
-    GraphStructure<T>::GraphStructure(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, T maxValue)
+    GraphStructure<T>::GraphStructure(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue)
     {
         createGraph(numberOfVertices, numberOfEdges, orientation, maxValue);
     }  
     template<typename T>
-    GraphStructure<T>::GraphStructure(GraphStructure&& graph)
+    GraphStructure<T>::GraphStructure(const GraphStructure& graph)
     {
+        std::cout << "copy" << std::endl;
+        orientation = graph.orientation;
+        totalValue = T();
+        numberOfVertices = 0;
+        numberOfEdges = 0;
         for (std::size_t i = 0; i < graph.numberOfVertices; i++)
         {
-            list.push_back(graph.list[i]);
-            graph.list[i] = nullptr;
+            addVertex(graph.list[i]->value);
         }
-        orientation = graph.orientation;
-        totalValue = graph.totalValue;
-        numberOfVertices = graph.numberOfVertices;
-        numberOfEdges = graph.numberOfEdges;
-        graph.numberOfVertices = 0;
-        graph.numberOfEdges = 0;
-        graph.totalValue = T();
+        for (std::size_t i = 0; i < graph.numberOfVertices; i++)
+        {
+            for (VertexNode<T>* current = graph.list[i]->next; current; current = current->next)
+            {
+                addEdge(i, current->index, current->value);
+            }
+        }
     }
     template<typename T>
     GraphStructure<T>::~GraphStructure()
@@ -513,6 +531,7 @@ namespace gs
         clearNode(index);
         list.erase(list.begin() + index);
         numberOfVertices--;
+        editIndexesOfVertices(index);
         if (show) std::cout << "\nThe vertex with index " << index << " was removed!" << std::endl;
     }
     template<typename T>
@@ -525,6 +544,7 @@ namespace gs
         {
             numberOfEdges++;
             findAndRemoveEdge(endIndex, beginIndex, isFound);
+            if (!isFound) numberOfEdges--;
         }
         if (show)
         {

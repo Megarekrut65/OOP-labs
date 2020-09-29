@@ -1,13 +1,13 @@
 #pragma once
 #include "doctest.h"
-#include "my_graph_matrix.h"
+#include "my_graph_structure.h"
 
 //tests for int
-TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
+TEST_CASE("testing the adding vertices and edges to GraphStructure<int>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
+        gs::GraphStructure<int> graph(true);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(447);
@@ -56,7 +56,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
+        gs::GraphStructure<int> graph(false);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(447);
@@ -104,11 +104,11 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
         }
     }
 }
-TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
+TEST_CASE("testing the removing vertices and edges from GraphStructure<int>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
+        gs::GraphStructure<int> graph(true);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(447);
@@ -155,7 +155,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
+        gs::GraphStructure<int> graph(false);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(447);
@@ -201,11 +201,11 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
         }
     }
 }
-TEST_CASE("testing the checking the connectivity of GraphMatrix<int>")
+TEST_CASE("testing the checking the connectivity of GraphStructure<int>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
+        gs::GraphStructure<int> graph(true);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(447);
@@ -234,7 +234,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
+        gs::GraphStructure<int> graph(false);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(447);
@@ -261,11 +261,11 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<int>")
         }
     }
 }
-TEST_CASE("testing the depth First Search for GraphMatrix<int>")
+TEST_CASE("testing the depth First Search for GraphStructure<int>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
+        gs::GraphStructure<int> graph(true);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(447);
@@ -288,7 +288,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
+        gs::GraphStructure<int> graph(false);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(447);
@@ -310,11 +310,11 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
         }
     }
 }
-TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
+TEST_CASE("testing the getting path between two vertices for GraphStructure<int>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
+        gs::GraphStructure<int> graph(true);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(44);
@@ -347,7 +347,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
+        gs::GraphStructure<int> graph(false);
         graph.addVertex(10);
         graph.addVertex(5);
         graph.addVertex(44);
@@ -372,16 +372,16 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
         }
     }
 }
-TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<int>")
+TEST_CASE("testing the getting paths from the vertex to everyone else for GraphStructure<int>")
 {
-    gm::GraphMatrix<int> graph;
+    gs::GraphStructure<int> graph;
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<int>(true);
+        graph = gs::GraphStructure<int>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<int>(false);
+        graph = gs::GraphStructure<int>(false);
     }
     graph.addVertex(10);
     graph.addVertex(5);
@@ -406,11 +406,11 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
     {
         CHECK(getPaths.distance[i] == paths.distance[i]);
         CHECK(getPaths.isMax[i] == paths.isMax[i]);
-    }    
+    }
 }
-TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
+TEST_CASE("testing the topological sorting for oriented GraphStructure<int> only")
 {
-    gm::GraphMatrix<int> graph(true);
+    gs::GraphStructure<int> graph(true);
     graph.addVertex(10);
     graph.addVertex(5);
     graph.addVertex(44);
@@ -432,9 +432,9 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
         CHECK(array[i] == getArray[i]);
     }
 }
-TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> only")
+TEST_CASE("testing the getting spanning Tree for non-oriented GraphStructure<int> only")
 {
-    gm::GraphMatrix<int> graph(false);
+    gs::GraphStructure<int> graph(false);
     graph.addVertex(10);
     graph.addVertex(5);
     graph.addVertex(44);
@@ -451,14 +451,14 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> o
     REQUIRE(graph.getTotalValue() == 145);
     SUBCASE("normal spanning tree")//using depth First Search
     {
-        gm::GraphMatrix<int> spanningTree(graph.getSpanningTree());
+        gs::GraphStructure<int> spanningTree(graph.getSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == 88);
     }
     SUBCASE("the smallest spanning tree")
     {
-        gm::GraphMatrix<int> spanningTree(graph.getTheSmallestSpanningTree());
+        gs::GraphStructure<int> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == 53);
@@ -466,24 +466,26 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> o
 }
 TEST_CASE("testing the creating GraphMatrix<int>")
 {
-    gm::GraphMatrix<int> graph;
+    gs::GraphStructure<int> graph;
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<int>(10, 29, true, 100);
+        std::cout << "here" << std::endl;
+        graph = gs::GraphStructure<int>(10, 29, true, 100);
+        std::cout << "here" << std::endl;
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<int>(10, 29, false, 100);
+        graph = gs::GraphStructure<int>(10, 29, false, 100);
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
     REQUIRE(graph.getTotalValue() > 0);
 }
-TEST_CASE("testing the getting text representation of GraphMatrix<int>")
+/*TEST_CASE("testing the getting text representation of GraphMatrix<int>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
+        gs::GraphStructure<int> graph(true);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
@@ -514,7 +516,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
+        gs::GraphStructure<int> graph(false);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
@@ -542,14 +544,15 @@ TEST_CASE("testing the getting text representation of GraphMatrix<int>")
             REQUIRE(graph.getTotalValue() == 0);
         }
         CHECK(graph.getTextRepresentation() == graphStr);
-    }  
+    }
 }
 //tests for double
+/*
 TEST_CASE("testing the adding vertices and edges to GraphMatrix<double>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<double> graph(true);
+        gs::GraphStructure<double> graph(true);
         graph.addVertex(10.5);
         graph.addVertex(5.1);
         graph.addVertex(44.7);
@@ -598,7 +601,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<double>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<double> graph(false);
+        gs::GraphStructure<double> graph(false);
         graph.addVertex(10.5);
         graph.addVertex(5.1);
         graph.addVertex(44.7);
@@ -651,7 +654,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<double>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<double> graph(true);
+        gs::GraphStructure<double> graph(true);
         graph.addVertex(10.7);
         graph.addVertex(5.3);
         graph.addVertex(447.9);
@@ -698,7 +701,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<double>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<double> graph(false);
+        gs::GraphStructure<double> graph(false);
         graph.addVertex(10.8);
         graph.addVertex(5.2);
         graph.addVertex(4.47);
@@ -749,7 +752,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<double>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<double> graph(true);
+        gs::GraphStructure<double> graph(true);
         graph.addVertex(10.3);
         graph.addVertex(5.9);
         graph.addVertex(44.7);
@@ -778,7 +781,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<double>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<double> graph(false);
+        gs::GraphStructure<double> graph(false);
         graph.addVertex(10.8);
         graph.addVertex(5.3);
         graph.addVertex(44.7);
@@ -804,13 +807,12 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<double>")
             CHECK(!graph.checkingTheConnectivity());
         }
     }
-
 }
 TEST_CASE("testing the depth First Search for GraphMatrix<double>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<double> graph(true);
+        gs::GraphStructure<double> graph(true);
         graph.addVertex(10.8);
         graph.addVertex(5.5);
         graph.addVertex(4.47);
@@ -833,7 +835,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<double>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<double> graph(false);
+        gs::GraphStructure<double> graph(false);
         graph.addVertex(10.8);
         graph.addVertex(5.5);
         graph.addVertex(4.47);
@@ -859,7 +861,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<double>
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<double> graph(true);
+        gs::GraphStructure<double> graph(true);
         graph.addVertex(10.8);
         graph.addVertex(5.9);
         graph.addVertex(4.4);
@@ -892,7 +894,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<double>
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<double> graph(false);
+        gs::GraphStructure<double> graph(false);
         graph.addVertex(10.8);
         graph.addVertex(5.9);
         graph.addVertex(4.4);
@@ -919,14 +921,14 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<double>
 }
 TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<double>")
 {
-    gm::GraphMatrix<double> graph;
+    gs::GraphStructure<double> graph;
     SUBCASE("oriented graph")
     {
-         graph = gm::GraphMatrix<double>(true);
+        graph = gs::GraphStructure<double>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<double>(false);
+        graph = gs::GraphStructure<double>(false);
     }
     graph.addVertex(10.9);
     graph.addVertex(5.2);
@@ -951,11 +953,11 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
     {
         CHECK(getPaths.distance[i] == doctest::Approx(paths.distance[i]));
         CHECK(getPaths.isMax[i] == paths.isMax[i]);
-    }  
+    }
 }
 TEST_CASE("testing the topological sorting for oriented GraphMatrix<double> only")
 {
-    gm::GraphMatrix<double> graph(true);
+    gs::GraphStructure<double> graph(true);
     graph.addVertex(10.7);
     graph.addVertex(5.6);
     graph.addVertex(4.4);
@@ -979,7 +981,7 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<double> only
 }
 TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<double> only")
 {
-    gm::GraphMatrix<double> graph(false);
+    gs::GraphStructure<double> graph(false);
     graph.addVertex(10.8);
     graph.addVertex(5.1);
     graph.addVertex(42.4);
@@ -996,14 +998,14 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<double
     REQUIRE(graph.getTotalValue() == doctest::Approx(16.7));
     SUBCASE("normal spanning tree")//using depth First Search
     {
-        gm::GraphMatrix<double> spanningTree(graph.getSpanningTree());
+        gs::GraphStructure<double> spanningTree(graph.getSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == doctest::Approx(8.9));
     }
     SUBCASE("the smallest spanning tree")
     {
-        gm::GraphMatrix<double> spanningTree(graph.getTheSmallestSpanningTree());
+        gs::GraphStructure<double> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == doctest::Approx(6.9));
@@ -1012,14 +1014,14 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<double
 }
 TEST_CASE("testing the creating GraphMatrix<double>")
 {
-    gm::GraphMatrix<double> graph;
+    gs::GraphStructure<double> graph;
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<double>(10, 29, true, 100);
+        graph = gs::GraphStructure<double>(10, 29, true, 100);
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<double>(10, 29, false, 100);
+        graph = gs::GraphStructure<double>(10, 29, false, 100);
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
@@ -1029,7 +1031,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<double>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<double> graph(true);
+        gs::GraphStructure<double> graph(true);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
@@ -1060,7 +1062,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<double>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<double> graph(false);
+        gs::GraphStructure<double> graph(false);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
@@ -1097,7 +1099,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>
 
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix< std::vector<int>> graph(true);
+        gs::GraphStructure< std::vector<int>> graph(true);
         graph.addVertex(arr1);
         graph.addVertex(arr2);
         graph.addVertex(arr3);
@@ -1148,7 +1150,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix< std::vector<int>> graph(false);
+        gs::GraphStructure< std::vector<int>> graph(false);
         graph.addVertex(arr1);
         graph.addVertex(arr2);
         graph.addVertex(arr3);
@@ -1204,7 +1206,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::vector<
 
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(true);
+        gs::GraphStructure<std::vector<int>> graph(true);
         graph.addVertex(arr1);
         graph.addVertex(arr3);
         graph.addVertex(arr3);
@@ -1252,7 +1254,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::vector<
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(false);
+        gs::GraphStructure<std::vector<int>> graph(false);
         graph.addVertex(arr1);
         graph.addVertex(arr3);
         graph.addVertex(arr3);
@@ -1306,7 +1308,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<std::vector<int>
 
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(true);
+        gs::GraphStructure<std::vector<int>> graph(true);
         graph.addVertex(arr0);
         graph.addVertex(arr4);
         graph.addVertex(arr5);
@@ -1335,7 +1337,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<std::vector<int>
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(false);
+        gs::GraphStructure<std::vector<int>> graph(false);
         graph.addVertex(arr0);
         graph.addVertex(arr5);
         graph.addVertex(arr4);
@@ -1369,7 +1371,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<std::vector<int>>")
 
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(true);
+        gs::GraphStructure<std::vector<int>> graph(true);
         graph.addVertex(arr0);
         graph.addVertex(arr5);
         graph.addVertex(arr3);
@@ -1392,7 +1394,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<std::vector<int>>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>>  graph(false);
+        gs::GraphStructure<std::vector<int>>  graph(false);
         graph.addVertex(arr0);
         graph.addVertex(arr5);
         graph.addVertex(arr3);
@@ -1421,7 +1423,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::ve
 
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(true);
+        gs::GraphStructure<std::vector<int>> graph(true);
         graph.addVertex(arr0);
         graph.addVertex(arr5);
         graph.addVertex(arr4);
@@ -1454,7 +1456,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::ve
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>>  graph(false);
+        gs::GraphStructure<std::vector<int>>  graph(false);
         graph.addVertex(arr3);
         graph.addVertex(arr5);
         graph.addVertex(arr0);
@@ -1482,14 +1484,14 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::ve
 TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<std::vector<int>>")
 {
     std::vector<int> arr0, arr10(10), arr7(7), arr17(17), arr19(19), arr42(42), arr50(50);
-    gm::GraphMatrix<std::vector<int>> graph;
+    gs::GraphStructure<std::vector<int>> graph;
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<std::vector<int>>(true);
+        graph = gs::GraphStructure<std::vector<int>>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<std::vector<int>>(false);
+        graph = gs::GraphStructure<std::vector<int>>(false);
     }
     graph.addVertex(arr0);
     graph.addVertex(arr10);
@@ -1514,13 +1516,13 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
     {
         CHECK(getPaths.distance[i] == paths.distance[i]);
         CHECK(getPaths.isMax[i] == paths.isMax[i]);
-    }   
+    }
 }
 TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::vector<int>> only")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
 
-    gm::GraphMatrix<std::vector<int>> graph(true);
+    gs::GraphStructure<std::vector<int>> graph(true);
     graph.addVertex(arr0);
     graph.addVertex(arr5);
     graph.addVertex(arr4);
@@ -1545,7 +1547,7 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::vector<
 TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::vector<int>> only")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
-    gm::GraphMatrix<std::vector<int>> graph(false);
+    gs::GraphStructure<std::vector<int>> graph(false);
     graph.addVertex(arr1);
     graph.addVertex(arr1);
     graph.addVertex(arr1);
@@ -1562,14 +1564,14 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::v
     REQUIRE(graph.getTotalValue() == (arr1 + arr2 + arr3 + arr4 + arr5));
     SUBCASE("normal spanning tree")//using depth First Search
     {
-        gm::GraphMatrix<std::vector<int>> spanningTree(graph.getSpanningTree());
+        gs::GraphStructure<std::vector<int>> spanningTree(graph.getSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == (arr1 + arr3 + arr2 + arr4));
     }
     SUBCASE("the smallest spanning tree")
     {
-        gm::GraphMatrix<std::vector<int>> spanningTree(graph.getTheSmallestSpanningTree());
+        gs::GraphStructure<std::vector<int>> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == (arr0 + arr1 + arr2 + arr3));
@@ -1578,15 +1580,15 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::v
 }
 TEST_CASE("testing the creating GraphMatrix<std::vector<int>>")
 {
-    gm::GraphMatrix<std::vector<int>> graph;
+    gs::GraphStructure<std::vector<int>> graph;
     std::vector<int> arr0, arr100(100, 100);
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<std::vector<int>>(10, 29, true, arr100);
+        graph = gs::GraphStructure<std::vector<int>>(10, 29, true, arr100);
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<std::vector<int>>(10, 29, false, arr100);
+        graph = gs::GraphStructure<std::vector<int>>(10, 29, false, arr100);
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
@@ -1598,7 +1600,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<in
 
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(true);
+        gs::GraphStructure<std::vector<int>> graph(true);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
@@ -1630,7 +1632,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<in
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::vector<int>> graph(false);
+        gs::GraphStructure<std::vector<int>> graph(false);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
@@ -1666,7 +1668,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(true);
+        gs::GraphStructure<std::string> graph(true);
         graph.addVertex("ten");
         graph.addVertex("five");
         graph.addVertex("four");
@@ -1716,7 +1718,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::string>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(false);
+        gs::GraphStructure<std::string> graph(false);
         graph.addVertex("ten");
         graph.addVertex("five");
         graph.addVertex("four");
@@ -1770,7 +1772,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::string>
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(true);
+        gs::GraphStructure<std::string> graph(true);
         graph.addVertex("h");
         graph.addVertex("e");
         graph.addVertex("ll");
@@ -1801,7 +1803,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::string>
         SUBCASE("removing existent edges")//the substring with the value of the removed edge is removed from the totalValue
         {
             graph.removeEdge(1, 2);
-            graph.removeEdge(0, 3);        
+            graph.removeEdge(0, 3);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 1);
             CHECK(graph.getTotalValue() == "hello");
@@ -1817,7 +1819,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::string>
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(false);
+        gs::GraphStructure<std::string> graph(false);
         graph.addVertex("h");
         graph.addVertex("e");
         graph.addVertex("ll");
@@ -1868,7 +1870,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(true);
+        gs::GraphStructure<std::string> graph(true);
         graph.addVertex("10");
         graph.addVertex("5");
         graph.addVertex("447");
@@ -1897,7 +1899,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<std::string>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(false);
+        gs::GraphStructure<std::string> graph(false);
         graph.addVertex("10");
         graph.addVertex("5");
         graph.addVertex("447");
@@ -1928,7 +1930,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(true);
+        gs::GraphStructure<std::string> graph(true);
         graph.addVertex("to make");
         graph.addVertex("to give");
         graph.addVertex("to get");
@@ -1951,7 +1953,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<std::string>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(false);
+        gs::GraphStructure<std::string> graph(false);
         graph.addVertex("to make");
         graph.addVertex("to give");
         graph.addVertex("to get");
@@ -1977,7 +1979,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::st
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(true);
+        gs::GraphStructure<std::string> graph(true);
         graph.addVertex("to made");
         graph.addVertex("to had");
         graph.addVertex("to played");
@@ -2010,7 +2012,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::st
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(false);
+        gs::GraphStructure<std::string> graph(false);
         graph.addVertex("to made");
         graph.addVertex("to had");
         graph.addVertex("to played");
@@ -2037,14 +2039,14 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::st
 }
 TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<std::string>")
 {
-    gm::GraphMatrix<std::string> graph;
+    gs::GraphStructure<std::string> graph;
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<std::string>(true);
+        graph = gs::GraphStructure<std::string>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<std::string>(false);
+        graph = gs::GraphStructure<std::string>(false);
     }
     graph.addVertex("a");
     graph.addVertex("b");
@@ -2073,7 +2075,7 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
 }
 TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::string> only")
 {
-    gm::GraphMatrix<std::string> graph(true);
+    gs::GraphStructure<std::string> graph(true);
     graph.addVertex("a");
     graph.addVertex("b");
     graph.addVertex("c");
@@ -2097,7 +2099,7 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::string>
 }
 TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::string> only")
 {
-    gm::GraphMatrix<std::string> graph(false);
+    gs::GraphStructure<std::string> graph(false);
     graph.addVertex("a");
     graph.addVertex("b");
     graph.addVertex("c");
@@ -2114,14 +2116,14 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::s
     REQUIRE(graph.getTotalValue() == "cccbbddddeeeeeazzzzzz");
     SUBCASE("normal spanning tree")//using depth First Search
     {
-        gm::GraphMatrix<std::string> spanningTree(graph.getSpanningTree());
+        gs::GraphStructure<std::string> spanningTree(graph.getSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == "cccddddbbeeeee");
     }
     SUBCASE("the smallest spanning tree")
     {
-        gm::GraphMatrix<std::string> spanningTree(graph.getTheSmallestSpanningTree());
+        gs::GraphStructure<std::string> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
         CHECK(spanningTree.getTotalValue() == "abbcccdddd");
@@ -2129,14 +2131,14 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::s
 }
 TEST_CASE("testing the creating GraphMatrix<std::string>")
 {
-    gm::GraphMatrix<std::string> graph;
+    gs::GraphStructure<std::string> graph;
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<std::string>(10, 29, true, "abcdef");
+        graph = gs::GraphStructure<std::string>(10, 29, true, "abcdef");
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<std::string>(10, 29, false, "abcdef");
+        graph = gs::GraphStructure<std::string>(10, 29, false, "abcdef");
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
@@ -2146,7 +2148,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(true);
+        gs::GraphStructure<std::string> graph(true);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
@@ -2177,7 +2179,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<std::string> graph(false);
+        gs::GraphStructure<std::string> graph(false);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
@@ -2207,3 +2209,4 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
         CHECK(graph.getTextRepresentation() == graphStr);
     }
 }
+*/
