@@ -1694,85 +1694,84 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::string>
     }
 
 }
-TEST_CASE("testing the checking the connectivity of GraphMatrix<int>")
+TEST_CASE("testing the checking the connectivity of GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addEdge(0, 1, 100);
-        graph.addEdge(1, 2, 6);
+        gm::GraphMatrix<std::string> graph(true);
+        graph.addVertex("10");
+        graph.addVertex("5");
+        graph.addVertex("447");
+        graph.addVertex("132");
+        graph.addEdge(0, 1, "100");
+        graph.addEdge(1, 2, "6");
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 2);
-        REQUIRE(graph.getTotalValue() == 106);
+        REQUIRE(graph.getTotalValue() == "1006");
         SUBCASE("graph is connected")
         {
-            graph.addEdge(2, 3, 20);
+            graph.addEdge(2, 3, "20");
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == "100620");
             CHECK(graph.checkingTheConnectivity());
         }
         SUBCASE("graph isn't connected")
         {
-            graph.addEdge(3, 2, 20);
+            graph.addEdge(3, 2, "20");
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == "100620");
             CHECK(!graph.checkingTheConnectivity());
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addEdge(0, 1, 100);
-        graph.addEdge(1, 2, 6);
+        gm::GraphMatrix<std::string> graph(false);
+        graph.addVertex("10");
+        graph.addVertex("5");
+        graph.addVertex("447");
+        graph.addVertex("132");
+        graph.addEdge(0, 1, "100");
+        graph.addEdge(1, 2, "6");
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 2);
-        REQUIRE(graph.getTotalValue() == 106);
+        REQUIRE(graph.getTotalValue() == "1006");
         SUBCASE("graph is connected")
         {
-            graph.addEdge(0, 3, 20);
+            graph.addEdge(0, 3, "20");
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == "100620");
             CHECK(graph.checkingTheConnectivity());
         }
         SUBCASE("graph isn't connected")
         {
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 2);
-            CHECK(graph.getTotalValue() == 106);
+            CHECK(graph.getTotalValue() == "1006");
             CHECK(!graph.checkingTheConnectivity());
         }
     }
-
 }
-TEST_CASE("testing the depth First Search for GraphMatrix<int>")
+TEST_CASE("testing the depth First Search for GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addVertex(2);
-        graph.addEdge(0, 2, 12);
-        graph.addEdge(4, 1, 6);
-        graph.addEdge(0, 3, 68);
-        graph.addEdge(1, 0, 100);
-        graph.addEdge(2, 4, 33);
+        gm::GraphMatrix<std::string> graph(true);
+        graph.addVertex("to make");
+        graph.addVertex("to give");
+        graph.addVertex("to get");
+        graph.addVertex("to go");
+        graph.addVertex("to put");
+        graph.addEdge(0, 2, "I ");
+        graph.addEdge(4, 1, "have ");
+        graph.addEdge(0, 3, "bad ");
+        graph.addEdge(1, 0, "day");
+        graph.addEdge(2, 4, "...");
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 5);
-        REQUIRE(graph.getTotalValue() == 219);
+        REQUIRE(graph.getTotalValue() == "I have bad day...");
         std::vector<std::size_t> search = graph.depthFirstSearch(), array = { 0, 2, 4, 1, 3 };
         REQUIRE(search.size() == 5);
         for (std::size_t i = 0; i < search.size(); i++)
@@ -1782,20 +1781,20 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addVertex(2);
-        graph.addEdge(0, 2, 12);
-        graph.addEdge(4, 1, 6);
-        graph.addEdge(0, 3, 68);
-        graph.addEdge(1, 0, 100);
-        graph.addEdge(2, 4, 33);
+        gm::GraphMatrix<std::string> graph(false);
+        graph.addVertex("to make");
+        graph.addVertex("to give");
+        graph.addVertex("to get");
+        graph.addVertex("to go");
+        graph.addVertex("to put");
+        graph.addEdge(0, 2, "I ");
+        graph.addEdge(4, 1, "have ");
+        graph.addEdge(0, 3, "bad ");
+        graph.addEdge(1, 0, "day");
+        graph.addEdge(2, 4, "...");
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 5);
-        REQUIRE(graph.getTotalValue() == 219);
+        REQUIRE(graph.getTotalValue() == "I have bad day...");
         std::vector<std::size_t> search = graph.depthFirstSearch(), array = { 0, 1, 4, 2, 3 };
         REQUIRE(search.size() == 5);
         for (std::size_t i = 0; i < search.size(); i++)
@@ -1803,67 +1802,66 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
             CHECK(search[i] == array[i]);
         }
     }
-
 }
-TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
+TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(0, 1, 12);
-        graph.addEdge(0, 3, 17);
-        graph.addEdge(2, 1, 6);
-        graph.addEdge(4, 0, 68);
+        gm::GraphMatrix<std::string> graph(true);
+        graph.addVertex("to made");
+        graph.addVertex("to had");
+        graph.addVertex("to played");
+        graph.addVertex("to seen");
+        graph.addVertex("to read");
+        graph.addEdge(0, 1, "bad");
+        graph.addEdge(0, 3, "car");
+        graph.addEdge(2, 1, "apple");
+        graph.addEdge(4, 0, "umbrella");
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 4);
-        REQUIRE(graph.getTotalValue() == 103);
+        REQUIRE(graph.getTotalValue() == "badcarappleumbrella");
         SUBCASE("the direct path is the shortest")
         {
-            graph.addEdge(4, 2, 50);
-            graph.addEdge(0, 2, 10);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 50);
+            graph.addEdge(4, 2, "as");
+            graph.addEdge(0, 2, "home");
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == "as");
         }
         SUBCASE("bypass through other vertices is the shortest")
         {
-            graph.addEdge(4, 2, 100);
-            graph.addEdge(0, 2, 10);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 78);
+            graph.addEdge(4, 2, "zero zero zero zero");
+            graph.addEdge(0, 2, "a bus");
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == "umbrellaa bus");
         }
         SUBCASE("features in the oriented graph")
         {
-            graph.addEdge(4, 2, 100);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 100);
+            graph.addEdge(4, 2, "zero zero zero zero");
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == "zero zero zero zero");
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(0, 1, 12);
-        graph.addEdge(0, 3, 17);
-        graph.addEdge(2, 1, 6);
-        graph.addEdge(4, 0, 68);
+        gm::GraphMatrix<std::string> graph(false);
+        graph.addVertex("to made");
+        graph.addVertex("to had");
+        graph.addVertex("to played");
+        graph.addVertex("to seen");
+        graph.addVertex("to read");
+        graph.addEdge(0, 1, "bad");
+        graph.addEdge(0, 3, "car");
+        graph.addEdge(2, 1, "apple");
+        graph.addEdge(4, 0, "umbrella");
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 4);
-        REQUIRE(graph.getTotalValue() == 103);
+        REQUIRE(graph.getTotalValue() == "badcarappleumbrella");
         SUBCASE("the direct path is the shortest")
         {
-            graph.addEdge(4, 2, 50);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 50);
+            graph.addEdge(4, 2, "as");
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == "as");
         }
         SUBCASE("bypass through other vertices is the shortest")
         {
-            graph.addEdge(4, 2, 100);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 86);
+            graph.addEdge(4, 2, "zero zero zero zero zero zero");
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == "umbrellabadapple");
         }
     }
 }
