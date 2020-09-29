@@ -499,7 +499,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<int>")
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 5);
             REQUIRE(graph.getTotalValue() == 160);
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: 160\n\n";
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {160}\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
             graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
         }
@@ -530,7 +530,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<int>")
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 4);
             REQUIRE(graph.getTotalValue() == 140);
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: 140\n\n";
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {140}\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
             graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
         }
@@ -1045,7 +1045,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<double>")
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 5);
             REQUIRE(graph.getTotalValue() == doctest::Approx(161.6615));
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: 161.661500\n\n";
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {161.661500}\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
             graphStr += "0)value: {5.812300}.\n1)value: {6.712300}.\n2)value: {7.612300}.\n3)value: {8.512300}.\n\n";
         }
@@ -1076,7 +1076,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<double>")
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 4);
             REQUIRE(graph.getTotalValue() == doctest::Approx(141.2492));
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: 141.249200\n\n";
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {141.249200}\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
             graphStr += "0)value: {5.812300}.\n1)value: {6.712300}.\n2)value: {7.612300}.\n3)value: {8.512300}.\n\n";
         }
@@ -1615,7 +1615,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<in
             REQUIRE(graph.getNumberOfEdges() == 5);
             REQUIRE(graph.getTotalValue() == (arr1 + arr2 + arr4 + arr3 + arr1));
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\n";
-            graphStr += "Total value: Size: 11, array: 5 9 2 8 9 2 1 0 4 2 5 \n\n";
+            graphStr += "Total value: {Size: 11, array: 5 9 2 8 9 2 1 0 4 2 5 }\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
             graphStr += "0)value: {Size: 1, array: 5 }.\n1)value: {Size: 2, array: 9 2 }.\n2)value: {Size: 3, array: 0 4 2 }.\n3)value: {Size: 2, array: 9 2 }.\n\n";
         }
@@ -1647,7 +1647,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<in
             REQUIRE(graph.getNumberOfEdges() == 4);
             REQUIRE(graph.getTotalValue() == (arr1 + arr4 + arr3 + arr1));
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\n";
-            graphStr += "Total value: Size: 9, array: 5 8 9 2 1 0 4 2 5 \n\n";
+            graphStr += "Total value: {Size: 9, array: 5 8 9 2 1 0 4 2 5 }\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
             graphStr += "0)value: {Size: 1, array: 5 }.\n1)value: {Size: 2, array: 9 2 }.\n2)value: {Size: 3, array: 0 4 2 }.\n3)value: {Size: 2, array: 9 2 }.\n\n";
         }
@@ -2162,7 +2162,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 5);
             REQUIRE(graph.getTotalValue() == "tenelevenforzerosix");
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: tenelevenforzerosix\n\n";
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {tenelevenforzerosix}\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
             graphStr += "0)value: {one}.\n1)value: {two}.\n2)value: {three}.\n3)value: {five}.\n\n";
         }
@@ -2193,7 +2193,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 4);
             REQUIRE(graph.getTotalValue() == "tenforzerosix");
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: tenforzerosix\n\n";
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {tenforzerosix}\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
             graphStr += "0)value: {one}.\n1)value: {two}.\n2)value: {three}.\n3)value: {five}.\n\n";
         }

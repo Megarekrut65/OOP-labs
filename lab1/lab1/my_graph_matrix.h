@@ -483,7 +483,7 @@ namespace gm
         result += "\nGraph:\n";
         result += "\nNumber of vertices: " + toString(numberOfVertices) + "\n";
         result += "Number of edges: " + toString(numberOfEdges) + "\n";
-        result += "Total value: " + toString(totalValue) + "\n\n";
+        result += "Total value: {" + toString(totalValue) + "}\n\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
             result += "| ";
