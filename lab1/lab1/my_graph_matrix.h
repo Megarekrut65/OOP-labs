@@ -334,11 +334,18 @@ namespace gm
             {
                 numberOfEdges--;
                 totalValue = totalValue - matrix[i][index].value;
+                matrix[i][index].contiguity = false;
+                if (!orientation) matrix[index][i].contiguity = false;
             }
-            if (orientation && i != index && matrix[index][i].contiguity)
+           
+        }
+        for (std::size_t i = 0; i < numberOfVertices; i++)
+        {
+            if (matrix[index][i].contiguity)
             {
                 numberOfEdges--;
                 totalValue = totalValue - matrix[index][i].value;
+                matrix[index][i].contiguity = false;
             }
         }
     }

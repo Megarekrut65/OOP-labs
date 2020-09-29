@@ -77,7 +77,7 @@ namespace ofo
         if (size2 >= size1) return array3;
         std::size_t newSize = size1 - size2;
         vectorCopy(array3, array1);
-        array3.erase(array3.begin() + newSize, array3.begin() + size1 - 1);
+        array3.erase(array3.begin() + newSize, array3.end());
 
         return array3;
     }

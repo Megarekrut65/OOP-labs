@@ -981,14 +981,15 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> o
     }
 
 }
-//tests for std::vector<int>. Other types can be used instead of int. Since vectors lengths are used to compare vectors, the type of vector will not affect the results
+//tests for std::vector<int>. Other types can be used instead of int. Because the methods are defined for std::vector<T>
 
-TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
+TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>>")
 {
+    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arrFour = { 1, 5, 2, 2 };
+
     SUBCASE("oriented graph")
     {
         gm::GraphMatrix< std::vector<int>> graph(true);
-        std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arrFour = {1, 5, 2, 2};
         graph.addVertex(arr1);
         graph.addVertex(arr2);
         graph.addVertex(arr3);
@@ -1039,7 +1040,6 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
     SUBCASE("non-oriented graph")
     {
         gm::GraphMatrix< std::vector<int>> graph(false);
-        std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arrFour = { 1, 5, 2, 2 };
         graph.addVertex(arr1);
         graph.addVertex(arr2);
         graph.addVertex(arr3);
@@ -1088,28 +1088,30 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
         }
     }
 }
-/*TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
+TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::vector<int>>")
 {
+    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arrFour = { 1, 5, 2, 2 };
+
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(41);
-        graph.addEdge(0, 1, 10);
-        graph.addEdge(1, 2, 6);
-        graph.addEdge(0, 3, 44);
+        gm::GraphMatrix<std::vector<int>> graph(true);
+        graph.addVertex(arr1);
+        graph.addVertex(arr3);
+        graph.addVertex(arr3);
+        graph.addVertex(arr2);
+        graph.addEdge(0, 1, arr4);
+        graph.addEdge(1, 2, arr2);
+        graph.addEdge(0, 3, arr1);
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 3);
-        REQUIRE(graph.getTotalValue() == 60);
+        REQUIRE(graph.getTotalValue() == (arr4 + arr2 + arr1));
         SUBCASE("removing existent vertices")//after removing vertex indexes of all vertices edited(example: vertices: 0, 1, 2; remove(0); vertices: 0, 1;)
         {
             graph.removeVertex(0);
             graph.removeVertex(0);
             CHECK(graph.getNumberOfVertices() == 2);
             CHECK(graph.getNumberOfEdges() == 0);
-            CHECK(graph.getTotalValue() == 0);
+            CHECK(graph.getTotalValue() == arr0);
         }
         SUBCASE("removing non-existent vertices")
         {
@@ -1118,15 +1120,16 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             graph.removeVertex(4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == (arr4 + arr2 + arr1));
         }
-        SUBCASE("removing existent edges")
+        SUBCASE("removing existent edges")//during removal of an edge totalValue reduces the length, but its elements can differ from those which remained in other edges.
         {
-            graph.removeEdge(0, 3);
+            graph.removeEdge(0, 1);
             graph.removeEdge(1, 2);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 1);
-            CHECK(graph.getTotalValue() == 10);
+            CHECK(graph.getTotalValue() == ((arr4 + arr2 + arr1) - arr4 - arr2));
+            CHECK(graph.getTotalValue() != arr1);
         }
         SUBCASE("removing non-existent edges")
         {
@@ -1134,29 +1137,29 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             graph.removeEdge(15, 22);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == (arr4 + arr2 + arr1));
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(41);
-        graph.addEdge(0, 1, 10);
-        graph.addEdge(1, 2, 6);
-        graph.addEdge(0, 3, 44);
+        gm::GraphMatrix<std::vector<int>> graph(false);
+        graph.addVertex(arr1);
+        graph.addVertex(arr3);
+        graph.addVertex(arr3);
+        graph.addVertex(arr2);
+        graph.addEdge(0, 1, arr4);
+        graph.addEdge(1, 2, arr2);
+        graph.addEdge(0, 3, arr1);
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 3);
-        REQUIRE(graph.getTotalValue() == 60);
+        REQUIRE(graph.getTotalValue() == (arr4 + arr2 + arr1));
         SUBCASE("removing existent vertices")//after removing vertex indexes of all vertices edited(example: vertices: 0, 1, 2; remove(0); vertices: 0, 1;)
         {
             graph.removeVertex(0);
             graph.removeVertex(0);
             CHECK(graph.getNumberOfVertices() == 2);
             CHECK(graph.getNumberOfEdges() == 0);
-            CHECK(graph.getTotalValue() == 0);
+            CHECK(graph.getTotalValue() == arr0);
         }
         SUBCASE("removing non-existent vertices")
         {
@@ -1165,15 +1168,16 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             graph.removeVertex(4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == (arr4 + arr2 + arr1));
         }
-        SUBCASE("removing existent edges")
+        SUBCASE("removing existent edges")//during removal of an edge totalValue reduces the length, but its elements can differ from those which remained in other edges.
         {
-            graph.removeEdge(0, 3);
+            graph.removeEdge(0, 1);
             graph.removeEdge(1, 2);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 1);
-            CHECK(graph.getTotalValue() == 10);
+            CHECK(graph.getTotalValue() == ((arr4 + arr2 + arr1) - arr4 - arr2));
+            CHECK(graph.getTotalValue() != arr1);
         }
         SUBCASE("removing non-existent edges")
         {
@@ -1181,7 +1185,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<int>")
             graph.removeEdge(15, 22);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == (arr4 + arr2 + arr1));
         }
     }
 
@@ -1474,5 +1478,5 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> o
         CHECK(spanningTree.getTotalValue() == 53);
     }
 
-}*/
+}
 //tests for std::string
