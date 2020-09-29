@@ -464,19 +464,18 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphStructure<int
         CHECK(spanningTree.getTotalValue() == 53);
     }
 }
-TEST_CASE("testing the creating GraphMatrix<int>")
+TEST_CASE("testing the creating GraphStructure<int>")
 {
-    gs::GraphStructure<int> graph;
+    bool orientation;
     SUBCASE("oriented graph")
     {
-        std::cout << "here" << std::endl;
-        graph = gs::GraphStructure<int>(10, 29, true, 100);
-        std::cout << "here" << std::endl;
+        orientation = true;
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gs::GraphStructure<int>(10, 29, false, 100);
+        orientation = false;
     }
+    gs::GraphStructure<int> graph(10, 29, orientation, 100);
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
     REQUIRE(graph.getTotalValue() > 0);

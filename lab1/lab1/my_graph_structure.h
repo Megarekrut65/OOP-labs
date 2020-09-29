@@ -47,12 +47,12 @@ namespace gs//graph structure
         bool addNode(std::size_t beginIndex, std::size_t endIndex, T value);//add node(edge from beginIndex to endIndex) to list[beginIndex]
         bool isEdge(std::size_t beginIndex, std::size_t endIndex);//returns true if is edge from beginIndex to endIndex else returns false
         T findAndRemoveEdge(std::size_t beginIndex, std::size_t endIndex, bool& isFound);//removes edge(node) from list[beginIndex] and returns value of edge
-        void editIndexesOfVertices(std::size_t removedIndex);
+        void editIndexesOfVertices(std::size_t removedIndex);//after removing vertex need to edit vertices with index > removedIndex
     public:
         GraphStructure();
         GraphStructure(bool orientation);
         GraphStructure(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue);//create random graph
-        GraphStructure(const GraphStructure& graph);
+        GraphStructure(const GraphStructure<T>& graph);
         ~GraphStructure();
         void addVertex(T value, bool show = false);//adds a vertex with the value to vertices
         void addEdge(std::size_t beginIndex, std::size_t endIndex, T value, bool show = false);//adds edge from beginIndex to endIndex in graph
@@ -452,9 +452,8 @@ namespace gs
         createGraph(numberOfVertices, numberOfEdges, orientation, maxValue);
     }  
     template<typename T>
-    GraphStructure<T>::GraphStructure(const GraphStructure& graph)
+    GraphStructure<T>::GraphStructure(const GraphStructure<T>& graph)
     {
-        std::cout << "copy" << std::endl;
         orientation = graph.orientation;
         totalValue = T();
         numberOfVertices = 0;
