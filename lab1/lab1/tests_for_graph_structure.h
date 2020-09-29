@@ -1581,7 +1581,7 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphStructure<std
         gs::GraphStructure<std::vector<int>> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == (arr0 + arr1 + arr3 + arr2));//totalValue is created taking into account the order of the edges
+        CHECK(spanningTree.getTotalValue() == (arr1 + arr3 + arr2 + arr0));//totalValue is created taking into account the order of the edges
     }
 
 }
@@ -1676,7 +1676,7 @@ TEST_CASE("testing the getting text representation of GraphStructure<std::vector
     }
 }
 //tests for std::string
-/*TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::string>")
+TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {
@@ -2138,20 +2138,21 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::s
         gs::GraphStructure<std::string> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == "abbcccdddd");
+        CHECK(spanningTree.getTotalValue() == "cccddddbba");
     }
 }
 TEST_CASE("testing the creating GraphMatrix<std::string>")
 {
-    gs::GraphStructure<std::string> graph;
+    bool orientation = false;
     SUBCASE("oriented graph")
     {
-        graph = gs::GraphStructure<std::string>(10, 29, true, "abcdef");
+        orientation = true;
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gs::GraphStructure<std::string>(10, 29, false, "abcdef");
+        orientation = false;
     }
+    gs::GraphStructure<std::string> graph(10, 29, orientation, "abcdef");
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
     REQUIRE(graph.getTotalValue() > "");
@@ -2177,8 +2178,10 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
             REQUIRE(graph.getNumberOfEdges() == 5);
             REQUIRE(graph.getTotalValue() == "tenelevenforzerosix");
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {tenelevenforzerosix}\n\n";
-            graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {one}.\n1)value: {two}.\n2)value: {three}.\n3)value: {five}.\n\n";
+            graphStr += "Index: 0, value: {one} => [ {i: 1, v: eleven} -> # ].\n";
+            graphStr += "Index: 1, value: {two} => [ {i: 0, v: ten} -> {i: 1, v: for} -> # ].\n";
+            graphStr += "Index: 2, value: {three} => [ {i: 1, v: six} -> # ].\n";
+            graphStr += "Index: 3, value: {five} => [ {i: 2, v: zero} -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {
@@ -2208,8 +2211,10 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
             REQUIRE(graph.getNumberOfEdges() == 4);
             REQUIRE(graph.getTotalValue() == "tenforzerosix");
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {tenforzerosix}\n\n";
-            graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {one}.\n1)value: {two}.\n2)value: {three}.\n3)value: {five}.\n\n";
+            graphStr += "Index: 0, value: {one} => [ {i: 1, v: ten} -> # ].\n";
+            graphStr += "Index: 1, value: {two} => [ {i: 0, v: ten} -> {i: 1, v: for} -> {i: 2, v: six} -> # ].\n";
+            graphStr += "Index: 2, value: {three} => [ {i: 1, v: six} -> {i: 3, v: zero} -> # ].\n";
+            graphStr += "Index: 3, value: {five} => [ {i: 2, v: zero} -> # ].\n\n"; 
         }
         SUBCASE("empty graph")
         {
@@ -2221,4 +2226,3 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
         CHECK(graph.getTextRepresentation() == graphStr);
     }
 }
-*/
