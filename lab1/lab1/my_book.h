@@ -19,34 +19,44 @@ namespace bi//book information
 		Date();
 		Date(int year, int month, int day);
 	};
-	struct Book
+	class Book
 	{	
+	private:
 		std::string name;
 		std::vector<std::string> authorsNames;
 		Date releaseDate;
 		std::size_t size;
 		std::string shortAbstract;
+	public:
 		Book();
 		Book(const std::string& name, const std::vector<std::string>& authorsNames, Date releaseDate, std::size_t size, const std::string& shortAbstract);
 		~Book();
+		void addAuthor(const std::string& author);
 	};
-	struct Character
+	class Character
 	{
+	private:
 		std::vector<std::string> namesList;
 		std::vector<Book*> books;		
 		std::vector<Participation> participations;
+	public:
 		Character();
 		Character(const std::vector<std::string>& namesList, const std::vector<Book*>& books, const std::vector<Participation>& participations);
 		~Character();
+		void addBook(const std::string& characterName, Book* bookAddress, Participation participation);
 	};
-	struct Information
+	class Information
 	{
-		std::vector<Book> books;
+	private:
+		std::vector<Book> library;
 		std::vector<Character> characters;
-		std::vector<Book*> series;
+		std::vector<std::vector<Book*>> series;
+		void addToSerie(std::size_t bookIndex);
+	public:
 		Information();
-		Information(const std::vector<Book>& books, const std::vector<Character>& characters, const std::vector<Book*>& series);
+		Information(const std::vector<Book>& books, const std::vector<Character>& characters, const std::vector<std::vector<Book*>>& series);
 		~Information();
+		void addBook(const Book& book);
 	};
 }
 
@@ -67,6 +77,10 @@ namespace bi
 		size = 0;
 		shortAbstract = "";
 	}
+	void Book::addAuthor(const std::string& author)
+	{
+		authorsNames.push_back(author);
+	}
 	//Character
 	Character::Character() : namesList({}), books({}), participations({}) {}
 	Character::Character(const std::vector<std::string>& namesList, const std::vector<Book*>& books, const std::vector<Participation>& participations)
@@ -77,14 +91,28 @@ namespace bi
 		books.clear();
 		participations.clear();
 	}
+	void Character::addBook(const std::string& characterName, Book* bookAddress, Participation participation)
+	{
+		namesList.push_back(characterName);
+		books.push_back(bookAddress);
+		participations.push_back(participation);
+	}
 	//Information
-	Information::Information() : books({}), characters({}), series({}) {}
-	Information::Information(const std::vector<Book>& books, const std::vector<Character>& characters, const std::vector<Book*>& series)
-		: books(books), characters(characters), series(series) {}
+	Information::Information() : library({}), characters({}), series({}) {}
+	Information::Information(const std::vector<Book>& books, const std::vector<Character>& characters, const std::vector<std::vector<Book*>>& series)
+		: library(books), characters(characters), series(series) {}
 	Information::~Information()
 	{
-		books.clear();
+		library.clear();
 		characters.clear();
 		series.clear();
+	}
+	void Information::addBook(const Book& book)
+	{
+		library.push_back(book);
+	}
+	void Information::addToSerie(std::size_t bookIndex)
+	{
+
 	}
 }
