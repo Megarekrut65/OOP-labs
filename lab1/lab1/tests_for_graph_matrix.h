@@ -982,7 +982,6 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> o
 
 }
 //tests for std::vector<int>. Other types can be used instead of int. Because the methods are defined for std::vector<T>
-
 TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>>")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arrFour = { 1, 5, 2, 2 };
@@ -1007,6 +1006,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>
             CHECK(graph.getNumberOfVertices() == 3);
             CHECK(graph.getNumberOfEdges() == 3);
             CHECK(graph.getTotalValue() == (arr2 + arr4));
+            CHECK(graph.getTotalValue() != (arr4 + arr2));//totalValue adds to the end the elements of the added edges in the order of their addition
             CHECK(graph.getEdgeValue(0, 1) == arr0);
             CHECK(graph.getEdgeValue(1, 0) == arr2);
             CHECK(graph.getEdgeValue(0, 2) != arrFour);
@@ -1057,6 +1057,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>
             CHECK(graph.getNumberOfVertices() == 3);
             CHECK(graph.getNumberOfEdges() == 2);
             CHECK(graph.getTotalValue() == (arr1 + arr4));
+            CHECK(graph.getTotalValue() != (arr4 + arr2));//totalValue adds to the end the elements of the added edges in the order of their addition
             CHECK(graph.getEdgeValue(0, 1) == arr1);
             CHECK(graph.getEdgeValue(1, 0) == arr1);
             CHECK(graph.getEdgeValue(0, 2) != arrFour);
@@ -1090,7 +1091,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>
 }
 TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::vector<int>>")
 {
-    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arrFour = { 1, 5, 2, 2 };
+    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 };
 
     SUBCASE("oriented graph")
     {
@@ -1190,85 +1191,89 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::vector<
     }
 
 }
-TEST_CASE("testing the checking the connectivity of GraphMatrix<int>")
+TEST_CASE("testing the checking the connectivity of GraphMatrix<std::vector<int>>")
 {
+    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
+
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addEdge(0, 1, 100);
-        graph.addEdge(1, 2, 6);
+        gm::GraphMatrix<std::vector<int>> graph(true);
+        graph.addVertex(arr0);
+        graph.addVertex(arr4);
+        graph.addVertex(arr5);
+        graph.addVertex(arr1);
+        graph.addEdge(0, 1, arr3);
+        graph.addEdge(1, 2, arr2);
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 2);
-        REQUIRE(graph.getTotalValue() == 106);
+        REQUIRE(graph.getTotalValue() == (arr3 + arr2));
         SUBCASE("graph is connected")
         {
-            graph.addEdge(2, 3, 20);
+            graph.addEdge(2, 3, arr4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == (arr3 + arr2 + arr4));
             CHECK(graph.checkingTheConnectivity());
         }
         SUBCASE("graph isn't connected")
         {
-            graph.addEdge(3, 2, 20);
+            graph.addEdge(3, 2, arr4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == (arr3 + arr2 + arr4));
             CHECK(!graph.checkingTheConnectivity());
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addEdge(0, 1, 100);
-        graph.addEdge(1, 2, 6);
+        gm::GraphMatrix<std::vector<int>> graph(false);
+        graph.addVertex(arr0);
+        graph.addVertex(arr5);
+        graph.addVertex(arr4);
+        graph.addVertex(arr4);
+        graph.addEdge(0, 1, arr1);
+        graph.addEdge(1, 2, arr2);
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 2);
-        REQUIRE(graph.getTotalValue() == 106);
+        REQUIRE(graph.getTotalValue() == (arr1 + arr2));
         SUBCASE("graph is connected")
         {
-            graph.addEdge(0, 3, 20);
+            graph.addEdge(0, 3, arr5);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == (arr1 + arr2 + arr5));
             CHECK(graph.checkingTheConnectivity());
         }
         SUBCASE("graph isn't connected")
         {
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 2);
-            CHECK(graph.getTotalValue() == 106);
+            CHECK(graph.getTotalValue() == (arr1 + arr2));
             CHECK(!graph.checkingTheConnectivity());
         }
     }
 
 }
-TEST_CASE("testing the depth First Search for GraphMatrix<int>")
+TEST_CASE("testing the depth First Search for GraphMatrix<std::vector<int>>")
 {
+    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
+
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addVertex(2);
-        graph.addEdge(0, 2, 12);
-        graph.addEdge(4, 1, 6);
-        graph.addEdge(0, 3, 68);
-        graph.addEdge(1, 0, 100);
-        graph.addEdge(2, 4, 33);
+        gm::GraphMatrix<std::vector<int>> graph(true);
+        graph.addVertex(arr0);
+        graph.addVertex(arr5);
+        graph.addVertex(arr3);
+        graph.addVertex(arr3);
+        graph.addVertex(arr2);
+        graph.addEdge(0, 2, arr1);
+        graph.addEdge(4, 1, arr5);
+        graph.addEdge(0, 3, arr4);
+        graph.addEdge(1, 0, arr2);
+        graph.addEdge(2, 4, arr3);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 5);
-        REQUIRE(graph.getTotalValue() == 219);
+        REQUIRE(graph.getTotalValue() == (arr1 + arr5 + arr4 + arr2 + arr3));
         std::vector<std::size_t> search = graph.depthFirstSearch(), array = { 0, 2, 4, 1, 3 };
         REQUIRE(search.size() == 5);
         for (std::size_t i = 0; i < search.size(); i++)
@@ -1278,20 +1283,20 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addVertex(2);
-        graph.addEdge(0, 2, 12);
-        graph.addEdge(4, 1, 6);
-        graph.addEdge(0, 3, 68);
-        graph.addEdge(1, 0, 100);
-        graph.addEdge(2, 4, 33);
+        gm::GraphMatrix<std::vector<int>>  graph(false);
+        graph.addVertex(arr0);
+        graph.addVertex(arr5);
+        graph.addVertex(arr3);
+        graph.addVertex(arr3);
+        graph.addVertex(arr2);
+        graph.addEdge(0, 2, arr1);
+        graph.addEdge(4, 1, arr5);
+        graph.addEdge(0, 3, arr4);
+        graph.addEdge(1, 0, arr2);
+        graph.addEdge(2, 4, arr3);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 5);
-        REQUIRE(graph.getTotalValue() == 219);
+        REQUIRE(graph.getTotalValue() == (arr1 + arr5 + arr4 + arr2 + arr3));
         std::vector<std::size_t> search = graph.depthFirstSearch(), array = { 0, 1, 4, 2, 3 };
         REQUIRE(search.size() == 5);
         for (std::size_t i = 0; i < search.size(); i++)
@@ -1301,90 +1306,94 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
     }
 
 }
-TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
+TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::vector<int>>")
 {
+    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 }, arrMany(50);
+
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(0, 1, 12);
-        graph.addEdge(0, 3, 17);
-        graph.addEdge(2, 1, 6);
-        graph.addEdge(4, 0, 68);
+        gm::GraphMatrix<std::vector<int>> graph(true);
+        graph.addVertex(arr0);
+        graph.addVertex(arr5);
+        graph.addVertex(arr4);
+        graph.addVertex(arr3);
+        graph.addVertex(arr2);
+        graph.addEdge(0, 1, arr2);
+        graph.addEdge(0, 3, arr3);
+        graph.addEdge(2, 1, arr1);
+        graph.addEdge(4, 0, arr5);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 4);
-        REQUIRE(graph.getTotalValue() == 103);
+        REQUIRE(graph.getTotalValue() == (arr2 + arr3 + arr1 + arr5));
         SUBCASE("the direct path is the shortest")
         {
-            graph.addEdge(4, 2, 50);
-            graph.addEdge(0, 2, 10);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 50);
+            graph.addEdge(4, 2, arr3);
+            graph.addEdge(0, 2, arr4);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == arr3);
         }
         SUBCASE("bypass through other vertices is the shortest")
         {
-            graph.addEdge(4, 2, 100);
-            graph.addEdge(0, 2, 10);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 78);
+            graph.addEdge(4, 2, arrMany);
+            graph.addEdge(0, 2, arr5);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == (arr5 + arr5));
         }
         SUBCASE("features in the oriented graph")
         {
-            graph.addEdge(4, 2, 100);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 100);
+            graph.addEdge(4, 2, arrMany);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == arrMany);
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(0, 1, 12);
-        graph.addEdge(0, 3, 17);
-        graph.addEdge(2, 1, 6);
-        graph.addEdge(4, 0, 68);
+        gm::GraphMatrix<std::vector<int>>  graph(false);
+        graph.addVertex(arr3);
+        graph.addVertex(arr5);
+        graph.addVertex(arr0);
+        graph.addVertex(arr3);
+        graph.addVertex(arr2);
+        graph.addEdge(0, 1, arr3);
+        graph.addEdge(0, 3, arr3);
+        graph.addEdge(2, 1, arr1);
+        graph.addEdge(4, 0, arr2);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 4);
-        REQUIRE(graph.getTotalValue() == 103);
+        REQUIRE(graph.getTotalValue() == (arr3 + arr3 + arr1 + arr2));
         SUBCASE("the direct path is the shortest")
         {
-            graph.addEdge(4, 2, 50);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 50);
+            graph.addEdge(4, 2, arr5);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == arr5);
         }
         SUBCASE("bypass through other vertices is the shortest")
         {
-            graph.addEdge(4, 2, 100);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 86);
+            graph.addEdge(4, 2, arrMany);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == (arr2 + arr3 + arr1));
         }
     }
 }
-TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<int>")
+TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<std::vector<int>>")
 {
+    std::vector<int> arr0, arr10(10), arr7(7), arr17(17), arr19(19), arr42(42), arr50(50);
+
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(1, 0, 17);
-        graph.addEdge(3, 2, 10);
-        graph.addEdge(2, 1, 19);
-        graph.addEdge(3, 4, 42);
-        graph.addEdge(2, 4, 7);
-        graph.addEdge(2, 0, 50);
+        gm::GraphMatrix<std::vector<int>> graph(true);
+        graph.addVertex(arr0);
+        graph.addVertex(arr10);
+        graph.addVertex(arr17);
+        graph.addVertex(arr50);
+        graph.addVertex(arr0);
+        graph.addEdge(1, 0, arr17);
+        graph.addEdge(3, 2, arr10);
+        graph.addEdge(2, 1, arr19);
+        graph.addEdge(3, 4, arr42);
+        graph.addEdge(2, 4, arr7);
+        graph.addEdge(2, 0, arr50);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == 145);
-        int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
+        REQUIRE(graph.getTotalValue() == (arr17 + arr10 + arr19 + arr42 + arr7 + arr50));
+        std::vector<int>* distance = new std::vector<int>[5]{ arr10 + arr19 + arr17, arr10 + arr19, arr10, arr0 , arr10 + arr7 };
         bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+        pbv::PathsBetweenVertices<std::vector<int>> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
         REQUIRE(getPaths.size == paths.size);
         REQUIRE(getPaths.beginIndex == paths.beginIndex);
         for (std::size_t i = 0; i < 5; i++)
@@ -1395,24 +1404,24 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(1, 0, 17);
-        graph.addEdge(3, 2, 10);
-        graph.addEdge(2, 1, 19);
-        graph.addEdge(3, 4, 42);
-        graph.addEdge(2, 4, 7);
-        graph.addEdge(2, 0, 50);
+        gm::GraphMatrix<std::vector<int>> graph(false);
+        graph.addVertex(arr0);
+        graph.addVertex(arr10);
+        graph.addVertex(arr17);
+        graph.addVertex(arr50);
+        graph.addVertex(arr0);
+        graph.addEdge(1, 0, arr17);
+        graph.addEdge(3, 2, arr10);
+        graph.addEdge(2, 1, arr19);
+        graph.addEdge(3, 4, arr42);
+        graph.addEdge(2, 4, arr7);
+        graph.addEdge(2, 0, arr50);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 6);
-        REQUIRE(graph.getTotalValue() == 145);
-        int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
+        REQUIRE(graph.getTotalValue() == (arr17 + arr10 + arr19 + arr42 + arr7 + arr50));
+        std::vector<int>* distance = new std::vector<int>[5]{ arr10 + arr19 + arr17, arr10 + arr19, arr10, arr0 , arr10 + arr7 };
         bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-        pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+        pbv::PathsBetweenVertices<std::vector<int>> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
         REQUIRE(getPaths.size == paths.size);
         REQUIRE(getPaths.beginIndex == paths.beginIndex);
         for (std::size_t i = 0; i < 5; i++)
@@ -1422,23 +1431,25 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
         }
     }
 }
-TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
+TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::vector<int>> only")
 {
-    gm::GraphMatrix<int> graph(true);
-    graph.addVertex(10);
-    graph.addVertex(5);
-    graph.addVertex(44);
-    graph.addVertex(13);
-    graph.addVertex(2);
-    graph.addEdge(1, 0, 17);
-    graph.addEdge(3, 2, 10);
-    graph.addEdge(2, 1, 19);
-    graph.addEdge(3, 4, 42);
-    graph.addEdge(2, 4, 7);
-    graph.addEdge(2, 0, 50);
+    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
+
+    gm::GraphMatrix<std::vector<int>> graph(true);
+    graph.addVertex(arr0);
+    graph.addVertex(arr5);
+    graph.addVertex(arr4);
+    graph.addVertex(arr3);
+    graph.addVertex(arr2);
+    graph.addEdge(1, 0, arr3);
+    graph.addEdge(3, 2, arr1);
+    graph.addEdge(2, 1, arr0);
+    graph.addEdge(3, 4, arr2);
+    graph.addEdge(2, 4, arr5);
+    graph.addEdge(2, 0, arr5);
     REQUIRE(graph.getNumberOfVertices() == 5);
     REQUIRE(graph.getNumberOfEdges() == 6);
-    REQUIRE(graph.getTotalValue() == 145);
+    REQUIRE(graph.getTotalValue() == (arr3 + arr1 + arr2 + arr5 + arr5));
     std::vector<std::size_t> array = { 3, 2, 1, 0, 4 }, getArray = graph.topologicalSorting();
     CHECK(array.size() == getArray.size());
     for (std::size_t i = 0; i < 5; i++)
@@ -1446,36 +1457,37 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
         CHECK(array[i] == getArray[i]);
     }
 }
-TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> only")
+TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::vector<int>> only")
 {
-    gm::GraphMatrix<int> graph(false);
-    graph.addVertex(10);
-    graph.addVertex(5);
-    graph.addVertex(44);
-    graph.addVertex(13);
-    graph.addVertex(2);
-    graph.addEdge(1, 0, 17);
-    graph.addEdge(3, 2, 10);
-    graph.addEdge(2, 1, 19);
-    graph.addEdge(3, 4, 42);
-    graph.addEdge(2, 4, 7);
-    graph.addEdge(2, 0, 50);
+    std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
+    gm::GraphMatrix<std::vector<int>> graph(false);
+    graph.addVertex(arr1);
+    graph.addVertex(arr1);
+    graph.addVertex(arr1);
+    graph.addVertex(arr2);
+    graph.addVertex(arr4);
+    graph.addEdge(1, 0, arr1);
+    graph.addEdge(3, 2, arr2);
+    graph.addEdge(2, 1, arr3);
+    graph.addEdge(3, 4, arr4);
+    graph.addEdge(2, 4, arr0);
+    graph.addEdge(2, 0, arr5);
     REQUIRE(graph.getNumberOfVertices() == 5);
     REQUIRE(graph.getNumberOfEdges() == 6);
-    REQUIRE(graph.getTotalValue() == 145);
+    REQUIRE(graph.getTotalValue() == (arr1 + arr2 + arr3 + arr4 + arr5));
     SUBCASE("normal spanning tree")//using depth First Search
     {
-        gm::GraphMatrix<int> spanningTree(graph.getSpanningTree());
+        gm::GraphMatrix<std::vector<int>> spanningTree(graph.getSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == 88);
+        CHECK(spanningTree.getTotalValue() == (arr1 + arr3 + arr2 + arr4));
     }
     SUBCASE("the smallest spanning tree")
     {
-        gm::GraphMatrix<int> spanningTree(graph.getTheSmallestSpanningTree());
+        gm::GraphMatrix<std::vector<int>> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == 53);
+        CHECK(spanningTree.getTotalValue() == (arr0 + arr1 + arr2 + arr3));
     }
 
 }

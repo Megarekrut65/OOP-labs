@@ -246,7 +246,7 @@ namespace gm
         GraphMatrix<T> spanningTree(false);
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            spanningTree.addVertex(vertices[i], false);
+            spanningTree.addVertex(vertices[i]);
         }
         std::vector<std::size_t> belongs(numberOfVertices);
         for (std::size_t i = 0; i < numberOfVertices; i++)
@@ -275,7 +275,7 @@ namespace gm
             }
             if (belongs[firstIndex] != belongs[secondIndex])
             {
-                spanningTree.addEdge(firstIndex, secondIndex, min, false);
+                spanningTree.addEdge(firstIndex, secondIndex, min);
                 std::size_t tempIndex = belongs[secondIndex];
                 belongs[secondIndex] = belongs[firstIndex];
                 for (std::size_t i = 0; i < numberOfVertices; i++)
