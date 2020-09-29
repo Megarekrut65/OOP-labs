@@ -41,5 +41,8 @@
     <ClInclude Include="tests_for_graph_structure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="my_book.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
