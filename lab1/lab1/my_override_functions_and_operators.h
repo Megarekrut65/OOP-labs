@@ -165,9 +165,8 @@ namespace ofo
         std::string line = "";
         for (std::size_t i = 0; i < size; i++)
         {
-            line.push_back(rand() % 'Z');
+            line+= 'a' + (rand() % 26);
         }
-
         return line;
     }
     template<typename T>
