@@ -1572,7 +1572,7 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::v
         gm::GraphMatrix<std::vector<int>> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == (arr0 + arr1 + arr2 + arr3));
+        CHECK(spanningTree.getTotalValue() == (arr0 + arr1 + arr2 + arr3));//totalValue is created taking into account the value of edges
     }
 
 }
@@ -2124,7 +2124,7 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::s
         gm::GraphMatrix<std::string> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == "abbcccdddd");
+        CHECK(spanningTree.getTotalValue() == "abbcccdddd");//totalValue is created taking into account the value of edges
     }
 }
 TEST_CASE("testing the creating GraphMatrix<std::string>")

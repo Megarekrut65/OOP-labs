@@ -480,7 +480,7 @@ TEST_CASE("testing the creating GraphStructure<int>")
     REQUIRE(graph.getNumberOfEdges() == 29);
     REQUIRE(graph.getTotalValue() > 0);
 }
-TEST_CASE("testing the getting text representation of GraphMatrix<int>")
+TEST_CASE("testing the getting text representation of GraphStructure<int>")
 {
     SUBCASE("oriented graph")
     {
@@ -550,8 +550,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<int>")
     }
 }
 //tests for double
-/*
-TEST_CASE("testing the adding vertices and edges to GraphMatrix<double>")
+TEST_CASE("testing the adding vertices and edges to GraphStructure<double>")
 {
     SUBCASE("oriented graph")
     {
@@ -653,7 +652,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<double>")
     }
 
 }
-TEST_CASE("testing the removing vertices and edges from GraphMatrix<double>")
+TEST_CASE("testing the removing vertices and edges from GraphStructure<double>")
 {
     SUBCASE("oriented graph")
     {
@@ -751,7 +750,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<double>")
     }
 
 }
-TEST_CASE("testing the checking the connectivity of GraphMatrix<double>")
+TEST_CASE("testing the checking the connectivity of GraphStructure<double>")
 {
     SUBCASE("oriented graph")
     {
@@ -811,7 +810,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<double>")
         }
     }
 }
-TEST_CASE("testing the depth First Search for GraphMatrix<double>")
+TEST_CASE("testing the depth First Search for GraphStructure<double>")
 {
     SUBCASE("oriented graph")
     {
@@ -860,7 +859,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<double>")
         }
     }
 }
-TEST_CASE("testing the getting path between two vertices for GraphMatrix<double>")
+TEST_CASE("testing the getting path between two vertices for GraphStructure<double>")
 {
     SUBCASE("oriented graph")
     {
@@ -922,7 +921,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<double>
         }
     }
 }
-TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<double>")
+TEST_CASE("testing the getting paths from the vertex to everyone else for GraphStructure<double>")
 {
     gs::GraphStructure<double> graph;
     SUBCASE("oriented graph")
@@ -958,7 +957,7 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
         CHECK(getPaths.isMax[i] == paths.isMax[i]);
     }
 }
-TEST_CASE("testing the topological sorting for oriented GraphMatrix<double> only")
+TEST_CASE("testing the topological sorting for oriented GraphStructure<double> only")
 {
     gs::GraphStructure<double> graph(true);
     graph.addVertex(10.7);
@@ -982,7 +981,7 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<double> only
         CHECK(array[i] == getArray[i]);
     }
 }
-TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<double> only")
+TEST_CASE("testing the getting spanning Tree for non-oriented GraphStructure<double> only")
 {
     gs::GraphStructure<double> graph(false);
     graph.addVertex(10.8);
@@ -1015,22 +1014,23 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<double
     }
 
 }
-TEST_CASE("testing the creating GraphMatrix<double>")
+TEST_CASE("testing the creating GraphStructure<double>")
 {
-    gs::GraphStructure<double> graph;
+    bool orientation = false;
     SUBCASE("oriented graph")
     {
-        graph = gs::GraphStructure<double>(10, 29, true, 100);
+        orientation = true;
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gs::GraphStructure<double>(10, 29, false, 100);
+        orientation = false;
     }
+    gs::GraphStructure<double> graph(10, 29, orientation, 100);
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
     REQUIRE(graph.getTotalValue() > 0);
 }
-TEST_CASE("testing the getting text representation of GraphMatrix<double>")
+TEST_CASE("testing the getting text representation of GraphStructure<double>")
 {
     SUBCASE("oriented graph")
     {
@@ -1051,8 +1051,10 @@ TEST_CASE("testing the getting text representation of GraphMatrix<double>")
             REQUIRE(graph.getNumberOfEdges() == 5);
             REQUIRE(graph.getTotalValue() == doctest::Approx(161.6615));
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {161.661500}\n\n";
-            graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {5.812300}.\n1)value: {6.712300}.\n2)value: {7.612300}.\n3)value: {8.512300}.\n\n";
+            graphStr += "Index: 0, value: {5.812300} => [ {i: 1, v: 20.412300} -> # ].\n";
+            graphStr += "Index: 1, value: {6.712300} => [ {i: 0, v: 10.612300} -> {i: 1, v: 30.312300} -> # ].\n";
+            graphStr += "Index: 2, value: {7.612300} => [ {i: 1, v: 60.112300} -> # ].\n";
+            graphStr += "Index: 3, value: {8.512300} => [ {i: 2, v: 40.212300} -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {
@@ -1082,8 +1084,10 @@ TEST_CASE("testing the getting text representation of GraphMatrix<double>")
             REQUIRE(graph.getNumberOfEdges() == 4);
             REQUIRE(graph.getTotalValue() == doctest::Approx(141.2492));
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {141.249200}\n\n";
-            graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {5.812300}.\n1)value: {6.712300}.\n2)value: {7.612300}.\n3)value: {8.512300}.\n\n";
+            graphStr += "Index: 0, value: {5.812300} => [ {i: 1, v: 10.612300} -> # ].\n";
+            graphStr += "Index: 1, value: {6.712300} => [ {i: 0, v: 10.612300} -> {i: 1, v: 30.312300} -> {i: 2, v: 60.112300} -> # ].\n";
+            graphStr += "Index: 2, value: {7.612300} => [ {i: 1, v: 60.112300} -> {i: 3, v: 40.212300} -> # ].\n";
+            graphStr += "Index: 3, value: {8.512300} => [ {i: 2, v: 40.212300} -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {
@@ -1096,7 +1100,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<double>")
     }
 }
 //tests for std::vector<int>. Other types can be used instead of int. Because the methods are defined for std::vector<T>
-TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>>")
+TEST_CASE("testing the adding vertices and edges to GraphStructure<std::vector<int>>")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arrFour = { 1, 5, 2, 2 };
 
@@ -1203,7 +1207,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::vector<int>
         }
     }
 }
-TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::vector<int>>")
+TEST_CASE("testing the removing vertices and edges from GraphStructure<std::vector<int>>")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 };
 
@@ -1305,7 +1309,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<std::vector<
     }
 
 }
-TEST_CASE("testing the checking the connectivity of GraphMatrix<std::vector<int>>")
+TEST_CASE("testing the checking the connectivity of GraphStructure<std::vector<int>>")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
 
@@ -1368,7 +1372,7 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<std::vector<int>
     }
 
 }
-TEST_CASE("testing the depth First Search for GraphMatrix<std::vector<int>>")
+TEST_CASE("testing the depth First Search for GraphStructure<std::vector<int>>")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
 
@@ -1420,7 +1424,7 @@ TEST_CASE("testing the depth First Search for GraphMatrix<std::vector<int>>")
     }
 
 }
-TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::vector<int>>")
+TEST_CASE("testing the getting path between two vertices for GraphStructure<std::vector<int>>")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 }, arrMany(50);
 
@@ -1484,7 +1488,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::ve
         }
     }
 }
-TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<std::vector<int>>")
+TEST_CASE("testing the getting paths from the vertex to everyone else for GraphStructure<std::vector<int>>")
 {
     std::vector<int> arr0, arr10(10), arr7(7), arr17(17), arr19(19), arr42(42), arr50(50);
     gs::GraphStructure<std::vector<int>> graph;
@@ -1521,7 +1525,7 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
         CHECK(getPaths.isMax[i] == paths.isMax[i]);
     }
 }
-TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::vector<int>> only")
+TEST_CASE("testing the topological sorting for oriented GraphStructure<std::vector<int>> only")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
 
@@ -1547,7 +1551,7 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<std::vector<
         CHECK(array[i] == getArray[i]);
     }
 }
-TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::vector<int>> only")
+TEST_CASE("testing the getting spanning Tree for non-oriented GraphStructure<std::vector<int>> only")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 }, arr5 = { 1, 5, 2, 2, 7 };
     gs::GraphStructure<std::vector<int>> graph(false);
@@ -1577,27 +1581,28 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<std::v
         gs::GraphStructure<std::vector<int>> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == (arr0 + arr1 + arr2 + arr3));
+        CHECK(spanningTree.getTotalValue() == (arr0 + arr1 + arr3 + arr2));//totalValue is created taking into account the order of the edges
     }
 
 }
-TEST_CASE("testing the creating GraphMatrix<std::vector<int>>")
+TEST_CASE("testing the creating GraphStructure<std::vector<int>>")
 {
-    gs::GraphStructure<std::vector<int>> graph;
+    bool orientation = true;
     std::vector<int> arr0, arr100(100, 100);
     SUBCASE("oriented graph")
     {
-        graph = gs::GraphStructure<std::vector<int>>(10, 29, true, arr100);
+        orientation = true;
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gs::GraphStructure<std::vector<int>>(10, 29, false, arr100);
+        orientation = false;
     }
+    gs::GraphStructure<std::vector<int>> graph(10, 29, orientation, arr100);
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
     REQUIRE(graph.getTotalValue() > arr0);
 }
-TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<int>>")
+TEST_CASE("testing the getting text representation of GraphStructure<std::vector<int>>")
 {
     std::vector<int> arr0, arr1 = { 5 }, arr2 = { 9, 2 }, arr3 = { 0, 4, 2 }, arr4 = { 8, 9, 2, 1 };
 
@@ -1621,8 +1626,10 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<in
             REQUIRE(graph.getTotalValue() == (arr1 + arr2 + arr4 + arr3 + arr1));
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\n";
             graphStr += "Total value: {Size: 11, array: 5 9 2 8 9 2 1 0 4 2 5 }\n\n";
-            graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {Size: 1, array: 5 }.\n1)value: {Size: 2, array: 9 2 }.\n2)value: {Size: 3, array: 0 4 2 }.\n3)value: {Size: 2, array: 9 2 }.\n\n";
+            graphStr += "Index: 0, value: {Size: 1, array: 5 } => [ {i: 1, v: Size: 2, array: 9 2 } -> # ].\n";
+            graphStr += "Index: 1, value: {Size: 2, array: 9 2 } => [ {i: 0, v: Size: 1, array: 5 } -> {i: 1, v: Size: 4, array: 8 9 2 1 } -> # ].\n";
+            graphStr += "Index: 2, value: {Size: 3, array: 0 4 2 } => [ {i: 1, v: Size: 1, array: 5 } -> # ].\n";
+            graphStr += "Index: 3, value: {Size: 2, array: 9 2 } => [ {i: 2, v: Size: 3, array: 0 4 2 } -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {
@@ -1653,8 +1660,10 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<in
             REQUIRE(graph.getTotalValue() == (arr1 + arr4 + arr3 + arr1));
             graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\n";
             graphStr += "Total value: {Size: 9, array: 5 8 9 2 1 0 4 2 5 }\n\n";
-            graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {Size: 1, array: 5 }.\n1)value: {Size: 2, array: 9 2 }.\n2)value: {Size: 3, array: 0 4 2 }.\n3)value: {Size: 2, array: 9 2 }.\n\n";
+            graphStr += "Index: 0, value: {Size: 1, array: 5 } => [ {i: 1, v: Size: 1, array: 5 } -> # ].\n";
+            graphStr += "Index: 1, value: {Size: 2, array: 9 2 } => [ {i: 0, v: Size: 1, array: 5 } -> {i: 1, v: Size: 4, array: 8 9 2 1 } -> {i: 2, v: Size: 1, array: 5 } -> # ].\n";
+            graphStr += "Index: 2, value: {Size: 3, array: 0 4 2 } => [ {i: 1, v: Size: 1, array: 5 } -> {i: 3, v: Size: 3, array: 0 4 2 } -> # ].\n";
+            graphStr += "Index: 3, value: {Size: 2, array: 9 2 } => [ {i: 2, v: Size: 3, array: 0 4 2 } -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {
@@ -1667,7 +1676,7 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<in
     }
 }
 //tests for std::string
-TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::string>")
+/*TEST_CASE("testing the adding vertices and edges to GraphMatrix<std::string>")
 {
     SUBCASE("oriented graph")
     {

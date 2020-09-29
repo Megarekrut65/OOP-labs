@@ -12,7 +12,7 @@ namespace gs//graph structure
     {
         std::size_t index;
         VertexNode* next;
-        int value;
+        T value;
 
         VertexNode();
         VertexNode(std::size_t index, VertexNode* next, T value);
