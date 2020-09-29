@@ -6,7 +6,8 @@
 namespace ofo//override functions and operators
 {
 	template<typename T>
-	std::string toString(const std::vector<T>& array);//to_string for a vector
+	std::string toString(const std::vector<T>& array);//to_string for std::vector<T>
+    std::string toString(const std::string& line);//to_string for std::string
 	template<typename T>
 	std::string toString(const T& value);//edit name of function std::to_sting 
 	template<typename T>
@@ -18,7 +19,7 @@ namespace ofo//override functions and operators
     template<typename T>
     std::vector<T> operator - (const std::vector<T>& array1, const std::vector<T>& array2);
 	template<typename T>
-	std::vector<T> operator % (const int& random, const std::vector<T>& array1);// use for rand()%std::vector<T>
+	std::vector<T> operator % (const int& random, const std::vector<T>& array1);// use for rand() % std::vector<T>
 	template<typename T>
 	bool operator < (const std::vector<T>& array1, const std::vector<T>& array2);
 	template<typename T>
@@ -31,6 +32,8 @@ namespace ofo//override functions and operators
 	bool operator == (const std::vector<T>& array1, const std::vector<T>& array2);
     template<typename T>
     bool operator != (const std::vector<T>& array1, const std::vector<T>& array2);
+    std::string operator - (const std::string& line1, const std::string& line2);
+    std::string operator % (const int& random, const std::string& line1);// use for rand() % std::string
 }
 namespace ofo
 {
@@ -42,6 +45,10 @@ namespace ofo
         for (std::size_t i = 0; i < array.size(); i++) result += std::to_string(array[i]) + " ";
 
         return result;
+    }
+    std::string toString(const std::string& line)
+    {
+        return line;
     }
     template<typename T>
     std::string toString(const T& value)
@@ -135,4 +142,25 @@ namespace ofo
 
         return false;
     }
+    std::string operator - (const std::string& line1, const std::string& line2)
+    {
+        std::string line3;     
+        std::size_t index = line1.find(line2, 0);
+        if (index + 1 == 0) return line3;
+        line3 = line1;
+        line3.erase(line3.begin() + index, line3.begin() + index + line2.size() - 1);
+
+        return line3;
+    }
+    std::string operator % (const int& random, const std::string& line1)
+    {
+        std::string line2;
+        std::size_t size = random % (line1.size() + 1);
+        for (std::size_t i = 0; i < size; i++)
+        {
+            line2.push_back(rand() % 'Z');
+        }
+
+        return line2;
+    }    
 }
