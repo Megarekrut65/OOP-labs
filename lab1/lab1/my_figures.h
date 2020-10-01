@@ -38,7 +38,7 @@ namespace fop//figures on the plane
 		EquationOfFigure();
 		EquationOfFigure(double coefficientAtY, double coefficientAtX, double constantC);
 	};
-	class TheCircle
+	/*class TheCircle
 	{
 	private:
 		Point centre;
@@ -54,8 +54,9 @@ namespace fop//figures on the plane
 	public:
 		TheLine();
 		TheLine(Point first, Point second);
-		double distanceToPoint(Point point);
-	};
+
+	};*/
+	double distanceFromLineToPoint(Point point);
 	std::vector<Point> pointsOfIntersection(Figure figure1, Figure figure2);
 }
 namespace fop
@@ -125,19 +126,33 @@ namespace fop
 	EquationOfFigure::EquationOfFigure(double coefficientAtY, double coefficientAtX, double constantC)
 		: coefficientAtY(coefficientAtY), coefficientAtX(coefficientAtX), constantC(constantC) {}
 	//TheLine
-	TheLine::TheLine(): first(Point()), second(Point()) {}
-	TheLine::TheLine(Point first, Point second) : first(first), second(second) {}
-	double TheLine::distanceToPoint(Point point)   //y - y1    x - x1
-	{                                              //_______ = _______ or ax + by + c = 0
-		double coefficientAtX = second.y - first.y;//y2 - y1   x2 - x1
-		double coefficientAtY = first.x - second.x;
-		double constantC = coefficientAtX * first.x + first.y * coefficientAtY;
+	/*TheLine::TheLine(): first(Point()), second(Point()) {}
+	TheLine::TheLine(Point first, Point second) : first(first), second(second) {}*/
+	double distanceFromLineToPoint(Figure line, Point point)    
+	{          
+		if (line.type != FiguresType::Line) return -1;
+		double coefficientAtX = line.second.y - line.first.y;
+		double coefficientAtY = line.first.x - line.second.x;
+		double constantC = coefficientAtX * line.first.x + line.first.y * coefficientAtY;
 		return abs(coefficientAtX * point.x + coefficientAtY * point.y - constantC) 
 				/ sqrt(coefficientAtX * coefficientAtX + coefficientAtY * coefficientAtY);
 	}
 	//functions
 	std::vector<Point> pointsOfIntersection(Figure figure1, Figure figure2)
 	{
-		return { {} };
+		switch (figure1.type)
+		{
+		case FiguresType::Circle:
+		{
+
+		}
+			break;
+		case FiguresType::Line:
+		{
+
+		}
+			break;
+		}
+		return {};
 	}
 }
