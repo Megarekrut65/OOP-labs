@@ -29,6 +29,7 @@ namespace fop//figures on the plane
 	{
 		Point first;
 		Point second;
+		Point directingVector;
 	};
 	bool operator < (Figure figure1, Figure figure2);
 	bool operator > (Figure figure1, Figure figure2);
