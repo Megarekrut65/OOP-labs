@@ -77,7 +77,7 @@ namespace gs
 {
     //VertexNode
     template<typename T>
-    VertexNode<T>::VertexNode() : index(0), next(nullptr), value(0) {}
+    VertexNode<T>::VertexNode() : index(0), next(nullptr), value(T()) {}
     template<typename T>
     VertexNode<T>::VertexNode(std::size_t index, VertexNode* next, T value) : index(index), next(next), value(value) {}    
     //GraphStructure
@@ -638,7 +638,7 @@ namespace gs
     T GraphStructure<T>::getPathBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show)
     {
         if (!connectedGraph(show)) return T();
-        T result;
+        T result = T();
         PathsBetweenVertices<T> paths(numberOfVertices, beginIndex);
         dijkstra(paths);
         if (paths.isMax[endIndex])

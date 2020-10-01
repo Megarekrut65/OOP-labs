@@ -143,11 +143,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="doctest.h" />
-    <ClInclude Include="my_book.h" />
+    <ClInclude Include="my_figures.h" />
     <ClInclude Include="my_graph_matrix.h" />
     <ClInclude Include="my_graph_structure.h" />
     <ClInclude Include="my_override_functions_and_operators.h" />
     <ClInclude Include="my_paths_between_vertices.h" />
+    <ClInclude Include="my_point.h" />
     <ClInclude Include="tests_for_graph_matrix.h" />
     <ClInclude Include="tests_for_graph_structure.h" />
   </ItemGroup>

@@ -466,7 +466,7 @@ TEST_CASE("testing the getting spanning Tree for non-oriented GraphStructure<int
 }
 TEST_CASE("testing the creating GraphStructure<int>")
 {
-    bool orientation;
+    bool orientation = false;
     SUBCASE("oriented graph")
     {
         orientation = true;
