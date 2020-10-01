@@ -2,9 +2,12 @@
 #include "doctest.h"
 #include "tests_for_graph_matrix.h"
 #include "tests_for_graph_structure.h"
+#include "my_figures.h"
 
 int main(int argc, char** argv) 
 {
+    fop::TheLine line{ {5, 6}, {8, 10} };
+    std::cout << line.distanceToPoint({ 14, 4 });
     doctest::Context context;
 
 

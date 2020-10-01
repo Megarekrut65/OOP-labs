@@ -10,6 +10,7 @@ namespace tdp//two-dimensional points
 		Point();
 		Point(double x, double y);
 		Point(double maxValue);//creates random point
+		double vectorModule();//if point(x, y) is vector(x, y), don't std::vector, then |vector| = vectorModule()
 	};
 	bool operator < (Point first, Point second);
 	bool operator > (Point first, Point second);
@@ -19,7 +20,7 @@ namespace tdp//two-dimensional points
 	bool operator != (Point first, Point second);
 	Point operator + (Point first, Point second);
 	Point operator - (Point first, Point second);
-	Point operator * (Point first, Point second);
+	Point vectorProduct(Point vector1, Point vector2);//for vector(x,y), don't std::vector
 	std::string toString(Point value);
 }
 namespace tdp
@@ -27,6 +28,10 @@ namespace tdp
 	Point::Point() : x(0), y(0) {}
 	Point::Point(double x, double y): x(x), y(y) {}
 	Point::Point(double maxValue) : x(ofo::randomValue(maxValue)), y(ofo::randomValue(maxValue)) {}
+	double Point::vectorModule()
+	{
+		return sqrt(x * x + y * y);
+	}
 	bool operator < (Point first, Point second)
 	{
 		if (first.x < second.x) return true;
@@ -79,9 +84,9 @@ namespace tdp
 	{
 		return Point(first.x - second.x, first.y - second.y);
 	}
-	Point operator * (Point first, Point second)
+	Point vectorProduct(Point vector1, Point vector2)
 	{
-		return Point(first.x * second.x, first.y * second.y);
+		return Point();
 	}
 	std::string toString(Point value)
 	{
