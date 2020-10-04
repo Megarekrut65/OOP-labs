@@ -28,14 +28,19 @@ namespace fop//figures on the plane
 		Intersection(bool infinity, std::size_t numberOfPoints, const std::vector<Point>& points);
 		void print();
 	};
-	struct Equation//a*x + b * y + c = 0
+	struct Equation//a*x + b * y  = ñ
 	{
+	private:
+		bool isDependent(double value1, double value2);
+	public:
 		double a;
 		double b;
 		double c;
 		Equation();
 		Equation(Figure figure);
+		bool checkDependency(Equation equation);
 	};
+	//bool operator == (Equation equation1, Equation equation2);
 	bool operator < (Figure figure1, Figure figure2);
 	bool operator > (Figure figure1, Figure figure2);
 	bool operator <= (Figure figure1, Figure figure2);
@@ -56,7 +61,18 @@ namespace fop
 {
 	//Figure
 	Figure::Figure(): type(FiguresType::Circle), first(Point()), second(Point()){}
-	Figure::Figure(FiguresType type, Point first, Point second) : type(type), first(first), second(second) {}
+	Figure::Figure(FiguresType type, Point first, Point second)
+	{
+		this->type = type;
+		if (first == second)
+		{
+			std::cout << "Error: This figure is point " << first << std::endl;
+			first.x++;
+			this->first = first;
+		}
+		else this->first = first;
+		this->second = second;
+	}
 	Figure::Figure(Point maxValue)
 	{
 		int number = rand() % 2;
@@ -64,6 +80,7 @@ namespace fop
 		else type = FiguresType::Line;
 		first = Point(maxValue);
 		second = Point(maxValue);	
+		if (first == second) first.x++;
 	}
 	bool operator < (Figure figure1, Figure figure2)
 	{
@@ -120,15 +137,26 @@ namespace fop
 		: infinity(infinity), numberOfPoints(numberOfPoints), points(points) {}
 	void Intersection::print()
 	{
-		if (infinity)
+		if (infinity || numberOfPoints == 0)
 		{
-			std::cout << "Figures have an infinite number of points of intersection!" << std::endl;
+			std::cout << "Figures coincide or do not intersect!" << std::endl;
 			return;
 		}
 		std::cout << "Number of points of intersection: " << numberOfPoints << std::endl << "Points: " ;
 		for (std::size_t i = 0; i < numberOfPoints; i++) std::cout << points[i] << ", ";
 	}
 	//Equation
+	//private
+	bool Equation::isDependent(double value1, double value2)
+	{
+		if (value1 == 0 && value2 == 0) return true;
+		if (value1 == 0 || value2 == 0) return false;
+		double fraction = value1 / value2;
+		if (round(fraction) == fraction) return true;
+
+		return false;
+	}
+	//public
 	Equation::Equation():a(0), b(0), c(0) {}
 	Equation::Equation(Figure figure)
 	{
@@ -139,15 +167,28 @@ namespace fop
 		{
 			a = figure.second.y - figure.first.y;
 			b = figure.first.x - figure.second.x;
-			c = -1 * (a * figure.first.x + figure.first.y * b);
+			c = a * figure.first.x + figure.first.y * b;
 		}
+		std::cout << a << "x + " << b << "y + " << c << " = 0\n";
 	}
+	bool Equation::checkDependency(Equation equation)
+	{
+		if (isDependent(a, equation.a)&& isDependent(b, equation.b)&& isDependent(c, equation.c)) return true;
+
+		return false;
+	}
+	/*bool operator == (Equation equation1, Equation equation2)
+	{
+		return ((equation1.a == doctest::Approx(equation2.a)) 
+			&& (equation1.b == doctest::Approx(equation2.b))
+			&& (equation1.c == doctest::Approx(equation2.c)));
+	}*/
 	//functions
 	double distanceFromLineToPoint(Figure line, Point point)
 	{
 		if (line.type != FiguresType::Line) return -1;
 		Equation equation{ line };
-		return abs(equation.a * point.x + equation.b * point.y + equation.c)
+		return abs(equation.a * point.x + equation.b * point.y - equation.c)
 			/ sqrt(equation.a * equation.a + equation.b * equation.b);
 	}
 	Intersection intersectionOfCircleAndLine(Figure circle, Figure line)
@@ -175,14 +216,13 @@ namespace fop
 	{
 		if (line1.type != FiguresType::Line || line2.type != FiguresType::Line) return Intersection();
 		Equation equation1{ line1 }, equation2{ line2 };
-		double y = 0, x1 = 0, x2 = 0;
-		y = (equation2.a * (equation1.c / equation1.a) - equation2.c) 
-			/ (-1 * equation2.a * equation1.b/equation1.a + equation2.b);
-		x1 = -1 * (equation1.b * y + equation1.c)/equation1.a;
-		x2 = -1 * (equation2.b * y + equation2.c) / equation2.a;
-		if (x1 != x2) std::cout << "\nx1 != x2!\n";
-
-		return Intersection(false, 1, { {x1, y} });
+		double determinant = equation1.a * equation2.b - equation2.a * equation1.b;
+		if (determinant == 0) return Intersection();
+		double determinant1 = equation1.c * equation2.b - equation2.c * equation1.b;
+		double determinant2 = equation1.a * equation2.c - equation2.a * equation1.c;
+		double x = determinant1 / determinant;
+		double y = determinant2 / determinant;
+		return Intersection(false, 1, { {x, y} });
 	}
 	Intersection pointsOfIntersection(Figure figure1, Figure figure2)
 	{

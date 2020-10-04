@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 {
     doctest::Context context;
 
-    Intersection result = intersectionOfTwoLine({ FiguresType::Line, {2, 3}, {6, 7} }, { FiguresType::Line,  {3, 8}, {5, 2} });
+    Intersection result = intersectionOfTwoLine({ FiguresType::Line, {0, -3}, {1, -3} }, { FiguresType::Line,  {5, 1}, {5, 1} });
     result.print();
 
     // defaults
