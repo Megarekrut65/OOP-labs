@@ -10,9 +10,8 @@ int main(int argc, char** argv)
 {
     doctest::Context context;
 
-    std::vector<Point> points = intersectionOfCircleAndLine({ FiguresType::Circle, {-1, -1}, {3, -1} }, { FiguresType::Line,  {2, 2}, {2, -3} });
-    std::cout << "size: " << points.size() << std::endl;
-    for (std::size_t i = 0; i < points.size(); i++) std::cout << points[i] << " ";
+    Intersection result = intersectionOfTwoLine({ FiguresType::Line, {2, 3}, {6, 7} }, { FiguresType::Line,  {3, 8}, {5, 2} });
+    result.print();
 
     // defaults
 //    context.addFilter("test-case-exclude", "*math*"); // exclude test cases with "math" in their name

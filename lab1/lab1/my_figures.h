@@ -19,6 +19,23 @@ namespace fop//figures on the plane
 		Figure(FiguresType type, Point first, Point second);
 		Figure(Point maxValue);//creates random figure
 	};
+	struct Intersection
+	{
+		bool infinity;
+		std::size_t numberOfPoints;
+		std::vector<Point> points;
+		Intersection();
+		Intersection(bool infinity, std::size_t numberOfPoints, const std::vector<Point>& points);
+		void print();
+	};
+	struct Equation//a*x + b * y + c = 0
+	{
+		double a;
+		double b;
+		double c;
+		Equation();
+		Equation(Figure figure);
+	};
 	bool operator < (Figure figure1, Figure figure2);
 	bool operator > (Figure figure1, Figure figure2);
 	bool operator <= (Figure figure1, Figure figure2);
@@ -30,35 +47,10 @@ namespace fop//figures on the plane
 	std::string toString(FiguresType value);
 	std::string toString(const Figure& value);
 	Figure randomValue(const Figure& maxValue);
-	struct EquationOfFigure//ax + by + c = 0
-	{
-		double coefficientAtY;
-		double coefficientAtX;
-		double constantC;
-		EquationOfFigure();
-		EquationOfFigure(double coefficientAtY, double coefficientAtX, double constantC);
-	};
-	/*class TheCircle
-	{
-	private:
-		Point centre;
-		Point second;
-		double radius;
-	public:
-	};
-	class TheLine
-	{
-	private:
-		Point first;
-		Point second;
-	public:
-		TheLine();
-		TheLine(Point first, Point second);
-
-	};*/
 	double distanceFromLineToPoint(Figure line, Point point);
-	std::vector<Point> pointsOfIntersection(Figure figure1, Figure figure2);
-	std::vector<Point> intersectionOfCircleAndLine(Figure circle, Figure line);
+	Intersection pointsOfIntersection(Figure figure1, Figure figure2);
+	Intersection intersectionOfCircleAndLine(Figure circle, Figure line);
+	Intersection intersectionOfTwoLine(Figure line1, Figure line2);
 }
 namespace fop
 {
@@ -122,38 +114,77 @@ namespace fop
 	{
 		return Figure(maxValue);
 	}
-	//EquationOfFigure
-	EquationOfFigure::EquationOfFigure(): coefficientAtY(0), coefficientAtX(0), constantC(0){}
-	EquationOfFigure::EquationOfFigure(double coefficientAtY, double coefficientAtX, double constantC)
-		: coefficientAtY(coefficientAtY), coefficientAtX(coefficientAtX), constantC(constantC) {}
-	//TheLine
-	/*TheLine::TheLine(): first(Point()), second(Point()) {}
-	TheLine::TheLine(Point first, Point second) : first(first), second(second) {}*/
-	double distanceFromLineToPoint(Figure line, Point point)    
-	{          
-		if (line.type != FiguresType::Line) return -1;
-		double coefficientAtX = line.second.y - line.first.y;
-		double coefficientAtY = line.first.x - line.second.x;
-		double constantC = coefficientAtX * line.first.x + line.first.y * coefficientAtY;
-		return abs(coefficientAtX * point.x + coefficientAtY * point.y - constantC) 
-				/ sqrt(coefficientAtX * coefficientAtX + coefficientAtY * coefficientAtY);
+	//Intersection
+	Intersection::Intersection(): infinity(false), numberOfPoints(0), points({}) {}
+	Intersection::Intersection(bool infinity, std::size_t numberOfPoints, const std::vector<Point>& points)
+		: infinity(infinity), numberOfPoints(numberOfPoints), points(points) {}
+	void Intersection::print()
+	{
+		if (infinity)
+		{
+			std::cout << "Figures have an infinite number of points of intersection!" << std::endl;
+			return;
+		}
+		std::cout << "Number of points of intersection: " << numberOfPoints << std::endl << "Points: " ;
+		for (std::size_t i = 0; i < numberOfPoints; i++) std::cout << points[i] << ", ";
+	}
+	//Equation
+	Equation::Equation():a(0), b(0), c(0) {}
+	Equation::Equation(Figure figure)
+	{
+		a = 0;
+		b = 0;
+		c = 0;
+		if (figure.type == FiguresType::Line)
+		{
+			a = figure.second.y - figure.first.y;
+			b = figure.first.x - figure.second.x;
+			c = -1 * (a * figure.first.x + figure.first.y * b);
+		}
 	}
 	//functions
-	std::vector<Point> intersectionOfCircleAndLine(Figure circle, Figure line)
+	double distanceFromLineToPoint(Figure line, Point point)
+	{
+		if (line.type != FiguresType::Line) return -1;
+		Equation equation{ line };
+		return abs(equation.a * point.x + equation.b * point.y + equation.c)
+			/ sqrt(equation.a * equation.a + equation.b * equation.b);
+	}
+	Intersection intersectionOfCircleAndLine(Figure circle, Figure line)
 	{
 		if (circle.type == FiguresType::Line && line.type == FiguresType::Circle)
 			return intersectionOfCircleAndLine(line, circle);
-		if (circle.type != FiguresType::Circle || line.type != FiguresType::Line) return {};
+		if (circle.type != FiguresType::Circle || line.type != FiguresType::Line) return Intersection();
 		double distance = distanceFromLineToPoint(line, circle.first);
 		double radius = distanceBetweenPoints(circle.first, circle.second);
-		std::cout << "dis: " << distance << " rad: " << radius << std::endl;
-		if (distance > radius) return {};
+		if (distance > radius) return Intersection();
 		double distanceSquare = pow(distance, 2), radiusSquare = pow(radius, 2);
-		if (distanceSquare == radiusSquare) return { {distance + circle.first.x, circle.first.y} };
-		return { {distance + circle.first.x, sqrt(radiusSquare - distanceSquare) + circle.first.y}, 
-			{distance + circle.first.x, -1 * sqrt(radiusSquare - distanceSquare) + circle.first.y} };
+		std::vector<Point> points;
+		if (distanceSquare == radiusSquare)
+		{
+			points = { {distance + circle.first.x, circle.first.y} };
+		}
+		else
+		{
+			points = { {distance + circle.first.x, sqrt(radiusSquare - distanceSquare) + circle.first.y},
+						{distance + circle.first.x, -1 * sqrt(radiusSquare - distanceSquare) + circle.first.y} };
+		}
+		return Intersection(false, points.size(), points);
 	}
-	std::vector<Point> pointsOfIntersection(Figure figure1, Figure figure2)
+	Intersection intersectionOfTwoLine(Figure line1, Figure line2)
+	{
+		if (line1.type != FiguresType::Line || line2.type != FiguresType::Line) return Intersection();
+		Equation equation1{ line1 }, equation2{ line2 };
+		double y = 0, x1 = 0, x2 = 0;
+		y = (equation2.a * (equation1.c / equation1.a) - equation2.c) 
+			/ (-1 * equation2.a * equation1.b/equation1.a + equation2.b);
+		x1 = -1 * (equation1.b * y + equation1.c)/equation1.a;
+		x2 = -1 * (equation2.b * y + equation2.c) / equation2.a;
+		if (x1 != x2) std::cout << "\nx1 != x2!\n";
+
+		return Intersection(false, 1, { {x1, y} });
+	}
+	Intersection pointsOfIntersection(Figure figure1, Figure figure2)
 	{
 		switch (figure1.type)
 		{
