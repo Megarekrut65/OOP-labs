@@ -10,7 +10,11 @@ int main(int argc, char** argv)
 {
     doctest::Context context;
 
-    Intersection result = intersectionOfTwoCircle({ FiguresType::Circle, {4, 5}, {4, 2} }, { FiguresType::Circle,  {4, 5}, {4, 6} });
+    Intersection result = pointsOfIntersection({ FiguresType::Circle, {4, 8}, {4, 2} }, { FiguresType::Circle,  {4, 5}, {4, 1} });
+    result.print();
+    result = pointsOfIntersection({ FiguresType::Line, {4, 8}, {4, 2} }, { FiguresType::Circle,  {4, 5}, {4, 1} });
+    result.print();
+    result = pointsOfIntersection({ FiguresType::Line, {4, 8}, {4, 2} }, { FiguresType::Line,  {4, 5}, {4, 1} });
     result.print();
 
     // defaults
