@@ -56,8 +56,9 @@ namespace fop//figures on the plane
 		TheLine(Point first, Point second);
 
 	};*/
-	double distanceFromLineToPoint(Point point);
+	double distanceFromLineToPoint(Figure line, Point point);
 	std::vector<Point> pointsOfIntersection(Figure figure1, Figure figure2);
+	std::vector<Point> intersectionOfCircleAndLine(Figure circle, Figure line);
 }
 namespace fop
 {
@@ -138,6 +139,20 @@ namespace fop
 				/ sqrt(coefficientAtX * coefficientAtX + coefficientAtY * coefficientAtY);
 	}
 	//functions
+	std::vector<Point> intersectionOfCircleAndLine(Figure circle, Figure line)
+	{
+		if (circle.type == FiguresType::Line && line.type == FiguresType::Circle)
+			return intersectionOfCircleAndLine(line, circle);
+		if (circle.type != FiguresType::Circle || line.type != FiguresType::Line) return {};
+		double distance = distanceFromLineToPoint(line, circle.first);
+		double radius = distanceBetweenPoints(circle.first, circle.second);
+		std::cout << "dis: " << distance << " rad: " << radius << std::endl;
+		if (distance > radius) return {};
+		double distanceSquare = pow(distance, 2), radiusSquare = pow(radius, 2);
+		if (distanceSquare == radiusSquare) return { {distance + circle.first.x, circle.first.y} };
+		return { {distance + circle.first.x, sqrt(radiusSquare - distanceSquare) + circle.first.y}, 
+			{distance + circle.first.x, -1 * sqrt(radiusSquare - distanceSquare) + circle.first.y} };
+	}
 	std::vector<Point> pointsOfIntersection(Figure figure1, Figure figure2)
 	{
 		switch (figure1.type)
