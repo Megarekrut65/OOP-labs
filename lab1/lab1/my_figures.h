@@ -30,17 +30,12 @@ namespace fop//figures on the plane
 	};
 	struct Equation//a*x + b * y  = ñ
 	{
-	private:
-		bool isDependent(double value1, double value2);
-	public:
 		double a;
 		double b;
 		double c;
 		Equation();
 		Equation(Figure figure);
-		bool checkDependency(Equation equation);
 	};
-	//bool operator == (Equation equation1, Equation equation2);
 	bool operator < (Figure figure1, Figure figure2);
 	bool operator > (Figure figure1, Figure figure2);
 	bool operator <= (Figure figure1, Figure figure2);
@@ -56,6 +51,8 @@ namespace fop//figures on the plane
 	Intersection pointsOfIntersection(Figure figure1, Figure figure2);
 	Intersection intersectionOfCircleAndLine(Figure circle, Figure line);
 	Intersection intersectionOfTwoLine(Figure line1, Figure line2);
+	std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD);
+	Intersection intersectionOfTwoCircle(Figure circle1, Figure circle2);
 }
 namespace fop
 {
@@ -146,17 +143,6 @@ namespace fop
 		for (std::size_t i = 0; i < numberOfPoints; i++) std::cout << points[i] << ", ";
 	}
 	//Equation
-	//private
-	bool Equation::isDependent(double value1, double value2)
-	{
-		if (value1 == 0 && value2 == 0) return true;
-		if (value1 == 0 || value2 == 0) return false;
-		double fraction = value1 / value2;
-		if (round(fraction) == fraction) return true;
-
-		return false;
-	}
-	//public
 	Equation::Equation():a(0), b(0), c(0) {}
 	Equation::Equation(Figure figure)
 	{
@@ -171,18 +157,6 @@ namespace fop
 		}
 		std::cout << a << "x + " << b << "y + " << c << " = 0\n";
 	}
-	bool Equation::checkDependency(Equation equation)
-	{
-		if (isDependent(a, equation.a)&& isDependent(b, equation.b)&& isDependent(c, equation.c)) return true;
-
-		return false;
-	}
-	/*bool operator == (Equation equation1, Equation equation2)
-	{
-		return ((equation1.a == doctest::Approx(equation2.a)) 
-			&& (equation1.b == doctest::Approx(equation2.b))
-			&& (equation1.c == doctest::Approx(equation2.c)));
-	}*/
 	//functions
 	double distanceFromLineToPoint(Figure line, Point point)
 	{
@@ -223,6 +197,76 @@ namespace fop
 		double x = determinant1 / determinant;
 		double y = determinant2 / determinant;
 		return Intersection(false, 1, { {x, y} });
+	}
+	std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD)
+	{
+		if (coefficientP == 0)
+		{
+			return {-1 * coefficientD / coefficientQ};
+		}
+		double discriminant = pow(coefficientQ, 2) - 4 * coefficientP * coefficientD;
+		if (discriminant < 0) return {};
+		if (discriminant == 0)
+		{
+			return { -1 * coefficientQ / (2 * coefficientP) };
+		}
+		double sqrtDiscriminant = sqrt(discriminant);
+		return { (-1 * coefficientQ - sqrtDiscriminant) / (2 * coefficientP)
+			, (-1 * coefficientQ + sqrtDiscriminant) / (2 * coefficientP) };
+	}
+	std::vector<Point> intersectionOfTwoCircleByCoordinates(double x1, double x2, double y1, double y2, double radius1, double radius2)
+	{
+		//x = B*y + C
+		double coefficientB = -1 * (y2 - y1) / (x2 - x1);
+		double coefficientC = (pow(radius1, 2) - pow(radius2, 2) - pow(x1, 2)
+			+ pow(x2, 2) - pow(y1, 2) + pow(y2, 2))
+			/ (2 * (x2 - x1));
+		//P*y^2 + Q*y + D = 0
+		double coefficientP = pow(coefficientB, 2) + 1;
+		double coefficientQ = 2 * (coefficientB * (coefficientC - x1) - y1);
+		double coefficientD = pow(coefficientC - x1, 2) + pow(y1, 2) - pow(radius1, 2);
+		std::vector<double> y = solveQuadraticEquation(coefficientP, coefficientQ, coefficientD);
+		std::cout << "y.size = " << y.size() << std::endl;
+		switch (y.size())
+		{
+		case 0: return {};
+			break;
+		case 1: return { { coefficientB * y[0] + coefficientC, y[0]} };
+			break;
+		case 2: return {{coefficientB * y[0] + coefficientC, y[0]}
+					 ,{ coefficientB * y[1] + coefficientC, y[1]} };
+			break;
+		}
+
+		return {};
+	}
+	Intersection intersectionOfTwoCircle(Figure circle1, Figure circle2)
+	{
+		if (circle1.type != FiguresType::Circle 
+			|| circle2.type != FiguresType::Circle) return Intersection();
+		double radius1 = distanceBetweenPoints(circle1.first, circle1.second);
+		double radius2 = distanceBetweenPoints(circle2.first, circle2.second);
+		// (x - x1)^2 + (y - y1)^2 = radius1^2
+		// (x - x2)^2 + (y - y2)^2 = radius2^2
+		double x1 = circle1.first.x, y1 = circle1.first.y
+			, x2 = circle2.first.x, y2 = circle2.first.y;
+		if (x1 != x2)
+		{
+			std::vector<Point> points = intersectionOfTwoCircleByCoordinates(x1, x2, y1, y2, radius1, radius2);
+			return Intersection(false, points.size(), points);
+		}
+		else if (y1 != y2)
+		{
+			std::vector<Point> points = intersectionOfTwoCircleByCoordinates(y1, y2, x1, x2, radius1, radius2);
+			for (std::size_t i = 0; i < points.size(); i++)
+			{
+				double temp = points[i].x;
+				points[i].x = points[i].y;
+				points[i].y = temp;
+			}
+			return Intersection(false, points.size(), points);
+		}
+		return Intersection();
 	}
 	Intersection pointsOfIntersection(Figure figure1, Figure figure2)
 	{
