@@ -16,7 +16,9 @@ int main(int argc, char** argv)
     result.print();
     result = pointsOfIntersection({ FiguresType::Line, {4, 8}, {4, 2} }, { FiguresType::Line,  {4, 5}, {4, 1} });
     result.print();*/
-    std::cout << toString(symmetricalMappingOfFigureByLine({ FiguresType::Line, {-2, -2}, {-3, -5} }, { FiguresType::Point,  {3, -5}, {3, -5} }));
+    constexpr double max = std::numeric_limits<double>::max();
+    constexpr double min = std::numeric_limits<double>::min();
+    std::cout << inversionTransformationOfPointByCircle({ FiguresType::Circle, {-2, -2}, {-3, -5} }, {max, min} );
     // defaults
 //    context.addFilter("test-case-exclude", "*math*"); // exclude test cases with "math" in their name
 //    context.setOption("abort-after", 5);              // stop test execution after 5 failed assertions

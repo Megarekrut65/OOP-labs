@@ -120,8 +120,10 @@ namespace fop
 	}
 	std::string toString(const Figure& value)
 	{
-		std::string result = "Figure: {type: " + toString(value.type)
-			+ ", first point: " + toString(value.first);
+		std::string result = "Figure: {type: " + toString(value.type) + ", ";
+		if (value.type == FiguresType::Circle) result += "centre point";
+		else result += "first point";
+		result += " : " + toString(value.first);
 		if (value.type != FiguresType::Point) result += ", second point: " + toString(value.second);
 		result +=" }";
 
@@ -311,5 +313,24 @@ namespace fop
 
 		return Figure(figure.type, symmetricalMappingOfPointByLine(line, figure.first)
 								 , symmetricalMappingOfPointByLine(line, figure.second));
+	}
+	Point inversionTransformationOfPointByCircle(Figure circle, Point point)
+	{
+		if (circle.type != FiguresType::Circle) return point;
+		constexpr double max = std::numeric_limits<double>::max();
+		constexpr double min = std::numeric_limits<double>::min();
+		if (point == circle.first) return Point(max, max);
+		if ((point.x == max || point.x == min) && (point.y == max || point.y == min)) return circle.first;
+		double x0 = circle.first.x, y0 = circle.first.y;
+		double radius = distanceBetweenPoints(circle.first, circle.second);
+		double divisor = (pow(point.x - x0, 2) + pow(point.y - y0, 2));
+		double x = x0 + (pow(radius, 2) * (point.x - x0)) / divisor;
+		double y = y0 + (pow(radius, 2) * (point.y - y0)) / divisor;
+			
+		return Point(x, y);
+	}
+	Figure inversionTransformationOfFigureByCircle(Figure circle, Figure figure)
+	{
+		if (circle.type != FiguresType::Circle) return figure;
 	}
 }
