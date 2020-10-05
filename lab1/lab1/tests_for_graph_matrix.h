@@ -2316,26 +2316,30 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<fop::Figure>")
 }
 TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
 {
+    fop::Figure figure1{ fop::FiguresType::Circle, {1, 5}, {2, 2} }
+        , figure2{ fop::FiguresType::Line, {1, 3}, {6, 2} }
+        , figure3{ fop::FiguresType::Line, {1, 1}, {2, 11} }
+    , figure4{ fop::FiguresType::Circle, {0,0}, {4, 5} }, figure0;
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(41);
-        graph.addEdge(0, 1, 10);
-        graph.addEdge(1, 2, 6);
-        graph.addEdge(0, 3, 44);
+        gm::GraphMatrix<fop::Figure> graph(true);
+        graph.addVertex(figure1);
+        graph.addVertex(figure2);
+        graph.addVertex(figure3);
+        graph.addVertex(figure1);
+        graph.addEdge(0, 1, figure4);
+        graph.addEdge(1, 2, figure3);
+        graph.addEdge(0, 3, figure1);
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 3);
-        REQUIRE(graph.getTotalValue() == 60);
+        REQUIRE(graph.getTotalValue() == (figure4 + figure3 + figure1));
         SUBCASE("removing existent vertices")//after removing vertex indexes of all vertices edited(example: vertices: 0, 1, 2; remove(0); vertices: 0, 1;)
         {
             graph.removeVertex(0);
             graph.removeVertex(0);
             CHECK(graph.getNumberOfVertices() == 2);
             CHECK(graph.getNumberOfEdges() == 0);
-            CHECK(graph.getTotalValue() == 0);
+            CHECK(graph.getTotalValue() == figure0);
         }
         SUBCASE("removing non-existent vertices")
         {
@@ -2344,7 +2348,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeVertex(4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == (figure4 + figure3 + figure1));
         }
         SUBCASE("removing existent edges")
         {
@@ -2352,7 +2356,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeEdge(1, 2);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 1);
-            CHECK(graph.getTotalValue() == 10);
+            CHECK(graph.getTotalValue() == figure4);
         }
         SUBCASE("removing non-existent edges")
         {
@@ -2360,29 +2364,29 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeEdge(15, 22);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == (figure4 + figure3 + figure1));
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(41);
-        graph.addEdge(0, 1, 10);
-        graph.addEdge(1, 2, 6);
-        graph.addEdge(0, 3, 44);
+        gm::GraphMatrix<fop::Figure> graph(false);
+        graph.addVertex(figure1);
+        graph.addVertex(figure2);
+        graph.addVertex(figure3);
+        graph.addVertex(figure1);
+        graph.addEdge(0, 1, figure4);
+        graph.addEdge(1, 2, figure3);
+        graph.addEdge(0, 3, figure1);
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 3);
-        REQUIRE(graph.getTotalValue() == 60);
+        REQUIRE(graph.getTotalValue() == (figure4 + figure3 + figure1));
         SUBCASE("removing existent vertices")//after removing vertex indexes of all vertices edited(example: vertices: 0, 1, 2; remove(0); vertices: 0, 1;)
         {
             graph.removeVertex(0);
             graph.removeVertex(0);
             CHECK(graph.getNumberOfVertices() == 2);
             CHECK(graph.getNumberOfEdges() == 0);
-            CHECK(graph.getTotalValue() == 0);
+            CHECK(graph.getTotalValue() == figure0);
         }
         SUBCASE("removing non-existent vertices")
         {
@@ -2391,7 +2395,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeVertex(4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == (figure4 + figure3 + figure1));
         }
         SUBCASE("removing existent edges")
         {
@@ -2399,7 +2403,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeEdge(1, 2);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 1);
-            CHECK(graph.getTotalValue() == 10);
+            CHECK(graph.getTotalValue() == figure4);
         }
         SUBCASE("removing non-existent edges")
         {
@@ -2407,7 +2411,7 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
             graph.removeEdge(15, 22);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 60);
+            CHECK(graph.getTotalValue() == (figure4 + figure3 + figure1));
         }
     }
 }
