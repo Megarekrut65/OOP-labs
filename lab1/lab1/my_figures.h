@@ -8,7 +8,8 @@ namespace fop//figures on the plane
 	enum class FiguresType
 	{
 		Circle,
-		Line
+		Line,
+		Point
 	};
 	struct Figure
 	{
@@ -50,25 +51,24 @@ namespace fop//figures on the plane
 	double distanceFromLineToPoint(Figure line, Point point);
 	Intersection pointsOfIntersection(Figure figure1, Figure figure2);
 	Intersection intersectionOfCircleAndLine(Figure circle, Figure line);
+	Intersection solveSystemOfLineEquations(Equation equation1, Equation equation2);
 	Intersection intersectionOfTwoLines(Figure line1, Figure line2);
 	std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD);
 	std::vector<Point> intersectionOfTwoCirclesByCoordinates(double x1, double x2, double y1, double y2, double radius1, double radius2);
 	Intersection intersectionOfTwoCircles(Figure circle1, Figure circle2);
+	Figure createPerpendicularLine(Figure line, Point point);
+	Point symmetricalMappingOfPointByLine(Figure line, Point point);
+	Figure symmetricalMappingOfFigureByLine(Figure line, Figure figure);
 }
 namespace fop
 {
 	//Figure
 	Figure::Figure(): type(FiguresType::Circle), first(Point()), second(Point()){}
 	Figure::Figure(FiguresType type, Point first, Point second)
-	{
-		this->type = type;
-		if (first == second)
-		{
-			std::cout << "Error: This figure is point " << first << std::endl;
-			first.x++;
-			this->first = first;
-		}
-		else this->first = first;
+	{		
+		if (first == second) this->type = FiguresType::Point;
+		else this->type = type;
+		this->first = first;
 		this->second = second;
 	}
 	Figure::Figure(Point maxValue)
@@ -186,10 +186,8 @@ namespace fop
 		}
 		return Intersection(false, points.size(), points);
 	}
-	Intersection intersectionOfTwoLines(Figure line1, Figure line2)
+	Intersection solveSystemOfLineEquations(Equation equation1, Equation equation2)
 	{
-		if (line1.type != FiguresType::Line || line2.type != FiguresType::Line) return Intersection();
-		Equation equation1{ line1 }, equation2{ line2 };
 		double determinant = equation1.a * equation2.b - equation2.a * equation1.b;
 		if (determinant == 0) return Intersection();
 		double determinant1 = equation1.c * equation2.b - equation2.c * equation1.b;
@@ -197,6 +195,12 @@ namespace fop
 		double x = determinant1 / determinant;
 		double y = determinant2 / determinant;
 		return Intersection(false, 1, { {x, y} });
+	}
+	Intersection intersectionOfTwoLines(Figure line1, Figure line2)
+	{
+		if (line1.type != FiguresType::Line || line2.type != FiguresType::Line) return Intersection();
+		Equation equation1{ line1 }, equation2{ line2 };
+		return solveSystemOfLineEquations(equation1, equation2);
 	}
 	std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD)
 	{
@@ -280,5 +284,30 @@ namespace fop
 		}
 
 		return intersectionOfTwoLines(figure1, figure2);
+	}
+	Figure createPerpendicularLine(Figure line, Point point)
+	{
+		if (line.type != FiguresType::Line) return Figure();
+		Equation equation1{line}, equation2;
+		equation2.a = line.second.x - line.first.x;
+		equation2.b = line.second.y - line.first.y;
+		equation2.c = point.x * equation2.a + point.y * equation2.b;
+		Intersection intersection = solveSystemOfLineEquations(equation1, equation2);
+		if (intersection.points.size() != 1) return Figure();
+		return Figure(FiguresType::Line, point, intersection.points[0]);
+	}
+	Point symmetricalMappingOfPointByLine(Figure line, Point point)
+	{
+		if (line.type != FiguresType::Line) return point;
+		Figure perpendicularLine = createPerpendicularLine(line, point);//perpendicularLine.second ª line
+
+		return (2 * perpendicularLine.second - point);
+	}
+	Figure symmetricalMappingOfFigureByLine(Figure line, Figure figure)
+	{
+		if (line.type != FiguresType::Line) return figure;
+
+		return Figure(figure.type, symmetricalMappingOfPointByLine(line, figure.first)
+								 , symmetricalMappingOfPointByLine(line, figure.second));
 	}
 }

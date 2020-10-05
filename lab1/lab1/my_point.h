@@ -20,6 +20,7 @@ namespace tdp//two-dimensional points
 	bool operator != (Point first, Point second);
 	Point operator + (Point first, Point second);
 	Point operator - (Point first, Point second);
+	Point operator * (double value, Point point);
 	std::ostream& operator << (std::ostream& out, Point point);
 	std::string toString(Point value);
 	double distanceBetweenPoints(Point first, Point second);
@@ -84,6 +85,10 @@ namespace tdp
 	Point operator - (Point first, Point second)
 	{
 		return Point(first.x - second.x, first.y - second.y);
+	}
+	Point operator * (double value, Point point)
+	{
+		return Point(point.x * value, point.y * value);
 	}
 	std::ostream& operator << (std::ostream& out, Point point)
 	{
