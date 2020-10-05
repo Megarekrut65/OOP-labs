@@ -2314,7 +2314,7 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<fop::Figure>")
         }
     }
 }
-TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
+TEST_CASE("testing the removing vertices and edges from GraphMatrix<fop::Figure>")
 {
     fop::Figure figure1{ fop::FiguresType::Circle, {1, 5}, {2, 2} }
         , figure2{ fop::FiguresType::Line, {1, 3}, {6, 2} }
@@ -2415,62 +2415,66 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<int>")
         }
     }
 }
-TEST_CASE("testing the checking the connectivity of GraphMatrix<int>")
+TEST_CASE("testing the checking the connectivity of GraphMatrix<fop::Figure>")
 {
+    fop::Figure figure1{ fop::FiguresType::Circle, {1, 5}, {2, 2} }
+        , figure2{ fop::FiguresType::Line, {1, 3}, {6, 2} }
+        , figure3{ fop::FiguresType::Line, {1, 1}, {2, 11} }
+    , figure4{ fop::FiguresType::Circle, {0,0}, {4, 5} }, figure0;
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addEdge(0, 1, 100);
-        graph.addEdge(1, 2, 6);
+        gm::GraphMatrix<fop::Figure> graph(true);
+        graph.addVertex(figure3);
+        graph.addVertex(figure2);
+        graph.addVertex(figure1);
+        graph.addVertex(figure3);
+        graph.addEdge(0, 1, figure1);
+        graph.addEdge(1, 2, figure2);
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 2);
-        REQUIRE(graph.getTotalValue() == 106);
+        REQUIRE(graph.getTotalValue() == (figure1 + figure2));
         SUBCASE("graph is connected")
         {
-            graph.addEdge(2, 3, 20);
+            graph.addEdge(2, 3, figure4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == (figure1 + figure2 + figure4));
             CHECK(graph.checkingTheConnectivity());
         }
         SUBCASE("graph isn't connected")
         {
-            graph.addEdge(3, 2, 20);
+            graph.addEdge(3, 2, figure4);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == (figure1 + figure2 + figure4));
             CHECK(!graph.checkingTheConnectivity());
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addEdge(0, 1, 100);
-        graph.addEdge(1, 2, 6);
+        gm::GraphMatrix<fop::Figure> graph(false);
+        graph.addVertex(figure3);
+        graph.addVertex(figure2);
+        graph.addVertex(figure1);
+        graph.addVertex(figure3);
+        graph.addEdge(0, 1, figure1);
+        graph.addEdge(1, 2, figure2);
         REQUIRE(graph.getNumberOfVertices() == 4);
         REQUIRE(graph.getNumberOfEdges() == 2);
-        REQUIRE(graph.getTotalValue() == 106);
+        REQUIRE(graph.getTotalValue() == (figure1 + figure2));
         SUBCASE("graph is connected")
         {
-            graph.addEdge(0, 3, 20);
+            graph.addEdge(0, 3, figure2);
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 3);
-            CHECK(graph.getTotalValue() == 126);
+            CHECK(graph.getTotalValue() == (figure1 + figure2 + figure2));
             CHECK(graph.checkingTheConnectivity());
         }
         SUBCASE("graph isn't connected")
         {
             CHECK(graph.getNumberOfVertices() == 4);
             CHECK(graph.getNumberOfEdges() == 2);
-            CHECK(graph.getTotalValue() == 106);
+            CHECK(graph.getTotalValue() == (figure1 + figure2));
             CHECK(!graph.checkingTheConnectivity());
         }
     }
