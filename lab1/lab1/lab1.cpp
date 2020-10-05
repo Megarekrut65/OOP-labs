@@ -16,7 +16,7 @@ int main(int argc, char** argv)
     result.print();
     result = pointsOfIntersection({ FiguresType::Line, {4, 8}, {4, 2} }, { FiguresType::Line,  {4, 5}, {4, 1} });
     result.print();*/
-    std::cout << toString(symmetricalMappingOfFigureByLine({ FiguresType::Line, {-2, -2}, {-3, -5} }, { FiguresType::Circle,  {3, -5}, {3, -3} }));
+    std::cout << toString(symmetricalMappingOfFigureByLine({ FiguresType::Line, {-2, -2}, {-3, -5} }, { FiguresType::Point,  {3, -5}, {3, -5} }));
     // defaults
 //    context.addFilter("test-case-exclude", "*math*"); // exclude test cases with "math" in their name
 //    context.setOption("abort-after", 5);              // stop test execution after 5 failed assertions

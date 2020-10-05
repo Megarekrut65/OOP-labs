@@ -115,13 +115,15 @@ namespace fop
 	std::string toString(FiguresType value)
 	{
 		if (value == FiguresType::Circle) return "Circle";
-		return "Line";
+		if (value == FiguresType::Line) return "Line";
+		return "Point";
 	}
 	std::string toString(const Figure& value)
 	{
 		std::string result = "Figure: {type: " + toString(value.type)
-			+ ", first point: " + toString(value.first) 
-			+ ", second point: " + toString(value.second) + " }";
+			+ ", first point: " + toString(value.first);
+		if (value.type != FiguresType::Point) result += ", second point: " + toString(value.second);
+		result +=" }";
 
 		return result;
 	}
