@@ -481,9 +481,9 @@ namespace gm
             return "\nThe graph is empty!\n";
         }
         result += "\nGraph:\n";
-        result += "\nNumber of vertices: " + toString(numberOfVertices) + "\n";
-        result += "Number of edges: " + toString(numberOfEdges) + "\n";
-        result += "Total value: {" + toString(totalValue) + "}\n\n";
+        result += "\nNumber of vertices: " + toTheString(numberOfVertices) + "\n";
+        result += "Number of edges: " + toTheString(numberOfEdges) + "\n";
+        result += "Total value: {" + toTheString(totalValue) + "}\n\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
             result += "| ";
@@ -497,7 +497,7 @@ namespace gm
         result += "\nVertices:\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            result += toString(i) + ")value: {" + toString(vertices[i]) + "}.\n";
+            result += toTheString(i) + ")value: {" + toTheString(vertices[i]) + "}.\n";
         }
         result += "\n";
 

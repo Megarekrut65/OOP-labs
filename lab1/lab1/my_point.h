@@ -10,6 +10,7 @@ namespace tdp//two-dimensional points
 		Point();
 		Point(double x, double y);
 		Point(double maxValue);//creates random point
+		Point(const Point& point);
 		double vectorModule();//if point(x, y) is vector(x, y), don't std::vector, then |vector| = vectorModule()
 	};
 	bool operator < (Point first, Point second);
@@ -22,7 +23,7 @@ namespace tdp//two-dimensional points
 	Point operator - (Point first, Point second);
 	Point operator * (double value, Point point);
 	std::ostream& operator << (std::ostream& out, Point point);
-	std::string toString(Point value);
+	std::string toTheString(Point value);
 	double distanceBetweenPoints(Point first, Point second);
 }
 namespace tdp
@@ -30,6 +31,11 @@ namespace tdp
 	Point::Point() : x(0), y(0) {}
 	Point::Point(double x, double y): x(x), y(y) {}
 	Point::Point(double maxValue) : x(ofo::randomValue(maxValue)), y(ofo::randomValue(maxValue)) {}
+	Point::Point(const Point& point)
+	{
+		x = point.x;
+		y = point.y;
+	}
 	double Point::vectorModule()
 	{
 		return sqrt(x * x + y * y);
@@ -72,7 +78,7 @@ namespace tdp
 	}
 	bool operator == (Point first, Point second)
 	{
-		return (first.x == second.x && first.y == second.y);
+		return (first.x == doctest::Approx(second.x) && first.y == doctest::Approx(second.y));
 	}
 	bool operator != (Point first, Point second)
 	{
@@ -94,9 +100,9 @@ namespace tdp
 	{
 		return out << "(" << point.x << ", " << point.y << ")";
 	}
-	std::string toString(Point value)
+	std::string toTheString(Point value)
 	{
-		return "( " + std::to_string(value.x) + ", " + std::to_string(value.y) + " )";
+		return "( " + ofo::toTheString(value.x) + ", " + ofo::toTheString(value.y) + " )";
 	}
 	double distanceBetweenPoints(Point first, Point second)
 	{		

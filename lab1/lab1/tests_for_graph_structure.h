@@ -1050,11 +1050,11 @@ TEST_CASE("testing the getting text representation of GraphStructure<double>")
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 5);
             REQUIRE(graph.getTotalValue() == doctest::Approx(161.6615));
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {161.661500}\n\n";
-            graphStr += "Index: 0, value: {5.812300} => [ {i: 1, v: 20.412300} -> # ].\n";
-            graphStr += "Index: 1, value: {6.712300} => [ {i: 0, v: 10.612300} -> {i: 1, v: 30.312300} -> # ].\n";
-            graphStr += "Index: 2, value: {7.612300} => [ {i: 1, v: 60.112300} -> # ].\n";
-            graphStr += "Index: 3, value: {8.512300} => [ {i: 2, v: 40.212300} -> # ].\n\n";
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {161.6615}\n\n";
+            graphStr += "Index: 0, value: {5.8123} => [ {i: 1, v: 20.4123} -> # ].\n";
+            graphStr += "Index: 1, value: {6.7123} => [ {i: 0, v: 10.6123} -> {i: 1, v: 30.3123} -> # ].\n";
+            graphStr += "Index: 2, value: {7.6123} => [ {i: 1, v: 60.1123} -> # ].\n";
+            graphStr += "Index: 3, value: {8.5123} => [ {i: 2, v: 40.2123} -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {
@@ -1083,11 +1083,11 @@ TEST_CASE("testing the getting text representation of GraphStructure<double>")
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 4);
             REQUIRE(graph.getTotalValue() == doctest::Approx(141.2492));
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {141.249200}\n\n";
-            graphStr += "Index: 0, value: {5.812300} => [ {i: 1, v: 10.612300} -> # ].\n";
-            graphStr += "Index: 1, value: {6.712300} => [ {i: 0, v: 10.612300} -> {i: 1, v: 30.312300} -> {i: 2, v: 60.112300} -> # ].\n";
-            graphStr += "Index: 2, value: {7.612300} => [ {i: 1, v: 60.112300} -> {i: 3, v: 40.212300} -> # ].\n";
-            graphStr += "Index: 3, value: {8.512300} => [ {i: 2, v: 40.212300} -> # ].\n\n";
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {141.2492}\n\n";
+            graphStr += "Index: 0, value: {5.8123} => [ {i: 1, v: 10.6123} -> # ].\n";
+            graphStr += "Index: 1, value: {6.7123} => [ {i: 0, v: 10.6123} -> {i: 1, v: 30.3123} -> {i: 2, v: 60.1123} -> # ].\n";
+            graphStr += "Index: 2, value: {7.6123} => [ {i: 1, v: 60.1123} -> {i: 3, v: 40.2123} -> # ].\n";
+            graphStr += "Index: 3, value: {8.5123} => [ {i: 2, v: 40.2123} -> # ].\n\n";
         }
         SUBCASE("empty graph")
         {

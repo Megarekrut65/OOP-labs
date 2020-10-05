@@ -7,11 +7,13 @@
 namespace ofo//override functions and operators
 {
 	template<typename T>
-	std::string toString(const std::vector<T>& array);//to_string for std::vector<T>
+	std::string toTheString(const std::vector<T>& array);//to_string for std::vector<T>
 	template<typename T>
-	std::string toString(const T& value);//edit name of function std::to_sting 
+	std::string toTheString(const T& value);//edit name of function std::to_sting 
     template<>
-    std::string toString(const std::string& line);//to_string for std::string
+    std::string toTheString(const std::string& line);//to_string for std::string
+    template<>
+    std::string toTheString(const double& value);//to_string for double
 	template<typename T>
 	std::ostream& operator<< (std::ostream& out, const std::vector<T>& array);
 	template<typename T>
@@ -45,7 +47,7 @@ namespace ofo//override functions and operators
 namespace ofo
 {
     template<typename T>
-    std::string toString(const std::vector<T>& array)
+    std::string toTheString(const std::vector<T>& array)
     {
         std::string result = "";
         result += "Size: " + std::to_string(array.size()) + ", array: ";
@@ -54,12 +56,26 @@ namespace ofo
         return result;
     }
     template<>
-    std::string toString(const std::string& line)
+    std::string toTheString(const std::string& line)
     {
         return line;
     }
+    template<>
+    std::string toTheString(const double& value)
+    {
+        std::string line = std::to_string(value);
+        while(true)
+        {
+            if (line.size() == 1) break;
+            if (line[line.size() - 1] == '0') line.erase(line.size() - 1, 1);
+            else if (line[line.size() - 1] == '.') line.erase(line.size() - 1, 1);
+            else break;
+        }
+
+        return line;
+    }
     template<typename T>
-    std::string toString(const T& value)
+    std::string toTheString(const T& value)
     {
         return std::to_string(value);
     }
@@ -144,7 +160,7 @@ namespace ofo
         std::size_t index = line1.find(line2, 0);
         if (index + 1 == 0) return line1;
         line3 = line1;
-        line3.erase(index, + line2.size());
+        line3.erase(index, line2.size());
 
         return line3;
     } 

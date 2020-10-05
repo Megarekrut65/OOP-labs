@@ -13,12 +13,20 @@ namespace fop//figures on the plane
 	};
 	struct Figure
 	{
+	private:
+		Point* puncturedPoint;
+	public:
 		FiguresType type;
 		Point first;//for circle it is centre point
 		Point second;
 		Figure();
 		Figure(FiguresType type, Point first, Point second);
 		Figure(Point maxValue);//creates random figure
+		Figure(const Figure& figure);
+		~Figure();
+		bool have(Point point);
+		friend std::string toTheString(const Figure& value);
+		friend Figure inversionTransformationOfFigureByCircle(Figure circle, Figure figure);
 	};
 	struct Intersection
 	{
@@ -45,8 +53,7 @@ namespace fop//figures on the plane
 	bool operator != (Figure figure1, Figure figure2);
 	Figure operator + (Figure figure1, Figure figure2);
 	Figure operator - (Figure figure1, Figure figure2);
-	std::string toString(FiguresType value);
-	std::string toString(const Figure& value);
+	std::string toTheString(FiguresType value);
 	Figure randomValue(const Figure& maxValue);
 	double distanceFromLineToPoint(Figure line, Point point);
 	Intersection pointsOfIntersection(Figure figure1, Figure figure2);
@@ -59,13 +66,16 @@ namespace fop//figures on the plane
 	Figure createPerpendicularLine(Figure line, Point point);
 	Point symmetricalMappingOfPointByLine(Figure line, Point point);
 	Figure symmetricalMappingOfFigureByLine(Figure line, Figure figure);
+	Point inversionTransformationOfPointByCircle(Figure circle, Point point);
 }
 namespace fop
 {
 	//Figure
-	Figure::Figure(): type(FiguresType::Circle), first(Point()), second(Point()){}
+	Figure::Figure()
+		: puncturedPoint(nullptr), type(FiguresType::Circle), first(Point()), second(Point()){}
 	Figure::Figure(FiguresType type, Point first, Point second)
 	{		
+		puncturedPoint = nullptr;
 		if (first == second) this->type = FiguresType::Point;
 		else this->type = type;
 		this->first = first;
@@ -73,12 +83,55 @@ namespace fop
 	}
 	Figure::Figure(Point maxValue)
 	{
+		puncturedPoint = nullptr;
 		int number = rand() % 2;
 		if (number == 0) type = FiguresType::Circle;
 		else type = FiguresType::Line;
 		first = Point(maxValue);
 		second = Point(maxValue);	
 		if (first == second) first.x++;
+	}
+	Figure::Figure(const Figure& figure)
+	{
+		if (figure.puncturedPoint)
+		{
+			puncturedPoint = new Point(*figure.puncturedPoint);
+		}
+		else puncturedPoint = nullptr;
+		type = figure.type;
+		first = figure.first;
+		second = figure.second;
+	}
+	Figure::~Figure()
+	{
+		if (puncturedPoint) delete puncturedPoint;
+		puncturedPoint = nullptr;
+		type = FiguresType::Circle;
+		first = Point();
+		second = Point();
+	}
+	bool Figure::have(Point point)
+	{
+		switch (type)
+		{
+		case FiguresType::Circle:
+		{
+			double x = point.x - first.x, y = point.y - first.y;
+			double radius = distanceBetweenPoints(first, second);
+			return ((pow(x, 2) + pow(y,2)) == doctest::Approx(pow(radius, 2)));
+		}
+			break;
+		case FiguresType::Line:
+		{
+			Equation equation{ *this };
+			if ((equation.a * point.x + equation.b * point.y + equation.c) == 0) return true;
+			return false;
+		}
+			break;
+		case FiguresType::Point: return (point == first);
+			break;
+		}	
+		return false;
 	}
 	bool operator < (Figure figure1, Figure figure2)
 	{
@@ -112,19 +165,20 @@ namespace fop
 	{
 		return Figure(figure1 > figure2 ? figure1.type : figure2.type, figure1.first - figure2.first, figure1.second - figure2.second);
 	}
-	std::string toString(FiguresType value)
+	std::string toTheString(FiguresType value)
 	{
 		if (value == FiguresType::Circle) return "Circle";
 		if (value == FiguresType::Line) return "Line";
 		return "Point";
 	}
-	std::string toString(const Figure& value)
+	std::string toTheString(const Figure& value)
 	{
-		std::string result = "Figure: {type: " + toString(value.type) + ", ";
+		std::string result = "Figure: {type: " + toTheString(value.type) + ", ";
 		if (value.type == FiguresType::Circle) result += "centre point";
 		else result += "first point";
-		result += " : " + toString(value.first);
-		if (value.type != FiguresType::Point) result += ", second point: " + toString(value.second);
+		result += " : " + toTheString(value.first);
+		if (value.type != FiguresType::Point) result += ", second point: " + toTheString(value.second);
+		if (value.puncturedPoint) result += ", punctured point: " + toTheString(*value.puncturedPoint);
 		result +=" }";
 
 		return result;
@@ -179,7 +233,7 @@ namespace fop
 		if (distance > radius) return Intersection();
 		double distanceSquare = pow(distance, 2), radiusSquare = pow(radius, 2);
 		std::vector<Point> points;
-		if (distanceSquare == radiusSquare)
+		if (distanceSquare == doctest::Approx(radiusSquare))
 		{
 			points = { {distance + circle.first.x, circle.first.y} };
 		}
@@ -193,7 +247,7 @@ namespace fop
 	Intersection solveSystemOfLineEquations(Equation equation1, Equation equation2)
 	{
 		double determinant = equation1.a * equation2.b - equation2.a * equation1.b;
-		if (determinant == 0) return Intersection();
+		if (determinant == doctest::Approx(0)) return Intersection();
 		double determinant1 = equation1.c * equation2.b - equation2.c * equation1.b;
 		double determinant2 = equation1.a * equation2.c - equation2.a * equation1.c;
 		double x = determinant1 / determinant;
@@ -208,13 +262,13 @@ namespace fop
 	}
 	std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD)
 	{
-		if (coefficientP == 0)
+		if (coefficientP == doctest::Approx(0))
 		{
 			return {-1 * coefficientD / coefficientQ};
 		}
 		double discriminant = pow(coefficientQ, 2) - 4 * coefficientP * coefficientD;
 		if (discriminant < 0) return {};
-		if (discriminant == 0)
+		if (discriminant == doctest::Approx(0))
 		{
 			return { -1 * coefficientQ / (2 * coefficientP) };
 		}
@@ -258,12 +312,12 @@ namespace fop
 		// (x - x2)^2 + (y - y2)^2 = radius2^2
 		double x1 = circle1.first.x, y1 = circle1.first.y
 			, x2 = circle2.first.x, y2 = circle2.first.y;
-		if (x1 != x2)
+		if (x1 != doctest::Approx(x2))
 		{
 			std::vector<Point> points = intersectionOfTwoCirclesByCoordinates(x1, x2, y1, y2, radius1, radius2);
 			return Intersection(false, points.size(), points);
 		}
-		else if (y1 != y2)
+		else if (y1 != doctest::Approx(y2))
 		{
 			std::vector<Point> points = intersectionOfTwoCirclesByCoordinates(y1, y2, x1, x2, radius1, radius2);
 			for (std::size_t i = 0; i < points.size(); i++)
@@ -320,7 +374,9 @@ namespace fop
 		constexpr double max = std::numeric_limits<double>::max();
 		constexpr double min = std::numeric_limits<double>::min();
 		if (point == circle.first) return Point(max, max);
-		if ((point.x == max || point.x == min) && (point.y == max || point.y == min)) return circle.first;
+		if ((point.x == doctest::Approx(max) || point.x == doctest::Approx(min))
+			&& (point.y == doctest::Approx(max) || point.y == doctest::Approx(min)))
+			return circle.first;
 		double x0 = circle.first.x, y0 = circle.first.y;
 		double radius = distanceBetweenPoints(circle.first, circle.second);
 		double divisor = (pow(point.x - x0, 2) + pow(point.y - y0, 2));
@@ -332,5 +388,50 @@ namespace fop
 	Figure inversionTransformationOfFigureByCircle(Figure circle, Figure figure)
 	{
 		if (circle.type != FiguresType::Circle) return figure;
+		if (figure.type != FiguresType::Point && figure.second == circle.first)
+		{
+			figure.second = 2 * figure.first - figure.second;
+		}
+		if (figure.type == FiguresType::Line && figure.first == circle.first)
+		{
+			figure.first = 2 * figure.second - figure.first;
+		}
+		Point x = inversionTransformationOfPointByCircle(circle, figure.first);
+		Point y = inversionTransformationOfPointByCircle(circle, figure.second);
+		if (figure.type != FiguresType::Point && figure.have(circle.first))
+		{
+			switch (figure.type)
+			{
+			case FiguresType::Circle:
+			{
+				Figure line{ FiguresType::Line, x, y};
+				line.puncturedPoint = new Point(circle.first);
+				return line;
+			}
+				break;
+			case FiguresType::Line: return figure;
+				break;
+			default:
+				break;
+			}
+		}
+		else
+		{
+			Figure result{ FiguresType::Circle, x, y };
+			switch (figure.type)
+			{
+			case FiguresType::Circle: return result;
+			break;
+			case FiguresType::Line:
+			{				
+				result.puncturedPoint = new Point(circle.first);
+				return result;
+			}
+				break;
+			default:
+				break;
+			}
+		}
+		return Figure(FiguresType::Point, x, y);
 	}
 }

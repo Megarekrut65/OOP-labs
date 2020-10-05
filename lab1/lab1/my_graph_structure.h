@@ -597,16 +597,16 @@ namespace gs
             return "\nThe graph is empty!\n";
         }
         result += "\nGraph:\n";
-        result += "\nNumber of vertices: " + toString(numberOfVertices) + "\n";
-        result += "Number of edges: " + toString(numberOfEdges) + "\n";
-        result += "Total value: {" + toString(totalValue) + "}\n\n";
+        result += "\nNumber of vertices: " + toTheString(numberOfVertices) + "\n";
+        result += "Number of edges: " + toTheString(numberOfEdges) + "\n";
+        result += "Total value: {" + toTheString(totalValue) + "}\n\n";
         for (std::size_t i = 0; i < numberOfVertices; i++)
         {
-            result += "Index: " + toString(list[i]->index) + ", value: {" 
-                + toString(list[i]->value) + "} => [ ";
+            result += "Index: " + toTheString(list[i]->index) + ", value: {"
+                + toTheString(list[i]->value) + "} => [ ";
             for (VertexNode<T>* current = list[i]->next; current; current = current->next)
             {
-                result += "{i: " +  toString(current->index) + ", v: " + toString(current->value) + "} -> ";
+                result += "{i: " +  toTheString(current->index) + ", v: " + toTheString(current->value) + "} -> ";
             }
             result += "# ].\n";
         }       
