@@ -70,27 +70,6 @@ namespace fop
 		return abs(equation.a * point.x + equation.b * point.y - equation.c)
 			/ sqrt(equation.a * equation.a + equation.b * equation.b);
 	}
-	/*Intersection Figure::intersectionOfCircleAndLine(Figure circle, Figure line)
-	{
-		if (circle.type == FiguresType::LINE && line.type == FiguresType::CIRCLE)
-			return intersectionOfCircleAndLine(line, circle);
-		if (circle.type != FiguresType::CIRCLE || line.type != FiguresType::LINE) return Intersection();
-		double distance = findDistanceFromLineToPoint(line, circle.first);
-		double radius = distanceBetweenPoints(circle.first, circle.second);
-		if (distance > radius) return Intersection();
-		double distanceSquare = pow(distance, 2), radiusSquare = pow(radius, 2);
-		std::vector<Point> points;
-		if (distanceSquare == doctest::Approx(radiusSquare))
-		{
-			points = { {distance + circle.first.x, circle.first.y} };
-		}
-		else
-		{
-			points = { {distance + circle.first.x, sqrt(radiusSquare - distanceSquare) + circle.first.y},
-						{distance + circle.first.x, -1 * sqrt(radiusSquare - distanceSquare) + circle.first.y} };
-		}
-		return Intersection(points);
-	}*/
 	std::vector<Point> Figure::intersectionOfCircleAndLine(Figure circle, Figure line)
 	{
 		if (circle.type == FiguresType::LINE && line.type == FiguresType::CIRCLE)

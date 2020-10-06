@@ -16,7 +16,7 @@ namespace pbv//path between vetices
         PathsBetweenVertices(PathsBetweenVertices&& paths)
             noexcept;
         ~PathsBetweenVertices();
-        void print(bool show = true);//print the distance from vertex with beginIndex to all vertices in graph
+        void print(bool show = false);//print the distance from vertex with beginIndex to all vertices in graph
     };
 }
 namespace pbv

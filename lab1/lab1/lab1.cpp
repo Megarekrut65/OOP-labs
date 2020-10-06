@@ -4,7 +4,6 @@
 #include "tests_for_graph_structure.h"
 #include "tests_for_figure.h"
 
-using namespace fop;
 
 int main(int argc, char** argv) 
 {
