@@ -321,7 +321,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
         graph.addVertex(44);
         graph.addVertex(13);
         graph.addVertex(2);
-        graph.addEdge(0, 1, 12);
+        graph.addEdge(1, 0, 12);
         graph.addEdge(0, 3, 17);
         graph.addEdge(2, 1, 6);
         graph.addEdge(4, 0, 68);
@@ -478,7 +478,7 @@ TEST_CASE("testing the creating GraphMatrix<int>")
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
-    REQUIRE(graph.getTotalValue() > 0);
+    REQUIRE(graph.getTotalValue() != 0);
 }
 TEST_CASE("testing the getting text representation of GraphMatrix<int>")
 {
@@ -866,7 +866,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<double>
         graph.addVertex(4.4);
         graph.addVertex(1.3);
         graph.addVertex(2.6);
-        graph.addEdge(0, 1, 1.2);
+        graph.addEdge(1, 0, 1.2);
         graph.addEdge(0, 3, 1.7);
         graph.addEdge(2, 1, 0.6);
         graph.addEdge(4, 0, 4.1);
@@ -1024,7 +1024,7 @@ TEST_CASE("testing the creating GraphMatrix<double>")
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
-    REQUIRE(graph.getTotalValue() > 0);
+    REQUIRE(graph.getTotalValue() != 0);
 }
 TEST_CASE("testing the getting text representation of GraphMatrix<double>")
 {
@@ -1428,7 +1428,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::ve
         graph.addVertex(arr4);
         graph.addVertex(arr3);
         graph.addVertex(arr2);
-        graph.addEdge(0, 1, arr2);
+        graph.addEdge(1, 0, arr2);
         graph.addEdge(0, 3, arr3);
         graph.addEdge(2, 1, arr1);
         graph.addEdge(4, 0, arr5);
@@ -1591,7 +1591,7 @@ TEST_CASE("testing the creating GraphMatrix<std::vector<int>>")
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
-    REQUIRE(graph.getTotalValue() > arr0);
+    REQUIRE(graph.getTotalValue() != arr0);
 }
 TEST_CASE("testing the getting text representation of GraphMatrix<std::vector<int>>")
 {
@@ -1984,7 +1984,7 @@ TEST_CASE("testing the getting path between two vertices for GraphMatrix<std::st
         graph.addVertex("to played");
         graph.addVertex("to seen");
         graph.addVertex("to read");
-        graph.addEdge(0, 1, "bad");
+        graph.addEdge(1, 0, "bad");
         graph.addEdge(0, 3, "car");
         graph.addEdge(2, 1, "apple");
         graph.addEdge(4, 0, "umbrella");
@@ -2141,7 +2141,7 @@ TEST_CASE("testing the creating GraphMatrix<std::string>")
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
-    REQUIRE(graph.getTotalValue() > "");
+    REQUIRE(graph.getTotalValue() != "");
 }
 TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
 {
@@ -2211,10 +2211,10 @@ TEST_CASE("testing the getting text representation of GraphMatrix<std::string>")
 //tests for fop::Figure
 TEST_CASE("testing the adding vertices and edges to GraphMatrix<fop::Figure>")
 {
-    fop::Figure figure1{ fop::FiguresType::Circle, {1, 5}, {2, 2} }
-         , figure2{ fop::FiguresType::Line, {1, 3}, {6, 2} }
-         , figure3{ fop::FiguresType::Line, {1, 1}, {2, 11} }
-         , figure4{ fop::FiguresType::Circle, {0,0}, {4, 5} }, figure0;
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+         ,figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+         ,figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+         ,figure4{ fop::FiguresType::CIRCLE, {0,0}, {4, 5} }, figure0;
     SUBCASE("oriented graph")
     {
         gm::GraphMatrix<fop::Figure> graph(true);
@@ -2316,10 +2316,10 @@ TEST_CASE("testing the adding vertices and edges to GraphMatrix<fop::Figure>")
 }
 TEST_CASE("testing the removing vertices and edges from GraphMatrix<fop::Figure>")
 {
-    fop::Figure figure1{ fop::FiguresType::Circle, {1, 5}, {2, 2} }
-        , figure2{ fop::FiguresType::Line, {1, 3}, {6, 2} }
-        , figure3{ fop::FiguresType::Line, {1, 1}, {2, 11} }
-    , figure4{ fop::FiguresType::Circle, {0,0}, {4, 5} }, figure0;
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+        ,figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+        ,figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+        ,figure4{ fop::FiguresType::CIRCLE, {0,0}, {4, 5} }, figure0;
     SUBCASE("oriented graph")
     {
         gm::GraphMatrix<fop::Figure> graph(true);
@@ -2417,10 +2417,10 @@ TEST_CASE("testing the removing vertices and edges from GraphMatrix<fop::Figure>
 }
 TEST_CASE("testing the checking the connectivity of GraphMatrix<fop::Figure>")
 {
-    fop::Figure figure1{ fop::FiguresType::Circle, {1, 5}, {2, 2} }
-        , figure2{ fop::FiguresType::Line, {1, 3}, {6, 2} }
-        , figure3{ fop::FiguresType::Line, {1, 1}, {2, 11} }
-    , figure4{ fop::FiguresType::Circle, {0,0}, {4, 5} }, figure0;
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+        ,figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+        ,figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+        ,figure4{ fop::FiguresType::CIRCLE, {0,0}, {4, 5} }, figure0;
     SUBCASE("oriented graph")
     {
         gm::GraphMatrix<fop::Figure> graph(true);
@@ -2479,24 +2479,28 @@ TEST_CASE("testing the checking the connectivity of GraphMatrix<fop::Figure>")
         }
     }
 }
-TEST_CASE("testing the depth First Search for GraphMatrix<int>")
+TEST_CASE("testing the depth First Search for GraphMatrix<fop::Figure>")
 {
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+        ,figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+        ,figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+        ,figure4{ fop::FiguresType::CIRCLE, {0,0}, {4, 5} }, figure0;
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addVertex(2);
-        graph.addEdge(0, 2, 12);
-        graph.addEdge(4, 1, 6);
-        graph.addEdge(0, 3, 68);
-        graph.addEdge(1, 0, 100);
-        graph.addEdge(2, 4, 33);
+        gm::GraphMatrix<fop::Figure> graph(true);
+        graph.addVertex(figure4);
+        graph.addVertex(figure3);
+        graph.addVertex(figure2);
+        graph.addVertex(figure1);
+        graph.addVertex(figure1);
+        graph.addEdge(0, 2, figure1);
+        graph.addEdge(4, 1, figure4);
+        graph.addEdge(0, 3, figure2);
+        graph.addEdge(1, 0, figure3);
+        graph.addEdge(2, 4, figure3);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 5);
-        REQUIRE(graph.getTotalValue() == 219);
+        REQUIRE(graph.getTotalValue() == (figure1 + figure4 + figure2 + figure3 + figure3));
         std::vector<std::size_t> search = graph.depthFirstSearch(), array = { 0, 2, 4, 1, 3 };
         REQUIRE(search.size() == 5);
         for (std::size_t i = 0; i < search.size(); i++)
@@ -2506,20 +2510,20 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(447);
-        graph.addVertex(132);
-        graph.addVertex(2);
-        graph.addEdge(0, 2, 12);
-        graph.addEdge(4, 1, 6);
-        graph.addEdge(0, 3, 68);
-        graph.addEdge(1, 0, 100);
-        graph.addEdge(2, 4, 33);
+        gm::GraphMatrix<fop::Figure> graph(false);
+        graph.addVertex(figure4);
+        graph.addVertex(figure3);
+        graph.addVertex(figure2);
+        graph.addVertex(figure1);
+        graph.addVertex(figure1);
+        graph.addEdge(0, 2, figure1);
+        graph.addEdge(4, 1, figure4);
+        graph.addEdge(0, 3, figure2);
+        graph.addEdge(1, 0, figure3);
+        graph.addEdge(2, 4, figure3);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 5);
-        REQUIRE(graph.getTotalValue() == 219);
+        REQUIRE(graph.getTotalValue() == (figure1 + figure4 + figure2 + figure3 + figure3));
         std::vector<std::size_t> search = graph.depthFirstSearch(), array = { 0, 1, 4, 2, 3 };
         REQUIRE(search.size() == 5);
         for (std::size_t i = 0; i < search.size(); i++)
@@ -2528,96 +2532,106 @@ TEST_CASE("testing the depth First Search for GraphMatrix<int>")
         }
     }
 }
-TEST_CASE("testing the getting path between two vertices for GraphMatrix<int>")
+TEST_CASE("testing the getting path between two vertices for GraphMatrix<fop::Figure>")
 {
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+        ,figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+        ,figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+        ,figure4{ fop::FiguresType::CIRCLE, {0,0}, {4, 5} }, figure0
+        ,figureMany{ fop::FiguresType::CIRCLE , {1, 3}, {20, 30} };
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(0, 1, 12);
-        graph.addEdge(0, 3, 17);
-        graph.addEdge(2, 1, 6);
-        graph.addEdge(4, 0, 68);
+        gm::GraphMatrix<fop::Figure> graph(true);
+        graph.addVertex(figure1);
+        graph.addVertex(figure1);
+        graph.addVertex(figure4);
+        graph.addVertex(figure3);
+        graph.addVertex(figure2);
+        graph.addEdge(1, 0, figure2);
+        graph.addEdge(0, 3, figure1);
+        graph.addEdge(2, 1, figure4);
+        graph.addEdge(4, 0, figure3);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 4);
-        REQUIRE(graph.getTotalValue() == 103);
+        REQUIRE(graph.getTotalValue() == (figure2 + figure1 + figure3 + figure4));
         SUBCASE("the direct path is the shortest")
         {
-            graph.addEdge(4, 2, 50);
-            graph.addEdge(0, 2, 10);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 50);
+            graph.addEdge(4, 2, figure3);
+            graph.addEdge(0, 2, figure4);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == figure3);
         }
         SUBCASE("bypass through other vertices is the shortest")
         {
-            graph.addEdge(4, 2, 100);
-            graph.addEdge(0, 2, 10);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 78);
+            graph.addEdge(4, 2, figureMany);
+            graph.addEdge(0, 2, figure3);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == (figure3 + figure3));
         }
         SUBCASE("features in the oriented graph")
         {
-            graph.addEdge(4, 2, 100);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 100);
+            graph.addEdge(4, 2, figure4);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == figure4);
         }
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
-        graph.addVertex(10);
-        graph.addVertex(5);
-        graph.addVertex(44);
-        graph.addVertex(13);
-        graph.addVertex(2);
-        graph.addEdge(0, 1, 12);
-        graph.addEdge(0, 3, 17);
-        graph.addEdge(2, 1, 6);
-        graph.addEdge(4, 0, 68);
+        gm::GraphMatrix<fop::Figure> graph(false);
+        graph.addVertex(figure1);
+        graph.addVertex(figure1);
+        graph.addVertex(figure4);
+        graph.addVertex(figure3);
+        graph.addVertex(figure2);
+        graph.addEdge(0, 1, figure2);
+        graph.addEdge(0, 3, figure1);
+        graph.addEdge(2, 1, figure4);
+        graph.addEdge(4, 0, figure3);
         REQUIRE(graph.getNumberOfVertices() == 5);
         REQUIRE(graph.getNumberOfEdges() == 4);
-        REQUIRE(graph.getTotalValue() == 103);
+        REQUIRE(graph.getTotalValue() == (figure2 + figure1 + figure3 + figure4));
         SUBCASE("the direct path is the shortest")
         {
-            graph.addEdge(4, 2, 50);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 50);
+            graph.addEdge(4, 2, figure3);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == figure3);
         }
         SUBCASE("bypass through other vertices is the shortest")
         {
-            graph.addEdge(4, 2, 100);
-            CHECK(graph.getPathBetweenTwoVertices(4, 2) == 86);
+            graph.addEdge(4, 2, figureMany);
+            CHECK(graph.getPathBetweenTwoVertices(4, 2) == (figure3 + figure2 + figure4));
         }
     }
 }
-TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<int>")
+TEST_CASE("testing the getting paths from the vertex to everyone else for GraphMatrix<fop::Figure>")
 {
-    gm::GraphMatrix<int> graph;
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+        ,figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+        ,figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+        ,figure4{ fop::FiguresType::CIRCLE, {0,0}, {4, 5} }, figure0
+        ,figureMany{ fop::FiguresType::CIRCLE , {1, 3}, {20, 30} };
+    gm::GraphMatrix<fop::Figure> graph;
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<int>(true);
+        graph = gm::GraphMatrix<fop::Figure>(true);
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<int>(false);
+        graph = gm::GraphMatrix<fop::Figure>(false);
     }
-    graph.addVertex(10);
-    graph.addVertex(5);
-    graph.addVertex(44);
-    graph.addVertex(13);
-    graph.addVertex(2);
-    graph.addEdge(1, 0, 17);
-    graph.addEdge(3, 2, 10);
-    graph.addEdge(2, 1, 19);
-    graph.addEdge(3, 4, 42);
-    graph.addEdge(2, 4, 7);
-    graph.addEdge(2, 0, 50);
+    graph.addVertex(figure1);
+    graph.addVertex(figure4);
+    graph.addVertex(figure4);
+    graph.addVertex(figure3);
+    graph.addVertex(figure2);
+    graph.addEdge(1, 0, figure3);
+    graph.addEdge(3, 2, figure1);
+    graph.addEdge(2, 1, figure2);
+    graph.addEdge(3, 4, figure4);
+    graph.addEdge(2, 4, figure0);
+    graph.addEdge(2, 0, figureMany);
     REQUIRE(graph.getNumberOfVertices() == 5);
     REQUIRE(graph.getNumberOfEdges() == 6);
-    REQUIRE(graph.getTotalValue() == 145);
-    int* distance = new int[5]{ 46, 29, 10, 0 , 17 };
+    REQUIRE(graph.getTotalValue() == (figure3 + figure1 + figure2 + figure4 + figure0 + figureMany));
+    fop::Figure* distance = new fop::Figure[5]{ figure1 + figure2 + figure3, figure1 + figure2, figure1, figure0 , figure1 + figure0 };
     bool* isMax = new bool[5]{ false, false, false, false, false };//if from the vertex can't get to other vertex then isMax[other vertex] = true
-    pbv::PathsBetweenVertices<int> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
+    pbv::PathsBetweenVertices<fop::Figure> paths(distance, isMax, 5, 3), getPaths(graph.getPathsFromTheVertexToEveryoneElse(3));
     REQUIRE(getPaths.size == paths.size);
     REQUIRE(getPaths.beginIndex == paths.beginIndex);
     for (std::size_t i = 0; i < 5; i++)
@@ -2626,23 +2640,27 @@ TEST_CASE("testing the getting paths from the vertex to everyone else for GraphM
         CHECK(getPaths.isMax[i] == paths.isMax[i]);
     }
 }
-TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
+TEST_CASE("testing the topological sorting for oriented GraphMatrix<fop::Figure> only")
 {
-    gm::GraphMatrix<int> graph(true);
-    graph.addVertex(10);
-    graph.addVertex(5);
-    graph.addVertex(44);
-    graph.addVertex(13);
-    graph.addVertex(2);
-    graph.addEdge(1, 0, 17);
-    graph.addEdge(3, 2, 10);
-    graph.addEdge(2, 1, 19);
-    graph.addEdge(3, 4, 42);
-    graph.addEdge(2, 4, 7);
-    graph.addEdge(2, 0, 50);
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+        ,figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+        ,figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+        ,figure4{ fop::FiguresType::CIRCLE, {0,0}, {4, 5} }, figure0;
+    gm::GraphMatrix<fop::Figure> graph(true);
+    graph.addVertex(figure1);
+    graph.addVertex(figure1);
+    graph.addVertex(figure4);
+    graph.addVertex(figure3);
+    graph.addVertex(figure2);
+    graph.addEdge(1, 0, figure2);
+    graph.addEdge(3, 2, figure1);
+    graph.addEdge(2, 1, figure4);
+    graph.addEdge(3, 4, figure1);
+    graph.addEdge(2, 4, figure3);
+    graph.addEdge(2, 0, figure2);
     REQUIRE(graph.getNumberOfVertices() == 5);
     REQUIRE(graph.getNumberOfEdges() == 6);
-    REQUIRE(graph.getTotalValue() == 145);
+    REQUIRE(graph.getTotalValue() == (figure2 + figure1 + figure4 + figure1 + figure3 + figure2));
     std::vector<std::size_t> array = { 3, 2, 1, 0, 4 }, getArray = graph.topologicalSorting();
     CHECK(array.size() == getArray.size());
     for (std::size_t i = 0; i < 5; i++)
@@ -2650,114 +2668,132 @@ TEST_CASE("testing the topological sorting for oriented GraphMatrix<int> only")
         CHECK(array[i] == getArray[i]);
     }
 }
-TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<int> only")
+TEST_CASE("testing the getting spanning Tree for non-oriented GraphMatrix<fop::Figure> only")
 {
-    gm::GraphMatrix<int> graph(false);
-    graph.addVertex(10);
-    graph.addVertex(5);
-    graph.addVertex(44);
-    graph.addVertex(13);
-    graph.addVertex(2);
-    graph.addEdge(1, 0, 17);
-    graph.addEdge(3, 2, 10);
-    graph.addEdge(2, 1, 19);
-    graph.addEdge(3, 4, 42);
-    graph.addEdge(2, 4, 7);
-    graph.addEdge(2, 0, 50);
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+        , figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+        , figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+        , figure4{ fop::FiguresType::CIRCLE, {0,0}, {4, 5} }, figure0
+        , figureMany{ fop::FiguresType::CIRCLE , {1, 3}, {20, 30} };
+    gm::GraphMatrix<fop::Figure> graph(false);
+    graph.addVertex(figure1);
+    graph.addVertex(figure1);
+    graph.addVertex(figure4);
+    graph.addVertex(figure3);
+    graph.addVertex(figure2);
+    graph.addEdge(1, 0, figure3);
+    graph.addEdge(3, 2, figure1);
+    graph.addEdge(2, 1, figure2);
+    graph.addEdge(3, 4, figure4);
+    graph.addEdge(2, 4, figure0);
+    graph.addEdge(2, 0, figureMany);
     REQUIRE(graph.getNumberOfVertices() == 5);
     REQUIRE(graph.getNumberOfEdges() == 6);
-    REQUIRE(graph.getTotalValue() == 145);
+    REQUIRE(graph.getTotalValue() == (figure3 + figure1 + figure2 + figure4 + figure0 + figureMany));
     SUBCASE("normal spanning tree")//using depth First Search
     {
-        gm::GraphMatrix<int> spanningTree(graph.getSpanningTree());
+        gm::GraphMatrix<fop::Figure> spanningTree(graph.getSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == 88);
+        CHECK(spanningTree.getTotalValue() == (figure3 + figure2 + figure1 + figure4));
     }
     SUBCASE("the smallest spanning tree")
     {
-        gm::GraphMatrix<int> spanningTree(graph.getTheSmallestSpanningTree());
+        gm::GraphMatrix<fop::Figure> spanningTree(graph.getTheSmallestSpanningTree());
         CHECK(spanningTree.getNumberOfVertices() == 5);
         CHECK(spanningTree.getNumberOfEdges() == 4);
-        CHECK(spanningTree.getTotalValue() == 53);
+        CHECK(spanningTree.getTotalValue() == (figure3 + figure2 + figure1 + figure0));
     }
 }
-TEST_CASE("testing the creating GraphMatrix<int>")
+TEST_CASE("testing the creating GraphMatrix<fop::Figure>")
 {
-    gm::GraphMatrix<int> graph;
+    fop::Figure figure0, figureMany{ fop::FiguresType::CIRCLE , {20, 30}, {10, 20} };
+    gm::GraphMatrix<fop::Figure> graph;
     SUBCASE("oriented graph")
     {
-        graph = gm::GraphMatrix<int>(10, 29, true, 100);
+        graph = gm::GraphMatrix<fop::Figure>(10, 29, true, figureMany);
     }
     SUBCASE("non-oriented graph")
     {
-        graph = gm::GraphMatrix<int>(10, 29, false, 100);
+        graph = gm::GraphMatrix<fop::Figure>(10, 29, false, figureMany);
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
-    REQUIRE(graph.getTotalValue() > 0);
+    CHECK(graph.getTotalValue() != figure0);
 }
-TEST_CASE("testing the getting text representation of GraphMatrix<int>")
+TEST_CASE("testing the getting text representation of GraphMatrix<fop::Figure>")
 {
+    fop::Figure figure1{ fop::FiguresType::CIRCLE, {1, 5}, {2, 2} }
+        , figure2{ fop::FiguresType::LINE, {1, 3}, {6, 2} }
+        , figure3{ fop::FiguresType::LINE, {1, 1}, {2, 11} }
+        , figure4{ fop::FiguresType::CIRCLE, {0, 0}, {4, 5} }, figure0;
     SUBCASE("oriented graph")
     {
-        gm::GraphMatrix<int> graph(true);
+        gm::GraphMatrix<fop::Figure> graph(true);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
-            graph.addVertex(5);
-            graph.addVertex(6);
-            graph.addVertex(7);
-            graph.addVertex(8);
-            graph.addEdge(1, 0, 10);
-            graph.addEdge(0, 1, 20);
-            graph.addEdge(1, 1, 30);
-            graph.addEdge(3, 2, 40);
-            graph.addEdge(2, 1, 60);
+            graph.addVertex(figure1);
+            graph.addVertex(figure2);
+            graph.addVertex(figure3);
+            graph.addVertex(figure4);
+            graph.addEdge(1, 0, figure1);
+            graph.addEdge(0, 1, figure2);
+            graph.addEdge(1, 1, figure3);
+            graph.addEdge(3, 2, figure4);
+            graph.addEdge(2, 1, figure0);
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 5);
-            REQUIRE(graph.getTotalValue() == 160);
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\nTotal value: {160}\n\n";
+            REQUIRE(graph.getTotalValue() == (figure1 + figure2 + figure3 + figure4 + figure0));
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 5\n";
+            graphStr += "Total value: {Figure: {type: Line, first point: ( 3, 9 ), second point: ( 14, 2 ) }}\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 0 0 |\n| 0 1 0 0 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
+            graphStr += "0)value: {Figure: {type: Circle, centre point: ( 1, 5 ), second point: ( 2, 2 ) }}.\n";
+            graphStr += "1)value: {Figure: {type: Line, first point: ( 1, 3 ), second point: ( 6, 2 ) }}.\n";
+            graphStr += "2)value: {Figure: {type: Line, first point: ( 1, 1 ), second point: ( 2, 11 ) }}.\n";
+            graphStr += "3)value: {Figure: {type: Circle, centre point: ( 0, 0 ), second point: ( 4, 5 ) }}.\n\n";
         }
         SUBCASE("empty graph")
         {
             graphStr = "\nThe graph is empty!\n";
             REQUIRE(graph.getNumberOfVertices() == 0);
             REQUIRE(graph.getNumberOfEdges() == 0);
-            REQUIRE(graph.getTotalValue() == 0);
+            REQUIRE(graph.getTotalValue() == figure0);
         }
         CHECK(graph.getTextRepresentation() == graphStr);
     }
     SUBCASE("non-oriented graph")
     {
-        gm::GraphMatrix<int> graph(false);
+        gm::GraphMatrix<fop::Figure> graph(false);
         std::string graphStr = "";
         SUBCASE("created graph")
         {
-            graph.addVertex(5);
-            graph.addVertex(6);
-            graph.addVertex(7);
-            graph.addVertex(8);
-            graph.addEdge(1, 0, 10);
-            graph.addEdge(0, 1, 20);
-            graph.addEdge(1, 1, 30);
-            graph.addEdge(3, 2, 40);
-            graph.addEdge(2, 1, 60);
+            graph.addVertex(figure1);
+            graph.addVertex(figure2);
+            graph.addVertex(figure3);
+            graph.addVertex(figure4);
+            graph.addEdge(1, 0, figure1);
+            graph.addEdge(0, 1, figure2);
+            graph.addEdge(1, 1, figure3);
+            graph.addEdge(3, 2, figure4);
+            graph.addEdge(2, 1, figure0);
             REQUIRE(graph.getNumberOfVertices() == 4);
             REQUIRE(graph.getNumberOfEdges() == 4);
-            REQUIRE(graph.getTotalValue() == 140);
-            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\nTotal value: {140}\n\n";
+            REQUIRE(graph.getTotalValue() == (figure1 + figure3 + figure4 + figure0));
+            graphStr += "\nGraph:\n\nNumber of vertices: 4\nNumber of edges: 4\n";
+            graphStr += "Total value: {Figure: {type: Circle, centre point: ( 2, 6 ), second point: ( 8, 18 ) }}\n\n";
             graphStr += "| 0 1 0 0 |\n| 1 1 1 0 |\n| 0 1 0 1 |\n| 0 0 1 0 |\n\nVertices:\n";
-            graphStr += "0)value: {5}.\n1)value: {6}.\n2)value: {7}.\n3)value: {8}.\n\n";
+            graphStr += "0)value: {Figure: {type: Circle, centre point: ( 1, 5 ), second point: ( 2, 2 ) }}.\n";
+            graphStr += "1)value: {Figure: {type: Line, first point: ( 1, 3 ), second point: ( 6, 2 ) }}.\n";
+            graphStr += "2)value: {Figure: {type: Line, first point: ( 1, 1 ), second point: ( 2, 11 ) }}.\n";
+            graphStr += "3)value: {Figure: {type: Circle, centre point: ( 0, 0 ), second point: ( 4, 5 ) }}.\n\n";
         }
         SUBCASE("empty graph")
         {
             graphStr = "\nThe graph is empty!\n";
             REQUIRE(graph.getNumberOfVertices() == 0);
             REQUIRE(graph.getNumberOfEdges() == 0);
-            REQUIRE(graph.getTotalValue() == 0);
+            REQUIRE(graph.getTotalValue() == figure0);
         }
         CHECK(graph.getTextRepresentation() == graphStr);
     }

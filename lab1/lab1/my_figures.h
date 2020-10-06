@@ -7,9 +7,9 @@ namespace fop//figures on the plane
 {
 	enum class FiguresType
 	{
-		Circle,
-		Line,
-		Point
+		CIRCLE,
+		LINE,
+		POINT
 	};
 	struct Figure
 	{
@@ -72,11 +72,11 @@ namespace fop
 {
 	//Figure
 	Figure::Figure()
-		: puncturedPoint(nullptr), type(FiguresType::Circle), first(Point()), second(Point()){}
+		: puncturedPoint(nullptr), type(FiguresType::CIRCLE), first(Point()), second(Point()){}
 	Figure::Figure(FiguresType type, Point first, Point second)
 	{		
 		puncturedPoint = nullptr;
-		if (first == second) this->type = FiguresType::Point;
+		if (first == second) this->type = FiguresType::POINT;
 		else this->type = type;
 		this->first = first;
 		this->second = second;
@@ -85,10 +85,10 @@ namespace fop
 	{
 		puncturedPoint = nullptr;
 		int number = rand() % 2;
-		if (number == 0) type = FiguresType::Circle;
-		else type = FiguresType::Line;
-		first = Point(maxValue);
-		second = Point(maxValue);	
+		if (number == 0) type = FiguresType::CIRCLE;
+		else type = FiguresType::LINE;
+		first = Point(maxValue.x);
+		second = Point(maxValue.y);	
 		if (first == second) first.x++;
 	}
 	Figure::Figure(const Figure& figure)
@@ -106,7 +106,7 @@ namespace fop
 	{
 		if (puncturedPoint) delete puncturedPoint;
 		puncturedPoint = nullptr;
-		type = FiguresType::Circle;
+		type = FiguresType::CIRCLE;
 		first = Point();
 		second = Point();
 	}
@@ -114,21 +114,21 @@ namespace fop
 	{
 		switch (type)
 		{
-		case FiguresType::Circle:
+		case FiguresType::CIRCLE:
 		{
 			double x = point.x - first.x, y = point.y - first.y;
 			double radius = distanceBetweenPoints(first, second);
 			return ((pow(x, 2) + pow(y,2)) == doctest::Approx(pow(radius, 2)));
 		}
 			break;
-		case FiguresType::Line:
+		case FiguresType::LINE:
 		{
 			Equation equation{ *this };
 			if ((equation.a * point.x + equation.b * point.y + equation.c) == 0) return true;
 			return false;
 		}
 			break;
-		case FiguresType::Point: return (point == first);
+		case FiguresType::POINT: return (point == first);
 			break;
 		}	
 		return false;
@@ -167,17 +167,17 @@ namespace fop
 	}
 	std::string toTheString(FiguresType value)
 	{
-		if (value == FiguresType::Circle) return "Circle";
-		if (value == FiguresType::Line) return "Line";
+		if (value == FiguresType::CIRCLE) return "Circle";
+		if (value == FiguresType::LINE) return "Line";
 		return "Point";
 	}
 	std::string toTheString(const Figure& value)
 	{
 		std::string result = "Figure: {type: " + toTheString(value.type) + ", ";
-		if (value.type == FiguresType::Circle) result += "centre point";
+		if (value.type == FiguresType::CIRCLE) result += "centre point";
 		else result += "first point";
-		result += " : " + toTheString(value.first);
-		if (value.type != FiguresType::Point) result += ", second point: " + toTheString(value.second);
+		result += ": " + toTheString(value.first);
+		if (value.type != FiguresType::POINT) result += ", second point: " + toTheString(value.second);
 		if (value.puncturedPoint) result += ", punctured point: " + toTheString(*value.puncturedPoint);
 		result +=" }";
 
@@ -185,7 +185,7 @@ namespace fop
 	}
 	Figure randomValue(const Figure& maxValue)
 	{
-		return Figure(maxValue);
+		return Figure(maxValue.first);
 	}
 	//Intersection
 	Intersection::Intersection(): infinity(false), numberOfPoints(0), points({}) {}
@@ -208,7 +208,7 @@ namespace fop
 		a = 0;
 		b = 0;
 		c = 0;
-		if (figure.type == FiguresType::Line)
+		if (figure.type == FiguresType::LINE)
 		{
 			a = figure.second.y - figure.first.y;
 			b = figure.first.x - figure.second.x;
@@ -218,16 +218,16 @@ namespace fop
 	//functions
 	double distanceFromLineToPoint(Figure line, Point point)
 	{
-		if (line.type != FiguresType::Line) return -1;
+		if (line.type != FiguresType::LINE) return -1;
 		Equation equation{ line };
 		return abs(equation.a * point.x + equation.b * point.y - equation.c)
 			/ sqrt(equation.a * equation.a + equation.b * equation.b);
 	}
 	Intersection intersectionOfCircleAndLine(Figure circle, Figure line)
 	{
-		if (circle.type == FiguresType::Line && line.type == FiguresType::Circle)
+		if (circle.type == FiguresType::LINE && line.type == FiguresType::CIRCLE)
 			return intersectionOfCircleAndLine(line, circle);
-		if (circle.type != FiguresType::Circle || line.type != FiguresType::Line) return Intersection();
+		if (circle.type != FiguresType::CIRCLE || line.type != FiguresType::LINE) return Intersection();
 		double distance = distanceFromLineToPoint(line, circle.first);
 		double radius = distanceBetweenPoints(circle.first, circle.second);
 		if (distance > radius) return Intersection();
@@ -256,7 +256,7 @@ namespace fop
 	}
 	Intersection intersectionOfTwoLines(Figure line1, Figure line2)
 	{
-		if (line1.type != FiguresType::Line || line2.type != FiguresType::Line) return Intersection();
+		if (line1.type != FiguresType::LINE || line2.type != FiguresType::LINE) return Intersection();
 		Equation equation1{ line1 }, equation2{ line2 };
 		return solveSystemOfLineEquations(equation1, equation2);
 	}
@@ -304,8 +304,8 @@ namespace fop
 	}
 	Intersection intersectionOfTwoCircles(Figure circle1, Figure circle2)
 	{
-		if (circle1.type != FiguresType::Circle 
-			|| circle2.type != FiguresType::Circle) return Intersection();
+		if (circle1.type != FiguresType::CIRCLE 
+			|| circle2.type != FiguresType::CIRCLE) return Intersection();
 		double radius1 = distanceBetweenPoints(circle1.first, circle1.second);
 		double radius2 = distanceBetweenPoints(circle2.first, circle2.second);
 		// (x - x1)^2 + (y - y1)^2 = radius1^2
@@ -336,7 +336,7 @@ namespace fop
 		{
 			return intersectionOfCircleAndLine(figure1, figure2);
 		}
-		if (figure1.type == FiguresType::Circle)
+		if (figure1.type == FiguresType::CIRCLE)
 		{
 			return intersectionOfTwoCircles(figure1, figure2);
 		}
@@ -345,32 +345,32 @@ namespace fop
 	}
 	Figure createPerpendicularLine(Figure line, Point point)
 	{
-		if (line.type != FiguresType::Line) return Figure();
+		if (line.type != FiguresType::LINE) return Figure();
 		Equation equation1{line}, equation2;
 		equation2.a = line.second.x - line.first.x;
 		equation2.b = line.second.y - line.first.y;
 		equation2.c = point.x * equation2.a + point.y * equation2.b;
 		Intersection intersection = solveSystemOfLineEquations(equation1, equation2);
 		if (intersection.points.size() != 1) return Figure();
-		return Figure(FiguresType::Line, point, intersection.points[0]);
+		return Figure(FiguresType::LINE, point, intersection.points[0]);
 	}
 	Point symmetricalMappingOfPointByLine(Figure line, Point point)
 	{
-		if (line.type != FiguresType::Line) return point;
+		if (line.type != FiguresType::LINE) return point;
 		Figure perpendicularLine = createPerpendicularLine(line, point);//perpendicularLine.second ª line
 
 		return (2 * perpendicularLine.second - point);
 	}
 	Figure symmetricalMappingOfFigureByLine(Figure line, Figure figure)
 	{
-		if (line.type != FiguresType::Line) return figure;
+		if (line.type != FiguresType::LINE) return figure;
 
 		return Figure(figure.type, symmetricalMappingOfPointByLine(line, figure.first)
 								 , symmetricalMappingOfPointByLine(line, figure.second));
 	}
 	Point inversionTransformationOfPointByCircle(Figure circle, Point point)
 	{
-		if (circle.type != FiguresType::Circle) return point;
+		if (circle.type != FiguresType::CIRCLE) return point;
 		constexpr double max = std::numeric_limits<double>::max();
 		constexpr double min = std::numeric_limits<double>::min();
 		if (point == circle.first) return Point(max, max);
@@ -387,29 +387,29 @@ namespace fop
 	}
 	Figure inversionTransformationOfFigureByCircle(Figure circle, Figure figure)
 	{
-		if (circle.type != FiguresType::Circle) return figure;
-		if (figure.type != FiguresType::Point && figure.second == circle.first)
+		if (circle.type != FiguresType::CIRCLE) return figure;
+		if (figure.type != FiguresType::POINT && figure.second == circle.first)
 		{
 			figure.second = 2 * figure.first - figure.second;
 		}
-		if (figure.type == FiguresType::Line && figure.first == circle.first)
+		if (figure.type == FiguresType::LINE && figure.first == circle.first)
 		{
 			figure.first = 2 * figure.second - figure.first;
 		}
 		Point x = inversionTransformationOfPointByCircle(circle, figure.first);
 		Point y = inversionTransformationOfPointByCircle(circle, figure.second);
-		if (figure.type != FiguresType::Point && figure.have(circle.first))
+		if (figure.type != FiguresType::POINT && figure.have(circle.first))
 		{
 			switch (figure.type)
 			{
-			case FiguresType::Circle:
+			case FiguresType::CIRCLE:
 			{
-				Figure line{ FiguresType::Line, x, y};
+				Figure line{ FiguresType::LINE, x, y};
 				line.puncturedPoint = new Point(circle.first);
 				return line;
 			}
 				break;
-			case FiguresType::Line: return figure;
+			case FiguresType::LINE: return figure;
 				break;
 			default:
 				break;
@@ -417,12 +417,12 @@ namespace fop
 		}
 		else
 		{
-			Figure result{ FiguresType::Circle, x, y };
+			Figure result{ FiguresType::CIRCLE, x, y };
 			switch (figure.type)
 			{
-			case FiguresType::Circle: return result;
+			case FiguresType::CIRCLE: return result;
 			break;
-			case FiguresType::Line:
+			case FiguresType::LINE:
 			{				
 				result.puncturedPoint = new Point(circle.first);
 				return result;
@@ -432,6 +432,6 @@ namespace fop
 				break;
 			}
 		}
-		return Figure(FiguresType::Point, x, y);
+		return Figure(FiguresType::POINT, x, y);
 	}
 }
