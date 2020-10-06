@@ -2,7 +2,7 @@
 #include "doctest.h"
 #include "tests_for_graph_matrix.h"
 #include "tests_for_graph_structure.h"
-#include "my_figures.h"
+#include "tests_for_figure.h"
 
 using namespace fop;
 
