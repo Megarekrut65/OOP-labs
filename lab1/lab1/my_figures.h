@@ -37,7 +37,6 @@ namespace fop//figures on the plane
 		Figure inversionTransformationByCircle(Figure circle);
 		Figure symmetricalMappingByLine(Figure line);
 		friend std::string toTheString(const Figure& value);
-		std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD);
 	};	
 	struct Equation//a*x + b * y  = ñ
 	{
@@ -58,6 +57,7 @@ namespace fop//figures on the plane
 	std::string toTheString(FiguresType value);
 	Figure randomValue(const Figure& maxValue);
 	std::vector<Point> solveSystemOfLineEquations(Equation equation1, Equation equation2);
+	std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD);
 }
 namespace fop
 {
@@ -97,23 +97,37 @@ namespace fop
 			return intersectionOfCircleAndLine(line, circle);
 		if (circle.type != FiguresType::CIRCLE || line.type != FiguresType::LINE)
 			return {};
+		double distance = findDistanceFromLineToPoint(line, circle.first);
+		double radius = distanceBetweenPoints(circle.first, circle.second);
+		if (distance > radius) return {};
 		Equation equation1{ line };
 		//Py^2 + Qy + D = 0
-		double bDivA = equation1.b / equation1.a;
-		double coefficientP = pow(bDivA, 2) + 1;
-		double cDivA = equation1.c / equation1.a;
-		double coefficientQ = 2 * (bDivA) * (circle.first.x - 2 * cDivA) - 2 * circle.first.y;
-		double radius = distanceBetweenPoints(circle.first, circle.second);
-		double coefficientD = cDivA * (cDivA - 2 * circle.first.x + pow(circle.first.y, 2) - pow(radius, 2));
+		double coefficientP = 0, coefficientQ = 0, coefficientD = 0;
+		if (equation1.a == 0)
+		{
+			coefficientP = 1;
+			coefficientD = pow(circle.first.x, 2) + pow(equation1.c / equation1.b - circle.first.y, 2) - pow(radius, 2);
+			coefficientQ = -2 * circle.first.x;
+		}
+		else
+		{
+			coefficientP = pow(equation1.b / equation1.a, 2) + 1;
+			coefficientD = pow((equation1.c - equation1.a * circle.first.x) / equation1.a, 2)
+				+ pow(circle.first.y,2) - pow(radius, 2);
+			coefficientQ = -2 * equation1.b * (equation1.c - equation1.a * circle.first.x) / pow(equation1.a, 2) - 2 * circle.first.y;
+		}
 		std::vector<double> y = solveQuadraticEquation(coefficientP, coefficientQ, coefficientD);
 		switch (y.size())
 		{
 		case 0: return {};
 			  break;
-		case 1: return { { cDivA - bDivA * y[0], y[0]} };
+		case 1: if(equation1.a != 0) return  { { equation1.c / equation1.a - (equation1.b / equation1.a) * y[0], y[0]} };
+			    else return  { { y[0], equation1.c / equation1.b} };
 			  break;
-		case 2: return { {cDivA - bDivA * y[0], y[0]}
-					 ,{ cDivA - bDivA * y[1], y[1]} };
+		case 2: if (equation1.a != 0) return { {equation1.c / equation1.a - (equation1.b / equation1.a) * y[0], y[0]}
+					 ,{ equation1.c / equation1.a - (equation1.b / equation1.a) * y[1], y[1]} };
+			    else return { { y[0], equation1.c / equation1.b}
+					 ,{ y[1], equation1.c / equation1.b } };
 			  break;
 		}
 		return {};
@@ -426,7 +440,7 @@ namespace fop
 		double y = determinant2 / determinant;
 		return { {x, y} };
 	}
-	std::vector<double> Figure::solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD)
+	std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD)
 	{
 		if (coefficientP == doctest::Approx(0))
 		{
