@@ -1024,7 +1024,7 @@ TEST_CASE("testing the creating GraphMatrix<double>")
     }
     REQUIRE(graph.getNumberOfVertices() == 10);
     REQUIRE(graph.getNumberOfEdges() == 29);
-    REQUIRE(graph.getTotalValue() != 0);
+    REQUIRE(graph.getTotalValue() != doctest::Approx(0));
 }
 TEST_CASE("testing the getting text representation of GraphMatrix<double>")
 {
