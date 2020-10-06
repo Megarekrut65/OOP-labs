@@ -47,5 +47,8 @@
     <ClInclude Include="my_point.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tests_for_figure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

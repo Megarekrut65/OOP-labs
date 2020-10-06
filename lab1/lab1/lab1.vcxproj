@@ -149,6 +149,7 @@
     <ClInclude Include="my_override_functions_and_operators.h" />
     <ClInclude Include="my_paths_between_vertices.h" />
     <ClInclude Include="my_point.h" />
+    <ClInclude Include="tests_for_figure.h" />
     <ClInclude Include="tests_for_graph_matrix.h" />
     <ClInclude Include="tests_for_graph_structure.h" />
   </ItemGroup>
