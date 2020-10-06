@@ -140,20 +140,43 @@ TEST_CASE("testing the inversion transformation by circle")
 		CHECK(point3.first == Point(3, 4));
 		CHECK(point3.second == Point(3, 4));
 	}
-	/*SUBCASE("for circle")
+	SUBCASE("for other circle that not crossing the centre of circle")
 	{
-		Figure circle1{ FiguresType::CIRCLE, {2, 3}, {6, 0} };
+		Figure circle1{ FiguresType::CIRCLE, {6, 4}, {4, 3} };
+		CHECK(!circle1.havePoint({ -3, 3 }));
 		Figure circle2 = circle1.inversionTransformationByCircle(circle);
 		CHECK(circle2.type == FiguresType::CIRCLE);
-		CHECK(circle2.first == Point(6, 3));
-		CHECK(circle2.second == Point(2, 0));
+		CHECK(circle2.first == Point(-0.256098, 3.30488));
+		CHECK(circle2.second == Point(0.571429, 3));
 	}
-	SUBCASE("for other line")
+	SUBCASE("for other circle that crossing the centre of circle")
 	{
-		Figure line1{ FiguresType::LINE, {3, 3}, {5, 5} };
+		Figure circle1{ FiguresType::CIRCLE, {2, 3}, {-3, 3} };
+		CHECK(circle1.havePoint({ -3, 3 }));
+		Figure circle2 = circle1.inversionTransformationByCircle(circle);
+		CHECK(circle2.type == FiguresType::LINE);
+		CHECK(circle2.first == Point(2, 3));
+		CHECK(circle2.second == Point(-0.5, 3));		
+		CHECK(!circle2.havePoint({ -3, 3 }));
+	}
+	SUBCASE("for other line that not crossing the centre of circle")
+	{
+		Figure line1{ FiguresType::LINE, {9, 2}, {10, 4} };
+		CHECK(!line1.havePoint({ -3, 3 }));
+		Figure line2 = line1.inversionTransformationByCircle(circle);
+		CHECK(line2.type == FiguresType::CIRCLE);
+		CHECK(line2.first == Point(-0.931034, 2.82759));
+		CHECK(line2.second == Point(-1.08824, 3.14706));	
+		CHECK(!line2.havePoint({ -3, 3 }));
+	}
+	SUBCASE("for other line that crossing the centre of circle")
+	{
+		Figure line1{ FiguresType::LINE, {-4, 2}, {-1, 5} };
+		CHECK(line1.havePoint({ -3, 3 }));
 		Figure line2 = line1.inversionTransformationByCircle(circle);
 		CHECK(line2.type == FiguresType::LINE);
-		CHECK(line2.first == Point(5, 3));
-		CHECK(line2.second == Point(3, 5));
-	}*/
+		CHECK(line2.first == Point(-4, 2));
+		CHECK(line2.second == Point(-1, 5));
+		CHECK(line2.havePoint({ -3, 3 }));
+	}
 }

@@ -281,7 +281,7 @@ namespace fop
 		case FiguresType::LINE:
 		{
 			Equation equation{ *this };
-			if ((equation.a * point.x + equation.b * point.y + equation.c) == 0) return true;
+			if ((equation.a * point.x + equation.b * point.y - equation.c) == doctest::Approx(0)) return true;
 			return false;
 		}
 			break;
