@@ -17,13 +17,14 @@ private:
     int sec;
     QString makeCorrect(int value);
 public:
+    QString name;
     MyTimer();
-    MyTimer(int hour, int min, int sec);
-    MyTimer(QString stringTime);
+    MyTimer( const QString& name, int hour, int min, int sec);
+    MyTimer( const QString& name, const QString& stringTime);
     void setTime(int hour, int min, int sec);
     void addTime(int sec);
     void updateTime();
-    QString getQString();
+    QString getQStringTime();
 };
 
 class MainWindow : public QMainWindow
@@ -37,11 +38,16 @@ public:
 private slots:
     void on_btnTimer_clicked();
 
+    void on_btnRight_clicked();
+
+    void on_btnLeft_clicked();
+
 private:
     Ui::MainWindow *ui;
     QVector<MyTimer> timers;
     int indexOfCurrentTimer;
     void startTheTimer();
     void updateAllTimers();
+    void moveTimer();
 };
 #endif // MAINWINDOW_H
