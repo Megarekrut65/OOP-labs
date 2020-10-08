@@ -135,3 +135,20 @@ void MainWindow::moveTimer()
     ui->lblTimer->setText(timers[indexOfCurrentTimer].getQStringTime());
     ui->lblTimerName->setText(timers[indexOfCurrentTimer].name);
 }
+void MyTimer::turnOn()
+{
+    active = true;
+}
+void MyTimer::turnOff()
+{
+    active = false;
+}
+void MainWindow::on_btnStart_clicked()
+{
+    timers[indexOfCurrentTimer].turnOn();
+}
+
+void MainWindow::on_btnPause_clicked()
+{
+     timers[indexOfCurrentTimer].turnOff();
+}

@@ -64,7 +64,7 @@ public:
         font1.setFamily(QString::fromUtf8("Segoe UI Light"));
         font1.setPointSize(48);
         lblTimer->setFont(font1);
-        lblTimer->setCursor(QCursor(Qt::PointingHandCursor));
+        lblTimer->setCursor(QCursor(Qt::ArrowCursor));
         lblTimer->setScaledContents(false);
         lblTimer->setAlignment(Qt::AlignCenter);
         lblTimer->setWordWrap(false);
@@ -107,7 +107,7 @@ public:
         font4.setFamily(QString::fromUtf8("Orator Std"));
         font4.setPointSize(36);
         lblTimerName->setFont(font4);
-        lblTimerName->setCursor(QCursor(Qt::PointingHandCursor));
+        lblTimerName->setCursor(QCursor(Qt::ArrowCursor));
         lblTimerName->setAutoFillBackground(false);
         lblTimerName->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);

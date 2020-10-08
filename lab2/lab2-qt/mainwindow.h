@@ -25,6 +25,8 @@ public:
     void addTime(int sec);
     void updateTime();
     QString getQStringTime();
+    void turnOn();
+    void turnOff();
 };
 
 class MainWindow : public QMainWindow
@@ -41,6 +43,10 @@ private slots:
     void on_btnRight_clicked();
 
     void on_btnLeft_clicked();
+
+    void on_btnStart_clicked();
+
+    void on_btnPause_clicked();
 
 private:
     Ui::MainWindow *ui;
