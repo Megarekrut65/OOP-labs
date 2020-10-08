@@ -18,8 +18,9 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_btnTimer_clicked()
 {
-QPushButton *buttonCreate = new QPushButton(tr("Create"), this);
-QPushButton *buttonDelete = new QPushButton(tr("Create"), this);
+QPushButton *buttonCreate = new QPushButton(tr("Create new timer"), this);
+QPushButton *buttonEdit = new QPushButton(tr("Create new timer"), this);
+QPushButton *buttonDelete = new QPushButton(tr("Delete"), this);
    timers.push_back(MyTimer("my timer", 5, 10, 13));
    indexOfCurrentTimer = timers.size() - 1;
    moveTimer();

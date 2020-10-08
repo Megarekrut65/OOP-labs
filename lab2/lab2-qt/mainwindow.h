@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QMessageBox>
+#include <QAbstractButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
