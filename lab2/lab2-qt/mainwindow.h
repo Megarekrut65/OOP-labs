@@ -7,18 +7,22 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-class MyTime
+
+class MyTimer
 {
 private:
+    bool active;
     int hour;
     int min;
     int sec;
     QString makeCorrect(int value);
 public:
-    MyTime();
-    MyTime(int hour, int min, int sec);
-    MyTime(QString stringTime);
-    bool minusOne();
+    MyTimer();
+    MyTimer(int hour, int min, int sec);
+    MyTimer(QString stringTime);
+    void setTime(int hour, int min, int sec);
+    void addTime(int sec);
+    void updateTime();
     QString getQString();
 };
 
@@ -35,6 +39,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QVector<MyTimer> timers;
+    int indexOfCurrentTimer;
     void startTheTimer();
     void updateAllTimers();
 };

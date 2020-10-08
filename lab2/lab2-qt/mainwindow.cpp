@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    timers.push_back(MyTimer(1,1,8));
+    indexOfCurrentTimer = 0;
     startTheTimer();
 }
 
@@ -13,29 +15,10 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-MyTime:: MyTime():hour(0), min(0), sec(0) {}
-MyTime:: MyTime(int hour, int min, int sec):hour(hour), min(min), sec(sec) {}
-MyTime:: MyTime(QString stringTime)
-{
-    QStringList parts = stringTime.split(":");
-    if(parts.size() == 3)
-    {
-        hour = parts[0].toInt();
-        min =  parts[1].toInt();
-        sec = parts[2].toInt();
-    }
-    else
-    {
-         hour = 0;
-         min = 0;
-         sec = 0;
-    }
-}
 void MainWindow::on_btnTimer_clicked()
 {
-    QString add = ui->lblTimer->text();
-    add+="+";
-    ui->lblTimer->setText(add);
+   timers.push_back(MyTimer(1, 8, 5));
+   indexOfCurrentTimer++;
 }
 void MainWindow:: startTheTimer()
 {
@@ -45,33 +28,34 @@ void MainWindow:: startTheTimer()
 }
 void MainWindow::updateAllTimers()
 {
-    QString stringTime = ui->lblTimer->text();
-    MyTime myTime(stringTime);
-    if(!myTime.minusOne())
-    {
-        //end timer
-    }
-    ui->lblTimer->setText(myTime.getQString());
+    timers[indexOfCurrentTimer].updateTime();
+    ui->lblTimer->setText(timers[indexOfCurrentTimer].getQString());
 }
-bool MyTime::minusOne()
- {
-    if(sec > 0) sec--;
-    else if(min > 0)
+MyTimer::MyTimer(): active(false), hour(0), min(0), sec(0) {}
+MyTimer::MyTimer(int hour, int min, int sec)
+{
+  active = true;
+  if(hour < 0) hour = 0;
+  if(min < 0) min = 0;
+  if(sec < 0) sec = 0;
+  if(hour == 0 && min == 0 && sec == 0) active = false;
+  this->hour = hour;
+  this->min = min;
+  this->sec = sec;
+}
+MyTimer::MyTimer(QString stringTime)
+{
+    QStringList parts = stringTime.split(":");
+    if(parts.size() == 3)
     {
-        min--;
-        sec = 59;
+        MyTimer(parts[0].toInt(), parts[1].toInt(), parts[2].toInt());
     }
-    else if(hour > 0)
+    else
     {
-        hour--;
-        min = 59;
-        sec = 59;
+        MyTimer();
     }
-    else return false;
-
-    return true;
- }
-QString MyTime::makeCorrect(int value)
+}
+QString MyTimer::makeCorrect(int value)
 {
     QString res = "";
     if(value / 10 == 0)
@@ -85,23 +69,55 @@ QString MyTime::makeCorrect(int value)
 
     return res;
 }
- QString MyTime::getQString()
+ QString MyTimer::getQString()
  {
      QString res = makeCorrect(hour) + ":"
              + makeCorrect(min) + ":" + makeCorrect(sec);
 
      return res;
  }
+ void MyTimer::setTime(int hour, int min, int sec)
+ {
+     MyTimer(hour, min, sec);
+ }
+ void MyTimer::addTime(int sec)
+ {
+    if(sec <= 0) return;
+    sec += sec;
+    if(sec >= 60)
+    {
+        min+= sec/60;
+        sec %= 60;
+        if(min >= 60)
+        {
+            hour+= min/60;
+            min %= 60;
+        }
+    }
+ }
+ void MyTimer::updateTime()
+ {
+     if(!active) return;
+     if(sec > 0) sec--;
+     else if(min > 0)
+     {
+         min--;
+         sec = 59;
+     }
+     else if(hour > 0)
+     {
+         hour--;
+         min = 59;
+         sec = 59;
+     }
+     else active = false;
+ }
+void MainWindow::on_btnRight_clicked()
+{
 
+}
 
+void MainWindow::on_btnLeft_clicked()
+{
 
-
-
-
-
-
-
-
-
-
-
+}
