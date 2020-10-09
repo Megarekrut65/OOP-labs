@@ -1,8 +1,14 @@
 var searchData=
 [
-  ['edge',['Edge',['../structgm_1_1_edge.html#a16a869644977808f26b775d0f53128f9',1,'gm::Edge::Edge()'],['../structgm_1_1_edge.html#a32c86440a158bba7235181bd9e1c70a3',1,'gm::Edge::Edge(bool contiguity, T value)']]],
-  ['epsilon',['epsilon',['../classdoctest_1_1_approx.html#af8df6b0af00fd875e5b6a0c30b86f636',1,'doctest::Approx']]],
-  ['equation',['Equation',['../structfop_1_1_equation.html#a6cd4c227e9b83e949c4c2568854512a3',1,'fop::Equation::Equation()'],['../structfop_1_1_equation.html#a93886a166390114aa62609af6ddd1d72',1,'fop::Equation::Equation(Figure figure)']]],
-  ['exceptiontranslator',['ExceptionTranslator',['../classdoctest_1_1detail_1_1_exception_translator.html#a3ac05488993c40c6ba55ce51a6bf7eae',1,'doctest::detail::ExceptionTranslator']]],
-  ['expressiondecomposer',['ExpressionDecomposer',['../structdoctest_1_1detail_1_1_expression_decomposer.html#a6bf2c46ebf0dc68106be801a90776e65',1,'doctest::detail::ExpressionDecomposer']]]
+  ['getedgevalue',['getEdgeValue',['../classgm_1_1_graph_matrix.html#a57fbb70b98bfdd89400afaaac7af20ec',1,'gm::GraphMatrix']]],
+  ['getnumberofedges',['getNumberOfEdges',['../classgm_1_1_graph_matrix.html#a4c240da5b6fb8ca0f0b65b179fcddf60',1,'gm::GraphMatrix']]],
+  ['getnumberofvertices',['getNumberOfVertices',['../classgm_1_1_graph_matrix.html#a4efd9cd32511a16462cbbb22f9a5c37b',1,'gm::GraphMatrix']]],
+  ['getpathbetweentwovertices',['getPathBetweenTwoVertices',['../classgm_1_1_graph_matrix.html#aff0a3d3adbdcc6bce105e8c10f422a4b',1,'gm::GraphMatrix']]],
+  ['getpathsfromthevertextoeveryoneelse',['getPathsFromTheVertexToEveryoneElse',['../classgm_1_1_graph_matrix.html#a2eb3d434634993733dfd8fb7515ca8b9',1,'gm::GraphMatrix']]],
+  ['getspanningtree',['getSpanningTree',['../classgm_1_1_graph_matrix.html#a490a9ef8eb86acc75c42a97cf5dbb368',1,'gm::GraphMatrix']]],
+  ['gettextrepresentation',['getTextRepresentation',['../classgm_1_1_graph_matrix.html#a58ac0e38794e668383319945b3c59f08',1,'gm::GraphMatrix']]],
+  ['getthesmallestspanningtree',['getTheSmallestSpanningTree',['../classgm_1_1_graph_matrix.html#a8e60714a5f3b6fae8c04be67bbf8b56c',1,'gm::GraphMatrix']]],
+  ['gettotalvalue',['getTotalValue',['../classgm_1_1_graph_matrix.html#a2dd4beb317ef1742df02eee6581c1194',1,'gm::GraphMatrix']]],
+  ['getvertexvalue',['getVertexValue',['../classgm_1_1_graph_matrix.html#adacccfacb1c46e0fa0ca173846f48a11',1,'gm::GraphMatrix']]],
+  ['graphmatrix',['GraphMatrix',['../classgm_1_1_graph_matrix.html#a8f4f156e67d7425f1cc5784384a83757',1,'gm::GraphMatrix::GraphMatrix()'],['../classgm_1_1_graph_matrix.html#a24ab316e39e3a26c9208c81af0e3e48d',1,'gm::GraphMatrix::GraphMatrix(bool orientation)'],['../classgm_1_1_graph_matrix.html#a091be187f54bd8fc750696c4e97e9552',1,'gm::GraphMatrix::GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T &amp;maxValue)']]]
 ];

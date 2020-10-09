@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['havepoint',['havePoint',['../classfop_1_1_figure.html#adaa195836173f677f9207c0b5f9c84fe',1,'fop::Figure']]]
+  ['_7egraphmatrix',['~GraphMatrix',['../classgm_1_1_graph_matrix.html#a3b0993020ce3351d0ec4b7fe2adc2580',1,'gm::GraphMatrix']]]
 ];

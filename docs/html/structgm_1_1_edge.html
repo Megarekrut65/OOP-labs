@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OPP-lab1: gm::Edge&lt; T &gt; Struct Template Reference</title>
+<title>OOP-labs: gm::Edge&lt; T &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,10 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">OPP-lab1
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">OOP-labs
    </div>
-   <div id="projectbrief">-</div>
   </td>
  </tr>
  </tbody>
@@ -76,13 +74,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="structgm_1_1_edge.html" title="Edge in GraphMatrix. ">Edge</a> in <a class="el" href="classgm_1_1_graph_matrix.html" title="Class for representing a graph in the form of a adjacency matrix. ">GraphMatrix</a>.  
+ <a href="structgm_1_1_edge.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="my__graph__matrix_8h_source.html">my_graph_matrix.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a16a869644977808f26b775d0f53128f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgm_1_1_edge.html#a16a869644977808f26b775d0f53128f9">Edge</a> ()</td></tr>
+<tr class="memdesc:a16a869644977808f26b775d0f53128f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a16a869644977808f26b775d0f53128f9">More...</a><br /></td></tr>
 <tr class="separator:a16a869644977808f26b775d0f53128f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32c86440a158bba7235181bd9e1c70a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgm_1_1_edge.html#a32c86440a158bba7235181bd9e1c70a3">Edge</a> (bool <a class="el" href="structgm_1_1_edge.html#ad9bbe3016236ffff899a0b982e96a6cd">contiguity</a>, T <a class="el" href="structgm_1_1_edge.html#a45d07f827a6133ea2179fdbebe0867f1">value</a>)</td></tr>
+<tr class="memdesc:a32c86440a158bba7235181bd9e1c70a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameterized constructor.  <a href="#a32c86440a158bba7235181bd9e1c70a3">More...</a><br /></td></tr>
 <tr class="separator:a32c86440a158bba7235181bd9e1c70a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -92,7 +95,13 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a45d07f827a6133ea2179fdbebe0867f1"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgm_1_1_edge.html#a45d07f827a6133ea2179fdbebe0867f1">value</a></td></tr>
 <tr class="separator:a45d07f827a6133ea2179fdbebe0867f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+struct gm::Edge&lt; T &gt;</h3>
+
+<p><a class="el" href="structgm_1_1_edge.html" title="Edge in GraphMatrix. ">Edge</a> in <a class="el" href="classgm_1_1_graph_matrix.html" title="Class for representing a graph in the form of a adjacency matrix. ">GraphMatrix</a>. </p>
+<p>This struct is used to preserve the value of graph edges </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a16a869644977808f26b775d0f53128f9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a16a869644977808f26b775d0f53128f9">&#9670;&nbsp;</a></span>Edge() <span class="overload">[1/2]</span></h2>
 
@@ -109,6 +118,9 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
+<p>Creates empty edge between non-contiguity vertices </p>
 
 </div>
 </div>
@@ -140,6 +152,9 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Parameterized constructor. </p>
+<p>Creates edge between contiguity vertices. <a class="el" href="structgm_1_1_edge.html" title="Edge in GraphMatrix. ">Edge</a> retains the value </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -156,6 +171,7 @@ template&lt;typename T&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Reports whether the vertices at the ends of the edge are contiguity </p>
 
 </div>
 </div>
@@ -172,11 +188,12 @@ template&lt;typename T&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Eigenvalue, which is stored in the edge </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab1/lab1/<a class="el" href="my__graph__matrix_8h_source.html">my_graph_matrix.h</a></li>
+<li>lab1/<a class="el" href="my__graph__matrix_8h_source.html">my_graph_matrix.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

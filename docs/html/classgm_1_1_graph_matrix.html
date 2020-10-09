@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OPP-lab1: gm::GraphMatrix&lt; T &gt; Class Template Reference</title>
+<title>OOP-labs: gm::GraphMatrix&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,10 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">OPP-lab1
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">OOP-labs
    </div>
-   <div id="projectbrief">-</div>
   </td>
  </tr>
  </tbody>
@@ -75,25 +73,36 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Class for representing a graph in the form of a adjacency matrix.  
+ <a href="classgm_1_1_graph_matrix.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="my__graph__matrix_8h_source.html">my_graph_matrix.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8f4f156e67d7425f1cc5784384a83757"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a8f4f156e67d7425f1cc5784384a83757">GraphMatrix</a> ()</td></tr>
+<tr class="memdesc:a8f4f156e67d7425f1cc5784384a83757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a8f4f156e67d7425f1cc5784384a83757">More...</a><br /></td></tr>
 <tr class="separator:a8f4f156e67d7425f1cc5784384a83757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24ab316e39e3a26c9208c81af0e3e48d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a24ab316e39e3a26c9208c81af0e3e48d">GraphMatrix</a> (bool orientation)</td></tr>
+<tr class="memdesc:a24ab316e39e3a26c9208c81af0e3e48d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edited default constructor.  <a href="#a24ab316e39e3a26c9208c81af0e3e48d">More...</a><br /></td></tr>
 <tr class="separator:a24ab316e39e3a26c9208c81af0e3e48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a091be187f54bd8fc750696c4e97e9552"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a091be187f54bd8fc750696c4e97e9552">GraphMatrix</a> (std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T &amp;maxValue)</td></tr>
+<tr class="memdesc:a091be187f54bd8fc750696c4e97e9552"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random Constructor.  <a href="#a091be187f54bd8fc750696c4e97e9552">More...</a><br /></td></tr>
 <tr class="separator:a091be187f54bd8fc750696c4e97e9552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b0993020ce3351d0ec4b7fe2adc2580"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a3b0993020ce3351d0ec4b7fe2adc2580">~GraphMatrix</a> ()</td></tr>
+<tr class="memdesc:a3b0993020ce3351d0ec4b7fe2adc2580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a3b0993020ce3351d0ec4b7fe2adc2580">More...</a><br /></td></tr>
 <tr class="separator:a3b0993020ce3351d0ec4b7fe2adc2580"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a300259b6a1b30f01d5084b48b22a83b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a300259b6a1b30f01d5084b48b22a83b8">addVertex</a> (const T &amp;value, bool show=false)</td></tr>
+<tr class="memdesc:a300259b6a1b30f01d5084b48b22a83b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adding the vertex to graph.  <a href="#a300259b6a1b30f01d5084b48b22a83b8">More...</a><br /></td></tr>
 <tr class="separator:a300259b6a1b30f01d5084b48b22a83b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0500fe2b6a585690c33ca4ee182cbdea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a0500fe2b6a585690c33ca4ee182cbdea">addEdge</a> (std::size_t beginIndex, std::size_t endIndex, const T &amp;value, bool show=false)</td></tr>
+<tr class="memdesc:a0500fe2b6a585690c33ca4ee182cbdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adding the edge to graph.  <a href="#a0500fe2b6a585690c33ca4ee182cbdea">More...</a><br /></td></tr>
 <tr class="separator:a0500fe2b6a585690c33ca4ee182cbdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43883f2cb97bc0286809be6fc8972838"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a43883f2cb97bc0286809be6fc8972838">removeVertex</a> (std::size_t index, bool show=false)</td></tr>
+<tr class="memdesc:a43883f2cb97bc0286809be6fc8972838"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removing vertex from graph.  <a href="#a43883f2cb97bc0286809be6fc8972838">More...</a><br /></td></tr>
 <tr class="separator:a43883f2cb97bc0286809be6fc8972838"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaee8cb1c4d2bab6fcba5f3fc64852bfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#aaee8cb1c4d2bab6fcba5f3fc64852bfd">removeEdge</a> (std::size_t beginIndex, std::size_t endIndex, bool show=false)</td></tr>
+<tr class="memdesc:aaee8cb1c4d2bab6fcba5f3fc64852bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removing edge from graph.  <a href="#aaee8cb1c4d2bab6fcba5f3fc64852bfd">More...</a><br /></td></tr>
 <tr class="separator:aaee8cb1c4d2bab6fcba5f3fc64852bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4efd9cd32511a16462cbbb22f9a5c37b"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a4efd9cd32511a16462cbbb22f9a5c37b">getNumberOfVertices</a> ()</td></tr>
 <tr class="separator:a4efd9cd32511a16462cbbb22f9a5c37b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,23 +115,40 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a57fbb70b98bfdd89400afaaac7af20ec"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a57fbb70b98bfdd89400afaaac7af20ec">getEdgeValue</a> (std::size_t beginIndex, std::size_t endIndex)</td></tr>
 <tr class="separator:a57fbb70b98bfdd89400afaaac7af20ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58ac0e38794e668383319945b3c59f08"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a58ac0e38794e668383319945b3c59f08">getTextRepresentation</a> ()</td></tr>
+<tr class="memdesc:a58ac0e38794e668383319945b3c59f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method like function std::to_string.  <a href="#a58ac0e38794e668383319945b3c59f08">More...</a><br /></td></tr>
 <tr class="separator:a58ac0e38794e668383319945b3c59f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab91a8713c4e8ed19bedc58f1cfab2bc5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#ab91a8713c4e8ed19bedc58f1cfab2bc5">checkingTheConnectivity</a> (bool show=false)</td></tr>
+<tr class="memdesc:ab91a8713c4e8ed19bedc58f1cfab2bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checking whether the graph is connected.  <a href="#ab91a8713c4e8ed19bedc58f1cfab2bc5">More...</a><br /></td></tr>
 <tr class="separator:ab91a8713c4e8ed19bedc58f1cfab2bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91506a78cf2efe32f6c48a7f12914a43"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a91506a78cf2efe32f6c48a7f12914a43">depthFirstSearch</a> (bool show=false)</td></tr>
+<tr class="memdesc:a91506a78cf2efe32f6c48a7f12914a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Algorithm for traversing graph.  <a href="#a91506a78cf2efe32f6c48a7f12914a43">More...</a><br /></td></tr>
 <tr class="separator:a91506a78cf2efe32f6c48a7f12914a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff0a3d3adbdcc6bce105e8c10f422a4b"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#aff0a3d3adbdcc6bce105e8c10f422a4b">getPathBetweenTwoVertices</a> (std::size_t beginIndex, std::size_t endIndex, bool show=false)</td></tr>
+<tr class="memdesc:aff0a3d3adbdcc6bce105e8c10f422a4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finding the smallest path.  <a href="#aff0a3d3adbdcc6bce105e8c10f422a4b">More...</a><br /></td></tr>
 <tr class="separator:aff0a3d3adbdcc6bce105e8c10f422a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2eb3d434634993733dfd8fb7515ca8b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpbv_1_1_paths_between_vertices.html">PathsBetweenVertices</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a2eb3d434634993733dfd8fb7515ca8b9">getPathsFromTheVertexToEveryoneElse</a> (std::size_t beginIndex, bool show=false)</td></tr>
+<tr class="memdesc:a2eb3d434634993733dfd8fb7515ca8b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finding the smallest paths.  <a href="#a2eb3d434634993733dfd8fb7515ca8b9">More...</a><br /></td></tr>
 <tr class="separator:a2eb3d434634993733dfd8fb7515ca8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f88b6ebce9cc1ed403d414cd173da02"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a8f88b6ebce9cc1ed403d414cd173da02">topologicalSorting</a> (bool show=false)</td></tr>
+<tr class="memdesc:a8f88b6ebce9cc1ed403d414cd173da02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Algorithm topological sorting of oriented graph only.  <a href="#a8f88b6ebce9cc1ed403d414cd173da02">More...</a><br /></td></tr>
 <tr class="separator:a8f88b6ebce9cc1ed403d414cd173da02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a490a9ef8eb86acc75c42a97cf5dbb368"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgm_1_1_graph_matrix.html">GraphMatrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a490a9ef8eb86acc75c42a97cf5dbb368">getSpanningTree</a> (bool show=false)</td></tr>
+<tr class="memdesc:a490a9ef8eb86acc75c42a97cf5dbb368"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creating spanning tree.  <a href="#a490a9ef8eb86acc75c42a97cf5dbb368">More...</a><br /></td></tr>
 <tr class="separator:a490a9ef8eb86acc75c42a97cf5dbb368"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e60714a5f3b6fae8c04be67bbf8b56c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgm_1_1_graph_matrix.html">GraphMatrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgm_1_1_graph_matrix.html#a8e60714a5f3b6fae8c04be67bbf8b56c">getTheSmallestSpanningTree</a> (bool show=false)</td></tr>
+<tr class="memdesc:a8e60714a5f3b6fae8c04be67bbf8b56c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creating the smallest spanning tree.  <a href="#a8e60714a5f3b6fae8c04be67bbf8b56c">More...</a><br /></td></tr>
 <tr class="separator:a8e60714a5f3b6fae8c04be67bbf8b56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+class gm::GraphMatrix&lt; T &gt;</h3>
+
+<p>Class for representing a graph in the form of a adjacency matrix. </p>
+<p>See <a href="https://en.wikipedia.org/wiki/Adjacency_matrix" title="Information about adjacency matrix in Wikipedia">Adjacency Matrix</a></p>
+<p>The edges are stored in std::vector&lt;std::vector&lt;Edge&lt;T&gt;&gt;&gt; matrix, and the vertices are stored in std::vector&lt;T&gt;vertices</p>
+<p>This class also stores information about the number of edges and vertices, the weight of the graph, and information about the orientation of the graph</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgs_1_1_graph_structure.html" title="Class for representing a graph in the form of a adjacency list(I use the name &quot;adjacency structure&quot;) ...">gs::GraphStructure</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8f4f156e67d7425f1cc5784384a83757"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f4f156e67d7425f1cc5784384a83757">&#9670;&nbsp;</a></span>GraphMatrix() <span class="overload">[1/3]</span></h2>
 
@@ -139,6 +165,9 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
+<p>Creates a empty no-oriented graph without vertices and edges </p>
 
 </div>
 </div>
@@ -159,6 +188,9 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Edited default constructor. </p>
+<p>Creates a empty no-oriented graph if orientation is false or creates a empty oriented graph if orientation is true. In two cases graph will be without vertices and edges </p>
 
 </div>
 </div>
@@ -202,6 +234,9 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Random Constructor. </p>
+<p>Creates no-oriented or oriented graph with the specified number of vertices and edges. The value of the vertices and edges will not be greater than the maxValue </p>
+
 </div>
 </div>
 <a id="a3b0993020ce3351d0ec4b7fe2adc2580"></a>
@@ -220,6 +255,9 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor. </p>
+<p>Clears all arrays in this class </p>
 
 </div>
 </div>
@@ -264,6 +302,20 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Adding the edge to graph. </p>
+<p>If the graph has vertices with indexes beginIndex and endIndex then creates new edge with value between these vertices <br />
+ Adds the edge to matrix[beginIndex][endIndex]. If the graph is no-oriented then also adds the edge to matrix[endIndex][beginIndex]</p>
+<p>The numberOfEdges will increase by one</p>
+<p>Adds to the totalValue its value </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beginIndex</td><td>is index of first vertex </td></tr>
+    <tr><td class="paramname">endIndex</td><td>is index of second vertex </td></tr>
+    <tr><td class="paramname">value</td><td>that be stored in the new edge </td></tr>
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a300259b6a1b30f01d5084b48b22a83b8"></a>
@@ -294,6 +346,18 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Adding the vertex to graph. </p>
+<p>Adds new vertex with value to the end of vertices.</p>
+<p>Adds one column and one row to the matrix</p>
+<p>Index of vertex will be equal to numberOfVertices and numberOfVertices will increase by one.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>that be stored in the new vertex </td></tr>
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab91a8713c4e8ed19bedc58f1cfab2bc5"></a>
@@ -314,6 +378,17 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Checking whether the graph is connected. </p>
+<p>See <a href="https://en.wikipedia.org/w/index.php?search=Connectivity+graph+theory&amp;title=Special%3ASearch&amp;fulltext=1&amp;ns0=1" title="Graph theory in Wikipedia">Connectivity of graph</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- true if the graph is connected </dd>
+<dd>
+- false if the graph isn't connected </dd></dl>
+
 </div>
 </div>
 <a id="a91506a78cf2efe32f6c48a7f12914a43"></a>
@@ -333,6 +408,16 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Algorithm for traversing graph. </p>
+<p>See <a href="https://en.wikipedia.org/wiki/Depth-first_search" title="Graph theory in Wikipedia">Depth-first search for graph</a></p>
+<p>Indexes are added to the array taking into account the order of traversal of the graph If the graph isn't connected then the function cannot perform a search and array will be empty </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- array of indexes of vertices </dd></dl>
 
 </div>
 </div>
@@ -363,6 +448,16 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beginIndex</td><td>is index of first vertex </td></tr>
+    <tr><td class="paramname">endIndex</td><td>is index of second vertex </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- value of edge between vertices with indexes beginIndex and endIndex if the graph have their </dd>
+<dd>
+- default value if the graph haven't this edge </dd></dl>
 
 </div>
 </div>
@@ -382,6 +477,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>- number of edges in the graph </dd></dl>
 
 </div>
 </div>
@@ -401,6 +497,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>- number of vertices in the graph </dd></dl>
 
 </div>
 </div>
@@ -438,6 +535,21 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Finding the smallest path. </p>
+<p>Finds the path from beginIndex to endIndex. Uses dijkstra algorithm</p>
+<p>If the graph isn't connected then the function cannot find the path</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beginIndex</td><td>is index of first vertex </td></tr>
+    <tr><td class="paramname">endIndex</td><td>is index of second vertex </td></tr>
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- the smallest path between two vertices </dd>
+<dd>
+- default value if the graph haven't these vertices or graph isn't connected </dd></dl>
+
 </div>
 </div>
 <a id="a2eb3d434634993733dfd8fb7515ca8b9"></a>
@@ -468,6 +580,20 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Finding the smallest paths. </p>
+<p>Finds the paths from beginIndex to everyone else. Uses dijkstra algorithm</p>
+<p>If the graph isn't connected then the function cannot find the paths</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beginIndex</td><td>is index of the vertex </td></tr>
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- struct PathsBetweenVertices that has the smallest paths between vertices </dd>
+<dd>
+- empty struct PathsBetweenVertices if the graph haven't this vertex or graph isn't connected </dd></dl>
+
 </div>
 </div>
 <a id="a490a9ef8eb86acc75c42a97cf5dbb368"></a>
@@ -488,6 +614,19 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Creating spanning tree. </p>
+<p>Creates spannig tree from non-oriented graph only. Uses the Depth-first search algorithm</p>
+<p>The resulting graph will have all vertices, but the number of edges may be smaller, resulting in less weight of the graph</p>
+<p>See <a href="https://en.wikipedia.org/wiki/Spanning_tree" title="Graph theory in Wikipedia">Spannig tree</a></p>
+<p>In fact, the spanning tree will consist of the path obtained by searching</p>
+<p>If graph isn't connected then spanning tree will be empty </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- created graph </dd></dl>
+
 </div>
 </div>
 <a id="a58ac0e38794e668383319945b3c59f08"></a>
@@ -506,6 +645,9 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This method like function std::to_string. </p>
+<p>Converts a graph to a string(for example to output to the console) </p><dl class="section return"><dt>Returns</dt><dd>- text representation of the graph </dd></dl>
 
 </div>
 </div>
@@ -527,6 +669,18 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Creating the smallest spanning tree. </p>
+<p>Creates minimum spanning tree from non-oriented graph only. Uses Kruskal's algorithm</p>
+<p>The resulting graph will have all vertices, but the number of edges may be smaller, resulting in the smallest weight of the graph</p>
+<p>See <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm" title="Graph theory in Wikipedia">Kruskal's algorithm</a></p>
+<p>If graph isn't connected then spanning tree will be empty </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- created graph </dd></dl>
+
 </div>
 </div>
 <a id="a2dd4beb317ef1742df02eee6581c1194"></a>
@@ -545,6 +699,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>- totalValue of the graph </dd></dl>
 
 </div>
 </div>
@@ -565,6 +720,15 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>is index of the vertex </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- value of vertex with index if the graph have it </dd>
+<dd>
+- default value if the graph haven't this vertex </dd></dl>
 
 </div>
 </div>
@@ -602,6 +766,17 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Removing edge from graph. </p>
+<p>If the graph has vertices with indexes beginIndex and endIndex then makes these vertices not adjacent that is removing an edge from the graph</p>
+<p>Reduces the numberOfEdges by one and subtracts the value of the edge from the totalValue </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beginIndex</td><td>is index of first vertex </td></tr>
+    <tr><td class="paramname">endIndex</td><td>is index of second vertex </td></tr>
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a43883f2cb97bc0286809be6fc8972838"></a>
@@ -632,6 +807,16 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Removing vertex from graph. </p>
+<p>If the graph has vertex with index then removes index-elements from matrix[i][index], i = (1, numberOfVertices) and clears array matrix[index]. Also subtracts all the values of the edges that pass through this vertex from the totalValue</p>
+<p>Reduces the numberOfVertices by one and reduces the numberOfEdges by number of edges that pass through this vertex </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>is index of this vertex </td></tr>
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a8f88b6ebce9cc1ed403d414cd173da02"></a>
@@ -652,10 +837,20 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Algorithm topological sorting of oriented graph only. </p>
+<p>The function linearly arranges the vertices of the graph. If graph is non-oriented or isn't connected then array will be empty</p>
+<p>See <a href="https://en.wikipedia.org/wiki/Topological_sorting" title="Graph theory in Wikipedia">Topological sorting</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>- array with the result of topological sorting </dd></dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab1/lab1/<a class="el" href="my__graph__matrix_8h_source.html">my_graph_matrix.h</a></li>
+<li>lab1/<a class="el" href="my__graph__matrix_8h_source.html">my_graph_matrix.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

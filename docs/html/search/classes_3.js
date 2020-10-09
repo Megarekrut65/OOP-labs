@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['deferred_5ffalse',['deferred_false',['../structdoctest_1_1detail_1_1deferred__false.html',1,'doctest::detail']]]
+  ['pathsbetweenvertices',['PathsBetweenVertices',['../structpbv_1_1_paths_between_vertices.html',1,'pbv']]],
+  ['point',['Point',['../structtdp_1_1_point.html',1,'tdp']]]
 ];

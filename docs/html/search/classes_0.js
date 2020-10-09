@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['approx',['Approx',['../classdoctest_1_1_approx.html',1,'doctest']]],
-  ['assertdata',['AssertData',['../structdoctest_1_1_assert_data.html',1,'doctest']]]
+  ['edge',['Edge',['../structgm_1_1_edge.html',1,'gm']]],
+  ['equation',['Equation',['../structfop_1_1_equation.html',1,'fop']]]
 ];

@@ -4,28 +4,57 @@
 
 using namespace ofo;
 using namespace pbv;
-
+/**
+* Namespace for GraphMatrix
+*/
 namespace gm//graph matrix
 {
+    /**
+    * \brief Edge in GraphMatrix
+    * 
+    * This struct is used to preserve the value of graph edges
+    */
     template<typename T>
-    struct Edge//edge in graph matrix
+    struct Edge
     {
-        bool contiguity;
-        T value;
-
+        bool contiguity;/**< Reports whether the vertices at the ends of the edge are contiguity*/
+        T value; /**< Eigenvalue, which is stored in the edge*/
+        /**
+        * \brief Default constructor
+        * 
+        * Creates empty edge between non-contiguity vertices
+        */
         Edge();
+        /**
+        * \brief Parameterized constructor
+        * 
+        * Creates edge between contiguity vertices. Edge retains the value
+        */
         Edge(bool contiguity, T value);
     };  
+     /**
+     * \brief Class for representing a graph in the form of a adjacency matrix
+     * 
+     * See [Adjacency Matrix](https://en.wikipedia.org/wiki/Adjacency_matrix "Information about adjacency matrix in Wikipedia")
+     * 
+     * The edges are stored in std::vector<std::vector<Edge<T>>> matrix,
+     * and the vertices are stored in std::vector<T>vertices
+     * 
+     *This class also stores information about the number of edges and vertices,
+     * the weight of the graph, and information about the orientation of the graph
+     * 
+     * \see gs::GraphStructure
+     */
     template<typename T>
     class GraphMatrix
     {
     private:
-        std::vector<std::vector<Edge<T>>> matrix;
-        std::vector<T> vertices;
+        std::vector<std::vector<Edge<T>>> matrix;//The two-dimensional array in which the the edges between the vertices are stored, if such an edge exists or the default value is stored in the opposite case
+        std::vector<T> vertices;//The one-dimensional array in which the value of vertices are stored
         std::size_t numberOfVertices;
         std::size_t numberOfEdges;
-        bool orientation;
-        T totalValue;
+        bool orientation;//if orientation is true then Graph is oriented, else it is no-oriented
+        T totalValue;//There is the sum of all values of Edges
 
         bool isIndex(std::size_t index, bool show = false);//if vectex with index is in graph then return true, else - false
         bool doAddIndex(std::vector<std::size_t>& indexes, std::size_t index);// if index is not in indexes then function adds index to indexes
@@ -44,27 +73,219 @@ namespace gm//graph matrix
         void createGraph(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue);//create graph with numberOfVertices vertices and numberOfEdges edges
         void deleteEdges(std::size_t index);//when removes vertex need delete its edges
     public:
+        /**
+        * \brief Default constructor 
+        * 
+        * Creates a empty no-oriented graph without vertices and edges
+        */
         GraphMatrix();
+        /**
+       * \brief Edited default constructor 
+       *
+       * Creates a empty no-oriented graph if orientation is false or 
+       * creates a empty oriented graph if orientation is true.
+       * In two cases graph will be without vertices and edges
+       */
         GraphMatrix(bool orientation);
+        /**
+        * \brief Random Constructor
+        * 
+        * Creates no-oriented or oriented graph with the specified number of vertices and edges.
+        * The value of the vertices and edges will not be greater than the maxValue
+        */
         GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue);//create random graph
+        /**
+        * \brief Destructor
+        *
+        * Clears all arrays in this class
+        */
         ~GraphMatrix();
-        void addVertex(const T& value, bool show = false);//adds a vertex with the value to vertices
-        void addEdge(std::size_t beginIndex, std::size_t endIndex, const T& value, bool show = false);//adds edge from beginIndex to endIndex in graph
-        void removeVertex(std::size_t index, bool show = false);//remove the vertex with index from graph
-        void removeEdge(std::size_t beginIndex, std::size_t endIndex, bool show = false);//remove the edge from beginIndex to endIndex from graph
+        /**
+        * \brief Adding the vertex to graph
+        * 
+        * Adds new vertex with value to the end of vertices.
+        * 
+        * Adds one column and one row to the matrix
+        * 
+        * Index of vertex will be equal to numberOfVertices 
+        * and numberOfVertices will increase by one.
+        * 
+        * \param value that be stored in the new vertex
+        * \param show can will be true to show message of the result of the function call
+        */
+        void addVertex(const T& value, bool show = false);
+        /**
+        * \brief Adding the edge to graph
+        * 
+        * If the graph has vertices with indexes beginIndex and endIndex then 
+        * creates new edge with value between these vertices  
+        * 
+        * Adds the edge to matrix[beginIndex][endIndex]. 
+        * If the graph is no-oriented then also adds the edge to matrix[endIndex][beginIndex]
+        * 
+        * The numberOfEdges will increase by one
+        * 
+        * Adds to the totalValue its value
+        * \param beginIndex is index of first vertex
+        * \param endIndex is index of second vertex
+        * \param value that be stored in the new edge
+        * \param show can will be true to show message of the result of the function call
+        */
+        void addEdge(std::size_t beginIndex, std::size_t endIndex, const T& value, bool show = false);
+        /**
+        * \brief Removing vertex from graph
+        * 
+        * If the graph has vertex with index then 
+        * removes index-elements from matrix[i][index], i = (1, numberOfVertices) 
+        * and clears array matrix[index]. 
+        * Also subtracts all the values of the edges that pass through 
+        * this vertex from the totalValue
+        * 
+        * Reduces the numberOfVertices by one and reduces the numberOfEdges by number of edges 
+        * that pass through this vertex
+        * \param index is index of this vertex
+        * \param show can will be true to show message of the result of the function call
+        */
+        void removeVertex(std::size_t index, bool show = false);
+        /**
+        * \brief Removing edge from graph
+        * 
+        * If the graph has vertices with indexes beginIndex and endIndex then 
+        * makes these vertices not adjacent that is removing an edge from the graph
+        * 
+        * Reduces the numberOfEdges by one 
+        * and subtracts the value of the edge from the totalValue
+        * \param beginIndex is index of first vertex
+        * \param endIndex is index of second vertex
+        * \param show can will be true to show message of the result of the function call
+        */
+        void removeEdge(std::size_t beginIndex, std::size_t endIndex, bool show = false);
+        /**
+        * \return - number of vertices in the graph
+        */
         std::size_t getNumberOfVertices();
+        /**
+        * \return - number of edges in the graph
+        */
         std::size_t getNumberOfEdges();
+        /**
+        * \return - totalValue of the graph
+        */
         T getTotalValue();
+        /**
+        * \param index is index of the vertex
+        * \return - value of vertex with index if the graph have it
+        * \return - default value if the graph haven't this vertex
+        */
         T getVertexValue(std::size_t index);
+        /**
+        * \param beginIndex is index of first vertex
+        * \param endIndex is index of second vertex
+        * \return - value of edge between vertices with indexes beginIndex and endIndex
+        * if the graph have their
+        * \return - default value if the graph haven't this edge
+        */
         T getEdgeValue(std::size_t beginIndex, std::size_t endIndex);
-        std::string getTextRepresentation();//converts a graph to a string for example to output to the console
-        bool checkingTheConnectivity(bool show = false);//returns true if the graph is connected else return false
-        std::vector<std::size_t> depthFirstSearch(bool show = false);// algorithm for traversing or searching graph
-        T getPathBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = false);//finds the smallest way from beginIndex to endIndex
-        PathsBetweenVertices<T> getPathsFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = false);//finds the smallest way from beginIndex to endIndex to everyone else
-        std::vector<std::size_t> topologicalSorting(bool show = false);// the function linearly arranges the vertices of the graph
-        GraphMatrix<T> getSpanningTree(bool show = false);//creates spanning tree from the graph
-        GraphMatrix<T> getTheSmallestSpanningTree(bool show = false);//creates minimum spanning tree from the graph
+        /**
+        * \brief This method like function std::to_string
+        * 
+        * Converts a graph to a string(for example to output to the console)
+        * \return - text representation of the graph
+        */
+        std::string getTextRepresentation();
+        /**
+        * \brief Checking whether the graph is connected
+        * 
+        * See [Connectivity of graph]( https://en.wikipedia.org/w/index.php?search=Connectivity+graph+theory&title=Special%3ASearch&fulltext=1&ns0=1 "Graph theory in Wikipedia")
+        * \param show can will be true to show message of the result of the function call
+        * \return - true if the graph is connected
+        * \return - false if the graph isn't connected
+        */
+        bool checkingTheConnectivity(bool show = false);
+        /**
+        * \brief Algorithm for traversing graph
+        * 
+        * See [Depth-first search for graph](https://en.wikipedia.org/wiki/Depth-first_search "Graph theory in Wikipedia")
+        * 
+        * Indexes are added to the array taking into account the order of traversal of the graph
+        * If the graph isn't connected then the function cannot perform a search
+        * and array will be empty
+        * \param show can will be true to show message of the result of the function call
+        * \return - array of indexes of vertices
+        */
+        std::vector<std::size_t> depthFirstSearch(bool show = false);
+        /**
+        * \brief Finding the smallest path
+        * 
+        * Finds the path from beginIndex to endIndex. Uses dijkstra algorithm
+        * 
+        * If the graph isn't connected then the function cannot find the path
+        * 
+        * \param beginIndex is index of first vertex
+        * \param endIndex is index of second vertex
+        * \param show can will be true to show message of the result of the function call
+        * \return - the smallest path between two vertices
+        * \return - default value if the graph haven't these vertices or graph isn't connected
+        */
+        T getPathBetweenTwoVertices(std::size_t beginIndex, std::size_t endIndex, bool show = false);
+        /**
+        * \brief Finding the smallest paths
+        *
+        * Finds the paths from beginIndex to everyone else. Uses dijkstra algorithm
+        *
+        * If the graph isn't connected then the function cannot find the paths
+        *
+        * \param beginIndex is index of the vertex
+        * \param show can will be true to show message of the result of the function call
+        * \return - struct PathsBetweenVertices that has the smallest paths between vertices
+        * \return - empty struct PathsBetweenVertices if the graph haven't this vertex or graph isn't connected
+        */
+        PathsBetweenVertices<T> getPathsFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = false);
+        /**
+        * \brief Algorithm topological sorting of oriented graph only
+        * 
+        * The function linearly arranges the vertices of the graph.
+        * If graph is non-oriented or isn't connected then array will be empty
+        * 
+        * See [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting "Graph theory in Wikipedia")
+        * \param show can will be true to show message of the result of the function call
+        * \return - array with the result of topological sorting
+        */
+        std::vector<std::size_t> topologicalSorting(bool show = false);
+        /**
+        * \brief Creating spanning tree
+        * 
+        * Creates spannig tree from non-oriented graph only.
+        * Uses the Depth-first search algorithm
+        * 
+        * The resulting graph will have all vertices, but the number of edges may be smaller, 
+        * resulting in less weight of the graph
+        * 
+        * See [Spannig tree](https://en.wikipedia.org/wiki/Spanning_tree "Graph theory in Wikipedia")
+        * 
+        * In fact, the spanning tree will consist of the path obtained by searching
+        * 
+        * If graph isn't connected then spanning tree will be empty
+        * \param show can will be true to show message of the result of the function call
+        * \return - created graph
+        */
+        GraphMatrix<T> getSpanningTree(bool show = false);
+        /**
+        * \brief Creating the smallest spanning tree
+        *
+        * Creates minimum spanning tree from non-oriented graph only. 
+        * Uses Kruskal's algorithm
+        * 
+        * The resulting graph will have all vertices, but the number of edges may be smaller,
+        * resulting in the smallest weight of the graph
+        * 
+        * See [Kruskal's algorithm](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm "Graph theory in Wikipedia")
+        *
+        * If graph isn't connected then spanning tree will be empty
+        * \param show can will be true to show message of the result of the function call
+        * \return - created graph
+        */
+        GraphMatrix<T> getTheSmallestSpanningTree(bool show = false);
     };
 }
 namespace gm

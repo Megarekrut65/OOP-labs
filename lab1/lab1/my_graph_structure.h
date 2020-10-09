@@ -17,6 +17,20 @@ namespace gs//graph structure
         VertexNode();
         VertexNode(std::size_t index, VertexNode* next, T value);
     };   
+    /**
+    * \brief Class for representing a graph in the form of a adjacency list(I use the name "adjacency structure")
+    *
+    * See [Adjacency list](https://en.wikipedia.org/wiki/Adjacency_list "Information about adjacency list in Wikipedia")
+    *
+    *
+    * 
+    * 
+    *
+    *This class also stores information about the number of edges and vertices,
+    * the weight of the graph, and information about the orientation of the graph
+    *
+    * \see gm::GraphMatrix
+    */
     template<typename T>
     class GraphStructure
     {
