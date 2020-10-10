@@ -1,29 +1,155 @@
 #pragma once
 #include "my_override_functions_and_operators.h"
-
+/**
+* Namespace for two-dimensional points
+*/
 namespace tdp//two-dimensional points
 {
+	/**
+	* \brief Two-dimensional points
+	* 
+	* The following operators are overridden for this structure: 
+	* <, >, <=, >=, ==, !=, +, -, *, <<
+	*/
 	struct Point
 	{
-		double x;
-		double y;
+		double x;/**<First coordinate*/
+		double y;/**<Second coordinate*/
+		/**
+		* Default constructor
+		*/
 		Point();
+		/**
+		* Parameterized constructor
+		*/
 		Point(double x, double y);
-		Point(double maxValue);//creates random point
+		/**
+		* \brief Random constructor
+		* 
+		* Creates the point with first and second coordinate <= 'maxValue'
+		*/
+		Point(double maxValue);
+		/**
+		* Copy constructor
+		*/
 		Point(const Point& point);
-		double vectorModule();//if point(x, y) is vector(x, y), don't std::vector, then |vector| = vectorModule()
 	};
+	/**
+	* \brief Comparison the point by coordinates
+	* 
+	* First, compares the first coordinates, if they are equal, then compares the second
+	* \param first is first operand
+	* \param second is second operand
+	* \return true if 'first' < 'second'
+	* \return false if 'first' >= 'second'
+	*/
 	bool operator < (Point first, Point second);
+	/**
+	* \brief Comparison the point by coordinates
+	*
+	* First, compares the first coordinates, if they are equal, then compares the second
+	* \param first is first operand
+	* \param second is second operand
+	* \return true if 'first' > 'second'
+	* \return false if 'first' <= 'second'
+	*/
 	bool operator > (Point first, Point second);
+	/**
+	* \brief Comparison the point by coordinates
+	*
+	* First, compares the first coordinates, if they are equal, then compares the second
+	* \param first is first operand
+	* \param second is second operand
+	* \return true if 'first' <= 'second'
+	* \return false if 'first' > 'second'
+	*/
 	bool operator <= (Point first, Point second);
+	/**
+	* \brief Comparison the point by coordinates
+	*
+	* First, compares the first coordinates, if they are equal, then compares the second
+	* \param first is first operand
+	* \param second is second operand
+	* \return true if 'first' >= 'second'
+	* \return false if 'first' < 'second'
+	*/
 	bool operator >= (Point first, Point second);
+	/**
+	* \brief Comparison the point by coordinates
+	*
+	* Compares the first coordinates and compares the second
+	* \param first is first operand
+	* \param second is second operand
+	* \return true if 'first' == 'second'
+	* \return false if 'first' != 'second'
+	*/
 	bool operator == (Point first, Point second);
+	/**
+	* \brief Comparison the point by coordinates
+	*
+	* Compares the first coordinates and compares the second
+	* \param first is first operand
+	* \param second is second operand
+	* \return true if 'first' != 'second'
+	* \return false if 'first' == 'second'
+	*/
 	bool operator != (Point first, Point second);
+	/**
+	* \brief Adding two points
+	*
+	* Adds first coordinates and adds second coordinates
+	* \param first is first operand
+	* \param second is second operand
+	* \return Point that is the result of adding two points
+	*/
 	Point operator + (Point first, Point second);
+	/**
+	* \brief Subtraction two points
+	*
+	* Subtracts first coordinates and Subtracts second coordinates
+	* \param first is first operand
+	* \param second is second operand
+	* \return Point that is the result of subtraction two points
+	*/
 	Point operator - (Point first, Point second);
-	Point operator * (double value, Point point);
+	/**
+	* \brief Multiplication point by scalar
+	*
+	* Multiply the first coordinate by scalar and Multiply the second coordinate by scalar
+	* \param scalar is first operand
+	* \param point is second operand
+	* \return Point that is the result of multiplication point by scalar
+	*/
+	Point operator * (double scalar, Point point);
+	/**
+	* \brief Override std::cout <<
+	*
+	* Adds the first and second coordinates separated by a comma in parentheses to 'out'. 
+	* Example (1.03, 4.22)
+	* \param out is first operand
+	* \param point is second operand
+	* \return out
+	*/
 	std::ostream& operator << (std::ostream& out, Point point);
+	/**
+	* \brief It like function std::to_string
+	* 
+	* Translate Point into std::string
+	* \param value is two-dimensional point
+	* \return the line in which the point will be written
+	*/
 	std::string toTheString(Point value);
+	/**
+	* \brief Finding the dictance
+	* 
+	* Finds the distance between 'first' and 'second'
+	* 
+	* See [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance "Information in Wikipedia")
+	* 
+	* \param first is first point
+	* \param second is second point
+	* \return distance between points
+	*/
 	double distanceBetweenPoints(Point first, Point second);
 }
 namespace tdp
@@ -35,10 +161,6 @@ namespace tdp
 	{
 		x = point.x;
 		y = point.y;
-	}
-	double Point::vectorModule()
-	{
-		return sqrt(x * x + y * y);
 	}
 	bool operator < (Point first, Point second)
 	{
@@ -92,9 +214,9 @@ namespace tdp
 	{
 		return Point(first.x - second.x, first.y - second.y);
 	}
-	Point operator * (double value, Point point)
+	Point operator * (double scalar, Point point)
 	{
-		return Point(point.x * value, point.y * value);
+		return Point(point.x * scalar, point.y * scalar);
 	}
 	std::ostream& operator << (std::ostream& out, Point point)
 	{

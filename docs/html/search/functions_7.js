@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['topologicalsorting',['topologicalSorting',['../classgm_1_1_graph_matrix.html#a8f88b6ebce9cc1ed403d414cd173da02',1,'gm::GraphMatrix::topologicalSorting()'],['../classgs_1_1_graph_structure.html#aaaccde89d753affe1ca96ad3a25a03b0',1,'gs::GraphStructure::topologicalSorting()']]]
+  ['removeedge',['removeEdge',['../classgm_1_1_graph_matrix.html#aaee8cb1c4d2bab6fcba5f3fc64852bfd',1,'gm::GraphMatrix::removeEdge()'],['../classgs_1_1_graph_structure.html#aa27a2bd0421823f44ac670b691cedcbd',1,'gs::GraphStructure::removeEdge()']]],
+  ['removevertex',['removeVertex',['../classgm_1_1_graph_matrix.html#a43883f2cb97bc0286809be6fc8972838',1,'gm::GraphMatrix::removeVertex()'],['../classgs_1_1_graph_structure.html#a3ce672fa2de3985fba1d1111efad2878',1,'gs::GraphStructure::removeVertex()']]]
 ];

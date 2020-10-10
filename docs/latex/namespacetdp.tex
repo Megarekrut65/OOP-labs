@@ -1,0 +1,294 @@
+\hypertarget{namespacetdp}{}\section{tdp Namespace Reference}
+\label{namespacetdp}\index{tdp@{tdp}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtdp_1_1_point}{Point}}
+\begin{DoxyCompactList}\small\item\em Two-\/dimensional points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacetdp_aa76700935906dbb491a443a4662d758f}{operator$<$}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Comparison the point by coordinates. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacetdp_a948b73cf0c6d99e08e145094d83d8e97}{operator$>$}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Comparison the point by coordinates. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacetdp_a3d677102635fab3ad0088b88378e5b48}{operator$<$=}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Comparison the point by coordinates. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacetdp_a88169ae92b50b53e80d23d8df9d263d1}{operator$>$=}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Comparison the point by coordinates. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacetdp_ac28871640d9ee5c6f37f75be07b6d187}{operator==}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Comparison the point by coordinates. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacetdp_ab1602cb8c233d6ab4a5fa0e12dd219f1}{operator!=}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Comparison the point by coordinates. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtdp_1_1_point}{Point}} \mbox{\hyperlink{namespacetdp_a34cf3e1ef508e6a115b6c1d24a5dbb5d}{operator+}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Adding two points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtdp_1_1_point}{Point}} \mbox{\hyperlink{namespacetdp_ab8dc4a4b6272d3a8ef06f22a5b07daec}{operator-\/}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Subtraction two points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtdp_1_1_point}{Point}} \mbox{\hyperlink{namespacetdp_a291c69f1bd3cf68f5c2b68fc3ab37f3a}{operator$\ast$}} (double scalar, \mbox{\hyperlink{structtdp_1_1_point}{Point}} point)
+\begin{DoxyCompactList}\small\item\em Multiplication point by scalar. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{namespacetdp_a40a6deb04f2cc708b0cd33955e23ffb6}{operator$<$$<$}} (std\+::ostream \&out, \mbox{\hyperlink{structtdp_1_1_point}{Point}} point)
+\begin{DoxyCompactList}\small\item\em Override std\+::cout $<$$<$. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacetdp_ade7149690123950b10455ece39159e94}{to\+The\+String}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} value)
+\begin{DoxyCompactList}\small\item\em It like function std\+::to\+\_\+string. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacetdp_a05b1894339c9a02c1e9347d3dd6fd07a}{distance\+Between\+Points}} (\mbox{\hyperlink{structtdp_1_1_point}{Point}} first, \mbox{\hyperlink{structtdp_1_1_point}{Point}} second)
+\begin{DoxyCompactList}\small\item\em Finding the dictance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for two-\/dimensional points 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacetdp_a05b1894339c9a02c1e9347d3dd6fd07a}\label{namespacetdp_a05b1894339c9a02c1e9347d3dd6fd07a}} 
+\index{tdp@{tdp}!distance\+Between\+Points@{distance\+Between\+Points}}
+\index{distance\+Between\+Points@{distance\+Between\+Points}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{distance\+Between\+Points()}{distanceBetweenPoints()}}
+{\footnotesize\ttfamily double tdp\+::distance\+Between\+Points (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Finding the dictance. 
+
+Finds the distance between \textquotesingle{}first\textquotesingle{} and \textquotesingle{}second\textquotesingle{}
+
+See \href{https://en.wikipedia.org/wiki/Euclidean_distance}{\tt Euclidean distance}
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & is first point \\
+\hline
+{\em second} & is second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+distance between points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_ab1602cb8c233d6ab4a5fa0e12dd219f1}\label{namespacetdp_ab1602cb8c233d6ab4a5fa0e12dd219f1}} 
+\index{tdp@{tdp}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool tdp\+::operator!= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Comparison the point by coordinates. 
+
+Compares the first coordinates and compares the second 
+\begin{DoxyParams}{Parameters}
+{\em first} & is first operand \\
+\hline
+{\em second} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \textquotesingle{}first\textquotesingle{} != \textquotesingle{}second\textquotesingle{} 
+
+false if \textquotesingle{}first\textquotesingle{} == \textquotesingle{}second\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_a291c69f1bd3cf68f5c2b68fc3ab37f3a}\label{namespacetdp_a291c69f1bd3cf68f5c2b68fc3ab37f3a}} 
+\index{tdp@{tdp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtdp_1_1_point}{Point}} tdp\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{scalar,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{point }\end{DoxyParamCaption})}
+
+
+
+Multiplication point by scalar. 
+
+Multiply the first coordinate by scalar and Multiply the second coordinate by scalar 
+\begin{DoxyParams}{Parameters}
+{\em scalar} & is first operand \\
+\hline
+{\em point} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structtdp_1_1_point}{Point}} that is the result of multiplication point by scalar 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_a34cf3e1ef508e6a115b6c1d24a5dbb5d}\label{namespacetdp_a34cf3e1ef508e6a115b6c1d24a5dbb5d}} 
+\index{tdp@{tdp}!operator+@{operator+}}
+\index{operator+@{operator+}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtdp_1_1_point}{Point}} tdp\+::operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Adding two points. 
+
+Adds first coordinates and adds second coordinates 
+\begin{DoxyParams}{Parameters}
+{\em first} & is first operand \\
+\hline
+{\em second} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structtdp_1_1_point}{Point}} that is the result of adding two points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_ab8dc4a4b6272d3a8ef06f22a5b07daec}\label{namespacetdp_ab8dc4a4b6272d3a8ef06f22a5b07daec}} 
+\index{tdp@{tdp}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtdp_1_1_point}{Point}} tdp\+::operator-\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Subtraction two points. 
+
+Subtracts first coordinates and Subtracts second coordinates 
+\begin{DoxyParams}{Parameters}
+{\em first} & is first operand \\
+\hline
+{\em second} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structtdp_1_1_point}{Point}} that is the result of subtraction two points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_aa76700935906dbb491a443a4662d758f}\label{namespacetdp_aa76700935906dbb491a443a4662d758f}} 
+\index{tdp@{tdp}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool tdp\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Comparison the point by coordinates. 
+
+First, compares the first coordinates, if they are equal, then compares the second 
+\begin{DoxyParams}{Parameters}
+{\em first} & is first operand \\
+\hline
+{\em second} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \textquotesingle{}first\textquotesingle{} $<$ \textquotesingle{}second\textquotesingle{} 
+
+false if \textquotesingle{}first\textquotesingle{} $>$= \textquotesingle{}second\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_a40a6deb04f2cc708b0cd33955e23ffb6}\label{namespacetdp_a40a6deb04f2cc708b0cd33955e23ffb6}} 
+\index{tdp@{tdp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& tdp\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{point }\end{DoxyParamCaption})}
+
+
+
+Override std\+::cout $<$$<$. 
+
+Adds the first and second coordinates separated by a comma in parentheses to \textquotesingle{}out\textquotesingle{}. Example (1.\+03, 4.\+22) 
+\begin{DoxyParams}{Parameters}
+{\em out} & is first operand \\
+\hline
+{\em point} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+out 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_a3d677102635fab3ad0088b88378e5b48}\label{namespacetdp_a3d677102635fab3ad0088b88378e5b48}} 
+\index{tdp@{tdp}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool tdp\+::operator$<$= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Comparison the point by coordinates. 
+
+First, compares the first coordinates, if they are equal, then compares the second 
+\begin{DoxyParams}{Parameters}
+{\em first} & is first operand \\
+\hline
+{\em second} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \textquotesingle{}first\textquotesingle{} $<$= \textquotesingle{}second\textquotesingle{} 
+
+false if \textquotesingle{}first\textquotesingle{} $>$ \textquotesingle{}second\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_ac28871640d9ee5c6f37f75be07b6d187}\label{namespacetdp_ac28871640d9ee5c6f37f75be07b6d187}} 
+\index{tdp@{tdp}!operator==@{operator==}}
+\index{operator==@{operator==}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool tdp\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Comparison the point by coordinates. 
+
+Compares the first coordinates and compares the second 
+\begin{DoxyParams}{Parameters}
+{\em first} & is first operand \\
+\hline
+{\em second} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \textquotesingle{}first\textquotesingle{} == \textquotesingle{}second\textquotesingle{} 
+
+false if \textquotesingle{}first\textquotesingle{} != \textquotesingle{}second\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_a948b73cf0c6d99e08e145094d83d8e97}\label{namespacetdp_a948b73cf0c6d99e08e145094d83d8e97}} 
+\index{tdp@{tdp}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool tdp\+::operator$>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Comparison the point by coordinates. 
+
+First, compares the first coordinates, if they are equal, then compares the second 
+\begin{DoxyParams}{Parameters}
+{\em first} & is first operand \\
+\hline
+{\em second} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \textquotesingle{}first\textquotesingle{} $>$ \textquotesingle{}second\textquotesingle{} 
+
+false if \textquotesingle{}first\textquotesingle{} $<$= \textquotesingle{}second\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_a88169ae92b50b53e80d23d8df9d263d1}\label{namespacetdp_a88169ae92b50b53e80d23d8df9d263d1}} 
+\index{tdp@{tdp}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool tdp\+::operator$>$= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{first,  }\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{second }\end{DoxyParamCaption})}
+
+
+
+Comparison the point by coordinates. 
+
+First, compares the first coordinates, if they are equal, then compares the second 
+\begin{DoxyParams}{Parameters}
+{\em first} & is first operand \\
+\hline
+{\em second} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if \textquotesingle{}first\textquotesingle{} $>$= \textquotesingle{}second\textquotesingle{} 
+
+false if \textquotesingle{}first\textquotesingle{} $<$ \textquotesingle{}second\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacetdp_ade7149690123950b10455ece39159e94}\label{namespacetdp_ade7149690123950b10455ece39159e94}} 
+\index{tdp@{tdp}!to\+The\+String@{to\+The\+String}}
+\index{to\+The\+String@{to\+The\+String}!tdp@{tdp}}
+\subsubsection{\texorpdfstring{to\+The\+String()}{toTheString()}}
+{\footnotesize\ttfamily std\+::string tdp\+::to\+The\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtdp_1_1_point}{Point}}}]{value }\end{DoxyParamCaption})}
+
+
+
+It like function std\+::to\+\_\+string. 
+
+Translate \mbox{\hyperlink{structtdp_1_1_point}{Point}} into std\+::string 
+\begin{DoxyParams}{Parameters}
+{\em value} & is two-\/dimensional point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the line in which the point will be written 
+\end{DoxyReturn}
