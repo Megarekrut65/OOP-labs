@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['index',['index',['../structgs_1_1_vertex_node.html#a8dd82fa9a0b37a0194368dcd7752b04a',1,'gs::VertexNode']]]
+  ['contiguity',['contiguity',['../structgm_1_1_edge.html#ad9bbe3016236ffff899a0b982e96a6cd',1,'gm::Edge']]]
 ];

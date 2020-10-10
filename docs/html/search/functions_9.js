@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['log',['log',['../structdoctest_1_1detail_1_1_result_builder.html#a2af75dd1d8db8d3aa949d78025854085',1,'doctest::detail::ResultBuilder::log()'],['../structdoctest_1_1detail_1_1_message_builder.html#a9bcc5d56e1764a7e07efebca55e43cce',1,'doctest::detail::MessageBuilder::log()']]],
-  ['log_5fassert',['log_assert',['../structdoctest_1_1_i_reporter.html#a5bb54923eab233bb02f2fcfc178fa12a',1,'doctest::IReporter']]],
-  ['log_5fmessage',['log_message',['../structdoctest_1_1_i_reporter.html#a2b2cb4f15aa7417d4903a0edc3147018',1,'doctest::IReporter']]]
+  ['_7egraphmatrix',['~GraphMatrix',['../classgm_1_1_graph_matrix.html#a3b0993020ce3351d0ec4b7fe2adc2580',1,'gm::GraphMatrix']]],
+  ['_7egraphstructure',['~GraphStructure',['../classgs_1_1_graph_structure.html#aadb408a61239261f483de8d603263475',1,'gs::GraphStructure']]],
+  ['_7epathsbetweenvertices',['~PathsBetweenVertices',['../structpbv_1_1_paths_between_vertices.html#a6be9fce23ff701beaf2a44006bd19e5b',1,'pbv::PathsBetweenVertices']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['edge',['Edge',['../structgm_1_1_edge.html',1,'gm::Edge&lt; T &gt;'],['../structgm_1_1_edge.html#a16a869644977808f26b775d0f53128f9',1,'gm::Edge::Edge()'],['../structgm_1_1_edge.html#a32c86440a158bba7235181bd9e1c70a3',1,'gm::Edge::Edge(bool contiguity, T value)']]],
-  ['equation',['Equation',['../structfop_1_1_equation.html',1,'fop']]]
+  ['depthfirstsearch',['depthFirstSearch',['../classgm_1_1_graph_matrix.html#a91506a78cf2efe32f6c48a7f12914a43',1,'gm::GraphMatrix::depthFirstSearch()'],['../classgs_1_1_graph_structure.html#a6a9516f3f46cbbcdc50741e342a22ae4',1,'gs::GraphStructure::depthFirstSearch()']]],
+  ['distance',['distance',['../structpbv_1_1_paths_between_vertices.html#a67aed042aa649d2b6dfeee29d3ec6416',1,'pbv::PathsBetweenVertices']]]
 ];

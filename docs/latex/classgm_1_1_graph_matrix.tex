@@ -307,9 +307,9 @@ If the graph isn\textquotesingle{}t connected then the function cannot find the 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
--\/ \textquotesingle{}struct Paths\+Between\+Vertices\textquotesingle{} that has the smallest paths between vertices 
+-\/ \textquotesingle{}struct \mbox{\hyperlink{structpbv_1_1_paths_between_vertices}{pbv\+::\+Paths\+Between\+Vertices}}\textquotesingle{} that has the smallest paths between vertices 
 
--\/ empty \textquotesingle{}struct Paths\+Between\+Vertices\textquotesingle{} if the graph haven\textquotesingle{}t this vertex or graph isn\textquotesingle{}t connected 
+-\/ empty \textquotesingle{}struct \mbox{\hyperlink{structpbv_1_1_paths_between_vertices}{pbv\+::\+Paths\+Between\+Vertices}}\textquotesingle{} if the graph haven\textquotesingle{}t this vertex or graph isn\textquotesingle{}t connected 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classgm_1_1_graph_matrix_a490a9ef8eb86acc75c42a97cf5dbb368}\label{classgm_1_1_graph_matrix_a490a9ef8eb86acc75c42a97cf5dbb368}} 
 \index{gm\+::\+Graph\+Matrix@{gm\+::\+Graph\+Matrix}!get\+Spanning\+Tree@{get\+Spanning\+Tree}}
@@ -437,7 +437,7 @@ void \mbox{\hyperlink{classgm_1_1_graph_matrix}{gm\+::\+Graph\+Matrix}}$<$ T $>$
 
 Removing vertex from graph. 
 
-If the graph has vertex with \textquotesingle{}index\textquotesingle{} then removes index-\/elements from \textquotesingle{}matrix\mbox{[}i\mbox{]}\mbox{[}index\mbox{]}\textquotesingle{}, i = (1, \textquotesingle{}number\+Of\+Vertices\textquotesingle{}) and clears array \textquotesingle{}matrix\mbox{[}index\mbox{]}\textquotesingle{}. Also subtracts all the values of the edges that pass through this vertex from the \textquotesingle{}total\+Value\textquotesingle{}
+If the graph has vertex with \textquotesingle{}index\textquotesingle{} then removes index-\/elements from \textquotesingle{}matrix\mbox{[}i\mbox{]}\mbox{[}index\mbox{]}\textquotesingle{}, i = (0, \textquotesingle{}number\+Of\+Vertices\textquotesingle{} -\/ 1) and clears array \textquotesingle{}matrix\mbox{[}index\mbox{]}\textquotesingle{}. Also subtracts all the values of the edges that pass through this vertex from the \textquotesingle{}total\+Value\textquotesingle{}
 
 Reduces the \textquotesingle{}number\+Of\+Vertices\textquotesingle{} by one and reduces the \textquotesingle{}number\+Of\+Edges\textquotesingle{} by number of edges that pass through this vertex 
 \begin{DoxyParams}{Parameters}

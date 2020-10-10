@@ -68,7 +68,7 @@ See \href{https://en.wikipedia.org/wiki/Adjacency_list}{\tt Adjacency list}
 
 The vertices are stored in \textquotesingle{}std\+::vector$<$Vertex\+Node$<$\+T$>$$\ast$$>$ list\textquotesingle{} and the edges are stored in linked lists that are in \textquotesingle{}std\+::vector$<$Vertex\+Node$<$\+T$>$$\ast$$>$ list\textquotesingle{}
 
-All vertices are associated with adjacent vertices in the linked list (\mbox{\hyperlink{structgs_1_1_vertex_node}{Vertex\+Node}} is node of this linked list). Value of vertex is stored in \textquotesingle{}list\mbox{[}index of vertex\mbox{]}\textquotesingle{} and value of edge between vertices with begin\+Index and end\+Index is stored in linked list \textquotesingle{}list\mbox{[}begin\+Index\mbox{]}\textquotesingle{}
+All vertices are associated with adjacent vertices in the linked list (\mbox{\hyperlink{structgs_1_1_vertex_node}{Vertex\+Node}} is node of this linked list). Value of vertex is stored in \textquotesingle{}list\mbox{[}index of vertex\mbox{]}\textquotesingle{} and value of edge between vertices with \textquotesingle{}begin\+Index\textquotesingle{} and \textquotesingle{}end\+Index\textquotesingle{} is stored in linked list \textquotesingle{}list\mbox{[}begin\+Index\mbox{]}\textquotesingle{}
 
 This class also stores information about the number of edges and vertices, the weight of the graph, and information about the orientation of the graph
 
@@ -133,7 +133,7 @@ Default copy constructor copies the pointers to nodes, so I added own copy const
 
 Destructor. 
 
-Deltes all nodes in graph and clears \textquotesingle{}list\textquotesingle{} 
+/$\ast$$\ast$ Deltes all nodes in graph and clears \textquotesingle{}list\textquotesingle{} 
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{classgs_1_1_graph_structure_af917d0945351f897f5de14d0ea527170}\label{classgs_1_1_graph_structure_af917d0945351f897f5de14d0ea527170}} 
@@ -319,9 +319,9 @@ If the graph isn\textquotesingle{}t connected then the function cannot find the 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
--\/ \textquotesingle{}struct Paths\+Between\+Vertices\textquotesingle{} that has the smallest paths between vertices 
+-\/ \textquotesingle{}struct \mbox{\hyperlink{structpbv_1_1_paths_between_vertices}{pbv\+::\+Paths\+Between\+Vertices}}\textquotesingle{} that has the smallest paths between vertices 
 
--\/ empty \textquotesingle{}struct Paths\+Between\+Vertices\textquotesingle{} if the graph haven\textquotesingle{}t this vertex or graph isn\textquotesingle{}t connected 
+-\/ empty \textquotesingle{}struct \mbox{\hyperlink{structpbv_1_1_paths_between_vertices}{pbv\+::\+Paths\+Between\+Vertices}}\textquotesingle{} if the graph haven\textquotesingle{}t this vertex or graph isn\textquotesingle{}t connected 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classgs_1_1_graph_structure_adb32325d5e18eaf7bec12e6fc64e93c9}\label{classgs_1_1_graph_structure_adb32325d5e18eaf7bec12e6fc64e93c9}} 
 \index{gs\+::\+Graph\+Structure@{gs\+::\+Graph\+Structure}!get\+Spanning\+Tree@{get\+Spanning\+Tree}}

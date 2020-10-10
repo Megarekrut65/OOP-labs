@@ -254,8 +254,8 @@ namespace gs//graph structure
         *
         * \param beginIndex is index of the vertex
         * \param show can will be true to show message of the result of the function call
-        * \return - 'struct PathsBetweenVertices' that has the smallest paths between vertices
-        * \return - empty 'struct PathsBetweenVertices' if the graph haven't this vertex or graph isn't connected
+        * \return - 'struct pbv::PathsBetweenVertices' that has the smallest paths between vertices
+        * \return - empty 'struct pbv::PathsBetweenVertices' if the graph haven't this vertex or graph isn't connected
         */
         PathsBetweenVertices<T> getPathsFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = false);
         /**

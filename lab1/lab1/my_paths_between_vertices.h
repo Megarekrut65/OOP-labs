@@ -8,14 +8,14 @@ namespace pbv//path between vetices
     /**
     * \brief The struct for storing paths
     *
-    * Stores paths between vertices in graph (gm::GrapMatrix or gs::GraphStructure) 
+    * Stores paths between vertices in graph (gm::GraphMatrix or gs::GraphStructure) 
     * and prints their to console.
     */
     template<typename T>
     struct PathsBetweenVertices
     {
         T* distance; /**< The array with paths from vertex with 'beginIndex' to all vertices */
-        bool* isMax; /**<If isMax[i], (i = 0, 'size' - 1) then path from vertex with 'beginIndex' to vertex with 'i' does not exist*/
+        bool* isMax; /**<If isMax[i], i = (0, 'size' - 1) then path from vertex with 'beginIndex' to vertex with 'i' does not exist*/
         std::size_t size;/**<Number of vetices in the graph*/
         std::size_t beginIndex;/**<The index of vertex*/
         /**

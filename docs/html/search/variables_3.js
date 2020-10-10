@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['value',['value',['../structgm_1_1_edge.html#a45d07f827a6133ea2179fdbebe0867f1',1,'gm::Edge::value()'],['../structgs_1_1_vertex_node.html#a0bc246c7c0bfbea6354d90c704761fd3',1,'gs::VertexNode::value()']]]
+  ['index',['index',['../structgs_1_1_vertex_node.html#a8dd82fa9a0b37a0194368dcd7752b04a',1,'gs::VertexNode']]],
+  ['ismax',['isMax',['../structpbv_1_1_paths_between_vertices.html#a8d7391a03771f17ca699f519e64bf2a4',1,'pbv::PathsBetweenVertices']]]
 ];

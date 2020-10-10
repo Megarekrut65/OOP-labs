@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['depthfirstsearch',['depthFirstSearch',['../classgm_1_1_graph_matrix.html#a91506a78cf2efe32f6c48a7f12914a43',1,'gm::GraphMatrix::depthFirstSearch()'],['../classgs_1_1_graph_structure.html#a6a9516f3f46cbbcdc50741e342a22ae4',1,'gs::GraphStructure::depthFirstSearch()']]]
+  ['checkingtheconnectivity',['checkingTheConnectivity',['../classgm_1_1_graph_matrix.html#ab91a8713c4e8ed19bedc58f1cfab2bc5',1,'gm::GraphMatrix::checkingTheConnectivity()'],['../classgs_1_1_graph_structure.html#a969a88dd678fd5b16884a6ab2cb68a60',1,'gs::GraphStructure::checkingTheConnectivity()']]],
+  ['contiguity',['contiguity',['../structgm_1_1_edge.html#ad9bbe3016236ffff899a0b982e96a6cd',1,'gm::Edge']]]
 ];

@@ -591,9 +591,9 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>- 'struct PathsBetweenVertices' that has the smallest paths between vertices </dd>
+<dl class="section return"><dt>Returns</dt><dd>- 'struct <a class="el" href="structpbv_1_1_paths_between_vertices.html" title="The struct for storing paths. ">pbv::PathsBetweenVertices</a>' that has the smallest paths between vertices </dd>
 <dd>
-- empty 'struct PathsBetweenVertices' if the graph haven't this vertex or graph isn't connected </dd></dl>
+- empty 'struct <a class="el" href="structpbv_1_1_paths_between_vertices.html" title="The struct for storing paths. ">pbv::PathsBetweenVertices</a>' if the graph haven't this vertex or graph isn't connected </dd></dl>
 
 </div>
 </div>
@@ -809,7 +809,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Removing vertex from graph. </p>
-<p>If the graph has vertex with 'index' then removes index-elements from 'matrix[i][index]', i = (1, 'numberOfVertices') and clears array 'matrix[index]'. Also subtracts all the values of the edges that pass through this vertex from the 'totalValue'</p>
+<p>If the graph has vertex with 'index' then removes index-elements from 'matrix[i][index]', i = (0, 'numberOfVertices' - 1) and clears array 'matrix[index]'. Also subtracts all the values of the edges that pass through this vertex from the 'totalValue'</p>
 <p>Reduces the 'numberOfVertices' by one and reduces the 'numberOfEdges' by number of edges that pass through this vertex </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">index</td><td>is index of this vertex </td></tr>

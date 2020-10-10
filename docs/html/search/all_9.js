@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['removeedge',['removeEdge',['../classgm_1_1_graph_matrix.html#aaee8cb1c4d2bab6fcba5f3fc64852bfd',1,'gm::GraphMatrix::removeEdge()'],['../classgs_1_1_graph_structure.html#aa27a2bd0421823f44ac670b691cedcbd',1,'gs::GraphStructure::removeEdge()']]],
-  ['removevertex',['removeVertex',['../classgm_1_1_graph_matrix.html#a43883f2cb97bc0286809be6fc8972838',1,'gm::GraphMatrix::removeVertex()'],['../classgs_1_1_graph_structure.html#a3ce672fa2de3985fba1d1111efad2878',1,'gs::GraphStructure::removeVertex()']]]
+  ['pathsbetweenvertices',['PathsBetweenVertices',['../structpbv_1_1_paths_between_vertices.html',1,'pbv::PathsBetweenVertices&lt; T &gt;'],['../structpbv_1_1_paths_between_vertices.html#ab9812924cc3075c7501dd17d5a4f4d9c',1,'pbv::PathsBetweenVertices::PathsBetweenVertices()'],['../structpbv_1_1_paths_between_vertices.html#a352d3e86d9e9776ad7c9ec69844d5651',1,'pbv::PathsBetweenVertices::PathsBetweenVertices(std::size_t size, std::size_t beginIndex)'],['../structpbv_1_1_paths_between_vertices.html#a774e36d73a973b9e301e4dbce74b7b29',1,'pbv::PathsBetweenVertices::PathsBetweenVertices(T *distance, bool *isMax, std::size_t size, std::size_t beginIndex)'],['../structpbv_1_1_paths_between_vertices.html#a7b7fadc0fedb587ae9b7deb62ebb6a1c',1,'pbv::PathsBetweenVertices::PathsBetweenVertices(PathsBetweenVertices &amp;&amp;paths) noexcept']]],
+  ['pbv',['pbv',['../namespacepbv.html',1,'']]],
+  ['point',['Point',['../structtdp_1_1_point.html',1,'tdp']]],
+  ['print',['print',['../structpbv_1_1_paths_between_vertices.html#aca6583521b4e35eec9db20c901f200e6',1,'pbv::PathsBetweenVertices']]]
 ];

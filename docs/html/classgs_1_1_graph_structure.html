@@ -149,7 +149,7 @@ class gs::GraphStructure&lt; T &gt;</h3>
 <p>Class for representing a graph in the form of a adjacency list (I use the name "adjacency structure") </p>
 <p>See <a href="https://en.wikipedia.org/wiki/Adjacency_list" title="Information about adjacency list in Wikipedia">Adjacency list</a></p>
 <p>The vertices are stored in 'std::vector&lt;VertexNode&lt;T&gt;*&gt; list' and the edges are stored in linked lists that are in 'std::vector&lt;VertexNode&lt;T&gt;*&gt; list'</p>
-<p>All vertices are associated with adjacent vertices in the linked list (<a class="el" href="structgs_1_1_vertex_node.html" title="Vertex in graph (GraphStructure) ">VertexNode</a> is node of this linked list). Value of vertex is stored in 'list[index of vertex]' and value of edge between vertices with beginIndex and endIndex is stored in linked list 'list[beginIndex]'</p>
+<p>All vertices are associated with adjacent vertices in the linked list (<a class="el" href="structgs_1_1_vertex_node.html" title="Vertex in graph (GraphStructure) ">VertexNode</a> is node of this linked list). Value of vertex is stored in 'list[index of vertex]' and value of edge between vertices with 'beginIndex' and 'endIndex' is stored in linked list 'list[beginIndex]'</p>
 <p>This class also stores information about the number of edges and vertices, the weight of the graph, and information about the orientation of the graph</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classgm_1_1_graph_matrix.html" title="Class for representing a graph in the form of a adjacency matrix. ">gm::GraphMatrix</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -284,7 +284,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Destructor. </p>
-<p>Deltes all nodes in graph and clears 'list' </p>
+<p>/** Deltes all nodes in graph and clears 'list' </p>
 
 </div>
 </div>
@@ -616,9 +616,9 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>- 'struct PathsBetweenVertices' that has the smallest paths between vertices </dd>
+<dl class="section return"><dt>Returns</dt><dd>- 'struct <a class="el" href="structpbv_1_1_paths_between_vertices.html" title="The struct for storing paths. ">pbv::PathsBetweenVertices</a>' that has the smallest paths between vertices </dd>
 <dd>
-- empty 'struct PathsBetweenVertices' if the graph haven't this vertex or graph isn't connected </dd></dl>
+- empty 'struct <a class="el" href="structpbv_1_1_paths_between_vertices.html" title="The struct for storing paths. ">pbv::PathsBetweenVertices</a>' if the graph haven't this vertex or graph isn't connected </dd></dl>
 
 </div>
 </div>
