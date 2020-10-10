@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['_7egraphmatrix',['~GraphMatrix',['../classgm_1_1_graph_matrix.html#a3b0993020ce3351d0ec4b7fe2adc2580',1,'gm::GraphMatrix']]],
-  ['_7egraphstructure',['~GraphStructure',['../classgs_1_1_graph_structure.html#aadb408a61239261f483de8d603263475',1,'gs::GraphStructure']]],
-  ['_7epathsbetweenvertices',['~PathsBetweenVertices',['../structpbv_1_1_paths_between_vertices.html#a6be9fce23ff701beaf2a44006bd19e5b',1,'pbv::PathsBetweenVertices']]]
+  ['randomvalue',['randomValue',['../namespacefop.html#af4426fe719704633a3129439207583ce',1,'fop']]],
+  ['removeedge',['removeEdge',['../classgm_1_1_graph_matrix.html#aaee8cb1c4d2bab6fcba5f3fc64852bfd',1,'gm::GraphMatrix::removeEdge()'],['../classgs_1_1_graph_structure.html#aa27a2bd0421823f44ac670b691cedcbd',1,'gs::GraphStructure::removeEdge()']]],
+  ['removevertex',['removeVertex',['../classgm_1_1_graph_matrix.html#a43883f2cb97bc0286809be6fc8972838',1,'gm::GraphMatrix::removeVertex()'],['../classgs_1_1_graph_structure.html#a3ce672fa2de3985fba1d1111efad2878',1,'gs::GraphStructure::removeVertex()']]]
 ];

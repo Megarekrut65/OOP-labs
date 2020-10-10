@@ -45,53 +45,53 @@ namespace tdp//two-dimensional points
 	*/
 	bool operator < (Point first, Point second);
 	/**
-	* \brief Comparison the point by coordinates
+	* \brief Comparison the points by coordinates
 	*
 	* First, compares the first coordinates, if they are equal, then compares the second
 	* \param first is first operand
 	* \param second is second operand
-	* \return true if 'first' > 'second'
-	* \return false if 'first' <= 'second'
+	* \return - true if 'first' > 'second'
+	* \return - false if 'first' <= 'second'
 	*/
 	bool operator > (Point first, Point second);
 	/**
-	* \brief Comparison the point by coordinates
+	* \brief Comparison the points by coordinates
 	*
 	* First, compares the first coordinates, if they are equal, then compares the second
 	* \param first is first operand
 	* \param second is second operand
-	* \return true if 'first' <= 'second'
-	* \return false if 'first' > 'second'
+	* \return - true if 'first' <= 'second'
+	* \return - false if 'first' > 'second'
 	*/
 	bool operator <= (Point first, Point second);
 	/**
-	* \brief Comparison the point by coordinates
+	* \brief Comparison the points by coordinates
 	*
 	* First, compares the first coordinates, if they are equal, then compares the second
 	* \param first is first operand
 	* \param second is second operand
-	* \return true if 'first' >= 'second'
-	* \return false if 'first' < 'second'
+	* \return - true if 'first' >= 'second'
+	* \return - false if 'first' < 'second'
 	*/
 	bool operator >= (Point first, Point second);
 	/**
-	* \brief Comparison the point by coordinates
+	* \brief Comparison the points by coordinates
 	*
 	* Compares the first coordinates and compares the second
 	* \param first is first operand
 	* \param second is second operand
-	* \return true if 'first' == 'second'
-	* \return false if 'first' != 'second'
+	* \return - true if 'first' == 'second'
+	* \return - false if 'first' != 'second'
 	*/
 	bool operator == (Point first, Point second);
 	/**
-	* \brief Comparison the point by coordinates
+	* \brief Comparison the points by coordinates
 	*
 	* Compares the first coordinates and compares the second
 	* \param first is first operand
 	* \param second is second operand
-	* \return true if 'first' != 'second'
-	* \return false if 'first' == 'second'
+	* \return - true if 'first' != 'second'
+	* \return - false if 'first' == 'second'
 	*/
 	bool operator != (Point first, Point second);
 	/**
@@ -100,7 +100,7 @@ namespace tdp//two-dimensional points
 	* Adds first coordinates and adds second coordinates
 	* \param first is first operand
 	* \param second is second operand
-	* \return Point that is the result of adding two points
+	* \return - Point that is the result of adding two points
 	*/
 	Point operator + (Point first, Point second);
 	/**
@@ -109,7 +109,7 @@ namespace tdp//two-dimensional points
 	* Subtracts first coordinates and Subtracts second coordinates
 	* \param first is first operand
 	* \param second is second operand
-	* \return Point that is the result of subtraction two points
+	* \return - Point that is the result of subtraction two points
 	*/
 	Point operator - (Point first, Point second);
 	/**
@@ -118,7 +118,7 @@ namespace tdp//two-dimensional points
 	* Multiply the first coordinate by scalar and Multiply the second coordinate by scalar
 	* \param scalar is first operand
 	* \param point is second operand
-	* \return Point that is the result of multiplication point by scalar
+	* \return - Point that is the result of multiplication point by scalar
 	*/
 	Point operator * (double scalar, Point point);
 	/**
@@ -128,7 +128,7 @@ namespace tdp//two-dimensional points
 	* Example (1.03, 4.22)
 	* \param out is first operand
 	* \param point is second operand
-	* \return out
+	* \return - out
 	*/
 	std::ostream& operator << (std::ostream& out, Point point);
 	/**
@@ -136,7 +136,7 @@ namespace tdp//two-dimensional points
 	* 
 	* Translate Point into std::string
 	* \param value is two-dimensional point
-	* \return the line in which the point will be written
+	* \return - the line in which the point will be written
 	*/
 	std::string toTheString(Point value);
 	/**
@@ -148,7 +148,7 @@ namespace tdp//two-dimensional points
 	* 
 	* \param first is first point
 	* \param second is second point
-	* \return distance between points
+	* \return - distance between points
 	*/
 	double distanceBetweenPoints(Point first, Point second);
 }

@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['last',['last',['../structdoctest_1_1_context_options.html#a5aaf1b28f6a46d8acb40898a502b6bef',1,'doctest::ContextOptions']]],
-  ['list_5freporters',['list_reporters',['../structdoctest_1_1_context_options.html#ad3daf077ac3182db5175f8baff49fce0',1,'doctest::ContextOptions']]],
-  ['list_5ftest_5fcases',['list_test_cases',['../structdoctest_1_1_context_options.html#a813e1543c358ab8a7a432b4ad2b32e56',1,'doctest::ContextOptions']]],
-  ['list_5ftest_5fsuites',['list_test_suites',['../structdoctest_1_1_context_options.html#a579399a66b278cbf96b6183d337f486b',1,'doctest::ContextOptions']]]
+  ['value',['value',['../structgm_1_1_edge.html#a45d07f827a6133ea2179fdbebe0867f1',1,'gm::Edge::value()'],['../structgs_1_1_vertex_node.html#a0bc246c7c0bfbea6354d90c704761fd3',1,'gs::VertexNode::value()']]]
 ];

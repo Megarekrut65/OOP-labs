@@ -3,14 +3,35 @@
 
 using namespace tdp;
 
+/**
+* Namespace for Figure
+*/
 namespace fop//figures on the plane
 {
+	/**
+	* \brief Enum for Figure
+	* 
+	* Preserves the types of some geometric shapes:
+	* - CIRCLE;
+	* 
+	* - LINE;
+	* 
+	* - POINT;
+	*/
 	enum class FiguresType
 	{
 		CIRCLE,
 		LINE,
 		POINT
 	};
+	/**
+	* \brief Class for representing such geometric shapes as circle, line and point
+	* 
+	* The following operators are overridden for this structure: 
+	* <, >, <=, >=, ==, !=, +, -
+	* 
+	* There are some operation for these shapes here
+	*/
 	class Figure
 	{
 	private:
@@ -24,39 +45,250 @@ namespace fop//figures on the plane
 		Point symmetricalMappingOfPointByLine(Figure line, Point point);
 		Point inversionTransformationOfPointByCircle(Figure circle, Point point);
 	public:
-		FiguresType type;
-		Point first;//for circle it is centre point
-		Point second;
+		FiguresType type;/**<Type of figure*/
+		Point first;/**<The first point belonging to the figure(for circle it is centre point)*/
+		Point second;/**<The second point belonging to the figure*/
+		/**
+		* Default constructor
+		*/
 		Figure();
+		/**
+		* \brief Parameterized constructor
+		* 
+		* If the points are equal then the figure will automatically have 'type' = POINT. 
+		* If 'type' is POINT then points become equal
+		*/
 		Figure(FiguresType type, Point first, Point second);
-		Figure(Point maxValue);//creates random figure
+		/**
+		* \brief Random constructor
+		* 
+		* Creates figure with random 'type' and random points. 
+		* Points will be less than 'maxValue'
+		*/
+		Figure(Point maxValue);
+		/**
+		* \brief Copy Constructor
+		*
+		* Default copy constructor copies the pointers to 'puncturedPoint',
+		* so I added own copy constructor to copy the value of 'puncturedPoint'
+		*/
 		Figure(const Figure& figure);
+		/**
+		* \brief Destructor
+		*
+		* Deletes 'puncturedPoint'
+		*/
 		~Figure();
+		/**
+		* \brief Checking for belonging of a point to a figure
+		* 
+		* Each type has a different test: 
+		* 
+		* - for CIRCLE it checks whether the 'point' is the solution of the equation of the circle;
+		* 
+		* - for LINE - whether it is the solution of the equation of the line;
+		*
+		* - for POINT it checks whether these points are equal.
+		* \param point that belongs or does not belong to the figure
+		* \return - true if the point belongs to a figure
+		* \return - false if the point doesn't belong to a figure
+		*/
 		bool havePoint(Point point);
+		/**
+		* \brief Finding intersection
+		* 
+		* Finds points of intersection of 'this' figure and 'figure'. Works for CIRCLE and LINE only. For POINT use 'havePoint'
+		* 
+		* Number of points can be different. Zero, one, two or infinite number.
+		* \param figure is another figure that crosses 'this' or not
+		* \return - array with points of intersection of two figures
+		*/
 		std::vector<Point> findPointsOfIntersection(Figure figure);
+		/**
+		* \brief Inversion transformation
+		* 
+		* Creates the figure that is inversion transformation of 'this' by the 'circle'. 
+		* See [Inversion transformation](https://en.wikipedia.org/wiki/Inversion_transformation "Information in Wikipedia")
+		* 
+		* If type of 'circle' isn't CIRCLE then created figure will be 'this'.
+		* Function works for CIRCLE, LINE, POINT as type of 'this'
+		* 
+		* For some created figures can be punctured point that will be in 'puncturedPoint'
+		* 
+		* \param circle relative to which the inversion will occur
+		* \return - created figure
+		*/
 		Figure inversionTransformationByCircle(Figure circle);
+		/**
+		* \brief Symmetrical mapping
+		* 
+		* Creates the figure that is a symmetrical representation of 'this' figure 
+		* relative to the 'line'. 
+		* See [Symmetry in mathematics](https://en.wikipedia.org/wiki/Symmetry_in_mathematics "Information in Wikipedia")
+		* 
+		* If type of 'line' isn't LINE then created figure will be 'this'.
+		* Function works for CIRCLE, LINE, POINT as type of 'this'
+		* 
+		* \param line relative to which the symmetrical mapping will occur
+		* \return - created figure
+		*/
 		Figure symmetricalMappingByLine(Figure line);
+		/**
+		* \brief Friend function like std::to_string
+		* 
+		* Translate Figure into std::string. 
+		* For all types of figures result will be different
+		* 
+		* \param value is figure that will be translated to std::string
+		* \return - result of Translation
+		*/
 		friend std::string toTheString(const Figure& value);
 	};	
-	struct Equation//a*x + b * y  = ñ
+	/**
+	* \brief Struct for making linear equation for LINE
+	* 
+	* See [Linear equation](https://en.wikipedia.org/wiki/Linear_equation "Information in Wikipedia")
+	* 
+	* There is equation as a*x + b*y = c
+	* 
+	* If type of 'figure' isn't LINE then equation will be as 0*x + 0*y = 0
+	*/
+	struct Equation
 	{
-		double a;
-		double b;
-		double c;
+		double a;/**<coefficient a*/
+		double b;/**<coefficient b*/
+		double c;/**<coefficient c*/
+		/**
+		* Default constructor
+		*/
 		Equation();
+		/**
+		* The constructor for creating linear equation for 'figure' (Figure)
+		*/
 		Equation(Figure figure);
 	};
+	/**
+	* \brief Comparison the figures by points and type
+	* 
+	* This comparison is quite specific. 
+	* The Subtraction between the first and second points of each figure are compared
+	* \param figure1 is first operand
+	* \param figure2 is second operand
+	* \return - true if 'figure1' < 'figure2'
+	* \return - false if 'figure1' >= 'figure2'
+	*/
 	bool operator < (Figure figure1, Figure figure2);
+	/**
+	* \brief Comparison the figures by points and type
+	*
+	* This comparison is quite specific.
+	* The Subtraction between the first and second points of each figure are compared
+	* \param figure1 is first operand
+	* \param figure2 is second operand
+	* \return - true if 'figure1' > 'figure2'
+	* \return - false if 'figure1' <= 'figure2'
+	*/
 	bool operator > (Figure figure1, Figure figure2);
+	/**
+	* \brief Comparison the figures by points and type
+	*
+	* This comparison is quite specific.
+	* The Subtraction between the first and second points of each figure are compared
+	* \param figure1 is first operand
+	* \param figure2 is second operand
+	* \return - true if 'figure1' <= 'figure2'
+	* \return - false if 'figure1' > 'figure2'
+	*/
 	bool operator <= (Figure figure1, Figure figure2);
+	/**
+	* \brief Comparison the figures by points and type
+	*
+	* This comparison is quite specific.
+	* The Subtraction between the first and second points of each figure are compared
+	* \param figure1 is first operand
+	* \param figure2 is second operand
+	* \return - true if 'figure1' >= 'figure2'
+	* \return - false if 'figure1' < 'figure2'
+	*/
 	bool operator >= (Figure figure1, Figure figure2);
+	/**
+	* \brief Comparison the figures by points and type
+	*
+	* This comparison is quite specific.
+	* The Subtraction between the first and second points of each figure are compared
+	* \param figure1 is first operand
+	* \param figure2 is second operand
+	* \return - true if 'figure1' == 'figure2'
+	* \return - false if 'figure1' != 'figure2'
+	*/
 	bool operator == (Figure figure1, Figure figure2);
+	/**
+	* \brief Comparison the figures by points and type
+	*
+	* This comparison is quite specific.
+	* The Subtraction between the first and second points of each figure are compared
+	* \param figure1 is first operand
+	* \param figure2 is second operand
+	* \return - true if 'figure1' != 'figure2'
+	* \return - false if 'figure1' == 'figure2'
+	*/
 	bool operator != (Figure figure1, Figure figure2);
+	/**
+	* \brief Adding two figures
+	*
+	* This Adding is quite specific.
+	* Adds 'figure1.first' to 'figure2.first' and 'figure1.second' to 'figure2.second' 
+	* and type will be 'type' of larger figure
+	* \param figure1 is first operand
+	* \param figure2 is second operand
+	* \return - result of adding two figures
+	*/
 	Figure operator + (Figure figure1, Figure figure2);
+	/**
+	* \brief Subtraction two figures
+	*
+	* This Adding is quite specific.
+	* Subtracts 'figure2.first' from 'figure1.first' and 'figure2.second' from 'figure1.second'
+	* and type will be 'type' of larger figure
+	* \param figure1 is first operand
+	* \param figure2 is second operand
+	* \return - result of Subtraction two figures
+	*/
 	Figure operator - (Figure figure1, Figure figure2);
+	/**
+	* std::to_string for enum class FiguresType
+	*/
 	std::string toTheString(FiguresType value);
+	/**
+	* \brief Function for creating random figure
+	*
+	* Uses in graph (gm::GraphMatrix and gs::GraphStructure)
+	* \param maxValue is the maximum value that a point can take
+	* \return - random figure
+	*/
 	Figure randomValue(const Figure& maxValue);
+	/**
+	* \brief The function for solving a system of linear equations
+	* 
+	* The equations as a*x + b*y = c
+	* 
+	* The number of solutions can be zero or one
+	* \param equation1 is first linear equation
+	* \param equation2 is second linear equation
+	* \return - array with points that satisfy the system
+	*/
 	std::vector<Point> solveSystemOfLineEquations(Equation equation1, Equation equation2);
+	/**
+	* \brief The function for solving quadratic equation
+	* 
+	* The equation as P*x^2 + Q*x + D = 0
+	* 
+	* The number of solutions can be zero, one or two
+	* \param coefficientP is first coefficient in equation
+	* \param coefficientQ is second coefficient in equation
+	* \param coefficientD is third coefficient in equation
+	* \return - array with solutions
+	*/
 	std::vector<double> solveQuadraticEquation(double coefficientP, double coefficientQ, double coefficientD);
 }
 namespace fop
@@ -214,7 +446,14 @@ namespace fop
 		if (first == second) this->type = FiguresType::POINT;
 		else this->type = type;
 		this->first = first;
-		this->second = second;
+		if (type == FiguresType::POINT)
+		{			
+			this->second = first;
+		}
+		else
+		{
+			this->second = second;
+		}		
 	}
 	Figure::Figure(Point maxValue)
 	{

@@ -1,0 +1,328 @@
+\hypertarget{namespacefop}{}\section{fop Namespace Reference}
+\label{namespacefop}\index{fop@{fop}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfop_1_1_equation}{Equation}}
+\begin{DoxyCompactList}\small\item\em Struct for making linear equation for L\+I\+NE. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classfop_1_1_figure}{Figure}}
+\begin{DoxyCompactList}\small\item\em Class for representing such geometric shapes as circle, line and point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacefop_a60dafe2e1ac5bb402dad57ecacde23d5}{Figures\+Type}} \{ {\bfseries C\+I\+R\+C\+LE}, 
+{\bfseries L\+I\+NE}, 
+{\bfseries P\+O\+I\+NT}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum for Figure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacefop_a848b460556a75362850867d9b567ae59}{operator$<$}} (\mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure1, \mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure2)
+\begin{DoxyCompactList}\small\item\em Comparison the figures by points and type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefop_a1e56aa53c205088fdeba5a4ff85b211f}{operator$>$}} (\mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure1, \mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure2)
+\begin{DoxyCompactList}\small\item\em Comparison the figures by points and type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefop_a2315668c95e8c527cc00fa12d792542c}{operator$<$=}} (\mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure1, \mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure2)
+\begin{DoxyCompactList}\small\item\em Comparison the figures by points and type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefop_a8989439cb0227ca3d76c92a3f515366d}{operator$>$=}} (\mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure1, \mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure2)
+\begin{DoxyCompactList}\small\item\em Comparison the figures by points and type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefop_ad4c7032872695a09038ecc2d09fef5b8}{operator==}} (\mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure1, \mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure2)
+\begin{DoxyCompactList}\small\item\em Comparison the figures by points and type. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacefop_a386a3d90ae69e900125c0a3ad5c48cdf}{operator!=}} (\mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure1, \mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure2)
+\begin{DoxyCompactList}\small\item\em Comparison the figures by points and type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfop_1_1_figure}{Figure}} \mbox{\hyperlink{namespacefop_a0cdacf03236287528189a51913750a8c}{operator+}} (\mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure1, \mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure2)
+\begin{DoxyCompactList}\small\item\em Adding two figures. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classfop_1_1_figure}{Figure}} \mbox{\hyperlink{namespacefop_ab4ccc3243195b647632a36db88113230}{operator-\/}} (\mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure1, \mbox{\hyperlink{classfop_1_1_figure}{Figure}} figure2)
+\begin{DoxyCompactList}\small\item\em Subtraction two figures. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacefop_a4cb96232c3e9d082f2c48a97a35e2454}{to\+The\+String}} (\mbox{\hyperlink{namespacefop_a60dafe2e1ac5bb402dad57ecacde23d5}{Figures\+Type}} value)
+\item 
+\mbox{\hyperlink{classfop_1_1_figure}{Figure}} \mbox{\hyperlink{namespacefop_af4426fe719704633a3129439207583ce}{random\+Value}} (const \mbox{\hyperlink{classfop_1_1_figure}{Figure}} \&max\+Value)
+\begin{DoxyCompactList}\small\item\em Function for creating random figure. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structtdp_1_1_point}{Point}} $>$ \mbox{\hyperlink{namespacefop_a231b2b83dca5c216ecd24bea0f918e87}{solve\+System\+Of\+Line\+Equations}} (\mbox{\hyperlink{structfop_1_1_equation}{Equation}} equation1, \mbox{\hyperlink{structfop_1_1_equation}{Equation}} equation2)
+\begin{DoxyCompactList}\small\item\em The function for solving a system of linear equations. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{namespacefop_a28077bc23913a5e5f1522e7fbb13bcfe}{solve\+Quadratic\+Equation}} (double coefficientP, double coefficientQ, double coefficientD)
+\begin{DoxyCompactList}\small\item\em The function for solving quadratic equation. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacefop_a6e88eff251cad9a76ad0c171c60ee230}{to\+The\+String}} (const \mbox{\hyperlink{classfop_1_1_figure}{Figure}} \&value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Namespace for \mbox{\hyperlink{classfop_1_1_figure}{Figure}} 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacefop_a60dafe2e1ac5bb402dad57ecacde23d5}\label{namespacefop_a60dafe2e1ac5bb402dad57ecacde23d5}} 
+\index{fop@{fop}!Figures\+Type@{Figures\+Type}}
+\index{Figures\+Type@{Figures\+Type}!fop@{fop}}
+\subsubsection{\texorpdfstring{Figures\+Type}{FiguresType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacefop_a60dafe2e1ac5bb402dad57ecacde23d5}{fop\+::\+Figures\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum for \mbox{\hyperlink{classfop_1_1_figure}{Figure}}. 
+
+Preserves the types of some geometric shapes\+:
+\begin{DoxyItemize}
+\item C\+I\+R\+C\+LE;
+\item L\+I\+NE;
+\item P\+O\+I\+NT; 
+\end{DoxyItemize}
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacefop_a386a3d90ae69e900125c0a3ad5c48cdf}\label{namespacefop_a386a3d90ae69e900125c0a3ad5c48cdf}} 
+\index{fop@{fop}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!fop@{fop}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool fop\+::operator!= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure1,  }\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure2 }\end{DoxyParamCaption})}
+
+
+
+Comparison the figures by points and type. 
+
+This comparison is quite specific. The Subtraction between the first and second points of each figure are compared 
+\begin{DoxyParams}{Parameters}
+{\em figure1} & is first operand \\
+\hline
+{\em figure2} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ true if \textquotesingle{}figure1\textquotesingle{} != \textquotesingle{}figure2\textquotesingle{} 
+
+-\/ false if \textquotesingle{}figure1\textquotesingle{} == \textquotesingle{}figure2\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_a0cdacf03236287528189a51913750a8c}\label{namespacefop_a0cdacf03236287528189a51913750a8c}} 
+\index{fop@{fop}!operator+@{operator+}}
+\index{operator+@{operator+}!fop@{fop}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classfop_1_1_figure}{Figure}} fop\+::operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure1,  }\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure2 }\end{DoxyParamCaption})}
+
+
+
+Adding two figures. 
+
+This Adding is quite specific. Adds \textquotesingle{}figure1.\+first\textquotesingle{} to \textquotesingle{}figure2.\+first\textquotesingle{} and \textquotesingle{}figure1.\+second\textquotesingle{} to \textquotesingle{}figure2.\+second\textquotesingle{} and type will be \textquotesingle{}type\textquotesingle{} of larger figure 
+\begin{DoxyParams}{Parameters}
+{\em figure1} & is first operand \\
+\hline
+{\em figure2} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ result of adding two figures 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_ab4ccc3243195b647632a36db88113230}\label{namespacefop_ab4ccc3243195b647632a36db88113230}} 
+\index{fop@{fop}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!fop@{fop}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classfop_1_1_figure}{Figure}} fop\+::operator-\/ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure1,  }\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure2 }\end{DoxyParamCaption})}
+
+
+
+Subtraction two figures. 
+
+This Adding is quite specific. Subtracts \textquotesingle{}figure2.\+first\textquotesingle{} from \textquotesingle{}figure1.\+first\textquotesingle{} and \textquotesingle{}figure2.\+second\textquotesingle{} from \textquotesingle{}figure1.\+second\textquotesingle{} and type will be \textquotesingle{}type\textquotesingle{} of larger figure 
+\begin{DoxyParams}{Parameters}
+{\em figure1} & is first operand \\
+\hline
+{\em figure2} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ result of Subtraction two figures 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_a848b460556a75362850867d9b567ae59}\label{namespacefop_a848b460556a75362850867d9b567ae59}} 
+\index{fop@{fop}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!fop@{fop}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool fop\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure1,  }\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure2 }\end{DoxyParamCaption})}
+
+
+
+Comparison the figures by points and type. 
+
+This comparison is quite specific. The Subtraction between the first and second points of each figure are compared 
+\begin{DoxyParams}{Parameters}
+{\em figure1} & is first operand \\
+\hline
+{\em figure2} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ true if \textquotesingle{}figure1\textquotesingle{} $<$ \textquotesingle{}figure2\textquotesingle{} 
+
+-\/ false if \textquotesingle{}figure1\textquotesingle{} $>$= \textquotesingle{}figure2\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_a2315668c95e8c527cc00fa12d792542c}\label{namespacefop_a2315668c95e8c527cc00fa12d792542c}} 
+\index{fop@{fop}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!fop@{fop}}
+\subsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool fop\+::operator$<$= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure1,  }\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure2 }\end{DoxyParamCaption})}
+
+
+
+Comparison the figures by points and type. 
+
+This comparison is quite specific. The Subtraction between the first and second points of each figure are compared 
+\begin{DoxyParams}{Parameters}
+{\em figure1} & is first operand \\
+\hline
+{\em figure2} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ true if \textquotesingle{}figure1\textquotesingle{} $<$= \textquotesingle{}figure2\textquotesingle{} 
+
+-\/ false if \textquotesingle{}figure1\textquotesingle{} $>$ \textquotesingle{}figure2\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_ad4c7032872695a09038ecc2d09fef5b8}\label{namespacefop_ad4c7032872695a09038ecc2d09fef5b8}} 
+\index{fop@{fop}!operator==@{operator==}}
+\index{operator==@{operator==}!fop@{fop}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool fop\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure1,  }\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure2 }\end{DoxyParamCaption})}
+
+
+
+Comparison the figures by points and type. 
+
+This comparison is quite specific. The Subtraction between the first and second points of each figure are compared 
+\begin{DoxyParams}{Parameters}
+{\em figure1} & is first operand \\
+\hline
+{\em figure2} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ true if \textquotesingle{}figure1\textquotesingle{} == \textquotesingle{}figure2\textquotesingle{} 
+
+-\/ false if \textquotesingle{}figure1\textquotesingle{} != \textquotesingle{}figure2\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_a1e56aa53c205088fdeba5a4ff85b211f}\label{namespacefop_a1e56aa53c205088fdeba5a4ff85b211f}} 
+\index{fop@{fop}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!fop@{fop}}
+\subsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool fop\+::operator$>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure1,  }\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure2 }\end{DoxyParamCaption})}
+
+
+
+Comparison the figures by points and type. 
+
+This comparison is quite specific. The Subtraction between the first and second points of each figure are compared 
+\begin{DoxyParams}{Parameters}
+{\em figure1} & is first operand \\
+\hline
+{\em figure2} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ true if \textquotesingle{}figure1\textquotesingle{} $>$ \textquotesingle{}figure2\textquotesingle{} 
+
+-\/ false if \textquotesingle{}figure1\textquotesingle{} $<$= \textquotesingle{}figure2\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_a8989439cb0227ca3d76c92a3f515366d}\label{namespacefop_a8989439cb0227ca3d76c92a3f515366d}} 
+\index{fop@{fop}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!fop@{fop}}
+\subsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool fop\+::operator$>$= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure1,  }\item[{\mbox{\hyperlink{classfop_1_1_figure}{Figure}}}]{figure2 }\end{DoxyParamCaption})}
+
+
+
+Comparison the figures by points and type. 
+
+This comparison is quite specific. The Subtraction between the first and second points of each figure are compared 
+\begin{DoxyParams}{Parameters}
+{\em figure1} & is first operand \\
+\hline
+{\em figure2} & is second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ true if \textquotesingle{}figure1\textquotesingle{} $>$= \textquotesingle{}figure2\textquotesingle{} 
+
+-\/ false if \textquotesingle{}figure1\textquotesingle{} $<$ \textquotesingle{}figure2\textquotesingle{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_af4426fe719704633a3129439207583ce}\label{namespacefop_af4426fe719704633a3129439207583ce}} 
+\index{fop@{fop}!random\+Value@{random\+Value}}
+\index{random\+Value@{random\+Value}!fop@{fop}}
+\subsubsection{\texorpdfstring{random\+Value()}{randomValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classfop_1_1_figure}{Figure}} fop\+::random\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfop_1_1_figure}{Figure}} \&}]{max\+Value }\end{DoxyParamCaption})}
+
+
+
+Function for creating random figure. 
+
+Uses in graph (\mbox{\hyperlink{classgm_1_1_graph_matrix}{gm\+::\+Graph\+Matrix}} and \mbox{\hyperlink{classgs_1_1_graph_structure}{gs\+::\+Graph\+Structure}}) 
+\begin{DoxyParams}{Parameters}
+{\em max\+Value} & is the maximum value that a point can take \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ random figure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_a28077bc23913a5e5f1522e7fbb13bcfe}\label{namespacefop_a28077bc23913a5e5f1522e7fbb13bcfe}} 
+\index{fop@{fop}!solve\+Quadratic\+Equation@{solve\+Quadratic\+Equation}}
+\index{solve\+Quadratic\+Equation@{solve\+Quadratic\+Equation}!fop@{fop}}
+\subsubsection{\texorpdfstring{solve\+Quadratic\+Equation()}{solveQuadraticEquation()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ fop\+::solve\+Quadratic\+Equation (\begin{DoxyParamCaption}\item[{double}]{coefficientP,  }\item[{double}]{coefficientQ,  }\item[{double}]{coefficientD }\end{DoxyParamCaption})}
+
+
+
+The function for solving quadratic equation. 
+
+The equation as P$\ast$x$^\wedge$2 + Q$\ast$x + D = 0
+
+The number of solutions can be zero, one or two 
+\begin{DoxyParams}{Parameters}
+{\em coefficientP} & is first coefficient in equation \\
+\hline
+{\em coefficientQ} & is second coefficient in equation \\
+\hline
+{\em coefficientD} & is third coefficient in equation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ array with solutions 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_a231b2b83dca5c216ecd24bea0f918e87}\label{namespacefop_a231b2b83dca5c216ecd24bea0f918e87}} 
+\index{fop@{fop}!solve\+System\+Of\+Line\+Equations@{solve\+System\+Of\+Line\+Equations}}
+\index{solve\+System\+Of\+Line\+Equations@{solve\+System\+Of\+Line\+Equations}!fop@{fop}}
+\subsubsection{\texorpdfstring{solve\+System\+Of\+Line\+Equations()}{solveSystemOfLineEquations()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structtdp_1_1_point}{Point}} $>$ fop\+::solve\+System\+Of\+Line\+Equations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfop_1_1_equation}{Equation}}}]{equation1,  }\item[{\mbox{\hyperlink{structfop_1_1_equation}{Equation}}}]{equation2 }\end{DoxyParamCaption})}
+
+
+
+The function for solving a system of linear equations. 
+
+The equations as a$\ast$x + b$\ast$y = c
+
+The number of solutions can be zero or one 
+\begin{DoxyParams}{Parameters}
+{\em equation1} & is first linear equation \\
+\hline
+{\em equation2} & is second linear equation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ array with points that satisfy the system 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefop_a4cb96232c3e9d082f2c48a97a35e2454}\label{namespacefop_a4cb96232c3e9d082f2c48a97a35e2454}} 
+\index{fop@{fop}!to\+The\+String@{to\+The\+String}}
+\index{to\+The\+String@{to\+The\+String}!fop@{fop}}
+\subsubsection{\texorpdfstring{to\+The\+String()}{toTheString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string fop\+::to\+The\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacefop_a60dafe2e1ac5bb402dad57ecacde23d5}{Figures\+Type}}}]{value }\end{DoxyParamCaption})}
+
+std\+::to\+\_\+string for enum class Figures\+Type \mbox{\Hypertarget{namespacefop_a6e88eff251cad9a76ad0c171c60ee230}\label{namespacefop_a6e88eff251cad9a76ad0c171c60ee230}} 
+\index{fop@{fop}!to\+The\+String@{to\+The\+String}}
+\index{to\+The\+String@{to\+The\+String}!fop@{fop}}
+\subsubsection{\texorpdfstring{to\+The\+String()}{toTheString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string fop\+::to\+The\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classfop_1_1_figure}{Figure}} \&}]{value }\end{DoxyParamCaption})}
+
+Translate \mbox{\hyperlink{classfop_1_1_figure}{Figure}} into std\+::string. For all types of figures result will be different
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & is figure that will be translated to std\+::string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/ result of Translation 
+\end{DoxyReturn}
