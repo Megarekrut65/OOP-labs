@@ -110,6 +110,7 @@ namespace gs//graph structure
         * so I added own copy constructor to copy the nodes
         */
         GraphStructure(const GraphStructure<T>& graph);                                                                                                                /**
+        /**
         * \brief Destructor
         *
         * Deltes all nodes in graph and clears 'list'

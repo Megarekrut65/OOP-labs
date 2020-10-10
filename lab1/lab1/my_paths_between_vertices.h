@@ -1,22 +1,55 @@
 #pragma once
 #include <iostream>
+/**
+* Namespace for PathsBetweenVertices
+*/
 namespace pbv//path between vetices
 {
+    /**
+    * \brief The struct for storing paths
+    *
+    * Stores paths between vertices in graph (gm::GrapMatrix or gs::GraphStructure) 
+    * and prints their to console.
+    */
     template<typename T>
     struct PathsBetweenVertices
     {
-        T* distance;
-        bool* isMax;
-        std::size_t size;
-        std::size_t beginIndex;
-
+        T* distance; /**< The array with paths from vertex with 'beginIndex' to all vertices */
+        bool* isMax; /**<If isMax[i], (i = 0, 'size' - 1) then path from vertex with 'beginIndex' to vertex with 'i' does not exist*/
+        std::size_t size;/**<Number of vetices in the graph*/
+        std::size_t beginIndex;/**<The index of vertex*/
+        /**
+        * Default constructor
+        */
         PathsBetweenVertices();
+        /**
+        * \brief The constructor
+        * 
+        * Creates empty arrays 'distance' and 'isMax' with size = 'size'
+        */
         PathsBetweenVertices(std::size_t size, std::size_t beginIndex);
+        /**
+        * Parameterized constructor
+        */
         PathsBetweenVertices(T* distance, bool* isMax, std::size_t size, std::size_t beginIndex);
+        /**
+        * Move constructor
+        */
         PathsBetweenVertices(PathsBetweenVertices&& paths)
             noexcept;
+        /**
+        * \brief Destructor
+        * 
+        * Deletes 'distance' and 'isMax'
+        */
         ~PathsBetweenVertices();
-        void print(bool show = false);//print the distance from vertex with beginIndex to all vertices in graph
+        /**
+        * \brief Printing the paths
+        * 
+        * Print the distance from vertex with beginIndex to all vertices
+        * \param show can will be true to show message of the result of the function call
+        */
+        void print(bool show = false);
     };
 }
 namespace pbv
@@ -32,7 +65,8 @@ namespace pbv
         isMax = new bool[size];
     }
     template<typename T>
-    PathsBetweenVertices<T>::PathsBetweenVertices(T* distance, bool* isMax, std::size_t size, std::size_t beginIndex): distance(distance), isMax(isMax), beginIndex(beginIndex), size(size){}
+    PathsBetweenVertices<T>::PathsBetweenVertices(T* distance, bool* isMax, std::size_t size, std::size_t beginIndex)
+        : distance(distance), isMax(isMax), beginIndex(beginIndex), size(size){}
     template<typename T>
     PathsBetweenVertices<T>::PathsBetweenVertices(PathsBetweenVertices&& paths)
         noexcept

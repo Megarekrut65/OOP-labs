@@ -137,7 +137,7 @@ namespace gm//graph matrix
         * \brief Removing vertex from graph
         * 
         * If the graph has vertex with 'index' then 
-        * removes index-elements from 'matrix[i][index]', i = (1, 'numberOfVertices') 
+        * removes index-elements from 'matrix[i][index]', i = (0, 'numberOfVertices' - 1) 
         * and clears array 'matrix[index]'. 
         * Also subtracts all the values of the edges that pass through 
         * this vertex from the 'totalValue'
