@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['topologicalsorting',['topologicalSorting',['../classgm_1_1_graph_matrix.html#a8f88b6ebce9cc1ed403d414cd173da02',1,'gm::GraphMatrix']]]
+  ['pathsbetweenvertices',['PathsBetweenVertices',['../structpbv_1_1_paths_between_vertices.html',1,'pbv']]],
+  ['point',['Point',['../structtdp_1_1_point.html',1,'tdp']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['value',['value',['../structgm_1_1_edge.html#a45d07f827a6133ea2179fdbebe0867f1',1,'gm::Edge']]],
-  ['vertexnode',['VertexNode',['../structgs_1_1_vertex_node.html',1,'gs']]]
+  ['removeedge',['removeEdge',['../classgm_1_1_graph_matrix.html#aaee8cb1c4d2bab6fcba5f3fc64852bfd',1,'gm::GraphMatrix::removeEdge()'],['../classgs_1_1_graph_structure.html#aa27a2bd0421823f44ac670b691cedcbd',1,'gs::GraphStructure::removeEdge()']]],
+  ['removevertex',['removeVertex',['../classgm_1_1_graph_matrix.html#a43883f2cb97bc0286809be6fc8972838',1,'gm::GraphMatrix::removeVertex()'],['../classgs_1_1_graph_structure.html#a3ce672fa2de3985fba1d1111efad2878',1,'gs::GraphStructure::removeVertex()']]]
 ];

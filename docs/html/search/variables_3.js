@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['data',['data',['../classdoctest_1_1_string.html#a5c77ed634a1b81aea739a73fb01d986a',1,'doctest::String::data()'],['../structdoctest_1_1_query_data.html#a8085a29db9a1cd5c7eff22ef44e9a9e8',1,'doctest::QueryData::data()']]],
-  ['distance',['distance',['../structpbv_1_1_paths_between_vertices.html#a67aed042aa649d2b6dfeee29d3ec6416',1,'pbv::PathsBetweenVertices']]],
-  ['duration',['duration',['../structdoctest_1_1_context_options.html#a0fc3e0c1cf669cffd1f826c005fc4223',1,'doctest::ContextOptions']]]
+  ['value',['value',['../structgm_1_1_edge.html#a45d07f827a6133ea2179fdbebe0867f1',1,'gm::Edge::value()'],['../structgs_1_1_vertex_node.html#a0bc246c7c0bfbea6354d90c704761fd3',1,'gs::VertexNode::value()']]]
 ];

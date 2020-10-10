@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pathsbetweenvertices',['PathsBetweenVertices',['../structpbv_1_1_paths_between_vertices.html',1,'pbv']]],
-  ['point',['Point',['../structtdp_1_1_point.html',1,'tdp']]]
+  ['index',['index',['../structgs_1_1_vertex_node.html#a8dd82fa9a0b37a0194368dcd7752b04a',1,'gs::VertexNode']]]
 ];

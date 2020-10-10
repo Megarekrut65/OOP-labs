@@ -145,9 +145,9 @@ class gm::GraphMatrix&lt; T &gt;</h3>
 
 <p>Class for representing a graph in the form of a adjacency matrix. </p>
 <p>See <a href="https://en.wikipedia.org/wiki/Adjacency_matrix" title="Information about adjacency matrix in Wikipedia">Adjacency Matrix</a></p>
-<p>The edges are stored in std::vector&lt;std::vector&lt;Edge&lt;T&gt;&gt;&gt; matrix, and the vertices are stored in std::vector&lt;T&gt;vertices</p>
+<p>The edges are stored in 'std::vector&lt;std::vector&lt;Edge&lt;T&gt;&gt;&gt; matrix', and the vertices are stored in 'std::vector&lt;T&gt; vertices'. See <a class="el" href="structgm_1_1_edge.html" title="Edge in graph (GraphMatrix) ">Edge</a></p>
 <p>This class also stores information about the number of edges and vertices, the weight of the graph, and information about the orientation of the graph</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgs_1_1_graph_structure.html" title="Class for representing a graph in the form of a adjacency list(I use the name &quot;adjacency structure&quot;) ...">gs::GraphStructure</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgs_1_1_graph_structure.html" title="Class for representing a graph in the form of a adjacency list (I use the name &quot;adjacency structure&quot;)...">gs::GraphStructure</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8f4f156e67d7425f1cc5784384a83757"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f4f156e67d7425f1cc5784384a83757">&#9670;&nbsp;</a></span>GraphMatrix() <span class="overload">[1/3]</span></h2>
@@ -235,7 +235,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Random Constructor. </p>
-<p>Creates no-oriented or oriented graph with the specified number of vertices and edges. The value of the vertices and edges will not be greater than the maxValue </p>
+<p>Creates no-oriented or oriented graph with the specified number of vertices and edges. The value of the vertices and edges will not be greater than the 'maxValue' </p>
 
 </div>
 </div>
@@ -303,10 +303,11 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Adding the edge to graph. </p>
-<p>If the graph has vertices with indexes beginIndex and endIndex then creates new edge with value between these vertices <br />
- Adds the edge to matrix[beginIndex][endIndex]. If the graph is no-oriented then also adds the edge to matrix[endIndex][beginIndex]</p>
-<p>The numberOfEdges will increase by one</p>
-<p>Adds to the totalValue its value </p><dl class="params"><dt>Parameters</dt><dd>
+<p>If the graph has vertices with indexes beginIndex and endIndex then creates new edge with value between these vertices. <br />
+If this edge already exists, then nothing will happen</p>
+<p>Adds the edge to 'matrix[beginIndex][endIndex]'. If the graph is no-oriented then also adds the edge to 'matrix[endIndex][beginIndex]'</p>
+<p>The 'numberOfEdges' will increase by one</p>
+<p>Adds to the 'totalValue' its value </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">beginIndex</td><td>is index of first vertex </td></tr>
     <tr><td class="paramname">endIndex</td><td>is index of second vertex </td></tr>
@@ -347,9 +348,9 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Adding the vertex to graph. </p>
-<p>Adds new vertex with value to the end of vertices.</p>
-<p>Adds one column and one row to the matrix</p>
-<p>Index of vertex will be equal to numberOfVertices and numberOfVertices will increase by one.</p>
+<p>Adds new vertex with value to the end of 'vertices'.</p>
+<p>Adds one column and one row to the 'matrix'</p>
+<p>Index of vertex will be equal to 'numberOfVertices' and 'numberOfVertices' will increase by one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>that be stored in the new vertex </td></tr>
@@ -455,7 +456,7 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>- value of edge between vertices with indexes beginIndex and endIndex if the graph have their </dd>
+<dl class="section return"><dt>Returns</dt><dd>- value of edge between vertices with indexes 'beginIndex' and 'endIndex' if the graph have their </dd>
 <dd>
 - default value if the graph haven't this edge </dd></dl>
 
@@ -536,7 +537,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Finding the smallest path. </p>
-<p>Finds the path from beginIndex to endIndex. Uses dijkstra algorithm</p>
+<p>Finds the path from 'beginIndex' to 'endIndex'. Uses dijkstra algorithm</p>
 <p>If the graph isn't connected then the function cannot find the path</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -581,7 +582,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Finding the smallest paths. </p>
-<p>Finds the paths from beginIndex to everyone else. Uses dijkstra algorithm</p>
+<p>Finds the paths from 'beginIndex' to everyone else. Uses dijkstra algorithm</p>
 <p>If the graph isn't connected then the function cannot find the paths</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -590,9 +591,9 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>- struct PathsBetweenVertices that has the smallest paths between vertices </dd>
+<dl class="section return"><dt>Returns</dt><dd>- 'struct PathsBetweenVertices' that has the smallest paths between vertices </dd>
 <dd>
-- empty struct PathsBetweenVertices if the graph haven't this vertex or graph isn't connected </dd></dl>
+- empty 'struct PathsBetweenVertices' if the graph haven't this vertex or graph isn't connected </dd></dl>
 
 </div>
 </div>
@@ -699,7 +700,7 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>- totalValue of the graph </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>- 'totalValue' of the graph </dd></dl>
 
 </div>
 </div>
@@ -726,7 +727,7 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>- value of vertex with index if the graph have it </dd>
+<dl class="section return"><dt>Returns</dt><dd>- value of vertex with 'index' if the graph have it </dd>
 <dd>
 - default value if the graph haven't this vertex </dd></dl>
 
@@ -767,8 +768,8 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Removing edge from graph. </p>
-<p>If the graph has vertices with indexes beginIndex and endIndex then makes these vertices not adjacent that is removing an edge from the graph</p>
-<p>Reduces the numberOfEdges by one and subtracts the value of the edge from the totalValue </p><dl class="params"><dt>Parameters</dt><dd>
+<p>If the graph has vertices with indexes 'beginIndex' and 'endIndex' then makes these vertices not adjacent that is removing an edge from the graph. If the graph is non-oriented then makes vertices with indexes 'endIndex' and 'beginIndex' not adjacent, too</p>
+<p>Reduces the 'numberOfEdges' by one and subtracts the value of the edge from the 'totalValue' </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">beginIndex</td><td>is index of first vertex </td></tr>
     <tr><td class="paramname">endIndex</td><td>is index of second vertex </td></tr>
@@ -808,8 +809,8 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Removing vertex from graph. </p>
-<p>If the graph has vertex with index then removes index-elements from matrix[i][index], i = (1, numberOfVertices) and clears array matrix[index]. Also subtracts all the values of the edges that pass through this vertex from the totalValue</p>
-<p>Reduces the numberOfVertices by one and reduces the numberOfEdges by number of edges that pass through this vertex </p><dl class="params"><dt>Parameters</dt><dd>
+<p>If the graph has vertex with 'index' then removes index-elements from 'matrix[i][index]', i = (1, 'numberOfVertices') and clears array 'matrix[index]'. Also subtracts all the values of the edges that pass through this vertex from the 'totalValue'</p>
+<p>Reduces the 'numberOfVertices' by one and reduces the 'numberOfEdges' by number of edges that pass through this vertex </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">index</td><td>is index of this vertex </td></tr>
     <tr><td class="paramname">show</td><td>can will be true to show message of the result of the function call </td></tr>
@@ -850,7 +851,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>lab1/<a class="el" href="my__graph__matrix_8h_source.html">my_graph_matrix.h</a></li>
+<li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab1/lab1/<a class="el" href="my__graph__matrix_8h_source.html">my_graph_matrix.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

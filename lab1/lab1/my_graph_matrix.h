@@ -10,7 +10,7 @@ using namespace pbv;
 namespace gm//graph matrix
 {
     /**
-    * \brief Edge in GraphMatrix
+    * \brief Edge in graph (GraphMatrix)
     * 
     * This struct is used to preserve the value of graph edges
     */
@@ -37,10 +37,10 @@ namespace gm//graph matrix
      * 
      * See [Adjacency Matrix](https://en.wikipedia.org/wiki/Adjacency_matrix "Information about adjacency matrix in Wikipedia")
      * 
-     * The edges are stored in std::vector<std::vector<Edge<T>>> matrix,
-     * and the vertices are stored in std::vector<T>vertices
+     * The edges are stored in 'std::vector<std::vector<Edge<T>>> matrix',
+     * and the vertices are stored in 'std::vector<T> vertices'. See Edge
      * 
-     *This class also stores information about the number of edges and vertices,
+     * This class also stores information about the number of edges and vertices,
      * the weight of the graph, and information about the orientation of the graph
      * 
      * \see gs::GraphStructure
@@ -49,12 +49,12 @@ namespace gm//graph matrix
     class GraphMatrix
     {
     private:
-        std::vector<std::vector<Edge<T>>> matrix;//The two-dimensional array in which the the edges between the vertices are stored, if such an edge exists or the default value is stored in the opposite case
-        std::vector<T> vertices;//The one-dimensional array in which the value of vertices are stored
+        std::vector<std::vector<Edge<T>>> matrix;//the two-dimensional array in which the the edges between the vertices are stored, if such an edge exists or the default value is stored in the opposite case
+        std::vector<T> vertices;//the one-dimensional array in which the values of vertices are stored
         std::size_t numberOfVertices;
         std::size_t numberOfEdges;
         bool orientation;//if orientation is true then Graph is oriented, else it is no-oriented
-        T totalValue;//There is the sum of all values of Edges
+        T totalValue;//there is the sum of all values of Edges
 
         bool isIndex(std::size_t index, bool show = false);//if vectex with index is in graph then return true, else - false
         bool doAddIndex(std::vector<std::size_t>& indexes, std::size_t index);// if index is not in indexes then function adds index to indexes
@@ -91,7 +91,7 @@ namespace gm//graph matrix
         * \brief Random Constructor
         * 
         * Creates no-oriented or oriented graph with the specified number of vertices and edges.
-        * The value of the vertices and edges will not be greater than the maxValue
+        * The value of the vertices and edges will not be greater than the 'maxValue'
         */
         GraphMatrix(std::size_t numberOfVertices, std::size_t numberOfEdges, bool orientation, const T& maxValue);//create random graph
         /**
@@ -103,12 +103,12 @@ namespace gm//graph matrix
         /**
         * \brief Adding the vertex to graph
         * 
-        * Adds new vertex with value to the end of vertices.
+        * Adds new vertex with value to the end of 'vertices'.
         * 
-        * Adds one column and one row to the matrix
+        * Adds one column and one row to the 'matrix'
         * 
-        * Index of vertex will be equal to numberOfVertices 
-        * and numberOfVertices will increase by one.
+        * Index of vertex will be equal to 'numberOfVertices' 
+        * and 'numberOfVertices' will increase by one.
         * 
         * \param value that be stored in the new vertex
         * \param show can will be true to show message of the result of the function call
@@ -118,14 +118,15 @@ namespace gm//graph matrix
         * \brief Adding the edge to graph
         * 
         * If the graph has vertices with indexes beginIndex and endIndex then 
-        * creates new edge with value between these vertices  
+        * creates new edge with value between these vertices.   
+        * If this edge already exists, then nothing will happen
         * 
-        * Adds the edge to matrix[beginIndex][endIndex]. 
-        * If the graph is no-oriented then also adds the edge to matrix[endIndex][beginIndex]
+        * Adds the edge to 'matrix[beginIndex][endIndex]'. 
+        * If the graph is no-oriented then also adds the edge to 'matrix[endIndex][beginIndex]'
         * 
-        * The numberOfEdges will increase by one
+        * The 'numberOfEdges' will increase by one
         * 
-        * Adds to the totalValue its value
+        * Adds to the 'totalValue' its value
         * \param beginIndex is index of first vertex
         * \param endIndex is index of second vertex
         * \param value that be stored in the new edge
@@ -135,13 +136,13 @@ namespace gm//graph matrix
         /**
         * \brief Removing vertex from graph
         * 
-        * If the graph has vertex with index then 
-        * removes index-elements from matrix[i][index], i = (1, numberOfVertices) 
-        * and clears array matrix[index]. 
+        * If the graph has vertex with 'index' then 
+        * removes index-elements from 'matrix[i][index]', i = (1, 'numberOfVertices') 
+        * and clears array 'matrix[index]'. 
         * Also subtracts all the values of the edges that pass through 
-        * this vertex from the totalValue
+        * this vertex from the 'totalValue'
         * 
-        * Reduces the numberOfVertices by one and reduces the numberOfEdges by number of edges 
+        * Reduces the 'numberOfVertices' by one and reduces the 'numberOfEdges' by number of edges 
         * that pass through this vertex
         * \param index is index of this vertex
         * \param show can will be true to show message of the result of the function call
@@ -150,11 +151,13 @@ namespace gm//graph matrix
         /**
         * \brief Removing edge from graph
         * 
-        * If the graph has vertices with indexes beginIndex and endIndex then 
-        * makes these vertices not adjacent that is removing an edge from the graph
+        * If the graph has vertices with indexes 'beginIndex' and 'endIndex' then 
+        * makes these vertices not adjacent that is removing an edge from the graph. 
+        * If the graph is non-oriented then makes vertices with indexes 
+        * 'endIndex' and 'beginIndex' not adjacent, too
         * 
-        * Reduces the numberOfEdges by one 
-        * and subtracts the value of the edge from the totalValue
+        * Reduces the 'numberOfEdges' by one 
+        * and subtracts the value of the edge from the 'totalValue'
         * \param beginIndex is index of first vertex
         * \param endIndex is index of second vertex
         * \param show can will be true to show message of the result of the function call
@@ -169,19 +172,19 @@ namespace gm//graph matrix
         */
         std::size_t getNumberOfEdges();
         /**
-        * \return - totalValue of the graph
+        * \return - 'totalValue' of the graph
         */
         T getTotalValue();
         /**
         * \param index is index of the vertex
-        * \return - value of vertex with index if the graph have it
+        * \return - value of vertex with 'index' if the graph have it
         * \return - default value if the graph haven't this vertex
         */
         T getVertexValue(std::size_t index);
         /**
         * \param beginIndex is index of first vertex
         * \param endIndex is index of second vertex
-        * \return - value of edge between vertices with indexes beginIndex and endIndex
+        * \return - value of edge between vertices with indexes 'beginIndex' and 'endIndex'
         * if the graph have their
         * \return - default value if the graph haven't this edge
         */
@@ -217,7 +220,7 @@ namespace gm//graph matrix
         /**
         * \brief Finding the smallest path
         * 
-        * Finds the path from beginIndex to endIndex. Uses dijkstra algorithm
+        * Finds the path from 'beginIndex' to 'endIndex'. Uses dijkstra algorithm
         * 
         * If the graph isn't connected then the function cannot find the path
         * 
@@ -231,14 +234,14 @@ namespace gm//graph matrix
         /**
         * \brief Finding the smallest paths
         *
-        * Finds the paths from beginIndex to everyone else. Uses dijkstra algorithm
+        * Finds the paths from 'beginIndex' to everyone else. Uses dijkstra algorithm
         *
         * If the graph isn't connected then the function cannot find the paths
         *
         * \param beginIndex is index of the vertex
         * \param show can will be true to show message of the result of the function call
-        * \return - struct PathsBetweenVertices that has the smallest paths between vertices
-        * \return - empty struct PathsBetweenVertices if the graph haven't this vertex or graph isn't connected
+        * \return - 'struct PathsBetweenVertices' that has the smallest paths between vertices
+        * \return - empty 'struct PathsBetweenVertices' if the graph haven't this vertex or graph isn't connected
         */
         PathsBetweenVertices<T> getPathsFromTheVertexToEveryoneElse(std::size_t beginIndex, bool show = false);
         /**
