@@ -4,7 +4,7 @@
 using namespace tdp;
 
 /**
-* Namespace for Figure
+* Namespace for Figure on the plane
 */
 namespace fop//figures on the plane
 {
