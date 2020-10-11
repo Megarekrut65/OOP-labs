@@ -14,16 +14,14 @@ class MyTimer
 {
 private:
     bool active;
-    int hour;
-    int min;
-    int sec;
+    QTime* time;
     QString makeCorrect(int value);
 public:
     QString name;
     MyTimer();
-    MyTimer( const QString& name, int hour, int min, int sec);
+    MyTimer( const QString& name,  QTime time);
     MyTimer( const QString& name, const QString& stringTime);
-    void setTime(int hour, int min, int sec);
+    void setTime( QTime time);
     void addTime(int sec);
     void updateTime();
     QString getQStringTime();

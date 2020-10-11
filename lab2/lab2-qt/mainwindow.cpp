@@ -35,77 +35,43 @@ void MainWindow::updateAllTimers()
     }
     if(isShowed) ui->lblTimer->setText(timers[indexOfCurrentTimer].getQStringTime());
 }
-MyTimer::MyTimer(): active(false), hour(0), min(0), sec(0) {}
-MyTimer::MyTimer( const QString& name, int hour, int min, int sec)
+MyTimer::MyTimer(): active(false), time(nullptr) {}
+MyTimer::MyTimer( const QString& name, QTime time)
 {
   this->name = name;
   active = true;
-  if(hour < 0) hour = 0;
-  if(min < 0) min = 0;
-  if(sec < 0) sec = 0;
-  if(hour == 0 && min == 0 && sec == 0) active = false;
-  this->hour = hour;
-  this->min = min;
-  this->sec = sec;
+  this->time = new QTime(time);
 }
-MyTimer::MyTimer(const QString& name, const QString& qstringTime)
+MyTimer::MyTimer(const QString& name, const QString& qStringTime)
 {
-    QStringList parts = qstringTime.split(":");
+    QStringList parts = qStringTime.split(":");
     if(parts.size() == 3)
     {
-        MyTimer(name, parts[0].toInt(), parts[1].toInt(), parts[2].toInt());
+        MyTimer(name, QTime(parts[0].toInt(), parts[1].toInt(), parts[2].toInt()));
     }
     else
     {
         MyTimer();
     }
 }
-QString MyTimer::makeCorrect(int value)
-{
-    return (QString::number(value/10) + QString::number(value % 10));
-}
  QString MyTimer::getQStringTime()
  {
-     QString res = makeCorrect(hour) + ":"
-             + makeCorrect(min) + ":" + makeCorrect(sec);
-
-     return res;
+     return time->toString("hh:mm:ss");
  }
- void MyTimer::setTime(int hour, int min, int sec)
+ void MyTimer::setTime(QTime time)
  {
-     MyTimer(this->name, hour, min, sec);
+     this->time->setHMS(time.hour(),time.minute(), time.second());
  }
  void MyTimer::addTime(int sec)
  {
     if(sec <= 0) return;
-    sec += sec;
-    if(sec >= 60)
-    {
-        min+= sec/60;
-        sec %= 60;
-        if(min >= 60)
-        {
-            hour+= min/60;
-            min %= 60;
-        }
-    }
+    *time = time->addSecs(sec);
  }
  void MyTimer::updateTime()
  {
+     if(time->hour() == 0 && time->minute() == 0 && time->second() == 0) active = false;
      if(!active) return;
-     if(sec > 0) sec--;
-     else if(min > 0)
-     {
-         min--;
-         sec = 59;
-     }
-     else if(hour > 0)
-     {
-         hour--;
-         min = 59;
-         sec = 59;
-     }
-     else active = false;
+     *time = time->addSecs(-1);
  }
 void MainWindow::on_btnRight_clicked()
 {
@@ -160,7 +126,7 @@ void MainWindow::on_btnCreate_clicked()
 {
     QString name = ui->lineEditNameTimer->text();
     QTime time = ui->timeEditAdd->time();
-    timers.push_back(MyTimer(name, time.hour(), time.minute(), time.second()));
+    timers.push_back(MyTimer(name, time));
     indexOfCurrentTimer = timers.size() - 1;
     showTimer(true);
     moveTimer();
@@ -173,7 +139,7 @@ void MainWindow::addNewTimer()
 {
     ui->btnCreate->setText("Create");
     ui->labelAdd->setText("Add new timer");
-    ui->timeEditAdd->setTime(QTime());
+    ui->timeEditAdd->setTime(QTime(0,0,0));
     ui->lineEditNameTimer->setText("Enter name of timer...");
     showTimer(false);
 }
@@ -206,6 +172,6 @@ void MainWindow::on_btnDelete_clicked()
 }
 void MainWindow::addEmptyTimer()
 {
-    timers.push_back(MyTimer("Timer", 0,0,0));
+    timers.push_back(MyTimer("Timer", QTime(0, 0, 0, 0)));
     moveTimer();
 }
