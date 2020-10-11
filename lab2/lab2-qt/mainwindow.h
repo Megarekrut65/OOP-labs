@@ -55,9 +55,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QTimer *oneSecondTimer;
     QVector<MyTimer> timers;
     int indexOfCurrentTimer;
-    bool isShowed;
     void startTheTimer();
     void updateAllTimers();
     void moveTimer();

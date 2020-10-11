@@ -8,20 +8,21 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     indexOfCurrentTimer = 0;
-    isShowed = true;
     addEmptyTimer();
     startTheTimer();
 }
 
 MainWindow::~MainWindow()
 {
+    delete oneSecondTimer;
+    timers.clear();
     delete ui;
 }
 void MainWindow:: startTheTimer()
 {
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &MainWindow::updateAllTimers);
-    timer->start(1000);
+    oneSecondTimer = new QTimer(this);
+    connect(oneSecondTimer, &QTimer::timeout, this, &MainWindow::updateAllTimers);
+    oneSecondTimer->start(1000);
 }
 void MainWindow::updateAllTimers()
 {
@@ -29,7 +30,7 @@ void MainWindow::updateAllTimers()
     {
          timers[i].updateTime();
     }
-    if(isShowed) ui->lblTimer->setText(timers[indexOfCurrentTimer].getQStringTime());
+    ui->lblTimer->setText(timers[indexOfCurrentTimer].getQStringTime());
 }
 MyTimer::MyTimer(): active(false), time(nullptr) {}
 MyTimer::MyTimer( const QString& name, QTime time)
@@ -81,23 +82,8 @@ void MainWindow::on_btnLeft_clicked()
     indexOfCurrentTimer--;
     moveTimer();
 }
-/* void MainWindow::showTimer(bool show)
- {
-    if(show && !isShowed)
-    {
-        ui->groupBoxTimer->show();
-        ui->groupBoxAdding->hide();
-    }
-    else if (!show && isShowed)
-    {
-        ui->groupBoxAdding->show();
-        ui->groupBoxTimer->hide();
-    }
-    isShowed = show;
- }*/
 void MainWindow::moveTimer()
 {
-    if(!isShowed) return;
     ui->lblTimer->setText(timers[indexOfCurrentTimer].getQStringTime());
     ui->lblTimerName->setText(timers[indexOfCurrentTimer].name);
 }
