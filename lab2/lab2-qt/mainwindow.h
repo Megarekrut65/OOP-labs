@@ -54,6 +54,10 @@ private slots:
 
     void on_btnCancel_clicked();
 
+    void on_btnEdit_clicked();
+
+    void on_btnDelete_clicked();
+
 private:
     Ui::MainWindow *ui;
     QVector<MyTimer> timers;
@@ -63,5 +67,8 @@ private:
     void updateAllTimers();
     void moveTimer();
     void showTimer(bool show);
+    void addNewTimer();
+    void editTheTimer();
+    void addEmptyTimer();
 };
 #endif // MAINWINDOW_H

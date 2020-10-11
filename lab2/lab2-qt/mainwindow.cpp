@@ -7,10 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->groupBoxAdding->hide();
-    timers.push_back(MyTimer("Timer", 0,0,0));
     indexOfCurrentTimer = 0;
     isShowed = true;
-    moveTimer();
+    addEmptyTimer();
     startTheTimer();
 }
 
@@ -20,7 +19,7 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_btnTimer_clicked()
 {
-   showTimer(false);
+   addNewTimer();
 }
 void MainWindow:: startTheTimer()
 {
@@ -169,4 +168,44 @@ void MainWindow::on_btnCreate_clicked()
 void MainWindow::on_btnCancel_clicked()
 {
     showTimer(true);
+}
+void MainWindow::addNewTimer()
+{
+    ui->btnCreate->setText("Create");
+    ui->labelAdd->setText("Add new timer");
+    ui->timeEditAdd->setTime(QTime());
+    ui->lineEditNameTimer->setText("Enter name of timer...");
+    showTimer(false);
+}
+void MainWindow::editTheTimer()
+{
+    ui->btnCreate->setText("Save");
+    ui->labelAdd->setText("Edit the timer");
+    ui->timeEditAdd->setTime(QTime());
+    ui->lineEditNameTimer->setText("edit name of timer...");
+    showTimer(false);
+}
+
+void MainWindow::on_btnEdit_clicked()
+{
+    editTheTimer();
+}
+
+void MainWindow::on_btnDelete_clicked()
+{
+    timers.erase(timers.begin() + indexOfCurrentTimer);
+    indexOfCurrentTimer = 0;
+    if(timers.size() == 0)
+    {
+        addEmptyTimer();
+    }
+    else
+    {
+        moveTimer();
+    }
+}
+void MainWindow::addEmptyTimer()
+{
+    timers.push_back(MyTimer("Timer", 0,0,0));
+    moveTimer();
 }
