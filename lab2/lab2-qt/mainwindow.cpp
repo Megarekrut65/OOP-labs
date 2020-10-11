@@ -6,8 +6,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->groupBoxAdding->hide();
     timers.push_back(MyTimer("Timer", 0,0,0));
     indexOfCurrentTimer = 0;
+    isShowed = true;
     moveTimer();
     startTheTimer();
 }
@@ -18,12 +20,7 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_btnTimer_clicked()
 {
-QPushButton *buttonCreate = new QPushButton(tr("Create new timer"), this);
-QPushButton *buttonEdit = new QPushButton(tr("Create new timer"), this);
-QPushButton *buttonDelete = new QPushButton(tr("Delete"), this);
-   timers.push_back(MyTimer("my timer", 5, 10, 13));
-   indexOfCurrentTimer = timers.size() - 1;
-   moveTimer();
+   showTimer(false);
 }
 void MainWindow:: startTheTimer()
 {
@@ -37,7 +34,7 @@ void MainWindow::updateAllTimers()
     {
          timers[i].updateTime();
     }
-    ui->lblTimer->setText(timers[indexOfCurrentTimer].getQStringTime());
+    if(isShowed) ui->lblTimer->setText(timers[indexOfCurrentTimer].getQStringTime());
 }
 MyTimer::MyTimer(): active(false), hour(0), min(0), sec(0) {}
 MyTimer::MyTimer( const QString& name, int hour, int min, int sec)
@@ -66,17 +63,7 @@ MyTimer::MyTimer(const QString& name, const QString& qstringTime)
 }
 QString MyTimer::makeCorrect(int value)
 {
-    QString res = "";
-    if(value / 10 == 0)
-    {
-        res += "0" + QString::number(value);
-    }
-    else
-    {
-        res += QString::number(value);
-    }
-
-    return res;
+    return (QString::number(value/10) + QString::number(value % 10));
 }
  QString MyTimer::getQStringTime()
  {
@@ -133,8 +120,23 @@ void MainWindow::on_btnLeft_clicked()
     indexOfCurrentTimer--;
     moveTimer();
 }
+ void MainWindow::showTimer(bool show)
+ {
+    if(show && !isShowed)
+    {
+        ui->groupBoxTimer->show();
+        ui->groupBoxAdding->hide();
+    }
+    else if (!show && isShowed)
+    {
+        ui->groupBoxAdding->show();
+        ui->groupBoxTimer->hide();
+    }
+    isShowed = show;
+ }
 void MainWindow::moveTimer()
 {
+    if(!isShowed) return;
     ui->lblTimer->setText(timers[indexOfCurrentTimer].getQStringTime());
     ui->lblTimerName->setText(timers[indexOfCurrentTimer].name);
 }
@@ -154,4 +156,17 @@ void MainWindow::on_btnStart_clicked()
 void MainWindow::on_btnPause_clicked()
 {
      timers[indexOfCurrentTimer].turnOff();
+}
+void MainWindow::on_btnCreate_clicked()
+{
+    QString name = ui->lineEditNameTimer->text();
+    QTime time = ui->timeEditAdd->time();
+    timers.push_back(MyTimer(name, time.hour(), time.minute(), time.second()));
+    indexOfCurrentTimer = timers.size() - 1;
+    showTimer(true);
+    moveTimer();
+}
+void MainWindow::on_btnCancel_clicked()
+{
+    showTimer(true);
 }
