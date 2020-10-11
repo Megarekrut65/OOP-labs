@@ -22,6 +22,7 @@ public:
     MyTimer( const QString& name,  QTime time);
     MyTimer( const QString& name, const QString& stringTime);
     void setTime( QTime time);
+    QTime getTime();
     void addTime(int sec);
     void updateTime();
     QString getQStringTime();

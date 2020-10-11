@@ -126,8 +126,18 @@ void MainWindow::on_btnCreate_clicked()
 {
     QString name = ui->lineEditNameTimer->text();
     QTime time = ui->timeEditAdd->time();
-    timers.push_back(MyTimer(name, time));
-    indexOfCurrentTimer = timers.size() - 1;
+    if(ui->btnCreate->text() == "Create")
+    {
+        timers.push_back(MyTimer(name, time));
+        indexOfCurrentTimer = timers.size() - 1;
+    }
+    else if(ui->btnCreate->text() == "Save")
+    {
+         MyTimer* timer = &timers[indexOfCurrentTimer];
+         timer->setTime(time);
+         timer->name = name;
+         timer->turnOn();
+    }
     showTimer(true);
     moveTimer();
 }
@@ -147,16 +157,16 @@ void MainWindow::editTheTimer()
 {
     ui->btnCreate->setText("Save");
     ui->labelAdd->setText("Edit the timer");
-    ui->timeEditAdd->setTime(QTime());
-    ui->lineEditNameTimer->setText("edit name of timer...");
+    MyTimer* timer = &timers[indexOfCurrentTimer];
+    timer->turnOff();
+    ui->timeEditAdd->setTime(timer->getTime());
+    ui->lineEditNameTimer->setText(timer->name);
     showTimer(false);
 }
-
 void MainWindow::on_btnEdit_clicked()
 {
     editTheTimer();
 }
-
 void MainWindow::on_btnDelete_clicked()
 {
     timers.erase(timers.begin() + indexOfCurrentTimer);
@@ -174,4 +184,8 @@ void MainWindow::addEmptyTimer()
 {
     timers.push_back(MyTimer("Timer", QTime(0, 0, 0, 0)));
     moveTimer();
+}
+QTime MyTimer::getTime()
+{
+    return *time;
 }
