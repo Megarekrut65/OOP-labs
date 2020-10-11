@@ -150,20 +150,19 @@ namespace fop//figures on the plane
 	* See [Linear equation](https://en.wikipedia.org/wiki/Linear_equation "Information in Wikipedia")
 	* 
 	* There is equation as a*x + b*y = c
-	* 
-	* If type of 'figure' isn't LINE then equation will be as 0*x + 0*y = 0
 	*/
 	struct Equation
 	{
-		double a;/**<coefficient a*/
-		double b;/**<coefficient b*/
-		double c;/**<coefficient c*/
+		double a;/**<first coefficient of equation*/
+		double b;/**<second coefficient of equation*/
+		double c;/**<third coefficient of equation*/
 		/**
 		* Default constructor
 		*/
 		Equation();
 		/**
-		* The constructor for creating linear equation for 'figure' (Figure)
+		* The constructor for creating linear equation for 'figure' with type LINE (Figure).
+		* If type of 'figure' isn't LINE then equation will be as 0*x + 0*y = 0
 		*/
 		Equation(Figure figure);
 	};
