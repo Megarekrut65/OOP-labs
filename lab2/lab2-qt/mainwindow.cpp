@@ -1,12 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "editingandaddingtimers.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->groupBoxAdding->hide();
     indexOfCurrentTimer = 0;
     isShowed = true;
     addEmptyTimer();
@@ -16,10 +16,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-void MainWindow::on_btnTimer_clicked()
-{
-   addNewTimer();
 }
 void MainWindow:: startTheTimer()
 {
@@ -85,7 +81,7 @@ void MainWindow::on_btnLeft_clicked()
     indexOfCurrentTimer--;
     moveTimer();
 }
- void MainWindow::showTimer(bool show)
+/* void MainWindow::showTimer(bool show)
  {
     if(show && !isShowed)
     {
@@ -98,7 +94,7 @@ void MainWindow::on_btnLeft_clicked()
         ui->groupBoxTimer->hide();
     }
     isShowed = show;
- }
+ }*/
 void MainWindow::moveTimer()
 {
     if(!isShowed) return;
@@ -122,50 +118,34 @@ void MainWindow::on_btnPause_clicked()
 {
      timers[indexOfCurrentTimer].turnOff();
 }
-void MainWindow::on_btnCreate_clicked()
+void MainWindow::addNewTimer(QString name, QTime time)
 {
-    QString name = ui->lineEditNameTimer->text();
-    QTime time = ui->timeEditAdd->time();
-    if(ui->btnCreate->text() == "Create")
-    {
-        timers.push_back(MyTimer(name, time));
-        indexOfCurrentTimer = timers.size() - 1;
-    }
-    else if(ui->btnCreate->text() == "Save")
-    {
-         MyTimer* timer = &timers[indexOfCurrentTimer];
-         timer->setTime(time);
-         timer->name = name;
-         timer->turnOn();
-    }
-    showTimer(true);
+    timers.push_back(MyTimer(name, time));
+    indexOfCurrentTimer = timers.size() - 1;
     moveTimer();
 }
-void MainWindow::on_btnCancel_clicked()
+void MainWindow::editTheTimer(QString name, QTime time)
 {
-    showTimer(true);
-}
-void MainWindow::addNewTimer()
-{
-    ui->btnCreate->setText("Create");
-    ui->labelAdd->setText("Add new timer");
-    ui->timeEditAdd->setTime(QTime(0,0,0));
-    ui->lineEditNameTimer->setText("Enter name of timer...");
-    showTimer(false);
-}
-void MainWindow::editTheTimer()
-{
-    ui->btnCreate->setText("Save");
-    ui->labelAdd->setText("Edit the timer");
     MyTimer* timer = &timers[indexOfCurrentTimer];
-    timer->turnOff();
-    ui->timeEditAdd->setTime(timer->getTime());
-    ui->lineEditNameTimer->setText(timer->name);
-    showTimer(false);
+    timer->setTime(time);
+    timer->name = name;
+    timer->turnOn();
+    moveTimer();
+}
+void MainWindow::on_btnTimer_clicked()
+{
+    EditingAndAddingTimers newWindow;
+    newWindow.setModal(true);
+    newWindow.addTimer(this);
+    newWindow.exec();
 }
 void MainWindow::on_btnEdit_clicked()
 {
-    editTheTimer();
+    EditingAndAddingTimers newWindow;
+    newWindow.setModal(true);
+    MyTimer* timer = &timers[indexOfCurrentTimer];
+    newWindow.editTimer(timer, this);
+    newWindow.exec();
 }
 void MainWindow::on_btnDelete_clicked()
 {

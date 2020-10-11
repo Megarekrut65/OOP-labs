@@ -9,13 +9,16 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    editingandaddingtimers.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    editingandaddingtimers.h \
     mainwindow.h
 
 FORMS += \
+    editingandaddingtimers.ui \
     mainwindow.ui
 
 # Default rules for deployment.

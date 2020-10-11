@@ -248,6 +248,7 @@ Makefile: ../lab2-qt/lab2-qt.pro E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/win32-g++/q
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/qt_config.prf \
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf \
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/exclusive_builds.prf \
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/toolchain.prf \
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/default_pre.prf \
@@ -276,7 +277,6 @@ Makefile: ../lab2-qt/lab2-qt.pro E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/win32-g++/q
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Gui.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Core.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/qtmain.prl \
-		.qmake.stash \
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\lab2-qt\lab2-qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/spec_pre.prf:
@@ -457,6 +457,7 @@ E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/qt_functions.prf:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/qt_config.prf:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/exclusive_builds.prf:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/toolchain.prf:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/default_pre.prf:
@@ -485,7 +486,6 @@ E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Widgets.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Gui.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Core.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/qtmain.prl:
-.qmake.stash:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\lab2-qt\lab2-qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

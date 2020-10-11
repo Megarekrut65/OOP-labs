@@ -3,8 +3,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <QMessageBox>
-#include <QAbstractButton>
+#include <QTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,7 +36,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void addNewTimer(QString name, QTime time);
+    void editTheTimer(QString name, QTime time);
 private slots:
     void on_btnTimer_clicked();
 
@@ -48,10 +48,6 @@ private slots:
     void on_btnStart_clicked();
 
     void on_btnPause_clicked();
-
-    void on_btnCreate_clicked();
-
-    void on_btnCancel_clicked();
 
     void on_btnEdit_clicked();
 
@@ -66,8 +62,6 @@ private:
     void updateAllTimers();
     void moveTimer();
     void showTimer(bool show);
-    void addNewTimer();
-    void editTheTimer();
     void addEmptyTimer();
 };
 #endif // MAINWINDOW_H
