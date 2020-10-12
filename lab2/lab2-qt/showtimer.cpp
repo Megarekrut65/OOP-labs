@@ -44,7 +44,9 @@ void ShowTimer::on_btnEdit_clicked()
 
 void ShowTimer::on_btnDelete_clicked()
 {
-
+    timer->isRemoved = true;
+    model->removeRow(indexOfTimer);
+    hide();
 }
 void ShowTimer::setTimer(MyTimer* timer,  int indexOfTimer)
 {
