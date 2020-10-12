@@ -12,7 +12,9 @@ MainWindow::MainWindow(QWidget *parent)
     AllActive = true;
     ui->listTimers->setModel(model);
     timerWindow = new ShowTimer(model, this);
-    //timerWindow->setModal(true);
+    ui->listTimers->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->listTimers->setStyleSheet("background-color: #FFFFFF;");
+    ui->statusbar->showMessage("[T]-Timer, [A]-Alarm clock");
     startHeaderTimer();
 }
 MainWindow::~MainWindow()
@@ -41,7 +43,7 @@ void MainWindow::updateAllTimers()
                 i--;
                 continue;
             }
-            timers[i]->updateTime();
+            timers[i]->update();
             QModelIndex index = model->index(i);
             model->setData(index, timers[i]->getQStringTimer());
         }
@@ -51,6 +53,7 @@ void MainWindow::updateAllTimers()
 void MainWindow::on_btnStartAll_clicked()
 {
     AllActive = true;
+    ui->listTimers->setStyleSheet("background-color: #FFFFFF;");
     for(int i = 0; i < timers.size();i++)
     {
         timers[i]->turnOn();
@@ -60,6 +63,7 @@ void MainWindow::on_btnStartAll_clicked()
 void MainWindow::on_btnPauseAll_clicked()
 {
     AllActive = false;
+    ui->listTimers->setStyleSheet("background-color: #808080;");
 }
 void MainWindow::on_btnAdd_clicked()
 {

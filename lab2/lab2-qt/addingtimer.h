@@ -27,6 +27,7 @@ private:
     Ui::AddingTimer *ui;
     QVector<MyTimer*>* timers;
     QStringListModel *model;
+    Type setType();
 };
 
 #endif // ADDINGTIMER_H

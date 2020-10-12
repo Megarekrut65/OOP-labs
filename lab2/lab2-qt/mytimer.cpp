@@ -1,8 +1,9 @@
 #include "mytimer.h"
 
-MyTimer::MyTimer(): active(false), time(nullptr), name(""), openOutside(false), isRemoved(false) {}
-MyTimer::MyTimer( const QString& name, QTime* time)
+MyTimer::MyTimer(): active(false), time(nullptr), name(""), openOutside(false), isRemoved(false), type(Type::TIMER) {}
+MyTimer::MyTimer( const QString& name, QTime* time, Type type)
 {
+  this->type = type;
   active = true;
   if(time) this->time = time;
   else this->time = new QTime(0,0,0);
@@ -12,14 +13,17 @@ MyTimer::MyTimer( const QString& name, QTime* time)
 }
 MyTimer::MyTimer(const QString& line)
 {
-    QStringList nameAndTime = line.split(",");
-    if(nameAndTime.size() == 2)
+    /*QStringList qStringTimer = line.split(",");
+    if(qStringTimer.size() == 3)
     {
-        QStringList parts = nameAndTime[1].split(":");
+        Type type;
+        QStringList parts = qStringTimer[1].split(":");
+        if(qStringTimer[2] == "T") type = Type::TIMER;
+        else if(qStringTimer[2] == "A") type = Type::AlARM_ClOCK;
         if(parts.size() == 3)
         {
-            MyTimer(nameAndTime[0],
-                    new QTime(nameAndTime[0].toInt(), nameAndTime[1].toInt(), nameAndTime[2].toInt()));
+            MyTimer(qStringTimer[0],
+                    new QTime(parts[0].toInt(), parts[1].toInt(), parts[2].toInt()), type);
         }
         else
         {
@@ -29,7 +33,8 @@ MyTimer::MyTimer(const QString& line)
     else
     {
         MyTimer();
-    }
+    }*/
+    MyTimer();
 }
  MyTimer::~MyTimer()
 {
@@ -48,11 +53,24 @@ MyTimer::MyTimer(const QString& line)
     if(sec <= 0) return;
     *time = time->addSecs(sec);
  }
- void MyTimer::updateTime()
+ void MyTimer::update()
  {
-     if(time->hour() == 0 && time->minute() == 0 && time->second() == 0) active = false;
-     if(!active || isRemoved) return;
-     *time = time->addSecs(-1);
+     switch (type)
+     {
+         case Type::TIMER:
+         {
+             if(time->hour() == 0 && time->minute() == 0 && time->second() == 0) active = false;
+             if(!active || isRemoved) return;
+             *time = time->addSecs(-1);
+         }
+         break;
+         case Type::AlARM_ClOCK:
+         {
+             if(!active || isRemoved) return;
+         }
+         break;
+     }
+
  }
 void MyTimer::turnOn()
 {
@@ -68,5 +86,17 @@ QTime MyTimer::getTime()
 }
 QString MyTimer::getQStringTimer()
 {
-    return (name + " " + getQStringTime());
+    QString qStringType = "[_] ";
+    switch (type)
+    {
+        case Type::TIMER: qStringType = "[T] ";
+        break;
+        case Type::AlARM_ClOCK:
+        {
+            int sec = QTime::currentTime().second();
+            if(sec % 2 == 0) qStringType = "[A] ";
+        }
+        break;
+    }
+    return (qStringType  + "{" + getQStringTime() + "} " + name);
 }
