@@ -153,9 +153,9 @@ namespace fop//figures on the plane
 	*/
 	struct Equation
 	{
-		double a;/**<first coefficient of equation*/
-		double b;/**<second coefficient of equation*/
-		double c;/**<third coefficient of equation*/
+		double a;/**<coefficient a in equation a*x+b*y=c*/
+		double b;/**<coefficient b in equation a*x+b*y=c*/
+		double c;/**<coefficient c in equation a*x+b*y=c*/
 		/**
 		* Default constructor
 		*/
