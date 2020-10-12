@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "mytimer.h"
+#include <QStringListModel>
 
 namespace Ui {
 class EditingTimer;
@@ -13,7 +14,7 @@ class EditingTimer : public QDialog
     Q_OBJECT
 
 public:
-    explicit EditingTimer(MyTimer* timer, QWidget *parent = nullptr);
+    explicit EditingTimer(MyTimer* timer, QStringListModel *model = nullptr,int indexOfTimer = 0, QWidget *parent = nullptr);
     ~EditingTimer();
 
 private slots:
@@ -24,6 +25,8 @@ private slots:
 private:
     Ui::EditingTimer *ui;
     MyTimer* timer;
+    QStringListModel *model;
+    int indexOfTimer;
 };
 
 #endif // EDITINGTIMER_H

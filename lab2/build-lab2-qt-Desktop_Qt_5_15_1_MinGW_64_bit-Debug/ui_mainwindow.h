@@ -41,7 +41,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(650, 361);
-        MainWindow->setMinimumSize(QSize(650, 350));
+        MainWindow->setMinimumSize(QSize(650, 361));
         MainWindow->setMaximumSize(QSize(650, 361));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -49,7 +49,7 @@ public:
         centralwidget->setMaximumSize(QSize(650, 320));
         groupBoxHead = new QGroupBox(centralwidget);
         groupBoxHead->setObjectName(QString::fromUtf8("groupBoxHead"));
-        groupBoxHead->setGeometry(QRect(10, 0, 630, 310));
+        groupBoxHead->setGeometry(QRect(10, 10, 630, 310));
         groupBoxHead->setMinimumSize(QSize(630, 310));
         groupBoxHead->setMaximumSize(QSize(630, 310));
         lblTitle = new QLabel(groupBoxHead);
@@ -86,6 +86,9 @@ public:
         listTimers = new QListView(groupBoxHead);
         listTimers->setObjectName(QString::fromUtf8("listTimers"));
         listTimers->setGeometry(QRect(370, 50, 251, 251));
+        listTimers->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
+        listTimers->setTabletTracking(true);
+        listTimers->setTabKeyNavigation(false);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));

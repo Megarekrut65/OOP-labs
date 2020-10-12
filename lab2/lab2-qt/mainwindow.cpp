@@ -9,8 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     oneSecondTimer = nullptr;
-    timerWindow.setModal(true);
+    AllActive = true;
     ui->listTimers->setModel(model);
+    timerWindow = new ShowTimer(model);
+    timerWindow->setModal(true);
     startHeaderTimer();
 }
 MainWindow::~MainWindow()
@@ -27,6 +29,7 @@ void MainWindow:: startHeaderTimer()
 }
 void MainWindow::updateAllTimers()
 {
+    if(!AllActive) return;
     for(int i = 0; i < timers.size(); i++)
     {
         if(i < 0) break;
@@ -44,7 +47,7 @@ void MainWindow::updateAllTimers()
             model->setData(index, timers[i]->getQStringTimer());
         }
     }
-    timerWindow.updateTimer();
+    timerWindow->updateTimer();
 }
 /*void MainWindow::editTheTimer(QString name, QTime time)
 {
@@ -76,6 +79,7 @@ void MainWindow::updateAllTimers()
 }*/
 void MainWindow::on_btnStartAll_clicked()
 {
+    AllActive = true;
     for(int i = 0; i < timers.size();i++)
     {
         timers[i]->turnOn();
@@ -84,20 +88,18 @@ void MainWindow::on_btnStartAll_clicked()
 
 void MainWindow::on_btnPauseAll_clicked()
 {
-    for(int i = 0; i < timers.size();i++)
-    {
-        timers[i]->turnOff();
-    }
+    AllActive = false;
 }
-
 void MainWindow::on_btnAdd_clicked()
 {
     AddingTimer window(&timers, model);
     window.setModal(true);
     window.exec();
 }
-void MainWindow::addNewTimer(MyTimer* newTimer)
+
+void MainWindow::on_listTimers_doubleClicked(const QModelIndex &index)
 {
-
+    int indexOfTimer = index.row();
+    timerWindow->setTimer(timers[indexOfTimer], indexOfTimer);
+    timerWindow->exec();
 }
-

@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "mytimer.h"
-#include <QKeyEvent>
 #include <QStringListModel>
 #include "addingtimer.h"
 #include "showtimer.h"
@@ -20,7 +19,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void addNewTimer(MyTimer* newTimer);
 private slots:
 
     void on_btnStartAll_clicked();
@@ -29,12 +27,15 @@ private slots:
 
     void on_btnAdd_clicked();
 
+    void on_listTimers_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     QStringListModel *model;
     QTimer *oneSecondTimer;
     QVector<MyTimer*> timers;
-    ShowTimer timerWindow;
+    ShowTimer* timerWindow;
+    bool AllActive;
     void startHeaderTimer();
     void updateAllTimers();
 };

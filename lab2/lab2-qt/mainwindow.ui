@@ -13,7 +13,7 @@
   <property name="minimumSize">
    <size>
     <width>650</width>
-    <height>350</height>
+    <height>361</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -42,7 +42,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>0</y>
+      <y>10</y>
       <width>630</width>
       <height>310</height>
      </rect>
@@ -173,6 +173,15 @@
        <width>251</width>
        <height>251</height>
       </rect>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="tabletTracking">
+      <bool>true</bool>
+     </property>
+     <property name="tabKeyNavigation">
+      <bool>false</bool>
      </property>
     </widget>
    </widget>

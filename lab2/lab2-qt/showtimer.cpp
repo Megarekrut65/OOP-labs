@@ -1,16 +1,20 @@
 #include "showtimer.h"
 #include "ui_showtimer.h"
 
-ShowTimer::ShowTimer(QWidget *parent) :
+ShowTimer::ShowTimer(QStringListModel *model, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ShowTimer)
 {
     ui->setupUi(this);
     timer = nullptr;
+    this->model = model;
+    indexOfTimer = 0;
 }
 
 ShowTimer::~ShowTimer()
 {
+    timer = nullptr;
+    model = nullptr;
     delete ui;
 }
 void ShowTimer::updateTimer()
@@ -33,7 +37,7 @@ void ShowTimer::on_btnPause_clicked()
 
 void ShowTimer::on_btnEdit_clicked()
 {
-    EditingTimer newWindow(timer);
+    EditingTimer newWindow(timer, model, indexOfTimer);
     newWindow.setModal(true);
     newWindow.exec();
 }
@@ -42,10 +46,11 @@ void ShowTimer::on_btnDelete_clicked()
 {
 
 }
-void ShowTimer::setTimer(MyTimer* timer)
+void ShowTimer::setTimer(MyTimer* timer,  int indexOfTimer)
 {
     if(this->timer) timer->openOutside = false;
     this->timer = timer;
     if(this->timer) timer->openOutside = true;
+    this->indexOfTimer = indexOfTimer;
     updateTimer();
 }
