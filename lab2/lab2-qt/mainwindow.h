@@ -4,8 +4,10 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "mytimer.h"
+#include <QKeyEvent>
+#include <QStringListModel>
+#include "addingtimer.h"
 #include "showtimer.h"
-#include <QListWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,8 +20,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    /*void addNewTimer(QString name, QTime time);
-    void editTheTimer(QString name, QTime time);*/
+    void addNewTimer(MyTimer* newTimer);
 private slots:
 
     void on_btnStartAll_clicked();
@@ -30,12 +31,11 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QStringListModel *model;
     QTimer *oneSecondTimer;
     QVector<MyTimer*> timers;
-    void startTheTimer();
+    ShowTimer timerWindow;
+    void startHeaderTimer();
     void updateAllTimers();
-    void moveTimer();
-    void showTimer(bool show);
-    void addEmptyTimer();
 };
 #endif // MAINWINDOW_H

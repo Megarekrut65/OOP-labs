@@ -1,12 +1,12 @@
 #include "showtimer.h"
 #include "ui_showtimer.h"
 
-ShowTimer::ShowTimer(QWidget *parent, MyTimer* timer) :
+ShowTimer::ShowTimer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ShowTimer)
 {
     ui->setupUi(this);
-    this->timer = timer;
+    timer = nullptr;
 }
 
 ShowTimer::~ShowTimer()
@@ -33,13 +33,19 @@ void ShowTimer::on_btnPause_clicked()
 
 void ShowTimer::on_btnEdit_clicked()
 {
-    EditingAndAddingTimers newWindow;
+    EditingTimer newWindow(timer);
     newWindow.setModal(true);
-    newWindow.editTimer(timer);
     newWindow.exec();
 }
 
 void ShowTimer::on_btnDelete_clicked()
 {
 
+}
+void ShowTimer::setTimer(MyTimer* timer)
+{
+    if(this->timer) timer->openOutside = false;
+    this->timer = timer;
+    if(this->timer) timer->openOutside = true;
+    updateTimer();
 }

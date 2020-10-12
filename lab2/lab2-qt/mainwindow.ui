@@ -62,16 +62,6 @@
     <property name="title">
      <string>GroupBoxHead</string>
     </property>
-    <widget class="QListWidget" name="listTimers">
-     <property name="geometry">
-      <rect>
-       <x>360</x>
-       <y>40</y>
-       <width>256</width>
-       <height>261</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="lblTitle">
      <property name="geometry">
       <rect>
@@ -173,6 +163,16 @@
      </property>
      <property name="text">
       <string>Add timer</string>
+     </property>
+    </widget>
+    <widget class="QListView" name="listTimers">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>50</y>
+       <width>251</width>
+       <height>251</height>
+      </rect>
      </property>
     </widget>
    </widget>

@@ -1,25 +1,25 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow),
+     model(new QStringListModel)
 {
     ui->setupUi(this);
-    startTheTimer();
+    oneSecondTimer = nullptr;
+    timerWindow.setModal(true);
+    ui->listTimers->setModel(model);
+    startHeaderTimer();
 }
-
 MainWindow::~MainWindow()
 {
     delete oneSecondTimer;
-    for(int i = 0; i < timers.size();i++)
-    {
-        delete timers[i];
-    }
     timers.clear();
     delete ui;
 }
-void MainWindow:: startTheTimer()
+void MainWindow:: startHeaderTimer()
 {
     oneSecondTimer = new QTimer(this);
     connect(oneSecondTimer, &QTimer::timeout, this, &MainWindow::updateAllTimers);
@@ -29,16 +29,23 @@ void MainWindow::updateAllTimers()
 {
     for(int i = 0; i < timers.size(); i++)
     {
-         timers[i]->updateTime();
-         //update list
+        if(i < 0) break;
+        if(timers[i])
+        {
+            /*if(timers[i]->isRemoved)
+            {
+                delete  ui->listTimers->takeItem(i);
+                timers.erase(timers.begin() + i);
+                i--;
+                continue;
+            }*/
+            timers[i]->updateTime();
+            QModelIndex index = model->index(i);
+            model->setData(index, timers[i]->getQStringTimer());
+        }
     }
+    timerWindow.updateTimer();
 }
-/*void MainWindow::addNewTimer(QString name, QTime time)
-{
-    timers.push_back(MyTimer(name, time));
-    indexOfCurrentTimer = timers.size() - 1;
-    moveTimer();
-}*/
 /*void MainWindow::editTheTimer(QString name, QTime time)
 {
     MyTimer* timer = &timers[indexOfCurrentTimer];
@@ -67,12 +74,6 @@ void MainWindow::updateAllTimers()
         moveTimer();
     }
 }*/
-void MainWindow::addEmptyTimer()
-{
-    timers.push_back(new MyTimer("Timer", QTime(0, 0, 0, 0)));
-}
-
-
 void MainWindow::on_btnStartAll_clicked()
 {
     for(int i = 0; i < timers.size();i++)
@@ -91,5 +92,12 @@ void MainWindow::on_btnPauseAll_clicked()
 
 void MainWindow::on_btnAdd_clicked()
 {
-    ui->listTimers->addItem("10:20:30");
+    AddingTimer window(&timers, model);
+    window.setModal(true);
+    window.exec();
 }
+void MainWindow::addNewTimer(MyTimer* newTimer)
+{
+
+}
+

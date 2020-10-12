@@ -1,0 +1,10 @@
+release/addingtimer.o
+release/editingtimer.o
+release/main.o
+release/mainwindow.o
+release/mytimer.o
+release/showtimer.o
+release/moc_addingtimer.o
+release/moc_editingtimer.o
+release/moc_mainwindow.o
+release/moc_showtimer.o

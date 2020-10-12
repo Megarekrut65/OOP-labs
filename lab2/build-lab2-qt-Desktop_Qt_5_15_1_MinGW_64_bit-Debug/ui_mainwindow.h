@@ -13,7 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -27,12 +27,12 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGroupBox *groupBoxHead;
-    QListWidget *listTimers;
     QLabel *lblTitle;
     QLabel *lblName;
     QPushButton *btnStartAll;
     QPushButton *btnPauseAll;
     QPushButton *btnAdd;
+    QListView *listTimers;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -52,9 +52,6 @@ public:
         groupBoxHead->setGeometry(QRect(10, 0, 630, 310));
         groupBoxHead->setMinimumSize(QSize(630, 310));
         groupBoxHead->setMaximumSize(QSize(630, 310));
-        listTimers = new QListWidget(groupBoxHead);
-        listTimers->setObjectName(QString::fromUtf8("listTimers"));
-        listTimers->setGeometry(QRect(360, 40, 256, 261));
         lblTitle = new QLabel(groupBoxHead);
         lblTitle->setObjectName(QString::fromUtf8("lblTitle"));
         lblTitle->setGeometry(QRect(360, 10, 251, 31));
@@ -86,6 +83,9 @@ public:
         btnAdd->setObjectName(QString::fromUtf8("btnAdd"));
         btnAdd->setGeometry(QRect(280, 270, 71, 31));
         btnAdd->setFont(font2);
+        listTimers = new QListView(groupBoxHead);
+        listTimers->setObjectName(QString::fromUtf8("listTimers"));
+        listTimers->setGeometry(QRect(370, 50, 251, 251));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));

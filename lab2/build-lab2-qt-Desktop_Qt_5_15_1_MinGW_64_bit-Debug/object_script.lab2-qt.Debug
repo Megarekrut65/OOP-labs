@@ -1,0 +1,10 @@
+debug/addingtimer.o
+debug/editingtimer.o
+debug/main.o
+debug/mainwindow.o
+debug/mytimer.o
+debug/showtimer.o
+debug/moc_addingtimer.o
+debug/moc_editingtimer.o
+debug/moc_mainwindow.o
+debug/moc_showtimer.o

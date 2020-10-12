@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include "mytimer.h"
-#include "editingandaddingtimers.h"
+#include "editingtimer.h"
 
 namespace Ui {
 class ShowTimer;
@@ -14,10 +14,10 @@ class ShowTimer : public QDialog
     Q_OBJECT
 
 public:
-    MyTimer* timer;
-    explicit ShowTimer(QWidget *parent = nullptr, MyTimer* timer = nullptr);
+    explicit ShowTimer(QWidget *parent = nullptr);
     ~ShowTimer();
     void updateTimer();
+    void setTimer(MyTimer* timer);
 private slots:
     void on_btnStart_clicked();
 
@@ -29,6 +29,7 @@ private slots:
 
 private:
     Ui::ShowTimer *ui;
+    MyTimer* timer;
 };
 
 #endif // SHOWTIMER_H

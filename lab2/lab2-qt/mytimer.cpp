@@ -1,13 +1,14 @@
 #include "mytimer.h"
 
-MyTimer::MyTimer(): active(false), time(nullptr), isRemoved(false), name(""), openOutside(false) {}
-MyTimer::MyTimer( const QString& name, QTime time)
+MyTimer::MyTimer(): active(false), time(nullptr), name(""), openOutside(false), isRemoved(false) {}
+MyTimer::MyTimer( const QString& name, QTime* time)
 {
   active = true;
-  isRemoved = false;
-  this->time = new QTime(time);
+  if(time) this->time = time;
+  else this->time = new QTime(0,0,0);
   this->name = name;
   openOutside = false;
+  isRemoved = false;
 }
 MyTimer::MyTimer(const QString& line)
 {
@@ -18,7 +19,7 @@ MyTimer::MyTimer(const QString& line)
         if(parts.size() == 3)
         {
             MyTimer(nameAndTime[0],
-                    QTime(nameAndTime[0].toInt(), nameAndTime[1].toInt(), nameAndTime[2].toInt()));
+                    new QTime(nameAndTime[0].toInt(), nameAndTime[1].toInt(), nameAndTime[2].toInt()));
         }
         else
         {
@@ -64,4 +65,8 @@ void MyTimer::turnOff()
 QTime MyTimer::getTime()
 {
     return *time;
+}
+QString MyTimer::getQStringTimer()
+{
+    return (name + " " + getQStringTime());
 }

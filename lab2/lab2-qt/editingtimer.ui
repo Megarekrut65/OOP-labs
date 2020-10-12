@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EditingAndAddingTimers</class>
- <widget class="QDialog" name="EditingAndAddingTimers">
+ <class>EditingTimer</class>
+ <widget class="QDialog" name="EditingTimer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -52,7 +52,7 @@
    <property name="title">
     <string>GroupBoxAdding</string>
    </property>
-   <widget class="QTimeEdit" name="timeEditAdd">
+   <widget class="QTimeEdit" name="timeEditTime">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -80,7 +80,7 @@
      <string>HH:mm:ss</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnCreate">
+   <widget class="QPushButton" name="btnSave">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -95,10 +95,10 @@
      </font>
     </property>
     <property name="text">
-     <string>Create</string>
+     <string>Save</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditNameTimer">
+   <widget class="QLineEdit" name="lineEditName">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -113,7 +113,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter timer name...</string>
+     <string>Name</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -137,7 +137,7 @@
      <string>Cancel</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelAdd">
+   <widget class="QLabel" name="labelEdit">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -156,7 +156,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Add new timer</string>
+     <string>Edit new timer</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
