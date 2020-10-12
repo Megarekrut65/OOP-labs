@@ -11,15 +11,20 @@ CONFIG += c++11
 SOURCES += \
     editingandaddingtimers.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mytimer.cpp \
+    showtimer.cpp
 
 HEADERS += \
     editingandaddingtimers.h \
-    mainwindow.h
+    mainwindow.h \
+    mytimer.h \
+    showtimer.h
 
 FORMS += \
     editingandaddingtimers.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    showtimer.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

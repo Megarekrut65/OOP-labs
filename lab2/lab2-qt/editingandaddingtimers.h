@@ -2,7 +2,7 @@
 #define EDITINGANDADDINGTIMERS_H
 
 #include <QDialog>
-#include "mainwindow.h"
+#include "mytimer.h"
 
 namespace Ui {
 class EditingAndAddingTimers;
@@ -15,8 +15,8 @@ class EditingAndAddingTimers : public QDialog
 public:
     explicit EditingAndAddingTimers(QWidget *parent = nullptr);
     ~EditingAndAddingTimers();
-    void editTimer(MyTimer* timer, MainWindow* window);
-    void addTimer(MainWindow* window);
+    void editTimer(MyTimer* timer);
+    //void addTimer(MainWindow* window);
 private slots:
     void on_btnCreate_clicked();
 
@@ -24,7 +24,8 @@ private slots:
 
 private:
     Ui::EditingAndAddingTimers *ui;
-    MainWindow* mainWindow;
+    //MainWindow* mainWindow;
+    MyTimer* timer;
 };
 
 #endif // EDITINGANDADDINGTIMERS_H
