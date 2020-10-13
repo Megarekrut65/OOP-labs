@@ -14,7 +14,7 @@ class EditingTimer : public QDialog
     Q_OBJECT
 
 public:
-    explicit EditingTimer(MyTimer* timer, QStringListModel *model = nullptr,int indexOfTimer = 0, QWidget *parent = nullptr);
+    explicit EditingTimer(QVector<MyTimer*>& timers, QStringListModel *model = nullptr,int indexOfTimer = 0, QWidget *parent = nullptr);
     ~EditingTimer();
 
 private slots:
@@ -24,7 +24,7 @@ private slots:
 
 private:
     Ui::EditingTimer *ui;
-    MyTimer* timer;
+    QVector<MyTimer*>& timers;
     QStringListModel *model;
     int indexOfTimer;
 };

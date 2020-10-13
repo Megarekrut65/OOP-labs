@@ -1,6 +1,6 @@
 #include "mytimer.h"
 
-MyTimer::MyTimer(): active(false), time(nullptr), name(""), openOutside(false), isRemoved(false), type(Type::TIMER) {}
+MyTimer::MyTimer(): active(false), time(nullptr), name(""), type(Type::TIMER) {}
 MyTimer::MyTimer( const QString& name, QTime* time, Type type)
 {
   this->type = type;
@@ -8,8 +8,6 @@ MyTimer::MyTimer( const QString& name, QTime* time, Type type)
   if(time) this->time = time;
   else this->time = new QTime(0,0,0);
   this->name = name;
-  openOutside = false;
-  isRemoved = false;
 }
 MyTimer::MyTimer(const QString& line)
 {
@@ -36,19 +34,19 @@ MyTimer::MyTimer(const QString& line)
     }*/
     MyTimer();
 }
- MyTimer::~MyTimer()
+MyTimer::~MyTimer()
 {
-    if(!isRemoved) delete time;
+    if(time) delete time;
 }
- QString MyTimer::getQStringTime()
+ QString MyTimer::get_qString_time()
  {
      return time->toString("hh:mm:ss");
  }
- void MyTimer::setTime(QTime time)
+ void MyTimer::set_time(QTime time)
  {
      this->time->setHMS(time.hour(),time.minute(), time.second());
  }
- void MyTimer::addTime(int sec)
+ void MyTimer::add_to_time(int sec)
  {
     if(sec <= 0) return;
     *time = time->addSecs(sec);
@@ -60,43 +58,46 @@ MyTimer::MyTimer(const QString& line)
          case Type::TIMER:
          {
              if(time->hour() == 0 && time->minute() == 0 && time->second() == 0) active = false;
-             if(!active || isRemoved) return;
+             if(!active) return;
              *time = time->addSecs(-1);
          }
          break;
          case Type::AlARM_ClOCK:
          {
-             if(!active || isRemoved) return;
+             if(!active) return;
          }
          break;
      }
 
  }
-void MyTimer::turnOn()
+void MyTimer::turn_on()
 {
     active = true;
 }
-void MyTimer::turnOff()
+void MyTimer::turn_off()
 {
     active = false;
 }
-QTime MyTimer::getTime()
+QTime MyTimer::get_time()
 {
     return *time;
 }
-QString MyTimer::getQStringTimer()
+QString MyTimer::get_qString_timer()
 {
-    QString qStringType = "[_] ";
+    QString qStringType = "[A] ";
     switch (type)
     {
         case Type::TIMER: qStringType = "[T] ";
         break;
         case Type::AlARM_ClOCK:
         {
-            int sec = QTime::currentTime().second();
-            if(sec % 2 == 0) qStringType = "[A] ";
+            if(active)
+            {
+                int sec = QTime::currentTime().second();
+                if(sec % 2 == 0) qStringType = "[+] ";
+            }
         }
         break;
     }
-    return (qStringType  + "{" + getQStringTime() + "} " + name);
+    return (qStringType  + "{" + get_qString_time() + "} " + name);
 }

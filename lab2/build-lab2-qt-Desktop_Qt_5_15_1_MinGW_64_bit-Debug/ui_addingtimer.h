@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -24,14 +23,13 @@ QT_BEGIN_NAMESPACE
 class Ui_AddingTimer
 {
 public:
-    QGroupBox *groupBoxAdding;
-    QTimeEdit *timeAdd;
+    QRadioButton *radioButtonTimer;
     QPushButton *btnCreate;
     QLineEdit *lineAddName;
-    QPushButton *btnCancel;
-    QLabel *labelAdd;
-    QRadioButton *radioButtonTimer;
     QRadioButton *radioButtonAlarm;
+    QTimeEdit *timeAdd;
+    QLabel *labelAdd;
+    QPushButton *btnCancel;
 
     void setupUi(QDialog *AddingTimer)
     {
@@ -40,58 +38,54 @@ public:
         AddingTimer->resize(580, 350);
         AddingTimer->setMinimumSize(QSize(580, 350));
         AddingTimer->setMaximumSize(QSize(580, 350));
-        groupBoxAdding = new QGroupBox(AddingTimer);
-        groupBoxAdding->setObjectName(QString::fromUtf8("groupBoxAdding"));
-        groupBoxAdding->setEnabled(true);
-        groupBoxAdding->setGeometry(QRect(10, 10, 560, 320));
-        groupBoxAdding->setMinimumSize(QSize(560, 320));
-        groupBoxAdding->setMaximumSize(QSize(560, 320));
-        timeAdd = new QTimeEdit(groupBoxAdding);
-        timeAdd->setObjectName(QString::fromUtf8("timeAdd"));
-        timeAdd->setGeometry(QRect(180, 180, 201, 41));
+        radioButtonTimer = new QRadioButton(AddingTimer);
+        radioButtonTimer->setObjectName(QString::fromUtf8("radioButtonTimer"));
+        radioButtonTimer->setGeometry(QRect(200, 240, 82, 21));
         QFont font;
-        font.setFamily(QString::fromUtf8("Nirmala UI"));
-        font.setPointSize(28);
-        timeAdd->setFont(font);
+        font.setPointSize(11);
+        radioButtonTimer->setFont(font);
+        radioButtonTimer->setCursor(QCursor(Qt::PointingHandCursor));
+        radioButtonTimer->setChecked(true);
+        radioButtonTimer->setAutoRepeat(false);
+        btnCreate = new QPushButton(AddingTimer);
+        btnCreate->setObjectName(QString::fromUtf8("btnCreate"));
+        btnCreate->setGeometry(QRect(190, 280, 61, 31));
+        btnCreate->setFont(font);
+        lineAddName = new QLineEdit(AddingTimer);
+        lineAddName->setObjectName(QString::fromUtf8("lineAddName"));
+        lineAddName->setGeometry(QRect(160, 130, 261, 41));
+        QFont font1;
+        font1.setPointSize(18);
+        lineAddName->setFont(font1);
+        lineAddName->setAlignment(Qt::AlignCenter);
+        radioButtonAlarm = new QRadioButton(AddingTimer);
+        radioButtonAlarm->setObjectName(QString::fromUtf8("radioButtonAlarm"));
+        radioButtonAlarm->setGeometry(QRect(280, 240, 111, 21));
+        radioButtonAlarm->setFont(font);
+        radioButtonAlarm->setCursor(QCursor(Qt::PointingHandCursor));
+        timeAdd = new QTimeEdit(AddingTimer);
+        timeAdd->setObjectName(QString::fromUtf8("timeAdd"));
+        timeAdd->setGeometry(QRect(190, 190, 201, 41));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Nirmala UI"));
+        font2.setPointSize(28);
+        timeAdd->setFont(font2);
         timeAdd->setCursor(QCursor(Qt::PointingHandCursor));
         timeAdd->setAlignment(Qt::AlignCenter);
         timeAdd->setCorrectionMode(QAbstractSpinBox::CorrectToPreviousValue);
-        btnCreate = new QPushButton(groupBoxAdding);
-        btnCreate->setObjectName(QString::fromUtf8("btnCreate"));
-        btnCreate->setGeometry(QRect(180, 270, 61, 31));
-        QFont font1;
-        font1.setPointSize(11);
-        btnCreate->setFont(font1);
-        lineAddName = new QLineEdit(groupBoxAdding);
-        lineAddName->setObjectName(QString::fromUtf8("lineAddName"));
-        lineAddName->setGeometry(QRect(150, 120, 261, 41));
-        QFont font2;
-        font2.setPointSize(18);
-        lineAddName->setFont(font2);
-        lineAddName->setAlignment(Qt::AlignCenter);
-        btnCancel = new QPushButton(groupBoxAdding);
-        btnCancel->setObjectName(QString::fromUtf8("btnCancel"));
-        btnCancel->setGeometry(QRect(320, 270, 61, 31));
-        btnCancel->setFont(font1);
-        labelAdd = new QLabel(groupBoxAdding);
+        labelAdd = new QLabel(AddingTimer);
         labelAdd->setObjectName(QString::fromUtf8("labelAdd"));
         labelAdd->setEnabled(true);
-        labelAdd->setGeometry(QRect(30, 30, 491, 61));
+        labelAdd->setGeometry(QRect(40, 40, 491, 61));
         QFont font3;
         font3.setFamily(QString::fromUtf8("MS Reference Sans Serif"));
         font3.setPointSize(48);
         labelAdd->setFont(font3);
         labelAdd->setAlignment(Qt::AlignCenter);
-        radioButtonTimer = new QRadioButton(groupBoxAdding);
-        radioButtonTimer->setObjectName(QString::fromUtf8("radioButtonTimer"));
-        radioButtonTimer->setGeometry(QRect(190, 230, 82, 21));
-        radioButtonTimer->setFont(font1);
-        radioButtonTimer->setCursor(QCursor(Qt::PointingHandCursor));
-        radioButtonAlarm = new QRadioButton(groupBoxAdding);
-        radioButtonAlarm->setObjectName(QString::fromUtf8("radioButtonAlarm"));
-        radioButtonAlarm->setGeometry(QRect(270, 230, 111, 21));
-        radioButtonAlarm->setFont(font1);
-        radioButtonAlarm->setCursor(QCursor(Qt::PointingHandCursor));
+        btnCancel = new QPushButton(AddingTimer);
+        btnCancel->setObjectName(QString::fromUtf8("btnCancel"));
+        btnCancel->setGeometry(QRect(330, 280, 61, 31));
+        btnCancel->setFont(font);
 
         retranslateUi(AddingTimer);
 
@@ -101,14 +95,13 @@ public:
     void retranslateUi(QDialog *AddingTimer)
     {
         AddingTimer->setWindowTitle(QCoreApplication::translate("AddingTimer", "Dialog", nullptr));
-        groupBoxAdding->setTitle(QCoreApplication::translate("AddingTimer", "GroupBoxAdding", nullptr));
-        timeAdd->setDisplayFormat(QCoreApplication::translate("AddingTimer", "HH:mm:ss", nullptr));
+        radioButtonTimer->setText(QCoreApplication::translate("AddingTimer", "Timer", nullptr));
         btnCreate->setText(QCoreApplication::translate("AddingTimer", "Create", nullptr));
         lineAddName->setText(QCoreApplication::translate("AddingTimer", "New Timer", nullptr));
-        btnCancel->setText(QCoreApplication::translate("AddingTimer", "Cancel", nullptr));
-        labelAdd->setText(QCoreApplication::translate("AddingTimer", "Add new timer", nullptr));
-        radioButtonTimer->setText(QCoreApplication::translate("AddingTimer", "Timer", nullptr));
         radioButtonAlarm->setText(QCoreApplication::translate("AddingTimer", "Alarm clock", nullptr));
+        timeAdd->setDisplayFormat(QCoreApplication::translate("AddingTimer", "HH:mm:ss", nullptr));
+        labelAdd->setText(QCoreApplication::translate("AddingTimer", "Add timer", nullptr));
+        btnCancel->setText(QCoreApplication::translate("AddingTimer", "Cancel", nullptr));
     } // retranslateUi
 
 };

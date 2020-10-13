@@ -1,37 +1,37 @@
 #include "editingtimer.h"
 #include "ui_editingtimer.h"
 
-EditingTimer::EditingTimer(MyTimer* timer, QStringListModel *model, int indexOfTimer, QWidget *parent) :
+EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStringListModel *model, int indexOfTimer, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::EditingTimer)
+    ui(new Ui::EditingTimer), timers(timers), model(model), indexOfTimer(indexOfTimer)
 {
     ui->setupUi(this);
-    this->timer = timer;
-    if(timer)
+    if(indexOfTimer>= timers.size()) this->close();
+    else
     {
-        timer->turnOff();
-        ui->lineEditName->setText(timer->name);
-        ui->timeEditTime->setTime(timer->getTime());
+        if(timers[indexOfTimer])
+        {
+            timers[indexOfTimer]->turn_off();
+            ui->lineEditName->setText(timers[indexOfTimer]->name);
+            ui->timeEditTime->setTime(timers[indexOfTimer]->get_time());
+        }
     }
-    this->model = model;
-    this->indexOfTimer = indexOfTimer;
 }
 
 EditingTimer::~EditingTimer()
 {
-    timer = nullptr;
     model = nullptr;
     delete ui;
 }
 
 void EditingTimer::on_btnSave_clicked()
 {
-    if(timer && model)
+    if(timers[indexOfTimer] && model)
     {
-        timer->name = ui->lineEditName->text();
-        timer->setTime(ui->timeEditTime->time());
+        timers[indexOfTimer]->name = ui->lineEditName->text();
+        timers[indexOfTimer]->set_time(ui->timeEditTime->time());
         QModelIndex index = model->index(indexOfTimer);
-        model->setData(index, timer->getQStringTimer());
+        model->setData(index, timers[indexOfTimer]->get_qString_timer());
     }
     this->close();
 }

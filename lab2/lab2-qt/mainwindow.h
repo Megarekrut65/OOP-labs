@@ -36,7 +36,7 @@ private:
     QVector<MyTimer*> timers;
     ShowTimer* timerWindow;
     bool AllActive;
-    void startHeaderTimer();
-    void updateAllTimers();
+    void start_header_timer();
+    void update_all_timers();
 };
 #endif // MAINWINDOW_H

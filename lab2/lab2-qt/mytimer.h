@@ -15,21 +15,19 @@ private:
     QTime* time;
 public:
     QString name;
-    bool openOutside;
-    bool isRemoved;
     Type type;
 
     MyTimer();
     MyTimer( const QString& name,  QTime* time, Type type = Type::TIMER);
     MyTimer( const QString& line);
     ~MyTimer();
-    void setTime( QTime time);
-    QTime getTime();
-    void addTime(int sec);
+    void set_time( QTime time);
+    QTime get_time();
+    void add_to_time(int sec);
     void update();
-    QString getQStringTime();
-    QString getQStringTimer();
-    void turnOn();
-    void turnOff();
+    QString get_qString_time();
+    QString get_qString_timer();
+    void turn_on();
+    void turn_off();
 };
 #endif // MYTIMER_H

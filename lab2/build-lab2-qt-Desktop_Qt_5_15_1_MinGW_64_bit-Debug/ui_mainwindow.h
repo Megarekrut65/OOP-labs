@@ -11,13 +11,13 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,15 +26,16 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QGroupBox *groupBoxHead;
-    QLabel *lblTitle;
+    QPushButton *btnAdd;
+    QPushButton *btnPauseAll;
     QLabel *lblName;
     QPushButton *btnStartAll;
-    QPushButton *btnPauseAll;
-    QPushButton *btnAdd;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *layoutTimerList;
+    QLabel *lblTitle;
     QListView *listTimers;
-    QMenuBar *menubar;
     QStatusBar *statusbar;
+    QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -47,62 +48,67 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setMinimumSize(QSize(650, 320));
         centralwidget->setMaximumSize(QSize(650, 320));
-        groupBoxHead = new QGroupBox(centralwidget);
-        groupBoxHead->setObjectName(QString::fromUtf8("groupBoxHead"));
-        groupBoxHead->setGeometry(QRect(10, 0, 630, 310));
-        groupBoxHead->setMinimumSize(QSize(630, 310));
-        groupBoxHead->setMaximumSize(QSize(630, 310));
-        lblTitle = new QLabel(groupBoxHead);
-        lblTitle->setObjectName(QString::fromUtf8("lblTitle"));
-        lblTitle->setGeometry(QRect(320, 10, 291, 31));
+        btnAdd = new QPushButton(centralwidget);
+        btnAdd->setObjectName(QString::fromUtf8("btnAdd"));
+        btnAdd->setGeometry(QRect(240, 270, 71, 31));
         QFont font;
-        font.setPointSize(14);
-        lblTitle->setFont(font);
-        lblTitle->setAlignment(Qt::AlignCenter);
-        lblName = new QLabel(groupBoxHead);
+        font.setFamily(QString::fromUtf8("Yu Mincho Demibold"));
+        font.setPointSize(10);
+        font.setBold(true);
+        font.setWeight(75);
+        btnAdd->setFont(font);
+        btnPauseAll = new QPushButton(centralwidget);
+        btnPauseAll->setObjectName(QString::fromUtf8("btnPauseAll"));
+        btnPauseAll->setGeometry(QRect(180, 120, 101, 51));
+        btnPauseAll->setFont(font);
+        lblName = new QLabel(centralwidget);
         lblName->setObjectName(QString::fromUtf8("lblName"));
         lblName->setGeometry(QRect(40, 40, 241, 51));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Papyrus"));
         font1.setPointSize(28);
         lblName->setFont(font1);
-        btnStartAll = new QPushButton(groupBoxHead);
+        btnStartAll = new QPushButton(centralwidget);
         btnStartAll->setObjectName(QString::fromUtf8("btnStartAll"));
         btnStartAll->setGeometry(QRect(30, 120, 101, 51));
+        btnStartAll->setFont(font);
+        verticalLayoutWidget = new QWidget(centralwidget);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(320, 10, 301, 291));
+        layoutTimerList = new QVBoxLayout(verticalLayoutWidget);
+        layoutTimerList->setObjectName(QString::fromUtf8("layoutTimerList"));
+        layoutTimerList->setContentsMargins(0, 0, 0, 0);
+        lblTitle = new QLabel(verticalLayoutWidget);
+        lblTitle->setObjectName(QString::fromUtf8("lblTitle"));
         QFont font2;
-        font2.setFamily(QString::fromUtf8("Yu Mincho Demibold"));
-        font2.setPointSize(10);
-        font2.setBold(true);
-        font2.setWeight(75);
-        btnStartAll->setFont(font2);
-        btnPauseAll = new QPushButton(groupBoxHead);
-        btnPauseAll->setObjectName(QString::fromUtf8("btnPauseAll"));
-        btnPauseAll->setGeometry(QRect(180, 120, 101, 51));
-        btnPauseAll->setFont(font2);
-        btnAdd = new QPushButton(groupBoxHead);
-        btnAdd->setObjectName(QString::fromUtf8("btnAdd"));
-        btnAdd->setGeometry(QRect(240, 270, 71, 31));
-        btnAdd->setFont(font2);
-        listTimers = new QListView(groupBoxHead);
+        font2.setPointSize(14);
+        lblTitle->setFont(font2);
+        lblTitle->setAlignment(Qt::AlignCenter);
+
+        layoutTimerList->addWidget(lblTitle);
+
+        listTimers = new QListView(verticalLayoutWidget);
         listTimers->setObjectName(QString::fromUtf8("listTimers"));
-        listTimers->setGeometry(QRect(320, 50, 301, 251));
         QFont font3;
-        font3.setFamily(QString::fromUtf8("Shruti"));
-        font3.setPointSize(14);
+        font3.setFamily(QString::fromUtf8("Consolas"));
+        font3.setPointSize(12);
         listTimers->setFont(font3);
         listTimers->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
         listTimers->setTabletTracking(true);
         listTimers->setTabKeyNavigation(false);
-        listTimers->setAlternatingRowColors(true);
+        listTimers->setAlternatingRowColors(false);
         listTimers->setTextElideMode(Qt::ElideRight);
+
+        layoutTimerList->addWidget(listTimers);
+
         MainWindow->setCentralWidget(centralwidget);
+        statusbar = new QStatusBar(MainWindow);
+        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        MainWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 650, 21));
         MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -112,12 +118,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        groupBoxHead->setTitle(QCoreApplication::translate("MainWindow", "GroupBoxHead", nullptr));
-        lblTitle->setText(QCoreApplication::translate("MainWindow", "All timers", nullptr));
+        btnAdd->setText(QCoreApplication::translate("MainWindow", "Add timer", nullptr));
+        btnPauseAll->setText(QCoreApplication::translate("MainWindow", "Pause all timers", nullptr));
         lblName->setText(QCoreApplication::translate("MainWindow", "Smart Timers", nullptr));
         btnStartAll->setText(QCoreApplication::translate("MainWindow", "Start all timers", nullptr));
-        btnPauseAll->setText(QCoreApplication::translate("MainWindow", "Pause all timers", nullptr));
-        btnAdd->setText(QCoreApplication::translate("MainWindow", "Add timer", nullptr));
+        lblTitle->setText(QCoreApplication::translate("MainWindow", "All timers", nullptr));
     } // retranslateUi
 
 };

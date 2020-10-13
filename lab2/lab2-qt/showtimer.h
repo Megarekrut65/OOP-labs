@@ -15,10 +15,10 @@ class ShowTimer : public QDialog
     Q_OBJECT
 
 public:
-    explicit ShowTimer(QStringListModel *model = nullptr, QWidget *parent = nullptr);
+    explicit ShowTimer(QVector<MyTimer*>& timers, QStringListModel *model = nullptr, QWidget *parent = nullptr);
     ~ShowTimer();
-    void updateTimer();
-    void setTimer(MyTimer* timer, int indexOfTimer);
+    void update_timer();
+    void set_timer(int indexOfTimer);
 private slots:
     void on_btnStart_clicked();
 
@@ -30,9 +30,9 @@ private slots:
 
 private:
     Ui::ShowTimer *ui;
-    MyTimer* timer;
     QStringListModel *model;
-     int indexOfTimer;
+    QVector<MyTimer*>& timers;
+    int indexOfTimer;
 };
 
 #endif // SHOWTIMER_H
