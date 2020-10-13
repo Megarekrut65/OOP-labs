@@ -4,11 +4,9 @@
 AddingTimer::AddingTimer(QVector<MyTimer*>* timers,
                          QStringListModel *model, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AddingTimer)
+    ui(new Ui::AddingTimer), timers(timers), model(model)
 {
     ui->setupUi(this);
-    this->timers = timers;
-    this->model = model;
 }
 
 AddingTimer::~AddingTimer()
@@ -36,7 +34,8 @@ void AddingTimer::on_btnCreate_clicked()
         int size = model->rowCount();
         model->insertRow(size);
         QModelIndex index = model->index(size);
-        model->setData(index, timer->get_qString_timer());
+        model->setData(index,
+                       QString::number(timers->size() - 1) + "." +timer->get_qString_timer());
         timer = nullptr;
     }
     this->close();

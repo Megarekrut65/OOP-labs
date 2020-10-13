@@ -1,13 +1,12 @@
 #include "mytimer.h"
 
-MyTimer::MyTimer(): active(false), time(nullptr), name(""), type(Type::TIMER) {}
+MyTimer::MyTimer()
+    : active(false),timeOut(true), time(nullptr),numberOfsignals(0), name(""), type(Type::TIMER) {}
 MyTimer::MyTimer( const QString& name, QTime* time, Type type)
+    :active(true),timeOut(false), numberOfsignals(0), name(name), type(type)
 {
-  this->type = type;
-  active = true;
   if(time) this->time = time;
   else this->time = new QTime(0,0,0);
-  this->name = name;
 }
 MyTimer::MyTimer(const QString& line)
 {
@@ -51,24 +50,43 @@ MyTimer::~MyTimer()
     if(sec <= 0) return;
     *time = time->addSecs(sec);
  }
+void MyTimer::signal()
+{
+    if(active && numberOfsignals <= 0) return;
+    QSound::play(":/sounds/timer-signal.wav");
+    numberOfsignals--;
+    if(numberOfsignals == 0) active = false;
+}
  void MyTimer::update()
  {
+     if(timeOut)
+     {
+         signal();
+         return;
+     }
      switch (type)
      {
          case Type::TIMER:
          {
-             if(time->hour() == 0 && time->minute() == 0 && time->second() == 0) active = false;
              if(!active) return;
-             *time = time->addSecs(-1);
+             if(time->hour() == 0 && time->minute() == 0 && time->second() == 0) timeOut = true;
+             else *time = time->addSecs(-1);
          }
          break;
          case Type::AlARM_ClOCK:
          {
              if(!active) return;
+             QTime now = QTime::currentTime();
+             if(time->hour() == now.hour() &&
+                     time->minute() == now.minute() &&
+                     time->second() == now.second())
+             {
+                timeOut = true;
+                numberOfsignals = 5;
+             }
          }
          break;
      }
-
  }
 void MyTimer::turn_on()
 {
@@ -77,6 +95,7 @@ void MyTimer::turn_on()
 void MyTimer::turn_off()
 {
     active = false;
+    numberOfsignals = 0;
 }
 QTime MyTimer::get_time()
 {

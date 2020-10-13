@@ -3,10 +3,9 @@
 
 ShowTimer::ShowTimer(QVector<MyTimer*>& timers, QStringListModel *model, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ShowTimer), model(model), timers(timers)
+    ui(new Ui::ShowTimer), model(model), timers(timers), indexOfTimer(0)
 {
     ui->setupUi(this);
-    indexOfTimer = 0;
 }
 
 ShowTimer::~ShowTimer()

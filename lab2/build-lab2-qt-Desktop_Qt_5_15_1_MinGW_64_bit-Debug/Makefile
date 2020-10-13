@@ -273,8 +273,10 @@ Makefile: ../lab2-qt/lab2-qt.pro E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/win32-g++/q
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/yacc.prf \
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/lex.prf \
 		../lab2-qt/lab2-qt.pro \
+		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Multimedia.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Widgets.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Gui.prl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Network.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Core.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/qtmain.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/build_pass.prf
@@ -482,8 +484,10 @@ E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/exceptions.prf:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/yacc.prf:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/lex.prf:
 ../lab2-qt/lab2-qt.pro:
+E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Multimedia.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Widgets.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Gui.prl:
+E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Network.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Core.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/qtmain.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/build_pass.prf:

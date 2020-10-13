@@ -1,6 +1,7 @@
 #ifndef MYTIMER_H
 #define MYTIMER_H
 #include <QTime>
+#include <QSound>
 
 enum class Type
 {
@@ -12,7 +13,10 @@ class MyTimer
 {
 private:
     bool active;
+    bool timeOut;
     QTime* time;
+    int numberOfsignals;
+    void signal();
 public:
     QString name;
     Type type;

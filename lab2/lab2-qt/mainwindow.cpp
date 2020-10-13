@@ -38,7 +38,8 @@ void MainWindow::update_all_timers()
         if(timers[i])
         {
             timers[i]->update();
-            model->setData(model->index(i), timers[i]->get_qString_timer());
+            model->setData(model->index(i),
+                           QString::number(i) + "." + timers[i]->get_qString_timer());
         }
     }
     timerWindow->update_timer();
