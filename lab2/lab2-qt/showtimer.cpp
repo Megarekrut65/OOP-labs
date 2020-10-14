@@ -18,16 +18,14 @@ QString ShowTimer::get_time_style()
     QString style = "<h3";
     if(!timers[indexOfTimer]->active) style += " style=\"color:#DAA520;\"";
     else if(timers[indexOfTimer]->timeOut) style += " style=\"color:#B22222;\"";
-    style += ">" + timers[indexOfTimer]->get_qString_time() + "</h3>";
+    style += ">" + timers[indexOfTimer]->get_QString_time() + "</h3>";
 
     return style;
 }
 QString ShowTimer::get_timer_type()
 {
     if(timers[indexOfTimer]->type == Type::TIMER) return "Timer";
-    else if(timers[indexOfTimer]->type == Type::AlARM_ClOCK) return "Alarm clock";
-
-    return "";
+    return "Alarm clock";
 }
 void ShowTimer::update_timer()
 {

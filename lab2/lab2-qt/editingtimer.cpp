@@ -33,7 +33,7 @@ void EditingTimer::on_btnSave_clicked()
         QModelIndex index = model->index(indexOfTimer);
         model->setData(index,
                        QString::number(indexOfTimer) + "." +
-                       timers[indexOfTimer]->get_qString_timer());
+                       timers[indexOfTimer]->get_QString_timer());
     }
     this->close();
 }

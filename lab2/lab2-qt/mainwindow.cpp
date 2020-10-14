@@ -20,8 +20,15 @@ MainWindow::MainWindow(QWidget *parent)
 }
 MainWindow::~MainWindow()
 {
+    while(timers.size() > 0)
+    {
+        qDebug() << timers[0]->get_timer_info();
+        if(timers[0]) delete timers[0];
+        timers.erase(timers.begin());
+    }
     delete oneSecondTimer;
-    timers.clear();
+    delete timerWindow;
+    delete model;
     delete ui;
 }
 void MainWindow:: start_header_timer()
@@ -40,7 +47,7 @@ void MainWindow::update_all_timers()
         {
             timers[i]->update();
             model->setData(model->index(i),
-                           QString::number(i) + "." + timers[i]->get_qString_timer());
+                           QString::number(i) + "." + timers[i]->get_QString_timer());
         }
     }
     timerWindow->update_timer();

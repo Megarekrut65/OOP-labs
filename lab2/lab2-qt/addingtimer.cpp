@@ -35,7 +35,7 @@ void AddingTimer::on_btnCreate_clicked()
         model->insertRow(size);
         QModelIndex index = model->index(size);
         model->setData(index,
-                       QString::number(timers->size() - 1) + "." +timer->get_qString_timer());
+                       QString::number(timers->size() - 1) + "." +timer->get_QString_timer());
         timer = nullptr;
     }
     this->close();
