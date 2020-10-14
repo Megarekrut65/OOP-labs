@@ -12,14 +12,16 @@ enum class Type
 
 class MyTimer
 {
-private:
-    bool active;
-    bool timeOut;
+private:  
     QTime* time;
     int numberOfsignals;
-    QString path;
+    QString pathToSound;
     void signal();
+    void timer_update();
+    void alarm_update();
 public:
+    bool active;
+    bool timeOut;
     QString name;
     Type type;
 

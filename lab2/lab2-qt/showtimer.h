@@ -33,6 +33,9 @@ private:
     QStringListModel *model;
     QVector<MyTimer*>& timers;
     int indexOfTimer;
+
+    QString get_time_style();
+    QString get_timer_type();
 };
 
 #endif // SHOWTIMER_H

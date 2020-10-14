@@ -50,10 +50,11 @@ public:
         groupBoxTimer->setMaximumSize(QSize(480, 270));
         lblTimer = new QLabel(groupBoxTimer);
         lblTimer->setObjectName(QString::fromUtf8("lblTimer"));
-        lblTimer->setGeometry(QRect(4, 81, 471, 71));
+        lblTimer->setGeometry(QRect(0, 80, 471, 71));
         QFont font;
-        font.setFamily(QString::fromUtf8("Segoe UI Light"));
-        font.setPointSize(48);
+        font.setFamily(QString::fromUtf8("Consolas"));
+        font.setPointSize(36);
+        font.setItalic(true);
         lblTimer->setFont(font);
         lblTimer->setCursor(QCursor(Qt::ArrowCursor));
         lblTimer->setScaledContents(false);
@@ -78,7 +79,7 @@ public:
         btnStart->setCursor(QCursor(Qt::PointingHandCursor));
         lblTimerName = new QLabel(groupBoxTimer);
         lblTimerName->setObjectName(QString::fromUtf8("lblTimerName"));
-        lblTimerName->setGeometry(QRect(0, 30, 481, 61));
+        lblTimerName->setGeometry(QRect(0, 20, 481, 61));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Orator Std"));
         font2.setPointSize(36);
@@ -106,7 +107,7 @@ public:
         btnDelete->setCursor(QCursor(Qt::PointingHandCursor));
         lblType = new QLabel(groupBoxTimer);
         lblType->setObjectName(QString::fromUtf8("lblType"));
-        lblType->setGeometry(QRect(180, 155, 111, 21));
+        lblType->setGeometry(QRect(180, 150, 111, 21));
         QFont font3;
         font3.setPointSize(14);
         lblType->setFont(font3);
@@ -121,7 +122,7 @@ public:
     {
         ShowTimer->setWindowTitle(QCoreApplication::translate("ShowTimer", "Dialog", nullptr));
         groupBoxTimer->setTitle(QCoreApplication::translate("ShowTimer", "GroupBoxTimer", nullptr));
-        lblTimer->setText(QCoreApplication::translate("ShowTimer", "10:20:30", nullptr));
+        lblTimer->setText(QCoreApplication::translate("ShowTimer", "<h3 style=\"red\"> 10:20:30 </h3>", nullptr));
         btnPause->setText(QCoreApplication::translate("ShowTimer", "Pause", nullptr));
         btnStart->setText(QCoreApplication::translate("ShowTimer", "Start", nullptr));
         lblTimerName->setText(QCoreApplication::translate("ShowTimer", "Timer Name", nullptr));

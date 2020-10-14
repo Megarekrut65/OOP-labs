@@ -58,7 +58,7 @@ void MainWindow::on_btnStartAll_clicked()
 void MainWindow::on_btnPauseAll_clicked()
 {
     AllActive = false;
-    ui->listTimers->setStyleSheet("background-color: #F5F5F5;");
+    ui->listTimers->setStyleSheet("background-color: #F0E68C;");
 }
 void MainWindow::on_btnAdd_clicked()
 {

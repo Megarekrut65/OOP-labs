@@ -1,14 +1,14 @@
 #include "mytimer.h"
 
 MyTimer::MyTimer()
-    : active(false),timeOut(true), time(nullptr),numberOfsignals(0),
-      path(""), name(""), type(Type::TIMER) {}
+    : time(nullptr),numberOfsignals(0),
+      pathToSound(""),active(false), timeOut(true), name(""), type(Type::TIMER) {}
 MyTimer::MyTimer( const QString& name, QTime* time, Type type)
-    :active(true),timeOut(false), numberOfsignals(0), name(name), type(type)
+    :numberOfsignals(0),active(true), timeOut(false), name(name), type(type)
 {
   if(time) this->time = time;
   else this->time = new QTime(0,0,0);
-  path = QDir::currentPath() + "/timerSound.wav";
+  pathToSound = QDir::currentPath() + "/timerSound.wav";
 }
 MyTimer::MyTimer(const QString& line)
 {
@@ -56,42 +56,46 @@ MyTimer::~MyTimer()
  }
 void MyTimer::signal()
 {
-    if(active && numberOfsignals <= 0) return;
-    QSound::play(path);
+    if(numberOfsignals <= 0) return;
+    QSound::play(pathToSound);
     numberOfsignals--;
     if(numberOfsignals == 0) active = false;
 }
+void MyTimer::timer_update()
+{
+    if(time->hour() == 0 && time->minute() == 0 && time->second() == 0)
+    {
+        timeOut = true;
+        numberOfsignals = 15;
+        signal();
+    }
+    else *time = time->addSecs(-1);
+}
+void MyTimer::alarm_update()
+{
+    QTime now = QTime::currentTime();
+    if(time->hour() == now.hour() &&
+            time->minute() == now.minute() &&
+            time->second() == now.second())
+    {
+       timeOut = true;
+       numberOfsignals = 15;
+       signal();
+    }
+}
  void MyTimer::update()
  {
+     if(!active) return;
      if(timeOut)
      {
          signal();
          return;
      }
-     if(!active) return;
      switch (type)
      {
-         case Type::TIMER:
-         {        
-             if(time->hour() == 0 && time->minute() == 0 && time->second() == 0)
-             {
-                 timeOut = true;
-                 numberOfsignals = 15;
-             }
-             else *time = time->addSecs(-1);
-         }
+         case Type::TIMER: timer_update();
          break;
-         case Type::AlARM_ClOCK:
-         {
-             QTime now = QTime::currentTime();
-             if(time->hour() == now.hour() &&
-                     time->minute() == now.minute() &&
-                     time->second() == now.second())
-             {
-                timeOut = true;
-                numberOfsignals = 15;
-             }
-         }
+         case Type::AlARM_ClOCK: alarm_update();
          break;
      }
  }

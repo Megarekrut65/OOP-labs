@@ -13,27 +13,44 @@ ShowTimer::~ShowTimer()
     model = nullptr;
     delete ui;
 }
+QString ShowTimer::get_time_style()
+{
+    QString style = "<h3";
+    if(!timers[indexOfTimer]->active) style += " style=\"color:#DAA520;\"";
+    else if(timers[indexOfTimer]->timeOut) style += " style=\"color:#B22222;\"";
+    style += ">" + timers[indexOfTimer]->get_qString_time() + "</h3>";
+
+    return style;
+}
+QString ShowTimer::get_timer_type()
+{
+    if(timers[indexOfTimer]->type == Type::TIMER) return "Timer";
+    else if(timers[indexOfTimer]->type == Type::AlARM_ClOCK) return "Alarm clock";
+
+    return "";
+}
 void ShowTimer::update_timer()
 {
     if(indexOfTimer >= timers.size()) return;
     if(timers[indexOfTimer])
     {
         ui->lblTimerName->setText(timers[indexOfTimer]->name);
-        ui->lblTimer->setText(timers[indexOfTimer]->get_qString_time());
-        if(timers[indexOfTimer]->type == Type::TIMER) ui->lblType->setText("Timer");
-        else if(timers[indexOfTimer]->type == Type::AlARM_ClOCK) ui->lblType->setText("Alaram clock");
+        ui->lblTimer->setText(get_time_style());
+        ui->lblType->setText(get_timer_type());
     }
 }
 void ShowTimer::on_btnStart_clicked()
 {
     if(indexOfTimer >= timers.size()) return;
     timers[indexOfTimer]->turn_on();
+    ui->lblTimer->setText(get_time_style());
 }
 
 void ShowTimer::on_btnPause_clicked()
 {
     if(indexOfTimer >= timers.size()) return;
-     timers[indexOfTimer]->turn_off();
+    timers[indexOfTimer]->turn_off();
+    ui->lblTimer->setText(get_time_style());
 }
 
 void ShowTimer::on_btnEdit_clicked()
