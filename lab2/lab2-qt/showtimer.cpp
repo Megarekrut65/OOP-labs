@@ -20,6 +20,8 @@ void ShowTimer::update_timer()
     {
         ui->lblTimerName->setText(timers[indexOfTimer]->name);
         ui->lblTimer->setText(timers[indexOfTimer]->get_qString_time());
+        if(timers[indexOfTimer]->type == Type::TIMER) ui->lblType->setText("Timer");
+        else if(timers[indexOfTimer]->type == Type::AlARM_ClOCK) ui->lblType->setText("Alaram clock");
     }
 }
 void ShowTimer::on_btnStart_clicked()

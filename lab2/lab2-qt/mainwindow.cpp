@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->listTimers->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->listTimers->setStyleSheet("background-color: #FFFFFF;");
     ui->statusbar->showMessage("[T]-Timer, [A]-Alarm clock");
+
     start_header_timer();
 }
 MainWindow::~MainWindow()

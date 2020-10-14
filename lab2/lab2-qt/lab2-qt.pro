@@ -1,5 +1,4 @@
-QT       += core gui
-QT       += multimedia
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -37,4 +36,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     sounds/timer-signal.sfk \
-    sounds/timer-signal.wav
+    sounds/timer-signal.wav \
+    timerSignal.wav \
+    timerSound.wav

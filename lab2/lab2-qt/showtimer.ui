@@ -243,6 +243,27 @@
      <string>Delete</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblType">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>155</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Timer type</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

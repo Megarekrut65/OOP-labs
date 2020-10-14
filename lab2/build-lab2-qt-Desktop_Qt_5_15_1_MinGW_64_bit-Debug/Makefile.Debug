@@ -71,7 +71,9 @@ OBJECTS       = debug/addingtimer.o \
 		debug/moc_showtimer.o
 
 DIST          = sounds/timer-signal.sfk \
-		sounds/timer-signal.wav ..\lab2-qt\addingtimer.h \
+		sounds/timer-signal.wav \
+		timerSignal.wav \
+		timerSound.wav ..\lab2-qt\addingtimer.h \
 		..\lab2-qt\editingtimer.h \
 		..\lab2-qt\mainwindow.h \
 		..\lab2-qt\mytimer.h \
@@ -239,10 +241,28 @@ debug/moc_addingtimer.cpp: ../lab2-qt/addingtimer.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
@@ -358,10 +378,28 @@ debug/moc_editingtimer.cpp: ../lab2-qt/editingtimer.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
@@ -482,10 +520,28 @@ debug/moc_mainwindow.cpp: ../lab2-qt/mainwindow.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
@@ -606,10 +662,28 @@ debug/moc_showtimer.cpp: ../lab2-qt/showtimer.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		../lab2-qt/editingtimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
@@ -761,15 +835,32 @@ debug/addingtimer.o: ../lab2-qt/addingtimer.cpp ../lab2-qt/addingtimer.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
 		ui_addingtimer.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtWidgets/QApplication \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qcoreapplication.h \
@@ -908,15 +999,32 @@ debug/editingtimer.o: ../lab2-qt/editingtimer.cpp ../lab2-qt/editingtimer.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
 		ui_editingtimer.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtWidgets/QApplication \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qcoreapplication.h \
@@ -1058,10 +1166,28 @@ debug/main.o: ../lab2-qt/main.cpp ../lab2-qt/mainwindow.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
@@ -1192,10 +1318,28 @@ debug/mainwindow.o: ../lab2-qt/mainwindow.cpp ../lab2-qt/mainwindow.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
@@ -1205,7 +1349,6 @@ debug/mainwindow.o: ../lab2-qt/mainwindow.cpp ../lab2-qt/mainwindow.h \
 		../lab2-qt/showtimer.h \
 		../lab2-qt/editingtimer.h \
 		ui_mainwindow.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtWidgets/QApplication \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qcoreapplication.h \
@@ -1298,12 +1441,13 @@ debug/mytimer.o: ../lab2-qt/mytimer.cpp ../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlist.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qregexp.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringmatcher.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtGui/qtguiglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtGui/qtgui-config.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qobject.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qobjectdefs.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qobjectdefs_impl.h \
@@ -1312,7 +1456,38 @@ debug/mytimer.o: ../lab2-qt/mytimer.cpp ../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetatype.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qvarlengtharray.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qcontainerfwd.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qobject_impl.h
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qobject_impl.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmap.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qtextstream.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qiodevice.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qlocale.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qvariant.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qset.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qcontiguouscache.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qsharedpointer.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qurl.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qurlquery.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfile.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfiledevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mytimer.o ..\lab2-qt\mytimer.cpp
 
 debug/showtimer.o: ../lab2-qt/showtimer.cpp ../lab2-qt/showtimer.h \
@@ -1423,16 +1598,33 @@ debug/showtimer.o: ../lab2-qt/showtimer.cpp ../lab2-qt/showtimer.h \
 		../lab2-qt/mytimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QTime \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdatetime.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QSound \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/QMediaPlayer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaplayer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmultimedia.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediacontent.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaresource.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkrequest.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetworkglobal.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qtnetwork-config.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QSharedDataPointer \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QString \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QUrl \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qmediaenumdebug.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qmetaobject.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtMultimedia/qaudio.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtNetwork/qnetworkconfiguration.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QDir \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qdir.h \
+		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qfileinfo.h \
 		../lab2-qt/editingtimer.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QStringListModel \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qstringlistmodel.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qabstractitemmodel.h \
 		ui_showtimer.h \
-		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/QVariant \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtWidgets/QApplication \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
 		E:/Qt-Cpp/5.15.1/mingw81_64/include/QtCore/qcoreapplication.h \

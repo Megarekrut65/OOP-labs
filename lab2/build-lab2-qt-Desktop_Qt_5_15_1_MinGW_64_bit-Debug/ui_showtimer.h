@@ -28,6 +28,7 @@ public:
     QLabel *lblTimerName;
     QPushButton *btnEdit;
     QPushButton *btnDelete;
+    QLabel *lblType;
 
     void setupUi(QDialog *ShowTimer)
     {
@@ -103,6 +104,13 @@ public:
         btnDelete->setGeometry(QRect(380, 190, 61, 41));
         btnDelete->setFont(font1);
         btnDelete->setCursor(QCursor(Qt::PointingHandCursor));
+        lblType = new QLabel(groupBoxTimer);
+        lblType->setObjectName(QString::fromUtf8("lblType"));
+        lblType->setGeometry(QRect(180, 155, 111, 21));
+        QFont font3;
+        font3.setPointSize(14);
+        lblType->setFont(font3);
+        lblType->setAlignment(Qt::AlignCenter);
 
         retranslateUi(ShowTimer);
 
@@ -119,6 +127,7 @@ public:
         lblTimerName->setText(QCoreApplication::translate("ShowTimer", "Timer Name", nullptr));
         btnEdit->setText(QCoreApplication::translate("ShowTimer", "Edit", nullptr));
         btnDelete->setText(QCoreApplication::translate("ShowTimer", "Delete", nullptr));
+        lblType->setText(QCoreApplication::translate("ShowTimer", "Timer type", nullptr));
     } // retranslateUi
 
 };
