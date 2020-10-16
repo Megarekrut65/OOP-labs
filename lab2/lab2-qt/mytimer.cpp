@@ -27,7 +27,7 @@ QTime MyTimer::qString_to_QTime(const QString& line)
     if(parts.size() != 3) return QTime(0,0,0);
     return QTime(parts[0].toInt(), parts[1].toInt(), parts[2].toInt());
 }
-MyTimer::MyTimer(const QString& line)//active, timeOut, T, 10:10:10, Name, maxNumber, number, nameSound
+MyTimer::MyTimer(const QString& line)//active, timeOut, T, hh:mm:ss, Name, maxNumber, number, nameSound
 {
     QStringList parts = line.split(",");
     if(parts.size() == 8)
@@ -60,7 +60,7 @@ QString MyTimer::get_timer_info()//active, timeOut, T, 10:10:10, Name, maxNumber
     return (bool_to_QString(active) + "," +
             bool_to_QString(timeOut) + "," +
             get_QString_type() + "," +
-            get_QString_time() + "," +
+            time->toString("hh:mm:ss") + "," +
             name + "," +
             QString::number(maxNumberOfSignals) + "," +
             QString::number(numberOfSignals) + "," +

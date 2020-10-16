@@ -1,0 +1,5 @@
+File model: active, time out, timer type, time(hh:mm:ss), timer name, max number of signals, number of signals, path to sound
+true,false,A,05:05:00,New Timer,15,0,C:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab2/lab2-qt/Sounds/timerSound.wav
+true,false,T,00:58:39,yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy,15,0,C:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab2/lab2-qt/Sounds/timerSound.wav
+false,false,T,00:06:00,six,15,0,C:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab2/lab2-qt/Sounds/timerSound.wav
+true,true,T,00:00:00,New Timer,15,13,C:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab2/lab2-qt/Sounds/timerSound.wav

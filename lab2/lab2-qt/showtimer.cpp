@@ -64,7 +64,6 @@ void ShowTimer::on_btnEdit_clicked()
     EditingTimer newWindow( timers, model, indexOfTimer);
     newWindow.setModal(true);
     newWindow.exec();
-    this->hide();
 }
 
 void ShowTimer::on_btnDelete_clicked()

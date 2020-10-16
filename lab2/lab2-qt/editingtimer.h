@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "mytimer.h"
 #include <QStandardItemModel>
+#include "my_colors.h"
 
 namespace Ui {
 class EditingTimer;
@@ -29,6 +30,7 @@ private:
     QStandardItemModel *model;
     int indexOfTimer;
     void turn_on_timer();
+    void turn_off_timer();
 };
 
 #endif // EDITINGTIMER_H

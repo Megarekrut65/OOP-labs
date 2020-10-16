@@ -8,6 +8,7 @@
 #include "addingtimer.h"
 #include "showtimer.h"
 #include "my_colors.h"
+#include <QFile>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,7 +38,12 @@ private:
     QVector<MyTimer*> timers;
     ShowTimer* timerWindow;
     bool AllActive;
+    const QString filePath;
+    QString statusBar;
+    QString fileModel;
     void start_header_timer();
     void update_all_timers();
+    void read_all_timers_from_file();
+    void write_all_timers_to_file();
 };
 #endif // MAINWINDOW_H

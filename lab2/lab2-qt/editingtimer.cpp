@@ -11,11 +11,20 @@ EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStandardItemModel *model,
     {
         if(timers[indexOfTimer])
         {
-            timers[indexOfTimer]->turn_off();
+            turn_off_timer();
             ui->lineEditName->setText(timers[indexOfTimer]->name);
             ui->timeEditTime->setTime(timers[indexOfTimer]->get_time());
         }
     }
+}
+void EditingTimer::turn_off_timer()
+{
+    timers[indexOfTimer]->turn_off();
+    if(indexOfTimer>= timers.size() || !timers[indexOfTimer]) return;
+    auto item = new QStandardItem(QString::number(indexOfTimer) + "." +
+                                   timers[indexOfTimer]->get_QString_timer());
+    item->setBackground(QBrush(MyColors::pausedItem));
+    model->setItem(indexOfTimer, item);
 }
 void EditingTimer::turn_on_timer()
 {
