@@ -3,6 +3,7 @@ debug/editingtimer.o
 debug/main.o
 debug/mainwindow.o
 debug/my_colors.o
+debug/my_sounds.o
 debug/mytimer.o
 debug/showtimer.o
 debug/moc_addingtimer.o

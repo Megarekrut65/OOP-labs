@@ -1,15 +1,19 @@
 #include "mytimer.h"
 
 MyTimer::MyTimer()
-    :  time(nullptr),maxNumberOfSignals(0), numberOfSignals(0),
-      pathToSound(""),active(false), timeOut(true), name(""), type(Type::TIMER) {}
+    :  time(nullptr), numberOfSignals(0), active(false),
+      timeOut(true), name(""),type(Type::TIMER), maxNumberOfSignals(0), pathToSound("") {}
 MyTimer::MyTimer( const QString& name, QTime* time, Type type, const int maxNumberOfSignals, QString nameOfSound)
-    : maxNumberOfSignals(maxNumberOfSignals), numberOfSignals(0),
-      active(true), timeOut(false), name(name), type(type)
+    :  numberOfSignals(0), active(true), timeOut(false),
+      name(name), type(type), maxNumberOfSignals(maxNumberOfSignals)
 {
   if(time) this->time = time;
   else this->time = new QTime(0,0,0);
-  pathToSound = QDir::currentPath() + "/Sounds/" + nameOfSound;
+  set_path_to_sound(nameOfSound);
+}
+void MyTimer::set_path_to_sound(QString nameOfSound)
+{
+   pathToSound = QDir::currentPath() + "/Sounds/timer" + nameOfSound + ".wav";
 }
 bool MyTimer::qString_to_bool(const QString& line)
 {
@@ -27,7 +31,7 @@ QTime MyTimer::qString_to_QTime(const QString& line)
     if(parts.size() != 3) return QTime(0,0,0);
     return QTime(parts[0].toInt(), parts[1].toInt(), parts[2].toInt());
 }
-MyTimer::MyTimer(const QString& line)//active, timeOut, T, hh:mm:ss, Name, maxNumber, number, nameSound
+MyTimer::MyTimer(const QString& line)
 {
     QStringList parts = line.split(",");
     if(parts.size() == 8)
@@ -55,7 +59,7 @@ QString  MyTimer::bool_to_QString(bool value)
     if(value) return "true";
     return "false";
 }
-QString MyTimer::get_timer_info()//active, timeOut, T, 10:10:10, Name, maxNumber, number, nameSound
+QString MyTimer::get_timer_info()
 {
     return (bool_to_QString(active) + "," +
             bool_to_QString(timeOut) + "," +
@@ -93,14 +97,17 @@ void MyTimer::signal()
     numberOfSignals--;
     if(numberOfSignals == 0) active = false;
 }
+void MyTimer::start_time_out()
+{
+    timeOut = true;
+    numberOfSignals = maxNumberOfSignals;
+    signal();
+}
 void MyTimer::timer_update()
 {
-    if(time->hour() == 0 && time->minute() == 0 && time->second() == 0)
-    {
-        timeOut = true;
-        numberOfSignals = 15;
-        signal();
-    }
+    if(time->hour() == 0 &&
+            time->minute() == 0 &&
+            time->second() == 0)  start_time_out();
     else *time = time->addSecs(-1);
 }
 void MyTimer::alarm_update()
@@ -108,12 +115,7 @@ void MyTimer::alarm_update()
     QTime now = QTime::currentTime();
     if(time->hour() == now.hour() &&
             time->minute() == now.minute() &&
-            time->second() == now.second())
-    {
-       timeOut = true;
-       numberOfSignals = 15;
-       signal();
-    }
+            time->second() == now.second()) start_time_out();
 }
  void MyTimer::update()
  {

@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     my_colors.cpp \
+    my_sounds.cpp \
     mytimer.cpp \
     showtimer.cpp
 
@@ -22,6 +23,7 @@ HEADERS += \
     editingtimer.h \
     mainwindow.h \
     my_colors.h \
+    my_sounds.h \
     mytimer.h \
     showtimer.h
 
@@ -37,5 +39,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Sounds/timerSignal.wav \
-    Sounds/timerSound.wav
+    Sounds/timerSound.wav \
+    files/timers.txt \
+    sounds/timerSound1.wav \
+    sounds/timerSound2.wav \
+    sounds/timerSound3.wav \
+    sounds/timerSound4.wav

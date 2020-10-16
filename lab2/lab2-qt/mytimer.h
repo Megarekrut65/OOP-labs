@@ -14,9 +14,7 @@ class MyTimer
 {
 private:  
     QTime* time;
-    int maxNumberOfSignals;
     int numberOfSignals;
-    QString pathToSound;
     void signal();
     void timer_update();
     void alarm_update();
@@ -25,14 +23,16 @@ private:
     QTime qString_to_QTime(const QString& line);
     QString bool_to_QString(bool value);
     QString get_QString_type();
+    void start_time_out();
 public:
     bool active;
     bool timeOut;
     QString name;
     Type type;
-
+    int maxNumberOfSignals;
+    QString pathToSound;
     MyTimer();
-    MyTimer( const QString& name,  QTime* time, Type type, int maxNumberOfSignals = 15, QString nameOfSound = "timerSound.wav");
+    MyTimer( const QString& name,  QTime* time, Type type, int maxNumberOfSignals = 15, QString nameOfSound = "timerSound1.wav");
     MyTimer( const QString& line);
     ~MyTimer();
     void set_time( QTime time);
@@ -44,5 +44,6 @@ public:
     QString get_timer_info();
     void turn_on();
     void turn_off();
+    void set_path_to_sound(QString nameOfSound);
 };
 #endif // MYTIMER_H

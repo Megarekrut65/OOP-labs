@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "mytimer.h"
 #include <QStandardItemModel>
+#include "my_sounds.h"
 
 namespace Ui {
 class AddingTimer;
@@ -23,11 +24,14 @@ private slots:
 
     void on_btnCancel_clicked();
 
+    void on_seletcSound_activated(const QString &arg1);
+
 private:
     Ui::AddingTimer *ui;
     QVector<MyTimer*>* timers;
     QStandardItemModel *model;
-    Type setType();
+    Type set_type();
+    void add_sounds();
 };
 
 #endif // ADDINGTIMER_H

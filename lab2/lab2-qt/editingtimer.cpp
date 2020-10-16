@@ -14,6 +14,9 @@ EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStandardItemModel *model,
             turn_off_timer();
             ui->lineEditName->setText(timers[indexOfTimer]->name);
             ui->timeEditTime->setTime(timers[indexOfTimer]->get_time());
+            ui->spinBoxNumber->setValue(timers[indexOfTimer]->maxNumberOfSignals);
+            add_sounds();
+            ui->seletcSound->setCurrentIndex(MySounds::get_number_of_sound(timers[indexOfTimer]->pathToSound));
         }
     }
 }
@@ -40,13 +43,21 @@ EditingTimer::~EditingTimer()
     model = nullptr;
     delete ui;
 }
-
+void  EditingTimer::add_sounds()
+{
+    for(int i = 0; i < MySounds::sounds.size(); i++)
+    {
+         ui->seletcSound->addItem(MySounds::sounds[i]);
+    }
+}
 void EditingTimer::on_btnSave_clicked()
 {
     if(timers[indexOfTimer] && model)
     {
         timers[indexOfTimer]->name = ui->lineEditName->text();
         timers[indexOfTimer]->set_time(ui->timeEditTime->time());
+        timers[indexOfTimer]->set_path_to_sound(ui->seletcSound->currentText());
+        timers[indexOfTimer]->maxNumberOfSignals = ui->spinBoxNumber->value();
     }
     this->close();
 }
@@ -54,4 +65,10 @@ void EditingTimer::on_btnSave_clicked()
 void EditingTimer::on_btnCancel_clicked()
 {
     this->close();
+}
+
+void EditingTimer::on_seletcSound_activated(const QString &arg1)
+{
+    QString soundPath = QDir::currentPath() + "/Sounds/timer" + arg1 + ".wav";
+    QSound::play(soundPath);
 }

@@ -7,6 +7,7 @@ AddingTimer::AddingTimer(QVector<MyTimer*>* timers,
     ui(new Ui::AddingTimer), timers(timers), model(model)
 {
     ui->setupUi(this);
+    add_sounds();
 }
 
 AddingTimer::~AddingTimer()
@@ -15,7 +16,14 @@ AddingTimer::~AddingTimer()
     model = nullptr;
     delete ui;
 }
-Type AddingTimer::setType()
+void  AddingTimer::add_sounds()
+{
+    for(int i = 0; i < MySounds::sounds.size(); i++)
+    {
+         ui->seletcSound->addItem(MySounds::sounds[i]);
+    }
+}
+Type AddingTimer::set_type()
 {
     if(ui->radioButtonTimer->isChecked()) return Type::TIMER;
     else if(ui->radioButtonAlarm->isChecked()) return Type::AlARM_ClOCK;
@@ -24,12 +32,14 @@ Type AddingTimer::setType()
 }
 void AddingTimer::on_btnCreate_clicked()
 {
-    QString name = ui->lineAddName->text();
-    QTime* time = new QTime(ui->timeAdd->time());
     if(timers && model)
     {
-        Type type = setType();
-        MyTimer* timer = new MyTimer(name, time, type);
+        QString name = ui->lineAddName->text();
+        QTime* time = new QTime(ui->timeAdd->time());
+        Type type = set_type();
+        int maxNumberOfSignals = ui->spinBoxNumber->value();
+        QString soundName = ui->seletcSound->currentText();
+        MyTimer* timer = new MyTimer(name, time, type, maxNumberOfSignals, soundName);
         timers->push_back(timer);
         int size = model->rowCount();
         model->insertRow(size);
@@ -43,4 +53,10 @@ void AddingTimer::on_btnCreate_clicked()
 void AddingTimer::on_btnCancel_clicked()
 {
     this->close();
+}
+
+void AddingTimer::on_seletcSound_activated(const QString &arg1)
+{
+    QString soundPath = QDir::currentPath() + "/Sounds/timer" + arg1 + ".wav";
+    QSound::play(soundPath);
 }

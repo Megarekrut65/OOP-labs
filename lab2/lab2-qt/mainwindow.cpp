@@ -67,7 +67,6 @@ void MainWindow:: read_all_timers_from_file()
             if(!timers[size]->active) item->setBackground(QBrush(MyColors::pausedItem));
             else if(timers[size]->timeOut) item->setBackground(QBrush(MyColors::timeOut));
             model->setItem(size, item);
-            qDebug() << timers[size]->get_timer_info();
         }
         file.close();
     }
