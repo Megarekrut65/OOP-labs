@@ -35,7 +35,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    sounds/timer-signal.sfk \
-    sounds/timer-signal.wav \
-    timerSignal.wav \
-    timerSound.wav
+    Sounds/timerSignal.wav \
+    Sounds/timerSound.wav

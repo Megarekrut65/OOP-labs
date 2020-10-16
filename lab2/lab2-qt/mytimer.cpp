@@ -9,7 +9,7 @@ MyTimer::MyTimer( const QString& name, QTime* time, Type type, const int maxNumb
 {
   if(time) this->time = time;
   else this->time = new QTime(0,0,0);
-  pathToSound = QDir::currentPath() + "/" + nameOfSound;
+  pathToSound = QDir::currentPath() + "/Sounds/" + nameOfSound;
 }
 bool MyTimer::qString_to_bool(const QString& line)
 {
