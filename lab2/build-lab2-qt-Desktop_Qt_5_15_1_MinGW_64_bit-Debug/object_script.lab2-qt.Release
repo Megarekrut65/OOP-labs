@@ -2,6 +2,7 @@ release/addingtimer.o
 release/editingtimer.o
 release/main.o
 release/mainwindow.o
+release/my_colors.o
 release/mytimer.o
 release/showtimer.o
 release/moc_addingtimer.o

@@ -1,7 +1,7 @@
 #include "editingtimer.h"
 #include "ui_editingtimer.h"
 
-EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStringListModel *model, int indexOfTimer, QWidget *parent) :
+EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStandardItemModel *model, int indexOfTimer, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditingTimer), timers(timers), model(model), indexOfTimer(indexOfTimer)
 {
@@ -17,9 +17,17 @@ EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStringListModel *model, i
         }
     }
 }
-
+void EditingTimer::turn_on_timer()
+{
+    if(indexOfTimer>= timers.size() || !timers[indexOfTimer]) return;
+    auto item = new QStandardItem(QString::number(indexOfTimer) + "." +
+                                   timers[indexOfTimer]->get_QString_timer());
+    model->setItem(indexOfTimer, item);
+    timers[indexOfTimer]->turn_on();
+}
 EditingTimer::~EditingTimer()
 {
+    turn_on_timer();
     model = nullptr;
     delete ui;
 }
@@ -30,10 +38,6 @@ void EditingTimer::on_btnSave_clicked()
     {
         timers[indexOfTimer]->name = ui->lineEditName->text();
         timers[indexOfTimer]->set_time(ui->timeEditTime->time());
-        QModelIndex index = model->index(indexOfTimer);
-        model->setData(index,
-                       QString::number(indexOfTimer) + "." +
-                       timers[indexOfTimer]->get_QString_timer());
     }
     this->close();
 }

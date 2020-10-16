@@ -2,7 +2,7 @@
 #include "ui_addingtimer.h"
 
 AddingTimer::AddingTimer(QVector<MyTimer*>* timers,
-                         QStringListModel *model, QWidget *parent) :
+                         QStandardItemModel *model, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddingTimer), timers(timers), model(model)
 {
@@ -33,9 +33,8 @@ void AddingTimer::on_btnCreate_clicked()
         timers->push_back(timer);
         int size = model->rowCount();
         model->insertRow(size);
-        QModelIndex index = model->index(size);
-        model->setData(index,
-                       QString::number(timers->size() - 1) + "." +timer->get_QString_timer());
+        auto item = new QStandardItem( QString::number(timers->size() - 1) + "." +timer->get_QString_timer());
+        model->setItem(size, item);
         timer = nullptr;
     }
     this->close();

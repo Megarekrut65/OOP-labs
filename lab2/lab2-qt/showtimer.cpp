@@ -1,7 +1,7 @@
 #include "showtimer.h"
 #include "ui_showtimer.h"
 
-ShowTimer::ShowTimer(QVector<MyTimer*>& timers, QStringListModel *model, QWidget *parent) :
+ShowTimer::ShowTimer(QVector<MyTimer*>& timers, QStandardItemModel *model, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ShowTimer), model(model), timers(timers), indexOfTimer(0)
 {
@@ -42,6 +42,10 @@ void ShowTimer::on_btnStart_clicked()
     if(indexOfTimer >= timers.size()) return;
     timers[indexOfTimer]->turn_on();
     ui->lblTimer->setText(get_time_style());
+    auto item = new QStandardItem(QString::number(indexOfTimer) + "." +
+                                   timers[indexOfTimer]->get_QString_timer());
+    if(timers[indexOfTimer]->timeOut) item->setBackground(QBrush(MyColors::timeOut));
+    model->setItem(indexOfTimer, item);
 }
 
 void ShowTimer::on_btnPause_clicked()
@@ -49,6 +53,10 @@ void ShowTimer::on_btnPause_clicked()
     if(indexOfTimer >= timers.size()) return;
     timers[indexOfTimer]->turn_off();
     ui->lblTimer->setText(get_time_style());
+    auto item = new QStandardItem(QString::number(indexOfTimer) + "." +
+                                   timers[indexOfTimer]->get_QString_timer());
+    item->setBackground(QBrush(MyColors::pausedItem));
+    model->setItem(indexOfTimer, item);
 }
 
 void ShowTimer::on_btnEdit_clicked()
@@ -56,6 +64,7 @@ void ShowTimer::on_btnEdit_clicked()
     EditingTimer newWindow( timers, model, indexOfTimer);
     newWindow.setModal(true);
     newWindow.exec();
+    this->hide();
 }
 
 void ShowTimer::on_btnDelete_clicked()

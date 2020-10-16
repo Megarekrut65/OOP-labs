@@ -4,9 +4,10 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "mytimer.h"
-#include <QStringListModel>
+#include <QStandardItemModel>
 #include "addingtimer.h"
 #include "showtimer.h"
+#include "my_colors.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,7 +32,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QStringListModel *model;
+    QStandardItemModel *model;
     QTimer *oneSecondTimer;
     QVector<MyTimer*> timers;
     ShowTimer* timerWindow;

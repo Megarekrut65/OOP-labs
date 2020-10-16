@@ -4,7 +4,8 @@
 #include <QDialog>
 #include "mytimer.h"
 #include "editingtimer.h"
-#include <QStringListModel>
+#include <QStandardItemModel>
+#include "my_colors.h"
 
 namespace Ui {
 class ShowTimer;
@@ -15,7 +16,7 @@ class ShowTimer : public QDialog
     Q_OBJECT
 
 public:
-    explicit ShowTimer(QVector<MyTimer*>& timers, QStringListModel *model = nullptr, QWidget *parent = nullptr);
+    explicit ShowTimer(QVector<MyTimer*>& timers, QStandardItemModel *model = nullptr, QWidget *parent = nullptr);
     ~ShowTimer();
     void update_timer();
     void set_timer(int indexOfTimer);
@@ -30,7 +31,7 @@ private slots:
 
 private:
     Ui::ShowTimer *ui;
-    QStringListModel *model;
+    QStandardItemModel *model;
     QVector<MyTimer*>& timers;
     int indexOfTimer;
 

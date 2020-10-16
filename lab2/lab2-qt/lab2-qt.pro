@@ -13,6 +13,7 @@ SOURCES += \
     editingtimer.cpp \
     main.cpp \
     mainwindow.cpp \
+    my_colors.cpp \
     mytimer.cpp \
     showtimer.cpp
 
@@ -20,6 +21,7 @@ HEADERS += \
     addingtimer.h \
     editingtimer.h \
     mainwindow.h \
+    my_colors.h \
     mytimer.h \
     showtimer.h
 

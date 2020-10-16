@@ -5,7 +5,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-     model(new QStringListModel)
+     model(new QStandardItemModel)
 {
     ui->setupUi(this);
     oneSecondTimer = nullptr;
@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->listTimers->setModel(model);
     timerWindow = new ShowTimer(timers, model, this);
     ui->listTimers->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->listTimers->setStyleSheet("background-color: #FFFFFF;");
+    ui->listTimers->setStyleSheet("background-color: " + MyColors::startedListBackground);
     ui->statusbar->showMessage("[T]-Timer, [A]-Alarm clock");
 
     start_header_timer();
@@ -46,8 +46,10 @@ void MainWindow::update_all_timers()
         if(timers[i])
         {
             timers[i]->update();
-            model->setData(model->index(i),
-                           QString::number(i) + "." + timers[i]->get_QString_timer());
+            auto item = new QStandardItem( QString::number(i) + "." + timers[i]->get_QString_timer());
+            if(!timers[i]->active) item->setBackground(QBrush(MyColors::pausedItem));
+            else if(timers[i]->timeOut) item->setBackground(QBrush(MyColors::timeOut));
+            model->setItem(i, item);
         }
     }
     timerWindow->update_timer();
@@ -55,7 +57,7 @@ void MainWindow::update_all_timers()
 void MainWindow::on_btnStartAll_clicked()
 {
     AllActive = true;
-    ui->listTimers->setStyleSheet("background-color: #FFFFFF;");
+    ui->listTimers->setStyleSheet("background-color: " + MyColors::startedListBackground);
     for(int i = 0; i < timers.size();i++)
     {
         timers[i]->turn_on();
@@ -65,7 +67,7 @@ void MainWindow::on_btnStartAll_clicked()
 void MainWindow::on_btnPauseAll_clicked()
 {
     AllActive = false;
-    ui->listTimers->setStyleSheet("background-color: #F0E68C;");
+    ui->listTimers->setStyleSheet("background-color: "  +MyColors::pausedListBackground);
 }
 void MainWindow::on_btnAdd_clicked()
 {

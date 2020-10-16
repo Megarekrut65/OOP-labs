@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include "mytimer.h"
-#include <QStringListModel>
+#include <QStandardItemModel>
 
 namespace Ui {
 class AddingTimer;
@@ -15,7 +15,7 @@ class AddingTimer : public QDialog
 
 public:
     explicit AddingTimer( QVector<MyTimer*>* timers = nullptr,
-    QStringListModel *model = nullptr, QWidget *parent = nullptr);
+    QStandardItemModel *model = nullptr, QWidget *parent = nullptr);
     ~AddingTimer();
 
 private slots:
@@ -26,7 +26,7 @@ private slots:
 private:
     Ui::AddingTimer *ui;
     QVector<MyTimer*>* timers;
-    QStringListModel *model;
+    QStandardItemModel *model;
     Type setType();
 };
 
