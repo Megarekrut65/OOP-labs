@@ -45,3 +45,6 @@ DISTFILES += \
     sounds/timerSound2.wav \
     sounds/timerSound3.wav \
     sounds/timerSound4.wav
+
+RESOURCES += \
+    resource.qrc

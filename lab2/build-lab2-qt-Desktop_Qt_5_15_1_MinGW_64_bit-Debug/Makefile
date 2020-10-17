@@ -279,7 +279,8 @@ Makefile: ../lab2-qt/lab2-qt.pro E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/win32-g++/q
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Network.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Core.prl \
 		E:/Qt-Cpp/5.15.1/mingw81_64/lib/qtmain.prl \
-		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/build_pass.prf
+		E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/build_pass.prf \
+		../lab2-qt/resource.qrc
 	$(QMAKE) -o Makefile ..\lab2-qt\lab2-qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/spec_pre.prf:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/qdevice.pri:
@@ -491,6 +492,7 @@ E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Network.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/Qt5Core.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/lib/qtmain.prl:
 E:/Qt-Cpp/5.15.1/mingw81_64/mkspecs/features/build_pass.prf:
+../lab2-qt/resource.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\lab2-qt\lab2-qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

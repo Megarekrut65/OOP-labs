@@ -6,6 +6,7 @@ debug/my_colors.o
 debug/my_sounds.o
 debug/mytimer.o
 debug/showtimer.o
+debug/qrc_resource.o
 debug/moc_addingtimer.o
 debug/moc_editingtimer.o
 debug/moc_mainwindow.o

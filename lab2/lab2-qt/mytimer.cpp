@@ -2,10 +2,10 @@
 
 MyTimer::MyTimer()
     :  time(nullptr), numberOfSignals(0), active(false),
-      timeOut(true), name(""),type(Type::TIMER), maxNumberOfSignals(0), pathToSound("") {}
+      timeOut(true), name(""),type(Type::TIMER), maxNumberOfSignals(0), pathToSound(""), soundMode(true) {}
 MyTimer::MyTimer( const QString& name, QTime* time, Type type, const int maxNumberOfSignals, QString nameOfSound)
     :  numberOfSignals(0), active(true), timeOut(false),
-      name(name), type(type), maxNumberOfSignals(maxNumberOfSignals)
+      name(name), type(type), maxNumberOfSignals(maxNumberOfSignals), soundMode(true)
 {
   if(time) this->time = time;
   else this->time = new QTime(0,0,0);
@@ -44,6 +44,7 @@ MyTimer::MyTimer(const QString& line)
         maxNumberOfSignals = parts[5].toInt();
         numberOfSignals = parts[6].toInt();
         pathToSound = parts[7];
+        soundMode = true;
     }
     else
     {
@@ -93,7 +94,7 @@ QString MyTimer::get_QString_type()
 void MyTimer::signal()
 {
     if(numberOfSignals <= 0) return;
-    QSound::play(pathToSound);
+    if(soundMode) QSound::play(pathToSound);
     numberOfSignals--;
     if(numberOfSignals == 0) active = false;
 }
@@ -117,8 +118,9 @@ void MyTimer::alarm_update()
             time->minute() == now.minute() &&
             time->second() == now.second()) start_time_out();
 }
- void MyTimer::update()
+ void MyTimer::update(bool soundMode)
  {
+     this->soundMode = soundMode;
      if(!active) return;
      if(timeOut)
      {

@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/add.png</file>
+        <file>images/delete.png</file>
+        <file>images/pause.png</file>
+        <file>images/quit.png</file>
+        <file>images/start.png</file>
+        <file>images/sound.png</file>
+        <file>images/sound-off.png</file>
+        <file>images/not-distrub.png</file>
+    </qresource>
+</RCC>

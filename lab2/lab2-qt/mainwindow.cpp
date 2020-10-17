@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->statusbar->showMessage(statusBar);
     fileModel = "File model: active, time out, timer type, time(hh:mm:ss),"
                 " timer name, max number of signals, number of signals, path to sound\r\n";
+    soundMode = true;
     read_all_timers_from_file();
     start_header_timer();
 }
@@ -57,6 +58,7 @@ void MainWindow:: read_all_timers_from_file()
         while(!file.atEnd())
         {
             if(timers.size() == 0) file.readLine();//read file model
+            if(file.atEnd()) break;
             QString line = file.readLine();
             line.remove("\r\n");
             timers.push_back(new MyTimer(line));
@@ -95,7 +97,7 @@ void MainWindow::update_all_timers()
     {
         if(timers[i])
         {
-            timers[i]->update();
+            timers[i]->update(soundMode);
             auto item = new QStandardItem( QString::number(i) + "." + timers[i]->get_QString_timer());
             if(!timers[i]->active) item->setBackground(QBrush(MyColors::pausedItem));
             else if(timers[i]->timeOut) item->setBackground(QBrush(MyColors::timeOut));
@@ -106,7 +108,17 @@ void MainWindow::update_all_timers()
     if(saving) file.close();
     timerWindow->update_timer();
 }
-void MainWindow::on_btnStartAll_clicked()
+void MainWindow::on_listTimers_doubleClicked(const QModelIndex &index)
+{
+    int indexOfTimer = index.row();
+    timerWindow->set_timer(indexOfTimer);
+    timerWindow->show();
+}
+void MainWindow::on_actionQuit_triggered()
+{
+    this->close();
+}
+void MainWindow::on_actionStart_all_timers_triggered()
 {
     AllActive = true;
     ui->listTimers->setStyleSheet("background-color: " + MyColors::startedListBackground);
@@ -115,22 +127,35 @@ void MainWindow::on_btnStartAll_clicked()
         timers[i]->turn_on();
     }
 }
-
-void MainWindow::on_btnPauseAll_clicked()
+void MainWindow::on_actionPause_all_timers_triggered()
 {
     AllActive = false;
     ui->listTimers->setStyleSheet("background-color: "  +MyColors::pausedListBackground);
 }
-void MainWindow::on_btnAdd_clicked()
+void MainWindow::on_actionAdd_new_timer_triggered()
 {
     AddingTimer window(&timers, model);
     window.setModal(true);
     window.exec();
 }
-
-void MainWindow::on_listTimers_doubleClicked(const QModelIndex &index)
+void MainWindow::on_actionDelete_all_timers_triggered()
 {
-    int indexOfTimer = index.row();
-    timerWindow->set_timer(indexOfTimer);
-    timerWindow->show();
+    while(timers.size() > 0)
+    {
+        if(timers[0]) delete timers[0];
+        timers.erase(timers.begin());
+        model->removeRow(0);
+    }
+}
+void MainWindow::on_actionSound_on_triggered()
+{
+    soundMode = true;
+}
+void MainWindow::on_actionSound_off_triggered()
+{
+    soundMode = false;
+}
+void MainWindow::on_actionDo_not_disturb_mode_triggered()
+{
+
 }
