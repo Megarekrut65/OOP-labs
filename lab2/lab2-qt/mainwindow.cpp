@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     fileModel = "File model: active, time out, timer type, time(hh:mm:ss),"
                 " timer name, max number of signals, number of signals, path to sound\r\n";
     soundMode = true;
+    indexOfCurrentTimer = -1;
     read_all_timers_from_file();
     start_header_timer();
 }
@@ -158,4 +159,26 @@ void MainWindow::on_actionSound_off_triggered()
 void MainWindow::on_actionDo_not_disturb_mode_triggered()
 {
 
+}
+
+void MainWindow::on_actionStart_selected_timer_triggered()
+{
+    if(indexOfCurrentTimer < 0) return;
+
+}
+void MainWindow::on_actionPause_selected_timer_triggered()
+{
+    if(indexOfCurrentTimer < 0) return;
+
+}
+void MainWindow::on_actionDelete_selected_timer_triggered()
+{
+    if(indexOfCurrentTimer < 0) return;
+
+    indexOfCurrentTimer = -1;
+}
+void MainWindow::on_listTimers_clicked(const QModelIndex &index)
+{
+    indexOfCurrentTimer = index.row();
+    qDebug() << indexOfCurrentTimer;
 }

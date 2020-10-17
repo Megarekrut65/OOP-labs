@@ -41,6 +41,14 @@ private slots:
 
     void on_actionDo_not_disturb_mode_triggered();
 
+    void on_actionStart_selected_timer_triggered();
+
+    void on_actionPause_selected_timer_triggered();
+
+    void on_actionDelete_selected_timer_triggered();
+
+    void on_listTimers_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     QStandardItemModel *model;
@@ -51,6 +59,7 @@ private:
     const QString filePath;
     QString statusBar;
     QString fileModel;
+    int indexOfCurrentTimer;
     bool soundMode;
     void start_header_timer();
     void update_all_timers();

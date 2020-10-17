@@ -115,6 +115,9 @@
     <addaction name="actionStart_all_timers"/>
     <addaction name="actionPause_all_timers"/>
     <addaction name="actionDelete_all_timers"/>
+    <addaction name="actionStart_selected_timer"/>
+    <addaction name="actionPause_selected_timer"/>
+    <addaction name="actionDelete_selected_timer"/>
    </widget>
    <widget class="QMenu" name="menuSetting">
     <property name="title">
@@ -138,10 +141,15 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionAdd_new_timer"/>
+   <addaction name="separator"/>
    <addaction name="actionStart_all_timers"/>
    <addaction name="actionPause_all_timers"/>
    <addaction name="actionDelete_all_timers"/>
-   <addaction name="actionAdd_new_timer"/>
+   <addaction name="separator"/>
+   <addaction name="actionStart_selected_timer"/>
+   <addaction name="actionPause_selected_timer"/>
+   <addaction name="actionDelete_selected_timer"/>
    <addaction name="separator"/>
    <addaction name="actionSound_on"/>
    <addaction name="actionSound_off"/>
@@ -159,7 +167,7 @@
   <action name="actionStart_all_timers">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/new/prefix1/images/start.png</normaloff>:/new/prefix1/images/start.png</iconset>
+     <normaloff>:/new/prefix1/images/start-all.png</normaloff>:/new/prefix1/images/start-all.png</iconset>
    </property>
    <property name="text">
     <string>Start all timers</string>
@@ -168,7 +176,7 @@
   <action name="actionPause_all_timers">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/new/prefix1/images/pause.png</normaloff>:/new/prefix1/images/pause.png</iconset>
+     <normaloff>:/new/prefix1/images/pause-all.png</normaloff>:/new/prefix1/images/pause-all.png</iconset>
    </property>
    <property name="text">
     <string>Pause all timers</string>
@@ -186,7 +194,7 @@
   <action name="actionDelete_all_timers">
    <property name="icon">
     <iconset resource="resource.qrc">
-     <normaloff>:/new/prefix1/images/delete.png</normaloff>:/new/prefix1/images/delete.png</iconset>
+     <normaloff>:/new/prefix1/images/delete-all.png</normaloff>:/new/prefix1/images/delete-all.png</iconset>
    </property>
    <property name="text">
     <string>Delete all timers</string>
@@ -217,6 +225,33 @@
    </property>
    <property name="text">
     <string>Do not disturb mode</string>
+   </property>
+  </action>
+  <action name="actionStart_selected_timer">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/prefix1/images/start.png</normaloff>:/new/prefix1/images/start.png</iconset>
+   </property>
+   <property name="text">
+    <string>Start selected timer</string>
+   </property>
+  </action>
+  <action name="actionPause_selected_timer">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/prefix1/images/pause.png</normaloff>:/new/prefix1/images/pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>Pause selected timer</string>
+   </property>
+  </action>
+  <action name="actionDelete_selected_timer">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/prefix1/images/delete.png</normaloff>:/new/prefix1/images/delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete selected timer</string>
    </property>
   </action>
  </widget>

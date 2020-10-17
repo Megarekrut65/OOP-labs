@@ -8,5 +8,8 @@
         <file>images/sound.png</file>
         <file>images/sound-off.png</file>
         <file>images/not-distrub.png</file>
+        <file>images/delete-all.png</file>
+        <file>images/pause-all.png</file>
+        <file>images/start-all.png</file>
     </qresource>
 </RCC>
