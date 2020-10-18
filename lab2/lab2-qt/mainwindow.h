@@ -63,6 +63,7 @@ private:
     bool AllActive;
     const QString timersPath;
     const QString periodPath;
+    const QString soundModePath;
     QString statusBar;
     QString soundBar;
     QString notDisturbBar;
@@ -72,6 +73,10 @@ private:
     int indexOfShowedTimer;
     TimePeriod notDisturbPeriod;
     void set_status_bar();
+    void set_list_model();
+    void set_sound_mode();
+    void edit_sound_mode();
+    void edit_status_bar(QString otherBar = "");
     void start_header_timer();
     void update_all_timers();
     void read_all_timers_from_file();

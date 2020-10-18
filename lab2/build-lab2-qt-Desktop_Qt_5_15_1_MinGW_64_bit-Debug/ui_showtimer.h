@@ -12,21 +12,25 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_ShowTimer
 {
 public:
-    QPushButton *btnDelete;
-    QPushButton *btnEdit;
-    QPushButton *btnPause;
     QLabel *lblTimer;
-    QPushButton *btnStart;
     QLabel *lblTimerName;
     QLabel *lblType;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *btnEdit;
+    QPushButton *btnStart;
+    QPushButton *btnPause;
+    QPushButton *btnDelete;
 
     void setupUi(QDialog *ShowTimer)
     {
@@ -40,54 +44,25 @@ public:
         ShowTimer->setSizePolicy(sizePolicy);
         ShowTimer->setMinimumSize(QSize(460, 280));
         ShowTimer->setMaximumSize(QSize(460, 280));
-        btnDelete = new QPushButton(ShowTimer);
-        btnDelete->setObjectName(QString::fromUtf8("btnDelete"));
-        btnDelete->setEnabled(true);
-        btnDelete->setGeometry(QRect(370, 200, 61, 41));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Yu Mincho Demibold"));
-        font.setPointSize(10);
-        font.setBold(true);
-        font.setWeight(75);
-        btnDelete->setFont(font);
-        btnDelete->setCursor(QCursor(Qt::PointingHandCursor));
-        btnEdit = new QPushButton(ShowTimer);
-        btnEdit->setObjectName(QString::fromUtf8("btnEdit"));
-        btnEdit->setEnabled(true);
-        btnEdit->setGeometry(QRect(30, 200, 61, 41));
-        btnEdit->setFont(font);
-        btnEdit->setCursor(QCursor(Qt::PointingHandCursor));
-        btnPause = new QPushButton(ShowTimer);
-        btnPause->setObjectName(QString::fromUtf8("btnPause"));
-        btnPause->setEnabled(true);
-        btnPause->setGeometry(QRect(260, 200, 61, 41));
-        btnPause->setFont(font);
-        btnPause->setCursor(QCursor(Qt::PointingHandCursor));
         lblTimer = new QLabel(ShowTimer);
         lblTimer->setObjectName(QString::fromUtf8("lblTimer"));
         lblTimer->setGeometry(QRect(30, 90, 401, 71));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Consolas"));
-        font1.setPointSize(36);
-        font1.setItalic(true);
-        lblTimer->setFont(font1);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Consolas"));
+        font.setPointSize(36);
+        font.setItalic(true);
+        lblTimer->setFont(font);
         lblTimer->setCursor(QCursor(Qt::ArrowCursor));
         lblTimer->setScaledContents(false);
         lblTimer->setAlignment(Qt::AlignCenter);
         lblTimer->setWordWrap(false);
-        btnStart = new QPushButton(ShowTimer);
-        btnStart->setObjectName(QString::fromUtf8("btnStart"));
-        btnStart->setEnabled(true);
-        btnStart->setGeometry(QRect(140, 200, 61, 41));
-        btnStart->setFont(font);
-        btnStart->setCursor(QCursor(Qt::PointingHandCursor));
         lblTimerName = new QLabel(ShowTimer);
         lblTimerName->setObjectName(QString::fromUtf8("lblTimerName"));
         lblTimerName->setGeometry(QRect(30, 30, 401, 61));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Orator Std"));
-        font2.setPointSize(36);
-        lblTimerName->setFont(font2);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Orator Std"));
+        font1.setPointSize(36);
+        lblTimerName->setFont(font1);
         lblTimerName->setCursor(QCursor(Qt::ArrowCursor));
         lblTimerName->setAutoFillBackground(false);
         lblTimerName->setScaledContents(false);
@@ -100,10 +75,53 @@ public:
         lblType = new QLabel(ShowTimer);
         lblType->setObjectName(QString::fromUtf8("lblType"));
         lblType->setGeometry(QRect(170, 160, 111, 21));
-        QFont font3;
-        font3.setPointSize(14);
-        lblType->setFont(font3);
+        QFont font2;
+        font2.setPointSize(14);
+        lblType->setFont(font2);
         lblType->setAlignment(Qt::AlignCenter);
+        horizontalLayoutWidget = new QWidget(ShowTimer);
+        horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(30, 210, 401, 41));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        btnEdit = new QPushButton(horizontalLayoutWidget);
+        btnEdit->setObjectName(QString::fromUtf8("btnEdit"));
+        btnEdit->setEnabled(true);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Yu Mincho Demibold"));
+        font3.setPointSize(10);
+        font3.setBold(true);
+        font3.setWeight(75);
+        btnEdit->setFont(font3);
+        btnEdit->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout->addWidget(btnEdit);
+
+        btnStart = new QPushButton(horizontalLayoutWidget);
+        btnStart->setObjectName(QString::fromUtf8("btnStart"));
+        btnStart->setEnabled(true);
+        btnStart->setFont(font3);
+        btnStart->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout->addWidget(btnStart);
+
+        btnPause = new QPushButton(horizontalLayoutWidget);
+        btnPause->setObjectName(QString::fromUtf8("btnPause"));
+        btnPause->setEnabled(true);
+        btnPause->setFont(font3);
+        btnPause->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout->addWidget(btnPause);
+
+        btnDelete = new QPushButton(horizontalLayoutWidget);
+        btnDelete->setObjectName(QString::fromUtf8("btnDelete"));
+        btnDelete->setEnabled(true);
+        btnDelete->setFont(font3);
+        btnDelete->setCursor(QCursor(Qt::PointingHandCursor));
+
+        horizontalLayout->addWidget(btnDelete);
+
 
         retranslateUi(ShowTimer);
 
@@ -113,13 +131,13 @@ public:
     void retranslateUi(QDialog *ShowTimer)
     {
         ShowTimer->setWindowTitle(QCoreApplication::translate("ShowTimer", "Dialog", nullptr));
-        btnDelete->setText(QCoreApplication::translate("ShowTimer", "Delete", nullptr));
-        btnEdit->setText(QCoreApplication::translate("ShowTimer", "Edit", nullptr));
-        btnPause->setText(QCoreApplication::translate("ShowTimer", "Pause", nullptr));
         lblTimer->setText(QCoreApplication::translate("ShowTimer", "<h3 style=\"red\"> 10:20:30 </h3>", nullptr));
-        btnStart->setText(QCoreApplication::translate("ShowTimer", "Start", nullptr));
         lblTimerName->setText(QCoreApplication::translate("ShowTimer", "Timer Name", nullptr));
         lblType->setText(QCoreApplication::translate("ShowTimer", "Timer type", nullptr));
+        btnEdit->setText(QCoreApplication::translate("ShowTimer", "Edit", nullptr));
+        btnStart->setText(QCoreApplication::translate("ShowTimer", "Start", nullptr));
+        btnPause->setText(QCoreApplication::translate("ShowTimer", "Pause", nullptr));
+        btnDelete->setText(QCoreApplication::translate("ShowTimer", "Delete", nullptr));
     } // retranslateUi
 
 };

@@ -6,28 +6,65 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
      model(new QStandardItemModel),
+     oneSecondTimer(nullptr), AllActive(true),
      timersPath(QDir::currentPath()+"/files/timers.txt"),
-     periodPath(QDir::currentPath()+"/files/period.txt")
+     periodPath(QDir::currentPath()+"/files/period.txt"),
+     soundModePath(QDir::currentPath()+"/files/sound.txt"),
+     indexOfCurrentTimer(-1),
+     indexOfShowedTimer(-1)
 {
     ui->setupUi(this);
     this->setWindowTitle("Smart timers");
     QIcon icon("images/ico/timer.ico");
     this->setWindowIcon(icon);
-    oneSecondTimer = nullptr;
-    AllActive = true;
-    ui->listTimers->setModel(model);
     timerWindow = new ShowTimer(timers, indexOfCurrentTimer, model, this);
-    ui->listTimers->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->listTimers->setStyleSheet("background-color: " + MyColors::startedListBackground);
-    set_status_bar();
     fileModel = "File model: active, time out, timer type, time(hh:mm:ss),"
                 " timer name, max number of signals, number of signals, path to sound\r\n";
-    soundMode = true;
-    indexOfCurrentTimer = -1;
-    indexOfShowedTimer = -1;
     notDisturbPeriod = TimePeriod(periodPath);
+    set_list_model();
+    set_status_bar();
+    set_sound_mode();
     read_all_timers_from_file();
     start_header_timer();
+}
+void MainWindow::edit_sound_mode()
+{
+    QFile file(soundModePath);
+    if(!file.open(QIODevice::WriteOnly)) return;
+    file.write("Sound mode:\r\n");
+    if(soundMode) file.write("true");
+    else file.write("false");
+    file.close();
+}
+void MainWindow::set_sound_mode()
+{
+    soundMode = true;
+    QFile file(soundModePath);
+    if(!file.exists())
+    {
+        if(file.open(QIODevice::WriteOnly))
+        {
+            file.write("Sound mode:\r\n");
+            file.write("true");
+            file.close();
+        }
+        return;
+    }
+    if (file.open(QIODevice::ReadOnly))
+    {
+        if(file.atEnd()) return;
+        QString line = file.readLine();//read "Sound mode:\r\n"
+        if(file.atEnd()) return;
+        line = file.readLine();
+        if(line == "false") soundMode = false;
+        file.close();
+    }
+}
+void MainWindow::set_list_model()
+{
+    ui->listTimers->setModel(model);
+    ui->listTimers->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->listTimers->setStyleSheet("background-color: " + MyColors::startedListBackground);
 }
 void MainWindow::set_status_bar()
 {
@@ -95,14 +132,18 @@ void MainWindow:: start_header_timer()
     connect(oneSecondTimer, &QTimer::timeout, this, &MainWindow::update_all_timers);
     oneSecondTimer->start(1000);
 }
-void MainWindow::update_all_timers()
+void MainWindow::edit_status_bar(QString otherBar)
 {
-    bool saving = false;
-    QFile file(timersPath);
     if(soundMode) soundBar =  ". Sound on";
     else soundBar =  ". Sound off";
     if(notDisturbPeriod.is_period()) notDisturbBar = ". Not disturb mode";
     else notDisturbBar = "";
+    ui->statusbar->showMessage(statusBar + soundBar + notDisturbBar + otherBar);
+}
+void MainWindow::update_all_timers()
+{
+    bool saving = false;
+    QFile file(timersPath);
     QString saveBar = "";
     if(QTime::currentTime().second() == 0)
     {
@@ -110,7 +151,7 @@ void MainWindow::update_all_timers()
         saveBar=  ". Save...";
         if(!file.open(QIODevice::WriteOnly)) saving = false;
     }
-    ui->statusbar->showMessage(statusBar + soundBar + notDisturbBar + saveBar);
+    edit_status_bar(saveBar);
     if(saving) file.write(fileModel.toStdString().c_str());
     for(int i = 0; i < timers.size(); i++)
     {
@@ -176,10 +217,12 @@ void MainWindow::on_actionDelete_all_timers_triggered()
 void MainWindow::on_actionSound_on_triggered()
 {
     soundMode = true;
+    edit_sound_mode();
 }
 void MainWindow::on_actionSound_off_triggered()
 {
     soundMode = false;
+    edit_sound_mode();
 }
 void MainWindow::on_actionDo_not_disturb_mode_triggered()
 {
