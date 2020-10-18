@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
                 " timer name, max number of signals, number of signals, path to sound\r\n";
     soundMode = true;
     indexOfCurrentTimer = -1;
+    indexOfShowedTimer = -1;
     read_all_timers_from_file();
     start_header_timer();
 }
@@ -90,7 +91,6 @@ void MainWindow::update_all_timers()
         saving = true;
         ui->statusbar->showMessage(statusBar + ". Save...");
         if(!file.open(QIODevice::WriteOnly)) saving = false;
-        //active, timeOut, T, hh:mm:ss, Name, maxNumber, number, nameSound
     }
     else ui->statusbar->showMessage(statusBar);
     if(saving) file.write(fileModel.toStdString().c_str());
@@ -111,8 +111,8 @@ void MainWindow::update_all_timers()
 }
 void MainWindow::on_listTimers_doubleClicked(const QModelIndex &index)
 {
-    int indexOfTimer = index.row();
-    timerWindow->set_timer(indexOfTimer);
+    indexOfShowedTimer = index.row();
+    timerWindow->set_timer(indexOfShowedTimer);
     timerWindow->show();
 }
 void MainWindow::on_actionQuit_triggered()
@@ -141,6 +141,7 @@ void MainWindow::on_actionAdd_new_timer_triggered()
 }
 void MainWindow::on_actionDelete_all_timers_triggered()
 {
+    timerWindow->hide();
     while(timers.size() > 0)
     {
         if(timers[0]) delete timers[0];
@@ -160,25 +161,33 @@ void MainWindow::on_actionDo_not_disturb_mode_triggered()
 {
 
 }
-
 void MainWindow::on_actionStart_selected_timer_triggered()
 {
     if(indexOfCurrentTimer < 0) return;
+    timers[indexOfCurrentTimer]->turn_on();
 
 }
 void MainWindow::on_actionPause_selected_timer_triggered()
 {
     if(indexOfCurrentTimer < 0) return;
+    timers[indexOfCurrentTimer]->turn_off();
 
 }
 void MainWindow::on_actionDelete_selected_timer_triggered()
 {
     if(indexOfCurrentTimer < 0) return;
-
+    if(timers[indexOfCurrentTimer]) delete timers[indexOfCurrentTimer];
+    timers.erase(timers.begin() + indexOfCurrentTimer);
+    model->removeRow(indexOfCurrentTimer);
+    if(indexOfShowedTimer == indexOfCurrentTimer) timerWindow->hide();
+    else if (indexOfShowedTimer > indexOfCurrentTimer)
+    {
+        indexOfShowedTimer--;
+        timerWindow->set_timer(indexOfShowedTimer);
+    }
     indexOfCurrentTimer = -1;
 }
 void MainWindow::on_listTimers_clicked(const QModelIndex &index)
 {
     indexOfCurrentTimer = index.row();
-    qDebug() << indexOfCurrentTimer;
 }

@@ -61,6 +61,7 @@ private:
     QString fileModel;
     int indexOfCurrentTimer;
     bool soundMode;
+    int indexOfShowedTimer;
     void start_header_timer();
     void update_all_timers();
     void read_all_timers_from_file();
