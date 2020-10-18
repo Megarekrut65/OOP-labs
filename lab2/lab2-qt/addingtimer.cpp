@@ -7,6 +7,9 @@ AddingTimer::AddingTimer(QVector<MyTimer*>* timers,
     ui(new Ui::AddingTimer), timers(timers), model(model)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Adding timer");
+    QIcon icon("images/ico/add.ico");
+    this->setWindowIcon(icon);
     add_sounds();
 }
 

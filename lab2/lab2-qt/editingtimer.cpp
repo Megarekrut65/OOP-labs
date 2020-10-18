@@ -6,6 +6,9 @@ EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStandardItemModel *model,
     ui(new Ui::EditingTimer), timers(timers), model(model), indexOfTimer(indexOfTimer)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Editing timer");
+    QIcon icon("images/ico/edit.ico");
+    this->setWindowIcon(icon);
     if(indexOfTimer>= timers.size()) this->close();
     else
     {

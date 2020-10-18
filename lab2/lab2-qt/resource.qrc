@@ -1,15 +1,31 @@
 <RCC>
-    <qresource prefix="/new/prefix1">
-        <file>images/add.png</file>
-        <file>images/delete.png</file>
-        <file>images/pause.png</file>
-        <file>images/quit.png</file>
-        <file>images/start.png</file>
-        <file>images/sound.png</file>
-        <file>images/sound-off.png</file>
-        <file>images/not-distrub.png</file>
-        <file>images/delete-all.png</file>
-        <file>images/pause-all.png</file>
-        <file>images/start-all.png</file>
+    <qresource prefix="/icon"/>
+    <qresource prefix="/img">
+        <file>images/ico/not-distrub.ico</file>
+        <file>images/png/add.png</file>
+        <file>images/png/delete-all.png</file>
+        <file>images/png/delete.png</file>
+        <file>images/png/not-distrub.png</file>
+        <file>images/png/pause-all.png</file>
+        <file>images/png/pause.png</file>
+        <file>images/png/quit.png</file>
+        <file>images/png/sound-off.png</file>
+        <file>images/png/sound.png</file>
+        <file>images/png/start-all.png</file>
+        <file>images/png/start.png</file>
+        <file>images/png/edit.png</file>
+        <file>images/png/show.png</file>
+        <file>images/ico/add.ico</file>
+        <file>images/ico/delete.ico</file>
+        <file>images/ico/delete-all.ico</file>
+        <file>images/ico/edit.ico</file>
+        <file>images/ico/pause.ico</file>
+        <file>images/ico/pause-all.ico</file>
+        <file>images/ico/quit.ico</file>
+        <file>images/ico/show.ico</file>
+        <file>images/ico/sound.ico</file>
+        <file>images/ico/sound-off.ico</file>
+        <file>images/ico/start.ico</file>
+        <file>images/ico/start-all.ico</file>
     </qresource>
 </RCC>

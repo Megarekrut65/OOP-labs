@@ -149,17 +149,32 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resource.cpp
 release/qrc_resource.cpp: ../lab2-qt/resource.qrc \
 		E:/Qt/5.15.1/mingw81_64/bin/rcc.exe \
-		../lab2-qt/images/sound.png \
-		../lab2-qt/images/pause-all.png \
-		../lab2-qt/images/sound-off.png \
-		../lab2-qt/images/add.png \
-		../lab2-qt/images/delete-all.png \
-		../lab2-qt/images/start.png \
-		../lab2-qt/images/delete.png \
-		../lab2-qt/images/start-all.png \
-		../lab2-qt/images/quit.png \
-		../lab2-qt/images/pause.png \
-		../lab2-qt/images/not-distrub.png
+		../lab2-qt/images/png/show.png \
+		../lab2-qt/images/png/pause-all.png \
+		../lab2-qt/images/png/sound.png \
+		../lab2-qt/images/png/sound-off.png \
+		../lab2-qt/images/png/edit.png \
+		../lab2-qt/images/png/add.png \
+		../lab2-qt/images/png/delete-all.png \
+		../lab2-qt/images/png/start.png \
+		../lab2-qt/images/png/delete.png \
+		../lab2-qt/images/png/start-all.png \
+		../lab2-qt/images/png/quit.png \
+		../lab2-qt/images/png/not-distrub.png \
+		../lab2-qt/images/png/pause.png \
+		../lab2-qt/images/ico/edit.ico \
+		../lab2-qt/images/ico/add.ico \
+		../lab2-qt/images/ico/delete-all.ico \
+		../lab2-qt/images/ico/start.ico \
+		../lab2-qt/images/ico/delete.ico \
+		../lab2-qt/images/ico/start-all.ico \
+		../lab2-qt/images/ico/quit.ico \
+		../lab2-qt/images/ico/not-distrub.ico \
+		../lab2-qt/images/ico/pause.ico \
+		../lab2-qt/images/ico/show.ico \
+		../lab2-qt/images/ico/pause-all.ico \
+		../lab2-qt/images/ico/sound.ico \
+		../lab2-qt/images/ico/sound-off.ico
 	E:\Qt\5.15.1\mingw81_64\bin\rcc.exe -name resource ..\lab2-qt\resource.qrc -o release\qrc_resource.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -560,6 +575,7 @@ release/moc_mainwindow.cpp: ../lab2-qt/mainwindow.h \
 		../lab2-qt/mycolors.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
 		../lab2-qt/timeperiod.h \
+		../lab2-qt/notdisturbmode.h \
 		release/moc_predefs.h \
 		E:/Qt/5.15.1/mingw81_64/bin/moc.exe
 	E:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab2/build-lab2-qt-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/lab2/lab2-qt -IE:/Qt/5.15.1/mingw81_64/include -IE:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IE:/Qt/5.15.1/mingw81_64/include/QtWidgets -IE:/Qt/5.15.1/mingw81_64/include/QtGui -IE:/Qt/5.15.1/mingw81_64/include/QtANGLE -IE:/Qt/5.15.1/mingw81_64/include/QtNetwork -IE:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IE:/Qt-Cpp/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IE:/Qt-Cpp/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IE:/Qt-Cpp/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IE:/Qt-Cpp/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IE:/Qt-Cpp/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IE:/Qt-Cpp/Tools/mingw810_64/x86_64-w64-mingw32/include ..\lab2-qt\mainwindow.h -o release\moc_mainwindow.cpp
@@ -1311,6 +1327,7 @@ release/main.o: ../lab2-qt/main.cpp ../lab2-qt/mainwindow.h \
 		../lab2-qt/mycolors.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
 		../lab2-qt/timeperiod.h \
+		../lab2-qt/notdisturbmode.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
 		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtCore/qcoreapplication.h \
@@ -1455,6 +1472,7 @@ release/mainwindow.o: ../lab2-qt/mainwindow.cpp ../lab2-qt/mainwindow.h \
 		../lab2-qt/mycolors.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtGui/QColor \
 		../lab2-qt/timeperiod.h \
+		../lab2-qt/notdisturbmode.h \
 		ui_mainwindow.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
 		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/QAction \
@@ -1800,6 +1818,8 @@ release/notdisturbmode.o: ../lab2-qt/notdisturbmode.cpp ../lab2-qt/notdisturbmod
 		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtGui/qicon.h \
+		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/QRadioButton \
+		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/qradiobutton.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTimeEdit \
 		E:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		E:/Qt/5.15.1/mingw81_64/include/QtCore/qcalendar.h \

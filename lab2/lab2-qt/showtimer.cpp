@@ -1,17 +1,26 @@
 #include "showtimer.h"
 #include "ui_showtimer.h"
 
-ShowTimer::ShowTimer(QVector<MyTimer*>& timers, QStandardItemModel *model, QWidget *parent) :
+ShowTimer::ShowTimer(QVector<MyTimer*>& timers,int& indexOfCurrentTimer, QStandardItemModel *model, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ShowTimer), model(model), timers(timers), indexOfTimer(0)
+    ui(new Ui::ShowTimer), model(model), timers(timers), indexOfTimer(0), indexOfCurrentTimer(indexOfCurrentTimer)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Showing timer");
+    QIcon icon("images/ico/show.ico");
+    this->setWindowIcon(icon);
 }
-
 ShowTimer::~ShowTimer()
 {
     model = nullptr;
     delete ui;
+}
+bool ShowTimer::questions_to_delete(QWidget* that, QString title, QString sentence)
+{
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(that, title, sentence, QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) return true;
+    else return false;
 }
 QString ShowTimer::get_time_style()
 {
@@ -58,21 +67,24 @@ void ShowTimer::on_btnPause_clicked()
     item->setBackground(QBrush(MyColors::pausedItem));
     model->setItem(indexOfTimer, item);
 }
-
 void ShowTimer::on_btnEdit_clicked()
 {
     EditingTimer newWindow( timers, model, indexOfTimer);
     newWindow.setModal(true);
     newWindow.exec();
 }
-
 void ShowTimer::on_btnDelete_clicked()
 {      
     if(indexOfTimer >= timers.size()) return;
+    bool doDelete = ShowTimer::questions_to_delete(this,
+                                   "Delete the timer",
+                                   "Deleted timer will not be recoverable. Do you really want to delete the timer?");
+    if(!doDelete) return;
     if(timers[indexOfTimer]) delete timers[indexOfTimer];
     timers.erase(timers.begin() + indexOfTimer);
     model->removeRow(indexOfTimer);
     indexOfTimer = 0;
+    indexOfCurrentTimer = -1;
     hide();
 }
 void ShowTimer::set_timer(int indexOfTimer)

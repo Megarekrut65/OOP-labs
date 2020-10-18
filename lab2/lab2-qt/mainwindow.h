@@ -52,6 +52,8 @@ private slots:
 
     void on_listTimers_clicked(const QModelIndex &index);
 
+    void on_actionShow_selected_timer_triggered();
+
 private:
     Ui::MainWindow *ui;
     QStandardItemModel *model;
@@ -74,5 +76,6 @@ private:
     void update_all_timers();
     void read_all_timers_from_file();
     void write_all_timers_to_file();
+    void show_the_timer(int index);
 };
 #endif // MAINWINDOW_H

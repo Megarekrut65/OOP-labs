@@ -10,10 +10,13 @@ MainWindow::MainWindow(QWidget *parent)
      periodPath(QDir::currentPath()+"/files/period.txt")
 {
     ui->setupUi(this);
+    this->setWindowTitle("Smart timers");
+    QIcon icon("images/ico/timer.ico");
+    this->setWindowIcon(icon);
     oneSecondTimer = nullptr;
     AllActive = true;
     ui->listTimers->setModel(model);
-    timerWindow = new ShowTimer(timers, model, this);
+    timerWindow = new ShowTimer(timers, indexOfCurrentTimer, model, this);
     ui->listTimers->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->listTimers->setStyleSheet("background-color: " + MyColors::startedListBackground);
     set_status_bar();
@@ -99,7 +102,7 @@ void MainWindow::update_all_timers()
     if(soundMode) soundBar =  ". Sound on";
     else soundBar =  ". Sound off";
     if(notDisturbPeriod.is_period()) notDisturbBar = ". Not disturb mode";
-    else notDisturbBar = ". ";
+    else notDisturbBar = "";
     QString saveBar = "";
     if(QTime::currentTime().second() == 0)
     {
@@ -127,9 +130,7 @@ void MainWindow::update_all_timers()
 }
 void MainWindow::on_listTimers_doubleClicked(const QModelIndex &index)
 {
-    indexOfShowedTimer = index.row();
-    timerWindow->set_timer(indexOfShowedTimer);
-    timerWindow->show();
+    show_the_timer(index.row());
 }
 void MainWindow::on_actionQuit_triggered()
 {
@@ -147,7 +148,7 @@ void MainWindow::on_actionStart_all_timers_triggered()
 void MainWindow::on_actionPause_all_timers_triggered()
 {
     AllActive = false;
-    ui->listTimers->setStyleSheet("background-color: "  +MyColors::pausedListBackground);
+    ui->listTimers->setStyleSheet("background-color: " + MyColors::pausedListBackground);
 }
 void MainWindow::on_actionAdd_new_timer_triggered()
 {
@@ -157,12 +158,19 @@ void MainWindow::on_actionAdd_new_timer_triggered()
 }
 void MainWindow::on_actionDelete_all_timers_triggered()
 {
-    timerWindow->hide();
-    while(timers.size() > 0)
+    bool doDelete = ShowTimer::questions_to_delete(this,
+                                   "Delete all timers",
+                                   "Deleted timers will not be recoverable. Do you really want to delete all timers?");
+    if (doDelete)
     {
-        if(timers[0]) delete timers[0];
-        timers.erase(timers.begin());
-        model->removeRow(0);
+      timerWindow->hide();
+      indexOfCurrentTimer = -1;
+      while(timers.size() > 0)
+      {
+          if(timers[0]) delete timers[0];
+          timers.erase(timers.begin());
+          model->removeRow(0);
+      }
     }
 }
 void MainWindow::on_actionSound_on_triggered()
@@ -192,6 +200,10 @@ void MainWindow::on_actionPause_selected_timer_triggered()
 void MainWindow::on_actionDelete_selected_timer_triggered()
 {
     if(indexOfCurrentTimer < 0) return;
+    bool doDelete = ShowTimer::questions_to_delete(this,
+                                   "Delete the timer",
+                                   "Deleted timer will not be recoverable. Do you really want to delete the timer?");
+    if(!doDelete) return;
     if(timers[indexOfCurrentTimer]) delete timers[indexOfCurrentTimer];
     timers.erase(timers.begin() + indexOfCurrentTimer);
     model->removeRow(indexOfCurrentTimer);
@@ -206,4 +218,15 @@ void MainWindow::on_actionDelete_selected_timer_triggered()
 void MainWindow::on_listTimers_clicked(const QModelIndex &index)
 {
     indexOfCurrentTimer = index.row();
+}
+void MainWindow::show_the_timer(int index)
+{
+    indexOfShowedTimer = index;
+    timerWindow->set_timer(indexOfShowedTimer);
+    timerWindow->show();
+}
+void MainWindow::on_actionShow_selected_timer_triggered()
+{
+    if(indexOfCurrentTimer < 0) return;
+    show_the_timer(indexOfCurrentTimer);
 }

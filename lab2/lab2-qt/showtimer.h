@@ -3,10 +3,11 @@
 #define SHOWTIMER_H
 
 #include <QDialog>
-#include "mytimer.h"
-#include "editingtimer.h"
+#include <QMessageBox>
 #include <QStandardItemModel>
 #include "mycolors.h"
+#include "mytimer.h"
+#include "editingtimer.h"
 
 namespace Ui {
 class ShowTimer;
@@ -17,10 +18,11 @@ class ShowTimer : public QDialog
     Q_OBJECT
 
 public:
-    explicit ShowTimer(QVector<MyTimer*>& timers, QStandardItemModel *model = nullptr, QWidget *parent = nullptr);
+    explicit ShowTimer(QVector<MyTimer*>& timers, int& indexOfCurrentTimer, QStandardItemModel *model = nullptr, QWidget *parent = nullptr);
     ~ShowTimer();
     void update_timer();
     void set_timer(int indexOfTimer);
+    static bool questions_to_delete(QWidget* that, QString title, QString sentence);
 private slots:
     void on_btnStart_clicked();
 
@@ -35,7 +37,7 @@ private:
     QStandardItemModel *model;
     QVector<MyTimer*>& timers;
     int indexOfTimer;
-
+    int& indexOfCurrentTimer;
     QString get_time_style();
     QString get_timer_type();
 };
