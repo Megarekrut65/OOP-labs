@@ -6,7 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
      model(new QStandardItemModel),
-     filePath(QDir::currentPath()+"/files/timers.txt")
+     timersPath(QDir::currentPath()+"/files/timers.txt"),
+     periodPath(QDir::currentPath()+"/files/period.txt")
 {
     ui->setupUi(this);
     oneSecondTimer = nullptr;
@@ -15,15 +16,25 @@ MainWindow::MainWindow(QWidget *parent)
     timerWindow = new ShowTimer(timers, model, this);
     ui->listTimers->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->listTimers->setStyleSheet("background-color: " + MyColors::startedListBackground);
-    statusBar = "[T]-Timer, [A]-Alarm clock";
-    ui->statusbar->showMessage(statusBar);
+    set_status_bar();
     fileModel = "File model: active, time out, timer type, time(hh:mm:ss),"
                 " timer name, max number of signals, number of signals, path to sound\r\n";
     soundMode = true;
     indexOfCurrentTimer = -1;
     indexOfShowedTimer = -1;
+    notDisturbPeriod = TimePeriod(periodPath);
     read_all_timers_from_file();
     start_header_timer();
+}
+void MainWindow::set_status_bar()
+{
+    statusBar = "[T]-Timer, [A]-Alarm clock";
+    soundBar = "";
+    notDisturbBar = "";
+    ui->statusbar->showMessage(statusBar + soundBar + notDisturbBar);
+    ui->menuFile->menuAction()->setStatusTip(statusBar + soundBar + notDisturbBar);
+    ui->menuTools->menuAction()->setStatusTip(statusBar + soundBar + notDisturbBar);
+    ui->menuSetting->menuAction()->setStatusTip(statusBar + soundBar + notDisturbBar);
 }
 MainWindow::~MainWindow()
 {
@@ -35,7 +46,7 @@ MainWindow::~MainWindow()
 }
 void MainWindow::write_all_timers_to_file()
 {
-    QFile file(filePath);
+    QFile file(timersPath);
     if(!file.open(QIODevice::WriteOnly)) return;
     ui->statusbar->showMessage(statusBar + ". Save...");
     file.write(fileModel.toStdString().c_str());
@@ -49,7 +60,7 @@ void MainWindow::write_all_timers_to_file()
 }
 void MainWindow:: read_all_timers_from_file()
 {
-    QFile file(filePath);
+    QFile file(timersPath);
     if(!file.exists())
     {
         if(file.open(QIODevice::WriteOnly)) file.close();
@@ -83,22 +94,27 @@ void MainWindow:: start_header_timer()
 }
 void MainWindow::update_all_timers()
 {
-    if(!AllActive) return;
     bool saving = false;
-    QFile file(filePath);
+    QFile file(timersPath);
+    if(soundMode) soundBar =  ". Sound on";
+    else soundBar =  ". Sound off";
+    if(notDisturbPeriod.is_period()) notDisturbBar = ". Not disturb mode";
+    else notDisturbBar = ". ";
+    QString saveBar = "";
     if(QTime::currentTime().second() == 0)
     {
         saving = true;
-        ui->statusbar->showMessage(statusBar + ". Save...");
+        saveBar=  ". Save...";
         if(!file.open(QIODevice::WriteOnly)) saving = false;
     }
-    else ui->statusbar->showMessage(statusBar);
+    ui->statusbar->showMessage(statusBar + soundBar + notDisturbBar + saveBar);
     if(saving) file.write(fileModel.toStdString().c_str());
     for(int i = 0; i < timers.size(); i++)
     {
         if(timers[i])
         {
-            timers[i]->update(soundMode);
+            if(AllActive && notDisturbPeriod.is_period()) timers[i]->update(false);
+            else if(AllActive) timers[i]->update(soundMode);
             auto item = new QStandardItem( QString::number(i) + "." + timers[i]->get_QString_timer());
             if(!timers[i]->active) item->setBackground(QBrush(MyColors::pausedItem));
             else if(timers[i]->timeOut) item->setBackground(QBrush(MyColors::timeOut));
@@ -159,19 +175,19 @@ void MainWindow::on_actionSound_off_triggered()
 }
 void MainWindow::on_actionDo_not_disturb_mode_triggered()
 {
-
+    NotDisturbMode window(notDisturbPeriod);
+    window.setModal(true);
+    window.exec();
 }
 void MainWindow::on_actionStart_selected_timer_triggered()
 {
     if(indexOfCurrentTimer < 0) return;
     timers[indexOfCurrentTimer]->turn_on();
-
 }
 void MainWindow::on_actionPause_selected_timer_triggered()
 {
     if(indexOfCurrentTimer < 0) return;
     timers[indexOfCurrentTimer]->turn_off();
-
 }
 void MainWindow::on_actionDelete_selected_timer_triggered()
 {

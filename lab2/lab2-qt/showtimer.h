@@ -1,3 +1,4 @@
+#pragma once
 #ifndef SHOWTIMER_H
 #define SHOWTIMER_H
 
@@ -5,7 +6,7 @@
 #include "mytimer.h"
 #include "editingtimer.h"
 #include <QStandardItemModel>
-#include "my_colors.h"
+#include "mycolors.h"
 
 namespace Ui {
 class ShowTimer;

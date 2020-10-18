@@ -1,4 +1,4 @@
-#include "my_sounds.h"
+#include "mysounds.h"
 
 QVector<QString> MySounds::sounds = {"Sound1", "Sound2", "Sound3", "Sound4"};
 

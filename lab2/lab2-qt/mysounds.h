@@ -1,3 +1,4 @@
+#pragma once
 #ifndef MY_SOUNDS_H
 #define MY_SOUNDS_H
 #include <QString>

@@ -1,10 +1,11 @@
+#pragma once
 #ifndef ADDINGTIMER_H
 #define ADDINGTIMER_H
 
 #include <QDialog>
 #include "mytimer.h"
 #include <QStandardItemModel>
-#include "my_sounds.h"
+#include "mysounds.h"
 
 namespace Ui {
 class AddingTimer;

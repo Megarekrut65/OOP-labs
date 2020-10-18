@@ -1,11 +1,12 @@
+#pragma once
 #ifndef EDITINGTIMER_H
 #define EDITINGTIMER_H
 
 #include <QDialog>
 #include "mytimer.h"
 #include <QStandardItemModel>
-#include "my_colors.h"
-#include "my_sounds.h"
+#include "mycolors.h"
+#include "mysounds.h"
 
 namespace Ui {
 class EditingTimer;

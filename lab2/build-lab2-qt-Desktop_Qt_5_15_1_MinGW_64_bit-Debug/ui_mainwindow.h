@@ -55,7 +55,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(360, 390);
-        MainWindow->setMinimumSize(QSize(330, 120));
+        MainWindow->setMinimumSize(QSize(360, 390));
         MainWindow->setMaximumSize(QSize(360, 390));
         actionQuit = new QAction(MainWindow);
         actionQuit->setObjectName(QString::fromUtf8("actionQuit"));

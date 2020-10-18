@@ -13,24 +13,29 @@ SOURCES += \
     editingtimer.cpp \
     main.cpp \
     mainwindow.cpp \
-    my_colors.cpp \
-    my_sounds.cpp \
+    mycolors.cpp \
+    mysounds.cpp \
     mytimer.cpp \
-    showtimer.cpp
+    notdisturbmode.cpp \
+    showtimer.cpp \
+    timeperiod.cpp
 
 HEADERS += \
     addingtimer.h \
     editingtimer.h \
     mainwindow.h \
-    my_colors.h \
-    my_sounds.h \
+    mycolors.h \
+    mysounds.h \
     mytimer.h \
-    showtimer.h
+    notdisturbmode.h \
+    showtimer.h \
+    timeperiod.h
 
 FORMS += \
     addingtimer.ui \
     editingtimer.ui \
     mainwindow.ui \
+    notdisturbmode.ui \
     showtimer.ui
 
 # Default rules for deployment.

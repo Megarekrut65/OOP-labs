@@ -2,12 +2,15 @@ release/addingtimer.o
 release/editingtimer.o
 release/main.o
 release/mainwindow.o
-release/my_colors.o
-release/my_sounds.o
+release/mycolors.o
+release/mysounds.o
 release/mytimer.o
+release/notdisturbmode.o
 release/showtimer.o
+release/timeperiod.o
 release/qrc_resource.o
 release/moc_addingtimer.o
 release/moc_editingtimer.o
 release/moc_mainwindow.o
+release/moc_notdisturbmode.o
 release/moc_showtimer.o

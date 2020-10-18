@@ -1,14 +1,17 @@
+#pragma once
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QTimer>
-#include "mytimer.h"
 #include <QStandardItemModel>
+#include <QFile>
+#include "mytimer.h"
 #include "addingtimer.h"
 #include "showtimer.h"
-#include "my_colors.h"
-#include <QFile>
+#include "mycolors.h"
+#include "timeperiod.h"
+#include "notdisturbmode.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -56,12 +59,17 @@ private:
     QVector<MyTimer*> timers;
     ShowTimer* timerWindow;
     bool AllActive;
-    const QString filePath;
+    const QString timersPath;
+    const QString periodPath;
     QString statusBar;
+    QString soundBar;
+    QString notDisturbBar;
     QString fileModel;
     int indexOfCurrentTimer;
     bool soundMode;
     int indexOfShowedTimer;
+    TimePeriod notDisturbPeriod;
+    void set_status_bar();
     void start_header_timer();
     void update_all_timers();
     void read_all_timers_from_file();

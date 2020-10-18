@@ -32,18 +32,18 @@ public:
     {
         if (ShowTimer->objectName().isEmpty())
             ShowTimer->setObjectName(QString::fromUtf8("ShowTimer"));
-        ShowTimer->resize(500, 280);
+        ShowTimer->resize(460, 280);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(ShowTimer->sizePolicy().hasHeightForWidth());
         ShowTimer->setSizePolicy(sizePolicy);
-        ShowTimer->setMinimumSize(QSize(500, 280));
-        ShowTimer->setMaximumSize(QSize(500, 280));
+        ShowTimer->setMinimumSize(QSize(460, 280));
+        ShowTimer->setMaximumSize(QSize(460, 280));
         btnDelete = new QPushButton(ShowTimer);
         btnDelete->setObjectName(QString::fromUtf8("btnDelete"));
         btnDelete->setEnabled(true);
-        btnDelete->setGeometry(QRect(390, 200, 61, 41));
+        btnDelete->setGeometry(QRect(370, 200, 61, 41));
         QFont font;
         font.setFamily(QString::fromUtf8("Yu Mincho Demibold"));
         font.setPointSize(10);
@@ -54,18 +54,18 @@ public:
         btnEdit = new QPushButton(ShowTimer);
         btnEdit->setObjectName(QString::fromUtf8("btnEdit"));
         btnEdit->setEnabled(true);
-        btnEdit->setGeometry(QRect(50, 200, 61, 41));
+        btnEdit->setGeometry(QRect(30, 200, 61, 41));
         btnEdit->setFont(font);
         btnEdit->setCursor(QCursor(Qt::PointingHandCursor));
         btnPause = new QPushButton(ShowTimer);
         btnPause->setObjectName(QString::fromUtf8("btnPause"));
         btnPause->setEnabled(true);
-        btnPause->setGeometry(QRect(280, 200, 61, 41));
+        btnPause->setGeometry(QRect(260, 200, 61, 41));
         btnPause->setFont(font);
         btnPause->setCursor(QCursor(Qt::PointingHandCursor));
         lblTimer = new QLabel(ShowTimer);
         lblTimer->setObjectName(QString::fromUtf8("lblTimer"));
-        lblTimer->setGeometry(QRect(10, 90, 471, 71));
+        lblTimer->setGeometry(QRect(30, 90, 401, 71));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Consolas"));
         font1.setPointSize(36);
@@ -78,12 +78,12 @@ public:
         btnStart = new QPushButton(ShowTimer);
         btnStart->setObjectName(QString::fromUtf8("btnStart"));
         btnStart->setEnabled(true);
-        btnStart->setGeometry(QRect(160, 200, 61, 41));
+        btnStart->setGeometry(QRect(140, 200, 61, 41));
         btnStart->setFont(font);
         btnStart->setCursor(QCursor(Qt::PointingHandCursor));
         lblTimerName = new QLabel(ShowTimer);
         lblTimerName->setObjectName(QString::fromUtf8("lblTimerName"));
-        lblTimerName->setGeometry(QRect(10, 30, 481, 61));
+        lblTimerName->setGeometry(QRect(30, 30, 401, 61));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Orator Std"));
         font2.setPointSize(36);
@@ -99,7 +99,7 @@ public:
         lblTimerName->setTextInteractionFlags(Qt::LinksAccessibleByKeyboard);
         lblType = new QLabel(ShowTimer);
         lblType->setObjectName(QString::fromUtf8("lblType"));
-        lblType->setGeometry(QRect(190, 160, 111, 21));
+        lblType->setGeometry(QRect(170, 160, 111, 21));
         QFont font3;
         font3.setPointSize(14);
         lblType->setFont(font3);
