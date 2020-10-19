@@ -20,8 +20,11 @@ class AddingTimer : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddingTimer( QVector<MyTimer*>* timers = nullptr,
-    QStandardItemModel *model = nullptr, QWidget *parent = nullptr);
+/*!
+* Constructor that takes a pointer to array of timers and a pointer to model of List View in MainWindow
+*/
+    explicit AddingTimer( QVector<MyTimer*>* timers,
+    QStandardItemModel *model, QWidget *parent = nullptr);
     ~AddingTimer();
 
 private slots:
