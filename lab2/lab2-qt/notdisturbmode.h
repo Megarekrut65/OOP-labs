@@ -30,7 +30,7 @@ public:
     ~NotDisturbMode();
 
 private slots:
-    void on_btnSave_clicked();//saves edited time period and writes it to file
+    void on_btnSave_clicked();//saves edited time period and writes it to file. If begin of the time period is greater than its 'end' it changes their places
 
     void on_btnCancel_clicked();//closes this window
 
