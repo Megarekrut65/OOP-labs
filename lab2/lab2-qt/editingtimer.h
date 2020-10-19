@@ -23,7 +23,7 @@ class EditingTimer : public QDialog
 
 public:
 /*!
-* Constructor that takes a reference to array of timers, a pointer to model of List View and index of the timer in MainWindow
+*  Constructor that takes reference to time period for 'do not disturb mode' and adds it to window
 *
 */
     explicit EditingTimer(QVector<MyTimer*>& timers,

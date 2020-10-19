@@ -1,7 +1,7 @@
 #include "addingtimer.h"
 #include "ui_addingtimer.h"
 
-AddingTimer::AddingTimer(QVector<MyTimer*>* timers,
+AddingTimer::AddingTimer(QVector<MyTimer*>& timers,
                          QStandardItemModel *model, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddingTimer), timers(timers), model(model)
@@ -15,7 +15,6 @@ AddingTimer::AddingTimer(QVector<MyTimer*>* timers,
 
 AddingTimer::~AddingTimer()
 {
-    timers = nullptr;
     model = nullptr;
     delete ui;
 }
@@ -35,7 +34,7 @@ Type AddingTimer::set_type()
 }
 void AddingTimer::on_btnCreate_clicked()
 {
-    if(timers && model)
+    if(model)
     {
         QString name = ui->lineAddName->text();
         QTime* time = new QTime(ui->timeAdd->time());
@@ -43,10 +42,10 @@ void AddingTimer::on_btnCreate_clicked()
         int maxNumberOfSignals = ui->spinBoxNumber->value();
         QString soundName = ui->seletcSound->currentText();
         MyTimer* timer = new MyTimer(name, time, type, maxNumberOfSignals, soundName);
-        timers->push_back(timer);
+        timers.push_back(timer);
         int size = model->rowCount();
         model->insertRow(size);
-        auto item = new QStandardItem( QString::number(timers->size() - 1) + "." +timer->get_QString_timer());
+        auto item = new QStandardItem( QString::number(timers.size() - 1) + "." +timer->get_QString_timer());
         model->setItem(size, item);
         timer = nullptr;
     }

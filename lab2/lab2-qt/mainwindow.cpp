@@ -193,7 +193,7 @@ void MainWindow::on_actionPause_all_timers_triggered()
 }
 void MainWindow::on_actionAdd_new_timer_triggered()
 {
-    AddingTimer window(&timers, model);
+    AddingTimer window(timers, model);
     window.setModal(true);
     window.exec();
 }

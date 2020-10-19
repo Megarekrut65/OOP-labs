@@ -21,9 +21,9 @@ class AddingTimer : public QDialog
 
 public:
 /*!
-* Constructor that takes a pointer to array of timers and a pointer to model of List View in MainWindow
+* Constructor that takes a reference to array of timers and a pointer to model of List View in MainWindow
 */
-    explicit AddingTimer( QVector<MyTimer*>* timers,
+    explicit AddingTimer( QVector<MyTimer*>& timers,
     QStandardItemModel *model, QWidget *parent = nullptr);
     ~AddingTimer();
 
@@ -36,7 +36,7 @@ private slots:
 
 private:
     Ui::AddingTimer *ui;
-    QVector<MyTimer*>* timers;//pointer to array of timers in MainWindow
+    QVector<MyTimer*>& timers;//reference to array of timers in MainWindow
     QStandardItemModel *model;//pointer to model of List View in MainWindow
     Type set_type();//returns the type of timer given the selected radio button
     void add_sounds();//adds all sounds to combo box

@@ -39,6 +39,9 @@
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="text">
     <string>Cancel</string>
    </property>
@@ -77,6 +80,9 @@
     <font>
      <pointsize>11</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="text">
     <string>Save</string>

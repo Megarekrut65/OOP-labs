@@ -19,7 +19,7 @@ EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStandardItemModel *model,
             ui->timeEditTime->setTime(timers[indexOfTimer]->get_time());
             ui->spinBoxNumber->setValue(timers[indexOfTimer]->maxNumberOfSignals);
             add_sounds();
-            ui->seletcSound->setCurrentIndex(MySounds::get_number_of_sound(timers[indexOfTimer]->pathToSound));
+            ui->seletcSound->setCurrentIndex(MySounds::get_index_of_sound(timers[indexOfTimer]->pathToSound));
         }
     }
 }
