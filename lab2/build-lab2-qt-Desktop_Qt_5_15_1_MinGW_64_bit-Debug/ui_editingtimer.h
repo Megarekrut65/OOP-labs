@@ -47,6 +47,7 @@ public:
         QFont font;
         font.setPointSize(11);
         btnCancel->setFont(font);
+        btnCancel->setCursor(QCursor(Qt::PointingHandCursor));
         lineEditName = new QLineEdit(EditingTimer);
         lineEditName->setObjectName(QString::fromUtf8("lineEditName"));
         lineEditName->setGeometry(QRect(60, 70, 271, 41));
@@ -58,6 +59,7 @@ public:
         btnSave->setObjectName(QString::fromUtf8("btnSave"));
         btnSave->setGeometry(QRect(100, 320, 61, 31));
         btnSave->setFont(font);
+        btnSave->setCursor(QCursor(Qt::PointingHandCursor));
         labelEdit = new QLabel(EditingTimer);
         labelEdit->setObjectName(QString::fromUtf8("labelEdit"));
         labelEdit->setEnabled(true);

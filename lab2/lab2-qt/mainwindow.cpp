@@ -69,11 +69,12 @@ void MainWindow::set_list_model()
 void MainWindow::set_status_bar()
 {
     statusBar = "[T]-Timer, [A]-Alarm clock";
-    soundBar = "";
+    soundBar = ". Sound";
     notDisturbBar = "";
     ui->statusbar->showMessage(statusBar + soundBar + notDisturbBar);
     ui->menuFile->menuAction()->setStatusTip(statusBar + soundBar + notDisturbBar);
     ui->menuTools->menuAction()->setStatusTip(statusBar + soundBar + notDisturbBar);
+    ui->menuTimer->menuAction()->setStatusTip(statusBar + soundBar + notDisturbBar);
     ui->menuSetting->menuAction()->setStatusTip(statusBar + soundBar + notDisturbBar);
 }
 MainWindow::~MainWindow()
