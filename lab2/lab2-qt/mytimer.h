@@ -4,13 +4,22 @@
 #include <QTime>
 #include <QDir>
 #include <QSound>
-
+/*!
+* \brief A enum class to distinguish between timers and alarm clocks
+*
+* Used in class MyTimer
+*/
 enum class Type
 {
     TIMER,
     AlARM_ClOCK,
 };
-
+/*!
+* \brief Class for presenting timers and alarm clocks
+*
+* The timer consists of name, time, type, signal, and number of signals
+*
+*/
 class MyTimer
 {
 private:  

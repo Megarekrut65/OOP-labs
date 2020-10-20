@@ -5,6 +5,7 @@
 #include <QDialog>
 #include "mytimer.h"
 #include <QStandardItemModel>
+#include <QLineEdit>
 #include "mycolors.h"
 #include "mysounds.h"
 
@@ -27,7 +28,10 @@ public:
 *
 */
     explicit EditingTimer(QVector<MyTimer*>& timers,
-                          QStandardItemModel *model,int indexOfTimer, QWidget *parent = nullptr);
+                          QStandardItemModel *model,
+                          int indexOfTimer,
+                          QLineEdit* timerName,
+                          QWidget *parent = nullptr);
     ~EditingTimer();
 
 private slots:
@@ -41,6 +45,7 @@ private:
     Ui::EditingTimer *ui;
     QVector<MyTimer*>& timers;//reference to array of timers in MainWindow
     QStandardItemModel *model;//pointer to model of List View in MainWindow
+    QLineEdit* timerName;
     int indexOfTimer;//index of timer to need to edit
     void turn_on_timer();//starts timer with indexOfTimer after closing window and edits background color of item in List View
     void turn_off_timer();//pauses timer with indexOfTimer when opens window and edits background color of item in List View

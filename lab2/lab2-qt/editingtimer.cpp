@@ -1,15 +1,18 @@
 #include "editingtimer.h"
 #include "ui_editingtimer.h"
 
-EditingTimer::EditingTimer(QVector<MyTimer*>& timers, QStandardItemModel *model, int indexOfTimer, QWidget *parent) :
+EditingTimer::EditingTimer(QVector<MyTimer*>& timers,  QStandardItemModel *model,
+                           int indexOfTimer, QLineEdit* timerName, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::EditingTimer), timers(timers), model(model), indexOfTimer(indexOfTimer)
+    ui(new Ui::EditingTimer), timers(timers), model(model),
+    timerName(timerName),
+    indexOfTimer(indexOfTimer)
 {
     ui->setupUi(this);
     this->setWindowTitle("Editing timer");
     QIcon icon("images/ico/edit.ico");
     this->setWindowIcon(icon);
-    if(indexOfTimer>= timers.size()) this->close();
+    if(indexOfTimer>= timers.size()||!timerName) this->close();
     else
     {
         if(timers[indexOfTimer])
@@ -44,6 +47,7 @@ EditingTimer::~EditingTimer()
 {
     turn_on_timer();
     model = nullptr;
+    timerName = nullptr;
     delete ui;
 }
 void  EditingTimer::add_sounds()
@@ -58,6 +62,7 @@ void EditingTimer::on_btnSave_clicked()
     if(timers[indexOfTimer] && model)
     {
         timers[indexOfTimer]->name = ui->lineEditName->text();
+        timerName->setText(ui->lineEditName->text());
         timers[indexOfTimer]->set_time(ui->timeEditTime->time());
         timers[indexOfTimer]->set_path_to_sound(ui->seletcSound->currentText());
         timers[indexOfTimer]->maxNumberOfSignals = ui->spinBoxNumber->value();

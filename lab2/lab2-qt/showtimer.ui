@@ -63,69 +63,11 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="lblTimerName">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>461</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Orator Std</family>
-     <pointsize>28</pointsize>
-    </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>ArrowCursor</cursorShape>
-   </property>
-   <property name="acceptDrops">
-    <bool>true</bool>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::NoFrame</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Plain</enum>
-   </property>
-   <property name="text">
-    <string>Timer Name</string>
-   </property>
-   <property name="textFormat">
-    <enum>Qt::AutoText</enum>
-   </property>
-   <property name="scaledContents">
-    <bool>false</bool>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <property name="wordWrap">
-    <bool>true</bool>
-   </property>
-   <property name="margin">
-    <number>0</number>
-   </property>
-   <property name="indent">
-    <number>-1</number>
-   </property>
-   <property name="openExternalLinks">
-    <bool>false</bool>
-   </property>
-   <property name="textInteractionFlags">
-    <set>Qt::LinksAccessibleByKeyboard</set>
-   </property>
-  </widget>
   <widget class="QLabel" name="lblType">
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>180</y>
+     <y>170</y>
      <width>111</width>
      <height>21</height>
     </rect>
@@ -237,6 +179,58 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLineEdit" name="lineTimerName">
+   <property name="geometry">
+    <rect>
+     <x>12</x>
+     <y>9</y>
+     <width>441</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nirmala UI</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Timer Name</string>
+   </property>
+   <property name="maxLength">
+    <number>32769</number>
+   </property>
+   <property name="cursorPosition">
+    <number>0</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="dragEnabled">
+    <bool>true</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="cursorMoveStyle">
+    <enum>Qt::LogicalMoveStyle</enum>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -9,6 +9,7 @@ ShowTimer::ShowTimer(QVector<MyTimer*>& timers,int& indexOfCurrentTimer, QStanda
     this->setWindowTitle("Showing timer");
     QIcon icon("images/ico/show.ico");
     this->setWindowIcon(icon);
+    ui->lineTimerName->setStyleSheet("background:transparent; border: 0px;");
 }
 ShowTimer::~ShowTimer()
 {
@@ -39,12 +40,7 @@ QString ShowTimer::get_timer_type()
 void ShowTimer::update_timer()
 {
     if(indexOfTimer >= timers.size()) return;
-    if(timers[indexOfTimer])
-    {
-        ui->lblTimerName->setText(timers[indexOfTimer]->name);
-        ui->lblTimer->setText(get_time_style());
-        ui->lblType->setText(get_timer_type());
-    }
+    if(timers[indexOfTimer]) ui->lblTimer->setText(get_time_style());
 }
 void ShowTimer::on_btnStart_clicked()
 {
@@ -69,7 +65,7 @@ void ShowTimer::on_btnPause_clicked()
 }
 void ShowTimer::on_btnEdit_clicked()
 {
-    EditingTimer newWindow( timers, model, indexOfTimer);
+    EditingTimer newWindow( timers, model, indexOfTimer, ui->lineTimerName);
     newWindow.setModal(true);
     newWindow.exec();
 }
@@ -89,6 +85,13 @@ void ShowTimer::on_btnDelete_clicked()
 }
 void ShowTimer::set_timer(int indexOfTimer)
 {
+    if(indexOfTimer >= timers.size())
+    {
+        this->close();
+        return;
+    }
     this->indexOfTimer = indexOfTimer;
+    ui->lineTimerName->setText(timers[indexOfTimer]->name);
+    ui->lblType->setText(get_timer_type());
     update_timer();
 }
