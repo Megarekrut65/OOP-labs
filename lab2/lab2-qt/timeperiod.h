@@ -15,10 +15,11 @@ class TimePeriod
 private:
     QString path;//path to file with information about 'do not disturb mode'
     QTime qString_to_QTime(QString line);//line like hh:mm:ss
+    QTime begin;//The begin of time period
+    QTime end;//The end of time period
+     bool active;//Indicates whether the time period is active
+    void write_to_file();//writes the time period to file
 public:
-    QTime begin;/*!< The begin of time period*/
-    QTime end;/*!< The end of time period*/
-    bool active;/*!< Indicates whether the time period is active*/
 /*!
 * Default constructor
 *
@@ -36,12 +37,25 @@ public:
 * \returns - true if now is time in time period
 * \returns - false if now isn't time in time period or time period is non-active
 */
-    bool is_period();
+    bool is_period(); 
+    QTime get_begin();
+    QTime get_end();
 /*!
-* Writes the time period to file
-*
+* \brief Checks if the period is active
+* \returns - true if period is active
+* \returns - false id period isn't active
 */
-    void write_to_file();
+    bool is_active();
+/*!
+* \brief Receives and changes class parameters
+*
+* If the begin is greater than the end then the function will change their places
+*
+* \param begin the begin of time period
+* \param end the end of time period
+* \param active is true if time period is active else is false
+*/
+    void set_period(QTime begin, QTime end, bool active);
 };
 
 #endif // TIMEPERIOD_H

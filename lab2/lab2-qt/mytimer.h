@@ -34,7 +34,7 @@ public:
     QString pathToSound;
     bool soundMode;
     MyTimer();
-    MyTimer( const QString& name,  QTime* time, Type type, int maxNumberOfSignals = 15, QString nameOfSound = "timerSound1.wav");
+    MyTimer( const QString& name,  QTime* time, Type type, int maxNumberOfSignals = 15, QString nameOfSound = "Sound1");
     MyTimer( const QString& line);
     ~MyTimer();
     void set_time( QTime time);

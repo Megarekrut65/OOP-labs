@@ -52,3 +52,30 @@ void TimePeriod::write_to_file()
     file.write(line.toStdString().c_str());
     file.close();
 }
+QTime TimePeriod::get_begin()
+{
+    return begin;
+}
+QTime TimePeriod::get_end()
+{
+    return end;
+}
+bool TimePeriod::is_active()
+{
+    return active;
+}
+void TimePeriod::set_period(QTime begin, QTime end, bool active)
+{
+    if(begin < end)
+    {
+        this->begin = begin;
+        this->end = end;
+    }
+    else
+    {
+        this->begin = end;
+        this->end = begin;
+    }
+    this->active = active;
+    write_to_file();
+}
