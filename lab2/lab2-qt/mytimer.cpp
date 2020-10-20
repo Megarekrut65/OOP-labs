@@ -1,5 +1,8 @@
 #include "mytimer.h"
 
+namespace mt
+{
+
 MyTimer::MyTimer()
     :  time(nullptr), numberOfSignals(0), active(false),
       timeOut(true), name(""),type(Type::TIMER), maxNumberOfSignals(0),
@@ -156,4 +159,5 @@ QString MyTimer::get_QString_timer()
         break;
     }
     return (qStringType  + "{" + get_QString_time() + "} " + name);
+}
 }

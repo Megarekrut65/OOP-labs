@@ -12,6 +12,7 @@
 namespace Ui {
 class ShowTimer;
 }
+using namespace mt;
 /*!
 * \brief Class that shows the user the selected timer in a separate window
 *

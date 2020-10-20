@@ -12,6 +12,7 @@
 namespace Ui {
 class EditingTimer;
 }
+using namespace mt;
 /*!
 * \brief Class to editing already created timers
 *

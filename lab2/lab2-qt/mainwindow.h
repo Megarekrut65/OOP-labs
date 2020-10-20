@@ -15,6 +15,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
+using namespace mt;
 QT_END_NAMESPACE
 /*!
 * \brief Timers (MyTimer) control class

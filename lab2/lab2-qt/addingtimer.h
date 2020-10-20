@@ -10,6 +10,7 @@
 namespace Ui {
 class AddingTimer;
 }
+using namespace mt;
 /*!
 * \brief Class to creating new timer and adding it to List View in window of class MainWindow
 *
