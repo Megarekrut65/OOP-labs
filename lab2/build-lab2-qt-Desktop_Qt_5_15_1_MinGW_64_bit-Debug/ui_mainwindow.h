@@ -226,7 +226,7 @@ public:
         actionPause_selected_timer->setText(QCoreApplication::translate("MainWindow", "Pause selected timer", nullptr));
         actionDelete_selected_timer->setText(QCoreApplication::translate("MainWindow", "Delete selected timer", nullptr));
         actionShow_selected_timer->setText(QCoreApplication::translate("MainWindow", "Show selected timer", nullptr));
-        lblTitle->setText(QCoreApplication::translate("MainWindow", "ID, Type, Time, Name", nullptr));
+        lblTitle->setText(QCoreApplication::translate("MainWindow", "ID.[Type] {Time}  Name", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuTools->setTitle(QCoreApplication::translate("MainWindow", "Tools", nullptr));
         menuSetting->setTitle(QCoreApplication::translate("MainWindow", "Setting", nullptr));

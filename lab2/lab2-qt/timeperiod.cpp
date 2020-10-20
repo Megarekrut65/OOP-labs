@@ -38,7 +38,12 @@ bool TimePeriod::is_period()
 {
     if(!active) return false;
     QTime current = QTime::currentTime();
-    if(current >= begin && current <= end) return true;
+    if(begin < end && (current >= begin && current <= end)) return true;
+    if(begin > end)
+    {
+        if(current > end && current < begin) return false;
+        return true;
+    }
     return false;
 }
 void TimePeriod::write_to_file()
@@ -66,16 +71,8 @@ bool TimePeriod::is_active()
 }
 void TimePeriod::set_period(QTime begin, QTime end, bool active)
 {
-    if(begin < end)
-    {
-        this->begin = begin;
-        this->end = end;
-    }
-    else
-    {
-        this->begin = end;
-        this->end = begin;
-    }
+    this->begin = begin;
+    this->end = end;
     this->active = active;
     write_to_file();
 }

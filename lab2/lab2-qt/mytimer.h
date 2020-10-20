@@ -48,6 +48,12 @@ public:
     int maxNumberOfSignals;/*!< The number of timer signals that will be played at the end of the time*/
     QString pathToSound;/*!< Path to file with signal of timer*/
     bool soundMode;/*!< Indicates whether the timer is allowed to play the signal*/
+/*!
+* \brief Default Constructor
+*
+* Creates an empty non-active TIMER without time, name, pathToSound
+*
+*/
     MyTimer();
     MyTimer( const QString& name,  QTime* time, Type type, int maxNumberOfSignals = 15, QString nameOfSound = "Sound1");
     MyTimer( const QString& line);

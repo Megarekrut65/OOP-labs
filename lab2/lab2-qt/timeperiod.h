@@ -49,8 +49,6 @@ public:
 /*!
 * \brief Receives and changes class parameters
 *
-* If the begin is greater than the end then the function will change their places
-*
 * \param begin the begin of time period
 * \param end the end of time period
 * \param active is true if time period is active else is false

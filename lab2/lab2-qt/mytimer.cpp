@@ -2,7 +2,8 @@
 
 MyTimer::MyTimer()
     :  time(nullptr), numberOfSignals(0), active(false),
-      timeOut(true), name(""),type(Type::TIMER), maxNumberOfSignals(0), pathToSound(""), soundMode(true) {}
+      timeOut(true), name(""),type(Type::TIMER), maxNumberOfSignals(0),
+      pathToSound(""), soundMode(true) {}
 MyTimer::MyTimer( const QString& name, QTime* time, Type type, const int maxNumberOfSignals, QString nameOfSound)
     :  numberOfSignals(0), active(true), timeOut(false),
       name(name), type(type), maxNumberOfSignals(maxNumberOfSignals), soundMode(true)

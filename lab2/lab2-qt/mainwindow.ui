@@ -59,7 +59,7 @@
         <string notr="true">background: white;</string>
        </property>
        <property name="text">
-        <string>ID, Type, Time, Name</string>
+        <string>ID.[Type] {Time}  Name</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
