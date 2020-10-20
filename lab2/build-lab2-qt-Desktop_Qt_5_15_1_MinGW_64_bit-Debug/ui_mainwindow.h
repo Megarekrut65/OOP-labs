@@ -132,8 +132,9 @@ public:
         lblTitle = new QLabel(verticalLayoutWidget);
         lblTitle->setObjectName(QString::fromUtf8("lblTitle"));
         QFont font;
-        font.setPointSize(14);
+        font.setPointSize(11);
         lblTitle->setFont(font);
+        lblTitle->setStyleSheet(QString::fromUtf8("background: white;"));
         lblTitle->setAlignment(Qt::AlignCenter);
 
         layoutTimerList->addWidget(lblTitle);
@@ -225,7 +226,7 @@ public:
         actionPause_selected_timer->setText(QCoreApplication::translate("MainWindow", "Pause selected timer", nullptr));
         actionDelete_selected_timer->setText(QCoreApplication::translate("MainWindow", "Delete selected timer", nullptr));
         actionShow_selected_timer->setText(QCoreApplication::translate("MainWindow", "Show selected timer", nullptr));
-        lblTitle->setText(QCoreApplication::translate("MainWindow", "All timers", nullptr));
+        lblTitle->setText(QCoreApplication::translate("MainWindow", "ID, Type, Time, Name", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuTools->setTitle(QCoreApplication::translate("MainWindow", "Tools", nullptr));
         menuSetting->setTitle(QCoreApplication::translate("MainWindow", "Setting", nullptr));

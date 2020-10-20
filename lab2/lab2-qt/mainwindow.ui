@@ -52,11 +52,14 @@
       <widget class="QLabel" name="lblTitle">
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background: white;</string>
+       </property>
        <property name="text">
-        <string>All timers</string>
+        <string>ID, Type, Time, Name</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
