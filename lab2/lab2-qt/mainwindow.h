@@ -39,6 +39,10 @@ public:
 *
 */
     MainWindow(QWidget *parent = nullptr);
+/*!
+* Deletes all non-nullptr variables
+*
+*/
     ~MainWindow();
 private slots:
 
@@ -76,10 +80,11 @@ private:
     QTimer *oneSecondTimer;//Timer to reduce the time of all timers
     QVector<MyTimer*> timers;//saves all timers
     ShowTimer* timerWindow;//window to showing selected timer
-    bool AllActive;//allows or disables all timers
+    bool allActive;//allows or disables all timers
     const QString timersPath;//path to file with all timers
     const QString periodPath;//path to file with information about 'do not disturb mode'
-    const QString soundModePath;//path to file with information about 'sound mode'
+    const QString soundModePath;//path to file with 'soundMode'
+    const QString allActivePath;//path to file with 'AllActive'
     QString statusBar;//text for status bar
     QString soundBar;//text for status bar
     QString notDisturbBar;//text for status bar
@@ -88,10 +93,10 @@ private:
     bool soundMode;//allows or disables sound of timers
     int indexOfShowedTimer;//index of timer that is open in a separate window
     TimePeriod notDisturbPeriod;//time period of 'do not disturb mode'
+    bool read_bool_variable_from_file(QString path, QString title);//reads file and if in file was "true" then returns true else return false. Before "true" or "false" in file is title - information about data
     void set_status_bar();//initializes status bar textes
     void set_list_model();//initializes List View
-    void set_sound_mode();//reads and initializes sound mode
-    void edit_sound_mode();//edits sound mode and writes new mode in file
+    void edit_file_with_bool_variable(QString path, QString title, bool value);//writes to file title and value
     void edit_status_bar(QString otherBar = "");//edits all status bar textes and adds to end 'otherBar'
     void start_header_timer();//starts 'oneSecondTimer'
     void update_all_timers();//changes the timer time and the text and color of the list. Writes all timers to file

@@ -55,12 +55,34 @@ public:
 *
 */
     MyTimer();
-    MyTimer( const QString& name,  QTime* time, Type type, int maxNumberOfSignals = 15, QString nameOfSound = "Sound1");
+/*!
+* \brief Parameterized constructor
+*
+* Creates active timer with the specified parameters
+*
+*/
+    MyTimer( const QString& name,  QTime* time, Type type,
+             int maxNumberOfSignals = 15, QString nameOfSound = "Sound1");
+/*!
+* \brief Constructor
+*
+* Divides 'line' into parts and translates its parts into appropriate types
+*
+* Line like "active, timeOut, type, time(hh:mm:ss), name,
+* maxNumberOfSignals, numberOfSignals, pathToSound"
+*
+* If line is incorrect then creates default timer
+*
+*/
     MyTimer( const QString& line);
+/*!
+* If time isn't nullptr then deletes it
+*
+*/
     ~MyTimer();
+
     void set_time( QTime time);
     QTime get_time();
-    void add_to_time(int sec);
     void update(bool soundMode = true);
     QString get_QString_time();
     QString get_QString_timer();

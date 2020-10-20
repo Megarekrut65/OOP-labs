@@ -23,8 +23,8 @@ bool MyTimer::qString_to_bool(const QString& line)
 }
 Type MyTimer::qString_to_type(const QString& line)
 {
-    if(line == "T") return Type::TIMER;
-    return Type::AlARM_ClOCK;
+    if(line == "A") return Type::AlARM_ClOCK;
+    return Type::TIMER;
 }
 QTime MyTimer::qString_to_QTime(const QString& line)
 {
@@ -86,11 +86,6 @@ QString MyTimer::get_QString_type()
  void MyTimer::set_time(QTime time)
  {
      this->time->setHMS(time.hour(),time.minute(), time.second());
- }
- void MyTimer::add_to_time(int sec)
- {
-    if(sec <= 0) return;
-    *time = time->addSecs(sec);
  }
 void MyTimer::signal()
 {

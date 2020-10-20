@@ -6,10 +6,11 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
      model(new QStandardItemModel),
-     oneSecondTimer(nullptr), AllActive(true),
+     oneSecondTimer(nullptr),
      timersPath(QDir::currentPath()+"/files/timers.txt"),
      periodPath(QDir::currentPath()+"/files/period.txt"),
      soundModePath(QDir::currentPath()+"/files/sound.txt"),
+     allActivePath(QDir::currentPath()+"/files/all-active.txt"),
      indexOfCurrentTimer(-1),
      indexOfShowedTimer(-1)
 {
@@ -22,43 +23,53 @@ MainWindow::MainWindow(QWidget *parent)
                 " timer name, max number of signals, number of signals, path to sound\r\n";
     notDisturbPeriod = TimePeriod(periodPath);
     set_list_model();
+    allActive = read_bool_variable_from_file(allActivePath, "All active:");
+    if(!allActive) ui->listTimers->setStyleSheet("background-color: " + MyColors::pausedListBackground);
+    soundMode = read_bool_variable_from_file(soundModePath, "Sound mode:");
     set_status_bar();
-    set_sound_mode();
     read_all_timers_from_file();
     start_header_timer();
 }
-void MainWindow::edit_sound_mode()
+void MainWindow::edit_file_with_bool_variable(QString path, QString title, bool value)
 {
-    QFile file(soundModePath);
+    QFile file(path);
     if(!file.open(QIODevice::WriteOnly)) return;
-    file.write("Sound mode:\r\n");
-    if(soundMode) file.write("true");
+    file.write((title.toStdString() + "\r\n").c_str());
+    if(value) file.write("true");
     else file.write("false");
     file.close();
 }
-void MainWindow::set_sound_mode()
+bool MainWindow::read_bool_variable_from_file(QString path, QString title)
 {
-    soundMode = true;
-    QFile file(soundModePath);
+    QFile file(path);
     if(!file.exists())
     {
         if(file.open(QIODevice::WriteOnly))
         {
-            file.write("Sound mode:\r\n");
+            file.write((title.toStdString() + "\r\n").c_str());
             file.write("true");
             file.close();
         }
-        return;
+        return true;
     }
     if (file.open(QIODevice::ReadOnly))
     {
-        if(file.atEnd()) return;
-        QString line = file.readLine();//read "Sound mode:\r\n"
-        if(file.atEnd()) return;
+        if(file.atEnd())
+        {
+             file.close();
+            return true;
+        }
+        QString line = file.readLine();//reads the title
+        if(file.atEnd())
+        {
+             file.close();
+            return true;
+        }
         line = file.readLine();
-        if(line == "false") soundMode = false;
+        if(line == "false") return false;
         file.close();
     }
+    return true;
 }
 void MainWindow::set_list_model()
 {
@@ -158,8 +169,8 @@ void MainWindow::update_all_timers()
     {
         if(timers[i])
         {
-            if(AllActive && notDisturbPeriod.is_period()) timers[i]->update(false);
-            else if(AllActive) timers[i]->update(soundMode);
+            if(allActive && notDisturbPeriod.is_period()) timers[i]->update(false);
+            else if(allActive) timers[i]->update(soundMode);
             auto item = new QStandardItem( QString::number(i) + "." + timers[i]->get_QString_timer());
             if(!timers[i]->active) item->setBackground(QBrush(MyColors::pausedItem));
             else if(timers[i]->timeOut) item->setBackground(QBrush(MyColors::timeOut));
@@ -180,7 +191,8 @@ void MainWindow::on_actionQuit_triggered()
 }
 void MainWindow::on_actionStart_all_timers_triggered()
 {
-    AllActive = true;
+    allActive = true;
+    edit_file_with_bool_variable(allActivePath, "All active:", allActive);
     ui->listTimers->setStyleSheet("background-color: " + MyColors::startedListBackground);
     for(int i = 0; i < timers.size();i++)
     {
@@ -189,7 +201,8 @@ void MainWindow::on_actionStart_all_timers_triggered()
 }
 void MainWindow::on_actionPause_all_timers_triggered()
 {
-    AllActive = false;
+    allActive = false;
+    edit_file_with_bool_variable(allActivePath, "All active:", allActive);
     ui->listTimers->setStyleSheet("background-color: " + MyColors::pausedListBackground);
 }
 void MainWindow::on_actionAdd_new_timer_triggered()
@@ -218,12 +231,12 @@ void MainWindow::on_actionDelete_all_timers_triggered()
 void MainWindow::on_actionSound_on_triggered()
 {
     soundMode = true;
-    edit_sound_mode();
+    edit_file_with_bool_variable(soundModePath, "Sound mode:", soundMode);
 }
 void MainWindow::on_actionSound_off_triggered()
 {
     soundMode = false;
-    edit_sound_mode();
+    edit_file_with_bool_variable(soundModePath, "Sound mode:", soundMode);
 }
 void MainWindow::on_actionDo_not_disturb_mode_triggered()
 {
