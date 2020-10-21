@@ -422,3 +422,4 @@ MigrationBackup/
 .ionide/
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudio,qtcreator
+/lab2/build-lab2-qt-Desktop_Qt_5_15_1_MinGW_64_bit-Debug
