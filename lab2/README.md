@@ -3,3 +3,5 @@
 * Також реалізував можливість редагування уже створених таймерів.
 * Додатково створив документацію з використанням Doxygen.
 
+* Documentation https://megarekrut65.github.io/OOP-labs/lab2/docs/html/index.html
+
