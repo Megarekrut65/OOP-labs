@@ -114,9 +114,10 @@ public:
         font3.setFamily(QString::fromUtf8("Nirmala UI"));
         font3.setPointSize(36);
         lineTimerName->setFont(font3);
-        lineTimerName->setCursor(QCursor(Qt::ArrowCursor));
+        lineTimerName->setCursor(QCursor(Qt::SizeHorCursor));
         lineTimerName->setMouseTracking(false);
         lineTimerName->setFocusPolicy(Qt::NoFocus);
+        lineTimerName->setAcceptDrops(false);
         lineTimerName->setAutoFillBackground(true);
         lineTimerName->setStyleSheet(QString::fromUtf8(""));
         lineTimerName->setMaxLength(32769);
