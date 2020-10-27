@@ -2,6 +2,7 @@ var searchData=
 [
   ['mainwindow',['MainWindow',['../class_main_window.html',1,'MainWindow'],['../class_main_window.html#a996c5a2b6f77944776856f08ec30858d',1,'MainWindow::MainWindow()']]],
   ['maxnumberofsignals',['maxNumberOfSignals',['../classmt_1_1_my_timer.html#a15968a3ed60b064b4cd975c33bbf98eb',1,'mt::MyTimer']]],
+  ['minus_5ftime',['minus_time',['../classmt_1_1_my_timer.html#ae543a04b02146edc917c66c1b215975f',1,'mt::MyTimer']]],
   ['mt',['mt',['../namespacemt.html',1,'']]],
   ['mycolors',['MyColors',['../class_my_colors.html',1,'']]],
   ['mysounds',['MySounds',['../class_my_sounds.html',1,'']]],
