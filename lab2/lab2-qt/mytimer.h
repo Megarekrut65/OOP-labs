@@ -140,6 +140,17 @@ public:
 *
 */
     void set_path_to_sound(QString nameOfSound);
+/*!
+* \brief Subtracts from this time the time received
+*
+* If the transmitted time is greater than the time in TIMER,
+* the signal will sound depending on the difference
+*
+* Will not do anything for ALARM_CLOCK
+*
+* \param minus transmitted time
+*/
+    void minus_time(QTime minus);
 };
 }
 

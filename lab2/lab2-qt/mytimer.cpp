@@ -1,5 +1,5 @@
 #include "mytimer.h"
-
+#include <QDebug>
 namespace mt
 {
 
@@ -159,5 +159,34 @@ QString MyTimer::get_QString_timer()
         break;
     }
     return (qStringType  + "{" + get_QString_time() + "} " + name);
+}
+void MyTimer::minus_time(QTime minus)
+{
+    if(type == Type::AlARM_ClOCK) return;
+    if(!active||timeOut) return;
+    if(minus > *time)
+    {
+        qDebug(">");
+        timeOut = true;
+        *time = QTime(0,0,0);
+        int difference = time->secsTo(minus);
+        if(difference > maxNumberOfSignals)
+        {
+            active = false;
+            numberOfSignals = 0;
+            signal();
+        }
+        else
+        {
+            numberOfSignals = difference;
+            signal();
+        }
+    }
+    else
+    {
+        int difference = minus.secsTo(*time);
+        *time = QTime(0,0,0);
+        *time = time->addSecs(difference);
+    }
 }
 }

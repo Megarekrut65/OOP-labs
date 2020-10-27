@@ -1,1 +1,2 @@
+Saved DataTime=2020-10-27,16:25:33
 File model: active, time out, timer type, time(hh:mm:ss), timer name, max number of signals, number of signals, path to sound

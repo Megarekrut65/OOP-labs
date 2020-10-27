@@ -101,6 +101,8 @@ void MainWindow::write_all_timers_to_file()
     QFile file(timersPath);
     if(!file.open(QIODevice::WriteOnly)) return;
     ui->statusbar->showMessage(statusBar + ". Save...");
+    QDateTime now = QDateTime::currentDateTime();
+    file.write(("Saved DataTime=" + now.toString("yyyy-MM-dd,HH:mm:ss")+ "\r\n").toStdString().c_str());
     file.write(fileModel.toStdString().c_str());
     while(timers.size() > 0)
     {
@@ -109,6 +111,38 @@ void MainWindow::write_all_timers_to_file()
         timers.erase(timers.begin());
     }
     file.close();
+}
+QTime MainWindow::get_time_after_saving(QDateTime savedDateTime)
+{
+    QDateTime now = QDateTime::currentDateTime();
+    int yearN = now.date().year(), yearS = savedDateTime.date().year();
+    if(yearN != yearS) return QTime(23,59,59);
+    int monthN = now.date().month(), monthS = savedDateTime.date().month();
+    if(monthN != monthS) return QTime(23,59,59);
+    int dayN = now.date().day(), dayS = savedDateTime.date().day();
+    if(dayN - dayS > 1) return QTime(23,59,59);
+    int seconds = savedDateTime.time().secsTo(now.time());
+    QTime time(0,0,0);
+    time = time.addSecs(seconds);
+    return time;
+}
+void MainWindow::edit_saved_timers(QDateTime savedDateTime)
+{
+    if(timers.size() == 0) return;
+    QTime timeAfterSaving = get_time_after_saving(savedDateTime);
+    for(int i = 0; i < timers.size(); i++)
+    {
+        if(timers[i]) timers[i]->minus_time(timeAfterSaving);
+    }
+}
+QDateTime MainWindow::qString_to_DateTime(QString line)
+{
+    line.remove("\r\n");
+    QDateTime dateTime;
+    QStringList parts = line.split("=");
+    if(parts.size() != 2) return QDateTime::currentDateTime();
+    dateTime = QDateTime::fromString(parts[1],"yyyy-MM-dd,HH:mm:ss");
+    return dateTime;
 }
 void MainWindow:: read_all_timers_from_file()
 {
@@ -120,22 +154,24 @@ void MainWindow:: read_all_timers_from_file()
     }
     if (file.open(QIODevice::ReadOnly))
     {
+        QDateTime savedDateTime;
         while(!file.atEnd())
         {
-            if(timers.size() == 0) file.readLine();//read file model
+            if(timers.size() == 0)
+            {
+                savedDateTime = qString_to_DateTime(file.readLine());
+                if(file.atEnd()) break;
+                file.readLine();//read file model
+            }
             if(file.atEnd()) break;
             QString line = file.readLine();
             line.remove("\r\n");
             timers.push_back(new MyTimer(line));
             int size = model->rowCount();
             model->insertRow(size);
-            auto item = new QStandardItem( QString::number(timers.size() - 1) + "."
-                                           + timers[size]->get_QString_timer());
-            if(!timers[size]->active) item->setBackground(QBrush(MyColors::pausedItem));
-            else if(timers[size]->timeOut) item->setBackground(QBrush(MyColors::timeOut));
-            model->setItem(size, item);
         }
         file.close();
+        edit_saved_timers(savedDateTime);
     }
 }
 void MainWindow:: start_header_timer()
@@ -163,8 +199,13 @@ void MainWindow::update_all_timers()
         saveBar=  ". Save...";
         if(!file.open(QIODevice::WriteOnly)) saving = false;
     }
-    edit_status_bar(saveBar);
-    if(saving) file.write(fileModel.toStdString().c_str());
+    edit_status_bar(saveBar);   
+    if(saving)
+    {
+        QDateTime now = QDateTime::currentDateTime();
+        file.write(("Saved DataTime=" + now.toString("yyyy-MM-dd,HH:mm:ss")+ "\r\n").toStdString().c_str());
+        file.write(fileModel.toStdString().c_str());
+    }
     for(int i = 0; i < timers.size(); i++)
     {
         if(timers[i])

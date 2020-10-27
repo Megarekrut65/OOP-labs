@@ -4,6 +4,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QDateTime>
 #include <QStandardItemModel>
 #include <QFile>
 #include "mytimer.h"
@@ -94,6 +95,9 @@ private:
     bool soundMode;//allows or disables sound of timers
     int indexOfShowedTimer;//index of timer that is open in a separate window
     TimePeriod notDisturbPeriod;//time period of 'do not disturb mode'
+    QDateTime qString_to_DateTime(QString line);
+    void edit_saved_timers(QDateTime savedDateTime);//takes away from timers time while the program was not active
+    QTime get_time_after_saving(QDateTime savedDateTime);//determines how long the program has been inactive
     bool read_bool_variable_from_file(QString path, QString title);//reads file and if in file was "true" then returns true else return false. Before "true" or "false" in file is title - information about data
     void set_status_bar();//initializes status bar textes
     void set_list_model();//initializes List View
