@@ -32,5 +32,8 @@
     <ClInclude Include="my_paths_between_vertices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="painting_the_graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

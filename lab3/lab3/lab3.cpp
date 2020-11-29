@@ -1,6 +1,8 @@
 #include <iostream>
+#include "painting_the_graph.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    ptg::test();
+    return 0;
 }

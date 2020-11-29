@@ -148,25 +148,30 @@
     <ClInclude Include="my_graph_structure.h" />
     <ClInclude Include="my_override_functions_and_operators.h" />
     <ClInclude Include="my_paths_between_vertices.h" />
+    <ClInclude Include="painting_the_graph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\cairo.redist.1.12.18.0\build\native\cairo.redist.targets" Condition="Exists('..\packages\cairo.redist.1.12.18.0\build\native\cairo.redist.targets')" />
     <Import Project="..\packages\lpng.redist.1.6.16.0\build\native\lpng.redist.targets" Condition="Exists('..\packages\lpng.redist.1.6.16.0\build\native\lpng.redist.targets')" />
     <Import Project="..\packages\zlib.redist.1.2.8.7\build\native\zlib.redist.targets" Condition="Exists('..\packages\zlib.redist.1.2.8.7\build\native\zlib.redist.targets')" />
     <Import Project="..\packages\zlib.1.2.8.7\build\native\zlib.targets" Condition="Exists('..\packages\zlib.1.2.8.7\build\native\zlib.targets')" />
     <Import Project="..\packages\lpng.1.6.16.0\build\native\lpng.targets" Condition="Exists('..\packages\lpng.1.6.16.0\build\native\lpng.targets')" />
-    <Import Project="..\packages\cairo.1.12.18.0\build\native\cairo.targets" Condition="Exists('..\packages\cairo.1.12.18.0\build\native\cairo.targets')" />
+    <Import Project="..\packages\sfml-system.redist.2.4.2.0\build\native\sfml-system.redist.targets" Condition="Exists('..\packages\sfml-system.redist.2.4.2.0\build\native\sfml-system.redist.targets')" />
+    <Import Project="..\packages\sfml-system.2.4.2.0\build\native\sfml-system.targets" Condition="Exists('..\packages\sfml-system.2.4.2.0\build\native\sfml-system.targets')" />
+    <Import Project="..\packages\sfml-window.redist.2.4.2.0\build\native\sfml-window.redist.targets" Condition="Exists('..\packages\sfml-window.redist.2.4.2.0\build\native\sfml-window.redist.targets')" />
+    <Import Project="..\packages\sfml-window.2.4.2.0\build\native\sfml-window.targets" Condition="Exists('..\packages\sfml-window.2.4.2.0\build\native\sfml-window.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\cairo.redist.1.12.18.0\build\native\cairo.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cairo.redist.1.12.18.0\build\native\cairo.redist.targets'))" />
     <Error Condition="!Exists('..\packages\lpng.redist.1.6.16.0\build\native\lpng.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\lpng.redist.1.6.16.0\build\native\lpng.redist.targets'))" />
     <Error Condition="!Exists('..\packages\zlib.redist.1.2.8.7\build\native\zlib.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\zlib.redist.1.2.8.7\build\native\zlib.redist.targets'))" />
     <Error Condition="!Exists('..\packages\zlib.1.2.8.7\build\native\zlib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\zlib.1.2.8.7\build\native\zlib.targets'))" />
     <Error Condition="!Exists('..\packages\lpng.1.6.16.0\build\native\lpng.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\lpng.1.6.16.0\build\native\lpng.targets'))" />
-    <Error Condition="!Exists('..\packages\cairo.1.12.18.0\build\native\cairo.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cairo.1.12.18.0\build\native\cairo.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml-system.redist.2.4.2.0\build\native\sfml-system.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-system.redist.2.4.2.0\build\native\sfml-system.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml-system.2.4.2.0\build\native\sfml-system.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-system.2.4.2.0\build\native\sfml-system.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml-window.redist.2.4.2.0\build\native\sfml-window.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-window.redist.2.4.2.0\build\native\sfml-window.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml-window.2.4.2.0\build\native\sfml-window.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-window.2.4.2.0\build\native\sfml-window.targets'))" />
   </Target>
 </Project>
