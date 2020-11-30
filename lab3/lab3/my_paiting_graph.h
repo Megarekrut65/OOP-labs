@@ -16,14 +16,15 @@ namespace pg//paint graph
 	class Graph : public gs::GraphStructure<T>
 	{
     private:   
-        sf::Color vertexColor;
-        float vertexSize;
-        //sf::Color edgeColor;
-        //sf::Color textColor;
-        std::vector<Coordinate> coordinatesOfVertices;
-        
+        float radius;
+        unsigned wight;
+        unsigned hight;
+        sf::Font font;
+        std::vector<Coordinate> coordinates;
         void drawText(sf::RenderWindow& window, std::size_t index);
         void drawVertex(sf::RenderWindow& window, std::size_t index);
+        void drawEdge(sf::RenderWindow& window, std::size_t index);
+        void countCoordinates();
 	public:
 		Graph();
 		void paintGraph();
@@ -66,7 +67,7 @@ namespace pg
         return true;
     }
 	template<typename T>
-	Graph<T>::Graph() : vertexSize(40.f), vertexColor(sf::Color::Red), gs::GraphStructure<T>::GraphStructure(false) {}
+	Graph<T>::Graph() : radius(30.f), wight(1000), hight(650),  gs::GraphStructure<T>::GraphStructure(false) {}
 	/*
     * sf::CircleShape shape(40.f);
         sf::CircleShape shape2(40.f);
@@ -100,16 +101,49 @@ namespace pg
     * 
     * 
     */
-
+    template<typename T>
+    void Graph<T>::countCoordinates()
+    {
+        coordinates.clear();
+        bool side = true;
+        Coordinate coordinate1(10.f, 10.f), coordinate2(10.f, float(hight - 2 * radius - 10.f));       
+        for (std::size_t i = 0; i < this->list.size(); i++)
+        {
+            if (side)
+            {
+                side = false;
+                coordinates.push_back(coordinate1);
+                if (unsigned(coordinate1.x + 5 * radius) < wight) coordinate1.x += 4 * radius;
+                else
+                {
+                    coordinate1.x = 10.f;
+                    coordinate1.y += 4 * radius;
+                }
+            }
+            else
+            {
+                side = true;
+                coordinates.push_back(coordinate2);
+                if (unsigned(coordinate2.x + 5 * radius) < wight) coordinate2.x += 4 * radius;
+                else
+                {
+                    coordinate2.x = 10.f;
+                    coordinate2.y -= 4 * radius;
+                }
+            }
+        }
+    }
     template<typename T>
 	void Graph<T>::paintGraph()
-	{
-        unsigned wight = 1000, hight = 650;
-        sf::RenderWindow window(sf::VideoMode(wight, hight), "MyWindow");
-        sf::Font font;
+	{     
+        sf::RenderWindow window(sf::VideoMode(wight, hight), "MyWindow");      
         if (!pg::readFont(font, "arial.ttf")) return;
         std::size_t size = 48;
         for(std::size_t i = 0; i < size; i++) this->addVertex(i);
+        this->addEdge(0, 5, 10);
+        this->addEdge(4, 8, 10);
+        countCoordinates();  
+        sf::Color colorEdge = sf::Color::Red;
         while (window.isOpen())
         {
             sf::Event event;
@@ -118,78 +152,55 @@ namespace pg
                 if (event.type == sf::Event::Closed)
                     window.close();
             }
-            std::vector<Coordinate> coordinates;
-            bool side = true;
-            float radius = 30.f;
-            Coordinate coordinate1(10.f, 10.f), coordinate2(10.f, float(hight - 2* radius - 10.f));
-            sf::Color colorVertex = sf::Color::Blue;
-            sf::Color colorEdge = sf::Color::Red;
             window.clear();
-            for (std::size_t i = 0; i < this->list.size(); i++)
+            for (std::size_t i = 0; i < this->numberOfVertices; i++)
             {
-                
-                if (side)
-                {
-                    side = false;
-                    coordinates.push_back(coordinate1);
-                    if (unsigned(coordinate1.x + 5 * radius ) < wight) coordinate1.x += 4 * radius;
-                    else
-                    {
-                        coordinate1.x = 10.f;
-                        coordinate1.y += 4 * radius;
-                    }
-                }
-                else
-                {
-                    side = true;
-                    coordinates.push_back(coordinate2);
-                    if (unsigned(coordinate2.x + 5 * radius) < wight) coordinate2.x += 4 * radius;
-                    else
-                    {
-                        coordinate2.x = 10.f;
-                        coordinate2.y -= 4 * radius;
-                    }
-                }
-                sf::CircleShape shape(radius);
-                shape.setFillColor(colorVertex);
-                shape.setPosition(coordinates[i].x, coordinates[i].y);
-                sf::Text text;
-                text.setFont(font);
-                std::string line = ofo::toTheString(this->list[i]->value);
-                sf::String sfLine = line.c_str();
-                text.setString(sfLine);
-                text.setCharacterSize(unsigned(radius));
-                text.setPosition(coordinates[i].x + 10.f, coordinates[i].y + 10.f);
-                window.draw(shape);
-                window.draw(text);
+                drawVertex(window, i);
+                drawEdge(window, i);
             }
             window.display();
         }
-        /*coordinatesOfVertices.push_back({ 100.f, 100.f });
-        this->addVertex(12);
-        drawVertex(window, 0);*/
 	}
     template<typename T>
     void Graph<T>::drawVertex(sf::RenderWindow& window, std::size_t index)
     {
-        sf::CircleShape shape(vertexSize);
-        shape.setFillColor(vertexColor);
-        Coordinate coo = coordinatesOfVertices[index];
-        shape.setPosition(coo.x, coo.y);
+        sf::Color colorVertex = sf::Color::Blue;
+        std::size_t i = index;
+        sf::CircleShape shape(radius);
+        shape.setFillColor(colorVertex);
+        shape.setPosition(coordinates[i].x, coordinates[i].y);            
         window.draw(shape);
-        //drawText(window, index);
+        drawText(window, i);
     }
     template<typename T>
     void Graph<T>::drawText(sf::RenderWindow& window, std::size_t index)
     {
-        sf::Font font;
+        std::size_t i = index;
         sf::Text text;
-        Coordinate coo = coordinatesOfVertices[index];
-        if (readFont(font, "arial.ttf")) text.setFont(font);
-        text.setString("12"/*ofo::toTheString(this->list[index]->value)*/);
-        text.setCharacterSize(unsigned(vertexSize / 2));
-        text.setPosition(coo.x, coo.y);
-        //text.setColor(color);
+        text.setFont(font);
+        std::string line = ofo::toTheString(this->list[i]->value);
+        sf::String sfLine = line.c_str();
+        text.setString(sfLine);
+        text.setCharacterSize(unsigned(radius));
+        text.setPosition(coordinates[i].x + 10.f, coordinates[i].y + 10.f);
         window.draw(text);
+    }
+    template<typename T>
+    void Graph<T>::drawEdge(sf::RenderWindow& window, std::size_t index)
+    {
+        gs::VertexNode<T>* current = this->list[index]->next;
+        Coordinate coordinate = coordinates[index];
+        sf::Color colorEdge = sf::Color::Blue;
+        while (current)
+        {
+            Coordinate currentCoordinate = coordinates[current->index];
+            sf::Vertex edge[] =
+            {
+                sf::Vertex(sf::Vector2f(coordinate.x + radius, coordinate.y + radius)),
+                sf::Vertex(sf::Vector2f(currentCoordinate.x + radius, currentCoordinate.y + radius))
+            };
+            window.draw(edge, 2, sf::Lines);
+            current = current->next;
+        }
     }
 }
