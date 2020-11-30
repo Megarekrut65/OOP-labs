@@ -10,6 +10,7 @@ namespace pg//paint graph
     {
         float x;
         float y;
+        Coordinate(float x, float y);
     };
     template<typename T>
 	class Graph : public gs::GraphStructure<T>
@@ -31,6 +32,7 @@ namespace pg//paint graph
 }
 namespace pg
 {
+    Coordinate::Coordinate(float x, float y) :x(x),y(y) {}
     bool readFont(sf::Font& font, std::string path)
     {
         std::ifstream myFont{ path, std::ifstream::binary };
@@ -46,9 +48,7 @@ namespace pg
                 return false;
             }
             buffer = new char[length];
-
             myFont.seekg(0, myFont.beg);
-
             myFont.read(buffer, length);
             myFont.close();
         }
@@ -67,13 +67,8 @@ namespace pg
     }
 	template<typename T>
 	Graph<T>::Graph() : vertexSize(40.f), vertexColor(sf::Color::Red), gs::GraphStructure<T>::GraphStructure(false) {}
-	template<typename T>
-	void Graph<T>::paintGraph()
-	{
-        sf::RenderWindow window(sf::VideoMode(1000, 600), "MyWindow");
-        sf::Font font;
-        if (pg::readFont(font, "arial.ttf")) {}
-        sf::CircleShape shape(40.f);
+	/*
+    * sf::CircleShape shape(40.f);
         sf::CircleShape shape2(40.f);
         //sf::RectangleShape line(sf::Vector2f(500.f, 5.f));
         //line.rotate(45.f);
@@ -92,6 +87,29 @@ namespace pg
             sf::Vertex(sf::Vector2f(40.f, 40.f)),
             sf::Vertex(sf::Vector2f(340.f, 440.f))
         };
+    * 
+    * 
+    *             //graph.paintGraph(window);
+            window.draw(line2, 2, sf::Lines);
+            window.draw(shape);
+            window.draw(shape2);
+            window.draw(text);
+    * 
+    * 
+    * 
+    * 
+    * 
+    */
+
+    template<typename T>
+	void Graph<T>::paintGraph()
+	{
+        unsigned wight = 1000, hight = 650;
+        sf::RenderWindow window(sf::VideoMode(wight, hight), "MyWindow");
+        sf::Font font;
+        if (!pg::readFont(font, "arial.ttf")) return;
+        std::size_t size = 48;
+        for(std::size_t i = 0; i < size; i++) this->addVertex(i);
         while (window.isOpen())
         {
             sf::Event event;
@@ -100,13 +118,51 @@ namespace pg
                 if (event.type == sf::Event::Closed)
                     window.close();
             }
-
+            std::vector<Coordinate> coordinates;
+            bool side = true;
+            float radius = 30.f;
+            Coordinate coordinate1(10.f, 10.f), coordinate2(10.f, float(hight - 2* radius - 10.f));
+            sf::Color colorVertex = sf::Color::Blue;
+            sf::Color colorEdge = sf::Color::Red;
             window.clear();
-            //graph.paintGraph(window);
-            window.draw(line2, 2, sf::Lines);
-            window.draw(shape);
-            window.draw(shape2);
-            window.draw(text);
+            for (std::size_t i = 0; i < this->list.size(); i++)
+            {
+                
+                if (side)
+                {
+                    side = false;
+                    coordinates.push_back(coordinate1);
+                    if (unsigned(coordinate1.x + 5 * radius ) < wight) coordinate1.x += 4 * radius;
+                    else
+                    {
+                        coordinate1.x = 10.f;
+                        coordinate1.y += 4 * radius;
+                    }
+                }
+                else
+                {
+                    side = true;
+                    coordinates.push_back(coordinate2);
+                    if (unsigned(coordinate2.x + 5 * radius) < wight) coordinate2.x += 4 * radius;
+                    else
+                    {
+                        coordinate2.x = 10.f;
+                        coordinate2.y -= 4 * radius;
+                    }
+                }
+                sf::CircleShape shape(radius);
+                shape.setFillColor(colorVertex);
+                shape.setPosition(coordinates[i].x, coordinates[i].y);
+                sf::Text text;
+                text.setFont(font);
+                std::string line = ofo::toTheString(this->list[i]->value);
+                sf::String sfLine = line.c_str();
+                text.setString(sfLine);
+                text.setCharacterSize(unsigned(radius));
+                text.setPosition(coordinates[i].x + 10.f, coordinates[i].y + 10.f);
+                window.draw(shape);
+                window.draw(text);
+            }
             window.display();
         }
         /*coordinatesOfVertices.push_back({ 100.f, 100.f });
