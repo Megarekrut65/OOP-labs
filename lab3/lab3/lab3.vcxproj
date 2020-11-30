@@ -125,7 +125,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\User81\source\repos\Megarekrut65\OOP-labs\lab3\SFML\SFML-2.5.1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>"sfml-graphics.lib";"sfml-window.lib";"sfml-system.lib";"sfml-audio.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
