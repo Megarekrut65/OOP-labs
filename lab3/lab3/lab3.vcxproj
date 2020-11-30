@@ -147,6 +147,12 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="my_graph_structure.h" />
+    <ClInclude Include="my_override_functions_and_operators.h" />
+    <ClInclude Include="my_paiting_graph.h" />
+    <ClInclude Include="my_paths_between_vertices.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

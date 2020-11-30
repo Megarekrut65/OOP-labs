@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <fstream>
+#include "my_paiting_graph.h"
 
 bool readFont(sf::Font& font)
 {
@@ -32,13 +33,16 @@ bool readFont(sf::Font& font)
         std::cerr << "Font load failed" << std::endl;
         return false;
     }
+
     return true;
 }
 int main()
 {
-    sf::Font font;
+
+    /*/*sf::Font font;
     if (!readFont(font)) return 1;
-    sf::RenderWindow window(sf::VideoMode(500, 600), "MyWindow");
+    
+    
     sf::CircleShape shape(40.f);
     sf::CircleShape shape2(40.f);
     //sf::RectangleShape line(sf::Vector2f(500.f, 5.f));
@@ -50,11 +54,10 @@ int main()
     sf::Text text;
     text.setFont(font);
     text.setString("10");
-    text.setCharacterSize(20);
-    text.setPosition(40.f, 40.f);
-   
-   // text.setFillColor(sf::Color::Red);
-    //text.setScale(sf::Vector2f(5.f, 5.f));
+    text.setCharacterSize(40);
+    //shape2.setPosition(100.0f, 200.0f);
+    text.setPosition(20.f, 20.f);
+  
     //line.setPosition(25.0f, 25.0f);
     sf::Vertex line2[] =
     {
@@ -62,7 +65,29 @@ int main()
         sf::Vertex(sf::Vector2f(340.f, 440.f))
     };
    
-    
+    */
+    /*sf::RenderWindow window(sf::VideoMode(1000, 600), "MyWindow");
+    sf::Font font;
+    if (pg::readFont(font, "arial.ttf")) {}
+    sf::CircleShape shape(40.f);
+    sf::CircleShape shape2(40.f);
+    //sf::RectangleShape line(sf::Vector2f(500.f, 5.f));
+    //line.rotate(45.f);
+    shape.setFillColor(sf::Color::Green);
+    shape2.setFillColor(sf::Color::Red);
+    shape.setPosition(300.0f, 400.0f);
+
+    sf::Text text;
+    text.setFont(font);
+    text.setString("10");
+    text.setCharacterSize(40);
+    //shape2.setPosition(100.0f, 200.0f);
+    text.setPosition(20.f, 20.f);
+    sf::Vertex line2[] =
+    {
+        sf::Vertex(sf::Vector2f(40.f, 40.f)),
+        sf::Vertex(sf::Vector2f(340.f, 440.f))
+    };
     while (window.isOpen())
     {
         sf::Event event;
@@ -71,14 +96,16 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
+        
         window.clear();
+        //graph.paintGraph(window);
         window.draw(line2, 2, sf::Lines);
         window.draw(shape);
         window.draw(shape2);
         window.draw(text);
         window.display();
-    }
-
+    }*/
+    pg::Graph<int> graph;
+    graph.paintGraph();
     return 0;
 }
