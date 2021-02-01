@@ -1,3 +1,5 @@
+#define DOCTEST_CONFIG_IMPLEMENT
+#include "doctest.h"
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
@@ -7,6 +9,7 @@
 #include <fstream>
 #include <chrono>
 #include <algorithm>
+
 
 using std::cout;
 using std::cin;
@@ -1419,7 +1422,7 @@ void benchmark_mode()
     std::remove("benchmark_text.txt");
     std::remove("benchmark_binary.bin");
 }
-int main()
+void old_main()
 {
     cout << "<The Forest of Monsters>" << endl;
     while (true)
@@ -1437,12 +1440,47 @@ int main()
         case'0':
         {
             cout << "\nExit..." << endl;
-            return 0;
+            return;
         }
         break;
         default: cout << "\nPress the correct key!" << endl;
         }
     }
+}
+TEST_CASE("testing the addition of monsters")
+{
+    vector<info_monster> array;
+    info_monster monster( "Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
+    CHECK(monster.name == "Big monster");
+    CHECK(monster.hp == 20);
+    CHECK(monster.damage == 10);
+    CHECK(monster.chance == doctest::Approx(0.2));
+    CHECK(monster.type_of_attack == types_of_attack::CURE);
+    CHECK(monster.id == 1000);
+    CHECK(array.size() == 0);
 
-    return 0;
+}
+int main(int argc, char** argv)
+{
+    doctest::Context context;
+
+    // defaults
+ //    context.addFilter("test-case-exclude", "*math*"); // exclude test cases with "math" in their name
+ //    context.setOption("abort-after", 5);              // stop test execution after 5 failed assertions
+ //    context.setOption("order-by", "name");            // sort the test cases by their name
+
+    context.applyCommandLine(argc, argv);
+
+    // overrides
+//    context.setOption("no-breaks", true);             // don't break in the debugger when assertions fail
+
+    int res = context.run(); // run
+
+    if (context.shouldExit()) // important - query flags (and --exit) rely on the user doing this
+        return res;          // propagate the result of the tests
+
+    int client_stuff_return_code = 0;
+    // your program - if the testing framework is integrated in your production code
+    old_main();
+    return res + client_stuff_return_code; // the result from doctest is propagated here as well
 }
