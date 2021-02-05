@@ -1489,8 +1489,8 @@ TEST_CASE("Saving, adding and reading monster to/from files")
     CHECK(save_binary_file("file2.bin", array));
     info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
     //To add only one monster to file, don't need to add it to array, but next monsters will be incorrect
-    CHECK(create_text_file("file1.txt"));//before adding monster to file, need check availability of file
-    CHECK(create_binary_file("file2.bin"));
+    REQUIRE(create_text_file("file1.txt"));//before adding monster to file, need check availability of file
+    REQUIRE(create_binary_file("file2.bin"));
     CHECK(add_in_text_file(monster3, "file1.txt"));//monster will add to end of the file
     CHECK(add_in_binary_file(monster3, "file2.bin"));
     //to read monsters from file, need add their to array, using next function
@@ -1502,13 +1502,67 @@ TEST_CASE("Saving, adding and reading monster to/from files")
     {
         array = open_binary_file("file2.bin");
     }
-    CHECK(array.size() == 3);
+    REQUIRE(array.size() == 3);
     CHECK(array[0].name == monster1.name);
     CHECK(array[0].id == monster1.id);
     CHECK(array[1].name == monster2.name);
     CHECK(array[1].id == monster2.id);
     CHECK(array[2].name == monster3.name);
     CHECK(array[2].id == monster3.id);
+}
+TEST_CASE("Deleting monsters")
+{
+    vector<info_monster> array;
+    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
+    array.push_back(monster1);
+    info_monster monster2("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
+    array.push_back(monster2);
+    info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
+    array.push_back(monster3);
+    CHECK(save_text_file("file1.txt", array));
+    CHECK(save_binary_file("file2.bin", array));
+    array = open_text_file("file1.txt");
+    REQUIRE(array.size() == 3);
+    impl::delete_monster_from_files(array[1].id, "file1.txt", "file2.bin");
+    array = open_text_file("file1.txt");
+    CHECK(array.size() == 2);
+}
+TEST_CASE("Finding monsters")
+{
+    vector<info_monster> array;
+    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
+    array.push_back(monster1);
+    info_monster monster2("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
+    array.push_back(monster2);
+    info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
+    array.push_back(monster3);
+    std::vector<int> indexes;
+    SUBCASE("by time and types of attack")
+    {
+        const int time[] = { 2040, 1, 4, 10, 44, 38 };
+        indexes = find_types_time(types_of_attack::INCREASE, time, array);
+        REQUIRE(indexes.size() == 1);//function find only one monster with type of attack INCREASE
+        CHECK(indexes[0] == 2);//index of this monster in array
+        CHECK(array[indexes[0]].id == monster3.id);
+    }
+    SUBCASE("by hp and damage")
+    {
+        unsigned hp = 15, damage = 100;
+        indexes = find_hp_damage(hp, damage, array);
+        REQUIRE(indexes.size() == 1);//function find only one monster with hp >= 15 and damage <= 100
+        CHECK(indexes[0] == 0);//index of this monster in array
+        CHECK(array[indexes[0]].id == monster1.id);
+    }
+    SUBCASE("by fragment of name")
+    {
+        std::string name = "l mon";
+        indexes = find_name(name, array);
+        REQUIRE(indexes.size() == 2);//function find only two monsters with fragment of name "l mon"
+        CHECK(indexes[0] == 1);//index of first monster in array
+        CHECK(indexes[1] == 2);//index of second monster in array
+        CHECK(array[indexes[0]].id == monster2.id);
+        CHECK(array[indexes[1]].id == monster3.id);
+    }
 }
 int main(int argc, char** argv)
 {
