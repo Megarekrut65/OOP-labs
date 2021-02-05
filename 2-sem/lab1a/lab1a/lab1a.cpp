@@ -1447,18 +1447,68 @@ void old_main()
         }
     }
 }
-TEST_CASE("testing the addition of monsters")
+TEST_CASE("testing the creating of monsters")
 {
     vector<info_monster> array;
-    info_monster monster( "Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
-    CHECK(monster.name == "Big monster");
-    CHECK(monster.hp == 20);
-    CHECK(monster.damage == 10);
-    CHECK(monster.chance == doctest::Approx(0.2));
-    CHECK(monster.type_of_attack == types_of_attack::CURE);
-    CHECK(monster.id == 1000);
+    info_monster monster1( "Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
+    CHECK(monster1.name == "Big monster");
+    CHECK(monster1.hp == 20);
+    CHECK(monster1.damage == 10);
+    CHECK(monster1.chance == doctest::Approx(0.2));
+    CHECK(monster1.type_of_attack == types_of_attack::CURE);
+    CHECK(monster1.id == 1000);
     CHECK(array.size() == 0);
-
+    info_monster monster2;
+    SUBCASE("After creating the monster, you must add it to array get correct id")
+    {
+        array.push_back(monster1);
+        monster2 = info_monster("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
+        CHECK(monster2.id == 1001);
+        array.push_back(monster2);
+    }
+    SUBCASE("If don't add then all monsters will have id = 1000")
+    {
+        monster2 = info_monster("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
+        CHECK(monster2.id == 1000);
+    }
+    CHECK(monster2.name == "Small monster");
+    CHECK(monster2.hp == 1);
+    CHECK(monster2.damage == 2);
+    CHECK(monster2.chance == doctest::Approx(0.1));
+    CHECK(monster2.type_of_attack == types_of_attack::PARALYZE);  
+}
+TEST_CASE("Saving, adding and reading monster to/from files")
+{
+    vector<info_monster> array;
+    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
+    //To save all monster to file, need to add their to array
+    array.push_back(monster1);
+    info_monster monster2("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array); 
+    array.push_back(monster2);
+    CHECK(save_text_file("file1.txt", array));
+    CHECK(save_binary_file("file2.bin", array));
+    info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
+    //To add only one monster to file, don't need to add it to array, but next monsters will be incorrect
+    CHECK(create_text_file("file1.txt"));//before adding monster to file, need check availability of file
+    CHECK(create_binary_file("file2.bin"));
+    CHECK(add_in_text_file(monster3, "file1.txt"));//monster will add to end of the file
+    CHECK(add_in_binary_file(monster3, "file2.bin"));
+    //to read monsters from file, need add their to array, using next function
+    SUBCASE("text file")
+    {
+        array = open_text_file("file1.txt");
+    }
+    SUBCASE("binary file")
+    {
+        array = open_binary_file("file2.bin");
+    }
+    CHECK(array.size() == 3);
+    CHECK(array[0].name == monster1.name);
+    CHECK(array[0].id == monster1.id);
+    CHECK(array[1].name == monster2.name);
+    CHECK(array[1].id == monster2.id);
+    CHECK(array[2].name == monster3.name);
+    CHECK(array[2].id == monster3.id);
 }
 int main(int argc, char** argv)
 {
