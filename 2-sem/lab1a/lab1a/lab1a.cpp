@@ -1564,6 +1564,32 @@ TEST_CASE("Finding monsters")
         CHECK(array[indexes[1]].id == monster3.id);
     }
 }
+TEST_CASE("Edit monster in files")
+{
+    vector<info_monster> array;
+    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
+    array.push_back(monster1);
+    info_monster monster2("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
+    array.push_back(monster2);
+    info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
+    array.push_back(monster3);
+    CHECK(save_text_file("file1.txt", array));
+    CHECK(save_binary_file("file2.bin", array));
+    array = open_text_file("file1.txt");
+    REQUIRE(array.size() == 3);
+    int index = 1;
+    CHECK(array[index].name == monster2.name);
+    //To edit monster in file, need to edit monster in array
+    array[index].name = "The monster";
+    array[index].hp = 500;
+    array[index].damage = 80;
+    impl::save_edit_monster("file1.txt", "file2.bin", array[index]);//After saving monster will be edited   
+    array = open_text_file("file1.txt");
+    REQUIRE(array.size() == 3);
+    CHECK(array[index].name == "The monster");
+    CHECK(array[index].hp == 500);
+    CHECK(array[index].damage == 80);
+}
 int main(int argc, char** argv)
 {
     doctest::Context context;
