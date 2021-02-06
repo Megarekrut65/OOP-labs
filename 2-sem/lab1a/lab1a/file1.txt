@@ -4,18 +4,18 @@ hp:20
 damage:10
 chance:0.2
 type:3
-19 40 8 6 1 121
+19 52 22 6 1 121
 id:1001
 name:The monster
 hp:500
 damage:80
 chance:0.1
 type:4
-19 40 8 6 1 121
+19 52 22 6 1 121
 id:1002
 name:Normal monster
 hp:100
 damage:200
 chance:0.17
 type:1
-19 40 8 6 1 121
+19 52 22 6 1 121
