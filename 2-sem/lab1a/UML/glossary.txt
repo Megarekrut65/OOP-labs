@@ -1,0 +1,5 @@
+Explanation of words
+Date-time - date and time.
+Interactive dialog mode - when the user can choose which operations to perform and set the necessary parameters.
+Demo mode - fixed values are set parameters and sequence of operations that demonstrate the correct operation of operations in different situations.
+Automatic benchmark mode - measuring efficiency operation of various storage mechanisms.

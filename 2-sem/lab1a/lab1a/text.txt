@@ -1,0 +1,21 @@
+id:1000
+name:Slizery
+hp:5667
+damage:111
+chance:0.02
+type:3
+20 52 29 9 1 121
+id:1001
+name:Bony Clai
+hp:10000
+damage:400
+chance:0.47
+type:4
+20 53 18 9 1 121
+id:1002
+name:Narlock
+hp:30
+damage:300
+chance:0
+type:3
+21 14 49 9 1 121

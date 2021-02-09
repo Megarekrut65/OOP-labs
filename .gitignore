@@ -424,3 +424,8 @@ MigrationBackup/
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudio,qtcreator
 /lab2/build-lab2-qt-Desktop_Qt_5_15_1_MinGW_64_bit-Debug
 /lab3/SFML/SFML-2.5.1
+/2-sem/lab1a/lab1a/copy_binary.bin
+/2-sem/lab1a/lab1a/copy_text.txt
+/2-sem/lab1a/UML/Lab1a.vpp.bak_002d
+/2-sem/lab1a/UML/Lab1a.vpp.bak_003d
+/2-sem/lab1a/UML/Lab1a.vpp.bak_004d
