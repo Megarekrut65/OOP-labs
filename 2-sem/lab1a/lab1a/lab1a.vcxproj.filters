@@ -18,9 +18,63 @@
     <ClCompile Include="lab1a.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="monster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="interactive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="binary_opening_mode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="text_opening_mode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="memory_opening_mode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="my_reads.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="benchmark.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="opening_mode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="doctest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interactive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="demo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="binary_opening_mode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memory_opening_mode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="text_opening_mode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="my_reads.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="benchmark.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="opening_mode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
