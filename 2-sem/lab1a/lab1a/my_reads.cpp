@@ -76,7 +76,7 @@ namespace mrs
         while (true)
         {
             std::cout << "\nChoose one of the possible types of special monster attack:\n"
-                <<"1)Increase damage.\n" << "2)Repeat the attack.\n3)Cure yourself.\n"
+                <<"1)Increase damage.\n2)Repeat the attack.\n3)Cure yourself.\n"
                 <<"4)Paralyze the enemy." << std::endl;
             switch (_getch())
             {
