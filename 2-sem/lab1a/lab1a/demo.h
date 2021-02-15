@@ -3,7 +3,7 @@
 
 namespace dm//demo mode
 {
-	void demo_menu(int&);
+	/*void demo_menu(int&);
 	void demo_read_name(int&, const string&, const string&);
 	void demo_read_hp(int&, const string&, const unsigned&);
 	void demo_read_damage(int&, const string&, const unsigned&);
@@ -20,5 +20,5 @@ namespace dm//demo mode
 	void demo_edit_monster(int&, vector<info_monster>&);
 	void demo_delete_monster(int&, vector<info_monster>&);
 	void demo_exit(int&);
-	void demo_mode();
+	void demo_mode();*/
 }

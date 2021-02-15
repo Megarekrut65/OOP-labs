@@ -7,10 +7,10 @@
 
 namespace tmode//text mode
 {
-	class TextMode : public om::OpeningMode
+	/*class TextMode : public om::OpeningMode
 	{
 	private:
-		std::string path;
+		const std::string path;
 		std::vector <mon::Monster*> find_types_time(
 			mon::AttackTypes type, const std::vector<int>& find_time);
 		std::vector<mon::Monster*> find_hp_damage(unsigned min_hp, unsigned max_damage);
@@ -21,6 +21,7 @@ namespace tmode//text mode
 		void delete_the_monster(mon::Monster monster);
 		void append_monster(mon::Monster monster);
 	public:
+		TextMode(const std::string& path);
 		void write_all_monsters();
-	};
+	};*/
 }

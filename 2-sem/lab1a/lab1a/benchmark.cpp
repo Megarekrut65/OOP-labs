@@ -2,7 +2,7 @@
 
 namespace bm
 {
-    void benchmark_mode()
+    /*void benchmark_mode()
     {
         clear_result_files();
         unsigned number_of_monsters, number_of_monsters_for_progression = 1;
@@ -246,5 +246,5 @@ namespace bm
             std::ofstream clear_file(all_result_files[i]);
             clear_file.close();
         }
-    }
+    }*/
 }

@@ -2,7 +2,7 @@
 
 namespace dm
 {
-    void demo_menu(int& delay)
+   /* void demo_menu(int& delay)
     {
         cout << "\nSelect the application mode:\n1)Interactive dialog mode. <- press\n"
             << "2)Demo mode.\n3)Automatic benchmark mode.\n0)Exit.\n";
@@ -257,5 +257,5 @@ namespace dm
         demo_exit(delay);
         cout << "\nThe end of the demo mode" << endl;
         Sleep(1000);
-    }
+    }*/
 }

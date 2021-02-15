@@ -4,6 +4,7 @@
 #include <ctime>
 #include <iostream>
 #include "file_functions.h"
+#include "file_mode.h"
 
 namespace mon//mosnter
 {
@@ -29,6 +30,9 @@ namespace mon//mosnter
         unsigned correct_damage(unsigned damage);
         double correct_chance(double chance);
         void read_from_text_file(std::ifstream& in);
+        void read_from_binary_file(std::ifstream& in);
+        void add_to_text_file(std::ofstream& out);
+        void add_to_binary_file(std::ofstream& out);        
     public:
         static const unsigned max_hp;
         static const unsigned min_hp;
@@ -44,7 +48,7 @@ namespace mon//mosnter
             AttackTypes type = AttackTypes::INCREASE, 
             std::tm time_info = std::tm(), 
             unsigned id = 1000);
-        Monster(std::ifstream& in, const std::string& mode = "text");
+        Monster(std::ifstream& in, omode::Mode mode = omode::Mode::TEXT);
         unsigned get_id();
         std::string get_name();
         unsigned get_hp();
@@ -62,7 +66,7 @@ namespace mon//mosnter
         std::string string_type() const;
         static mon::AttackTypes string_to_type(std::string line);
         static std::string type_to_string(mon::AttackTypes type);
-        void add_to_text_file(std::ofstream& out);
+        void add_to_file(std::ofstream& out, omode::Mode mode);
     };
     
 }

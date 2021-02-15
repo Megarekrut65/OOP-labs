@@ -137,9 +137,10 @@ namespace mon
         in >> time_info.tm_hour >> time_info.tm_min >> time_info.tm_sec
             >> time_info.tm_mday >> time_info.tm_mon >> time_info.tm_year;            
     }
-    Monster::Monster(std::ifstream& in, const std::string& mode): Monster()
+    Monster::Monster(std::ifstream& in, omode::Mode mode): Monster()
     {
-        if(mode == "text") read_from_text_file(in);
+        if (mode == omode::Mode::TEXT) read_from_text_file(in);
+        else if (mode == omode::Mode::BINARY) read_from_binary_file(in);
     }
     void Monster::add_to_text_file(std::ofstream& out)
     {
@@ -153,6 +154,29 @@ namespace mon
             << time_info.tm_min << " " << time_info.tm_sec << " "
             << time_info.tm_mday << " " << time_info.tm_mon << " "
             << time_info.tm_year << std::endl;
+    }
+    void Monster::read_from_binary_file(std::ifstream& in)
+    {
+        in.read((char*)&(id), sizeof(id));
+        if (in.eof()) return;
+        std::size_t size_name;
+        in.read((char*)&size_name, sizeof(size_name));
+        if (in.eof()) return;
+        char* buffer_name = new char[size_name + 1];
+        in.read(buffer_name, size_name);
+        if (in.eof()) return;
+        buffer_name[size_name] = '\0';
+        name = buffer_name;
+        in.read((char*)&(hp), sizeof(hp));
+        if (in.eof()) return;
+        in.read((char*)&(damage), sizeof(damage));
+        if (in.eof()) return;
+        in.read((char*)&(chance), sizeof(chance));
+        if (in.eof()) return;
+        in.read((char*)&(type), sizeof(type));
+        if (in.eof()) return;
+        in.read((char*)&(time_info), sizeof(time_info));
+        delete[] buffer_name;
     }
     std::string Monster::type_to_string(mon::AttackTypes type)
     {
@@ -176,5 +200,23 @@ namespace mon
         if (line == "CURE") return  mon::AttackTypes::CURE;
         if (line == "PARALYZE") return  mon::AttackTypes::PARALYZE;
         return mon::AttackTypes::INCREASE;
+    }
+    void Monster::add_to_file(std::ofstream& out, omode::Mode mode)
+    {
+        if (mode == omode::Mode::TEXT) add_to_text_file(out);
+        else if (mode == omode::Mode::BINARY) add_to_binary_file(out);
+    }
+    void Monster::add_to_binary_file(std::ofstream& out)
+    {
+        out.write((char*)&(id), sizeof(id));
+        std::size_t size_name = name.size();
+        out.write((char*)&size_name, sizeof(size_name));
+        const char* buffer_name = name.c_str();
+        out.write(buffer_name, size_name);
+        out.write((char*)&(hp), sizeof(hp));
+        out.write((char*)&(damage), sizeof(damage));
+        out.write((char*)&(chance), sizeof(chance));
+        out.write((char*)&(type), sizeof(type));
+        out.write((char*)&(time_info), sizeof(time_info));
     }
 }

@@ -1,16 +1,18 @@
 #pragma once
-#include <fstream>
-#include <string>
-#include <vector>
 #include "opening_mode.h"
 #include "file_functions.h"
-
-namespace bmode//binary mode
+#include "file_mode.h"
+namespace fmode//file mode
 {
-	/*class BinaryMode : public om::OpeningMode
+
+	class FileMode: public om::OpeningMode
 	{
 	private:
 		const std::string path;
+		omode::Mode mode;
+		std::ios_base::_Openmode in_mode;
+		std::ios_base::_Openmode out_mode;
+
 		std::vector <mon::Monster*> find_types_time(
 			mon::AttackTypes type, const std::vector<int>& find_time);
 		std::vector<mon::Monster*> find_hp_damage(unsigned min_hp, unsigned max_damage);
@@ -21,7 +23,7 @@ namespace bmode//binary mode
 		void delete_the_monster(mon::Monster monster);
 		void append_monster(mon::Monster monster);
 	public:
-		BinaryMode(const std::string& path);
+		FileMode(const std::string& path, omode::Mode mode = omode::Mode::TEXT);
 		void write_all_monsters();
-	};*/
+	};
 }

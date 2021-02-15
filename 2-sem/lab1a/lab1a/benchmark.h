@@ -4,7 +4,7 @@
 namespace bm//benchmark mode
 {
 
-	struct measurement_result
+	/*struct measurement_result
 	{
 		int number_of_monsters;
 		float time;
@@ -22,6 +22,6 @@ namespace bm//benchmark mode
 	float measurement_time_type_find(vector<info_monster>&);
 	void clear_result_files();
 	void benchmark_mode();
-	void file_replacement(const string&, const string&);
+	void file_replacement(const string&, const string&);*/
 }
 

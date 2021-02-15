@@ -2,6 +2,7 @@
 
 namespace tmode
 {
+   /* TextMode::TextMode(const std::string& path):path(path){}
     std::vector <mon::Monster*> TextMode::find_types_time(
         mon::AttackTypes type, const std::vector<int>& find_time)
     {
@@ -128,5 +129,5 @@ namespace tmode
             std::cout << monster << std::endl;
         }
         file.close();
-    }
+    }*/
 }
