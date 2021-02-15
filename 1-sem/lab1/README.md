@@ -5,4 +5,4 @@
 
 * Додатково реалізував unit tests та створив документацію з використанням Doxygen
 
-* Documentation https://megarekrut65.github.io/OOP-labs/lab1/docs/html/index.html
+* Documentation https://megarekrut65.github.io/OOP-labs/sem-1/lab1/docs/html/index.html
