@@ -142,6 +142,7 @@
     <ClCompile Include="benchmark.cpp" />
     <ClCompile Include="binary_opening_mode.cpp" />
     <ClCompile Include="demo.cpp" />
+    <ClCompile Include="file_functions.cpp" />
     <ClCompile Include="interactive.cpp" />
     <ClCompile Include="lab1a.cpp" />
     <ClCompile Include="memory_opening_mode.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="binary_opening_mode.h" />
     <ClInclude Include="demo.h" />
     <ClInclude Include="doctest.h" />
+    <ClInclude Include="file_functions.h" />
     <ClInclude Include="interactive.h" />
     <ClInclude Include="memory_opening_mode.h" />
     <ClInclude Include="monster.h" />

@@ -115,4 +115,66 @@ namespace mon
             << monster.string_time();
         return out;
     }
+    void Monster::read_from_text_file(std::ifstream& in)
+    {
+        std::string line = ffs::line_read(in);
+        if (line.size() >= 3 && line.substr(0, 3) == "id=") id = stoi(line.substr(3));
+        line = ffs::line_read(in);
+        if (in.eof()) return;
+        if (line.size() >= 5 && line.substr(0, 5) == "name=") name = line.substr(5);
+        line = ffs::line_read(in);
+        if (in.eof()) return;
+        if (line.size() >= 3 && line.substr(0, 3) == "hp=") hp = stoi(line.substr(3));
+        line = ffs::line_read(in);
+        if (in.eof()) return;
+        if (line.size() >= 7 && line.substr(0, 7) == "damage=") damage = stoi(line.substr(7));
+        line = ffs::line_read(in);
+        if (in.eof()) return;
+        if (line.size() >= 7 && line.substr(0, 7) == "chance=") chance = stod(line.substr(7));
+        line = ffs::line_read(in);
+        if (in.eof()) return;
+        if (line.size() >= 5 && line.substr(0, 5) == "type=") type = string_to_type(line.substr(5));
+        in >> time_info.tm_hour >> time_info.tm_min >> time_info.tm_sec
+            >> time_info.tm_mday >> time_info.tm_mon >> time_info.tm_year;            
+    }
+    Monster::Monster(std::ifstream& in, const std::string& mode): Monster()
+    {
+        if(mode == "text") read_from_text_file(in);
+    }
+    void Monster::add_to_text_file(std::ofstream& out)
+    {
+        out << "id=" << id << std::endl;
+        out << "name=" << name << std::endl;
+        out << "hp=" << hp << std::endl;
+        out << "damage=" << damage << std::endl;
+        out << "chance=" << chance << std::endl;
+        out << type_to_string(type) << std::endl;
+        out << time_info.tm_hour << " "
+            << time_info.tm_min << " " << time_info.tm_sec << " "
+            << time_info.tm_mday << " " << time_info.tm_mon << " "
+            << time_info.tm_year << std::endl;
+    }
+    std::string Monster::type_to_string(mon::AttackTypes type)
+    {
+        std::string line = "type=";
+        switch (type)
+        {
+        case AttackTypes::INCREASE: line += "INCREASE";
+            break;
+        case AttackTypes::REPEAT: line += "REPEAT";
+            break;
+        case AttackTypes::CURE: line += "CURE";
+            break;
+        case AttackTypes::PARALYZE: line += "PARALYZE";
+        }
+
+        return line;
+    }
+    mon::AttackTypes Monster::string_to_type(std::string line)
+    {
+        if (line == "REPEAT") return  mon::AttackTypes::REPEAT;
+        if (line == "CURE") return  mon::AttackTypes::CURE;
+        if (line == "PARALYZE") return  mon::AttackTypes::PARALYZE;
+        return mon::AttackTypes::INCREASE;
+    }
 }

@@ -2,6 +2,33 @@
 
 namespace om
 {
+    void OpeningMode::check_types_time(mon::AttackTypes type,
+        const std::vector<int>& find_time, mon::Monster monster, std::vector <mon::Monster*>& arr)
+    {
+        if (type == monster.get_type())
+        {
+            std::vector<int> monster_time = tm_to_vector(monster.get_time());
+            if (is_time(find_time, monster_time)) arr.push_back(&monster);
+        }
+    }
+    void OpeningMode::check_hp_damage(unsigned min_hp, unsigned max_damage,
+        mon::Monster monster, std::vector <mon::Monster*>& arr)
+    {
+        if ((min_hp <= monster.get_hp())
+            && (max_damage >= monster.get_damage()))
+            arr.push_back(&monster);
+    }
+    void OpeningMode::check_name(std::string fragment_name,
+        mon::Monster monster, std::vector <mon::Monster*>& arr)
+    {
+        std::string name = monster.get_name();
+        if (fragment_name.size() <= name.size())
+        {
+            std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+            std::transform(fragment_name.begin(), fragment_name.end(), fragment_name.begin(), ::tolower);
+            if (name.find(fragment_name) != std::string::npos) arr.push_back(&monster);
+        }
+    }
     void OpeningMode::write_monsters_menu(const std::vector<mon::Monster*>& arr)
     {
         if (arr.size() == 0) std::cout << "\nMonster(s) don't found!" << std::endl;

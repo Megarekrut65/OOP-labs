@@ -3,6 +3,7 @@
 #include <vector>
 #include <ctime>
 #include <iostream>
+#include "file_functions.h"
 
 namespace mon//mosnter
 {
@@ -27,6 +28,7 @@ namespace mon//mosnter
         unsigned correct_hp(unsigned hp);
         unsigned correct_damage(unsigned damage);
         double correct_chance(double chance);
+        void read_from_text_file(std::ifstream& in);
     public:
         static const unsigned max_hp;
         static const unsigned min_hp;
@@ -42,6 +44,7 @@ namespace mon//mosnter
             AttackTypes type = AttackTypes::INCREASE, 
             std::tm time_info = std::tm(), 
             unsigned id = 1000);
+        Monster(std::ifstream& in, const std::string& mode = "text");
         unsigned get_id();
         std::string get_name();
         unsigned get_hp();
@@ -57,6 +60,9 @@ namespace mon//mosnter
         friend std::ostream& operator <<(std::ostream& out, const Monster& monster);
         std::string string_time() const;
         std::string string_type() const;
+        static mon::AttackTypes string_to_type(std::string line);
+        static std::string type_to_string(mon::AttackTypes type);
+        void add_to_text_file(std::ofstream& out);
     };
     
 }

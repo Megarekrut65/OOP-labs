@@ -1,6 +1,7 @@
 #pragma once
 #include "monster.h"
 #include "my_reads.h"
+#include <algorithm>
 
 namespace om//opening mode
 {
@@ -21,6 +22,12 @@ namespace om//opening mode
         virtual void delete_the_monster(mon::Monster monster) = 0;
         bool is_time(std::vector<int> find_time, std::vector<int> monster_time, std::size_t index = 0);
         std::vector<int> tm_to_vector(std::tm time_info);
+        void check_types_time(mon::AttackTypes type, 
+            const std::vector<int>& find_time, mon::Monster monster, std::vector <mon::Monster*>& arr);
+        void check_hp_damage(unsigned min_hp, unsigned max_damage, 
+            mon::Monster monster, std::vector <mon::Monster*>& arr);
+        void check_name(std::string fragment_name,
+            mon::Monster monster, std::vector <mon::Monster*>& arr);
     public:
         void write_monsters_menu(const std::vector<mon::Monster*>& arr);
         virtual void write_all_monsters() = 0;
