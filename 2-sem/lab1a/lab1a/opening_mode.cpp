@@ -93,8 +93,10 @@ namespace om
         double chance = mrs::read_double("a chance to launch a special attack of monster",
             mon::Monster::min_chance, mon::Monster::max_chance);
         mon::AttackTypes type = mrs::read_type();
+        std::tm time_info = get_time_now();
+        unsigned id = get_id();
         mon::Monster new_monster(name, hp, damage, chance,
-            type, get_time_now(), get_id());
+            type, time_info, id);
         std::cout << "\nNew monster created!\nHis personal ID: " << new_monster.get_id() << std::endl;
         std::cout << new_monster.string_time() << std::endl;
         append_monster(new_monster);
@@ -133,8 +135,8 @@ namespace om
                 }
                     break;
                 default: std::cout << "\nPress the correct key!" << std::endl;
+                    break;
                 }
-                break;
             }            
         }
         else std::cout << "\nMonster not found!" << std::endl;

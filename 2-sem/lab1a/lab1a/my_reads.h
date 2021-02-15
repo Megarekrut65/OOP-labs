@@ -7,6 +7,7 @@
 namespace mrs//my reads
 {
 	void same_part(const std::string& sentence);
+	void clear();
 	void data_incorrect();
 	template<typename T>
 	std::string min_max_part(T min, T max);

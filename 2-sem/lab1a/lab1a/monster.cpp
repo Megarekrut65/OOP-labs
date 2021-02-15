@@ -83,7 +83,7 @@ namespace mon
     }
     void Monster::set_type(AttackTypes type)
     {
-        type = type;
+        this->type = type;
     }
     std::string Monster::string_time()
         const

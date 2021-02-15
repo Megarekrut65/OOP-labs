@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="benchmark.cpp" />
-    <ClCompile Include="binary_opening_mode.cpp" />
     <ClCompile Include="demo.cpp" />
     <ClCompile Include="file_functions.cpp" />
     <ClCompile Include="file_opening_mode.cpp" />
@@ -151,11 +150,9 @@
     <ClCompile Include="monster_menu.cpp" />
     <ClCompile Include="opening_mode.cpp" />
     <ClCompile Include="my_reads.cpp" />
-    <ClCompile Include="text_opening_mode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="benchmark.h" />
-    <ClInclude Include="binary_opening_mode.h" />
     <ClInclude Include="demo.h" />
     <ClInclude Include="doctest.h" />
     <ClInclude Include="file_functions.h" />
@@ -168,7 +165,6 @@
     <ClInclude Include="opening_mode.h" />
     <ClInclude Include="my_reads.h" />
     <ClInclude Include="testing.h" />
-    <ClInclude Include="text_opening_mode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

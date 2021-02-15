@@ -27,12 +27,6 @@
     <ClCompile Include="demo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="binary_opening_mode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="text_opening_mode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="memory_opening_mode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -68,13 +62,7 @@
     <ClInclude Include="demo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="binary_opening_mode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="memory_opening_mode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="text_opening_mode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="my_reads.h">
