@@ -2,7 +2,7 @@
 
 namespace mmode
 {
-    unsigned get_id(const std::vector<info_monster>& all_monsters)//creates a unique id
+    /*unsigned get_id(const std::vector<info_monster>& all_monsters)//creates a unique id
     {
         unsigned new_id = 1000;
         int size = all_monsters.size();
@@ -88,5 +88,20 @@ namespace mmode
             }
         }
         return numbers_monsters;
+    }*/
+    std::vector <mon::Monster*> MemoryMode::find_types_time(
+        mon::AttackTypes type, const std::vector<int>& find_time)
+    {
+        std::vector <mon::Monster*> arr;
+        for (std::size_t i = 0; i < monsters.size(); i++)
+        {
+            if (type == monsters[i].get_type())
+            {
+                std::vector<int> monster_time = tm_to_vector(monsters[i].get_time());
+                if (is_time(find_time, monster_time)) arr.push_back(&monsters[i]);
+            }
+        }
+
+        return arr;
     }
 }

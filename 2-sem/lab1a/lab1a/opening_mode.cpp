@@ -2,17 +2,16 @@
 
 namespace om
 {
-    void OpeningMode::write_monsters_menu(const std::vector<std::size_t>& indexes)
+    void OpeningMode::write_monsters_menu(const std::vector<mon::Monster*>& arr)
     {
-        if (indexes.size() == 0) std::cout << "\nMonster(s) don't found!" << std::endl;
+        if (arr.size() == 0) std::cout << "\nMonster(s) don't found!" << std::endl;
         else
         {
             std::cout << "\nMonster(s) found:" << std::endl;
-            std::size_t number = 0;
-            for (std::size_t i = 0; i < indexes.size(); i++)
+            for (std::size_t i = 0; i < arr.size(); i++)
             {
-                std::cout << "\n<" << ++number << ">" << std::endl;
-                write_monster(indexes[i]);
+                std::cout << "\n<" << i + 1 << ">" << std::endl;
+                std::cout << *arr[i] << std::endl;
             }
         }
     }
@@ -20,13 +19,13 @@ namespace om
     {
         mon::AttackTypes type = mrs::read_type();
         std::cout << "\nEnter the maximum date and time the monster was created:" << std::endl;
-        std::vector<std::size_t> find_time = {
-            mrs::read_size_t("year", 2020),
-            mrs::read_size_t("month", 1, 12),
-            mrs::read_size_t("day", 1, 31),
-            mrs::read_size_t("hour", 0, 23),
-            mrs::read_size_t("minute", 0, 59),
-            mrs::read_size_t("second", 0, 59)
+        std::vector<int> find_time = {
+            int(mrs::read_size_t("year", 2020)),
+            int(mrs::read_size_t("month", 1, 12)),
+            int(mrs::read_size_t("day", 1, 31)),
+            int(mrs::read_size_t("hour", 0, 23)),
+            int(mrs::read_size_t("minute", 0, 59)),
+            int(mrs::read_size_t("second", 0, 59))
         };
         write_monsters_menu(find_types_time(type, find_time));
     }
@@ -80,7 +79,7 @@ namespace om
             while (true)
             {
                 std::cout << "\nMonster:\n" << *monster << std::endl;
-                cout << "\nSelect the option you want to edit:\n"
+                std::cout << "\nSelect the option you want to edit:\n"
                     << "1)Name.\n2)HP.\n3)Damage.\n4)Chance to launch a special attack.\n"
                     << "5)Type of special monster attack.\n0)Exit." << std::endl;
                 switch (_getch())
@@ -122,7 +121,7 @@ namespace om
         }
         else std::cout << "\nMonster not found!" << std::endl;
     }
-    bool OpeningMode::is_time(std::vector<std::size_t> find_time, std::vector<std::size_t> monster_time, std::size_t index)//recursion to check that the monster is created no later than the specified time
+    bool OpeningMode::is_time(std::vector<int> find_time, std::vector<int> monster_time, std::size_t index)//recursion to check that the monster is created no later than the specified time
     {
         if (index == 6) return false;
         if (monster_time[index] > find_time[index]) return false;
@@ -132,5 +131,11 @@ namespace om
             if (monster_time[index] < find_time[index]) return true;
             return is_time(find_time, monster_time, ++index);
         }
+    }
+    std::vector<int> OpeningMode::tm_to_vector(std::tm time_info)
+    {
+        return { time_info.tm_year + 1900, time_info.tm_mon + 1,
+                 time_info.tm_mday, time_info.tm_hour,
+                 time_info.tm_min, time_info.tm_sec };
     }
 }

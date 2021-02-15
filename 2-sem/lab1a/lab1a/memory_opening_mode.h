@@ -8,6 +8,11 @@ namespace mmode//memory mode
 	{
 	private:
 		std::vector<mon::Monster> monsters;
+		std::vector <mon::Monster*> find_types_time(
+			mon::AttackTypes type, const std::vector<int>& find_time);
+		std::vector<mon::Monster*> find_hp_damage(unsigned min_hp,
+			unsigned max_damage);
+		std::vector<mon::Monster*> find_name(std::string fragment_name);
 	public:
 	};
 }
