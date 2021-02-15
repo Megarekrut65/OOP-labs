@@ -3,24 +3,20 @@
 namespace fmode
 {
 	FileMode::FileMode(const std::string& path,
-		omode::Mode mode = omode::Mode::TEXT) :path(path), mode(mode)
+		omode::Mode mode) :path(path), mode(mode), 
+        in_mode(std::ios_base::in), out_mode(std::ios_base::out)
 	{
-		if (mode == omode::Mode::TEXT)
-		{
-			in_mode = std::ios_base::in;
-			out_mode = std::ios_base::out;
-		}
-		else if (mode == omode::Mode::BINARY)
+        if (mode == omode::Mode::BINARY)
 		{
 			in_mode = std::ios_base::binary;
 			out_mode = std::ios_base::binary;
 		}
         ffs::check_for_file(path, in_mode, out_mode);
 	}
-    std::vector <mon::Monster*> FileMode::find_types_time(
+    std::vector <std::shared_ptr<mon::Monster>> FileMode::find_types_time(
         mon::AttackTypes type, const std::vector<int>& find_time)
     {       
-        std::vector <mon::Monster*> arr;
+        std::vector <std::shared_ptr<mon::Monster>> arr;
         std::ifstream file(path, in_mode);
         while (!file.eof())
         {
@@ -31,9 +27,9 @@ namespace fmode
         file.close();
         return arr;
     }
-    std::vector <mon::Monster*> FileMode::find_hp_damage(unsigned min_hp, unsigned max_damage)
+    std::vector <std::shared_ptr<mon::Monster>> FileMode::find_hp_damage(unsigned min_hp, unsigned max_damage)
     {
-        std::vector <mon::Monster*> arr;
+        std::vector <std::shared_ptr<mon::Monster>> arr;
         std::ifstream file(path, in_mode);
         while (!file.eof())
         {
@@ -44,9 +40,9 @@ namespace fmode
         file.close();
         return arr;
     }
-    std::vector <mon::Monster*> FileMode::find_name(std::string fragment_name)
+    std::vector <std::shared_ptr<mon::Monster>> FileMode::find_name(std::string fragment_name)
     {
-        std::vector <mon::Monster*> arr;
+        std::vector <std::shared_ptr<mon::Monster>> arr;
         std::ifstream file(path, in_mode);
         while (!file.eof())
         {
@@ -70,18 +66,22 @@ namespace fmode
 
         return id;
     }
-    mon::Monster* FileMode::find_monster(unsigned id)
+    std::shared_ptr<mon::Monster> FileMode::find_monster(unsigned id)
     {
         std::ifstream file(path, in_mode);
-        mon::Monster* monster = nullptr;
+        mon::Monster monster;
         while (!file.eof())
         {
-            monster = new mon::Monster(file, mode);
+            monster = mon::Monster(file, mode);
             if (file.eof()) break;
-            if (id == monster->get_id()) break;
+            if (id == monster.get_id())
+            {
+                return std::make_shared<mon::Monster>(monster);
+                file.close();
+            }
         }
         file.close();
-        return monster;
+        return nullptr;
     }
     void FileMode::save_edited_monster(mon::Monster monster)
     {

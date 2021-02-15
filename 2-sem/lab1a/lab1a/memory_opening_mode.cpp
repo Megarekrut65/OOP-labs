@@ -34,18 +34,19 @@ namespace mmode
             }
         }
     }
-    mon::Monster* MemoryMode::find_monster(unsigned id)
+    std::shared_ptr<mon::Monster> MemoryMode::find_monster(unsigned id)
     {
         for (std::size_t i = 0; i < monsters.size(); i++)
         {
-            if (id == monsters[i].get_id()) return &monsters[i];
+            if (id == monsters[i].get_id()) 
+                return std::make_shared<mon::Monster>(monsters[i]);
         }
         return nullptr;
     }
-    std::vector <mon::Monster*> MemoryMode::find_types_time(
+    std::vector <std::shared_ptr<mon::Monster>> MemoryMode::find_types_time(
         mon::AttackTypes type, const std::vector<int>& find_time)
     {
-        std::vector <mon::Monster*> arr;
+        std::vector <std::shared_ptr<mon::Monster>> arr;
         for (std::size_t i = 0; i < monsters.size(); i++)
         {
             check_types_time(type, find_time, monsters[i], arr);
@@ -53,18 +54,18 @@ namespace mmode
 
         return arr;
     }
-    std::vector<mon::Monster*> MemoryMode::find_hp_damage(unsigned min_hp, unsigned max_damage)
+    std::vector<std::shared_ptr<mon::Monster>> MemoryMode::find_hp_damage(unsigned min_hp, unsigned max_damage)
     {
-        std::vector <mon::Monster*> arr;
+        std::vector <std::shared_ptr<mon::Monster>> arr;
         for (std::size_t i = 0; i < monsters.size(); i++)
         {
             check_hp_damage(min_hp, max_damage, monsters[i], arr);
         }
         return arr;
     }
-    std::vector<mon::Monster*> MemoryMode::find_name(std::string fragment_name)
+    std::vector<std::shared_ptr<mon::Monster>> MemoryMode::find_name(std::string fragment_name)
     {
-        std::vector<mon::Monster*> arr;
+        std::vector<std::shared_ptr<mon::Monster>> arr;
         for (std::size_t i = 0; i < monsters.size(); i++)
         {
             check_name(fragment_name, monsters[i], arr);

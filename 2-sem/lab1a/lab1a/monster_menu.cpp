@@ -13,9 +13,9 @@ namespace mmenu
             {
             case '1': im::interactive_dialog_mode();
                 break;
-            case '2': dm::demo_mode();
+            case '2':// dm::demo_mode();
                 break;
-            case '3': bm::benchmark_mode();
+            case '3': //bm::benchmark_mode();
                 break;
             case'0':
             {

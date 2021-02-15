@@ -3,33 +3,36 @@
 namespace om
 {
     void OpeningMode::check_types_time(mon::AttackTypes type,
-        const std::vector<int>& find_time, mon::Monster monster, std::vector <mon::Monster*>& arr)
+        const std::vector<int>& find_time, mon::Monster monster, 
+        std::vector <std::shared_ptr<mon::Monster>>& arr)
     {
         if (type == monster.get_type())
         {
             std::vector<int> monster_time = tm_to_vector(monster.get_time());
-            if (is_time(find_time, monster_time)) arr.push_back(&monster);
+            if (is_time(find_time, monster_time)) 
+                arr.push_back(std::make_shared<mon::Monster>(monster));
         }
     }
     void OpeningMode::check_hp_damage(unsigned min_hp, unsigned max_damage,
-        mon::Monster monster, std::vector <mon::Monster*>& arr)
+        mon::Monster monster, std::vector <std::shared_ptr<mon::Monster>>& arr)
     {
         if ((min_hp <= monster.get_hp())
             && (max_damage >= monster.get_damage()))
-            arr.push_back(&monster);
+            arr.push_back(std::make_shared<mon::Monster>(monster));
     }
     void OpeningMode::check_name(std::string fragment_name,
-        mon::Monster monster, std::vector <mon::Monster*>& arr)
+        mon::Monster monster, std::vector <std::shared_ptr<mon::Monster>>& arr)
     {
         std::string name = monster.get_name();
         if (fragment_name.size() <= name.size())
         {
             std::transform(name.begin(), name.end(), name.begin(), ::tolower);
             std::transform(fragment_name.begin(), fragment_name.end(), fragment_name.begin(), ::tolower);
-            if (name.find(fragment_name) != std::string::npos) arr.push_back(&monster);
+            if (name.find(fragment_name) != std::string::npos) 
+                arr.push_back(std::make_shared<mon::Monster>(monster));
         }
     }
-    void OpeningMode::write_monsters_menu(const std::vector<mon::Monster*>& arr)
+    void OpeningMode::write_monsters_menu(const std::vector<std::shared_ptr<mon::Monster>>& arr)
     {
         if (arr.size() == 0) std::cout << "\nMonster(s) don't found!" << std::endl;
         else
@@ -82,17 +85,16 @@ namespace om
     void OpeningMode::add_new_monster()//function to create a new monster
     {
         std::cout << "\nCreate your own monster!" << std::endl;
-        mon::Monster new_monster(
-            mrs::read_string("a name of monster"),
-            unsigned(mrs::read_size_t("a number of monster health units",
-                mon::Monster::min_hp, mon::Monster::max_hp)),
-            unsigned(mrs::read_size_t("a number of monster attack units",
-                mon::Monster::min_damage, mon::Monster::max_damage)),
-            mrs::read_double("a chance to launch a special attack of monster",
-                mon::Monster::min_chance, mon::Monster::max_chance),
-            mrs::read_type(),
-            get_time_now(),
-            get_id());
+        std::string name = mrs::read_string("a name of monster");
+        unsigned hp = unsigned(mrs::read_size_t("a number of monster health units",
+            mon::Monster::min_hp, mon::Monster::max_hp));
+        unsigned damage = unsigned(mrs::read_size_t("a number of monster attack units",
+            mon::Monster::min_damage, mon::Monster::max_damage));
+        double chance = mrs::read_double("a chance to launch a special attack of monster",
+            mon::Monster::min_chance, mon::Monster::max_chance);
+        mon::AttackTypes type = mrs::read_type();
+        mon::Monster new_monster(name, hp, damage, chance,
+            type, get_time_now(), get_id());
         std::cout << "\nNew monster created!\nHis personal ID: " << new_monster.get_id() << std::endl;
         std::cout << new_monster.string_time() << std::endl;
         append_monster(new_monster);
@@ -100,7 +102,7 @@ namespace om
     void OpeningMode::edit_monster()
     {
         unsigned monster_id = unsigned(mrs::read_size_t("id of the monster", 1000));
-        mon::Monster* monster = find_monster(monster_id);
+        std::shared_ptr<mon::Monster> monster = find_monster(monster_id);
         if (monster)
         {
             while (true)
@@ -140,7 +142,7 @@ namespace om
     void OpeningMode::delete_monster()
     {
         unsigned monster_id = unsigned(mrs::read_size_t("id of the monster", 1000));
-        mon::Monster* monster = find_monster(monster_id);
+        std::shared_ptr<mon::Monster> monster = find_monster(monster_id);
         if (monster)    
         {
             delete_the_monster(*monster);

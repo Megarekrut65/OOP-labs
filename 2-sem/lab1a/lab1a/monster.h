@@ -49,6 +49,7 @@ namespace mon//mosnter
             std::tm time_info = std::tm(), 
             unsigned id = 1000);
         Monster(std::ifstream& in, omode::Mode mode = omode::Mode::TEXT);
+        //Monster(const Monster& monster);
         unsigned get_id();
         std::string get_name();
         unsigned get_hp();

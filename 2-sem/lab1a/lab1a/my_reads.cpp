@@ -15,6 +15,7 @@ namespace mrs
         if (max == std::numeric_limits<T>::max()) line += "...";
         else line += std::to_string(max);
         line += ")";
+        return line;
     }
     template std::string min_max_part<double>(double min, double max);
     template std::string min_max_part<std::size_t>(std::size_t min, std::size_t max);

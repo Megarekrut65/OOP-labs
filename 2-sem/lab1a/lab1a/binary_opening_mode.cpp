@@ -189,7 +189,7 @@ namespace bmode
         file.write((char*)&(monster.time_info), sizeof(monster.time_info));
         file.close();
         return true;
-    }*/
+    }
     BinaryMode::BinaryMode(const std::string& path) :path(path) { ffs::check_for_file(path) }
     std::vector <mon::Monster*> BinaryMode::find_types_time(
         mon::AttackTypes type, const std::vector<int>& find_time)
