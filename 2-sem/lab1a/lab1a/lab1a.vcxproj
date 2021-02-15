@@ -146,6 +146,7 @@
     <ClCompile Include="lab1a.cpp" />
     <ClCompile Include="memory_opening_mode.cpp" />
     <ClCompile Include="monster.cpp" />
+    <ClCompile Include="monster_menu.cpp" />
     <ClCompile Include="opening_mode.cpp" />
     <ClCompile Include="my_reads.cpp" />
     <ClCompile Include="text_opening_mode.cpp" />
@@ -158,8 +159,10 @@
     <ClInclude Include="interactive.h" />
     <ClInclude Include="memory_opening_mode.h" />
     <ClInclude Include="monster.h" />
+    <ClInclude Include="monster_menu.h" />
     <ClInclude Include="opening_mode.h" />
     <ClInclude Include="my_reads.h" />
+    <ClInclude Include="testing.h" />
     <ClInclude Include="text_opening_mode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

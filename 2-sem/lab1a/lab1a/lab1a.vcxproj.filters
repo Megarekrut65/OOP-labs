@@ -45,6 +45,9 @@
     <ClCompile Include="opening_mode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="monster_menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="doctest.h">
@@ -75,6 +78,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="opening_mode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="monster_menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

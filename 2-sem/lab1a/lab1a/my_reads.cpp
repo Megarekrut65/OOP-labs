@@ -8,6 +8,16 @@ namespace mrs
         std::cin.ignore(32767, '\n');
         std::cout << "\nEnter " << sentence << ": ";
     }
+    template<typename T>
+    std::string min_max_part(T min, T max)
+    {
+        std::string line = "(" + std::to_string(min) + "-";
+        if (max == std::numeric_limits<T>::max()) line += "...";
+        else line += std::to_string(max);
+        line += ")";
+    }
+    template std::string min_max_part<double>(double min, double max);
+    template std::string min_max_part<std::size_t>(std::size_t min, std::size_t max);
     void data_incorrect()
     {
         std::cout << "\nThe data entered incorrectly!" << std::endl;
@@ -16,7 +26,7 @@ namespace mrs
 	{
         while (true)
         {
-            same_part(sentence);
+            same_part(sentence + min_max_part(min,max));
             std::size_t number;
             std::cin >> number;
             if (std::cin.fail() || number < min || number > max) data_incorrect();
@@ -27,7 +37,7 @@ namespace mrs
     {
         while (true)
         {
-            same_part(sentence);
+            same_part(sentence + min_max_part(min, max));
             std::string line = "";
             while (line.size() == 0) getline(std::cin, line);
             char* fails;
@@ -50,7 +60,7 @@ namespace mrs
             else return line;
         }      
     }
-    im::AttackTypes read_type()
+    mon::AttackTypes read_type()
     {
         while (true)
         {
@@ -59,10 +69,10 @@ namespace mrs
                 <<"4)Paralyze the enemy." << std::endl;
             switch (_getch())
             {
-            case '1': return im::AttackTypes::INCREASE;
-            case '2': return im::AttackTypes::REPEAT;
-            case '3': return im::AttackTypes::CURE;
-            case '4': return im::AttackTypes::PARALYZE;
+            case '1': return mon::AttackTypes::INCREASE;
+            case '2': return mon::AttackTypes::REPEAT;
+            case '3': return mon::AttackTypes::CURE;
+            case '4': return mon::AttackTypes::PARALYZE;
             default: std::cout << "\nPress the correct key!" << std::endl;
             }
         }

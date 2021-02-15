@@ -3,6 +3,13 @@
 
 namespace bm//benchmark mode
 {
+
+	struct measurement_result
+	{
+		int number_of_monsters;
+		float time;
+		std::size_t size;
+	};
 	void monster_generator(vector<info_monster>&);
 	std::size_t size_file(const string&);
 	void add_program_test(const string&, const measurement_result&, bool);

@@ -2,8 +2,5 @@
 
 namespace im//interactive mode
 {
-	class Menu
-	{
-
-	};
+	void interactive_dialog_mode();
 }
