@@ -152,7 +152,7 @@ namespace om
         }
         else std::cout << "\nMonster not found!" << std::endl;
     }
-    bool OpeningMode::is_time(std::vector<int> find_time, std::vector<int> monster_time, std::size_t index)//recursion to check that the monster is created no later than the specified time
+    bool OpeningMode::is_time(std::vector<int> find_time, std::vector<int> monster_time, std::size_t index)
     {
         if (index == 6) return false;
         if (monster_time[index] > find_time[index]) return false;
