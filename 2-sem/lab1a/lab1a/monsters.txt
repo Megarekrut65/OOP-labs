@@ -1,7 +1,14 @@
-id=1000
-name=Geby
-hp=5000
-damage=405
-chance=0.00031
-type=CURE
-10 44 49 16 1 121
+id=1001
+name=2
+hp=2
+damage=2
+chance=0.2
+type=REPEAT
+17 41 34 16 1 121
+id=1002
+name=Febry
+hp=111
+damage=212
+chance=0.4
+type=PARALYZE
+17 46 24 16 1 121

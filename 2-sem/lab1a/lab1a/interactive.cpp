@@ -7,7 +7,7 @@ namespace im
         while (true)
         {
             std::cout << "\nMenu:\n1)Add a new monster.\n"
-                <<"2)Show all the monsters.\n3)Find an existing monster.\n"
+                <<"2)Show all monsters.\n3)Find an existing monster.\n"
                 << "4)Edit a monster.\n5)Delete a monster.\n0)Back." << std::endl;
             switch (_getch())
             {
@@ -74,6 +74,7 @@ namespace im
                 std::string the_path = path + "bin";
                 open = std::make_shared<fmode::FileMode>(the_path, omode::Mode::BINARY);
             }
+            break;
             case '0': return;
                 break;
             default:
@@ -84,6 +85,7 @@ namespace im
                 break;
             }
             interactive_menu(open);
+            return;
         }
     }
 }

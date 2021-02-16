@@ -10,8 +10,6 @@ namespace ffs
             file.close();
             std::ofstream file_create(path, out_mode);
             file_create.close();
-            std::cout << "\nFile not found!..." << std::endl;
-            std::cout << "\nNew file created!" << std::endl;
             return false;
         }
         file.close();

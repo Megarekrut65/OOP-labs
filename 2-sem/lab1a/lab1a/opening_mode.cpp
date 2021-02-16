@@ -112,7 +112,7 @@ namespace om
                 std::cout << "\nMonster:\n" << *monster << std::endl;
                 std::cout << "\nSelect the option you want to edit:\n"
                     << "1)Name.\n2)HP.\n3)Damage.\n4)Chance to launch a special attack.\n"
-                    << "5)Type of special monster attack.\n0)Exit." << std::endl;
+                    << "5)Type of special monster attack.\n0)Save and back." << std::endl;
                 switch (_getch())
                 {
                 case '1': monster->set_name(mrs::read_string("a new name of monster"));                

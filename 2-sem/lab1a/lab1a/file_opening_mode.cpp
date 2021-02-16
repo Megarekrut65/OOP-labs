@@ -60,7 +60,9 @@ namespace fmode
         while (!file.eof())
         {
             mon::Monster monster = mon::Monster(file, mode);
-            id = monster.get_id();
+            if (file.eof()) break;
+            std::cout << monster << std::endl;
+            id = monster.get_id() + 1;
         }
         file.close();
 
@@ -105,11 +107,11 @@ namespace fmode
         std::ifstream old_file(path, in_mode);
         std::string new_path = "new_" + path;
         std::ofstream new_file(new_path, out_mode);
-        bool monster_found = false;
         while (!old_file.eof())
         {
             mon::Monster read_monster = mon::Monster(old_file, mode);
             if (old_file.eof()) break;
+            std::cout << "id:" << read_monster.get_id() << std::endl;
             if (monster.get_id() != read_monster.get_id())
                 read_monster.add_to_file(new_file, mode);
         }
@@ -127,13 +129,15 @@ namespace fmode
     {
         std::ifstream file(path, in_mode);
         std::size_t index = 1;
+        std::cout << "\nAll monsters:" << std::endl;
         while (!file.eof())
         {
             mon::Monster monster = mon::Monster(file, mode);
             if (file.eof()) break;
-            std::cout << "\n<" << index << ">" << std::endl;
+            std::cout << "\n<" << index++ << ">" << std::endl;
             std::cout << monster << std::endl;
         }
+        if (index == 1) std::cout << "Monsters aren't found!" << std::endl;
         file.close();
     }
 }
