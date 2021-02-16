@@ -24,6 +24,7 @@
    <div id="projectname">lab1a
    &#160;<span id="projectnumber">0.1</span>
    </div>
+   <div id="projectbrief">Monsters</div>
   </td>
  </tr>
  </tbody>
@@ -62,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>om</b></li><li class="navelem"><a class="el" href="classom_1_1_opening_mode.html">OpeningMode</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceom.html">om</a></li><li class="navelem"><a class="el" href="classom_1_1_opening_mode.html">OpeningMode</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -75,80 +76,765 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Inherited by <a class="el" href="classfmode_1_1_file_mode.html">fmode::FileMode</a>, and <a class="el" href="classmmode_1_1_memory_mode.html">mmode::MemoryMode</a>.</p>
+<p>Base class for classes <a class="el" href="classmmode_1_1_memory_mode.html">mmode::MemoryMode</a> and <a class="el" href="classfmode_1_1_file_mode.html">fmode::FileMode</a>.  
+ <a href="classom_1_1_opening_mode.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="opening__mode_8h_source.html">opening_mode.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for om::OpeningMode:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classom_1_1_opening_mode.png" usemap="#om::OpeningMode_map" alt=""/>
+  <map id="om::OpeningMode_map" name="om::OpeningMode_map">
+<area href="classfmode_1_1_file_mode.html" alt="fmode::FileMode" shape="rect" coords="0,56,135,80"/>
+<area href="classmmode_1_1_memory_mode.html" alt="mmode::MemoryMode" shape="rect" coords="145,56,280,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memItemLeft" align="right" valign="top"><a id="ada1f6a3c1b77caa3b47438601240d5ce"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>write_monsters_menu</b> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
-<tr class="separator:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac472c0bbba80ec2005f28968e005e22d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ac472c0bbba80ec2005f28968e005e22d">save_edited_monster</a> (<a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster)=0</td></tr>
+<tr class="memdesc:ac472c0bbba80ec2005f28968e005e22d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves edited monster by id.  <a href="#ac472c0bbba80ec2005f28968e005e22d">More...</a><br /></td></tr>
+<tr class="separator:ac472c0bbba80ec2005f28968e005e22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60c9d627dd77b3bbd375a846444a6dd0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a60c9d627dd77b3bbd375a846444a6dd0">delete_the_monster</a> (<a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster)=0</td></tr>
+<tr class="memdesc:a60c9d627dd77b3bbd375a846444a6dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the monster by id.  <a href="#a60c9d627dd77b3bbd375a846444a6dd0">More...</a><br /></td></tr>
+<tr class="separator:a60c9d627dd77b3bbd375a846444a6dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f55599cdb46432179efb7d3e463c24c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a2f55599cdb46432179efb7d3e463c24c">append_monster</a> (<a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster)=0</td></tr>
+<tr class="memdesc:a2f55599cdb46432179efb7d3e463c24c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add monster to the place of storage(memory or file or other).  <a href="#a2f55599cdb46432179efb7d3e463c24c">More...</a><br /></td></tr>
+<tr class="separator:a2f55599cdb46432179efb7d3e463c24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf56e7f1bc00229816af28b918de4650"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#abf56e7f1bc00229816af28b918de4650">find_types_time</a> (<a class="el" href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0a">mon::AttackTypes</a> type, const std::vector&lt; int &gt; &amp;find_time)=0</td></tr>
+<tr class="memdesc:abf56e7f1bc00229816af28b918de4650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds monster by type and creating time.  <a href="#abf56e7f1bc00229816af28b918de4650">More...</a><br /></td></tr>
+<tr class="separator:abf56e7f1bc00229816af28b918de4650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94ac63bfd3504545b5ceef00c3829edc"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a94ac63bfd3504545b5ceef00c3829edc">find_hp_damage</a> (unsigned min_hp, unsigned max_damage)=0</td></tr>
+<tr class="memdesc:a94ac63bfd3504545b5ceef00c3829edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds monster by hp and damage.  <a href="#a94ac63bfd3504545b5ceef00c3829edc">More...</a><br /></td></tr>
+<tr class="separator:a94ac63bfd3504545b5ceef00c3829edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a823e4cccd65e7826f83a78a0a6b026c4"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a823e4cccd65e7826f83a78a0a6b026c4">find_name</a> (std::string fragment_name)=0</td></tr>
+<tr class="memdesc:a823e4cccd65e7826f83a78a0a6b026c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds monster by name.  <a href="#a823e4cccd65e7826f83a78a0a6b026c4">More...</a><br /></td></tr>
+<tr class="separator:a823e4cccd65e7826f83a78a0a6b026c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a371bafd4e6c2b3038dd9c79114f84412"><td class="memItemLeft" align="right" valign="top"><a id="a371bafd4e6c2b3038dd9c79114f84412"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>write_all_monsters</b> ()=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a371bafd4e6c2b3038dd9c79114f84412">write_all_monsters</a> ()=0</td></tr>
+<tr class="memdesc:a371bafd4e6c2b3038dd9c79114f84412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints to display all monsters from the place of storage. <br /></td></tr>
 <tr class="separator:a371bafd4e6c2b3038dd9c79114f84412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af99a97d975855a52837aca5e53553897"><td class="memItemLeft" align="right" valign="top"><a id="af99a97d975855a52837aca5e53553897"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>find_types_time_menu</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#af99a97d975855a52837aca5e53553897">find_types_time_menu</a> ()</td></tr>
+<tr class="memdesc:af99a97d975855a52837aca5e53553897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for function mon::Monster::find_types_time. <br /></td></tr>
 <tr class="separator:af99a97d975855a52837aca5e53553897"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3e7166bb84c90055ab821cee6b0c3cb"><td class="memItemLeft" align="right" valign="top"><a id="af3e7166bb84c90055ab821cee6b0c3cb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>find_hp_damage_menu</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#af3e7166bb84c90055ab821cee6b0c3cb">find_hp_damage_menu</a> ()</td></tr>
+<tr class="memdesc:af3e7166bb84c90055ab821cee6b0c3cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for function mon::Monster::find_hp_damage. <br /></td></tr>
 <tr class="separator:af3e7166bb84c90055ab821cee6b0c3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9b6b3ff2e5dbeeb8c83c3f8a71a651f"><td class="memItemLeft" align="right" valign="top"><a id="ae9b6b3ff2e5dbeeb8c83c3f8a71a651f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>find_name_menu</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ae9b6b3ff2e5dbeeb8c83c3f8a71a651f">find_name_menu</a> ()</td></tr>
+<tr class="memdesc:ae9b6b3ff2e5dbeeb8c83c3f8a71a651f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for function mon::Monster::find_name. <br /></td></tr>
 <tr class="separator:ae9b6b3ff2e5dbeeb8c83c3f8a71a651f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1a476401f3d81898c722943399f9162"><td class="memItemLeft" align="right" valign="top"><a id="ae1a476401f3d81898c722943399f9162"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_new_monster</b> ()</td></tr>
+<tr class="memitem:ae1a476401f3d81898c722943399f9162"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ae1a476401f3d81898c722943399f9162">add_new_monster</a> ()</td></tr>
+<tr class="memdesc:ae1a476401f3d81898c722943399f9162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for adding monsters.  <a href="#ae1a476401f3d81898c722943399f9162">More...</a><br /></td></tr>
 <tr class="separator:ae1a476401f3d81898c722943399f9162"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf6e18ff332cb25d0060e01433c2a2b2"><td class="memItemLeft" align="right" valign="top"><a id="abf6e18ff332cb25d0060e01433c2a2b2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>edit_monster</b> ()</td></tr>
+<tr class="memitem:abf6e18ff332cb25d0060e01433c2a2b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#abf6e18ff332cb25d0060e01433c2a2b2">edit_monster</a> ()</td></tr>
+<tr class="memdesc:abf6e18ff332cb25d0060e01433c2a2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for editing monsters.  <a href="#abf6e18ff332cb25d0060e01433c2a2b2">More...</a><br /></td></tr>
 <tr class="separator:abf6e18ff332cb25d0060e01433c2a2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60d5aa2c8b5db5872690cc88141453e1"><td class="memItemLeft" align="right" valign="top"><a id="a60d5aa2c8b5db5872690cc88141453e1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_monster</b> ()</td></tr>
+<tr class="memitem:a60d5aa2c8b5db5872690cc88141453e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a60d5aa2c8b5db5872690cc88141453e1">delete_monster</a> ()</td></tr>
+<tr class="memdesc:a60d5aa2c8b5db5872690cc88141453e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for deleting monsters.  <a href="#a60d5aa2c8b5db5872690cc88141453e1">More...</a><br /></td></tr>
 <tr class="separator:a60d5aa2c8b5db5872690cc88141453e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:abf56e7f1bc00229816af28b918de4650"><td class="memItemLeft" align="right" valign="top"><a id="abf56e7f1bc00229816af28b918de4650"></a>
-virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>find_types_time</b> (<a class="el" href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0a">mon::AttackTypes</a> type, const std::vector&lt; int &gt; &amp;find_time)=0</td></tr>
-<tr class="separator:abf56e7f1bc00229816af28b918de4650"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94ac63bfd3504545b5ceef00c3829edc"><td class="memItemLeft" align="right" valign="top"><a id="a94ac63bfd3504545b5ceef00c3829edc"></a>
-virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>find_hp_damage</b> (unsigned min_hp, unsigned max_damage)=0</td></tr>
-<tr class="separator:a94ac63bfd3504545b5ceef00c3829edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a823e4cccd65e7826f83a78a0a6b026c4"><td class="memItemLeft" align="right" valign="top"><a id="a823e4cccd65e7826f83a78a0a6b026c4"></a>
-virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>find_name</b> (std::string fragment_name)=0</td></tr>
-<tr class="separator:a823e4cccd65e7826f83a78a0a6b026c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d220958365e6ff6331282f42e230176"><td class="memItemLeft" align="right" valign="top"><a id="a6d220958365e6ff6331282f42e230176"></a>
-std::tm&#160;</td><td class="memItemRight" valign="bottom"><b>get_time_now</b> ()</td></tr>
-<tr class="separator:a6d220958365e6ff6331282f42e230176"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memItemLeft" align="right" valign="top"><a id="ad061434456e8059dbfda4ccdb0dc3db0"></a>
-virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> ()=0</td></tr>
+<tr class="memitem:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memItemLeft" align="right" valign="top">virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ad061434456e8059dbfda4ccdb0dc3db0">get_id</a> ()=0</td></tr>
+<tr class="memdesc:ad061434456e8059dbfda4ccdb0dc3db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Must get free id for new monster.  <a href="#ad061434456e8059dbfda4ccdb0dc3db0">More...</a><br /></td></tr>
 <tr class="separator:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f55599cdb46432179efb7d3e463c24c"><td class="memItemLeft" align="right" valign="top"><a id="a2f55599cdb46432179efb7d3e463c24c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>append_monster</b> (<a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster)=0</td></tr>
-<tr class="separator:a2f55599cdb46432179efb7d3e463c24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab22204b068b04c7d56dac3da8480ad40"><td class="memItemLeft" align="right" valign="top"><a id="ab22204b068b04c7d56dac3da8480ad40"></a>
-virtual std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>find_monster</b> (unsigned id)=0</td></tr>
+<tr class="memitem:ab22204b068b04c7d56dac3da8480ad40"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ab22204b068b04c7d56dac3da8480ad40">find_monster</a> (unsigned id)=0</td></tr>
+<tr class="memdesc:ab22204b068b04c7d56dac3da8480ad40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds monster by id and gives pointer to it.  <a href="#ab22204b068b04c7d56dac3da8480ad40">More...</a><br /></td></tr>
 <tr class="separator:ab22204b068b04c7d56dac3da8480ad40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac472c0bbba80ec2005f28968e005e22d"><td class="memItemLeft" align="right" valign="top"><a id="ac472c0bbba80ec2005f28968e005e22d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>save_edited_monster</b> (<a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster)=0</td></tr>
-<tr class="separator:ac472c0bbba80ec2005f28968e005e22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60c9d627dd77b3bbd375a846444a6dd0"><td class="memItemLeft" align="right" valign="top"><a id="a60c9d627dd77b3bbd375a846444a6dd0"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_the_monster</b> (<a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster)=0</td></tr>
-<tr class="separator:a60c9d627dd77b3bbd375a846444a6dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e692cb6896588440b2cae0a5ffc405"><td class="memItemLeft" align="right" valign="top"><a id="ab3e692cb6896588440b2cae0a5ffc405"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_time</b> (std::vector&lt; int &gt; find_time, std::vector&lt; int &gt; monster_time, std::size_t index=0)</td></tr>
+<tr class="memitem:a6d220958365e6ff6331282f42e230176"><td class="memItemLeft" align="right" valign="top">std::tm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a6d220958365e6ff6331282f42e230176">get_time_now</a> ()</td></tr>
+<tr class="memdesc:a6d220958365e6ff6331282f42e230176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives time now.  <a href="#a6d220958365e6ff6331282f42e230176">More...</a><br /></td></tr>
+<tr class="separator:a6d220958365e6ff6331282f42e230176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3e692cb6896588440b2cae0a5ffc405"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ab3e692cb6896588440b2cae0a5ffc405">is_time</a> (std::vector&lt; int &gt; find_time, std::vector&lt; int &gt; monster_time, std::size_t index=0)</td></tr>
+<tr class="memdesc:ab3e692cb6896588440b2cae0a5ffc405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check time correcting.  <a href="#ab3e692cb6896588440b2cae0a5ffc405">More...</a><br /></td></tr>
 <tr class="separator:ab3e692cb6896588440b2cae0a5ffc405"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c7e0c5d1f5bb7777fa9ffa8f8033654"><td class="memItemLeft" align="right" valign="top"><a id="a2c7e0c5d1f5bb7777fa9ffa8f8033654"></a>
-std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tm_to_vector</b> (std::tm time_info)</td></tr>
+<tr class="memitem:a2c7e0c5d1f5bb7777fa9ffa8f8033654"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a2c7e0c5d1f5bb7777fa9ffa8f8033654">tm_to_vector</a> (std::tm time_info)</td></tr>
+<tr class="memdesc:a2c7e0c5d1f5bb7777fa9ffa8f8033654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Translates std::tm to std::vector.  <a href="#a2c7e0c5d1f5bb7777fa9ffa8f8033654">More...</a><br /></td></tr>
 <tr class="separator:a2c7e0c5d1f5bb7777fa9ffa8f8033654"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a396964f10279146a17a7182e70cd2e35"><td class="memItemLeft" align="right" valign="top"><a id="a396964f10279146a17a7182e70cd2e35"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>check_types_time</b> (<a class="el" href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0a">mon::AttackTypes</a> type, const std::vector&lt; int &gt; &amp;find_time, <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
+<tr class="memitem:a396964f10279146a17a7182e70cd2e35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a396964f10279146a17a7182e70cd2e35">check_types_time</a> (<a class="el" href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0a">mon::AttackTypes</a> type, const std::vector&lt; int &gt; &amp;find_time, <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
+<tr class="memdesc:a396964f10279146a17a7182e70cd2e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the 'time_info' and 'type' of monster.  <a href="#a396964f10279146a17a7182e70cd2e35">More...</a><br /></td></tr>
 <tr class="separator:a396964f10279146a17a7182e70cd2e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add64c0f8595e3956aa3b60ed335681f7"><td class="memItemLeft" align="right" valign="top"><a id="add64c0f8595e3956aa3b60ed335681f7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>check_hp_damage</b> (unsigned min_hp, unsigned max_damage, <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
+<tr class="memitem:add64c0f8595e3956aa3b60ed335681f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#add64c0f8595e3956aa3b60ed335681f7">check_hp_damage</a> (unsigned min_hp, unsigned max_damage, <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
+<tr class="memdesc:add64c0f8595e3956aa3b60ed335681f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the 'hp' and 'damage' of monster.  <a href="#add64c0f8595e3956aa3b60ed335681f7">More...</a><br /></td></tr>
 <tr class="separator:add64c0f8595e3956aa3b60ed335681f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6a059dcfa62a7448736d4adcd61a7d8"><td class="memItemLeft" align="right" valign="top"><a id="aa6a059dcfa62a7448736d4adcd61a7d8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>check_name</b> (std::string fragment_name, <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
+<tr class="memitem:aa6a059dcfa62a7448736d4adcd61a7d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#aa6a059dcfa62a7448736d4adcd61a7d8">check_name</a> (std::string fragment_name, <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
+<tr class="memdesc:aa6a059dcfa62a7448736d4adcd61a7d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the 'name' of monster.  <a href="#aa6a059dcfa62a7448736d4adcd61a7d8">More...</a><br /></td></tr>
 <tr class="separator:aa6a059dcfa62a7448736d4adcd61a7d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ada1f6a3c1b77caa3b47438601240d5ce">write_monsters_menu</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
+<tr class="memdesc:ada1f6a3c1b77caa3b47438601240d5ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all monsters from array to display.  <a href="#ada1f6a3c1b77caa3b47438601240d5ce">More...</a><br /></td></tr>
+<tr class="separator:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for classes <a class="el" href="classmmode_1_1_memory_mode.html">mmode::MemoryMode</a> and <a class="el" href="classfmode_1_1_file_mode.html">fmode::FileMode</a>. </p>
+<p>Must override all virtual functions to other classes follow.</p>
+<p>Can perform the following functions: create, add, edit, delete and search for monsters (<a class="el" href="classmon_1_1_monster.html" title="Class to represent an abstract monster object. ">mon::Monster</a>). </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae1a476401f3d81898c722943399f9162"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a476401f3d81898c722943399f9162">&#9670;&nbsp;</a></span>add_new_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void om::OpeningMode::add_new_monster </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interface for adding monsters. </p>
+<p>Gets monster information from the console and creates a new monster. </p>
+
+</div>
+</div>
+<a id="a2f55599cdb46432179efb7d3e463c24c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f55599cdb46432179efb7d3e463c24c">&#9670;&nbsp;</a></span>append_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void om::OpeningMode::append_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&#160;</td>
+          <td class="paramname"><em>monster</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add monster to the place of storage(memory or file or other). </p>
+<p>Add monster to the end of place.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monster</td><td>- monster that be added </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="add64c0f8595e3956aa3b60ed335681f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add64c0f8595e3956aa3b60ed335681f7">&#9670;&nbsp;</a></span>check_hp_damage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void om::OpeningMode::check_hp_damage </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>min_hp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>max_damage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&#160;</td>
+          <td class="paramname"><em>monster</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>arr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks the 'hp' and 'damage' of monster. </p>
+<p>If hp of monster is greater than min_ph and damage of monster is smaller than max_gamage then monster will be added to arr.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min_hp</td><td>- minimum possible hp </td></tr>
+    <tr><td class="paramname">max_damage</td><td>- maximum possible damage </td></tr>
+    <tr><td class="paramname">monster</td><td>- current monster </td></tr>
+    <tr><td class="paramname">arr</td><td>- array with right monsters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa6a059dcfa62a7448736d4adcd61a7d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a059dcfa62a7448736d4adcd61a7d8">&#9670;&nbsp;</a></span>check_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void om::OpeningMode::check_name </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fragment_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&#160;</td>
+          <td class="paramname"><em>monster</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>arr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks the 'name' of monster. </p>
+<p>If name of monster is equal to fragment_name or fragment_name is a part of monster name then monster will be added to arr.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fragment_name</td><td>- searching name or fragment name </td></tr>
+    <tr><td class="paramname">monster</td><td>- current monster </td></tr>
+    <tr><td class="paramname">arr</td><td>- array with right monsters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a396964f10279146a17a7182e70cd2e35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a396964f10279146a17a7182e70cd2e35">&#9670;&nbsp;</a></span>check_types_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void om::OpeningMode::check_types_time </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0a">mon::AttackTypes</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>find_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&#160;</td>
+          <td class="paramname"><em>monster</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>arr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks the 'time_info' and 'type' of monster. </p>
+<p>If type of monster is searching type and monster is created no later than the searching time then monster will be added to arr.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>- searching type </td></tr>
+    <tr><td class="paramname">find_time</td><td>- searching time </td></tr>
+    <tr><td class="paramname">monster</td><td>- current monster </td></tr>
+    <tr><td class="paramname">arr</td><td>- array with right monsters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a60d5aa2c8b5db5872690cc88141453e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60d5aa2c8b5db5872690cc88141453e1">&#9670;&nbsp;</a></span>delete_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void om::OpeningMode::delete_monster </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interface for deleting monsters. </p>
+<p>Gets monster id and deletes the monster. </p>
+
+</div>
+</div>
+<a id="a60c9d627dd77b3bbd375a846444a6dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60c9d627dd77b3bbd375a846444a6dd0">&#9670;&nbsp;</a></span>delete_the_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void om::OpeningMode::delete_the_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&#160;</td>
+          <td class="paramname"><em>monster</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deletes the monster by id. </p>
+<p>Before deleting monster, its place will be found.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monster</td><td>- monster that be deleted. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abf6e18ff332cb25d0060e01433c2a2b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf6e18ff332cb25d0060e01433c2a2b2">&#9670;&nbsp;</a></span>edit_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void om::OpeningMode::edit_monster </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interface for editing monsters. </p>
+<p>Gets new monster information from the console and edites the monster. </p>
+
+</div>
+</div>
+<a id="a94ac63bfd3504545b5ceef00c3829edc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94ac63bfd3504545b5ceef00c3829edc">&#9670;&nbsp;</a></span>find_hp_damage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt;std::shared_ptr&lt;<a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&gt; &gt; om::OpeningMode::find_hp_damage </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>min_hp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>max_damage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds monster by hp and damage. </p>
+<dl class="section return"><dt>Returns</dt><dd>monsters that have greater hp than min_ph and smaller damage than max_damage </dd></dl>
+
+</div>
+</div>
+<a id="ab22204b068b04c7d56dac3da8480ad40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab22204b068b04c7d56dac3da8480ad40">&#9670;&nbsp;</a></span>find_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;<a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&gt; om::OpeningMode::find_monster </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds monster by id and gives pointer to it. </p>
+<p>Change a monster through a pointer is a bad idea.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>- id of searching monster </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to searching monster </dd></dl>
+
+</div>
+</div>
+<a id="a823e4cccd65e7826f83a78a0a6b026c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a823e4cccd65e7826f83a78a0a6b026c4">&#9670;&nbsp;</a></span>find_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt;std::shared_ptr&lt;<a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&gt; &gt; om::OpeningMode::find_name </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fragment_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds monster by name. </p>
+<dl class="section return"><dt>Returns</dt><dd>monsters that have name equal to fragment_name or fragment_name is a part of monster name </dd></dl>
+
+</div>
+</div>
+<a id="abf56e7f1bc00229816af28b918de4650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf56e7f1bc00229816af28b918de4650">&#9670;&nbsp;</a></span>find_types_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt;std::shared_ptr&lt;<a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&gt; &gt; om::OpeningMode::find_types_time </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0a">mon::AttackTypes</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>find_time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds monster by type and creating time. </p>
+<dl class="section return"><dt>Returns</dt><dd>monsters that have 'type' and are created no later than the 'find_time' </dd></dl>
+
+</div>
+</div>
+<a id="ad061434456e8059dbfda4ccdb0dc3db0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad061434456e8059dbfda4ccdb0dc3db0">&#9670;&nbsp;</a></span>get_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual unsigned om::OpeningMode::get_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Must get free id for new monster. </p>
+<p>The id is obtained from id of the last monster + 1. </p><dl class="section return"><dt>Returns</dt><dd>free id </dd></dl>
+
+</div>
+</div>
+<a id="a6d220958365e6ff6331282f42e230176"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d220958365e6ff6331282f42e230176">&#9670;&nbsp;</a></span>get_time_now()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tm om::OpeningMode::get_time_now </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gives time now. </p>
+<dl class="section return"><dt>Returns</dt><dd>time of taking of function </dd></dl>
+
+</div>
+</div>
+<a id="ab3e692cb6896588440b2cae0a5ffc405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e692cb6896588440b2cae0a5ffc405">&#9670;&nbsp;</a></span>is_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool om::OpeningMode::is_time </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>find_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>monster_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>index</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check time correcting. </p>
+<p>Recursion to check that the monster is created no later than the specified time.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">find_time</td><td>- searching time in array: 0-hour, 1-minute, 2-second, 3-day, 4-month, 5-year </td></tr>
+    <tr><td class="paramname">monster_time</td><td>- time of monster in array </td></tr>
+    <tr><td class="paramname">index</td><td>- recursive call index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if time is correct </dd>
+<dd>
+false if time isn't correct </dd></dl>
+
+</div>
+</div>
+<a id="ac472c0bbba80ec2005f28968e005e22d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac472c0bbba80ec2005f28968e005e22d">&#9670;&nbsp;</a></span>save_edited_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void om::OpeningMode::save_edited_monster </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&#160;</td>
+          <td class="paramname"><em>monster</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Saves edited monster by id. </p>
+<p>Before saving monster, its place will be found.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monster</td><td>- monster that be saved. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2c7e0c5d1f5bb7777fa9ffa8f8033654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c7e0c5d1f5bb7777fa9ffa8f8033654">&#9670;&nbsp;</a></span>tm_to_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; int &gt; om::OpeningMode::tm_to_vector </td>
+          <td>(</td>
+          <td class="paramtype">std::tm&#160;</td>
+          <td class="paramname"><em>time_info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Translates std::tm to std::vector. </p>
+<p>Adds hour to array[0], minute to array[1], second to array[2], day to array[3], month to array[4] and year to array[5].</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_info</td><td>- time structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array representation of time </dd></dl>
+
+</div>
+</div>
+<a id="ada1f6a3c1b77caa3b47438601240d5ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada1f6a3c1b77caa3b47438601240d5ce">&#9670;&nbsp;</a></span>write_monsters_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void om::OpeningMode::write_monsters_menu </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>arr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints all monsters from array to display. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>- array with monsters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a/<a class="el" href="opening__mode_8h_source.html">opening_mode.h</a></li>
 <li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a/opening_mode.cpp</li>

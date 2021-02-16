@@ -86,7 +86,7 @@ namespace om//opening mode
         * \brief Checks the 'hp' and 'damage' of monster.
         *
         * If hp of monster is greater than min_ph and damage of monster 
-        * is smaller than max_hp then monster will be added to arr.
+        * is smaller than max_gamage then monster will be added to arr.
         *
         * \param min_hp - minimum possible hp
         * \param max_damage - maximum possible damage
@@ -138,18 +138,63 @@ namespace om//opening mode
         * \param monster - monster that be added
         */
         virtual void append_monster(mon::Monster monster) = 0;
+        /**
+        * \brief Finds monster by type and creating time.
+        * 
+        * \returns monsters that have 'type' and are created no 
+        * later than the 'find_time'
+        */
         virtual std::vector <std::shared_ptr<mon::Monster>> find_types_time(
             mon::AttackTypes type, const std::vector<int>& find_time) = 0;
+        /**
+        * \brief Finds monster by hp and damage.
+        *
+        * \returns monsters that have greater hp than min_ph and 
+        * smaller damage than max_damage
+        */
         virtual std::vector<std::shared_ptr<mon::Monster>> find_hp_damage(
             unsigned min_hp, unsigned max_damage) = 0;
+        /**
+        * \brief Finds monster by name.
+        *
+        * \returns monsters that have name equal to fragment_name or 
+        * fragment_name is a part of monster name
+        */
         virtual std::vector<std::shared_ptr<mon::Monster>> find_name(
-            std::string fragment_name) = 0;    
+            std::string fragment_name) = 0;   
+        /**
+        * \brief Prints to display all monsters from the place of storage.
+        */
         virtual void write_all_monsters() = 0;
+        /**
+        * \brief Interface for function mon::Monster::find_types_time.
+        */
         void find_types_time_menu();
+        /**
+        * \brief Interface for function mon::Monster::find_hp_damage.
+        */
         void find_hp_damage_menu();
+        /**
+        * \brief Interface for function mon::Monster::find_name.
+        */
         void find_name_menu();
+        /**
+        * \brief Interface for adding monsters.
+        * 
+        * Gets monster information from the console and creates a new monster.
+        */
         void add_new_monster();
+        /**
+        * \brief Interface for editing monsters.
+        * 
+        * Gets new monster information from the console and edites the monster.
+        */
         void edit_monster();
+        /**
+        * \brief Interface for deleting monsters.
+        *
+        * Gets monster id and deletes the monster.
+        */
         void delete_monster();
     };
 }

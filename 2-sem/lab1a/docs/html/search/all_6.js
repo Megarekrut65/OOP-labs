@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['openingmode',['OpeningMode',['../classom_1_1_opening_mode.html',1,'om']]],
-  ['operator_3c_3c',['operator&lt;&lt;',['../classmon_1_1_monster.html#a16e0e062c3b57efa7bb4e15cf7b07dc3',1,'mon::Monster::operator&lt;&lt;()'],['../namespacemon.html#a222ba92247ab8ae0f6689a746a8e19c8',1,'mon::operator&lt;&lt;()']]]
+  ['increase',['INCREASE',['../namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0aaade2044a9bcf5e0c6e0f0824bc958c76',1,'mon']]],
+  ['is_5ftime',['is_time',['../classom_1_1_opening_mode.html#ab3e692cb6896588440b2cae0a5ffc405',1,'om::OpeningMode']]]
 ];
