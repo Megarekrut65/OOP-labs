@@ -112,7 +112,7 @@ namespace mon//mosnter
         * 
         * The existence of the file must be ensured externally.
         * 
-        * \param in - open stream for output to file
+        * \param out - open stream for output to file
         */
         void add_to_text_file(std::ofstream& out);
         /**
@@ -120,7 +120,7 @@ namespace mon//mosnter
         * 
         * The existence of the file must be ensured externally.
         *
-        * \param in - open stream for output to file
+        * \param out - open stream for output to file
         */
         void add_to_binary_file(std::ofstream& out);        
     public:
@@ -217,14 +217,34 @@ namespace mon//mosnter
         */
         friend std::ostream& operator <<(std::ostream& out, const Monster& monster);
         /**
-        * \brief Creates a textual representation of time.
         * 
-        * \returns std::string time
+        * \returns a textual representation of time_info(std::tm)
         */
         std::string string_time() const;
+        /**
+        *
+        * \returns a textual representation of type(AttackTypes)
+        */
         std::string string_type() const;
+        /**
+        * \brief Translates std::string to AttackTypes. 
+        *
+        * \returns type as AttackTypes
+        */
         static mon::AttackTypes string_to_type(std::string line);
+        /**
+        * \brief Translates AttackTypes to std::string.
+        *
+        * \returns type as std::string 
+        */
         static std::string type_to_string(mon::AttackTypes type);
+        /**
+        * \brief Function which on parameter 'mode' defines 
+        * in what file to add a sample
+        * 
+        * \param out - open stream for output to file
+        * \param mode - file write mode(TEXT or BINARY)
+        */
         void add_to_file(std::ofstream& out, omode::Mode mode);
     };
     
