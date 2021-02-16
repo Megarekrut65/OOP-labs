@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['max_5fchance',['max_chance',['../classmon_1_1_monster.html#a78cb0251c97e1685c80ec7c72f6ca2a9',1,'mon::Monster']]],
-  ['max_5fdamage',['max_damage',['../classmon_1_1_monster.html#a39e4e7762a13edd8e609d95d958e30b8',1,'mon::Monster']]],
-  ['max_5fhp',['max_hp',['../classmon_1_1_monster.html#a3995d06a0379f1bc997cc6170bb7064f',1,'mon::Monster']]],
-  ['memorymode',['MemoryMode',['../classmmode_1_1_memory_mode.html',1,'mmode']]],
-  ['min_5fchance',['min_chance',['../classmon_1_1_monster.html#ad9007ffc80da70b7b19751e0fe977639',1,'mon::Monster']]],
-  ['min_5fdamage',['min_damage',['../classmon_1_1_monster.html#a6417691509d37cab7bf4edcebf13ad9e',1,'mon::Monster']]],
-  ['min_5fhp',['min_hp',['../classmon_1_1_monster.html#ab27d097ca368a062ec869b6205677350',1,'mon::Monster']]],
-  ['mon',['mon',['../namespacemon.html',1,'']]],
-  ['monster',['Monster',['../classmon_1_1_monster.html',1,'mon::Monster'],['../classmon_1_1_monster.html#a54b0325ff6ae2c5544e2a110f85c4aac',1,'mon::Monster::Monster(std::string name=&quot;monster&quot;, unsigned hp=1, unsigned damage=1, double chance=0, AttackTypes type=AttackTypes::INCREASE, std::tm time_info=std::tm(), unsigned id=1000)'],['../classmon_1_1_monster.html#adca1e2e61558b96d66e5f5a141f3abba',1,'mon::Monster::Monster(std::ifstream &amp;in, omode::Mode mode=omode::Mode::TEXT)']]]
+  ['im',['im',['../namespaceim.html',1,'']]],
+  ['increase',['INCREASE',['../namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0aaade2044a9bcf5e0c6e0f0824bc958c76',1,'mon']]],
+  ['interactive_5fdialog_5fmode',['interactive_dialog_mode',['../namespaceim.html#a901ec458387ded46adfc48175e04f65e',1,'im']]],
+  ['interactive_5fmenu',['interactive_menu',['../namespaceim.html#ae2d3d6c3ba60f9207403f65a477639b4',1,'im']]],
+  ['is_5ftime',['is_time',['../classom_1_1_opening_mode.html#ab3e692cb6896588440b2cae0a5ffc405',1,'om::OpeningMode']]]
 ];

@@ -27,7 +27,8 @@ namespace mrs
         clear();
         std::cout << "\nThe data entered incorrectly!" << std::endl;
     }
-	std::size_t read_size_t(const std::string& sentence, std::size_t min, std::size_t max )
+	std::size_t read_size_t(const std::string& sentence, 
+        std::size_t min, std::size_t max )
 	{
         while (true)
         {
@@ -59,7 +60,8 @@ namespace mrs
             else return number;
         }
     }
-    std::string read_string(const std::string& sentence, std::size_t min, std::size_t max)
+    std::string read_string(const std::string& sentence, 
+        std::size_t min, std::size_t max)
     {  
         while (true)
         {

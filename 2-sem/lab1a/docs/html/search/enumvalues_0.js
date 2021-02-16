@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cure',['CURE',['../namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0aa15587c981d7101ab3efa1d172eadd3d0',1,'mon']]]
+  ['binary',['BINARY',['../namespaceomode.html#a49b62bafc4a812919b8f77b8fb2b48f3a98ad0e8750ae10ad556ed7a62affb452',1,'omode']]]
 ];

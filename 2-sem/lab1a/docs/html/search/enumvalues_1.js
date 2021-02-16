@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['increase',['INCREASE',['../namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0aaade2044a9bcf5e0c6e0f0824bc958c76',1,'mon']]]
+  ['cure',['CURE',['../namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0aa15587c981d7101ab3efa1d172eadd3d0',1,'mon']]]
 ];
