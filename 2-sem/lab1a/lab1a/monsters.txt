@@ -1,0 +1,7 @@
+id=1000
+name=Geby
+hp=5000
+damage=405
+chance=0.00031
+type=CURE
+10 44 49 16 1 121

@@ -15,10 +15,6 @@ namespace mon
         std::tm time_info, unsigned id)
         : name(name), hp(correct_hp(hp)), damage(correct_damage(damage)), 
         chance(correct_chance(chance)), type(type), time_info(time_info), id(id) {}
-    /*Monster::Monster(const Monster& monster):
-        id(monster.id), name(monster.name),hp(monster.hp),
-        damage(monster.damage), chance(monster.chance),
-        type(monster.type), time_info(monster.time_info) {}*/
     unsigned Monster::correct_hp(unsigned hp)
     {
         if (hp < min_hp) return min_hp;

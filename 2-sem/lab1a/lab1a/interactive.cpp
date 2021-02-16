@@ -68,6 +68,7 @@ namespace im
                 std::string the_path = path + "txt";
                 open = std::make_shared<fmode::FileMode>(the_path, omode::Mode::TEXT );             
             }
+                break;
             case '3':
             {
                 std::string the_path = path + "bin";
