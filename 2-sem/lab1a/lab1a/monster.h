@@ -29,9 +29,9 @@ namespace mon//mosnter
     * The class object has the following 'characteristics': \n\n
     * - id - unique code\n\n
     * - name - the name of monster\n\n
-    * - hp - health units, value from 1 to 50000\n\n
-    * - damage - attack units, value from 1 to 1000\n\n
-    * - chance - chance to launch a special attack, value from 0.00 to 1.00\n\n
+    * - hp - health units, value from min_hp to max_hp\n\n
+    * - damage - attack units, value from min_damage to max_damage\n\n
+    * - chance - chance to launch a special attack, value from min_chance to max_chance\n\n
     * - type - type of special monster attack (AttackTypes)\n\n
     * - time_info - the time of creating the monster\n\n
     */
@@ -156,18 +156,71 @@ namespace mon//mosnter
         * \returns id - id of monster
         */
         unsigned get_id();
+        /**
+        * \returns name - name of monster
+        */
         std::string get_name();
+        /**
+        * \returns hp - health units of monster
+        */
         unsigned get_hp();
+        /**
+        * \returns damage - attack units of monster
+        */
         unsigned get_damage();
+        /**
+        * \returns chance - chance to launch the spesial attack of monster
+        */
         double get_chance();
+        /**
+        * \returns type - type of attack of monster
+        */
         AttackTypes get_type();
+        /**
+        * \returns time_info - time of creating of monster
+        */
         std::tm get_time();
+        /**
+        * \param name - new name
+        */
         void set_name(std::string name);
+        /**
+        * 
+        * 'hp' can be from min_hp to max_hp
+        * \param hp - new hp
+        */
         void set_hp(unsigned hp);
+        /**
+        *
+        * 'damage' can be from min_damage to max_damage
+        * \param damage - new damage
+        */
         void set_damage(unsigned damage);
+        /**
+        *
+        * 'chance' can be from min_chance to max_chance
+        * \param chance - new chance
+        */
         void set_chance(double chance);
+        /**
+        * \param type - new type
+        */
         void set_type(AttackTypes type);
+        /**
+        * \brief Override the output operator for the monster class.\n\n
+        * 
+        * Displays all data about the monster.
+        * 
+        * \param out - stream for output
+        * \param monster - object that will be printed
+        * \returns stream for output
+        */
         friend std::ostream& operator <<(std::ostream& out, const Monster& monster);
+        /**
+        * \brief Creates a textual representation of time.
+        * 
+        * \returns std::string time
+        */
         std::string string_time() const;
         std::string string_type() const;
         static mon::AttackTypes string_to_type(std::string line);
