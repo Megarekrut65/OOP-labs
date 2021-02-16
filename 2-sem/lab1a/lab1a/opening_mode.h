@@ -5,7 +5,7 @@
 #include <memory>
 
 /**
-* Namespace for class OpeningMode
+* Namespace for class OpeningMode.
 */
 namespace om//opening mode
 {

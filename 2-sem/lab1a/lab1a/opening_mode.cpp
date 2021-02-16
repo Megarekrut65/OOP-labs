@@ -82,7 +82,7 @@ namespace om
 
         return time_info;
     }
-    void OpeningMode::add_new_monster()//function to create a new monster
+    void OpeningMode::add_new_monster()
     {
         std::cout << "\nCreate your own monster!" << std::endl;
         std::string name = mrs::read_string("a name of monster");
@@ -152,7 +152,8 @@ namespace om
         }
         else std::cout << "\nMonster not found!" << std::endl;
     }
-    bool OpeningMode::is_time(std::vector<int> find_time, std::vector<int> monster_time, std::size_t index)
+    bool OpeningMode::is_time(std::vector<int> find_time, 
+        std::vector<int> monster_time, std::size_t index)
     {
         if (index == 6) return false;
         if (monster_time[index] > find_time[index]) return false;

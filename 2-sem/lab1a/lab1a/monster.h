@@ -7,13 +7,13 @@
 #include "file_mode.h"
 
 /**
-* Namespace for class Monster and enum class AttackTypes
+* Namespace for class Monster and enum class AttackTypes.
 * 
 */
 namespace mon//mosnter
 {
     /**
-    * \brief Class to represent the attack types of a object of class mon::Monster
+    * \brief Enum class to represent the attack types of a object of class mon::Monster
     * 
     */
     enum class AttackTypes : int
