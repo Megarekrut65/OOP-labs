@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['memorymode',['MemoryMode',['../classmmode_1_1_memory_mode.html',1,'mmode']]],
-  ['mon',['mon',['../namespacemon.html',1,'']]],
-  ['monster',['Monster',['../classmon_1_1_monster.html',1,'mon']]]
+  ['increase',['INCREASE',['../namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0aaade2044a9bcf5e0c6e0f0824bc958c76',1,'mon']]]
 ];

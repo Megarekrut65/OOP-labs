@@ -84,13 +84,12 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0aa15587c981d7101ab3efa1d172eadd3d0">AttackTypes::CURE</a>, 
 <a class="el" href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0aa15bc7fae5fd40adb37117420c880682b">AttackTypes::PARALYZE</a>
  }</td></tr>
-<tr class="memdesc:a0d4594e031211e8fb8bf300b9e3efd0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to represent the attack types of a object of class Monster.  <a href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0a">More...</a><br /></td></tr>
+<tr class="memdesc:a0d4594e031211e8fb8bf300b9e3efd0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to represent the attack types of a object of class <a class="el" href="classmon_1_1_monster.html" title="Class to represent an abstract monster object. ">mon::Monster</a>.  <a href="namespacemon.html#a0d4594e031211e8fb8bf300b9e3efd0a">More...</a><br /></td></tr>
 <tr class="separator:a0d4594e031211e8fb8bf300b9e3efd0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a222ba92247ab8ae0f6689a746a8e19c8"><td class="memItemLeft" align="right" valign="top"><a id="a222ba92247ab8ae0f6689a746a8e19c8"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="classmon_1_1_monster.html">Monster</a> &amp;monster)</td></tr>
+<tr class="memitem:a222ba92247ab8ae0f6689a746a8e19c8"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemon.html#a222ba92247ab8ae0f6689a746a8e19c8">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classmon_1_1_monster.html">Monster</a> &amp;monster)</td></tr>
 <tr class="separator:a222ba92247ab8ae0f6689a746a8e19c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -116,7 +115,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 </table>
 </div><div class="memdoc">
 
-<p>Class to represent the attack types of a object of class <a class="el" href="classmon_1_1_monster.html" title="Class to represent an abstract monster object. ">Monster</a>. </p>
+<p>Class to represent the attack types of a object of class <a class="el" href="classmon_1_1_monster.html" title="Class to represent an abstract monster object. ">mon::Monster</a>. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0d4594e031211e8fb8bf300b9e3efd0aaade2044a9bcf5e0c6e0f0824bc958c76"></a>INCREASE&#160;</td><td class="fielddoc"><p>Increase damage </p>
 </td></tr>
@@ -127,6 +126,44 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <tr><td class="fieldname"><a id="a0d4594e031211e8fb8bf300b9e3efd0aa15bc7fae5fd40adb37117420c880682b"></a>PARALYZE&#160;</td><td class="fielddoc"><p>Paralyze the enemy </p>
 </td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a222ba92247ab8ae0f6689a746a8e19c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a222ba92247ab8ae0f6689a746a8e19c8">&#9670;&nbsp;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; mon::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classmon_1_1_monster.html">Monster</a> &amp;&#160;</td>
+          <td class="paramname"><em>monster</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Displays all data about the monster.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>- stream for output </td></tr>
+    <tr><td class="paramname">monster</td><td>- object that will be printed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>stream for output </dd></dl>
 
 </div>
 </div>

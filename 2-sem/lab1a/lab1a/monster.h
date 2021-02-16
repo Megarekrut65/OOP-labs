@@ -13,7 +13,7 @@
 namespace mon//mosnter
 {
     /**
-    * \brief Class to represent the attack types of a object of class Monster
+    * \brief Class to represent the attack types of a object of class mon::Monster
     * 
     */
     enum class AttackTypes : int
@@ -24,16 +24,16 @@ namespace mon//mosnter
         PARALYZE/**<Paralyze the enemy*/
     };
     /**
-    * \brief Class to represent an abstract monster object.\n\n
+    * \brief Class to represent an abstract monster object.
     * 
-    * The class object has the following 'characteristics': \n\n
-    * - id - unique code\n\n
-    * - name - the name of monster\n\n
-    * - hp - health units, value from min_hp to max_hp\n\n
-    * - damage - attack units, value from min_damage to max_damage\n\n
-    * - chance - chance to launch a special attack, value from min_chance to max_chance\n\n
-    * - type - type of special monster attack (AttackTypes)\n\n
-    * - time_info - the time of creating the monster\n\n
+    * The class object has the following 'characteristics':
+    * - id - unique code
+    * - name - the name of monster
+    * - hp - health units, value from mon::Monster::min_hp to mon::Monster::max_hp
+    * - damage - attack units, value from mon::Monster::min_damage to mon::Monster::max_damage
+    * - chance - chance to launch a special attack, value from mon::Monster::min_chance to mon::Monster::max_chance
+    * - type - type of special monster attack (AttackTypes)
+    * - time_info - the time of creating the monster
     */
     class Monster
     {
@@ -49,9 +49,9 @@ namespace mon//mosnter
         /**
         * \brief Checks whether the hp value belongs to the specified interval.
         * 
-        * If hp < min_hp then hp = min_hp.
+        * If hp < mon::Monster::min_hp then hp = mon::Monster::min_hp.
         * 
-        * If hp > max_hp then hp = max_hp.
+        * If hp > mon::Monster::max_hp then hp = mon::Monster::max_hp.
         * 
         * \param hp - transmitted value
         * 
@@ -61,9 +61,9 @@ namespace mon//mosnter
         /**
         * \brief Checks whether the damage value belongs to the specified interval.
         *
-        * If damage < min_damage then damage = min_damage.
+        * If damage < mon::Monster::min_damage then damage = mon::Monster::min_damage.
         *
-        * If damage > max_damage then damage = max_damage.
+        * If damage > mon::Monster::max_damage then damage = mon::Monster::max_damage.
         *
         * \param damage - transmitted value
         *
@@ -73,9 +73,9 @@ namespace mon//mosnter
         /**
         * \brief Checks whether the chance value belongs to the specified interval.
         *
-        * If chance < min_chance then chance = min_chance.
+        * If chance < mon::Monster::min_chance then chance = mon::Monster::min_chance.
         *
-        * If chance > max_chance then chance = max_chance.
+        * If chance > mon::Monster::max_chance then chance = mon::Monster::max_chance.
         *
         * \param chance - transmitted value
         *
@@ -83,32 +83,34 @@ namespace mon//mosnter
         */
         double correct_chance(double chance);
         /**
-        * \brief Creates the monster using data from text file.\n\n
+        * \brief Creates the monster using data from text file.
         * 
-        * File structure:\n\n
-        * - id=<id>\n\n
-        * - name=<name>\n\n
-        * - hp=<hp>\n\n
-        * - damage=<damage>\n\n
-        * - chance=<chance>\n\n
-        * - type=<type>\n\n
-        * - <hours> <minutes> <seconds> <days> <months> <year - 1900>\n\n
+        * File structure:
+        * - id=<id>
+        * - name=<name>
+        * - hp=<hp>
+        * - damage=<damage>
+        * - chance=<chance>
+        * - type=<type>
+        * - <hours> <minutes> <seconds> <days> <months> <year - 1900>
+        * 
         * If in file will be errors then the data will be set by default.
         * 
         * \param in - open stream for input from file
         */
         void read_from_text_file(std::ifstream& in);
         /**
-        * \brief Creates the monster using data from binary file.\n\n
+        * \brief Creates the monster using data from binary file.
         *
-        * File structure:<id><name size><name><hp><damage><chance><type><time_info>.\n\n
+        * File structure:<id><name size><name><hp><damage><chance><type><time_info>.
+        * 
         * If in file will be errors then the data will be set by default.
         *
         * \param in - open stream for input from file
         */
         void read_from_binary_file(std::ifstream& in);
         /**
-        * \brief Add the monster to text file.\n\n
+        * \brief Add the monster to text file.
         * 
         * The existence of the file must be ensured externally.
         * 
@@ -116,7 +118,7 @@ namespace mon//mosnter
         */
         void add_to_text_file(std::ofstream& out);
         /**
-        * \brief Add the monster to binary file.\n\n
+        * \brief Add the monster to binary file.
         * 
         * The existence of the file must be ensured externally.
         *
@@ -186,19 +188,19 @@ namespace mon//mosnter
         void set_name(std::string name);
         /**
         * 
-        * 'hp' can be from min_hp to max_hp
+        * 'hp' can be from mon::Monster::min_hp to mon::Monster::max_hp
         * \param hp - new hp
         */
         void set_hp(unsigned hp);
         /**
         *
-        * 'damage' can be from min_damage to max_damage
+        * 'damage' can be from mon::Monster::min_damage to mon::Monster::max_damage
         * \param damage - new damage
         */
         void set_damage(unsigned damage);
         /**
         *
-        * 'chance' can be from min_chance to max_chance
+        * 'chance' can be from mon::Monster::min_chance to mon::Monster::max_chance
         * \param chance - new chance
         */
         void set_chance(double chance);
@@ -207,7 +209,7 @@ namespace mon//mosnter
         */
         void set_type(AttackTypes type);
         /**
-        * \brief Override the output operator for the monster class.\n\n
+        * \brief Override the output operator for the monster class.
         * 
         * Displays all data about the monster.
         * 
