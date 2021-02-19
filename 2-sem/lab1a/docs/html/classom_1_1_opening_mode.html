@@ -93,6 +93,12 @@ Inheritance diagram for om::OpeningMode:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ada1f6a3c1b77caa3b47438601240d5ce">write_monsters_menu</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
+<tr class="memdesc:ada1f6a3c1b77caa3b47438601240d5ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all monsters from array to display.  <a href="#ada1f6a3c1b77caa3b47438601240d5ce">More...</a><br /></td></tr>
+<tr class="separator:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d220958365e6ff6331282f42e230176"><td class="memItemLeft" align="right" valign="top">std::tm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a6d220958365e6ff6331282f42e230176">get_time_now</a> ()</td></tr>
+<tr class="memdesc:a6d220958365e6ff6331282f42e230176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives time now.  <a href="#a6d220958365e6ff6331282f42e230176">More...</a><br /></td></tr>
+<tr class="separator:a6d220958365e6ff6331282f42e230176"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac472c0bbba80ec2005f28968e005e22d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ac472c0bbba80ec2005f28968e005e22d">save_edited_monster</a> (<a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster)=0</td></tr>
 <tr class="memdesc:ac472c0bbba80ec2005f28968e005e22d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves edited monster by id.  <a href="#ac472c0bbba80ec2005f28968e005e22d">More...</a><br /></td></tr>
 <tr class="separator:ac472c0bbba80ec2005f28968e005e22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +142,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a60d5aa2c8b5db5872690cc88141453e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a60d5aa2c8b5db5872690cc88141453e1">delete_monster</a> ()</td></tr>
 <tr class="memdesc:a60d5aa2c8b5db5872690cc88141453e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for deleting monsters.  <a href="#a60d5aa2c8b5db5872690cc88141453e1">More...</a><br /></td></tr>
 <tr class="separator:a60d5aa2c8b5db5872690cc88141453e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb8d3ec118d858544d588a07d94fc2fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmon_1_1_monster.html">mon::Monster</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#abb8d3ec118d858544d588a07d94fc2fa">get_monster</a> (unsigned id)</td></tr>
+<tr class="memdesc:abb8d3ec118d858544d588a07d94fc2fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds monster and givs it.  <a href="#abb8d3ec118d858544d588a07d94fc2fa">More...</a><br /></td></tr>
+<tr class="separator:abb8d3ec118d858544d588a07d94fc2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -145,9 +154,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ab22204b068b04c7d56dac3da8480ad40"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ab22204b068b04c7d56dac3da8480ad40">find_monster</a> (unsigned id)=0</td></tr>
 <tr class="memdesc:ab22204b068b04c7d56dac3da8480ad40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds monster by id and gives pointer to it.  <a href="#ab22204b068b04c7d56dac3da8480ad40">More...</a><br /></td></tr>
 <tr class="separator:ab22204b068b04c7d56dac3da8480ad40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d220958365e6ff6331282f42e230176"><td class="memItemLeft" align="right" valign="top">std::tm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#a6d220958365e6ff6331282f42e230176">get_time_now</a> ()</td></tr>
-<tr class="memdesc:a6d220958365e6ff6331282f42e230176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives time now.  <a href="#a6d220958365e6ff6331282f42e230176">More...</a><br /></td></tr>
-<tr class="separator:a6d220958365e6ff6331282f42e230176"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3e692cb6896588440b2cae0a5ffc405"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ab3e692cb6896588440b2cae0a5ffc405">is_time</a> (std::vector&lt; int &gt; find_time, std::vector&lt; int &gt; monster_time, std::size_t index=0)</td></tr>
 <tr class="memdesc:ab3e692cb6896588440b2cae0a5ffc405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check time correcting.  <a href="#ab3e692cb6896588440b2cae0a5ffc405">More...</a><br /></td></tr>
 <tr class="separator:ab3e692cb6896588440b2cae0a5ffc405"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,9 +169,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:aa6a059dcfa62a7448736d4adcd61a7d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#aa6a059dcfa62a7448736d4adcd61a7d8">check_name</a> (std::string fragment_name, <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> monster, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
 <tr class="memdesc:aa6a059dcfa62a7448736d4adcd61a7d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the 'name' of monster.  <a href="#aa6a059dcfa62a7448736d4adcd61a7d8">More...</a><br /></td></tr>
 <tr class="separator:aa6a059dcfa62a7448736d4adcd61a7d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ada1f6a3c1b77caa3b47438601240d5ce">write_monsters_menu</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&gt; &amp;arr)</td></tr>
-<tr class="memdesc:ada1f6a3c1b77caa3b47438601240d5ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints all monsters from array to display.  <a href="#ada1f6a3c1b77caa3b47438601240d5ce">More...</a><br /></td></tr>
-<tr class="separator:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for classes <a class="el" href="classmmode_1_1_memory_mode.html" title="The class for seving monsters in memory. ">mmode::MemoryMode</a> and <a class="el" href="classfmode_1_1_file_mode.html" title="The class for seving monsters in files(text or binary). ">fmode::FileMode</a>. </p>
@@ -646,14 +649,39 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="abb8d3ec118d858544d588a07d94fc2fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb8d3ec118d858544d588a07d94fc2fa">&#9670;&nbsp;</a></span>get_monster()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmon_1_1_monster.html">mon::Monster</a> om::OpeningMode::get_monster </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds monster and givs it. </p>
+<p>If monster won't be found then function returns default monster.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>- id of monster </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>monster with 'id' </dd></dl>
+
+</div>
+</div>
 <a id="a6d220958365e6ff6331282f42e230176"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d220958365e6ff6331282f42e230176">&#9670;&nbsp;</a></span>get_time_now()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::tm om::OpeningMode::get_time_now </td>
@@ -662,11 +690,6 @@ Protected Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Gives time now. </p>
@@ -806,9 +829,6 @@ false if time isn't correct </dd></dl>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void om::OpeningMode::write_monsters_menu </td>
@@ -818,11 +838,6 @@ false if time isn't correct </dd></dl>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Prints all monsters from array to display. </p>
