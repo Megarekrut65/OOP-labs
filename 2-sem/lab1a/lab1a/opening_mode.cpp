@@ -170,4 +170,10 @@ namespace om
                  time_info.tm_mday, time_info.tm_hour,
                  time_info.tm_min, time_info.tm_sec };
     }
+    mon::Monster OpeningMode::get_monster(unsigned id)
+    {
+        std::shared_ptr<mon::Monster> monster = find_monster(id);
+        if (monster) return *monster;
+        return mon::Monster();
+    }
 }

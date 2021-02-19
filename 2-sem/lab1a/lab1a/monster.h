@@ -138,13 +138,13 @@ namespace mon//mosnter
         * The id uniqueness must be maintained manually
         */
         Monster(
-            std::string name = "monster", 
+            std::string name = "NULL", 
             unsigned hp = 1, 
             unsigned damage = 1, 
             double chance = 0, 
             AttackTypes type = AttackTypes::INCREASE, 
             std::tm time_info = std::tm(), 
-            unsigned id = 1000);
+            unsigned id = 9999);
         /**
         * \brief Constructor that retrieves data from a file.
         * 

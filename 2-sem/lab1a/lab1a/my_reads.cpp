@@ -14,6 +14,7 @@ namespace mrs
     template<typename T>
     std::string min_max_part(T min, T max)
     {
+        if (min == std::numeric_limits<T>::min()) return "";
         std::string line = "(" + std::to_string(min) + "-";
         if (max == std::numeric_limits<T>::max()) line += "...";
         else line += std::to_string(max);

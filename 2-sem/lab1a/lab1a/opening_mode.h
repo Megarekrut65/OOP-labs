@@ -198,5 +198,14 @@ namespace om//opening mode
         * Gets monster id and deletes the monster.
         */
         void delete_monster();
+        /**
+        * \brief Finds monster and givs it.
+        * 
+        * If monster won't be found then function returns default monster.
+        * 
+        * \param id - id of monster
+        * \returns monster with 'id'
+        */
+        mon::Monster get_monster(unsigned id);
     };
 }

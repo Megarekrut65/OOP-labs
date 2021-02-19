@@ -20,8 +20,10 @@ namespace dm
        demo_show_all_monsters();
        demo_find_name();
        demo_find_hp_damage();
-       demo_edit_monster();
-       demo_delete_monster();
+       demo_edit_monster(monster2.get_id());
+       demo_show_all_monsters();
+       demo_delete_monster(monster1.get_id());
+       demo_show_all_monsters();
        demo_exit();
        std::cout << "\nThe end of the demo mode" << std::endl;
        Sleep(delay);
@@ -32,18 +34,28 @@ namespace dm
            <<"1)Interactive dialog mode. <- press\n"
            << "2)Demo mode.\n3)Automatic benchmark mode.\n0)Exit.\n";
        Sleep(delay);
-       std::cout << "\nSelect the opening mode:\n1)Text mode. <- press\n"
-           <<"2)Binary mode." << std::endl;
+       std::cout << "\nSelect the opening mode:\n1)Memory mode. <- press\n2)Text mode.\n"
+           <<"3)Binary mode." << std::endl;
        Sleep(delay);
    }
    void DemoMode::demo_read(const std::string& sentence, const std::string& value,
        std::size_t min, std::size_t max)
    {
-       mrs::same_part(sentence + mrs::min_max_part(min,max)
-           +" <- write and press <Enter>\n");
+       mrs::same_part(sentence + mrs::min_max_part(min,max));
+       std::cout << " <- write and press <Enter>";
        Sleep(delay);
-       mrs::same_part(sentence + mrs::min_max_part(min, max)
-           + value);
+       mrs::same_part(sentence + mrs::min_max_part(min, max));
+       std::cout << value << std::endl;
+       Sleep(delay);
+   }
+   void DemoMode::demo_read_chance(const std::string& sentence, double chance,
+       double min, double max)
+   {
+       mrs::same_part(sentence + mrs::min_max_part(min, max));
+       std::cout << " <- write and press <Enter>";
+       Sleep(delay);
+       mrs::same_part(sentence + mrs::min_max_part(min, max));
+       std::cout << chance << std::endl;
        Sleep(delay);
    }
    void DemoMode::demo_read_type(mon::AttackTypes type)
@@ -85,7 +97,7 @@ namespace dm
            mon::Monster::min_hp, mon::Monster::max_hp);
        demo_read("a attack units of monster", std::to_string(monster.get_damage()),
            mon::Monster::min_damage, mon::Monster::max_damage);
-       demo_read("a attack units of monster", std::to_string(monster.get_chance()),
+       demo_read_chance("a attack units of monster", monster.get_chance(),
            mon::Monster::min_chance, mon::Monster::max_chance);
        demo_read_type(monster.get_type());
        open->append_monster(monster);
@@ -116,8 +128,9 @@ namespace dm
            <<"1)Search by Name. <- press\n2)Search by hp and damage.\n"
            << "3)Search by type of special monster attack and date." << std::endl;
        Sleep(delay);
-       demo_read("the full name or snippet of monster", "Me2");
-       open->write_monsters_menu(open->find_name("Me1"));
+       std::string fragment = "Me2";
+       demo_read("the full name or snippet of monster", fragment);
+       open->write_monsters_menu(open->find_name(fragment));
        Sleep(delay + 1000);
    }
    void DemoMode::demo_find_hp_damage()
@@ -136,77 +149,49 @@ namespace dm
        open->write_monsters_menu(open->find_hp_damage(min_hp, max_damage));
        Sleep(delay + 1000);
    }
-   void DemoMode::demo_edit_monsters_menu(const mon::Monster& monster)
+   void DemoMode::demo_edit_monsters_menu(unsigned id)
    {
        Sleep(delay);
        std::cout << "\nMonster:\n" << std::endl;
-       std::cout << monster << std::endl;
+       std::cout << open->get_monster(id) << std::endl;
        Sleep(delay);
    }
-   /*       
-   
-    void demo_edit_monster(int& delay, vector<info_monster>& demo_monsters)
-    {
-        cout << "\nMenu:\n1)Add a new monster.\n2)Show all the monsters.\n3)Find an existing monster.\n"
-            << "4)Edit a monster. <- press\n5)Delete a monster.\n0)Back." << endl;
-        Sleep(delay);
-        demo_read_id(delay, demo_monsters);
-        demo_edit_monsters_menu(delay, demo_monsters);
-        cout << "\nSelect the option you want to edit:\n"
-            << "1)Name. <- press\n2)HP.\n3)Damage.\n4)Chance to launch a special attack.\n"
-            << "5)Type of special monster attack.\n0)Exit." << endl;
-        Sleep(delay);
-        demo_read_name(delay, "a new", "Name2");
-        demo_monsters[0].name = "Name2";
-        demo_edit_monsters_menu(delay, demo_monsters);
-        cout << "\nSelect the option you want to edit:\n"
-            << "1)Name.\n2)HP. <- press\n3)Damage.\n4)Chance to launch a special attack.\n"
-            << "5)Type of special monster attack.\n0)Exit." << endl;
-        Sleep(delay);
-        demo_read_hp(delay, "a new", 10700);
-        demo_monsters[0].hp = 10700;
-        demo_edit_monsters_menu(delay, demo_monsters);
-        cout << "\nSelect the option you want to edit:\n"
-            << "1)Name.\n2)HP.\n3)Damage. <- press\n4)Chance to launch a special attack.\n"
-            << "5)Type of special monster attack.\n0)Exit." << endl;
-        Sleep(delay);
-        demo_read_damage(delay, "a new", 800);
-        demo_monsters[0].damage = 800;
-        demo_edit_monsters_menu(delay, demo_monsters);
-        cout << "\nSelect the option you want to edit:\n"
-            << "1)Name.\n2)HP.\n3)Damage.\n4)Chance to launch a special attack. <- press\n"
-            << "5)Type of special monster attack.\n0)Exit." << endl;
-        Sleep(delay);
-        demo_read_chance(delay, "a new", 0.64);
-        demo_monsters[0].chance = 0.64;
-        demo_edit_monsters_menu(delay, demo_monsters);
-        cout << "\nSelect the option you want to edit:\n"
-            << "1)Name.\n2)HP.\n3)Damage.\n4)Chance to launch a special attack.\n"
-            << "5)Type of special monster attack. <- press\n0)Exit." << endl;
-        Sleep(delay);
-        demo_read_type(delay, 2);
-        demo_monsters[0].type_of_attack = types_of_attack::REPEAT;
-        demo_edit_monsters_menu(delay, demo_monsters);
-        cout << "\nSelect the option you want to edit:\n"
-            << "1)Name.\n2)HP.\n3)Damage.\n4)Chance to launch a special attack.\n"
-            << "5)Type of special monster attack.\n0)Exit. <- press" << endl;
-        Sleep(delay);
-    }
-    void demo_delete_monster(int& delay, vector<info_monster>& demo_monsters)
-    {
-        cout << "\nMenu:\n1)Add a new monster.\n2)Show all the monsters.\n3)Find an existing monster.\n"
-            << "4)Edit a monster.\n5)Delete a monster. <- press\n0)Back." << endl;
-        Sleep(delay);
-        demo_read_id(delay, demo_monsters);
-        demo_monsters.erase(demo_monsters.begin());
-        cout << "\nThe monster - removed!" << endl;
-        Sleep(delay);
-    }
-    void demo_exit(int& delay)
-    {
-        cout << "\nMenu:\n1)Add a new monster.\n2)Show all the monsters.\n3)Find an existing monster.\n"
-            << "4)Edit a monster.\n5)Delete a monster.\n0)Back. <- press" << endl;
-        Sleep(delay);
-    }
-    */
+   void DemoMode::demo_edit_monster(unsigned id)
+   {
+       std::cout << "\nMenu:\n1)Add a new monster.\n2)Show all the monsters.\n3)Find an existing monster.\n"
+           << "4)Edit a monster. <- press\n5)Delete a monster.\n0)Back." << std::endl;
+       Sleep(delay);
+       demo_read("the id of monster", std::to_string(id), 1000);
+       demo_edit_monsters_menu(id);
+       std::cout << "\nSelect the option you want to edit:\n"
+           << "1)Name. <- press\n2)HP.\n3)Damage.\n"
+           << "4)Chance to launch a special attack.\n"
+           << "5)Type of special monster attack.\n0)Save and back." << std::endl;
+       Sleep(delay);
+       std::string new_name = "Monster4312";
+       demo_read("a new name of monster", new_name);
+       mon::Monster monster = open->get_monster(id);
+       monster.set_name(new_name);
+       open->save_edited_monster(monster);      
+       Sleep(delay);
+   }
+   void DemoMode::demo_delete_monster(unsigned id)
+   {
+       std::cout << "\nMenu:\n1)Add a new monster.\n"
+           <<"2)Show all the monsters.\n3)Find an existing monster.\n"
+           << "4)Edit a monster.\n5)Delete a monster. <- press\n0)Back." << std::endl;
+       Sleep(delay);
+       demo_read("the id of monster", std::to_string(id), 1000);
+       open->delete_the_monster(open->get_monster(id));
+       std::cout << "\nThe monster - removed!" << std::endl;
+       Sleep(delay);
+   }     
+   void DemoMode::demo_exit()
+   {
+       std::cout << "\nMenu:\n1)Add a new monster.\n"
+           <<"2)Show all the monsters.\n3)Find an existing monster.\n"
+            << "4)Edit a monster.\n5)Delete a monster.\n"
+           <<"0)Back. <- press" << std::endl;
+       Sleep(delay);
+   }
 }

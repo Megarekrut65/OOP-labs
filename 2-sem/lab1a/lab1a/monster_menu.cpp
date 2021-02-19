@@ -13,7 +13,11 @@ namespace mmenu
             {
             case '1': im::interactive_dialog_mode();
                 break;
-            case '2':// dm::demo_mode();
+            case '2':
+            {
+                dm::DemoMode demo_mode(std::make_shared<mmode::MemoryMode>(), 2000);
+                demo_mode.start();
+            }
                 break;
             case '3': //bm::benchmark_mode();
                 break;
