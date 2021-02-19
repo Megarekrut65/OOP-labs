@@ -1,24 +1,34 @@
 #pragma once
 #include <iostream>
+#include "memory_opening_mode.h"
+#include <memory>
+
+#include "my_reads.h"
 
 namespace dm//demo mode
 {
-	/*void demo_menu(int&);
-	void demo_read_name(int&, const string&, const string&);
-	void demo_read_hp(int&, const string&, const unsigned&);
-	void demo_read_damage(int&, const string&, const unsigned&);
-	void demo_read_chance(int&, const string&, const double&);
-	void demo_read_type(int&, const short&);
-	void demo_add_monster(int&, vector <info_monster>&);
-	void demo_show_all_monsters(int&, const vector <info_monster>&);
-	void demo_find_monsters(int&);
-	void demo_find_name(int&, const vector<info_monster>&);
-	void demo_find_hp_damage(int&, const vector<info_monster>&);
-	void demo_find_types_time(int&, const vector<info_monster>&);
-	void demo_read_id(int&, const vector<info_monster>&);
-	void demo_edit_monsters_menu(int&, vector<info_monster>&);
-	void demo_edit_monster(int&, vector<info_monster>&);
-	void demo_delete_monster(int&, vector<info_monster>&);
-	void demo_exit(int&);
-	void demo_mode();*/
+	class DemoMode
+	{
+	private:
+		std::shared_ptr <om::OpeningMode> open;
+		std::size_t delay;
+
+		void demo_menu();
+		void demo_read(const std::string& sentence, const std::string& value, 
+			std::size_t min = std::numeric_limits<std::size_t>::min(),
+			std::size_t max = std::numeric_limits<std::size_t>::max());
+		void demo_read_type(mon::AttackTypes type);//1-4
+		void demo_add_monster(const mon::Monster& monster);
+		void demo_show_all_monsters();
+		void demo_find_monsters();
+		void demo_find_name();
+		void demo_find_hp_damage();
+		void demo_edit_monsters_menu(const mon::Monster& monster);
+		void demo_edit_monster();
+		void demo_delete_monster();
+		void demo_exit();	
+	public:
+		DemoMode(std::shared_ptr <om::OpeningMode> open = nullptr, std::size_t delay = 1200);
+		void start();
+	};
 }

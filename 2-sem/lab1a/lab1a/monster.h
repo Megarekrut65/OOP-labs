@@ -157,31 +157,31 @@ namespace mon//mosnter
         /**
         * \returns id - id of monster
         */
-        unsigned get_id();
+        unsigned get_id() const;
         /**
         * \returns name - name of monster
         */
-        std::string get_name();
+        std::string get_name() const;
         /**
         * \returns hp - health units of monster
         */
-        unsigned get_hp();
+        unsigned get_hp() const;
         /**
         * \returns damage - attack units of monster
         */
-        unsigned get_damage();
+        unsigned get_damage() const;
         /**
         * \returns chance - chance to launch the spesial attack of monster
         */
-        double get_chance();
+        double get_chance() const;
         /**
         * \returns type - type of attack of monster
         */
-        AttackTypes get_type();
+        AttackTypes get_type() const;
         /**
         * \returns time_info - time of creating of monster
         */
-        std::tm get_time();
+        std::tm get_time() const;
         /**
         * \param name - new name
         */

@@ -34,30 +34,37 @@ namespace mon
         return chance;
     }
     unsigned Monster::get_id()
+        const
     {
         return id;
     }
     std::string Monster::get_name()
+        const
     {
         return name;
     }
     unsigned Monster::get_hp()
+        const
     {
         return hp;
     }
     unsigned Monster::get_damage()
+        const
     {
         return damage;
     }
     double Monster::get_chance()
+        const
     {
         return chance;
     }
     AttackTypes Monster::get_type()
+        const
     {
         return type;
     }
     std::tm Monster::get_time()
+        const
     {
         return time_info;
     }

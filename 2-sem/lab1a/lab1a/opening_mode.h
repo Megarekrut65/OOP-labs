@@ -37,12 +37,6 @@ namespace om//opening mode
         */
         virtual std::shared_ptr<mon::Monster> find_monster(unsigned id) = 0;
         /**
-        * \brief Gives time now.
-        * 
-        * \returns time of taking of function
-        */
-        std::tm get_time_now();
-        /**
         * \brief Check time correcting.
         * 
         * Recursion to check that the monster is created no 
@@ -107,13 +101,19 @@ namespace om//opening mode
         */
         void check_name(std::string fragment_name,
             mon::Monster monster, std::vector <std::shared_ptr<mon::Monster>>& arr);
+    public:
         /**
         * \brief Prints all monsters from array to display.
-        * 
+        *
         * \param arr - array with monsters
         */
         void write_monsters_menu(const std::vector<std::shared_ptr<mon::Monster>>& arr);
-    public:
+        /**
+        * \brief Gives time now.
+        *
+        * \returns time of taking of function
+        */
+        std::tm get_time_now();
         /**
         * \brief Saves edited monster by id.
         * 
