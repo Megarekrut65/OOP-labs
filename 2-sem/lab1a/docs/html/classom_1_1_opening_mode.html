@@ -76,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Base class for classes <a class="el" href="classmmode_1_1_memory_mode.html">mmode::MemoryMode</a> and <a class="el" href="classfmode_1_1_file_mode.html">fmode::FileMode</a>.  
+<p>Base class for classes <a class="el" href="classmmode_1_1_memory_mode.html" title="The class for seving monsters in memory. ">mmode::MemoryMode</a> and <a class="el" href="classfmode_1_1_file_mode.html" title="The class for seving monsters in files(text or binary). ">fmode::FileMode</a>.  
  <a href="classom_1_1_opening_mode.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="opening__mode_8h_source.html">opening_mode.h</a>&gt;</code></p>
@@ -86,8 +86,8 @@ Inheritance diagram for om::OpeningMode:</div>
  <div class="center">
   <img src="classom_1_1_opening_mode.png" usemap="#om::OpeningMode_map" alt=""/>
   <map id="om::OpeningMode_map" name="om::OpeningMode_map">
-<area href="classfmode_1_1_file_mode.html" alt="fmode::FileMode" shape="rect" coords="0,56,135,80"/>
-<area href="classmmode_1_1_memory_mode.html" alt="mmode::MemoryMode" shape="rect" coords="145,56,280,80"/>
+<area href="classfmode_1_1_file_mode.html" title="The class for seving monsters in files(text or binary). " alt="fmode::FileMode" shape="rect" coords="0,56,135,80"/>
+<area href="classmmode_1_1_memory_mode.html" title="The class for seving monsters in memory. " alt="mmode::MemoryMode" shape="rect" coords="145,56,280,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -140,7 +140,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memItemLeft" align="right" valign="top">virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ad061434456e8059dbfda4ccdb0dc3db0">get_id</a> ()=0</td></tr>
-<tr class="memdesc:ad061434456e8059dbfda4ccdb0dc3db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Must get free id for new monster.  <a href="#ad061434456e8059dbfda4ccdb0dc3db0">More...</a><br /></td></tr>
+<tr class="memdesc:ad061434456e8059dbfda4ccdb0dc3db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives free id for new monster.  <a href="#ad061434456e8059dbfda4ccdb0dc3db0">More...</a><br /></td></tr>
 <tr class="separator:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab22204b068b04c7d56dac3da8480ad40"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ab22204b068b04c7d56dac3da8480ad40">find_monster</a> (unsigned id)=0</td></tr>
 <tr class="memdesc:ab22204b068b04c7d56dac3da8480ad40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds monster by id and gives pointer to it.  <a href="#ab22204b068b04c7d56dac3da8480ad40">More...</a><br /></td></tr>
@@ -168,7 +168,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:ada1f6a3c1b77caa3b47438601240d5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for classes <a class="el" href="classmmode_1_1_memory_mode.html">mmode::MemoryMode</a> and <a class="el" href="classfmode_1_1_file_mode.html">fmode::FileMode</a>. </p>
+<div class="textblock"><p>Base class for classes <a class="el" href="classmmode_1_1_memory_mode.html" title="The class for seving monsters in memory. ">mmode::MemoryMode</a> and <a class="el" href="classfmode_1_1_file_mode.html" title="The class for seving monsters in files(text or binary). ">fmode::FileMode</a>. </p>
 <p>Must override all virtual functions to other classes follow.</p>
 <p>Can perform the following functions: create, add, edit, delete and search for monsters (<a class="el" href="classmon_1_1_monster.html" title="Class to represent an abstract monster object. ">mon::Monster</a>). </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -445,7 +445,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Deletes the monster by id. </p>
-<p>Before deleting monster, its place will be found.</p>
+<p>Before deleting monster, its place will be found. If the monster won't be found that it wan't be deleted.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">monster</td><td>- monster that be deleted. </td></tr>
@@ -641,7 +641,7 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Must get free id for new monster. </p>
+<p>Gives free id for new monster. </p>
 <p>The id is obtained from id of the last monster + 1. </p><dl class="section return"><dt>Returns</dt><dd>free id </dd></dl>
 
 </div>
@@ -755,7 +755,7 @@ false if time isn't correct </dd></dl>
 </div><div class="memdoc">
 
 <p>Saves edited monster by id. </p>
-<p>Before saving monster, its place will be found.</p>
+<p>Before saving monster, its place will be found. If the monster won't be found that it wan't be saved.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">monster</td><td>- monster that be saved. </td></tr>

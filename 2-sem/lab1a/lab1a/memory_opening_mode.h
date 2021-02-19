@@ -3,7 +3,7 @@
 #include "opening_mode.h"
 
 /**
-* \brief Namespace for class MemoryMode
+* \brief Namespace for class MemoryMode.
 */
 namespace mmode//memory mode
 {
@@ -12,6 +12,7 @@ namespace mmode//memory mode
 	* 
 	* The monsters are saved in std::vector. All operations work using it.
 	* 
+	* After the end of work of program, the monsters will be deleted.
 	*/
 	class MemoryMode: public om::OpeningMode
 	{
