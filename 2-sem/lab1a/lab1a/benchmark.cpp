@@ -2,7 +2,8 @@
 
 namespace bm
 {
-    /*void benchmark_mode()
+    BenchmarkMode::BenchmarkMode(): open(nullptr) {}
+   /* void BenchmarkMode::start()
     {
         clear_result_files();
         unsigned number_of_monsters, number_of_monsters_for_progression = 1;
@@ -54,39 +55,37 @@ namespace bm
             << "result_name_find.txt\nresult_xp_damage_find.txt\nresult_time_type_find.txt" << endl;
         std::remove("benchmark_text.txt");
         std::remove("benchmark_binary.bin");
-    }
-    void monster_generator(vector<info_monster>& all_monsters)//the function creates a monster with random parameters
+    }*/
+    void BenchmarkMode::monster_generator()//the function creates a monster with random parameters
     {
         srand(unsigned(time(0)));
-        string name;
-        int n = (rand() % 30 + 5);
-        char* buff = new char[n + 1];
-        for (int i = 0; i < n; i++)
+        std::size_t name_size = (rand() % 10 + 5);
+        std::string name(name_size, 'a');
+        for (std::size_t i = 0; i < name_size; i++)
         {
-            buff[i] = 'a' + (rand() % 26);
+            name[i] = 'a' + (rand() % 26);
         }
-        buff[n] = '\0';
-        name = buff;
         unsigned hp = (rand() % 50000 + 1);
         unsigned damage = (rand() % 1000 + 1);
         double chance = 0.01 * double(rand() % 101);
-        types_of_attack type = types_of_attack::INCREASE;
-        int k = (rand() % 4 + 1);
-        switch (k)
+        mon::AttackTypes type = mon::AttackTypes::INCREASE;
+        int index = (rand() % 4 + 1);
+        switch (index)
         {
-        case 1: type = types_of_attack::INCREASE;
+        case 1: type = mon::AttackTypes::INCREASE;
             break;
-        case 2: type = types_of_attack::REPEAT;
+        case 2: type = mon::AttackTypes::REPEAT;
             break;
-        case 3: type = types_of_attack::CURE;
+        case 3: type = mon::AttackTypes::CURE;
             break;
-        case 4: type = types_of_attack::PARALYZE;
+        case 4: type = mon::AttackTypes::PARALYZE;
             break;
         }
-        all_monsters.push_back(info_monster(name, hp, damage, chance, type, all_monsters));
-        delete[] buff;
+        open->append_monster(
+            mon::Monster(name, hp, damage, chance, type, 
+                open->get_time_now(), current_id++));
     }
-    std::size_t size_file(const string& path)
+    std::size_t BenchmarkMode::size_file(const std::string& path)
     {
         std::ifstream file(path);
         file.seekg(0, std::ios_base::end);
@@ -95,14 +94,16 @@ namespace bm
 
         return sizef;
     }
-    void add_program_test(const string& path, const measurement_result& date, bool is_size = true)//the function adds the measurement result to a text file
+    void BenchmarkMode::add_program_test(const std::string& path,
+        const MeasurementResult& result, bool is_size)//the function adds the measurement result to a text file
     {
         std::ofstream file(path, std::ios_base::app);
-        file << "N: " << date.number_of_monsters << endl;
-        file << "Time: " << date.time << endl;
-        if (is_size) file << "Size file:" << date.size << endl << endl;
+        file << "Number: " << result.number_of_monsters << std::endl;
+        file << "Time: " << result.time << std::endl;
+        if (is_size) file << "Size file:" << result.size << std::endl << std::endl;
         file.close();
     }
+    /*
     float measurement_open_txt(vector<info_monster>& all_monsters)//the function measures the opening time of a text file
     {
         measurement_result open_txt;
