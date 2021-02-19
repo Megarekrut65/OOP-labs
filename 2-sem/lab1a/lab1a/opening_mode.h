@@ -21,7 +21,7 @@ namespace om//opening mode
     {
     protected:      
         /**
-        * \brief Must get free id for new monster.
+        * \brief Gives free id for new monster.
         * 
         * The id is obtained from id of the last monster + 1.
         * \returns free id
@@ -118,6 +118,7 @@ namespace om//opening mode
         * \brief Saves edited monster by id.
         * 
         * Before saving monster, its place will be found.
+        * If the monster won't be found that it wan't be saved.
         * 
         * \param monster - monster that be saved.
         */
@@ -126,6 +127,7 @@ namespace om//opening mode
         * \brief Deletes the monster by id.
         *
         * Before deleting monster, its place will be found.
+        * If the monster won't be found that it wan't be deleted.
         *
         * \param monster - monster that be deleted.
         */
