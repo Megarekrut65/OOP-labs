@@ -196,6 +196,10 @@ namespace om//opening mode
         * \returns monster with 'id'
         */
         mon::Monster get_monster(unsigned id);
+        /**
+        * \brief Gives the size occupied by all monsters.
+        * \returns size_of
+        */
         virtual std::size_t get_size_of() = 0;
         /**
         * \brief Translates std::tm to std::vector.

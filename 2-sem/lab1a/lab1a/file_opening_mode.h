@@ -93,6 +93,10 @@ namespace fmode//file mode
 		* \brief Reads monster from file and prints it to display.
 		*/
 		void write_all_monsters();
+		/**
+		* \brief Gives the size occupied by all monsters.
+		* \returns size_of of file with monsters
+		*/
 		std::size_t get_size_of();
 	};
 }

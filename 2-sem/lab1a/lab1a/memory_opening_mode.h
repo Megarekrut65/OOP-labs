@@ -78,6 +78,10 @@ namespace mmode//memory mode
 		* \brief Prints the monsters to display.
 		*/
 		void write_all_monsters();
+		/**
+		* \brief Gives the size occupied by all monsters.
+		* \returns size_of of array with monsters
+		*/
 		std::size_t get_size_of();
 	};
 }

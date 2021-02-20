@@ -130,12 +130,12 @@ namespace bm
             rand() % 1000 + 1, 0.01 * double(rand() % 101), type, 
             open->get_time_now(), current_id++);
     }
-    void BenchmarkMode::monster_generator()//the function creates a monster with random parameters
+    void BenchmarkMode::monster_generator()
     {
        for(std::size_t i = 0; i < current_monster_number - prev_monster_number; i++)
             open->append_monster(get_random_monster());
     }
-    void BenchmarkMode::add_result_to_file(const std::string& path,float time)//the function adds the measurement result to a text file
+    void BenchmarkMode::add_result_to_file(const std::string& path,float time)
     {
         std::ofstream file(path, std::ios_base::app);
         file << "Number: " << current_monster_number << std::endl;
@@ -155,7 +155,7 @@ namespace bm
     {
         switch (index)
         {
-        case 0: open->append_monster(get_random_monster());
+        case 0: open->append_monster(monster);
             break;
         case 1: open->save_edited_monster(monster);
             break;
@@ -186,7 +186,7 @@ namespace bm
         std::cout << "Time of " + name_of_functions[index] +" = " << time << " seconds." << std::endl;
         return time;
     }
-    void BenchmarkMode::before_testing()//function clears old result files
+    void BenchmarkMode::before_testing()
     {
         current_id = 1000;
         prev_monster_number = 0;
