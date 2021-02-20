@@ -19,7 +19,11 @@ namespace mmenu
                 demo_mode.start();
             }
                 break;
-            case '3': //bm::benchmark_mode();
+            case '3':
+            {
+                bm::BenchmarkMode benchmark;
+                benchmark.start();
+            }
                 break;
             case'0':
             {

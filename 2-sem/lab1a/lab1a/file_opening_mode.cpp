@@ -99,7 +99,6 @@ namespace fmode
         std::ifstream old_file(path, in_mode);
         std::string new_path = "new_" + path;
         std::ofstream new_file(new_path, out_mode);
-        bool monster_found = false;
         while (!old_file.eof())
         {
             mon::Monster read_monster = mon::Monster(old_file, mode);
@@ -120,7 +119,6 @@ namespace fmode
         {
             mon::Monster read_monster = mon::Monster(old_file, mode);
             if (old_file.eof()) break;
-            std::cout << "id:" << read_monster.get_id() << std::endl;
             if (monster.get_id() != read_monster.get_id())
                 read_monster.add_to_file(new_file, mode);
         }

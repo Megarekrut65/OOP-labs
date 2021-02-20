@@ -2,48 +2,92 @@
 
 namespace bm
 {
-    BenchmarkMode::BenchmarkMode()
-        : number_of_functions(7), open(nullptr),
+    BenchmarkMode::BenchmarkMode(std::size_t inizial_monster_number)
+        : number_of_functions(6), open(nullptr),name_of_open(""),
         name_of_functions({"add_monster", "edit_monster", "delete_monster",
             "find_name", "find_hp_damage", "find_type_time"}), 
-        inizial_monster_number(10), current_monster_number(0), 
+        inizial_monster_number(inizial_monster_number), current_monster_number(0),
         saved_monster_number(0), text_path("ben_text.txt"),
         binary_path("ben_binary.bin"), current_id(1000) {}
-    void BenchmarkMode::start()
+    void BenchmarkMode::testing()
     {
         clear_result_files();
         float function_time;
+        current_monster_number = inizial_monster_number;
+        saved_monster_number = inizial_monster_number;
         bool more_than_one = false, more_than_ten = false;
         std::size_t coefficient = 2;
         while (true)
         {
-            for (unsigned i = 0; i < number_of_monsters; i++)
+            monster_generator();
+            std::cout << "\n\nNumber of monsters = "
+                << current_monster_number << std::endl;
+            class_size_of(name_of_open + "size_of.txt");
+            for (std::size_t i = 0; i < number_of_functions; i++)
             {
-                monster_generator(all_monsters);
+                function_time = measurement(i);
+                if (function_time >= 1) more_than_one = true;
+                if (function_time > 10) more_than_ten = true;
             }
-            cout << "\n\nN = " << number_of_monsters << endl;
-            for (unsigned j = 0; j < number_of_function; j++)
-            {
-                function_time = arr_pointers_to_functions[j](all_monsters);
-                if (function_time >= 1) time_is_more_than_second = true;
-                if (function_time > 10) time_is_more_than_ten_seconds = true;
-            }
-            if (time_is_more_than_ten_seconds) break;
-            if (time_is_more_than_second) number_of_monsters = number_of_monsters_for_progression * coefficient++;
-            else
-            {
-                number_of_monsters *= 2;
-                number_of_monsters_for_progression = number_of_monsters;
-            }
+            if (more_than_ten) break;
+            new_number(more_than_one, coefficient);
         }
         finish();
     }
+    void BenchmarkMode::start()
+    {
+        while (true)
+        {
+            std::cout << "\nChoose one:\n1)Testing memory mode.\n"
+                << "2)Testing text mode.\n3)Testing binary mode.\n0)Back." << std::endl;
+            switch (_getch())
+            {
+            case '1': 
+            {
+                open = std::make_shared<mmode::MemoryMode>();
+                name_of_open = "memory_";
+                std::cout << "\nTesting of memory mode...\n" << std::endl;
+            }
+                break;
+            case '2':
+            {
+                open = std::make_shared<fmode::FileMode>(text_path, omode::Mode::TEXT);
+                name_of_open = "text_";
+                std::cout << "\nTesting of text mode...\n" << std::endl;
+            }
+                break;
+            case '3':
+            {
+                open = std::make_shared<fmode::FileMode>(binary_path, omode::Mode::BINARY);
+                name_of_open = "binary_";
+                std::cout << "\nTesting of binary mode...\n" << std::endl;                                
+            }
+                break;
+            case '0': return;
+                break;
+            default: std::cout << "\nPress the correct key!" << std::endl;
+                break;
+            }
+            testing();
+            std::remove(text_path.c_str());
+            std::remove(binary_path.c_str());
+        }              
+    }
+    void BenchmarkMode::new_number(bool more_than_one, std::size_t& coefficient)
+    {
+        if (more_than_one) 
+            current_monster_number = saved_monster_number * coefficient++;
+        else
+        {
+            current_monster_number *= 2;
+            saved_monster_number = current_monster_number;
+        }
+    }
     void BenchmarkMode::finish()
     {
-        std::cout << "\nResults of measurements of program in the following files:" << std::endl;
-           
-        std::remove(text_path);
-        std::remove(binaty_path);
+        std::cout << "\nResults of measurements of program in the following files:" << std::endl;           
+        for (std::size_t i = 0; i < number_of_functions; i++)
+            std::cout << name_of_open + name_of_functions[i] + ".txt" << std::endl;
     }
     mon::Monster BenchmarkMode::get_random_monster()
     {
@@ -76,13 +120,20 @@ namespace bm
        for(std::size_t i = 0; i < current_monster_number; i++)
             open->append_monster(get_random_monster());
     }
-    void BenchmarkMode::add_result_to_file(const std::string& path,
-        const MeasurementResult& result, bool is_size)//the function adds the measurement result to a text file
+    void BenchmarkMode::add_result_to_file(const std::string& path,float time)//the function adds the measurement result to a text file
     {
         std::ofstream file(path, std::ios_base::app);
-        file << "Number: " << result.number_of_monsters << std::endl;
-        file << "Time: " << result.time << std::endl;
-        if (is_size) file << "Size file:" << result.size << std::endl << std::endl;
+        file << "Number: " << current_monster_number << std::endl;
+        file << "Time: " << time << std::endl;
+        file.close();
+    }
+    void BenchmarkMode::class_size_of(const std::string& path)
+    {
+        std::ofstream file(path, std::ios_base::app);
+        file << "Number: " << current_monster_number << std::endl;
+        std::size_t size = open->get_size_of();
+        file << "Size_of: " << size << std::endl;
+        std::cout << "Size_of = " << size << std::endl;
         file.close();
     }
     void BenchmarkMode::all_functions(std::size_t index, mon::Monster monster)
@@ -105,28 +156,26 @@ namespace bm
             break;
         }
     }
-    float BenchmarkMode::measurement(const std::string& result_path, std::size_t index)//the function measures the opening time of a text file
+    float BenchmarkMode::measurement(std::size_t index)//the function measures the opening time of a text file
     {
-        MeasurementResult result;
-        result.number_of_monsters = current_monster_number;
         auto the_start = std::chrono::high_resolution_clock::now();
         auto the_end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<float> duration;
-        mon::Monster monster = open->get_monster(--current_id);
+        mon::Monster monster = mon::Monster("1",1,1,1,mon::AttackTypes::INCREASE, open->get_time_now(), current_id * 2);
         the_start = std::chrono::high_resolution_clock::now();
         all_functions(index, monster);
         the_end = std::chrono::high_resolution_clock::now();
         duration = the_end - the_start;
-        result.time = duration.count();
-        add_result_to_file(result_path + ".txt", result);
-        std::cout << "Time of " + result_path +" = " << result.time << " seconds." << std::endl;
-        return result.time;
+        float time = duration.count();
+        add_result_to_file(name_of_open + name_of_functions[index] + ".txt", time);
+        std::cout << "Time of " + name_of_functions[index] +" = " << time << " seconds." << std::endl;
+        return time;
     }
     void BenchmarkMode::clear_result_files()//function clears old result files
     {
         for (std::size_t i = 0; i < number_of_functions; i++)
         {
-            std::ofstream clear_file(name_of_functions[i] + ".txt");
+            std::ofstream clear_file(name_of_open + name_of_functions[i] + ".txt");
             clear_file.close();
         }
     }
