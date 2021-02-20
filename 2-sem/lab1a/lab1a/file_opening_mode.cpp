@@ -2,6 +2,15 @@
 
 namespace fmode
 {
+    std::size_t FileMode::get_size_of()
+    {
+        std::ifstream file(path, in_mode);
+        file.seekg(0, std::ios_base::end);
+        std::size_t sizef = size_t(file.tellg());
+        file.close();
+
+        return sizef;
+    }
 	FileMode::FileMode(const std::string& path,
 		omode::Mode mode) :path(path), mode(mode), 
         in_mode(std::ios_base::in), out_mode(std::ios_base::out)

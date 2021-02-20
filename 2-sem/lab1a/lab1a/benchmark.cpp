@@ -2,32 +2,19 @@
 
 namespace bm
 {
-    BenchmarkMode::BenchmarkMode(): open(nullptr) {}
-   /* void BenchmarkMode::start()
+    BenchmarkMode::BenchmarkMode()
+        : number_of_functions(7), open(nullptr),
+        name_of_functions({"add_monster", "edit_monster", "delete_monster",
+            "find_name", "find_hp_damage", "find_type_time"}), 
+        inizial_monster_number(10), current_monster_number(0), 
+        saved_monster_number(0), text_path("ben_text.txt"),
+        binary_path("ben_binary.bin"), current_id(1000) {}
+    void BenchmarkMode::start()
     {
         clear_result_files();
-        unsigned number_of_monsters, number_of_monsters_for_progression = 1;
-        while (true)
-        {
-            cout << "\nEnter the initial number of monsters(1-...): ";
-            cin >> number_of_monsters;
-            if ((number_of_monsters < 1) || (!cin.good()))
-            {
-                cin.clear();
-                cin.ignore(200, '\n');
-                cout << "\nData entered incorrectly!" << endl;
-                continue;
-            }
-            break;
-        }
-        vector <info_monster> all_monsters;
         float function_time;
-        const int number_of_function = 7;
-        float (*arr_pointers_to_functions[number_of_function])(vector<info_monster>&) = { measurement_save_txt,
-            measurement_save_bin, measurement_open_txt, measurement_open_bin ,measurement_name_find,
-            measurement_hp_damage_find, measurement_time_type_find };
-        bool time_is_more_than_second = false, time_is_more_than_ten_seconds = false;
-        unsigned coefficient = 2;
+        bool more_than_one = false, more_than_ten = false;
+        std::size_t coefficient = 2;
         while (true)
         {
             for (unsigned i = 0; i < number_of_monsters; i++)
@@ -49,14 +36,16 @@ namespace bm
                 number_of_monsters_for_progression = number_of_monsters;
             }
         }
-        cout << "\nResults of measurements of program in the following files:\n"
-            << "result_save_txt_file.txt\nresult_open_txt_file.txt\n"
-            << "result_save_binary_file.txt\nresult_open_binary_file.txt\n"
-            << "result_name_find.txt\nresult_xp_damage_find.txt\nresult_time_type_find.txt" << endl;
-        std::remove("benchmark_text.txt");
-        std::remove("benchmark_binary.bin");
-    }*/
-    void BenchmarkMode::monster_generator()//the function creates a monster with random parameters
+        finish();
+    }
+    void BenchmarkMode::finish()
+    {
+        std::cout << "\nResults of measurements of program in the following files:" << std::endl;
+           
+        std::remove(text_path);
+        std::remove(binaty_path);
+    }
+    mon::Monster BenchmarkMode::get_random_monster()
     {
         srand(unsigned(time(0)));
         std::size_t name_size = (rand() % 10 + 5);
@@ -65,9 +54,6 @@ namespace bm
         {
             name[i] = 'a' + (rand() % 26);
         }
-        unsigned hp = (rand() % 50000 + 1);
-        unsigned damage = (rand() % 1000 + 1);
-        double chance = 0.01 * double(rand() % 101);
         mon::AttackTypes type = mon::AttackTypes::INCREASE;
         int index = (rand() % 4 + 1);
         switch (index)
@@ -81,20 +67,16 @@ namespace bm
         case 4: type = mon::AttackTypes::PARALYZE;
             break;
         }
-        open->append_monster(
-            mon::Monster(name, hp, damage, chance, type, 
-                open->get_time_now(), current_id++));
+        return mon::Monster(name, rand() % 50000 + 1,
+            rand() % 1000 + 1, 0.01 * double(rand() % 101), type, 
+            open->get_time_now(), current_id++);
     }
-    std::size_t BenchmarkMode::size_file(const std::string& path)
+    void BenchmarkMode::monster_generator()//the function creates a monster with random parameters
     {
-        std::ifstream file(path);
-        file.seekg(0, std::ios_base::end);
-        std::size_t sizef = size_t(file.tellg());
-        file.close();
-
-        return sizef;
+       for(std::size_t i = 0; i < current_monster_number; i++)
+            open->append_monster(get_random_monster());
     }
-    void BenchmarkMode::add_program_test(const std::string& path,
+    void BenchmarkMode::add_result_to_file(const std::string& path,
         const MeasurementResult& result, bool is_size)//the function adds the measurement result to a text file
     {
         std::ofstream file(path, std::ios_base::app);
@@ -103,149 +85,49 @@ namespace bm
         if (is_size) file << "Size file:" << result.size << std::endl << std::endl;
         file.close();
     }
-    /*
-    float measurement_open_txt(vector<info_monster>& all_monsters)//the function measures the opening time of a text file
+    void BenchmarkMode::all_functions(std::size_t index, mon::Monster monster)
     {
-        measurement_result open_txt;
-        auto the_start = std::chrono::high_resolution_clock::now();
-        auto the_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> duration;
-        open_txt.number_of_monsters = all_monsters.size();
-        the_start = std::chrono::high_resolution_clock::now();
-        all_monsters = open_text_file("benchmark_text.txt");
-        the_end = std::chrono::high_resolution_clock::now();
-        duration = the_end - the_start;
-        open_txt.time = duration.count();
-        add_program_test("result_open_txt_file.txt", open_txt, false);
-        cout << "Time of open txt = " << open_txt.time << " seconds." << endl;
-        all_monsters.clear();
-
-        return open_txt.time;
-    }
-    float measurement_open_bin(vector<info_monster>& all_monsters)//the function measures the opening time of a binary file
-    {
-        measurement_result open_bin;
-        auto the_start = std::chrono::high_resolution_clock::now();
-        auto the_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> duration;
-        open_bin.number_of_monsters = all_monsters.size();
-        the_start = std::chrono::high_resolution_clock::now();
-        all_monsters = open_binary_file("benchmark_binary.bin");
-        the_end = std::chrono::high_resolution_clock::now();
-        duration = the_end - the_start;
-        open_bin.time = duration.count();
-        add_program_test("result_open_binary_file.txt", open_bin, false);
-        cout << "Time of open binary = " << open_bin.time << " seconds." << endl;
-
-        return open_bin.time;
-    }
-    float measurement_save_txt(vector<info_monster>& all_monsters)//the function measures the storage time of a text file and its size
-    {
-        measurement_result save_txt;
-        auto the_start = std::chrono::high_resolution_clock::now();
-        auto the_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> duration;
-        save_txt.number_of_monsters = all_monsters.size();
-        the_start = std::chrono::high_resolution_clock::now();
-        save_text_file("benchmark_text.txt", all_monsters);
-        the_end = std::chrono::high_resolution_clock::now();
-        duration = the_end - the_start;
-        save_txt.time = duration.count();
-        save_txt.size = size_file("benchmark_text.txt");
-        add_program_test("result_save_txt_file.txt", save_txt);
-        cout << "Time of save txt = " << save_txt.time << " seconds." << endl;
-        cout << "Size of save txt = " << save_txt.size << " bytes." << endl;
-
-        return save_txt.time;
-    }
-    float measurement_save_bin(vector<info_monster>& all_monsters)//the function measures the storage time of a binary file and its size
-    {
-        measurement_result save_bin;
-        save_bin.number_of_monsters = all_monsters.size();
-        auto the_start = std::chrono::high_resolution_clock::now();
-        auto the_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> duration;
-        the_start = std::chrono::high_resolution_clock::now();
-        save_binary_file("benchmark_binary.bin", all_monsters);
-        the_end = std::chrono::high_resolution_clock::now();
-        duration = the_end - the_start;
-        save_bin.time = duration.count();
-        save_bin.size = size_file("benchmark_binary.bin");
-        add_program_test("result_save_binary_file.txt", save_bin);
-        cout << "Time of save binary = " << save_bin.time << " seconds." << endl;
-        cout << "Size of save binary = " << save_bin.size << " bytes." << endl;
-        all_monsters.clear();
-        return save_bin.time;
-    }
-    float measurement_name_find(vector<info_monster>& all_monsters)//the function measures the search time of a monster in a file
-    {
-        measurement_result name_find;
-        auto the_start = std::chrono::high_resolution_clock::now();
-        auto the_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> duration;
-        name_find.number_of_monsters = all_monsters.size();
-        string name = all_monsters[name_find.number_of_monsters - 1].name;
-        vector <int> number;
-        the_start = std::chrono::high_resolution_clock::now();
-        number = find_name(name, all_monsters);
-        the_end = std::chrono::high_resolution_clock::now();
-        duration = the_end - the_start;
-        name_find.time = duration.count();
-        add_program_test("result_name_find.txt", name_find, false);
-        cout << "Time of find by name = " << name_find.time << " seconds." << endl;
-
-        return name_find.time;
-    }
-    float measurement_hp_damage_find(vector<info_monster>& all_monsters)//the function measures the search time of a monster in a file
-    {
-        measurement_result xp_damage_find;
-        auto the_start = std::chrono::high_resolution_clock::now();
-        auto the_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> duration;
-        xp_damage_find.number_of_monsters = all_monsters.size();
-        unsigned hp = all_monsters[xp_damage_find.number_of_monsters - 1].hp;
-        unsigned damage = all_monsters[xp_damage_find.number_of_monsters - 1].damage;
-        vector <int> number;
-        the_start = std::chrono::high_resolution_clock::now();
-        number = find_hp_damage(hp, damage, all_monsters);
-        the_end = std::chrono::high_resolution_clock::now();
-        duration = the_end - the_start;
-        xp_damage_find.time = duration.count();
-        add_program_test("result_xp_damage_find.txt", xp_damage_find, false);
-        cout << "Time of find by xp and damage = " << xp_damage_find.time << " seconds." << endl;
-
-        return xp_damage_find.time;
-    }
-    float measurement_time_type_find(vector<info_monster>& all_monsters)//the function measures the search time of a monster in a file
-    {
-        measurement_result time_type_find;
-        auto the_start = std::chrono::high_resolution_clock::now();
-        auto the_end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> duration;
-        time_type_find.number_of_monsters = all_monsters.size();
-        vector <int> number;
-        types_of_attack type = all_monsters[time_type_find.number_of_monsters - 1].type_of_attack;
-        int time[6] = { 2021,12,28,23,59,59 };
-        the_start = std::chrono::high_resolution_clock::now();
-        number = find_types_time(type, time, all_monsters);
-        the_end = std::chrono::high_resolution_clock::now();
-        duration = the_end - the_start;
-        time_type_find.time = duration.count();
-        add_program_test("result_time_type_find.txt", time_type_find, false);
-        cout << "Time of find by types of attack and time = " << time_type_find.time << " seconds." << endl;
-        all_monsters.clear();
-
-        return time_type_find.time;
-    }
-    void clear_result_files()//function clears old result files
-    {
-        string all_result_files[7] = { "result_save_txt_file.txt", "result_save_binary_file.txt",
-            "result_open_txt_file.txt", "result_open_binary_file.txt", "result_name_find.txt",
-            "result_xp_damage_find.txt", "result_time_type_find.txt" };
-        for (unsigned i = 0; i < 7; i++)
+        switch (index)
         {
-            std::ofstream clear_file(all_result_files[i]);
+        case 1: open->append_monster(get_random_monster());
+            break;
+        case 2: open->save_edited_monster(monster);
+            break;
+        case 3: open->save_edited_monster(monster);
+            break;
+        case 4: open->find_name(monster.get_name());
+            break;
+        case 5: open->find_hp_damage(monster.get_hp(), monster.get_damage());
+            break;
+        case 6: open->find_types_time(monster.get_type(), om::OpeningMode::tm_to_vector(monster.get_time()));
+            break;
+        default:
+            break;
+        }
+    }
+    float BenchmarkMode::measurement(const std::string& result_path, std::size_t index)//the function measures the opening time of a text file
+    {
+        MeasurementResult result;
+        result.number_of_monsters = current_monster_number;
+        auto the_start = std::chrono::high_resolution_clock::now();
+        auto the_end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<float> duration;
+        mon::Monster monster = open->get_monster(--current_id);
+        the_start = std::chrono::high_resolution_clock::now();
+        all_functions(index, monster);
+        the_end = std::chrono::high_resolution_clock::now();
+        duration = the_end - the_start;
+        result.time = duration.count();
+        add_result_to_file(result_path + ".txt", result);
+        std::cout << "Time of " + result_path +" = " << result.time << " seconds." << std::endl;
+        return result.time;
+    }
+    void BenchmarkMode::clear_result_files()//function clears old result files
+    {
+        for (std::size_t i = 0; i < number_of_functions; i++)
+        {
+            std::ofstream clear_file(name_of_functions[i] + ".txt");
             clear_file.close();
         }
-    }*/
+    }
 }

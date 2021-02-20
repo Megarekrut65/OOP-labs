@@ -2,6 +2,10 @@
 
 namespace mmode
 {
+    std::size_t MemoryMode::get_size_of()
+    {
+        return (monsters.size() * sizeof(mon::Monster));
+    }
     void MemoryMode::write_all_monsters()
     {
         if (monsters.size() == 0) std::cout << "\nThere are no monsters here." << std::endl;

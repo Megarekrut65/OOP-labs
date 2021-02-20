@@ -52,17 +52,6 @@ namespace om//opening mode
         bool is_time(std::vector<int> find_time, std::vector<int> monster_time, 
             std::size_t index = 0);
         /**
-        * \brief Translates std::tm to std::vector.
-        * 
-        * Adds hour to array[0], minute to array[1], 
-        * second to array[2], day to array[3], 
-        * month to array[4] and year to array[5].
-        * 
-        * \param time_info - time structure
-        * \returns array representation of time
-        */
-        std::vector<int> tm_to_vector(std::tm time_info);
-        /**
         * \brief Checks the 'time_info' and 'type' of monster.
         * 
         * If type of monster is searching type and monster is created no 
@@ -207,5 +196,17 @@ namespace om//opening mode
         * \returns monster with 'id'
         */
         mon::Monster get_monster(unsigned id);
+        virtual std::size_t get_size_of() = 0;
+        /**
+        * \brief Translates std::tm to std::vector.
+        *
+        * Adds hour to array[0], minute to array[1],
+        * second to array[2], day to array[3],
+        * month to array[4] and year to array[5].
+        *
+        * \param time_info - time structure
+        * \returns array representation of time
+        */
+        static std::vector<int> tm_to_vector(std::tm time_info);
     };
 }
