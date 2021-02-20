@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['data_5fincorrect',['data_incorrect',['../namespacemrs.html#ad638e850babc8a96d553b51626d38333',1,'mrs']]],
-  ['delete_5fmonster',['delete_monster',['../classom_1_1_opening_mode.html#a60d5aa2c8b5db5872690cc88141453e1',1,'om::OpeningMode']]],
-  ['delete_5fthe_5fmonster',['delete_the_monster',['../classom_1_1_opening_mode.html#a60c9d627dd77b3bbd375a846444a6dd0',1,'om::OpeningMode']]],
-  ['demomode',['DemoMode',['../classdm_1_1_demo_mode.html#ab62aa898b6b9cd7f224f6f1f45ad8935',1,'dm::DemoMode']]]
+  ['check_5ffor_5ffile',['check_for_file',['../namespaceffs.html#a9073b314812815a406cd64037e53c85c',1,'ffs']]],
+  ['check_5fhp_5fdamage',['check_hp_damage',['../classom_1_1_opening_mode.html#add64c0f8595e3956aa3b60ed335681f7',1,'om::OpeningMode']]],
+  ['check_5fname',['check_name',['../classom_1_1_opening_mode.html#aa6a059dcfa62a7448736d4adcd61a7d8',1,'om::OpeningMode']]],
+  ['check_5ftypes_5ftime',['check_types_time',['../classom_1_1_opening_mode.html#a396964f10279146a17a7182e70cd2e35',1,'om::OpeningMode']]],
+  ['clear',['clear',['../namespacemrs.html#a76dd68d5ed9ee6f22d83a139ca9f616a',1,'mrs']]]
 ];

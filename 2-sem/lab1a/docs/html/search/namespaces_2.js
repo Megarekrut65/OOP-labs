@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['im',['im',['../namespaceim.html',1,'']]]
+  ['ffs',['ffs',['../namespaceffs.html',1,'']]],
+  ['fmode',['fmode',['../namespacefmode.html',1,'']]]
 ];

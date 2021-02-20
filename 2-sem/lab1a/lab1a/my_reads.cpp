@@ -21,7 +21,13 @@ namespace mrs
         line += ")";
         return line;
     }
+    /**
+    * \brief The function min_max_part for double.
+    */
     template std::string min_max_part<double>(double min, double max);
+    /**
+    * \brief The function min_max_part for std::size_t.
+    */
     template std::string min_max_part<std::size_t>(std::size_t min, std::size_t max);
     void data_incorrect()
     {
