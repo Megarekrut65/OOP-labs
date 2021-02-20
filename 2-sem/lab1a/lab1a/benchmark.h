@@ -6,20 +6,17 @@
 
 namespace bm//benchmark mode
 {
-	struct MeasurementResult
-	{
-		std::size_t number_of_monsters;
-		float time;
-	};
 	class BenchmarkMode
 	{
 	private:
 		std::shared_ptr<om::OpeningMode> open;
 		std::string name_of_open;
+		std::string folder_name;
 		const std::size_t number_of_functions;
 		std::vector<std::string> name_of_functions;
 		std::size_t inizial_monster_number;
 		std::size_t current_monster_number;
+		std::size_t prev_monster_number;
 		std::size_t saved_monster_number;
 		std::string text_path;
 		std::string binary_path;
@@ -31,7 +28,11 @@ namespace bm//benchmark mode
 		float measurement(std::size_t index);
 		mon::Monster get_random_monster();
 		void all_functions(std::size_t index, mon::Monster monster);
-		void clear_result_files();
+		void before_testing();
+		void before_start();
+		void set_memory_mode();
+		void set_text_mode();
+		void set_binary_mode();
 		void finish();
 		void new_number(bool more_than_one, std::size_t& coefficient);
 		void testing();

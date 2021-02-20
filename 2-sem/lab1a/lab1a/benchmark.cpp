@@ -3,23 +3,22 @@
 namespace bm
 {
     BenchmarkMode::BenchmarkMode(std::size_t inizial_monster_number)
-        : number_of_functions(6), open(nullptr),name_of_open(""),
+        : number_of_functions(6), open(nullptr),name_of_open(""), folder_name("results/"),
         name_of_functions({"add_monster", "edit_monster", "delete_monster",
             "find_name", "find_hp_damage", "find_type_time"}), 
         inizial_monster_number(inizial_monster_number), current_monster_number(0),
-        saved_monster_number(0), text_path("ben_text.txt"),
+        prev_monster_number(0), saved_monster_number(0), text_path("ben_text.txt"),
         binary_path("ben_binary.bin"), current_id(1000) {}
     void BenchmarkMode::testing()
     {
-        clear_result_files();
-        float function_time;
-        current_monster_number = inizial_monster_number;
-        saved_monster_number = inizial_monster_number;
+        before_testing();
+        float function_time = 0.f;
         bool more_than_one = false, more_than_ten = false;
         std::size_t coefficient = 2;
         while (true)
         {
             monster_generator();
+            prev_monster_number = current_monster_number;
             std::cout << "\n\nNumber of monsters = "
                 << current_monster_number << std::endl;
             class_size_of(name_of_open + "size_of.txt");
@@ -34,43 +33,57 @@ namespace bm
         }
         finish();
     }
+    void BenchmarkMode::before_start()
+    {
+        srand(unsigned(time(0)));
+        std::ofstream file1(text_path.c_str());
+        file1.close();
+        std::ofstream file2(binary_path.c_str());
+        file2.close();
+    }
+    void BenchmarkMode::set_memory_mode()
+    {
+        open = std::make_shared<mmode::MemoryMode>();
+        name_of_open = folder_name + "memory_";
+        std::cout << "\nTesting of memory mode...\n" << std::endl;
+    }
+    void BenchmarkMode::set_text_mode()
+    {
+        open = std::make_shared<fmode::FileMode>(text_path, omode::Mode::TEXT);
+        name_of_open = folder_name + "text_";
+        std::cout << "\nTesting of text mode...\n" << std::endl;
+    }
+    void BenchmarkMode::set_binary_mode()
+    {
+        open = std::make_shared<fmode::FileMode>(binary_path, omode::Mode::BINARY);
+        name_of_open = folder_name + "binary_";
+        std::cout << "\nTesting of binary mode...\n" << std::endl;
+    }
     void BenchmarkMode::start()
     {
+        before_start();
         while (true)
         {
             std::cout << "\nChoose one:\n1)Testing memory mode.\n"
                 << "2)Testing text mode.\n3)Testing binary mode.\n0)Back." << std::endl;
             switch (_getch())
             {
-            case '1': 
-            {
-                open = std::make_shared<mmode::MemoryMode>();
-                name_of_open = "memory_";
-                std::cout << "\nTesting of memory mode...\n" << std::endl;
-            }
+            case '1': set_memory_mode();
                 break;
-            case '2':
-            {
-                open = std::make_shared<fmode::FileMode>(text_path, omode::Mode::TEXT);
-                name_of_open = "text_";
-                std::cout << "\nTesting of text mode...\n" << std::endl;
-            }
+            case '2': set_text_mode();
                 break;
-            case '3':
-            {
-                open = std::make_shared<fmode::FileMode>(binary_path, omode::Mode::BINARY);
-                name_of_open = "binary_";
-                std::cout << "\nTesting of binary mode...\n" << std::endl;                                
-            }
+            case '3': set_binary_mode();
                 break;
             case '0': return;
                 break;
-            default: std::cout << "\nPress the correct key!" << std::endl;
+            default: 
+            {
+                std::cout << "\nPress the correct key!" << std::endl;
+                continue;
+            }
                 break;
             }
             testing();
-            std::remove(text_path.c_str());
-            std::remove(binary_path.c_str());
         }              
     }
     void BenchmarkMode::new_number(bool more_than_one, std::size_t& coefficient)
@@ -88,10 +101,12 @@ namespace bm
         std::cout << "\nResults of measurements of program in the following files:" << std::endl;           
         for (std::size_t i = 0; i < number_of_functions; i++)
             std::cout << name_of_open + name_of_functions[i] + ".txt" << std::endl;
+        std::cout << name_of_open + "size_of.txt" << std::endl;
+        std::remove(text_path.c_str());
+        std::remove(binary_path.c_str());
     }
     mon::Monster BenchmarkMode::get_random_monster()
-    {
-        srand(unsigned(time(0)));
+    {      
         std::size_t name_size = (rand() % 10 + 5);
         std::string name(name_size, 'a');
         for (std::size_t i = 0; i < name_size; i++)
@@ -117,7 +132,7 @@ namespace bm
     }
     void BenchmarkMode::monster_generator()//the function creates a monster with random parameters
     {
-       for(std::size_t i = 0; i < current_monster_number; i++)
+       for(std::size_t i = 0; i < current_monster_number - prev_monster_number; i++)
             open->append_monster(get_random_monster());
     }
     void BenchmarkMode::add_result_to_file(const std::string& path,float time)//the function adds the measurement result to a text file
@@ -140,17 +155,17 @@ namespace bm
     {
         switch (index)
         {
-        case 1: open->append_monster(get_random_monster());
+        case 0: open->append_monster(get_random_monster());
             break;
-        case 2: open->save_edited_monster(monster);
+        case 1: open->save_edited_monster(monster);
             break;
-        case 3: open->save_edited_monster(monster);
+        case 2: open->delete_the_monster(monster);
             break;
-        case 4: open->find_name(monster.get_name());
+        case 3: open->find_name(monster.get_name());
             break;
-        case 5: open->find_hp_damage(monster.get_hp(), monster.get_damage());
+        case 4: open->find_hp_damage(monster.get_hp(), monster.get_damage());
             break;
-        case 6: open->find_types_time(monster.get_type(), om::OpeningMode::tm_to_vector(monster.get_time()));
+        case 5: open->find_types_time(monster.get_type(), om::OpeningMode::tm_to_vector(monster.get_time()));
             break;
         default:
             break;
@@ -171,12 +186,18 @@ namespace bm
         std::cout << "Time of " + name_of_functions[index] +" = " << time << " seconds." << std::endl;
         return time;
     }
-    void BenchmarkMode::clear_result_files()//function clears old result files
+    void BenchmarkMode::before_testing()//function clears old result files
     {
+        current_id = 1000;
+        prev_monster_number = 0;
+        current_monster_number = inizial_monster_number;
+        saved_monster_number = inizial_monster_number;
         for (std::size_t i = 0; i < number_of_functions; i++)
         {
             std::ofstream clear_file(name_of_open + name_of_functions[i] + ".txt");
             clear_file.close();
         }
+        std::ofstream clear_file(name_of_open + "size_of.txt");
+        clear_file.close();
     }
 }
