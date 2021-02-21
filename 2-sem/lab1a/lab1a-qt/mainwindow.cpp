@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     text_path = "monsters.txt";
     binary_path = "monsters.bin";
     ui->setupUi(this);
+    this->setWindowTitle("Forest of monsters");
 }
 
 MainWindow::~MainWindow()

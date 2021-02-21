@@ -144,7 +144,7 @@ namespace mon//mosnter
             double chance = 0, 
             AttackTypes type = AttackTypes::INCREASE, 
             std::tm time_info = std::tm(), 
-            unsigned id = 9999);
+            unsigned id = 0);
         /**
         * \brief Constructor that retrieves data from a file.
         * 

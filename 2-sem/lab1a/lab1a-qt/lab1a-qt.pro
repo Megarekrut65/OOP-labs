@@ -20,6 +20,7 @@ SOURCES += \
     Code/my_reads.cpp \
     Code/opening_mode.cpp \
     addwindow.cpp \
+    enteridwindow.cpp \
     infowindow.cpp \
     interactivewindow.cpp \
     main.cpp \
@@ -38,12 +39,14 @@ HEADERS += \
     Code/my_reads.h \
     Code/opening_mode.h \
     addwindow.h \
+    enteridwindow.h \
     infowindow.h \
     interactivewindow.h \
     mainwindow.h
 
 FORMS += \
     addwindow.ui \
+    enteridwindow.ui \
     infowindow.ui \
     interactivewindow.ui \
     mainwindow.ui

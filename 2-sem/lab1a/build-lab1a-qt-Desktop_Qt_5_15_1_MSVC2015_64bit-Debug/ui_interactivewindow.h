@@ -99,6 +99,7 @@ public:
         tableView->setGeometry(QRect(330, 100, 490, 310));
         tableView->setMinimumSize(QSize(490, 310));
         tableView->setMaximumSize(QSize(490, 310));
+        tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
         retranslateUi(InteractiveWindow);
 

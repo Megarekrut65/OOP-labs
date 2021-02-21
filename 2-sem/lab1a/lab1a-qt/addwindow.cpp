@@ -9,9 +9,11 @@ AddWindow::AddWindow(QWidget *parent, std::shared_ptr<OpeningMode> open_mode,
     this->open_mode = open_mode;
     this->monster = monster;
     this->edit = edit;
-    if(edit && !monster) this->close();
-    if(edit) set_data();
     ui->setupUi(this);
+    if(edit && !monster) this->close();
+    this->setWindowTitle("Edit the monster");
+    if(edit) set_data();
+    else this->setWindowTitle("Create new monster");
 }
 
 AddWindow::~AddWindow()
@@ -39,16 +41,15 @@ void AddWindow::set_data()
     ui->spinBoxHP->setValue(monster->get_hp());
     ui->spinBoxDamage->setValue(monster->get_damage());
     ui->spinBoxChance->setValue(monster->get_chance());
-    ui->radioButtonIncrease->setChecked(false);
     switch (monster->get_type())
     {
     case AttackTypes::INCREASE: ui->radioButtonIncrease->setChecked(true);
         break;
-    case AttackTypes::REPEAT: ui->radioButtonIncrease->setChecked(true);
+    case AttackTypes::REPEAT: ui->radioButtonRepeat->setChecked(true);
         break;
-    case AttackTypes::CURE: ui->radioButtonIncrease->setChecked(true);
+    case AttackTypes::CURE: ui->radioButtonCure->setChecked(true);
         break;
-    case AttackTypes::PARALYZE: ui->radioButtonIncrease->setChecked(true);
+    case AttackTypes::PARALYZE: ui->radioButtonParalize->setChecked(true);
         break;
     }
 }

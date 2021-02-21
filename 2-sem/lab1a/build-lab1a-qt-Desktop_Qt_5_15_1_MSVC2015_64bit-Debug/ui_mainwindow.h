@@ -15,7 +15,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -32,7 +31,6 @@ public:
     QPushButton *pushButtonBinary;
     QPushButton *pushButton_5;
     QMenuBar *menubar;
-    QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -54,7 +52,7 @@ public:
         label->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(730, 380, 75, 31));
+        pushButton->setGeometry(QRect(730, 400, 75, 31));
         QFont font1;
         font1.setPointSize(15);
         pushButton->setFont(font1);
@@ -80,7 +78,7 @@ public:
         pushButtonBinary->setFont(font3);
         pushButton_5 = new QPushButton(centralwidget);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-        pushButton_5->setGeometry(QRect(20, 390, 75, 23));
+        pushButton_5->setGeometry(QRect(20, 410, 75, 23));
         QFont font4;
         font4.setPointSize(14);
         pushButton_5->setFont(font4);
@@ -89,9 +87,6 @@ public:
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 820, 21));
         MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 

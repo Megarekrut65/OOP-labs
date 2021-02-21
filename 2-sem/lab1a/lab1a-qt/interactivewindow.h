@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "addwindow.h"
+#include "enteridwindow.h"
 
 namespace Ui {
 class InteractiveWindow;
@@ -22,9 +23,17 @@ private slots:
 
     void on_pushButtonAdd_clicked();
 
+    void on_pushButtonEdit_clicked();
+
+    void on_pushButtonDelete_clicked();
+
+    void on_pushButtonFind_clicked();
+
+
 private:
     Ui::InteractiveWindow *ui;
     std::shared_ptr<OpeningMode> open_mode;
+    std::shared_ptr<Monster> get_monster();
 };
 
 #endif // INTERACTIVEWINDOW_H
