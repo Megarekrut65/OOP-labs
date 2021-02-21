@@ -49,8 +49,8 @@
   <widget class="QPushButton" name="pushButtonBack">
    <property name="geometry">
     <rect>
-     <x>750</x>
-     <y>420</y>
+     <x>20</x>
+     <y>410</y>
      <width>75</width>
      <height>31</height>
     </rect>
@@ -69,8 +69,8 @@
     <rect>
      <x>30</x>
      <y>130</y>
-     <width>251</width>
-     <height>271</height>
+     <width>221</width>
+     <height>201</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -78,7 +78,7 @@
      <widget class="QPushButton" name="pushButtonAdd">
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>18</pointsize>
        </font>
       </property>
       <property name="text">
@@ -90,7 +90,7 @@
      <widget class="QPushButton" name="pushButtonEdit">
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>18</pointsize>
        </font>
       </property>
       <property name="text">
@@ -102,7 +102,7 @@
      <widget class="QPushButton" name="pushButtonDelete">
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>18</pointsize>
        </font>
       </property>
       <property name="text">
@@ -114,7 +114,7 @@
      <widget class="QPushButton" name="pushButtonFind">
       <property name="font">
        <font>
-        <pointsize>20</pointsize>
+        <pointsize>18</pointsize>
        </font>
       </property>
       <property name="text">
@@ -127,9 +127,9 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>270</x>
      <y>50</y>
-     <width>491</width>
+     <width>551</width>
      <height>41</height>
     </rect>
    </property>
@@ -148,27 +148,38 @@
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>269</x>
      <y>100</y>
-     <width>490</width>
+     <width>550</width>
      <height>310</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>490</width>
+     <width>550</width>
      <height>310</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>490</width>
+     <width>550</width>
      <height>310</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="editTriggers">
     <set>QAbstractItemView::NoEditTriggers</set>
    </property>
+   <attribute name="horizontalHeaderMinimumSectionSize">
+    <number>150</number>
+   </attribute>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>160</number>
+   </attribute>
   </widget>
  </widget>
  <resources/>

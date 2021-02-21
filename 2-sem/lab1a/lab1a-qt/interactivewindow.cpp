@@ -3,19 +3,46 @@
 
 InteractiveWindow::InteractiveWindow(QWidget *parent, std::shared_ptr<OpeningMode> open_mode) :
     QDialog(parent),
-    ui(new Ui::InteractiveWindow)
+    ui(new Ui::InteractiveWindow),model(new QStandardItemModel)
 {
     if(!open_mode) this->close();
     this->open_mode = open_mode;
     ui->setupUi(this);
     this->setWindowTitle("Menu");
+    set_the_model();
+    add_monster_to_table(get_monster());
 }
+void InteractiveWindow::set_the_model()
+{
+    ui->tableView->setModel(model);
+    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    model->setHorizontalHeaderLabels({"ID", "Name","HP","Damage","Chance","Type of attack","Time and Data"});
 
+}
 InteractiveWindow::~InteractiveWindow()
 {
+    delete model;
     delete ui;
 }
-
+void InteractiveWindow::add_item_to_table(const QString& value, int row, int colmm)
+{
+    auto item = new QStandardItem;
+    item->setText(value);
+    model->setItem(row, colmm, item);
+}
+void InteractiveWindow::add_monster_to_table(std::shared_ptr<Monster> monster)
+{
+    int row_count = model->rowCount();
+    model->insertRow(row_count);
+    int i = 0;
+    add_item_to_table(QString::number(monster->get_id()), row_count, i++);
+    add_item_to_table(monster->get_name().c_str(), row_count, i++);
+    add_item_to_table(QString::number(monster->get_hp()), row_count, i++);
+    add_item_to_table(QString::number(monster->get_damage()), row_count, i++);
+    add_item_to_table(QString::number(monster->get_chance()), row_count, i++);
+    add_item_to_table(monster->string_type().substr(32).c_str(), row_count, i++);
+    add_item_to_table(monster->string_time().substr(24).c_str(), row_count, i++);
+}
 void InteractiveWindow::on_pushButtonBack_clicked()
 {
     this->close();

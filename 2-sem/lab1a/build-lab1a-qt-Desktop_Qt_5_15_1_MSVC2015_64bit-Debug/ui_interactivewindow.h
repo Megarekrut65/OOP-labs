@@ -51,20 +51,20 @@ public:
         label->setAlignment(Qt::AlignCenter);
         pushButtonBack = new QPushButton(InteractiveWindow);
         pushButtonBack->setObjectName(QString::fromUtf8("pushButtonBack"));
-        pushButtonBack->setGeometry(QRect(750, 420, 75, 31));
+        pushButtonBack->setGeometry(QRect(20, 410, 75, 31));
         QFont font1;
         font1.setPointSize(13);
         pushButtonBack->setFont(font1);
         verticalLayoutWidget = new QWidget(InteractiveWindow);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(30, 130, 251, 271));
+        verticalLayoutWidget->setGeometry(QRect(30, 130, 221, 201));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         pushButtonAdd = new QPushButton(verticalLayoutWidget);
         pushButtonAdd->setObjectName(QString::fromUtf8("pushButtonAdd"));
         QFont font2;
-        font2.setPointSize(20);
+        font2.setPointSize(18);
         pushButtonAdd->setFont(font2);
 
         verticalLayout->addWidget(pushButtonAdd);
@@ -89,17 +89,22 @@ public:
 
         label_2 = new QLabel(InteractiveWindow);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(330, 50, 491, 41));
+        label_2->setGeometry(QRect(270, 50, 551, 41));
         QFont font3;
         font3.setPointSize(27);
         label_2->setFont(font3);
         label_2->setAlignment(Qt::AlignCenter);
         tableView = new QTableView(InteractiveWindow);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(330, 100, 490, 310));
-        tableView->setMinimumSize(QSize(490, 310));
-        tableView->setMaximumSize(QSize(490, 310));
+        tableView->setGeometry(QRect(269, 100, 550, 310));
+        tableView->setMinimumSize(QSize(550, 310));
+        tableView->setMaximumSize(QSize(550, 310));
+        QFont font4;
+        font4.setPointSize(12);
+        tableView->setFont(font4);
         tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        tableView->horizontalHeader()->setMinimumSectionSize(150);
+        tableView->horizontalHeader()->setDefaultSectionSize(160);
 
         retranslateUi(InteractiveWindow);
 

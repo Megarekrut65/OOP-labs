@@ -4,6 +4,8 @@
 #include <QDialog>
 #include "addwindow.h"
 #include "enteridwindow.h"
+#include <QStandardItemModel>
+#include <QList>
 
 namespace Ui {
 class InteractiveWindow;
@@ -33,7 +35,13 @@ private slots:
 private:
     Ui::InteractiveWindow *ui;
     std::shared_ptr<OpeningMode> open_mode;
+    QStandardItemModel* model;
+
     std::shared_ptr<Monster> get_monster();
+    void set_the_model();
+    void add_monster_to_table(std::shared_ptr<Monster> monster);
+    void add_item_to_table(const QString& value, int row, int colmm);
+
 };
 
 #endif // INTERACTIVEWINDOW_H

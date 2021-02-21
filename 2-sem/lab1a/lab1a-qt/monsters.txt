@@ -1,7 +1,7 @@
-id=1001
-name=2
+id=1000
+name=Jesi
 hp=1
 damage=1
 chance=0
-type=INCREASE
-22 33 59 21 1 121
+type=PARALYZE
+0 17 39 22 1 121
