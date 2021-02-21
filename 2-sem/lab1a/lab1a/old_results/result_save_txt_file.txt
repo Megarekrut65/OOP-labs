@@ -1,0 +1,76 @@
+N: 10
+Time: 0.00565945
+Size file:980
+
+N: 20
+Time: 0.00464596
+Size file:1960
+
+N: 40
+Time: 0.00708751
+Size file:3920
+
+N: 80
+Time: 0.0122089
+Size file:7840
+
+N: 160
+Time: 0.0233361
+Size file:15680
+
+N: 320
+Time: 0.0432908
+Size file:31360
+
+N: 640
+Time: 0.102959
+Size file:64640
+
+N: 1280
+Time: 0.147681
+Size file:129280
+
+N: 2560
+Time: 0.293801
+Size file:258560
+
+N: 5120
+Time: 0.588725
+Size file:532480
+
+N: 10240
+Time: 1.28929
+Size file:1127640
+
+N: 20480
+Time: 2.41611
+Size file:1854680
+
+N: 30720
+Time: 3.89784
+Size file:3397044
+
+N: 40960
+Time: 4.7248
+Size file:4021482
+
+N: 51200
+Time: 5.88867
+Size file:4788302
+
+N: 61440
+Time: 7.02485
+Size file:6636852
+
+N: 71680
+Time: 8.39685
+Size file:7435812
+
+N: 81920
+Time: 9.46714
+Size file:8849370
+
+N: 92160
+Time: 10.4999
+Size file:8500675
+
