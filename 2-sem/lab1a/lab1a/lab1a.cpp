@@ -2,6 +2,7 @@
 #include "doctest.h"
 #include <iostream>
 #include "monster_menu.h"
+#include "testing.h"
 
 int main(int argc, char** argv)
 {

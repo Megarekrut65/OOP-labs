@@ -92,7 +92,7 @@ TEST_CASE("Finding monsters")
         std::string name = "TeR7";
         ptr_monsters = open->find_name(name);
         REQUIRE(ptr_monsters.size() == 1);//function find only one monster with fragment of name "TeR7"
-        CHECK(ptr_monsters[0]->get_id() == monster2.get_id());
+        CHECK(ptr_monsters[0]->get_id() == monster3.get_id());
     }
 }
 TEST_CASE("Editing monsters")

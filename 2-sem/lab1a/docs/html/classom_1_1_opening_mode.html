@@ -149,6 +149,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:adade0b886e5a804eef55c319013308c5"><td class="memItemLeft" align="right" valign="top">virtual std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#adade0b886e5a804eef55c319013308c5">get_size_of</a> ()=0</td></tr>
 <tr class="memdesc:adade0b886e5a804eef55c319013308c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the size occupied by all monsters.  <a href="#adade0b886e5a804eef55c319013308c5">More...</a><br /></td></tr>
 <tr class="separator:adade0b886e5a804eef55c319013308c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memItemLeft" align="right" valign="top">virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ad061434456e8059dbfda4ccdb0dc3db0">get_id</a> ()=0</td></tr>
+<tr class="memdesc:ad061434456e8059dbfda4ccdb0dc3db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives free id for new monster.  <a href="#ad061434456e8059dbfda4ccdb0dc3db0">More...</a><br /></td></tr>
+<tr class="separator:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -158,9 +161,6 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memItemLeft" align="right" valign="top">virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ad061434456e8059dbfda4ccdb0dc3db0">get_id</a> ()=0</td></tr>
-<tr class="memdesc:ad061434456e8059dbfda4ccdb0dc3db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives free id for new monster.  <a href="#ad061434456e8059dbfda4ccdb0dc3db0">More...</a><br /></td></tr>
-<tr class="separator:ad061434456e8059dbfda4ccdb0dc3db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab22204b068b04c7d56dac3da8480ad40"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classmon_1_1_monster.html">mon::Monster</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classom_1_1_opening_mode.html#ab22204b068b04c7d56dac3da8480ad40">find_monster</a> (unsigned id)=0</td></tr>
 <tr class="memdesc:ab22204b068b04c7d56dac3da8480ad40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds monster by id and gives pointer to it.  <a href="#ab22204b068b04c7d56dac3da8480ad40">More...</a><br /></td></tr>
 <tr class="separator:ab22204b068b04c7d56dac3da8480ad40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -646,7 +646,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
