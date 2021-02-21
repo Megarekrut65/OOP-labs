@@ -39,6 +39,9 @@ std::shared_ptr<Monster> InteractiveWindow::get_monster()
     {
         return monster;
     }
+    QMessageBox messageBox;
+    messageBox.critical(0,"Error","There isn't monster with entered id!");
+    messageBox.setFixedSize(500,200);
     return nullptr;
 }
 void InteractiveWindow::on_pushButtonEdit_clicked()
@@ -50,19 +53,21 @@ void InteractiveWindow::on_pushButtonEdit_clicked()
         add.setModal(true);
         add.exec();
         //need edit in table
-        return;
-    }
-    else
-    {
-        QMessageBox messageBox;
-        messageBox.critical(0,"Error","There isn't monster with entered id!");
-        messageBox.setFixedSize(500,200);
     }
 }
 
 void InteractiveWindow::on_pushButtonDelete_clicked()
 {
-
+    std::shared_ptr<Monster> monster = get_monster();
+    if(monster)
+    {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this,
+                                      "Delete the monster",
+                                      ("Are you sure you want to delete " + monster->get_name()).c_str(),
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) open_mode->delete_the_monster(*monster);
+    }
 }
 
 void InteractiveWindow::on_pushButtonFind_clicked()

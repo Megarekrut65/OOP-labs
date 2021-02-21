@@ -37,7 +37,7 @@ void AddWindow::on_pushButtonSave_clicked()
 }
 void AddWindow::set_data()
 {
-    ui->lineEditName->setText(QString::fromUtf8(monster->get_name().c_str()));
+    ui->lineEditName->setText(monster->get_name().c_str());
     ui->spinBoxHP->setValue(monster->get_hp());
     ui->spinBoxDamage->setValue(monster->get_damage());
     ui->spinBoxChance->setValue(monster->get_chance());
