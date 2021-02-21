@@ -21,13 +21,6 @@ namespace om//opening mode
     {
     protected:      
         /**
-        * \brief Gives free id for new monster.
-        * 
-        * The id is obtained from id of the last monster + 1.
-        * \returns free id
-        */
-        virtual unsigned get_id() = 0;
-        /**
         * \brief Finds monster by id and gives pointer to it.
         * 
         * Change a monster through a pointer is a bad idea.
@@ -212,5 +205,12 @@ namespace om//opening mode
         * \returns array representation of time
         */
         static std::vector<int> tm_to_vector(std::tm time_info);
+        /**
+        * \brief Gives free id for new monster.
+        *
+        * The id is obtained from id of the last monster + 1.
+        * \returns free id
+        */
+        virtual unsigned get_id() = 0;
     };
 }

@@ -1,146 +1,120 @@
 #pragma once
 #include "doctest.h"
+#include "memory_opening_mode.h"
 
 TEST_CASE("testing the creating of monsters")
 {
-    vector<info_monster> array;
-    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
-    CHECK(monster1.name == "Big monster");
-    CHECK(monster1.hp == 20);
-    CHECK(monster1.damage == 10);
-    CHECK(monster1.chance == doctest::Approx(0.2));
-    CHECK(monster1.type_of_attack == types_of_attack::CURE);
-    CHECK(monster1.id == 1000);
-    CHECK(array.size() == 0);
-    info_monster monster2;
-    SUBCASE("After creating the monster, you must add it to array get correct id")
-    {
-        array.push_back(monster1);
-        monster2 = info_monster("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
-        CHECK(monster2.id == 1001);
-        array.push_back(monster2);
-    }
-    SUBCASE("If don't add then all monsters will have id = 1000")
-    {
-        monster2 = info_monster("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
-        CHECK(monster2.id == 1000);
-    }
-    CHECK(monster2.name == "Small monster");
-    CHECK(monster2.hp == 1);
-    CHECK(monster2.damage == 2);
-    CHECK(monster2.chance == doctest::Approx(0.1));
-    CHECK(monster2.type_of_attack == types_of_attack::PARALYZE);
+    std::shared_ptr<om::OpeningMode> open = std::make_shared<mmode::MemoryMode>();
+    mon::Monster monster1("Big monster", 20, 10, 0.2, 
+        mon::AttackTypes::CURE, open->get_time_now(), 1000);
+    CHECK(monster1.get_name() == "Big monster");
+    CHECK(monster1.get_hp() == 20);
+    CHECK(monster1.get_damage() == 10);
+    CHECK(monster1.get_chance() == doctest::Approx(0.2));
+    CHECK(monster1.get_type() == mon::AttackTypes::CURE);
+    CHECK(monster1.get_id() == 1000);//id is created manually, but you can use a function open->get_id()
+    open->append_monster(monster1);//to id will be correct need to add monster to open mode
+    mon::Monster monster2("Small monster", 202, 130, 0.21, 
+        mon::AttackTypes::INCREASE, open->get_time_now(), open->get_id());
+    CHECK(monster2.get_name() == "Small monster");
+    CHECK(monster2.get_hp() == 202);
+    CHECK(monster2.get_damage() == 130);
+    CHECK(monster2.get_chance() == doctest::Approx(0.21));
+    CHECK(monster2.get_type() == mon::AttackTypes::INCREASE);
+    CHECK(monster2.get_id() == 1001);//next id after 1000
+    open->append_monster(monster2);
 }
-TEST_CASE("Saving, adding and reading monster to/from files")
+TEST_CASE("Getting the monster by id")
 {
-    vector<info_monster> array;
-    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
-    //To save all monster to file, need to add their to array
-    array.push_back(monster1);
-    info_monster monster2("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
-    array.push_back(monster2);
-    CHECK(save_text_file("file1.txt", array));
-    CHECK(save_binary_file("file2.bin", array));
-    info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
-    //To add only one monster to file, don't need to add it to array, but next monsters will be incorrect
-    REQUIRE(create_text_file("file1.txt"));//before adding monster to file, need check availability of file
-    REQUIRE(create_binary_file("file2.bin"));
-    CHECK(add_in_text_file(monster3, "file1.txt"));//monster will add to end of the file
-    CHECK(add_in_binary_file(monster3, "file2.bin"));
-    //to read monsters from file, need add their to array, using next function
-    SUBCASE("text file")
-    {
-        array = open_text_file("file1.txt");
-    }
-    SUBCASE("binary file")
-    {
-        array = open_binary_file("file2.bin");
-    }
-    REQUIRE(array.size() == 3);
-    CHECK(array[0].name == monster1.name);
-    CHECK(array[0].id == monster1.id);
-    CHECK(array[1].name == monster2.name);
-    CHECK(array[1].id == monster2.id);
-    CHECK(array[2].name == monster3.name);
-    CHECK(array[2].id == monster3.id);
+    std::shared_ptr<om::OpeningMode> open = std::make_shared<mmode::MemoryMode>();
+    mon::Monster monster1("Big monster", 20, 10, 0.2,
+        mon::AttackTypes::CURE, open->get_time_now(), open->get_id());
+    open->append_monster(monster1);
+    mon::Monster monster2("Small monster", 120, 210, 0.22,
+        mon::AttackTypes::CURE, open->get_time_now(), open->get_id());
+    open->append_monster(monster2);
+    mon::Monster monster4 = open->get_monster(monster2.get_id());
+    CHECK(monster4.get_name() == monster2.get_name());
+    CHECK(monster4.get_hp() == monster2.get_hp());
+    CHECK(monster4.get_damage() == monster2.get_damage());
+    CHECK(monster4.get_chance() == doctest::Approx(monster2.get_chance()));
+    CHECK(monster4.get_type() == monster2.get_type());
+    CHECK(monster4.get_id() == monster2.get_id());
 }
 TEST_CASE("Deleting monsters")
 {
-    vector<info_monster> array;
-    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
-    array.push_back(monster1);
-    info_monster monster2("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
-    array.push_back(monster2);
-    info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
-    array.push_back(monster3);
-    CHECK(save_text_file("file1.txt", array));
-    CHECK(save_binary_file("file2.bin", array));
-    array = open_text_file("file1.txt");
-    REQUIRE(array.size() == 3);
-    impl::delete_monster_from_files(array[1].id, "file1.txt", "file2.bin");
-    array = open_text_file("file1.txt");
-    CHECK(array.size() == 2);
+    std::shared_ptr<om::OpeningMode> open = std::make_shared<mmode::MemoryMode>();
+    mon::Monster monster1("Big monster", 20, 10, 0.2, 
+        mon::AttackTypes::CURE, open->get_time_now(), open->get_id());
+    open->append_monster(monster1);
+    mon::Monster monster2("Small monster", 120, 210, 0.22,
+        mon::AttackTypes::CURE, open->get_time_now(), open->get_id());
+    open->append_monster(monster2);
+    mon::Monster monster3("Monster", 230, 160, 0.212,
+        mon::AttackTypes::CURE, open->get_time_now(), open->get_id());
+    open->append_monster(monster3);
+    mon::Monster monster4 = open->get_monster(monster2.get_id());
+    CHECK(monster4.get_id() == monster2.get_id());
+    open->delete_the_monster(monster2);
+    monster4 = open->get_monster(monster2.get_id());
+    CHECK(monster4.get_id() != monster2.get_id());
+    CHECK(monster4.get_id() == 9999);//if in open mode won't be  the monster with id than be return a default monster with id 9999
 }
 TEST_CASE("Finding monsters")
 {
-    vector<info_monster> array;
-    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
-    array.push_back(monster1);
-    info_monster monster2("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
-    array.push_back(monster2);
-    info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
-    array.push_back(monster3);
-    std::vector<int> indexes;
+    std::shared_ptr<om::OpeningMode> open = std::make_shared<mmode::MemoryMode>();
+    mon::Monster monster1("Big monster", 20, 1000, 0.2,
+        mon::AttackTypes::INCREASE, open->get_time_now(), open->get_id());
+    open->append_monster(monster1);
+    mon::Monster monster2("Small monster", 120, 88, 0.22,
+        mon::AttackTypes::CURE, open->get_time_now(), open->get_id());
+    open->append_monster(monster2);
+    mon::Monster monster3("Monster77", 230, 160, 0.212,
+        mon::AttackTypes::PARALYZE, open->get_time_now(), open->get_id());
+    open->append_monster(monster3);
+    std::vector<std::shared_ptr<mon::Monster>> ptr_monsters;
     SUBCASE("by time and types of attack")
     {
-        const int time[] = { 2040, 1, 4, 10, 44, 38 };
-        indexes = find_types_time(types_of_attack::INCREASE, time, array);
-        REQUIRE(indexes.size() == 1);//function find only one monster with type of attack INCREASE
-        CHECK(indexes[0] == 2);//index of this monster in array
-        CHECK(array[indexes[0]].id == monster3.id);
+        std::vector<int> time = { 2040, 1, 4, 10, 44, 38 };
+        ptr_monsters = open->find_types_time(mon::AttackTypes::INCREASE, time);
+        REQUIRE(ptr_monsters.size() == 1);//function find only one monster with type of attack INCREASE
+        CHECK(ptr_monsters[0]->get_id() == monster1.get_id());
     }
     SUBCASE("by hp and damage")
     {
         unsigned hp = 15, damage = 100;
-        indexes = find_hp_damage(hp, damage, array);
-        REQUIRE(indexes.size() == 1);//function find only one monster with hp >= 15 and damage <= 100
-        CHECK(indexes[0] == 0);//index of this monster in array
-        CHECK(array[indexes[0]].id == monster1.id);
+        ptr_monsters = open->find_hp_damage(hp, damage);
+        REQUIRE(ptr_monsters.size() == 1);//function find only one monster with hp >= 15 and damage <= 100
+        CHECK(ptr_monsters[0]->get_id() == monster2.get_id());
     }
     SUBCASE("by fragment of name")
     {
-        std::string name = "l mon";
-        indexes = find_name(name, array);
-        REQUIRE(indexes.size() == 2);//function find only two monsters with fragment of name "l mon"
-        CHECK(indexes[0] == 1);//index of first monster in array
-        CHECK(indexes[1] == 2);//index of second monster in array
-        CHECK(array[indexes[0]].id == monster2.id);
-        CHECK(array[indexes[1]].id == monster3.id);
+        std::string name = "TeR7";
+        ptr_monsters = open->find_name(name);
+        REQUIRE(ptr_monsters.size() == 1);//function find only one monster with fragment of name "TeR7"
+        CHECK(ptr_monsters[0]->get_id() == monster2.get_id());
     }
 }
-TEST_CASE("Edit monster in files")
+TEST_CASE("Editing monsters")
 {
-    vector<info_monster> array;
-    info_monster monster1("Big monster", 20, 10, 0.2, types_of_attack::CURE, array);
-    array.push_back(monster1);
-    info_monster monster2("Small monster", 1, 2, 0.1, types_of_attack::PARALYZE, array);
-    array.push_back(monster2);
-    info_monster monster3("Normal monster", 100, 200, 0.17, types_of_attack::INCREASE, array);
-    array.push_back(monster3);
-    CHECK(save_text_file("file1.txt", array));
-    CHECK(save_binary_file("file2.bin", array));
-    array = open_text_file("file1.txt");
-    REQUIRE(array.size() == 3);
-    int index = 1;
-    CHECK(array[index].name == monster2.name);
-    //To edit monster in file, need to edit monster in array
-    array[index].name = "The monster";
-    array[index].hp = 500;
-    array[index].damage = 80;
-    impl::save_edit_monster("file1.txt", "file2.bin", array[index]);//After saving monster will be edited   
-    array = open_text_file("file1.txt");
-    REQUIRE(array.size() == 3);
-    CHECK(array[index].name == "The monster");
-    CHECK(array[index].hp == 500);
-    CHECK(array[index].damage == 80);
+    std::shared_ptr<om::OpeningMode> open = std::make_shared<mmode::MemoryMode>();
+    mon::Monster monster1("Big monster", 20, 1000, 0.2,
+        mon::AttackTypes::INCREASE, open->get_time_now(), open->get_id());
+    open->append_monster(monster1);
+    mon::Monster monster2("Small monster", 120, 88, 0.22,
+        mon::AttackTypes::CURE, open->get_time_now(), open->get_id());
+    open->append_monster(monster2);
+    mon::Monster monster3("Monster77", 230, 160, 0.212,
+        mon::AttackTypes::PARALYZE, open->get_time_now(), open->get_id());
+    open->append_monster(monster3);
+    open->save_edited_monster(
+        mon::Monster("New monster", 111, 405, 0.45, //edit monster2 in open mode
+            mon::AttackTypes::REPEAT, open->get_time_now(), monster2.get_id()));
+    mon::Monster new_monster2 = open->get_monster(monster2.get_id());
+    CHECK(new_monster2.get_name() == "New monster");
+    CHECK(new_monster2.get_hp() == 111);
+    CHECK(new_monster2.get_damage() == 405);
+    CHECK(new_monster2.get_chance() == doctest::Approx(0.45));
+    CHECK(new_monster2.get_type() == mon::AttackTypes::REPEAT);
+    CHECK(new_monster2.get_id() == monster2.get_id());
 }
