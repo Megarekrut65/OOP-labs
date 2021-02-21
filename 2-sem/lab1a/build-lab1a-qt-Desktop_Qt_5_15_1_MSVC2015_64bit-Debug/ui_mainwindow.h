@@ -27,9 +27,9 @@ public:
     QLabel *label;
     QPushButton *pushButton;
     QLabel *label_2;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
+    QPushButton *pushButtonMemory;
+    QPushButton *pushButtonText;
+    QPushButton *pushButtonBinary;
     QPushButton *pushButton_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -64,20 +64,20 @@ public:
         QFont font2;
         font2.setPointSize(20);
         label_2->setFont(font2);
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(300, 210, 171, 41));
-        pushButton_2->setFont(font1);
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(300, 270, 171, 41));
+        pushButtonMemory = new QPushButton(centralwidget);
+        pushButtonMemory->setObjectName(QString::fromUtf8("pushButtonMemory"));
+        pushButtonMemory->setGeometry(QRect(300, 210, 171, 41));
+        pushButtonMemory->setFont(font1);
+        pushButtonText = new QPushButton(centralwidget);
+        pushButtonText->setObjectName(QString::fromUtf8("pushButtonText"));
+        pushButtonText->setGeometry(QRect(300, 270, 171, 41));
         QFont font3;
         font3.setPointSize(17);
-        pushButton_3->setFont(font3);
-        pushButton_4 = new QPushButton(centralwidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setGeometry(QRect(300, 330, 171, 41));
-        pushButton_4->setFont(font3);
+        pushButtonText->setFont(font3);
+        pushButtonBinary = new QPushButton(centralwidget);
+        pushButtonBinary->setObjectName(QString::fromUtf8("pushButtonBinary"));
+        pushButtonBinary->setGeometry(QRect(300, 330, 171, 41));
+        pushButtonBinary->setFont(font3);
         pushButton_5 = new QPushButton(centralwidget);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
         pushButton_5->setGeometry(QRect(20, 390, 75, 23));
@@ -104,9 +104,9 @@ public:
         label->setText(QCoreApplication::translate("MainWindow", "Forest of monsters", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "EXIT", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Choose one opening mode:", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Memory mode", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Text mode", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "Binary mode", nullptr));
+        pushButtonMemory->setText(QCoreApplication::translate("MainWindow", "Memory mode", nullptr));
+        pushButtonText->setText(QCoreApplication::translate("MainWindow", "Text mode", nullptr));
+        pushButtonBinary->setText(QCoreApplication::translate("MainWindow", "Binary mode", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "Info", nullptr));
     } // retranslateUi
 

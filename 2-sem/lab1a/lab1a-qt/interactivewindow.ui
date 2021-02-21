@@ -30,7 +30,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>841</width>
+     <width>301</width>
      <height>121</height>
     </rect>
    </property>
@@ -49,8 +49,8 @@
   <widget class="QPushButton" name="pushButtonBack">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>402</y>
+     <x>750</x>
+     <y>420</y>
      <width>75</width>
      <height>31</height>
     </rect>
@@ -67,9 +67,9 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>30</x>
      <y>130</y>
-     <width>331</width>
+     <width>251</width>
      <height>271</height>
     </rect>
    </property>
@@ -122,19 +122,50 @@
       </property>
      </widget>
     </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonShow">
-      <property name="font">
-       <font>
-        <pointsize>20</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Show all monsters</string>
-      </property>
-     </widget>
-    </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>50</y>
+     <width>491</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>27</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>All monsters</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>100</y>
+     <width>490</width>
+     <height>310</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>490</width>
+     <height>310</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>490</width>
+     <height>310</height>
+    </size>
+   </property>
   </widget>
  </widget>
  <resources/>

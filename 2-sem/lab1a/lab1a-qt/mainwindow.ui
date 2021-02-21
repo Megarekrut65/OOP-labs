@@ -87,7 +87,7 @@
      <string>Choose one opening mode:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="pushButtonMemory">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -105,7 +105,7 @@
      <string>Memory mode</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="pushButtonText">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -123,7 +123,7 @@
      <string>Text mode</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="pushButtonBinary">
     <property name="geometry">
      <rect>
       <x>300</x>

@@ -6,6 +6,7 @@
 #include "infowindow.h"
 #include "Code/memory_opening_mode.h"
 #include "Code/file_opening_mode.h"
+#include "interactivewindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,5 +38,7 @@ private:
     std::shared_ptr<om::OpeningMode> open_mode;
     std::string text_path;
     std::string binary_path;
+
+    void open_interactive_mode();
 };
 #endif // MAINWINDOW_H

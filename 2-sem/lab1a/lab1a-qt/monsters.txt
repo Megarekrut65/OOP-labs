@@ -1,0 +1,14 @@
+id=1000
+name=1
+hp=1
+damage=1
+chance=0
+type=INCREASE
+22 33 11 21 1 121
+id=1001
+name=2
+hp=1
+damage=1
+chance=0
+type=INCREASE
+22 33 59 21 1 121
