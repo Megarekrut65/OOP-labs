@@ -19,6 +19,8 @@ SOURCES += \
     Code/monster_menu.cpp \
     Code/my_reads.cpp \
     Code/opening_mode.cpp \
+    infowindow.cpp \
+    interactivewindow.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -34,9 +36,13 @@ HEADERS += \
     Code/monster_menu.h \
     Code/my_reads.h \
     Code/opening_mode.h \
+    infowindow.h \
+    interactivewindow.h \
     mainwindow.h
 
 FORMS += \
+    infowindow.ui \
+    interactivewindow.ui \
     mainwindow.ui
 
 TRANSLATIONS += \

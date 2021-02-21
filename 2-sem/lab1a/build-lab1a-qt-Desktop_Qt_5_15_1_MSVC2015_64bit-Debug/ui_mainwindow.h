@@ -11,8 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -22,6 +24,13 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
+    QLabel *label;
+    QPushButton *pushButton;
+    QLabel *label_2;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -29,12 +38,56 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(820, 470);
+        MainWindow->setMinimumSize(QSize(820, 470));
+        MainWindow->setMaximumSize(QSize(820, 470));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(50, 20, 731, 81));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Comic Sans MS"));
+        font.setPointSize(58);
+        label->setFont(font);
+        label->setScaledContents(false);
+        label->setAlignment(Qt::AlignCenter);
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(730, 380, 75, 31));
+        QFont font1;
+        font1.setPointSize(15);
+        pushButton->setFont(font1);
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(240, 130, 331, 51));
+        QFont font2;
+        font2.setPointSize(20);
+        label_2->setFont(font2);
+        pushButton_2 = new QPushButton(centralwidget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(300, 210, 171, 41));
+        pushButton_2->setFont(font1);
+        pushButton_3 = new QPushButton(centralwidget);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setGeometry(QRect(300, 270, 171, 41));
+        QFont font3;
+        font3.setPointSize(17);
+        pushButton_3->setFont(font3);
+        pushButton_4 = new QPushButton(centralwidget);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setGeometry(QRect(300, 330, 171, 41));
+        pushButton_4->setFont(font3);
+        pushButton_5 = new QPushButton(centralwidget);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setGeometry(QRect(20, 390, 75, 23));
+        QFont font4;
+        font4.setPointSize(14);
+        pushButton_5->setFont(font4);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setGeometry(QRect(0, 0, 820, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -48,6 +101,13 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Forest of monsters", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "EXIT", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Choose one opening mode:", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Memory mode", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Text mode", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("MainWindow", "Binary mode", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("MainWindow", "Info", nullptr));
     } // retranslateUi
 
 };
