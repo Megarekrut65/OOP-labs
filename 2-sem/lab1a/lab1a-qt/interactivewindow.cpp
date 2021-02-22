@@ -69,12 +69,9 @@ void InteractiveWindow::on_pushButtonDelete_clicked()
     std::shared_ptr<Monster> monster = get_monster();
     if(monster)
     {
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this,
-                                      "Delete the monster",
-                                      ("Are you sure you want to delete " + monster->get_name()).c_str(),
-                                      QMessageBox::Yes|QMessageBox::No);
-        if (reply == QMessageBox::Yes)
+        if(MyMessage::question_message(this,
+                                    "Delete the monster",
+                                    ("Are you sure you want to delete " + monster->get_name()).c_str()))
         {
             open_mode->delete_the_monster(*monster);
             ModelFunctions::delete_monster_from_table(model, monster);

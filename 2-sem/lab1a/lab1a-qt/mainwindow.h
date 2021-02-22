@@ -2,10 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <memory>
+#include "mylibrary.h"
 #include "infowindow.h"
-#include "Code/memory_opening_mode.h"
-#include "Code/file_opening_mode.h"
 #include "interactivewindow.h"
 
 QT_BEGIN_NAMESPACE

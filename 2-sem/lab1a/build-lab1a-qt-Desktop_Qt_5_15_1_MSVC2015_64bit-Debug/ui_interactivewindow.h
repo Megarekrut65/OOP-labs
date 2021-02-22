@@ -43,7 +43,7 @@ public:
             InteractiveWindow->setObjectName(QString::fromUtf8("InteractiveWindow"));
         InteractiveWindow->resize(840, 460);
         InteractiveWindow->setMinimumSize(QSize(840, 460));
-        InteractiveWindow->setMaximumSize(QSize(2000, 460));
+        InteractiveWindow->setMaximumSize(QSize(840, 460));
         label = new QLabel(InteractiveWindow);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(0, 0, 301, 121));
@@ -94,7 +94,6 @@ public:
         verticalLayoutWidget_2->setGeometry(QRect(270, 40, 552, 361));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         label_2 = new QLabel(verticalLayoutWidget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -107,13 +106,8 @@ public:
 
         tableView = new QTableView(verticalLayoutWidget_2);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(tableView->sizePolicy().hasHeightForWidth());
-        tableView->setSizePolicy(sizePolicy);
         tableView->setMinimumSize(QSize(550, 310));
-        tableView->setMaximumSize(QSize(2000, 310));
+        tableView->setMaximumSize(QSize(550, 310));
         QFont font4;
         font4.setPointSize(12);
         tableView->setFont(font4);

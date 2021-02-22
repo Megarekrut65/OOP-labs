@@ -2,19 +2,12 @@
 #define ADDWINDOW_H
 
 #include <QDialog>
-#include "Code/monster.h"
-#include "Code/memory_opening_mode.h"
-#include "Code/file_opening_mode.h"
-#include <memory>
+#include "mylibrary.h"
 #include <QString>
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include "modelfunctions.h"
 
-using namespace mon;
-using namespace mmode;
-using namespace fmode;
-using namespace om;
 namespace Ui {
 class AddWindow;
 }

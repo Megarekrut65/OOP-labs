@@ -21,11 +21,13 @@ SOURCES += \
     Code/opening_mode.cpp \
     addwindow.cpp \
     enteridwindow.cpp \
+    findnamewindow.cpp \
     infowindow.cpp \
     interactivewindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    modelfunctions.cpp
+    modelfunctions.cpp \
+    mymessage.cpp
 
 HEADERS += \
     Code/benchmark.h \
@@ -41,14 +43,18 @@ HEADERS += \
     Code/opening_mode.h \
     addwindow.h \
     enteridwindow.h \
+    findnamewindow.h \
     infowindow.h \
     interactivewindow.h \
     mainwindow.h \
-    modelfunctions.h
+    modelfunctions.h \
+    mylibrary.h \
+    mymessage.h
 
 FORMS += \
     addwindow.ui \
     enteridwindow.ui \
+    findnamewindow.ui \
     infowindow.ui \
     interactivewindow.ui \
     mainwindow.ui

@@ -89,9 +89,7 @@ bool AddWindow::check_empty()
 {
     if(is_empty())
     {
-        QMessageBox messageBox;
-        messageBox.critical(0,"Error","There is empty field!");
-        messageBox.setFixedSize(500,200);
+        MyMessage::error_message("Error","There is empty field!");
         return true;
     }
     return false;
