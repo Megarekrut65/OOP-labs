@@ -24,7 +24,8 @@ SOURCES += \
     infowindow.cpp \
     interactivewindow.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    modelfunctions.cpp
 
 HEADERS += \
     Code/benchmark.h \
@@ -42,7 +43,8 @@ HEADERS += \
     enteridwindow.h \
     infowindow.h \
     interactivewindow.h \
-    mainwindow.h
+    mainwindow.h \
+    modelfunctions.h
 
 FORMS += \
     addwindow.ui \

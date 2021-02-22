@@ -39,8 +39,7 @@ private:
 
     std::shared_ptr<Monster> get_monster();
     void set_the_model();
-    void add_monster_to_table(std::shared_ptr<Monster> monster);
-    void add_item_to_table(const QString& value, int row, int colmm);
+
 
 };
 

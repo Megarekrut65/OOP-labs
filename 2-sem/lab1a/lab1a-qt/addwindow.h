@@ -8,6 +8,8 @@
 #include <memory>
 #include <QString>
 #include <QMessageBox>
+#include <QStandardItemModel>
+#include "modelfunctions.h"
 
 using namespace mon;
 using namespace mmode;
@@ -22,7 +24,7 @@ class AddWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddWindow(QWidget *parent = nullptr,
+    explicit AddWindow(QWidget *parent = nullptr,QStandardItemModel* model = nullptr,
                        std::shared_ptr<OpeningMode> open_mode = nullptr,
                        std::shared_ptr<Monster> monster = nullptr, bool edit = false);
     ~AddWindow();
@@ -34,6 +36,7 @@ private slots:
 
 private:
     Ui::AddWindow *ui;
+    QStandardItemModel* model;
     std::shared_ptr<Monster> monster;
     std::shared_ptr<OpeningMode> open_mode;
     bool edit;

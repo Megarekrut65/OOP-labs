@@ -18,7 +18,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>840</width>
+    <width>2000</width>
     <height>460</height>
    </size>
   </property>
@@ -124,62 +124,71 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>50</y>
-     <width>551</width>
-     <height>41</height>
+     <y>40</y>
+     <width>552</width>
+     <height>361</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <pointsize>27</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>All monsters</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>269</x>
-     <y>100</y>
-     <width>550</width>
-     <height>310</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>550</width>
-     <height>310</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>550</width>
-     <height>310</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="editTriggers">
-    <set>QAbstractItemView::NoEditTriggers</set>
-   </property>
-   <attribute name="horizontalHeaderMinimumSectionSize">
-    <number>150</number>
-   </attribute>
-   <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>160</number>
-   </attribute>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>27</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>All monsters</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>550</width>
+        <height>310</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>2000</width>
+        <height>310</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>160</number>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>160</number>
+      </attribute>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

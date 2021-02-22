@@ -1,16 +1,15 @@
 #include "addwindow.h"
 #include "ui_addwindow.h"
 
-AddWindow::AddWindow(QWidget *parent, std::shared_ptr<OpeningMode> open_mode,
+AddWindow::AddWindow(QWidget *parent, QStandardItemModel* model,
+                     std::shared_ptr<OpeningMode> open_mode,
                      std::shared_ptr<Monster> monster, bool edit) :
     QDialog(parent),
-    ui(new Ui::AddWindow)
+    ui(new Ui::AddWindow), model(model), monster(monster), open_mode(open_mode),
+    edit(edit)
 {
-    this->open_mode = open_mode;
-    this->monster = monster;
-    this->edit = edit;
     ui->setupUi(this);
-    if(edit && !monster) this->close();
+    if(!open_mode ||!model||(edit && !monster)) this->close();
     this->setWindowTitle("Edit the monster");
     if(edit) set_data();
     else this->setWindowTitle("Create new monster");
@@ -18,6 +17,9 @@ AddWindow::AddWindow(QWidget *parent, std::shared_ptr<OpeningMode> open_mode,
 
 AddWindow::~AddWindow()
 {
+    model = nullptr;
+    open_mode = nullptr;
+    monster = nullptr;
     delete ui;
 }
 AttackTypes AddWindow::get_type()
@@ -61,6 +63,7 @@ void AddWindow::edit_monster()
     monster->set_chance(ui->spinBoxChance->value());
     monster->set_type(get_type());
     open_mode->save_edited_monster(*monster);
+    ModelFunctions::edit_monster_in_table(model, monster);
 }
 void AddWindow::add_monster()
 {
@@ -72,6 +75,7 @@ void AddWindow::add_monster()
                                         open_mode->get_time_now(),
                                         open_mode->get_id());
     open_mode->append_monster(new_monster);
+    ModelFunctions::add_monster_to_table(model, std::make_shared<Monster>(new_monster));
 }
 bool AddWindow::is_empty()
 {

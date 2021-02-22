@@ -34,10 +34,12 @@ public:
     {
         if (EnterIdWindow->objectName().isEmpty())
             EnterIdWindow->setObjectName(QString::fromUtf8("EnterIdWindow"));
-        EnterIdWindow->resize(199, 184);
+        EnterIdWindow->resize(200, 180);
+        EnterIdWindow->setMinimumSize(QSize(200, 180));
+        EnterIdWindow->setMaximumSize(QSize(200, 180));
         spinBox = new QSpinBox(EnterIdWindow);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        spinBox->setGeometry(QRect(10, 80, 181, 31));
+        spinBox->setGeometry(QRect(10, 70, 181, 31));
         QFont font;
         font.setPointSize(15);
         spinBox->setFont(font);
@@ -45,12 +47,12 @@ public:
         spinBox->setMaximum(1000000);
         label = new QLabel(EnterIdWindow);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(10, 10, 181, 61));
+        label->setGeometry(QRect(10, 0, 181, 61));
         label->setFont(font);
         label->setAlignment(Qt::AlignCenter);
         horizontalLayoutWidget = new QWidget(EnterIdWindow);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 130, 181, 51));
+        horizontalLayoutWidget->setGeometry(QRect(10, 120, 181, 51));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
