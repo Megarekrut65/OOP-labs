@@ -7,6 +7,7 @@ FindMenuWindow::FindMenuWindow(std::shared_ptr<OpeningMode> open_mode, QWidget *
 {
     ui->setupUi(this);
     this->setWindowTitle("Find menu");
+    if(!open_mode) this->close();
 }
 
 FindMenuWindow::~FindMenuWindow()
@@ -18,18 +19,27 @@ void FindMenuWindow::on_pushButtonName_clicked()
 {
     FindNameWindow find(open_mode);
     find.setModal(true);
+    this->hide();
     find.exec();
     this->close();
 }
 
 void FindMenuWindow::on_pushButtonHp_clicked()
 {
-
+    FindHPDamageWindow find(open_mode);
+    find.setModal(true);
+    this->hide();
+    find.exec();
+    this->close();
 }
 
 void FindMenuWindow::on_pushButtonType_clicked()
 {
-
+    FindTypeTimeWindow find(open_mode);
+    find.setModal(true);
+    this->hide();
+    find.exec();
+    this->close();
 }
 
 void FindMenuWindow::on_pushButtonClose_clicked()

@@ -21,8 +21,10 @@ SOURCES += \
     Code/opening_mode.cpp \
     addwindow.cpp \
     enteridwindow.cpp \
+    findhpdamagewindow.cpp \
     findmenuwindow.cpp \
     findnamewindow.cpp \
+    findtypetimewindow.cpp \
     infowindow.cpp \
     interactivewindow.cpp \
     main.cpp \
@@ -45,8 +47,10 @@ HEADERS += \
     Code/opening_mode.h \
     addwindow.h \
     enteridwindow.h \
+    findhpdamagewindow.h \
     findmenuwindow.h \
     findnamewindow.h \
+    findtypetimewindow.h \
     infowindow.h \
     interactivewindow.h \
     mainwindow.h \
@@ -58,8 +62,10 @@ HEADERS += \
 FORMS += \
     addwindow.ui \
     enteridwindow.ui \
+    findhpdamagewindow.ui \
     findmenuwindow.ui \
     findnamewindow.ui \
+    findtypetimewindow.ui \
     infowindow.ui \
     interactivewindow.ui \
     mainwindow.ui \

@@ -55,7 +55,8 @@ public:
         tableView = new QTableView(verticalLayoutWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        tableView->horizontalHeader()->setMinimumSectionSize(100);
+        tableView->horizontalHeader()->setMinimumSectionSize(160);
+        tableView->horizontalHeader()->setDefaultSectionSize(160);
 
         verticalLayout->addWidget(tableView);
 

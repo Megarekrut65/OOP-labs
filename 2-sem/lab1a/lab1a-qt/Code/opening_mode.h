@@ -197,9 +197,9 @@ namespace om//opening mode
         /**
         * \brief Translates std::tm to std::vector.
         *
-        * Adds hour to array[0], minute to array[1],
-        * second to array[2], day to array[3],
-        * month to array[4] and year to array[5].
+        * Adds year to array[0], month to array[1],
+        * day to array[2], hour to array[3],
+        * minute to array[4] and second to array[5].
         *
         * \param time_info - time structure
         * \returns array representation of time

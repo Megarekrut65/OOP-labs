@@ -56,7 +56,7 @@
        <set>QAbstractItemView::NoEditTriggers</set>
       </property>
       <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>100</number>
+       <number>160</number>
       </attribute>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>160</number>

@@ -38,6 +38,7 @@ private:
     QStandardItemModel* model;
 
     std::shared_ptr<Monster> get_monster();
+    void add_all_monsters_to_table();
 };
 
 #endif // INTERACTIVEWINDOW_H

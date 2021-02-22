@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "findnamewindow.h"
+#include "findhpdamagewindow.h"
+#include "findtypetimewindow.h"
 #include "mylibrary.h"
 
 namespace Ui {

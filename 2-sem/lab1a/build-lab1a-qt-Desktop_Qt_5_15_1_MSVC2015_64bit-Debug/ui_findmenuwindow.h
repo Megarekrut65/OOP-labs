@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -24,7 +23,6 @@ class Ui_FindMenuWindow
 public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
     QPushButton *pushButtonName;
     QPushButton *pushButtonHp;
     QPushButton *pushButtonType;
@@ -34,52 +32,41 @@ public:
     {
         if (FindMenuWindow->objectName().isEmpty())
             FindMenuWindow->setObjectName(QString::fromUtf8("FindMenuWindow"));
-        FindMenuWindow->resize(200, 190);
-        FindMenuWindow->setMinimumSize(QSize(200, 190));
-        FindMenuWindow->setMaximumSize(QSize(200, 190));
+        FindMenuWindow->resize(200, 180);
+        FindMenuWindow->setMinimumSize(QSize(200, 180));
+        FindMenuWindow->setMaximumSize(QSize(200, 180));
         verticalLayoutWidget = new QWidget(FindMenuWindow);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 10, 181, 171));
+        verticalLayoutWidget->setGeometry(QRect(10, 10, 181, 121));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(verticalLayoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        QFont font;
-        font.setPointSize(15);
-        label->setFont(font);
-        label->setAlignment(Qt::AlignCenter);
-
-        verticalLayout->addWidget(label);
-
         pushButtonName = new QPushButton(verticalLayoutWidget);
         pushButtonName->setObjectName(QString::fromUtf8("pushButtonName"));
-        QFont font1;
-        font1.setPointSize(12);
-        pushButtonName->setFont(font1);
+        QFont font;
+        font.setPointSize(12);
+        pushButtonName->setFont(font);
 
         verticalLayout->addWidget(pushButtonName);
 
         pushButtonHp = new QPushButton(verticalLayoutWidget);
         pushButtonHp->setObjectName(QString::fromUtf8("pushButtonHp"));
-        pushButtonHp->setFont(font1);
+        pushButtonHp->setFont(font);
 
         verticalLayout->addWidget(pushButtonHp);
 
         pushButtonType = new QPushButton(verticalLayoutWidget);
         pushButtonType->setObjectName(QString::fromUtf8("pushButtonType"));
-        pushButtonType->setFont(font1);
+        pushButtonType->setFont(font);
 
         verticalLayout->addWidget(pushButtonType);
 
-        pushButtonClose = new QPushButton(verticalLayoutWidget);
+        pushButtonClose = new QPushButton(FindMenuWindow);
         pushButtonClose->setObjectName(QString::fromUtf8("pushButtonClose"));
-        QFont font2;
-        font2.setPointSize(16);
-        pushButtonClose->setFont(font2);
-
-        verticalLayout->addWidget(pushButtonClose);
-
+        pushButtonClose->setGeometry(QRect(50, 140, 91, 33));
+        QFont font1;
+        font1.setPointSize(16);
+        pushButtonClose->setFont(font1);
 
         retranslateUi(FindMenuWindow);
 
@@ -89,7 +76,6 @@ public:
     void retranslateUi(QDialog *FindMenuWindow)
     {
         FindMenuWindow->setWindowTitle(QCoreApplication::translate("FindMenuWindow", "Dialog", nullptr));
-        label->setText(QCoreApplication::translate("FindMenuWindow", "Find menu", nullptr));
         pushButtonName->setText(QCoreApplication::translate("FindMenuWindow", "Find by name", nullptr));
         pushButtonHp->setText(QCoreApplication::translate("FindMenuWindow", "Find by hp and damage", nullptr));
         pushButtonType->setText(QCoreApplication::translate("FindMenuWindow", "Find by type and time", nullptr));

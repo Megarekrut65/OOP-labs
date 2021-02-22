@@ -7,6 +7,7 @@ FindNameWindow::FindNameWindow(std::shared_ptr<OpeningMode> open_mode, QWidget *
 {
     ui->setupUi(this);
     this->setWindowTitle("Find by name");
+    if(!open_mode) this->close();
 }
 
 FindNameWindow::~FindNameWindow()
@@ -21,9 +22,10 @@ void FindNameWindow::on_pushButtonOK_clicked()
     {
         ShowMonsters show(open_mode->find_name(ui->lineEdit->text().toStdString()));
         show.setModal(true);
+        this->hide();
         show.exec();
+        this->close();
     }
-    this->close();
 }
 
 void FindNameWindow::on_pushButtonCancel_clicked()

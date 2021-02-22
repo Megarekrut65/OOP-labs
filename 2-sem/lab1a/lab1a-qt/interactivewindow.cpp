@@ -10,14 +10,20 @@ InteractiveWindow::InteractiveWindow(std::shared_ptr<OpeningMode> open_mode, QWi
     ui->setupUi(this);
     this->setWindowTitle("Menu");
     ModelFunctions::set_the_model(model, ui->tableView);
+    add_all_monsters_to_table();
+}
+void InteractiveWindow::add_all_monsters_to_table()
+{
+    std::vector<std::shared_ptr<Monster>> monsters
+            = open_mode->find_hp_damage(Monster::min_hp, Monster::max_damage);
+    for(std::size_t i = 0; i < monsters.size();i++)
+        ModelFunctions::add_monster_to_table(model, monsters[i]);
 }
 InteractiveWindow::~InteractiveWindow()
 {
     delete model;
     delete ui;
 }
-
-
 void InteractiveWindow::on_pushButtonBack_clicked()
 {
     this->close();
@@ -25,7 +31,7 @@ void InteractiveWindow::on_pushButtonBack_clicked()
 
 void InteractiveWindow::on_pushButtonAdd_clicked()
 {
-    AddWindow add(this, model, open_mode);
+    AddWindow add(model, open_mode);
     add.setModal(true);
     add.exec();
 }
@@ -36,13 +42,8 @@ std::shared_ptr<Monster> InteractiveWindow::get_monster()
     enter_id.setModal(true);
     enter_id.exec();
     std::shared_ptr<mon::Monster> monster = std::make_shared<Monster>(open_mode->get_monster(id));
-    if(monster->get_id() != 0)
-    {
-        return monster;
-    }
-    QMessageBox messageBox;
-    messageBox.critical(0,"Error","There isn't monster with entered id!");
-    messageBox.setFixedSize(500,200);
+    if(monster->get_id() != 0) return monster;
+    MyMessage::error_message(this, "Error","There isn't monster with entered id!");
     return nullptr;
 }
 void InteractiveWindow::on_pushButtonEdit_clicked()
@@ -50,7 +51,7 @@ void InteractiveWindow::on_pushButtonEdit_clicked()
     std::shared_ptr<Monster> monster = get_monster();
     if(monster)
     {
-        AddWindow add(this, model, open_mode, monster, true);
+        AddWindow add(model, open_mode, monster, true);
         add.setModal(true);
         add.exec();
     }

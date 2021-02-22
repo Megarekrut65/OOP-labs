@@ -16,9 +16,10 @@ class AddWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddWindow(QWidget *parent = nullptr,QStandardItemModel* model = nullptr,
-                       std::shared_ptr<OpeningMode> open_mode = nullptr,
-                       std::shared_ptr<Monster> monster = nullptr, bool edit = false);
+    explicit AddWindow(QStandardItemModel* model,
+                       std::shared_ptr<OpeningMode> open_mode,
+                       std::shared_ptr<Monster> monster = nullptr,
+                       bool edit = false,QWidget *parent = nullptr);
     ~AddWindow();
 
 private slots:

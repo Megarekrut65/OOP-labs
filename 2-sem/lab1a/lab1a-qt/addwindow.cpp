@@ -1,9 +1,9 @@
 #include "addwindow.h"
 #include "ui_addwindow.h"
 
-AddWindow::AddWindow(QWidget *parent, QStandardItemModel* model,
+AddWindow::AddWindow(QStandardItemModel* model,
                      std::shared_ptr<OpeningMode> open_mode,
-                     std::shared_ptr<Monster> monster, bool edit) :
+                     std::shared_ptr<Monster> monster, bool edit, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddWindow), model(model), monster(monster), open_mode(open_mode),
     edit(edit)
