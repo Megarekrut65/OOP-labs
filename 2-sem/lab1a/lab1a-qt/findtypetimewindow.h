@@ -27,8 +27,8 @@ private slots:
 private:
     Ui::FindTypeTimeWindow *ui;
     std::shared_ptr<OpeningMode> open_mode;
-    AttackTypes get_type();
-    std::vector<int> get_time();
+    AttackTypes get_type();//returns the type given the radio buttons
+    std::vector<int> get_time();//creates array where items are data-time
 };
 
 #endif // FINDTYPETIMEWINDOW_H

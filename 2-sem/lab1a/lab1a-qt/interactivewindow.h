@@ -38,8 +38,8 @@ private:
     std::shared_ptr<OpeningMode> open_mode;
     QStandardItemModel* model;
 
-    std::shared_ptr<Monster> get_monster();
-    void add_all_monsters_to_table();
+    std::shared_ptr<Monster> get_monster();//returns the monsters with edtered id
+    void add_all_monsters_to_table();//adds monsters to table view
 };
 
 #endif // INTERACTIVEWINDOW_H

@@ -40,6 +40,6 @@ private:
     std::string text_path;
     std::string binary_path;
 
-    void open_interactive_mode();
+    void open_interactive_mode();//opens interactive mode with installed parameters
 };
 #endif // MAINWINDOW_H

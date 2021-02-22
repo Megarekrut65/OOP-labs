@@ -34,12 +34,12 @@ private:
     std::shared_ptr<Monster> monster;
     std::shared_ptr<OpeningMode> open_mode;
     bool edit;
-    AttackTypes get_type();
-    void edit_monster();
-    void set_data();
-    void add_monster();
-    bool check_empty();
-    bool is_empty();
+    AttackTypes get_type();//returns the type given the radio buttons
+    void edit_monster();//puts to monster new data
+    void set_data();//sets data of monster to items in window
+    void add_monster();//adds new monster to table and model
+    bool check_empty();//messeges about error if fields are empty
+    bool is_empty();//checks the fields for emptiness
 };
 
 #endif // ADDWINDOW_H
