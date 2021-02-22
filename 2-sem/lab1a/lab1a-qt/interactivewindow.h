@@ -5,8 +5,9 @@
 #include "addwindow.h"
 #include "enteridwindow.h"
 #include <QStandardItemModel>
-#include <QList>
+#include <QString>
 #include "findmenuwindow.h"
+#include <QIcon>
 
 namespace Ui {
 class InteractiveWindow;
@@ -17,7 +18,7 @@ class InteractiveWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit InteractiveWindow(std::shared_ptr<OpeningMode> open_mode, QWidget *parent = nullptr);
+    explicit InteractiveWindow(std::shared_ptr<OpeningMode> open_mode, QString name_mode, QWidget *parent = nullptr);
     ~InteractiveWindow();
 
 private slots:

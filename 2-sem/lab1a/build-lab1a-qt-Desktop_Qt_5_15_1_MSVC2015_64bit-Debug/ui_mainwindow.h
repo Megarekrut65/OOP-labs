@@ -10,9 +10,11 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -22,6 +24,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionInfo;
     QWidget *centralwidget;
     QLabel *label;
     QPushButton *pushButton;
@@ -29,8 +32,8 @@ public:
     QPushButton *pushButtonMemory;
     QPushButton *pushButtonText;
     QPushButton *pushButtonBinary;
-    QPushButton *pushButton_5;
     QMenuBar *menubar;
+    QMenu *menuFile;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -39,6 +42,8 @@ public:
         MainWindow->resize(820, 470);
         MainWindow->setMinimumSize(QSize(820, 470));
         MainWindow->setMaximumSize(QSize(820, 470));
+        actionInfo = new QAction(MainWindow);
+        actionInfo->setObjectName(QString::fromUtf8("actionInfo"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label = new QLabel(centralwidget);
@@ -76,17 +81,16 @@ public:
         pushButtonBinary->setObjectName(QString::fromUtf8("pushButtonBinary"));
         pushButtonBinary->setGeometry(QRect(300, 330, 171, 41));
         pushButtonBinary->setFont(font3);
-        pushButton_5 = new QPushButton(centralwidget);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-        pushButton_5->setGeometry(QRect(20, 410, 75, 23));
-        QFont font4;
-        font4.setPointSize(14);
-        pushButton_5->setFont(font4);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 820, 21));
+        menuFile = new QMenu(menubar);
+        menuFile->setObjectName(QString::fromUtf8("menuFile"));
         MainWindow->setMenuBar(menubar);
+
+        menubar->addAction(menuFile->menuAction());
+        menuFile->addAction(actionInfo);
 
         retranslateUi(MainWindow);
 
@@ -96,13 +100,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionInfo->setText(QCoreApplication::translate("MainWindow", "Info", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Forest of monsters", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "EXIT", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Choose one opening mode:", nullptr));
         pushButtonMemory->setText(QCoreApplication::translate("MainWindow", "Memory mode", nullptr));
         pushButtonText->setText(QCoreApplication::translate("MainWindow", "Text mode", nullptr));
         pushButtonBinary->setText(QCoreApplication::translate("MainWindow", "Binary mode", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MainWindow", "Info", nullptr));
+        menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 
 };

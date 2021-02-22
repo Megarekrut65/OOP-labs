@@ -90,10 +90,6 @@ namespace fmode//file mode
 		*/
 		FileMode(const std::string& path, omode::Mode mode = omode::Mode::TEXT);
 		/**
-		* \brief Reads monster from file and prints it to display.
-		*/
-		void write_all_monsters();
-		/**
 		* \brief Gives the size occupied by all monsters.
 		* \returns size_of of file with monsters
 		*/

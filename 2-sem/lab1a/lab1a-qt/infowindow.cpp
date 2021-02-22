@@ -7,6 +7,8 @@ InfoWindow::InfoWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Info");
+    QIcon icon("images/info.ico");
+    this->setWindowIcon(icon);
 }
 
 InfoWindow::~InfoWindow()

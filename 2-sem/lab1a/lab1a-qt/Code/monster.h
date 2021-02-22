@@ -5,6 +5,7 @@
 #include <iostream>
 #include "file_functions.h"
 #include "file_mode.h"
+#include <conio.h>
 
 /**
 * \brief Namespace for class Monster and enum class AttackTypes.

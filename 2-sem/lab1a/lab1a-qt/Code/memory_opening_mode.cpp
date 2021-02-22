@@ -6,16 +6,6 @@ namespace mmode
     {
         return (monsters.size() * sizeof(mon::Monster));
     }
-    void MemoryMode::write_all_monsters()
-    {
-        if (monsters.size() == 0) std::cout << "\nThere are no monsters here." << std::endl;
-        else std::cout << "\nAll monsters:\n" << std::endl;
-        for (std::size_t i = 0; i < monsters.size(); i++)
-        {
-            std::cout << "\n<" << i + 1 << ">" << std::endl;
-            std::cout << monsters[i] << std::endl;
-        }
-    }
     void MemoryMode::delete_the_monster(mon::Monster monster)
     {
         for (std::size_t i = 0; i < monsters.size(); i++)

@@ -1,6 +1,5 @@
 #pragma once
 #include "monster.h"
-#include "my_reads.h"
 #include <algorithm>
 #include <memory>
 
@@ -85,12 +84,6 @@ namespace om//opening mode
             mon::Monster monster, std::vector <std::shared_ptr<mon::Monster>>& arr);
     public:
         /**
-        * \brief Prints all monsters from array to display.
-        *
-        * \param arr - array with monsters
-        */
-        void write_monsters_menu(const std::vector<std::shared_ptr<mon::Monster>>& arr);
-        /**
         * \brief Gives time now.
         *
         * \returns time of taking of function
@@ -146,40 +139,6 @@ namespace om//opening mode
         */
         virtual std::vector<std::shared_ptr<mon::Monster>> find_name(
             std::string fragment_name) = 0;   
-        /**
-        * \brief Prints to display all monsters from the place of storage.
-        */
-        virtual void write_all_monsters() = 0;
-        /**
-        * \brief Interface for function mon::Monster::find_types_time.
-        */
-        void find_types_time_menu();
-        /**
-        * \brief Interface for function mon::Monster::find_hp_damage.
-        */
-        void find_hp_damage_menu();
-        /**
-        * \brief Interface for function mon::Monster::find_name.
-        */
-        void find_name_menu();
-        /**
-        * \brief Interface for adding monsters.
-        * 
-        * Gets monster information from the console and creates a new monster.
-        */
-        void add_new_monster();
-        /**
-        * \brief Interface for editing monsters.
-        * 
-        * Gets new monster information from the console and edites the monster.
-        */
-        void edit_monster();
-        /**
-        * \brief Interface for deleting monsters.
-        *
-        * Gets monster id and deletes the monster.
-        */
-        void delete_monster();
         /**
         * \brief Finds monster and givs it.
         * 

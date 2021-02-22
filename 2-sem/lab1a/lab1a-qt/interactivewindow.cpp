@@ -1,14 +1,17 @@
 #include "interactivewindow.h"
 #include "ui_interactivewindow.h"
 
-InteractiveWindow::InteractiveWindow(std::shared_ptr<OpeningMode> open_mode, QWidget *parent) :
+InteractiveWindow::InteractiveWindow(std::shared_ptr<OpeningMode> open_mode,
+                                     QString name_mode, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::InteractiveWindow),model(new QStandardItemModel)
 {
     if(!open_mode) this->close();
     this->open_mode = open_mode;
     ui->setupUi(this);
-    this->setWindowTitle("Menu");
+    this->setWindowTitle(name_mode);
+    QIcon icon("images/monsters.ico");
+    this->setWindowIcon(icon);
     ModelFunctions::set_the_model(model, ui->tableView);
     add_all_monsters_to_table();
 }
@@ -41,6 +44,7 @@ std::shared_ptr<Monster> InteractiveWindow::get_monster()
     EnterIdWindow enter_id(id);
     enter_id.setModal(true);
     enter_id.exec();
+    if(id == 0)  return nullptr;
     std::shared_ptr<mon::Monster> monster = std::make_shared<Monster>(open_mode->get_monster(id));
     if(monster->get_id() != 0) return monster;
     MyMessage::error_message(this, "Error","There isn't monster with entered id!");

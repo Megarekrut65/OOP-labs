@@ -2,6 +2,7 @@
 #define INFOWINDOW_H
 
 #include <QDialog>
+#include <QIcon>
 
 namespace Ui {
 class InfoWindow;

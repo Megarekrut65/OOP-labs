@@ -8,6 +8,8 @@ FindTypeTimeWindow::FindTypeTimeWindow(std::shared_ptr<OpeningMode> open_mode, Q
     ui->setupUi(this);
     this->setWindowTitle("Find by type and time");
     if(!open_mode) this->close();
+    QIcon icon("images/find.ico");
+    this->setWindowIcon(icon);
 }
 
 FindTypeTimeWindow::~FindTypeTimeWindow()

@@ -3,7 +3,7 @@ name=Jesi
 hp=1
 damage=1
 chance=0
-type=PARALYZE
+type=CURE
 0 17 39 22 1 121
 id=1001
 name=new

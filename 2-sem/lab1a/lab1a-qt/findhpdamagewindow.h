@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "mylibrary.h"
 #include "showmonsters.h"
+#include <QIcon>
 
 namespace Ui {
 class FindHPDamageWindow;

@@ -50,15 +50,10 @@ OBJECTS_DIR   = release
 
 ####### Files
 
-SOURCES       = ..\lab1a-qt\Code\benchmark.cpp \
-		..\lab1a-qt\Code\demo.cpp \
-		..\lab1a-qt\Code\file_functions.cpp \
+SOURCES       = ..\lab1a-qt\Code\file_functions.cpp \
 		..\lab1a-qt\Code\file_opening_mode.cpp \
-		..\lab1a-qt\Code\interactive.cpp \
 		..\lab1a-qt\Code\memory_opening_mode.cpp \
 		..\lab1a-qt\Code\monster.cpp \
-		..\lab1a-qt\Code\monster_menu.cpp \
-		..\lab1a-qt\Code\my_reads.cpp \
 		..\lab1a-qt\Code\opening_mode.cpp \
 		..\lab1a-qt\addwindow.cpp \
 		..\lab1a-qt\enteridwindow.cpp \
@@ -82,15 +77,10 @@ SOURCES       = ..\lab1a-qt\Code\benchmark.cpp \
 		release\moc_interactivewindow.cpp \
 		release\moc_mainwindow.cpp \
 		release\moc_showmonsters.cpp
-OBJECTS       = release\benchmark.obj \
-		release\demo.obj \
-		release\file_functions.obj \
+OBJECTS       = release\file_functions.obj \
 		release\file_opening_mode.obj \
-		release\interactive.obj \
 		release\memory_opening_mode.obj \
 		release\monster.obj \
-		release\monster_menu.obj \
-		release\my_reads.obj \
 		release\opening_mode.obj \
 		release\addwindow.obj \
 		release\enteridwindow.obj \
@@ -116,16 +106,17 @@ OBJECTS       = release\benchmark.obj \
 		release\moc_mainwindow.obj \
 		release\moc_showmonsters.obj
 
-DIST          =  ..\lab1a-qt\Code\benchmark.h \
-		..\lab1a-qt\Code\demo.h \
-		..\lab1a-qt\Code\file_functions.h \
+DIST          = Images/delete.ico \
+		Images/edit.ico \
+		Images/find.ico \
+		Images/info.ico \
+		Images/monster.ico \
+		Images/monsters.ico \
+		Images/plus.ico ..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
-		..\lab1a-qt\Code\interactive.h \
 		..\lab1a-qt\Code\memory_opening_mode.h \
 		..\lab1a-qt\Code\monster.h \
-		..\lab1a-qt\Code\monster_menu.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\opening_mode.h \
 		..\lab1a-qt\addwindow.h \
 		..\lab1a-qt\enteridwindow.h \
@@ -139,15 +130,10 @@ DIST          =  ..\lab1a-qt\Code\benchmark.h \
 		..\lab1a-qt\modelfunctions.h \
 		..\lab1a-qt\mylibrary.h \
 		..\lab1a-qt\mymessage.h \
-		..\lab1a-qt\showmonsters.h ..\lab1a-qt\Code\benchmark.cpp \
-		..\lab1a-qt\Code\demo.cpp \
-		..\lab1a-qt\Code\file_functions.cpp \
+		..\lab1a-qt\showmonsters.h ..\lab1a-qt\Code\file_functions.cpp \
 		..\lab1a-qt\Code\file_opening_mode.cpp \
-		..\lab1a-qt\Code\interactive.cpp \
 		..\lab1a-qt\Code\memory_opening_mode.cpp \
 		..\lab1a-qt\Code\monster.cpp \
-		..\lab1a-qt\Code\monster_menu.cpp \
-		..\lab1a-qt\Code\my_reads.cpp \
 		..\lab1a-qt\Code\opening_mode.cpp \
 		..\lab1a-qt\addwindow.cpp \
 		..\lab1a-qt\enteridwindow.cpp \
@@ -258,7 +244,7 @@ all: Makefile.Release  release\lab1a-qt.exe
 
 release\lab1a-qt.exe: E:\Qt\5.15.1\msvc2015_64\lib\Qt5Widgets.lib E:\Qt\5.15.1\msvc2015_64\lib\Qt5Gui.lib E:\Qt\5.15.1\msvc2015_64\lib\Qt5Core.lib E:\Qt\5.15.1\msvc2015_64\lib\qtmain.lib ui_addwindow.h ui_enteridwindow.h ui_findhpdamagewindow.h ui_findmenuwindow.h ui_findnamewindow.h ui_findtypetimewindow.h ui_infowindow.h ui_interactivewindow.h ui_mainwindow.h ui_showmonsters.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\benchmark.obj release\demo.obj release\file_functions.obj release\file_opening_mode.obj release\interactive.obj release\memory_opening_mode.obj release\monster.obj release\monster_menu.obj release\my_reads.obj release\opening_mode.obj release\addwindow.obj release\enteridwindow.obj release\findhpdamagewindow.obj release\findmenuwindow.obj release\findnamewindow.obj release\findtypetimewindow.obj release\infowindow.obj release\interactivewindow.obj release\main.obj release\mainwindow.obj release\modelfunctions.obj release\mymessage.obj release\showmonsters.obj release\moc_addwindow.obj release\moc_enteridwindow.obj release\moc_findhpdamagewindow.obj release\moc_findmenuwindow.obj release\moc_findnamewindow.obj release\moc_findtypetimewindow.obj release\moc_infowindow.obj release\moc_interactivewindow.obj release\moc_mainwindow.obj release\moc_showmonsters.obj
+release\file_functions.obj release\file_opening_mode.obj release\memory_opening_mode.obj release\monster.obj release\opening_mode.obj release\addwindow.obj release\enteridwindow.obj release\findhpdamagewindow.obj release\findmenuwindow.obj release\findnamewindow.obj release\findtypetimewindow.obj release\infowindow.obj release\interactivewindow.obj release\main.obj release\mainwindow.obj release\modelfunctions.obj release\mymessage.obj release\showmonsters.obj release\moc_addwindow.obj release\moc_enteridwindow.obj release\moc_findhpdamagewindow.obj release\moc_findmenuwindow.obj release\moc_findnamewindow.obj release\moc_findtypetimewindow.obj release\moc_infowindow.obj release\moc_interactivewindow.obj release\moc_mainwindow.obj release\moc_showmonsters.obj
 $(LIBS)
 <<
 
@@ -268,10 +254,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) lab1a-qt.zip $(SOURCES) $(DIST) ..\lab1a-qt\lab1a-qt.pro E:\Qt\5.15.1\msvc2015_64\mkspecs\features\spec_pre.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\angle.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\windows-desktop.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\win32\windows_vulkan_sdk.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\windows-vulkan.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\msvc-desktop.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\qconfig.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3danimation.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3danimation_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dextras.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dextras_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_accessibility_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_bodymovin_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_charts.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_charts_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_core.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_datavisualization.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_datavisualization_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_designer.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_edid_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_egl_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_fb_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_gamepad.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_gamepad_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_gui.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_help.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_location.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_network.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_packetprotocol_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_positioningquick.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_positioningquick_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_purchasing.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_purchasing_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qml.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmldebug_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmlmodels.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmlmodels_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmlworkerscript.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3d.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3d_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3dassetimport.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3drender.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3drender_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3druntimerender.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3dutils.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3dutils_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickshapes_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_repparser.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_repparser_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_script.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_scxml.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_scxml_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_sql.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_svg.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_texttospeech.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_texttospeech_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_theme_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_virtualkeyboard.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_vulkan_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_webview.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_xml.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qt_functions.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qt_config.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\win32-msvc\qmake.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\spec_post.prf .qmake.stash E:\Qt\5.15.1\msvc2015_64\mkspecs\features\exclusive_builds.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\msvc-version.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\toolchain.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\default_pre.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\win32\default_pre.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\resolve_config.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\exclusive_builds_post.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\default_post.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\build_pass.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qml_debug.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\precompile_header.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\warn_on.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qt.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\resources_functions.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\resources.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\moc.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\win32\opengl.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\uic.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qmake_use.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\file_copies.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\win32\windows.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\testcase_targets.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\exceptions.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\yacc.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\lex.prf ..\lab1a-qt\lab1a-qt.pro E:\Qt\5.15.1\msvc2015_64\lib\Qt5Widgets.prl E:\Qt\5.15.1\msvc2015_64\lib\Qt5Gui.prl E:\Qt\5.15.1\msvc2015_64\lib\Qt5Core.prl E:\Qt\5.15.1\msvc2015_64\lib\qtmain.prl lab1a-qt_en_GB.ts lab1a-qt_en_GB.ts   E:\Qt\5.15.1\msvc2015_64\mkspecs\features\data\dummy.cpp ..\lab1a-qt\Code\benchmark.h ..\lab1a-qt\Code\demo.h ..\lab1a-qt\Code\file_functions.h ..\lab1a-qt\Code\file_mode.h ..\lab1a-qt\Code\file_opening_mode.h ..\lab1a-qt\Code\interactive.h ..\lab1a-qt\Code\memory_opening_mode.h ..\lab1a-qt\Code\monster.h ..\lab1a-qt\Code\monster_menu.h ..\lab1a-qt\Code\my_reads.h ..\lab1a-qt\Code\opening_mode.h ..\lab1a-qt\addwindow.h ..\lab1a-qt\enteridwindow.h ..\lab1a-qt\findhpdamagewindow.h ..\lab1a-qt\findmenuwindow.h ..\lab1a-qt\findnamewindow.h ..\lab1a-qt\findtypetimewindow.h ..\lab1a-qt\infowindow.h ..\lab1a-qt\interactivewindow.h ..\lab1a-qt\mainwindow.h ..\lab1a-qt\modelfunctions.h ..\lab1a-qt\mylibrary.h ..\lab1a-qt\mymessage.h ..\lab1a-qt\showmonsters.h  ..\lab1a-qt\Code\benchmark.cpp ..\lab1a-qt\Code\demo.cpp ..\lab1a-qt\Code\file_functions.cpp ..\lab1a-qt\Code\file_opening_mode.cpp ..\lab1a-qt\Code\interactive.cpp ..\lab1a-qt\Code\memory_opening_mode.cpp ..\lab1a-qt\Code\monster.cpp ..\lab1a-qt\Code\monster_menu.cpp ..\lab1a-qt\Code\my_reads.cpp ..\lab1a-qt\Code\opening_mode.cpp ..\lab1a-qt\addwindow.cpp ..\lab1a-qt\enteridwindow.cpp ..\lab1a-qt\findhpdamagewindow.cpp ..\lab1a-qt\findmenuwindow.cpp ..\lab1a-qt\findnamewindow.cpp ..\lab1a-qt\findtypetimewindow.cpp ..\lab1a-qt\infowindow.cpp ..\lab1a-qt\interactivewindow.cpp ..\lab1a-qt\main.cpp ..\lab1a-qt\mainwindow.cpp ..\lab1a-qt\modelfunctions.cpp ..\lab1a-qt\mymessage.cpp ..\lab1a-qt\showmonsters.cpp ..\lab1a-qt\addwindow.ui ..\lab1a-qt\enteridwindow.ui ..\lab1a-qt\findhpdamagewindow.ui ..\lab1a-qt\findmenuwindow.ui ..\lab1a-qt\findnamewindow.ui ..\lab1a-qt\findtypetimewindow.ui ..\lab1a-qt\infowindow.ui ..\lab1a-qt\interactivewindow.ui ..\lab1a-qt\mainwindow.ui ..\lab1a-qt\showmonsters.ui    
+	$(ZIP) lab1a-qt.zip $(SOURCES) $(DIST) ..\lab1a-qt\lab1a-qt.pro E:\Qt\5.15.1\msvc2015_64\mkspecs\features\spec_pre.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\angle.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\windows-desktop.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\win32\windows_vulkan_sdk.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\windows-vulkan.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\msvc-desktop.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\qconfig.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3danimation.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3danimation_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dextras.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dextras_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_accessibility_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_bodymovin_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_charts.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_charts_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_core.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_datavisualization.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_datavisualization_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_designer.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_edid_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_egl_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_fb_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_gamepad.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_gamepad_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_gui.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_help.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_location.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_network.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_packetprotocol_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_positioningquick.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_positioningquick_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_purchasing.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_purchasing_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qml.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmldebug_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmlmodels.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmlmodels_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmlworkerscript.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3d.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3d_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3dassetimport.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3drender.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3drender_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3druntimerender.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3dutils.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick3dutils_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickshapes_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_repparser.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_repparser_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_script.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_scxml.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_scxml_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_sql.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_svg.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_texttospeech.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_texttospeech_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_theme_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_virtualkeyboard.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_vulkan_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_webview.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_xml.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qt_functions.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qt_config.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\win32-msvc\qmake.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\spec_post.prf .qmake.stash E:\Qt\5.15.1\msvc2015_64\mkspecs\features\exclusive_builds.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\common\msvc-version.conf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\toolchain.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\default_pre.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\win32\default_pre.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\resolve_config.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\exclusive_builds_post.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\default_post.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\build_pass.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qml_debug.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\precompile_header.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\warn_on.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qt.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\resources_functions.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\resources.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\moc.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\win32\opengl.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\uic.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\qmake_use.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\file_copies.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\win32\windows.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\testcase_targets.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\exceptions.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\yacc.prf E:\Qt\5.15.1\msvc2015_64\mkspecs\features\lex.prf ..\lab1a-qt\lab1a-qt.pro E:\Qt\5.15.1\msvc2015_64\lib\Qt5Widgets.prl E:\Qt\5.15.1\msvc2015_64\lib\Qt5Gui.prl E:\Qt\5.15.1\msvc2015_64\lib\Qt5Core.prl E:\Qt\5.15.1\msvc2015_64\lib\qtmain.prl lab1a-qt_en_GB.ts lab1a-qt_en_GB.ts   E:\Qt\5.15.1\msvc2015_64\mkspecs\features\data\dummy.cpp ..\lab1a-qt\Code\file_functions.h ..\lab1a-qt\Code\file_mode.h ..\lab1a-qt\Code\file_opening_mode.h ..\lab1a-qt\Code\memory_opening_mode.h ..\lab1a-qt\Code\monster.h ..\lab1a-qt\Code\opening_mode.h ..\lab1a-qt\addwindow.h ..\lab1a-qt\enteridwindow.h ..\lab1a-qt\findhpdamagewindow.h ..\lab1a-qt\findmenuwindow.h ..\lab1a-qt\findnamewindow.h ..\lab1a-qt\findtypetimewindow.h ..\lab1a-qt\infowindow.h ..\lab1a-qt\interactivewindow.h ..\lab1a-qt\mainwindow.h ..\lab1a-qt\modelfunctions.h ..\lab1a-qt\mylibrary.h ..\lab1a-qt\mymessage.h ..\lab1a-qt\showmonsters.h  ..\lab1a-qt\Code\file_functions.cpp ..\lab1a-qt\Code\file_opening_mode.cpp ..\lab1a-qt\Code\memory_opening_mode.cpp ..\lab1a-qt\Code\monster.cpp ..\lab1a-qt\Code\opening_mode.cpp ..\lab1a-qt\addwindow.cpp ..\lab1a-qt\enteridwindow.cpp ..\lab1a-qt\findhpdamagewindow.cpp ..\lab1a-qt\findmenuwindow.cpp ..\lab1a-qt\findnamewindow.cpp ..\lab1a-qt\findtypetimewindow.cpp ..\lab1a-qt\infowindow.cpp ..\lab1a-qt\interactivewindow.cpp ..\lab1a-qt\main.cpp ..\lab1a-qt\mainwindow.cpp ..\lab1a-qt\modelfunctions.cpp ..\lab1a-qt\mymessage.cpp ..\lab1a-qt\showmonsters.cpp ..\lab1a-qt\addwindow.ui ..\lab1a-qt\enteridwindow.ui ..\lab1a-qt\findhpdamagewindow.ui ..\lab1a-qt\findmenuwindow.ui ..\lab1a-qt\findnamewindow.ui ..\lab1a-qt\findtypetimewindow.ui ..\lab1a-qt\infowindow.ui ..\lab1a-qt\interactivewindow.ui ..\lab1a-qt\mainwindow.ui ..\lab1a-qt\showmonsters.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\benchmark.obj release\demo.obj release\file_functions.obj release\file_opening_mode.obj release\interactive.obj release\memory_opening_mode.obj release\monster.obj release\monster_menu.obj release\my_reads.obj release\opening_mode.obj release\addwindow.obj release\enteridwindow.obj release\findhpdamagewindow.obj release\findmenuwindow.obj release\findnamewindow.obj release\findtypetimewindow.obj release\infowindow.obj release\interactivewindow.obj release\main.obj release\mainwindow.obj release\modelfunctions.obj release\mymessage.obj release\showmonsters.obj release\moc_addwindow.obj release\moc_enteridwindow.obj release\moc_findhpdamagewindow.obj release\moc_findmenuwindow.obj release\moc_findnamewindow.obj release\moc_findtypetimewindow.obj release\moc_infowindow.obj release\moc_interactivewindow.obj release\moc_mainwindow.obj release\moc_showmonsters.obj
+	-$(DEL_FILE) release\file_functions.obj release\file_opening_mode.obj release\memory_opening_mode.obj release\monster.obj release\opening_mode.obj release\addwindow.obj release\enteridwindow.obj release\findhpdamagewindow.obj release\findmenuwindow.obj release\findnamewindow.obj release\findtypetimewindow.obj release\infowindow.obj release\interactivewindow.obj release\main.obj release\mainwindow.obj release\modelfunctions.obj release\mymessage.obj release\showmonsters.obj release\moc_addwindow.obj release\moc_enteridwindow.obj release\moc_findhpdamagewindow.obj release\moc_findmenuwindow.obj release\moc_findnamewindow.obj release\moc_findtypetimewindow.obj release\moc_infowindow.obj release\moc_interactivewindow.obj release\moc_mainwindow.obj release\moc_showmonsters.obj
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -410,7 +396,6 @@ release\moc_addwindow.cpp: ..\lab1a-qt\addwindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -438,6 +423,7 @@ release\moc_addwindow.cpp: ..\lab1a-qt\addwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabbar.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\addwindow.h -o release\moc_addwindow.cpp
@@ -547,6 +533,8 @@ release\moc_enteridwindow.cpp: ..\lab1a-qt\enteridwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qfiledevice.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qvector2d.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qtouchdevice.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qicon.h \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\enteridwindow.h -o release\moc_enteridwindow.cpp
@@ -662,7 +650,6 @@ release\moc_findhpdamagewindow.cpp: ..\lab1a-qt\findhpdamagewindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -691,6 +678,7 @@ release\moc_findhpdamagewindow.cpp: ..\lab1a-qt\findhpdamagewindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\showmonsters.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\findhpdamagewindow.h -o release\moc_findhpdamagewindow.cpp
@@ -807,7 +795,6 @@ release\moc_findmenuwindow.cpp: ..\lab1a-qt\findmenuwindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -836,8 +823,11 @@ release\moc_findmenuwindow.cpp: ..\lab1a-qt\findmenuwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\showmonsters.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		..\lab1a-qt\findhpdamagewindow.h \
 		..\lab1a-qt\findtypetimewindow.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\findmenuwindow.h -o release\moc_findmenuwindow.cpp
@@ -953,7 +943,6 @@ release\moc_findnamewindow.cpp: ..\lab1a-qt\findnamewindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -982,6 +971,7 @@ release\moc_findnamewindow.cpp: ..\lab1a-qt\findnamewindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\showmonsters.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\findnamewindow.h -o release\moc_findnamewindow.cpp
@@ -1097,7 +1087,6 @@ release\moc_findtypetimewindow.cpp: ..\lab1a-qt\findtypetimewindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -1125,6 +1114,10 @@ release\moc_findtypetimewindow.cpp: ..\lab1a-qt\findtypetimewindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabbar.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
+		..\lab1a-qt\showmonsters.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\findtypetimewindow.h -o release\moc_findtypetimewindow.cpp
@@ -1234,6 +1227,8 @@ release\moc_infowindow.cpp: ..\lab1a-qt\infowindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qfiledevice.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qvector2d.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qtouchdevice.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qicon.h \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\infowindow.h -o release\moc_infowindow.cpp
@@ -1350,7 +1345,6 @@ release\moc_interactivewindow.cpp: ..\lab1a-qt\interactivewindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -1378,13 +1372,15 @@ release\moc_interactivewindow.cpp: ..\lab1a-qt\interactivewindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabbar.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		..\lab1a-qt\enteridwindow.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QList \
 		..\lab1a-qt\findmenuwindow.h \
 		..\lab1a-qt\findnamewindow.h \
 		..\lab1a-qt\showmonsters.h \
 		..\lab1a-qt\findhpdamagewindow.h \
 		..\lab1a-qt\findtypetimewindow.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\interactivewindow.h -o release\moc_interactivewindow.cpp
@@ -1502,7 +1498,6 @@ release\moc_mainwindow.cpp: ..\lab1a-qt\mainwindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -1531,15 +1526,17 @@ release\moc_mainwindow.cpp: ..\lab1a-qt\mainwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\infowindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QDialog \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		..\lab1a-qt\interactivewindow.h \
 		..\lab1a-qt\addwindow.h \
 		..\lab1a-qt\enteridwindow.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QList \
 		..\lab1a-qt\findmenuwindow.h \
 		..\lab1a-qt\findnamewindow.h \
 		..\lab1a-qt\showmonsters.h \
 		..\lab1a-qt\findhpdamagewindow.h \
 		..\lab1a-qt\findtypetimewindow.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\mainwindow.h -o release\moc_mainwindow.cpp
@@ -1655,7 +1652,6 @@ release\moc_showmonsters.cpp: ..\lab1a-qt\showmonsters.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -1683,6 +1679,7 @@ release\moc_showmonsters.cpp: ..\lab1a-qt\showmonsters.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabbar.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		release\moc_predefs.h \
 		E:\Qt\5.15.1\msvc2015_64\bin\moc.exe
 	E:\Qt\5.15.1\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/build-lab1a-qt-Desktop_Qt_5_15_1_MSVC2015_64bit-Debug/release/moc_predefs.h -IE:/Qt/5.15.1/msvc2015_64/mkspecs/win32-msvc -IC:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab1a/lab1a-qt -IE:/Qt/5.15.1/msvc2015_64/include -IE:/Qt/5.15.1/msvc2015_64/include/QtWidgets -IE:/Qt/5.15.1/msvc2015_64/include/QtGui -IE:/Qt/5.15.1/msvc2015_64/include/QtANGLE -IE:/Qt/5.15.1/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\lab1a-qt\showmonsters.h -o release\moc_showmonsters.cpp
@@ -1746,74 +1743,28 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-release\benchmark.obj: ..\lab1a-qt\Code\benchmark.cpp ..\lab1a-qt\Code\benchmark.h \
-		..\lab1a-qt\Code\memory_opening_mode.h \
-		..\lab1a-qt\Code\opening_mode.h \
-		..\lab1a-qt\Code\monster.h \
-		..\lab1a-qt\Code\file_functions.h \
-		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
-		..\lab1a-qt\Code\file_opening_mode.h
-
-release\demo.obj: ..\lab1a-qt\Code\demo.cpp ..\lab1a-qt\Code\demo.h \
-		..\lab1a-qt\Code\memory_opening_mode.h \
-		..\lab1a-qt\Code\opening_mode.h \
-		..\lab1a-qt\Code\monster.h \
-		..\lab1a-qt\Code\file_functions.h \
-		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h
-
 release\file_functions.obj: ..\lab1a-qt\Code\file_functions.cpp ..\lab1a-qt\Code\file_functions.h
 
 release\file_opening_mode.obj: ..\lab1a-qt\Code\file_opening_mode.cpp ..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\Code\opening_mode.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
-		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h
-
-release\interactive.obj: ..\lab1a-qt\Code\interactive.cpp ..\lab1a-qt\Code\interactive.h \
-		..\lab1a-qt\Code\file_opening_mode.h \
-		..\lab1a-qt\Code\opening_mode.h \
-		..\lab1a-qt\Code\monster.h \
-		..\lab1a-qt\Code\file_functions.h \
-		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
-		..\lab1a-qt\Code\memory_opening_mode.h
+		..\lab1a-qt\Code\file_mode.h
 
 release\memory_opening_mode.obj: ..\lab1a-qt\Code\memory_opening_mode.cpp ..\lab1a-qt\Code\memory_opening_mode.h \
 		..\lab1a-qt\Code\opening_mode.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
-		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h
-
-release\monster.obj: ..\lab1a-qt\Code\monster.cpp ..\lab1a-qt\Code\monster.h \
-		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h
 
-release\monster_menu.obj: ..\lab1a-qt\Code\monster_menu.cpp ..\lab1a-qt\Code\monster_menu.h \
-		..\lab1a-qt\Code\interactive.h \
-		..\lab1a-qt\Code\file_opening_mode.h \
-		..\lab1a-qt\Code\opening_mode.h \
-		..\lab1a-qt\Code\monster.h \
-		..\lab1a-qt\Code\file_functions.h \
-		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
-		..\lab1a-qt\Code\memory_opening_mode.h \
-		..\lab1a-qt\Code\demo.h \
-		..\lab1a-qt\Code\benchmark.h
-
-release\my_reads.obj: ..\lab1a-qt\Code\my_reads.cpp ..\lab1a-qt\Code\my_reads.h \
-		..\lab1a-qt\Code\monster.h \
+release\monster.obj: ..\lab1a-qt\Code\monster.cpp ..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h
 
 release\opening_mode.obj: ..\lab1a-qt\Code\opening_mode.cpp ..\lab1a-qt\Code\opening_mode.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
-		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h
+		..\lab1a-qt\Code\file_mode.h
 
 release\addwindow.obj: ..\lab1a-qt\addwindow.cpp ..\lab1a-qt\addwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QDialog \
@@ -1926,7 +1877,6 @@ release\addwindow.obj: ..\lab1a-qt\addwindow.cpp ..\lab1a-qt\addwindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -1954,6 +1904,7 @@ release\addwindow.obj: ..\lab1a-qt\addwindow.cpp ..\lab1a-qt\addwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabbar.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		ui_addwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
@@ -2093,6 +2044,8 @@ release\enteridwindow.obj: ..\lab1a-qt\enteridwindow.cpp ..\lab1a-qt\enteridwind
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qfiledevice.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qvector2d.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qtouchdevice.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qicon.h \
 		ui_enteridwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
@@ -2113,7 +2066,6 @@ release\enteridwindow.obj: ..\lab1a-qt\enteridwindow.cpp ..\lab1a-qt\enteridwind
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QPushButton \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qpushbutton.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qabstractbutton.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qicon.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QSpinBox \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qspinbox.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qabstractspinbox.h \
@@ -2232,7 +2184,6 @@ release\findhpdamagewindow.obj: ..\lab1a-qt\findhpdamagewindow.cpp ..\lab1a-qt\f
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -2261,6 +2212,7 @@ release\findhpdamagewindow.obj: ..\lab1a-qt\findhpdamagewindow.cpp ..\lab1a-qt\f
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\showmonsters.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		ui_findhpdamagewindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
@@ -2399,7 +2351,6 @@ release\findmenuwindow.obj: ..\lab1a-qt\findmenuwindow.cpp ..\lab1a-qt\findmenuw
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -2428,8 +2379,11 @@ release\findmenuwindow.obj: ..\lab1a-qt\findmenuwindow.cpp ..\lab1a-qt\findmenuw
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\showmonsters.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		..\lab1a-qt\findhpdamagewindow.h \
 		..\lab1a-qt\findtypetimewindow.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
 		ui_findmenuwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
@@ -2439,8 +2393,6 @@ release\findmenuwindow.obj: ..\lab1a-qt\findmenuwindow.cpp ..\lab1a-qt\findmenuw
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qguiapplication.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qinputmethod.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QLabel \
-		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qlabel.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QPushButton \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qpushbutton.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qabstractbutton.h \
@@ -2562,7 +2514,6 @@ release\findnamewindow.obj: ..\lab1a-qt\findnamewindow.cpp ..\lab1a-qt\findnamew
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -2591,6 +2542,7 @@ release\findnamewindow.obj: ..\lab1a-qt\findnamewindow.cpp ..\lab1a-qt\findnamew
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\showmonsters.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		ui_findnamewindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
@@ -2730,7 +2682,6 @@ release\findtypetimewindow.obj: ..\lab1a-qt\findtypetimewindow.cpp ..\lab1a-qt\f
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -2758,7 +2709,36 @@ release\findtypetimewindow.obj: ..\lab1a-qt\findtypetimewindow.cpp ..\lab1a-qt\f
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabbar.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
-		ui_findtypetimewindow.h
+		..\lab1a-qt\showmonsters.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
+		ui_findtypetimewindow.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qapplication.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qcoreapplication.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qeventloop.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qguiapplication.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qinputmethod.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QDateTimeEdit \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qdatetimeedit.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qcalendar.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QHBoxLayout \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qboxlayout.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qlayout.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qlayoutitem.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qgridlayout.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QLabel \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qlabel.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QPushButton \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qpushbutton.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qabstractbutton.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QRadioButton \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qradiobutton.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QVBoxLayout \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QWidget
 
 release\infowindow.obj: ..\lab1a-qt\infowindow.cpp ..\lab1a-qt\infowindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QDialog \
@@ -2865,6 +2845,8 @@ release\infowindow.obj: ..\lab1a-qt\infowindow.cpp ..\lab1a-qt\infowindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qfiledevice.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qvector2d.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qtouchdevice.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qicon.h \
 		ui_infowindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
@@ -2879,8 +2861,7 @@ release\infowindow.obj: ..\lab1a-qt\infowindow.cpp ..\lab1a-qt\infowindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qframe.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QPushButton \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qpushbutton.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qabstractbutton.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qicon.h
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qabstractbutton.h
 
 release\interactivewindow.obj: ..\lab1a-qt\interactivewindow.cpp ..\lab1a-qt\interactivewindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QDialog \
@@ -2994,7 +2975,6 @@ release\interactivewindow.obj: ..\lab1a-qt\interactivewindow.cpp ..\lab1a-qt\int
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -3022,13 +3002,15 @@ release\interactivewindow.obj: ..\lab1a-qt\interactivewindow.cpp ..\lab1a-qt\int
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabbar.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		..\lab1a-qt\enteridwindow.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QList \
 		..\lab1a-qt\findmenuwindow.h \
 		..\lab1a-qt\findnamewindow.h \
 		..\lab1a-qt\showmonsters.h \
 		..\lab1a-qt\findhpdamagewindow.h \
 		..\lab1a-qt\findtypetimewindow.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
 		ui_interactivewindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
@@ -3165,7 +3147,6 @@ release\main.obj: ..\lab1a-qt\main.cpp ..\lab1a-qt\mainwindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -3194,15 +3175,17 @@ release\main.obj: ..\lab1a-qt\main.cpp ..\lab1a-qt\mainwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\infowindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QDialog \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		..\lab1a-qt\interactivewindow.h \
 		..\lab1a-qt\addwindow.h \
 		..\lab1a-qt\enteridwindow.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QList \
 		..\lab1a-qt\findmenuwindow.h \
 		..\lab1a-qt\findnamewindow.h \
 		..\lab1a-qt\showmonsters.h \
 		..\lab1a-qt\findhpdamagewindow.h \
 		..\lab1a-qt\findtypetimewindow.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qapplication.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qcoreapplication.h \
@@ -3324,7 +3307,6 @@ release\mainwindow.obj: ..\lab1a-qt\mainwindow.cpp ..\lab1a-qt\mainwindow.h \
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -3353,17 +3335,22 @@ release\mainwindow.obj: ..\lab1a-qt\mainwindow.cpp ..\lab1a-qt\mainwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
 		..\lab1a-qt\infowindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QDialog \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		..\lab1a-qt\interactivewindow.h \
 		..\lab1a-qt\addwindow.h \
 		..\lab1a-qt\enteridwindow.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QList \
 		..\lab1a-qt\findmenuwindow.h \
 		..\lab1a-qt\findnamewindow.h \
 		..\lab1a-qt\showmonsters.h \
 		..\lab1a-qt\findhpdamagewindow.h \
 		..\lab1a-qt\findtypetimewindow.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QDateTime \
+		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qdatetime.h \
 		ui_mainwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QAction \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qaction.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qactiongroup.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qapplication.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\qcoreapplication.h \
@@ -3373,11 +3360,10 @@ release\mainwindow.obj: ..\lab1a-qt\mainwindow.cpp ..\lab1a-qt\mainwindow.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtGui\qinputmethod.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QLabel \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qlabel.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMenu \
+		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qmenu.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMenuBar \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qmenubar.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qmenu.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qaction.h \
-		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qactiongroup.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QPushButton \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qpushbutton.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qabstractbutton.h \
@@ -3730,7 +3716,6 @@ release\showmonsters.obj: ..\lab1a-qt\showmonsters.cpp ..\lab1a-qt\showmonsters.
 		..\lab1a-qt\Code\monster.h \
 		..\lab1a-qt\Code\file_functions.h \
 		..\lab1a-qt\Code\file_mode.h \
-		..\lab1a-qt\Code\my_reads.h \
 		..\lab1a-qt\Code\file_opening_mode.h \
 		..\lab1a-qt\mymessage.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QMessageBox \
@@ -3758,6 +3743,7 @@ release\showmonsters.obj: ..\lab1a-qt\showmonsters.cpp ..\lab1a-qt\showmonsters.
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabbar.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\qrubberband.h \
+		E:\Qt\5.15.1\msvc2015_64\include\QtGui\QIcon \
 		ui_showmonsters.h \
 		E:\Qt\5.15.1\msvc2015_64\include\QtCore\QVariant \
 		E:\Qt\5.15.1\msvc2015_64\include\QtWidgets\QApplication \

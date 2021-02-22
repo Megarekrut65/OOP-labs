@@ -61,6 +61,8 @@ public:
         QFont font1;
         font1.setPointSize(14);
         spinBoxHP->setFont(font1);
+        spinBoxHP->setMinimum(1);
+        spinBoxHP->setMaximum(50000);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, spinBoxHP);
 
@@ -73,6 +75,8 @@ public:
         spinBoxDamage = new QSpinBox(formLayoutWidget);
         spinBoxDamage->setObjectName(QString::fromUtf8("spinBoxDamage"));
         spinBoxDamage->setFont(font1);
+        spinBoxDamage->setMinimum(1);
+        spinBoxDamage->setMaximum(1000);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, spinBoxDamage);
 

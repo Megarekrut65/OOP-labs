@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "mylibrary.h"
 #include <QStandardItemModel>
+#include <QIcon>
 
 namespace Ui {
 class ShowMonsters;

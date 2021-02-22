@@ -5,6 +5,7 @@
 #include "mylibrary.h"
 #include "infowindow.h"
 #include "interactivewindow.h"
+#include <QIcon>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,7 +21,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_5_clicked();
 
     void on_pushButton_clicked();
 
@@ -30,10 +30,13 @@ private slots:
 
     void on_pushButtonBinary_clicked();
 
+    void on_actionInfo_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::shared_ptr<InfoWindow> info;
     std::shared_ptr<om::OpeningMode> open_mode;
+    QString name_mode;
     std::string text_path;
     std::string binary_path;
 

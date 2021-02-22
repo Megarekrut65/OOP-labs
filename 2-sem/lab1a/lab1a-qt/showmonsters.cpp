@@ -7,6 +7,8 @@ ShowMonsters::ShowMonsters(std::vector<std::shared_ptr<Monster>> monsters, QWidg
 {
     ui->setupUi(this);
     this->setWindowTitle("Monsters");
+    QIcon icon("images/find.ico");
+    this->setWindowIcon(icon);
     ModelFunctions::set_the_model(model, ui->tableView);
     for(std::size_t i = 0; i < monsters.size(); i++)
         ModelFunctions::add_monster_to_table(model, monsters[i]);

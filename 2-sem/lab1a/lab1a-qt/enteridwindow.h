@@ -2,6 +2,7 @@
 #define ENTERIDWINDOW_H
 
 #include <QDialog>
+#include <QIcon>
 
 namespace Ui {
 class EnterIdWindow;

@@ -5,6 +5,7 @@
 #include "mylibrary.h"
 #include "showmonsters.h"
 #include <QDateTime>
+#include <QIcon>
 
 namespace Ui {
 class FindTypeTimeWindow;

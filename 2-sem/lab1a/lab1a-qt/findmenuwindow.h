@@ -6,6 +6,7 @@
 #include "findhpdamagewindow.h"
 #include "findtypetimewindow.h"
 #include "mylibrary.h"
+#include <QIcon>
 
 namespace Ui {
 class FindMenuWindow;

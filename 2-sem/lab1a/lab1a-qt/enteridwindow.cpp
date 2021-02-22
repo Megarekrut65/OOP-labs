@@ -7,6 +7,8 @@ EnterIdWindow::EnterIdWindow(unsigned& id, QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Id");
+    QIcon icon("images/find.ico");
+    this->setWindowIcon(icon);
 }
 
 EnterIdWindow::~EnterIdWindow()
@@ -25,5 +27,6 @@ void EnterIdWindow::on_pushButtonOk_clicked()
 
 void EnterIdWindow::on_pushButtonCancel_clicked()
 {
+    id = 0;
     this->close();
 }

@@ -8,6 +8,8 @@ FindMenuWindow::FindMenuWindow(std::shared_ptr<OpeningMode> open_mode, QWidget *
     ui->setupUi(this);
     this->setWindowTitle("Find menu");
     if(!open_mode) this->close();
+    QIcon icon("images/find.ico");
+    this->setWindowIcon(icon);
 }
 
 FindMenuWindow::~FindMenuWindow()

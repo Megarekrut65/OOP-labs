@@ -11,8 +11,14 @@ AddWindow::AddWindow(QStandardItemModel* model,
     ui->setupUi(this);
     if(!open_mode ||!model||(edit && !monster)) this->close();
     this->setWindowTitle("Edit the monster");
+    QIcon icon("images/edit.ico");
     if(edit) set_data();
-    else this->setWindowTitle("Create new monster");
+    else
+    {
+        this->setWindowTitle("Create new monster");
+        icon = QIcon("images/plus.ico");
+    }
+    this->setWindowIcon(icon);
 }
 
 AddWindow::~AddWindow()

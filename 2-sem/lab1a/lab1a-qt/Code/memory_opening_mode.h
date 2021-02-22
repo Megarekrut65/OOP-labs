@@ -75,10 +75,6 @@ namespace mmode//memory mode
 		void append_monster(mon::Monster monster);
 	public:
 		/**
-		* \brief Prints the monsters to display.
-		*/
-		void write_all_monsters();
-		/**
 		* \brief Gives the size occupied by all monsters.
 		* \returns size_of of array with monsters
 		*/

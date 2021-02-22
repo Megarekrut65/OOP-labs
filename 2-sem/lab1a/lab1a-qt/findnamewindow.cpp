@@ -8,6 +8,8 @@ FindNameWindow::FindNameWindow(std::shared_ptr<OpeningMode> open_mode, QWidget *
     ui->setupUi(this);
     this->setWindowTitle("Find by name");
     if(!open_mode) this->close();
+    QIcon icon("images/find.ico");
+    this->setWindowIcon(icon);
 }
 
 FindNameWindow::~FindNameWindow()

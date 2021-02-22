@@ -8,6 +8,8 @@ FindHPDamageWindow::FindHPDamageWindow(std::shared_ptr<OpeningMode> open_mode, Q
     ui->setupUi(this);
     this->setWindowTitle("Find by hp and damage");
     if(!open_mode) this->close();
+    QIcon icon("images/find.ico");
+    this->setWindowIcon(icon);
 }
 
 FindHPDamageWindow::~FindHPDamageWindow()

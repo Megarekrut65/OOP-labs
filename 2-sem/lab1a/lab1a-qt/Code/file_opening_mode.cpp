@@ -132,19 +132,4 @@ namespace fmode
         monster.add_to_file(file, mode);
         file.close();
     }
-    void FileMode::write_all_monsters()
-    {
-        std::ifstream file(path, in_mode);
-        std::size_t index = 1;
-        std::cout << "\nAll monsters:" << std::endl;
-        while (!file.eof())
-        {
-            mon::Monster monster = mon::Monster(file, mode);
-            if (file.eof()) break;
-            std::cout << "\n<" << index++ << ">" << std::endl;
-            std::cout << monster << std::endl;
-        }
-        if (index == 1) std::cout << "Monsters aren't found!" << std::endl;
-        file.close();
-    }
 }
