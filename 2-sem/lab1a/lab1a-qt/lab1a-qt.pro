@@ -21,13 +21,15 @@ SOURCES += \
     Code/opening_mode.cpp \
     addwindow.cpp \
     enteridwindow.cpp \
+    findmenuwindow.cpp \
     findnamewindow.cpp \
     infowindow.cpp \
     interactivewindow.cpp \
     main.cpp \
     mainwindow.cpp \
     modelfunctions.cpp \
-    mymessage.cpp
+    mymessage.cpp \
+    showmonsters.cpp
 
 HEADERS += \
     Code/benchmark.h \
@@ -43,21 +45,25 @@ HEADERS += \
     Code/opening_mode.h \
     addwindow.h \
     enteridwindow.h \
+    findmenuwindow.h \
     findnamewindow.h \
     infowindow.h \
     interactivewindow.h \
     mainwindow.h \
     modelfunctions.h \
     mylibrary.h \
-    mymessage.h
+    mymessage.h \
+    showmonsters.h
 
 FORMS += \
     addwindow.ui \
     enteridwindow.ui \
+    findmenuwindow.ui \
     findnamewindow.ui \
     infowindow.ui \
     interactivewindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    showmonsters.ui
 
 TRANSLATIONS += \
     lab1a-qt_en_GB.ts

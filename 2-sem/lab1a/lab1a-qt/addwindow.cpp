@@ -89,7 +89,7 @@ bool AddWindow::check_empty()
 {
     if(is_empty())
     {
-        MyMessage::error_message("Error","There is empty field!");
+        MyMessage::error_message(this, "Error","There is empty field!");
         return true;
     }
     return false;

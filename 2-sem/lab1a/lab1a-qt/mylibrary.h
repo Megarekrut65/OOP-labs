@@ -4,6 +4,7 @@
 #include "Code/file_opening_mode.h"
 #include <memory>
 #include "mymessage.h"
+#include "modelfunctions.h"
 
 using namespace mmode;
 using namespace fmode;

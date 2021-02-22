@@ -1,9 +1,9 @@
 #include "mymessage.h"
 
-void MyMessage::error_message(const QString& title, const QString& message)
+void MyMessage::error_message(QWidget* that,const QString& title, const QString& message)
 {
     QMessageBox messageBox;
-    messageBox.critical(0, title, message);
+    messageBox.critical(that, title, message);
     messageBox.setFixedSize(500,200);
 }
 bool MyMessage::question_message(QWidget* that, const QString& title, const QString& message)

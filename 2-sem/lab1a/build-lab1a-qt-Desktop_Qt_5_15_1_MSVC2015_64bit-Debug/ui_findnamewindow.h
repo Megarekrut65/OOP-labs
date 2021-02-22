@@ -30,14 +30,16 @@ public:
     QLineEdit *lineEdit;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
+    QPushButton *pushButtonOK;
+    QPushButton *pushButtonCancel;
 
     void setupUi(QDialog *FindNameWindow)
     {
         if (FindNameWindow->objectName().isEmpty())
             FindNameWindow->setObjectName(QString::fromUtf8("FindNameWindow"));
-        FindNameWindow->resize(319, 201);
+        FindNameWindow->resize(320, 200);
+        FindNameWindow->setMinimumSize(QSize(320, 200));
+        FindNameWindow->setMaximumSize(QSize(320, 200));
         verticalLayoutWidget = new QWidget(FindNameWindow);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(10, 10, 301, 111));
@@ -68,19 +70,19 @@ public:
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_2 = new QPushButton(horizontalLayoutWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButtonOK = new QPushButton(horizontalLayoutWidget);
+        pushButtonOK->setObjectName(QString::fromUtf8("pushButtonOK"));
         QFont font2;
         font2.setPointSize(12);
-        pushButton_2->setFont(font2);
+        pushButtonOK->setFont(font2);
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(pushButtonOK);
 
-        pushButton = new QPushButton(horizontalLayoutWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setFont(font2);
+        pushButtonCancel = new QPushButton(horizontalLayoutWidget);
+        pushButtonCancel->setObjectName(QString::fromUtf8("pushButtonCancel"));
+        pushButtonCancel->setFont(font2);
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(pushButtonCancel);
 
 
         retranslateUi(FindNameWindow);
@@ -92,8 +94,8 @@ public:
     {
         FindNameWindow->setWindowTitle(QCoreApplication::translate("FindNameWindow", "Dialog", nullptr));
         label->setText(QCoreApplication::translate("FindNameWindow", "Enter name or fragment name", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("FindNameWindow", "OK", nullptr));
-        pushButton->setText(QCoreApplication::translate("FindNameWindow", "Cancel", nullptr));
+        pushButtonOK->setText(QCoreApplication::translate("FindNameWindow", "OK", nullptr));
+        pushButtonCancel->setText(QCoreApplication::translate("FindNameWindow", "Cancel", nullptr));
     } // retranslateUi
 
 };

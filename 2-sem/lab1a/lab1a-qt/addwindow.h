@@ -6,7 +6,6 @@
 #include <QString>
 #include <QMessageBox>
 #include <QStandardItemModel>
-#include "modelfunctions.h"
 
 namespace Ui {
 class AddWindow;

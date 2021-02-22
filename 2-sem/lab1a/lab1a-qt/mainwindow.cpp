@@ -27,7 +27,7 @@ void MainWindow::on_pushButton_clicked()
 }
 void MainWindow::open_interactive_mode()
 {
-    InteractiveWindow interactive(this, open_mode);
+    InteractiveWindow interactive(open_mode);
     interactive.setModal(true);
     interactive.exec();
 }

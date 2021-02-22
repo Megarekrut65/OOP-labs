@@ -4,6 +4,7 @@
 #include <QStandardItemModel>
 #include <memory>
 #include "Code/monster.h"
+#include <QTableView>
 
 using namespace mon;
 class ModelFunctions
@@ -16,6 +17,7 @@ public:
     static void add_monster_to_table(QStandardItemModel* model, std::shared_ptr<Monster> monster);
     static void edit_monster_in_table(QStandardItemModel* model, std::shared_ptr<Monster> monster);
     static void delete_monster_from_table(QStandardItemModel* model, std::shared_ptr<Monster> monster);
+    static void set_the_model(QStandardItemModel* model, QTableView* table);
 };
 
 #endif // MODELFUNCTIONS_H

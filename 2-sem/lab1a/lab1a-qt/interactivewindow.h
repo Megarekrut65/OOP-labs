@@ -6,6 +6,7 @@
 #include "enteridwindow.h"
 #include <QStandardItemModel>
 #include <QList>
+#include "findmenuwindow.h"
 
 namespace Ui {
 class InteractiveWindow;
@@ -16,8 +17,7 @@ class InteractiveWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit InteractiveWindow(QWidget *parent = nullptr,
-                               std::shared_ptr<OpeningMode> open_mode = nullptr);
+    explicit InteractiveWindow(std::shared_ptr<OpeningMode> open_mode, QWidget *parent = nullptr);
     ~InteractiveWindow();
 
 private slots:
@@ -38,9 +38,6 @@ private:
     QStandardItemModel* model;
 
     std::shared_ptr<Monster> get_monster();
-    void set_the_model();
-
-
 };
 
 #endif // INTERACTIVEWINDOW_H

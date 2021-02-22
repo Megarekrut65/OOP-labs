@@ -43,3 +43,10 @@ void ModelFunctions::delete_monster_from_table(QStandardItemModel* model, std::s
 {
     model->removeRow(find_row_of_monster(model, monster));
 }
+void ModelFunctions::set_the_model(QStandardItemModel* model, QTableView* table)
+{
+    table->setModel(model);
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    model->setHorizontalHeaderLabels({"ID", "Name","HP","Damage","Chance","Type of attack","Time and Data"});
+
+}

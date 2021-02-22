@@ -1,7 +1,7 @@
 #include "interactivewindow.h"
 #include "ui_interactivewindow.h"
 
-InteractiveWindow::InteractiveWindow(QWidget *parent, std::shared_ptr<OpeningMode> open_mode) :
+InteractiveWindow::InteractiveWindow(std::shared_ptr<OpeningMode> open_mode, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::InteractiveWindow),model(new QStandardItemModel)
 {
@@ -9,14 +9,7 @@ InteractiveWindow::InteractiveWindow(QWidget *parent, std::shared_ptr<OpeningMod
     this->open_mode = open_mode;
     ui->setupUi(this);
     this->setWindowTitle("Menu");
-    set_the_model();
-}
-void InteractiveWindow::set_the_model()
-{
-    ui->tableView->setModel(model);
-    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    model->setHorizontalHeaderLabels({"ID", "Name","HP","Damage","Chance","Type of attack","Time and Data"});
-
+    ModelFunctions::set_the_model(model, ui->tableView);
 }
 InteractiveWindow::~InteractiveWindow()
 {
@@ -60,7 +53,6 @@ void InteractiveWindow::on_pushButtonEdit_clicked()
         AddWindow add(this, model, open_mode, monster, true);
         add.setModal(true);
         add.exec();
-        //need edit in table
     }
 }
 
@@ -81,5 +73,7 @@ void InteractiveWindow::on_pushButtonDelete_clicked()
 
 void InteractiveWindow::on_pushButtonFind_clicked()
 {
-
+    FindMenuWindow find(open_mode);
+    find.setModal(true);
+    find.exec();
 }
