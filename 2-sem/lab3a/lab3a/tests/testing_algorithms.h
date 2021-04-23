@@ -1,7 +1,6 @@
 #pragma once
 #include "doctest.h"
-#include "../algorithms/all_sorts.h"
-
+#include "../sequential-algorithms/all_sorts.h"
 
 void subcase_sorts(std::vector<int>& arr)
 {

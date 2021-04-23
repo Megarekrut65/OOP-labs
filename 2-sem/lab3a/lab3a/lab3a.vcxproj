@@ -142,10 +142,10 @@
     <ClCompile Include="lab3a.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algorithms\all_sorts.h" />
-    <ClInclude Include="algorithms\libraries_and_namespaces.h" />
-    <ClInclude Include="algorithms\merge_sort.h" />
-    <ClInclude Include="algorithms\quick_sort.h" />
+    <ClInclude Include="sequential-algorithms\all_sorts.h" />
+    <ClInclude Include="sequential-algorithms\libraries_and_namespaces.h" />
+    <ClInclude Include="sequential-algorithms\merge_sort.h" />
+    <ClInclude Include="sequential-algorithms\quick_sort.h" />
     <ClInclude Include="tests\doctest.h" />
     <ClInclude Include="tests\testing_algorithms.h" />
   </ItemGroup>
