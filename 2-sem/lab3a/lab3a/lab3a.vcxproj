@@ -146,6 +146,8 @@
     <ClInclude Include="algorithms\libraries_and_namespaces.h" />
     <ClInclude Include="algorithms\merge_sort.h" />
     <ClInclude Include="algorithms\quick_sort.h" />
+    <ClInclude Include="tests\doctest.h" />
+    <ClInclude Include="tests\testing_algorithms.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

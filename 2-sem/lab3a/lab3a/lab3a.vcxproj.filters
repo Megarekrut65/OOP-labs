@@ -16,6 +16,9 @@
     <Filter Include="Header Files\algorithms">
       <UniqueIdentifier>{1e137740-baab-4fa1-a784-2c34106ef6c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tests">
+      <UniqueIdentifier>{bdb851db-445a-4ad2-8105-9fa98f4a0986}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lab3a.cpp">
@@ -34,6 +37,12 @@
     </ClInclude>
     <ClInclude Include="algorithms\quick_sort.h">
       <Filter>Header Files\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\doctest.h">
+      <Filter>Header Files\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\testing_algorithms.h">
+      <Filter>Header Files\tests</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
