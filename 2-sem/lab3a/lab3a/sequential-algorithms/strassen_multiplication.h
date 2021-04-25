@@ -298,36 +298,8 @@ namespace sm
 	}*/
 
 	
-	/*std::vector<std::vector<int>> operator- (
-		const std::vector<std::vector<int>>& matrixA,
-		const std::vector<std::vector<int>>& matrixB)
-	{
-		std::size_t size = matrixA.size();
-		std::vector<std::vector<int>> matrixC(size, std::vector<int>(size));
-		for (std::size_t i = 0; i < size; i++)
-		{
-			for (std::size_t j = 0; j < size; j++)
-			{
-				matrixC[i][j] = matrixA[i][j] - matrixB[i][j];
-			}
-		}
-
-		return matrixC;
-	}
-	std::ostream& operator << (std::ostream& out, const std::vector<std::vector<int>>& matrix)
-	{
-		out << matrix.size() << std::endl;
-		for (std::size_t i = 0; i < matrix.size(); i++)
-		{
-			for (std::size_t j = 0; j < matrix[i].size(); j++)
-			{
-				out << matrix[i][j] << " ";
-			}
-			out << std::endl;
-		}
-
-		return out;
-	}
+	/*
+	
 	std::istream& operator >> (std::istream& in, std::vector<std::vector<int>>& matrix)
 	{
 		std::size_t size = 0;

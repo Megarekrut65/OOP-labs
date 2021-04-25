@@ -16,11 +16,13 @@ namespace mymatrix
 		std::size_t get_row_size() const;
 		std::size_t get_col_size() const;
 		Matrix<T> operator+ (const Matrix<T>& matrix);
+		Matrix<T> operator- (const Matrix<T>& matrix);
 		template <typename T>
 		friend std::ostream& operator<< (std::ostream& out, const Matrix<T>& matrix);
+		
 		/*T operator[][](std::size_t i, std::size_t j);
 		
-		Matrix<T> operator- (const Matrix<T>& matrix);
+		
 		
 		friend std::istream& operator >> (std::istream& in, Matrix<T>& matrix);*/
 	};
@@ -57,7 +59,29 @@ namespace mymatrix
 		{
 			for (std::size_t j = 0; j < size_col; j++)
 			{
-				res[i][j] = matrix.container[i][j] + this->container[i][j];
+				res[i][j] = this->container[i][j] + matrix.container[i][j];
+			}
+		}
+
+		return Matrix<T>(res);
+	}
+	template<typename T>
+	Matrix<T> Matrix<T>::operator- (const Matrix<T>& matrix)
+	{
+		std::size_t size_row = matrix.get_row_size();
+		std::size_t size_col = matrix.get_col_size();
+		std::string message = "Matrixes must have same size!";
+		if (this->get_row_size() != size_row || this->get_col_size() != size_col)
+		{
+			throw std::logic_error{ message };
+			return Matrix<T>();
+		}
+		std::vector<std::vector<T>> res(size_row, std::vector<T>(size_col));
+		for (std::size_t i = 0; i < size_row; i++)
+		{
+			for (std::size_t j = 0; j < size_col; j++)
+			{
+				res[i][j] = this->container[i][j] - matrix.container[i][j];
 			}
 		}
 
