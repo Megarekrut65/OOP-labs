@@ -3,6 +3,7 @@
 #include "tests/doctest.h"
 #include "tests/testing_algorithms.h"
 #include "tests/testing_matrix.h"
+#include "sequential-algorithms/simple_multiplication.h"
 
 int main(int argc, char** argv)
 {

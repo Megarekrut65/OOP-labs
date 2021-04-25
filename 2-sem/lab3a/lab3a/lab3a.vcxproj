@@ -144,9 +144,11 @@
   <ItemGroup>
     <ClInclude Include="sequential-algorithms\all_sorts.h" />
     <ClInclude Include="sequential-algorithms\libraries_and_namespaces.h" />
+    <ClInclude Include="sequential-algorithms\matrix_multiplication.h" />
     <ClInclude Include="sequential-algorithms\merge_sort.h" />
     <ClInclude Include="sequential-algorithms\my_matrix.h" />
     <ClInclude Include="sequential-algorithms\quick_sort.h" />
+    <ClInclude Include="sequential-algorithms\simple_multiplication.h" />
     <ClInclude Include="sequential-algorithms\strassen_multiplication.h" />
     <ClInclude Include="tests\doctest.h" />
     <ClInclude Include="tests\testing_algorithms.h" />

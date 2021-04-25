@@ -31,10 +31,27 @@ namespace mymatrix
 		template <typename T>
 		friend std::ostream& operator<< (std::ostream& out, const Matrix<T>& matrix);	
 		Column<T> operator[](std::size_t index);
+		void add_rows(std::size_t rows_number = 1);
+		void add_columns(std::size_t columns_number = 1);
 	};
 }
 namespace mymatrix
 {
+	template<typename T>
+	void Matrix<T>::add_rows(std::size_t rows_number)
+	{
+		for (std::size_t i = 0; i < rows_number; i++)
+			container.push_back(std::vector<T>());
+	}
+	template<typename T>
+	void Matrix<T>::add_columns(std::size_t columns_number)
+	{
+		for (auto item : container)
+		{
+			for (std::size_t i = 0; i < columns_number; i++)
+				item.push_back(T());
+		}
+	}
 	template<typename T>
 	bool Matrix<T>::check_sizes()
 	{
