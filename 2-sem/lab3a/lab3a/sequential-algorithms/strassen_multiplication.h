@@ -298,23 +298,7 @@ namespace sm
 	}*/
 
 	
-	/*
-	
-	std::istream& operator >> (std::istream& in, std::vector<std::vector<int>>& matrix)
-	{
-		std::size_t size = 0;
-		in >> size;
-		matrix = std::vector<std::vector<int>>(size, std::vector<int>(size));
-		for (std::size_t i = 0; i < size; i++)
-		{
-			for (std::size_t j = 0; j < size; j++)
-			{
-				in >> matrix[i][j];
-			}
-		}
-
-		return in;
-	}
+	/*	
 	//functions
 	bool checkSizesOfMatrices(const std::vector<std::vector<int>>& matrixA,
 		const std::vector<std::vector<int>>& matrixB)
