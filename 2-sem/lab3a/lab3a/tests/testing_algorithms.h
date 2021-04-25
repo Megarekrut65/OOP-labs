@@ -2,6 +2,13 @@
 #include "doctest.h"
 #include "../sequential-algorithms/all_sorts.h"
 
+TEST_CASE("testing operator== for std::vector")
+{
+    std::vector<int> arr = { 34,89,12,43 };
+    CHECK(arr == std::vector<int>{34, 89, 12, 43});
+    CHECK(!(arr == std::vector<int>{33, 89, 12, 43}));
+    CHECK(!(arr == std::vector<int>{89, 12, 43}));
+}
 void subcase_sorts(std::vector<int>& arr)
 {
     SUBCASE("merge sort")
