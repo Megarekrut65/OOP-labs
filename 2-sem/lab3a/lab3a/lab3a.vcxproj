@@ -145,9 +145,12 @@
     <ClInclude Include="sequential-algorithms\all_sorts.h" />
     <ClInclude Include="sequential-algorithms\libraries_and_namespaces.h" />
     <ClInclude Include="sequential-algorithms\merge_sort.h" />
+    <ClInclude Include="sequential-algorithms\my_matrix.h" />
     <ClInclude Include="sequential-algorithms\quick_sort.h" />
+    <ClInclude Include="sequential-algorithms\strassen_multiplication.h" />
     <ClInclude Include="tests\doctest.h" />
     <ClInclude Include="tests\testing_algorithms.h" />
+    <ClInclude Include="tests\testing_matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

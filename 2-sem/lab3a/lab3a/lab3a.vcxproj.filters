@@ -44,5 +44,14 @@
     <ClInclude Include="sequential-algorithms\quick_sort.h">
       <Filter>Header Files\sequential-algorithms</Filter>
     </ClInclude>
+    <ClInclude Include="sequential-algorithms\my_matrix.h">
+      <Filter>Header Files\sequential-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="sequential-algorithms\strassen_multiplication.h">
+      <Filter>Header Files\sequential-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\testing_matrix.h">
+      <Filter>Header Files\tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

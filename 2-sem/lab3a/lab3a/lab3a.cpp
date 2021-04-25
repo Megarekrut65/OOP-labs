@@ -2,6 +2,7 @@
 #include <iostream>
 #include "tests/doctest.h"
 #include "tests/testing_algorithms.h"
+#include "tests/testing_matrix.h"
 
 int main(int argc, char** argv)
 {
