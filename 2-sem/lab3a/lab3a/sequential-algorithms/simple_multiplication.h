@@ -64,13 +64,7 @@ namespace mulmatrix
 	Matrix<T> simple_multiplication(const Matrix<T>& first_matrix,
 		const Matrix<T>& second_matrix)
 	{
-		if (!check_correct_matrices_size(first_matrix, second_matrix))
-			throw std::logic_error{ "Matrices must have same size and be square!" };
-		Matrix<T> copy_first = first_matrix, copy_second = second_matrix;
-		add_zeros_to_matrices(copy_first, copy_second);
-		Matrix<T> res = simple_parts_multiplication(copy_first, copy_second);
-		remove_extra_zeros(res, first_matrix.get_row_size());
-		return res;
+		return multiply_algorithm(first_matrix,second_matrix, &simple_parts_multiplication);
 	}
 	template<typename T>
 	Matrix<T> simple_parts_multiplication(const Matrix<T>& first_matrix,
