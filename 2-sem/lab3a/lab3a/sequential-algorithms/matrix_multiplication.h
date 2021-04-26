@@ -51,13 +51,12 @@ namespace mulmatrix
 	template<typename T>
 	bool check_correct_matrices_size(const Matrix<T>& first_matrix,
 		const Matrix<T>& second_matrix);
-	/*template<typename T>
-	void addZerosToMatrices(Matrix<T>& matrixA,
-		Matrix<T>& matrixB);
 	template<typename T>
-	void addZeros(Matrix<T>& matrix, std::size_t newSize);
+	void add_zeros_to_matrices(Matrix<T>& firts_matrix,Matrix<T>& second_matrix);
 	template<typename T>
-	void removeExtraZeros(Matrix<T>& matrix, std::size_t oldSize);*/
+	void add_zeros(Matrix<T>& matrix, std::size_t new_size);
+	template<typename T>
+	void remove_extra_zeros(Matrix<T>& matrix, std::size_t old_size);
 }
 namespace mulmatrix
 {
@@ -82,7 +81,7 @@ namespace mulmatrix
 		{
 			for (std::size_t j = begin_column; j < end_column; j++)
 			{
-				part[i - begin_row][j - begin_column] = matrix[i][j];
+				part[i - begin_row][j - begin_column] = matrix.get_item(i,j);
 			}
 		}
 
@@ -137,56 +136,37 @@ namespace mulmatrix
 		{
 			for (std::size_t j = begin_column; j < end_column; j++)
 			{
-				matrix[i][j] = part[i - begin_row][j - begin_column];
+				matrix[i][j] = part.get_item(i - begin_row,j - begin_column);
 			}
 		}
 	}
 	template<typename T>
 	bool check_correct_matrices_size(const Matrix<T>& first_matrix, const Matrix<T>& second_matrix)
 	{
-		return (first_matrix.get_row_size() == second_matrix.get_row_size() &&
-				first_matrix.get_col_size() == second_matrix.get_col_size());
-	}
-	/*template<typename T>
-	void addZeros(Matrix<T>& matrix, std::size_t newSize)
-	{
-		std::size_t size = matrix.size();
-		std::size_t addZero = newSize - size;
-		for (std::size_t i = 0; i < size; i++)
-		{
-			for (std::size_t k = 0; k < addZero; k++)
-			{
-				matrix[i].push_back(0);
-			}
-		}
-		for (std::size_t j = 0; j < addZero; j++)
-		{
-			matrix.push_back(std::vector<int>(newSize));
-		}
+		return (first_matrix.get_row_size() == first_matrix.get_col_size() &&
+				second_matrix.get_row_size() == second_matrix.get_col_size()&&
+				first_matrix.get_row_size() == second_matrix.get_row_size());
 	}
 	template<typename T>
-	void addZerosToMatrices(Matrix<T>& matrixA,
-		Matrix<T>& matrixB)
+	void add_zeros(Matrix<T>& matrix, std::size_t new_size)
 	{
-		std::size_t newSize = (std::size_t)pow(2, ceil(log2(matrixA.size())));
-		addZeros(matrixA, newSize);
-		addZeros(matrixB, newSize);
+		std::size_t zeros_number = new_size - matrix.get_row_size();
+		matrix.add_rows(zeros_number);
+		matrix.add_columns(zeros_number);
 	}
 	template<typename T>
-	void removeExtraZeros(Matrix<T>& matrix, std::size_t oldSize)
+	void add_zeros_to_matrices(Matrix<T>& first_matrix, Matrix<T>& second_matix)
 	{
-		std::size_t size = matrix.size();
-		std::size_t removeZero = size - oldSize;
-		for (std::size_t i = 0; i < size; i++)
-		{
-			for (std::size_t k = 0; k < removeZero; k++)
-			{
-				matrix[i].erase(matrix[i].end() - 1);
-			}
-		}
-		for (std::size_t j = 0; j < removeZero; j++)
-		{
-			matrix.erase(matrix.end() - 1);
-		}
-	}*/
+		std::size_t new_size = (std::size_t)pow(2, ceil(log2(first_matrix.get_row_size())));
+		add_zeros(first_matrix, new_size);
+		add_zeros(second_matix, new_size);
+	}
+	template<typename T>
+	void remove_extra_zeros(Matrix<T>& matrix, std::size_t old_size)
+	{
+		std::size_t size = matrix.get_row_size();
+		std::size_t zeros_number = size - old_size;
+		matrix.remove_rows(zeros_number);
+		matrix.remove_columns(zeros_number);
+	}
 }

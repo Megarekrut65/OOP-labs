@@ -153,6 +153,7 @@
     <ClInclude Include="tests\doctest.h" />
     <ClInclude Include="tests\testing_algorithms.h" />
     <ClInclude Include="tests\testing_matrix.h" />
+    <ClInclude Include="tests\testing_multiplication.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -33,20 +33,49 @@ namespace mymatrix
 		Column<T> operator[](std::size_t index);
 		void add_rows(std::size_t rows_number = 1);
 		void add_columns(std::size_t columns_number = 1);
+		void remove_rows(std::size_t rows_number = 1);
+		void remove_columns(std::size_t columns_number = 1);
+		T get_item(std::size_t i, std::size_t j) const;
 	};
 }
 namespace mymatrix
 {
 	template<typename T>
+	T Matrix<T>::get_item(std::size_t i, std::size_t j)
+		const
+	{
+		if(i < get_row_size() && j < get_col_size())
+			return this->container[i][j];
+		throw std::out_of_range{ "The index=" + std::to_string(i) +
+			" larger than rows number=" + std::to_string(this->get_row_size())+
+			" or the index=" + std::to_string(j) +
+			" larger than columns number=" + std::to_string(this->get_col_size()) };
+	}
+	template<typename T>
+	void Matrix<T>::remove_rows(std::size_t rows_number)
+	{
+		for (std::size_t i = 0; i < rows_number; i++)
+			container.erase(container.begin() + container.size() - 1);
+	}
+	template<typename T>
+	void Matrix<T>::remove_columns(std::size_t columns_number)
+	{
+		for (auto& item : container)
+		{
+			for (std::size_t i = 0; i < columns_number; i++)
+				item.erase(item.begin() + item.size() - 1);
+		}
+	}
+	template<typename T>
 	void Matrix<T>::add_rows(std::size_t rows_number)
 	{
 		for (std::size_t i = 0; i < rows_number; i++)
-			container.push_back(std::vector<T>());
+			container.push_back(std::vector<T>(get_col_size()));
 	}
 	template<typename T>
 	void Matrix<T>::add_columns(std::size_t columns_number)
 	{
-		for (auto item : container)
+		for (auto& item : container)
 		{
 			for (std::size_t i = 0; i < columns_number; i++)
 				item.push_back(T());

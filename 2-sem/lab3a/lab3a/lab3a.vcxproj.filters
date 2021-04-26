@@ -59,5 +59,8 @@
     <ClInclude Include="sequential-algorithms\simple_multiplication.h">
       <Filter>Header Files\sequential-algorithms</Filter>
     </ClInclude>
+    <ClInclude Include="tests\testing_multiplication.h">
+      <Filter>Header Files\tests</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

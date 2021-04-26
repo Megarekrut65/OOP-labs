@@ -30,6 +30,22 @@ TEST_CASE("testing constructors")
 		"Numbers of columns must be same!",
 		std::logic_error);
 }
+TEST_CASE("testing get, add and remove rows/columns")
+{
+	Matrix<int> matrix1 = { { {2,4,5},
+							  {3,6,9} } };
+	CHECK(matrix1.get_row_size() == 2);
+	CHECK(matrix1.get_col_size() == 3);
+	matrix1.add_rows(3);
+	matrix1.add_columns(5);
+	CHECK(matrix1.get_row_size() == 2 + 3);
+	CHECK(matrix1.get_col_size() == 3 + 5);
+	CHECK(matrix1[3][5] == 0);
+	matrix1.remove_rows(1);
+	matrix1.remove_columns(2);
+	CHECK(matrix1.get_row_size() == 2 + 3 - 1);
+	CHECK(matrix1.get_col_size() == 3 + 5 - 2);
+}
 TEST_CASE("testing operator[][]")
 {
 	Matrix<int> matrix1({ {2,4,5},
@@ -47,6 +63,20 @@ TEST_CASE("testing operator[][]")
 		std::out_of_range);
 	CHECK_THROWS_WITH_AS(matrix1[1][3], 
 		"index=3 larger than columns number=3", 
+		std::out_of_range);
+	const Matrix<int> matrix2({ {2,4,5},
+								{3,6,0} });
+	CHECK(matrix2.get_item(0, 0) == 2);
+	CHECK(matrix2.get_item(0, 1) == 4);
+	CHECK(matrix2.get_item(0, 2) == 5);
+	CHECK(matrix2.get_item(1, 0) == 3);
+	CHECK(matrix2.get_item(1, 1) == 6);
+	CHECK(matrix2.get_item(1, 2) == 0);
+	CHECK_THROWS_WITH_AS(matrix2.get_item(3, 1),
+		"The index=3 larger than rows number=2 or the index=1 larger than columns number=3",
+		std::out_of_range);
+	CHECK_THROWS_WITH_AS(matrix2.get_item(1, 3),
+		"The index=1 larger than rows number=2 or the index=3 larger than columns number=3",
 		std::out_of_range);
 }
 TEST_CASE("testing operator+ and operator-")
