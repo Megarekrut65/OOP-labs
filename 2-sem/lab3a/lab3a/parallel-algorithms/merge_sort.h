@@ -1,6 +1,6 @@
 #pragma once
 #include "../libraries_and_namespaces.h"
-#include <thread>
+#include "thread_number.h"
 
 using namespace sorts;
 namespace parsorts
@@ -31,7 +31,7 @@ namespace parsorts
     *   \param end - index of end item
     */
     template<typename T>
-    void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end);
+    void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end, thnum::ThreadNumber& th_number);
 }
 namespace parsorts
 {
@@ -61,22 +61,22 @@ namespace parsorts
         for (; j < right_size; j++, k++) arr[k] = right_arr[j];
     }
     template<typename T>
-    void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end)
+    void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end, thnum::ThreadNumber& th_number)
     {
         if (end - begin < 2) return;
         std::size_t middle = (end + begin) / 2;
-        std::size_t num_threads = std::thread::hardware_concurrency();
         std::thread th;
-        if (num_threads > 0)
-            th = std::thread([=, &arr](){merge_sorting(arr, begin, middle);});
-        else merge_sorting(arr, begin, middle);
-        merge_sorting(arr, middle, end);
+        if (th_number.add_new_thread())
+            th = std::thread([=, &arr, &th_number](){merge_sorting(arr, begin, middle, th_number);});
+        else merge_sorting(arr, begin, middle, th_number);
+        merge_sorting(arr, middle, end, th_number);
         if(th.joinable()) th.join();
         merge(arr, begin, middle, end);
     }
     template<typename T>
     void merge_sort(std::vector<T>& arr)
     {
-        merge_sorting(arr, 0, arr.size());
+        thnum::ThreadNumber th_number;
+        merge_sorting(arr, 0, arr.size(), th_number);
     }
 }

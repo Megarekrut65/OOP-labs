@@ -24,7 +24,7 @@ namespace parsorts
     *   \param high - index of end item
     */
     template<typename T>
-    void quick_sorting(std::vector<T>& arr, long low, long high, thnum::ThNumber& th_number);
+    void quick_sorting(std::vector<T>& arr, long low, long high, thnum::ThreadNumber& th_number);
     /**
     *   \brief Sorts array
     *
@@ -53,7 +53,7 @@ namespace parsorts
         return std::size_t(i + 1);
     }
     template<typename T>
-    void quick_sorting(std::vector<T>& arr, long low, long high, thnum::ThNumber& th_number)
+    void quick_sorting(std::vector<T>& arr, long low, long high, thnum::ThreadNumber& th_number)
     {
         if (low < high)
         {
@@ -71,7 +71,7 @@ namespace parsorts
     void quick_sort(std::vector<T>& arr)
     {
         if(arr.size() < 2) return;
-        thnum::ThNumber th_number;
+        thnum::ThreadNumber th_number;
         quick_sorting(arr, 0, arr.size() - 1, th_number);
     }
 }
