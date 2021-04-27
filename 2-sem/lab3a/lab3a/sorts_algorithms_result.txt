@@ -1,121 +1,102 @@
-Size=2 {
-algorithm=sequential merge sort time=0.000018s
-algorithm=parallel merge sort time=0.000274s
-algorithm=sequential quick sort time=0.000003s
-algorithm=parallel quick sort time=0.000250s
+Size=100 {
+algorithm=sequential merge sort time=0.003502s
+algorithm=parallel merge sort time=0.007080s
+algorithm=sequential quick sort time=0.000161s
+algorithm=parallel quick sort time=0.001352s
 }
-Size=4 {
-algorithm=sequential merge sort time=0.000050s
-algorithm=parallel merge sort time=0.000465s
-algorithm=sequential quick sort time=0.000002s
-algorithm=parallel quick sort time=0.000391s
+Size=200 {
+algorithm=sequential merge sort time=0.005162s
+algorithm=parallel merge sort time=0.005387s
+algorithm=sequential quick sort time=0.000260s
+algorithm=parallel quick sort time=0.003703s
 }
-Size=8 {
-algorithm=sequential merge sort time=0.000090s
-algorithm=parallel merge sort time=0.000991s
-algorithm=sequential quick sort time=0.000006s
-algorithm=parallel quick sort time=0.000776s
+Size=400 {
+algorithm=sequential merge sort time=0.010464s
+algorithm=parallel merge sort time=0.018089s
+algorithm=sequential quick sort time=0.000538s
+algorithm=parallel quick sort time=0.049336s
 }
-Size=16 {
-algorithm=sequential merge sort time=0.000304s
-algorithm=parallel merge sort time=0.001027s
-algorithm=sequential quick sort time=0.000077s
-algorithm=parallel quick sort time=0.006267s
+Size=800 {
+algorithm=sequential merge sort time=0.015551s
+algorithm=parallel merge sort time=0.017589s
+algorithm=sequential quick sort time=0.001078s
+algorithm=parallel quick sort time=0.010487s
 }
-Size=32 {
-algorithm=sequential merge sort time=0.000440s
-algorithm=parallel merge sort time=0.001508s
-algorithm=sequential quick sort time=0.000025s
-algorithm=parallel quick sort time=0.006567s
+Size=1600 {
+algorithm=sequential merge sort time=0.043157s
+algorithm=parallel merge sort time=0.034765s
+algorithm=sequential quick sort time=0.002725s
+algorithm=parallel quick sort time=0.013071s
 }
-Size=64 {
-algorithm=sequential merge sort time=0.001287s
-algorithm=parallel merge sort time=0.007311s
-algorithm=sequential quick sort time=0.000043s
-algorithm=parallel quick sort time=0.004209s
+Size=3200 {
+algorithm=sequential merge sort time=0.066749s
+algorithm=parallel merge sort time=0.054587s
+algorithm=sequential quick sort time=0.004647s
+algorithm=parallel quick sort time=0.021677s
 }
-Size=128 {
-algorithm=sequential merge sort time=0.001824s
-algorithm=parallel merge sort time=0.007910s
-algorithm=sequential quick sort time=0.000096s
-algorithm=parallel quick sort time=0.005123s
+Size=6400 {
+algorithm=sequential merge sort time=0.134666s
+algorithm=parallel merge sort time=0.107802s
+algorithm=sequential quick sort time=0.011557s
+algorithm=parallel quick sort time=0.028868s
 }
-Size=256 {
-algorithm=sequential merge sort time=0.003855s
-algorithm=parallel merge sort time=0.007036s
-algorithm=sequential quick sort time=0.000248s
-algorithm=parallel quick sort time=0.004591s
+Size=12800 {
+algorithm=sequential merge sort time=0.256773s
+algorithm=parallel merge sort time=0.219404s
+algorithm=sequential quick sort time=0.021859s
+algorithm=parallel quick sort time=0.070822s
 }
-Size=512 {
-algorithm=sequential merge sort time=0.007903s
-algorithm=parallel merge sort time=0.009826s
-algorithm=sequential quick sort time=0.000470s
-algorithm=parallel quick sort time=0.007019s
+Size=25600 {
+algorithm=sequential merge sort time=0.551735s
+algorithm=parallel merge sort time=0.420358s
+algorithm=sequential quick sort time=0.069560s
+algorithm=parallel quick sort time=0.138796s
 }
-Size=1024 {
-algorithm=sequential merge sort time=0.025415s
-algorithm=parallel merge sort time=0.024622s
-algorithm=sequential quick sort time=0.001828s
-algorithm=parallel quick sort time=0.007137s
+Size=51200 {
+algorithm=sequential merge sort time=1.208109s
+algorithm=parallel merge sort time=0.766236s
+algorithm=sequential quick sort time=0.103691s
+algorithm=parallel quick sort time=0.212536s
 }
-Size=2048 {
-algorithm=sequential merge sort time=0.046883s
-algorithm=parallel merge sort time=0.032668s
-algorithm=sequential quick sort time=0.003202s
-algorithm=parallel quick sort time=0.014679s
+Size=102400 {
+algorithm=sequential merge sort time=2.360159s
+algorithm=parallel merge sort time=2.343770s
+algorithm=sequential quick sort time=0.322244s
+algorithm=parallel quick sort time=0.688544s
 }
-Size=4096 {
-algorithm=sequential merge sort time=0.076514s
-algorithm=parallel merge sort time=0.070379s
-algorithm=sequential quick sort time=0.006070s
-algorithm=parallel quick sort time=0.031435s
+Size=153600 {
+algorithm=sequential merge sort time=4.553630s
+algorithm=parallel merge sort time=2.751445s
+algorithm=sequential quick sort time=0.363428s
+algorithm=parallel quick sort time=0.601657s
 }
-Size=8192 {
-algorithm=sequential merge sort time=0.169175s
-algorithm=parallel merge sort time=0.133970s
-algorithm=sequential quick sort time=0.015247s
-algorithm=parallel quick sort time=0.034003s
+Size=204800 {
+algorithm=sequential merge sort time=4.009007s
+algorithm=parallel merge sort time=3.434749s
+algorithm=sequential quick sort time=0.454190s
+algorithm=parallel quick sort time=0.962051s
 }
-Size=16384 {
-algorithm=sequential merge sort time=0.413256s
-algorithm=parallel merge sort time=0.257667s
-algorithm=sequential quick sort time=0.029771s
-algorithm=parallel quick sort time=0.067844s
+Size=256000 {
+algorithm=sequential merge sort time=5.041143s
+algorithm=parallel merge sort time=4.907599s
+algorithm=sequential quick sort time=0.859453s
+algorithm=parallel quick sort time=1.615784s
 }
-Size=32768 {
-algorithm=sequential merge sort time=0.722439s
-algorithm=parallel merge sort time=0.488528s
-algorithm=sequential quick sort time=0.062512s
-algorithm=parallel quick sort time=0.129920s
+Size=307200 {
+algorithm=sequential merge sort time=7.238273s
+algorithm=parallel merge sort time=4.797707s
+algorithm=sequential quick sort time=0.747402s
+algorithm=parallel quick sort time=1.435434s
 }
-Size=65536 {
-algorithm=sequential merge sort time=1.549255s
-algorithm=parallel merge sort time=1.006960s
-algorithm=sequential quick sort time=0.133650s
-algorithm=parallel quick sort time=0.329385s
+Size=358400 {
+algorithm=sequential merge sort time=7.257048s
+algorithm=parallel merge sort time=6.718018s
+algorithm=sequential quick sort time=1.279660s
+algorithm=parallel quick sort time=2.275644s
 }
-Size=131072 {
-algorithm=sequential merge sort time=2.577773s
-algorithm=parallel merge sort time=1.736181s
-algorithm=sequential quick sort time=0.262956s
-algorithm=parallel quick sort time=0.540857s
+Size=409600 {
+algorithm=sequential merge sort time=8.367146s
+algorithm=parallel merge sort time=12.513270s
+algorithm=sequential quick sort time=1.074787s
+algorithm=parallel quick sort time=1.886012s
 }
-Size=196608 {
-algorithm=sequential merge sort time=3.990493s
-algorithm=parallel merge sort time=2.605196s
-algorithm=sequential quick sort time=0.445541s
-algorithm=parallel quick sort time=0.887238s
-}
-Size=262144 {
-algorithm=sequential merge sort time=5.257733s
-algorithm=parallel merge sort time=3.414105s
-algorithm=sequential quick sort time=0.591885s
-algorithm=parallel quick sort time=1.216516s
-}
-Size=327680 {
-algorithm=sequential merge sort time=6.669982s
-algorithm=parallel merge sort time=5.624109s
-algorithm=sequential quick sort time=1.124227s
-algorithm=parallel quick sort time=2.322025s
-}
-Size=393216 {

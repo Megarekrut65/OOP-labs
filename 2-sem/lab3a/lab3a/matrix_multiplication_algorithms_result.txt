@@ -1,36 +1,36 @@
 Size=2 {
-algorithm=sequential simple multiplication time=0.000858s
-algorithm=parallel simple multiplication time=0.005973s
-algorithm=sequential strassen multiplication time=0.002053s
-algorithm=parallel strassen multiplication time=0.009085s
+algorithm=sequential simple multiplication time=0.000741s
+algorithm=parallel simple multiplication   time=0.001569s
+algorithm=sequential strassen multiplication time=0.001358s
+algorithm=parallel strassen multiplication time=0.002446s
 }
 Size=4 {
-algorithm=sequential simple multiplication time=0.008873s
-algorithm=parallel simple multiplication time=0.006402s
-algorithm=sequential strassen multiplication time=0.016819s
-algorithm=parallel strassen multiplication time=0.014053s
+algorithm=sequential simple multiplication time=0.007557s
+algorithm=parallel simple multiplication   time=0.005326s
+algorithm=sequential strassen multiplication time=0.010534s
+algorithm=parallel strassen multiplication time=0.008369s
 }
 Size=8 {
-algorithm=sequential simple multiplication time=0.032787s
-algorithm=parallel simple multiplication time=0.020311s
-algorithm=sequential strassen multiplication time=0.038922s
-algorithm=parallel strassen multiplication time=0.028493s
+algorithm=sequential simple multiplication time=0.039209s
+algorithm=parallel simple multiplication   time=0.021495s
+algorithm=sequential strassen multiplication time=0.066642s
+algorithm=parallel strassen multiplication time=0.034452s
 }
 Size=16 {
-algorithm=sequential simple multiplication time=0.243509s
-algorithm=parallel simple multiplication time=0.172798s
-algorithm=sequential strassen multiplication time=0.343874s
-algorithm=parallel strassen multiplication time=0.256427s
+algorithm=sequential simple multiplication time=0.309625s
+algorithm=parallel simple multiplication   time=0.171059s
+algorithm=sequential strassen multiplication time=0.291156s
+algorithm=parallel strassen multiplication time=0.256802s
 }
 Size=32 {
-algorithm=sequential simple multiplication time=2.269335s
-algorithm=parallel simple multiplication time=1.300621s
-algorithm=sequential strassen multiplication time=2.155636s
-algorithm=parallel strassen multiplication time=1.399911s
+algorithm=sequential simple multiplication time=2.254150s
+algorithm=parallel simple multiplication   time=1.220849s
+algorithm=sequential strassen multiplication time=1.852625s
+algorithm=parallel strassen multiplication time=1.391345s
 }
 Size=64 {
-algorithm=sequential simple multiplication time=14.724966s
-algorithm=parallel simple multiplication time=9.545100s
-algorithm=sequential strassen multiplication time=12.970809s
-algorithm=parallel strassen multiplication time=12.883501s
+algorithm=sequential simple multiplication time=14.939868s
+algorithm=parallel simple multiplication   time=11.099624s
+algorithm=sequential strassen multiplication time=13.375223s
+algorithm=parallel strassen multiplication time=13.198486s
 }

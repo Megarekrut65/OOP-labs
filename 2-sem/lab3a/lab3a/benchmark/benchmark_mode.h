@@ -33,14 +33,14 @@ namespace benmode
 		void measure_multiplications(
 			const std::vector<Matrix<T>(*)(const Matrix<T>&, const Matrix<T>&)>& functions,
 			const std::vector<std::string>& names);
-		void measure_sorts_algorithms();
-		void measure_multiplication_algorithms();
 		void print_about_size(std::size_t size);
 		void print_about_algorithm(const std::string& name, float time);
 
 	public:
-		BenchmarkMode(std::size_t inizial_size = 100);
-		void start();
+		BenchmarkMode();
+		void start_measuring_sorts_algorithms(std::size_t inizial_size = 100);
+		void start_measuring_multiplication_algorithms(std::size_t inizial_size = 2);
+		void start_all();
 	};
 }
 namespace benmode
@@ -59,8 +59,8 @@ namespace benmode
 		}
 	}
 	template<typename T>
-	BenchmarkMode<T>::BenchmarkMode(std::size_t inizial_size)
-		:inizial_size{inizial_size}{}
+	BenchmarkMode<T>::BenchmarkMode()
+		:inizial_size{0}{}
 	template<typename T>
 	void BenchmarkMode<T>::print_about_size(std::size_t size)
 	{
@@ -137,8 +137,9 @@ namespace benmode
 		writer.info();
 	}
 	template<typename T>
-	void BenchmarkMode<T>::measure_sorts_algorithms()
+	void BenchmarkMode<T>::start_measuring_sorts_algorithms(std::size_t inizial_size)
 	{
+		this->inizial_size = inizial_size;
 		writer = FileWriter{ "sorts_algorithms_result.txt" };
 		measure_sorts(
 			{ &seqsorts::merge_sort, &parsorts::merge_sort,
@@ -147,20 +148,20 @@ namespace benmode
 			"sequential quick sort","parallel quick sort" });
 	}
 	template<typename T>
-	void BenchmarkMode<T>::measure_multiplication_algorithms()
+	void BenchmarkMode<T>::start_measuring_multiplication_algorithms(std::size_t inizial_size)
 	{
+		this->inizial_size = inizial_size;
 		writer = FileWriter{ "matrix_multiplication_algorithms_result.txt" };
 		measure_multiplications(
 			{ &seqmulmatrix::simple_multiplication, &parmulmatrix::simple_multiplication,
 			&seqmulmatrix::strassen_multiplication, &parmulmatrix::strassen_multiplication },
-			{ "sequential simple multiplication","parallel simple multiplication",
+			{ "sequential simple multiplication","parallel simple multiplication  ",
 			"sequential strassen multiplication","parallel strassen multiplication" });
 	}
 	template<typename T>
-	void BenchmarkMode<T>::start()
+	void BenchmarkMode<T>::start_all()
 	{
-		measure_sorts_algorithms();
-		measure_multiplication_algorithms();
-	
+		start_measuring_sorts_algorithms();
+		start_measuring_multiplication_algorithms();
 	}
 }
