@@ -3,38 +3,98 @@
 #include <string>
 #include <iostream>
 
+/**
+* 
+*/
 namespace mymatrix
 {
+	/**
+	*
+	*/
 	template <typename T>
 	class Matrix
 	{
 	private:
 		std::vector<std::vector<T>> container;
+		/**
+		*
+		*/
 		template <typename U>
-		class Column
+		class Row
 		{
 		private:
 			std::vector<U>& array;
 		public:
-			Column(std::vector<U>& array);
+			/**
+			*
+			*/
+			Row(std::vector<U>& array);
+			/**
+			*
+			*/
 			U& operator[](std::size_t index);
 		};
+		/**
+		*
+		*/
 		bool check_sizes();
 	public:
+		/**
+		*
+		*/
 		Matrix(const std::vector<std::vector<T>>& matrix);
+		/**
+		*
+		*/
 		Matrix(std::size_t row_size, std::size_t col_size);
+		/**
+		*
+		*/
 		Matrix();
+		/**
+		*
+		*/
 		std::size_t get_row_size() const;
+		/**
+		*
+		*/
 		std::size_t get_col_size() const;
+		/**
+		*
+		*/
 		Matrix<T> operator+ (const Matrix<T>& matrix);
+		/**
+		*
+		*/
 		Matrix<T> operator- (const Matrix<T>& matrix);
+		/**
+		*
+		*/
 		template <typename T>
 		friend std::ostream& operator<< (std::ostream& out, const Matrix<T>& matrix);	
-		Column<T> operator[](std::size_t index);
+		/**
+		*
+		*/
+		Row<T> operator[](std::size_t index);
+		/**
+		*
+		*/
 		void add_rows(std::size_t rows_number = 1);
+		/**
+		*
+		*/
 		void add_columns(std::size_t columns_number = 1);
+		/**
+		*
+		*/
 		void remove_rows(std::size_t rows_number = 1);
+		/**
+		*
+		*/
 		void remove_columns(std::size_t columns_number = 1);
+		/**
+		*
+		*/
 		T get_item(std::size_t i, std::size_t j) const;
 	};
 }
@@ -54,17 +114,21 @@ namespace mymatrix
 	template<typename T>
 	void Matrix<T>::remove_rows(std::size_t rows_number)
 	{
-		for (std::size_t i = 0; i < rows_number; i++)
-			container.erase(container.begin() + container.size() - 1);
+		if(rows_number <= get_row_size())
+			for (std::size_t i = 0; i < rows_number; i++)
+				container.erase(container.begin() + container.size() - 1);
+		else throw std::out_of_range{"There are " + std::to_string(get_row_size())+
+			" rows but need to remove " + std::to_string(rows_number) + " rows!"};
 	}
 	template<typename T>
 	void Matrix<T>::remove_columns(std::size_t columns_number)
 	{
-		for (auto& item : container)
-		{
-			for (std::size_t i = 0; i < columns_number; i++)
-				item.erase(item.begin() + item.size() - 1);
-		}
+		if(columns_number <= get_col_size())
+			for (auto& item : container)
+				for (std::size_t i = 0; i < columns_number; i++)
+					item.erase(item.begin() + item.size() - 1);
+		else throw std::out_of_range{ "There are " + std::to_string(get_col_size()) +
+			" columns but need to remove " + std::to_string(columns_number) + " columns!" };
 	}
 	template<typename T>
 	void Matrix<T>::add_rows(std::size_t rows_number)
@@ -173,10 +237,10 @@ namespace mymatrix
 	}
 	template<typename T>
 	template<typename U>
-	Matrix<T>::Column<U>::Column(std::vector<U>& array) : array{array} {}
+	Matrix<T>::Row<U>::Row(std::vector<U>& array) : array{array} {}
 	template<typename T>
 	template<typename U>
-	U& Matrix<T>::Column<U>::operator[](std::size_t index)
+	U& Matrix<T>::Row<U>::operator[](std::size_t index)
 	{
 		if (index < this->array.size())
 			return this->array[index];
@@ -184,10 +248,10 @@ namespace mymatrix
 			" larger than columns number=" + std::to_string(this->array.size()) };
 	}
 	template<typename T>
-	Matrix<T>::Column<T> Matrix<T>::operator[](std::size_t index)
+	Matrix<T>::Row<T> Matrix<T>::operator[](std::size_t index)
 	{
 		if(index < this->container.size())
-			return Column<T>(this->container[index]);
+			return Row<T>(this->container[index]);
 		throw std::out_of_range{ "index=" + std::to_string(index) + 
 			" larger than rows number=" + std::to_string(this->container.size()) };
 	}

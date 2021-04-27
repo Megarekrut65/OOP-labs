@@ -2,12 +2,12 @@
 #include <vector>
 #include <string>
 
-/*
+/**
 *   \brief Namespace for sort algorithm and addition functions
 */
 namespace sorts
 {
-    /*
+    /**
     *   \brief Copies part of arr to copy_arr
     *
     *   Addition function for merge_sort().
@@ -18,55 +18,55 @@ namespace sorts
     */
     template<typename T>
     void copy_to_array(std::vector<T>& arr, std::vector<T>& copy_arr, std::size_t begin, std::size_t size);
-    /*
+    /**
     *   \brief Spaws two items
     *
     *   Addition function for bubble_sort(), selection_sort() and quick_sort().
     */
     template<typename T>
     void swap(T& first, T& second);
-    /*
+    /**
     *   \brief Translates array to line
     *
     *   Addition function.
     */
     template<typename T>
     std::string array_to_string(std::vector<T>& arr);
-    /*
+    /**
     *   \brief Returns maximum item in arr
     *
     *   Addition function.
     */
     template<typename T>
     T get_max(std::vector<T>& arr);
-    /*
+    /**
     *   \brief Returns minimum item in arr
     *
     *   Addition function.
     */
     template<typename T>
     T get_min(std::vector<T>& arr);
-    /*
+    /**
     *   \brief Creates array with random items
     *   \param size - size of array
     */
     template<typename T>
     std::vector<T> create_random_array(std::size_t size);
-    /*
+    /**
     *   \brief Creates array with almost ordered items
     *   \param size - size of array
     *   \param random_start - index of firts not ordered item
     */
     template<typename T>
     std::vector<T> create_ordered_array(std::size_t size, std::size_t random_start);
-    /*
+    /**
     *   \brief Creates array with almost reverse ordered items
     *   \param size - size of array
     *   \param random_start - index of firts not inordered item
     */
     template<typename T>
     std::vector<T> create_reverse_ordered_array(std::size_t size, std::size_t random_start);
-    /*
+    /**
     *   \brief Compares two arrays by values
     */
     template<typename T>

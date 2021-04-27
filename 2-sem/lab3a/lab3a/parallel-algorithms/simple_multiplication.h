@@ -3,7 +3,7 @@
 
 using namespace mulmatrix;
 
-namespace seqmulmatrix
+namespace parmulmatrix
 {
 	template<typename T>
 	class SimpleSubmatrices : public Submatrices<T>
@@ -24,7 +24,7 @@ namespace seqmulmatrix
 	Matrix<T> simple_multiplication(const Matrix<T>& first_matrix,
 		const Matrix<T>& second_matrix);
 }
-namespace seqmulmatrix
+namespace parmulmatrix
 {
 	template<typename T>
 	SimpleSubmatrices<T>::SimpleSubmatrices(const Matrix<T>& first_matrix, 

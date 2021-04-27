@@ -1,9 +1,10 @@
 #pragma once
 #include "../libraries_and_namespaces.h"
+#include "thread_number.h"
+#include <iostream>
 
 using namespace sorts;
-
-namespace seqsorts
+namespace parsorts
 {
     /**
     *   \brief Distributes elements in the array relative to the selected partition
@@ -23,7 +24,7 @@ namespace seqsorts
     *   \param high - index of end item
     */
     template<typename T>
-    void quick_sorting(std::vector<T>& arr, long low, long high);
+    void quick_sorting(std::vector<T>& arr, long low, long high, thnum::ThNumber& th_number);
     /**
     *   \brief Sorts array
     *
@@ -33,7 +34,7 @@ namespace seqsorts
     template<typename T>
     void quick_sort(std::vector<T>& arr);
 }
-namespace seqsorts
+namespace parsorts
 {
     template<typename T>
     std::size_t partition(std::vector<T>& arr, long low, long high)
@@ -52,19 +53,25 @@ namespace seqsorts
         return std::size_t(i + 1);
     }
     template<typename T>
-    void quick_sorting(std::vector<T>& arr, long low, long high)
+    void quick_sorting(std::vector<T>& arr, long low, long high, thnum::ThNumber& th_number)
     {
         if (low < high)
         {
             std::size_t index = partition(arr, low, high);
-            quick_sorting(arr, low, index - 1);
-            quick_sorting(arr, index + 1, high);
+            std::thread th;
+            if (th_number.add_new_thread())
+                th = std::thread([=, &arr, &th_number]() 
+                    {quick_sorting(arr, low, index - 1, th_number); });                            
+            else quick_sorting(arr, low, index - 1, th_number);
+            quick_sorting(arr, index + 1, high, th_number);
+            if (th.joinable()) th.join();
         }
     }
     template<typename T>
     void quick_sort(std::vector<T>& arr)
     {
         if(arr.size() < 2) return;
-        quick_sorting(arr, 0, arr.size() - 1);
+        thnum::ThNumber th_number;
+        quick_sorting(arr, 0, arr.size() - 1, th_number);
     }
 }

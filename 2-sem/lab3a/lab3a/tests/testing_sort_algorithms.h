@@ -1,6 +1,7 @@
 #pragma once
 #include "doctest.h"
 #include "../sequential-algorithms/all_sorts.h"
+#include "../parallel-algorithms/all_sorts.h"
 
 TEST_CASE("testing operator== for std::vector")
 {
@@ -9,15 +10,55 @@ TEST_CASE("testing operator== for std::vector")
     CHECK(!(arr == std::vector<int>{33, 89, 12, 43}));
     CHECK(!(arr == std::vector<int>{89, 12, 43}));
 }
+TEST_CASE("testing creating about ordered array")
+{
+    std::size_t size = 100, part = 8 * size / 10;
+    std::vector<int> arr = sorts::create_ordered_array<int>(size, part);
+    REQUIRE(size == arr.size());
+    std::size_t number = 0;
+    for (std::size_t i = 1; i < size; i++)
+    {
+        if (arr[i - 1] < arr[i]) number++;
+        else break;
+    }
+    CHECK(number >= part);
+}
+TEST_CASE("testing creating about reverse ordered array")
+{
+    std::size_t size = 100, part = 8 * size / 10;
+    std::vector<int> arr = sorts::create_reverse_ordered_array<int>(size, part);
+    REQUIRE(size == arr.size());
+    std::size_t number = 0;
+    for (std::size_t i = 1; i < size; i++)
+    {
+        if (arr[i - 1] > arr[i]) number++;
+        else break;
+    }
+    CHECK(number >= part);
+}
+TEST_CASE("testing creating random array")
+{
+    std::size_t size = 100;
+    std::vector<int> arr = sorts::create_random_array<int>(size);
+    REQUIRE(size == arr.size());
+}
 void subcase_sorts(std::vector<int>& arr)
 {
-    SUBCASE("merge sort")
+    SUBCASE("sequential merge sort")
     {
-        sorts::merge_sort(arr);
+        seqsorts::merge_sort(arr);
     }
-    SUBCASE("quick sort")
+    SUBCASE("sequential quick sort")
     {
-        sorts::quick_sort(arr);
+        seqsorts::quick_sort(arr);
+    }
+    SUBCASE("parallel merge sort")
+    {
+        parsorts::merge_sort(arr);
+    }
+    SUBCASE("parallel quick sort")
+    {
+        parsorts::quick_sort(arr);
     }
 }
 void test_all_sorts(std::vector<int>& arr)
@@ -52,36 +93,4 @@ TEST_CASE("testing on own items")
     std::vector<int> copy_array = arr;
     subcase_sorts(copy_array);
     CHECK(copy_array == std::vector<int>{0, 0, 1, 1, 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 6, 7, 8, 9, 9, 12, 17, 32, 43, 89 });
-}
-TEST_CASE("testing creating about ordered array")
-{
-    std::size_t size = 100, part = 8 * size / 10;
-    std::vector<int> arr = sorts::create_ordered_array<int>(size, part);
-    REQUIRE(size == arr.size());
-    std::size_t number = 0;
-    for (std::size_t i = 1; i < size; i++)
-    {
-        if (arr[i - 1] < arr[i]) number++;
-        else break;
-    }
-    CHECK(number >= part);
-}
-TEST_CASE("testing creating about reverse ordered array")
-{
-    std::size_t size = 100, part = 8 * size / 10;
-    std::vector<int> arr = sorts::create_reverse_ordered_array<int>(size, part);
-    REQUIRE(size == arr.size());
-    std::size_t number = 0;
-    for (std::size_t i = 1; i < size; i++)
-    {
-        if (arr[i - 1] > arr[i]) number++;
-        else break;
-    }
-    CHECK(number >= part);
-}
-TEST_CASE("testing creating random array")
-{
-    std::size_t size = 100;
-    std::vector<int> arr = sorts::create_random_array<int>(size);
-    REQUIRE(size == arr.size());
 }

@@ -3,7 +3,7 @@
 
 using namespace mulmatrix;
 
-namespace seqmulmatrix
+namespace parmulmatrix
 {
 	template<typename T>
 	class StrassenSubmatrices : public Submatrices<T>
@@ -36,7 +36,7 @@ namespace seqmulmatrix
 	template<typename T>
 	Matrix<T> strassen_multiplication(const Matrix<T>& first_matrix, const Matrix<T>& second_matrix);
 }
-namespace seqmulmatrix
+namespace parmulmatrix
 {
 	template<typename T>
 	StrassenSubmatrices<T>::StrassenSubmatrices(const Matrix<T>& first_matrix,const Matrix<T>& second_matrix,

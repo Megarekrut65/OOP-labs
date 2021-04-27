@@ -1,7 +1,7 @@
 #pragma once
 #include "doctest.h"
 #include <sstream>
-#include "../sequential-algorithms/my_matrix.h"
+#include "../my_matrix.h"
 
 using namespace mymatrix;
 TEST_CASE("testing operator<<")
@@ -45,6 +45,12 @@ TEST_CASE("testing get, add and remove rows/columns")
 	matrix1.remove_columns(2);
 	CHECK(matrix1.get_row_size() == 2 + 3 - 1);
 	CHECK(matrix1.get_col_size() == 3 + 5 - 2);
+	CHECK_THROWS_WITH_AS(matrix1.remove_rows(10),
+		"There are 4 rows but need to remove 10 rows!",
+		std::out_of_range);
+	CHECK_THROWS_WITH_AS(matrix1.remove_columns(10),
+		"There are 6 columns but need to remove 10 columns!",
+		std::out_of_range);
 }
 TEST_CASE("testing operator[][]")
 {

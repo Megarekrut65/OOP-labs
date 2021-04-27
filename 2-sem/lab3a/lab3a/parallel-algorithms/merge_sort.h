@@ -1,9 +1,9 @@
 #pragma once
 #include "../libraries_and_namespaces.h"
+#include <thread>
 
 using namespace sorts;
-
-namespace seqsorts
+namespace parsorts
 {
     /**
     *   \brief Sorts array
@@ -33,7 +33,7 @@ namespace seqsorts
     template<typename T>
     void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end);
 }
-namespace seqsorts
+namespace parsorts
 {
     template<typename T>
     void merge(std::vector<T>& arr, std::size_t begin, std::size_t middle, std::size_t end)
@@ -65,8 +65,13 @@ namespace seqsorts
     {
         if (end - begin < 2) return;
         std::size_t middle = (end + begin) / 2;
-        merge_sorting(arr, begin, middle);
+        std::size_t num_threads = std::thread::hardware_concurrency();
+        std::thread th;
+        if (num_threads > 0)
+            th = std::thread([=, &arr](){merge_sorting(arr, begin, middle);});
+        else merge_sorting(arr, begin, middle);
         merge_sorting(arr, middle, end);
+        if(th.joinable()) th.join();
         merge(arr, begin, middle, end);
     }
     template<typename T>

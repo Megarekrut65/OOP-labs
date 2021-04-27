@@ -19,23 +19,29 @@
     <Filter Include="Header Files\sequential-algorithms">
       <UniqueIdentifier>{1e137740-baab-4fa1-a784-2c34106ef6c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\parallel-algorithms">
+      <UniqueIdentifier>{b5d37e2a-1e5a-47c3-b7b6-4762b520458f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parallel-algorithms">
+      <UniqueIdentifier>{a2489a0b-c557-459b-a2dc-71ab36892631}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lab3a.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="parallel-algorithms\thread_number.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="parallel-algorithms\thread_number.cpp">
+      <Filter>Source Files\parallel-algorithms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tests\doctest.h">
       <Filter>Header Files\tests</Filter>
     </ClInclude>
-    <ClInclude Include="tests\testing_algorithms.h">
-      <Filter>Header Files\tests</Filter>
-    </ClInclude>
     <ClInclude Include="sequential-algorithms\all_sorts.h">
-      <Filter>Header Files\sequential-algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="sequential-algorithms\libraries_and_namespaces.h">
       <Filter>Header Files\sequential-algorithms</Filter>
     </ClInclude>
     <ClInclude Include="sequential-algorithms\merge_sort.h">
@@ -44,23 +50,44 @@
     <ClInclude Include="sequential-algorithms\quick_sort.h">
       <Filter>Header Files\sequential-algorithms</Filter>
     </ClInclude>
-    <ClInclude Include="sequential-algorithms\my_matrix.h">
-      <Filter>Header Files\sequential-algorithms</Filter>
-    </ClInclude>
     <ClInclude Include="sequential-algorithms\strassen_multiplication.h">
       <Filter>Header Files\sequential-algorithms</Filter>
     </ClInclude>
     <ClInclude Include="tests\testing_matrix.h">
       <Filter>Header Files\tests</Filter>
     </ClInclude>
-    <ClInclude Include="sequential-algorithms\matrix_multiplication.h">
-      <Filter>Header Files\sequential-algorithms</Filter>
-    </ClInclude>
     <ClInclude Include="sequential-algorithms\simple_multiplication.h">
       <Filter>Header Files\sequential-algorithms</Filter>
     </ClInclude>
     <ClInclude Include="tests\testing_multiplication.h">
       <Filter>Header Files\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\testing_sort_algorithms.h">
+      <Filter>Header Files\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\all_sorts.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\merge_sort.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\quick_sort.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\simple_multiplication.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\strassen_multiplication.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="libraries_and_namespaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix_multiplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="my_matrix.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

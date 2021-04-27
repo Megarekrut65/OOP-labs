@@ -4,18 +4,17 @@
 #include "../sequential-algorithms/simple_multiplication.h"
 #include "../sequential-algorithms/strassen_multiplication.h"
 
-using namespace mulmatrix;
 
 TEST_CASE("testing multiplication")
 {
-	Matrix<int>(*multiply)(const Matrix<int>&, const Matrix<int>&) = &simple_multiplication<int>;
+	Matrix<int>(*multiply)(const Matrix<int>&, const Matrix<int>&) = &seqmulmatrix::simple_multiplication<int>;
 	SUBCASE("Simple multiplication")
 	{
-		multiply = &simple_multiplication<int>;
+		multiply = &seqmulmatrix::simple_multiplication<int>;
 	}
 	SUBCASE("Strassen multiplication")
 	{
-		multiply = &strassen_multiplication<int>;
+		multiply = &seqmulmatrix::strassen_multiplication<int>;
 	}
 	Matrix<int> matrix1 = { { {21,42,53},
 							  {32,63,94},

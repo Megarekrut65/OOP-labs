@@ -1,10 +1,9 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include <iostream>
 #include "tests/doctest.h"
-#include "tests/testing_algorithms.h"
+#include "tests/testing_sort_algorithms.h"
 #include "tests/testing_matrix.h"
 #include "tests/testing_multiplication.h"
-#include "sequential-algorithms/simple_multiplication.h"
 
 int main(int argc, char** argv)
 {
