@@ -159,7 +159,8 @@ namespace benmode
 	template<typename T>
 	void BenchmarkMode<T>::start()
 	{
-		measure_multiplication_algorithms();
 		measure_sorts_algorithms();
+		measure_multiplication_algorithms();
+	
 	}
 }

@@ -59,11 +59,22 @@ namespace parsorts
         {
             std::size_t index = partition(arr, low, high);
             std::thread th;
-            if (th_number.increase())
-                th = std::thread([=, &arr, &th_number]() 
-                    {quick_sorting(arr, low, index - 1, th_number); });                            
-            else quick_sorting(arr, low, index - 1, th_number);
-            quick_sorting(arr, index + 1, high, th_number);
+            if (index - low > high - index)
+            {
+                if (th_number.increase())
+                    th = std::thread([=, &arr, &th_number]()
+                        {quick_sorting(arr, low, index - 1, th_number); });
+                else quick_sorting(arr, low, index - 1, th_number);
+                quick_sorting(arr, index + 1, high, th_number);
+            }
+            else
+            {
+                if (th_number.increase())
+                    th = std::thread([=, &arr, &th_number]()
+                        {quick_sorting(arr, index + 1, high, th_number); });
+                else quick_sorting(arr, index + 1, high, th_number); 
+                quick_sorting(arr, low, index - 1, th_number);
+            }
             if (th.joinable())
             {
                 th.join();
