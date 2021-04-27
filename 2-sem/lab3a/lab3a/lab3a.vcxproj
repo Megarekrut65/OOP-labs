@@ -141,18 +141,19 @@
   <ItemGroup>
     <ClCompile Include="lab3a.cpp" />
     <ClCompile Include="parallel-algorithms\thread_number.cpp" />
-    <ClCompile Include="parallel-algorithms\thread_number.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libraries_and_namespaces.h" />
-    <ClInclude Include="matrix_multiplication.h" />
     <ClInclude Include="my_matrix.h" />
     <ClInclude Include="parallel-algorithms\all_sorts.h" />
+    <ClInclude Include="parallel-algorithms\matrix_multiplication.h" />
     <ClInclude Include="parallel-algorithms\merge_sort.h" />
     <ClInclude Include="parallel-algorithms\quick_sort.h" />
     <ClInclude Include="parallel-algorithms\simple_multiplication.h" />
     <ClInclude Include="parallel-algorithms\strassen_multiplication.h" />
+    <ClInclude Include="parallel-algorithms\thread_number.h" />
     <ClInclude Include="sequential-algorithms\all_sorts.h" />
+    <ClInclude Include="sequential-algorithms\matrix_multiplication.h" />
     <ClInclude Include="sequential-algorithms\merge_sort.h" />
     <ClInclude Include="sequential-algorithms\quick_sort.h" />
     <ClInclude Include="sequential-algorithms\simple_multiplication.h" />

@@ -3,19 +3,30 @@
 #include <sstream>
 #include "../sequential-algorithms/simple_multiplication.h"
 #include "../sequential-algorithms/strassen_multiplication.h"
-
+#include "../parallel-algorithms/simple_multiplication.h"
+#include "../parallel-algorithms/strassen_multiplication.h"
 
 TEST_CASE("testing multiplication")
 {
 	Matrix<int>(*multiply)(const Matrix<int>&, const Matrix<int>&) = &seqmulmatrix::simple_multiplication<int>;
-	SUBCASE("Simple multiplication")
+	SUBCASE("sequential simple multiplication")
 	{
 		multiply = &seqmulmatrix::simple_multiplication<int>;
 	}
-	SUBCASE("Strassen multiplication")
+	SUBCASE("sequential Strassen multiplication")
 	{
 		multiply = &seqmulmatrix::strassen_multiplication<int>;
 	}
+	SUBCASE("parallel simple multiplication")
+	{
+		multiply = &parmulmatrix::simple_multiplication<int>;
+		std::cout << "\npar" << std::endl;
+	}
+
+	/*SUBCASE("parallel Strassen multiplication")
+	{
+		multiply = &parmulmatrix::strassen_multiplication<int>;
+	}*/
 	Matrix<int> matrix1 = { { {21,42,53},
 							  {32,63,94},
 							  {17,87,14}} },

@@ -30,9 +30,6 @@
     <ClCompile Include="lab3a.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="parallel-algorithms\thread_number.h">
-      <Filter>Header Files\parallel-algorithms</Filter>
-    </ClCompile>
     <ClCompile Include="parallel-algorithms\thread_number.cpp">
       <Filter>Source Files\parallel-algorithms</Filter>
     </ClCompile>
@@ -83,11 +80,17 @@
     <ClInclude Include="libraries_and_namespaces.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="matrix_multiplication.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="my_matrix.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\matrix_multiplication.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="sequential-algorithms\matrix_multiplication.h">
+      <Filter>Header Files\sequential-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\thread_number.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

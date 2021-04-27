@@ -31,7 +31,7 @@ namespace parsorts
     *   \param end - index of end item
     */
     template<typename T>
-    void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end, thnum::ThreadNumber& th_number);
+    void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end, thnum::ThdNumber& th_number);
 }
 namespace parsorts
 {
@@ -61,7 +61,7 @@ namespace parsorts
         for (; j < right_size; j++, k++) arr[k] = right_arr[j];
     }
     template<typename T>
-    void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end, thnum::ThreadNumber& th_number)
+    void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end, thnum::ThdNumber& th_number)
     {
         if (end - begin < 2) return;
         std::size_t middle = (end + begin) / 2;
@@ -76,7 +76,7 @@ namespace parsorts
     template<typename T>
     void merge_sort(std::vector<T>& arr)
     {
-        thnum::ThreadNumber th_number;
+        thnum::ThdNumber th_number;
         merge_sorting(arr, 0, arr.size(), th_number);
     }
 }

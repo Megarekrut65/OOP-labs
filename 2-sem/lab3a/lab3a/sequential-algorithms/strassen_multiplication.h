@@ -1,7 +1,5 @@
 #pragma once
-#include "../matrix_multiplication.h"
-
-using namespace mulmatrix;
+#include "matrix_multiplication.h"
 
 namespace seqmulmatrix
 {

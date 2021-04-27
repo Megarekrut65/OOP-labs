@@ -1,9 +1,9 @@
 #pragma once
-#include "my_matrix.h"
+#include "../my_matrix.h"
 
 using namespace mymatrix;
 
-namespace mulmatrix
+namespace seqmulmatrix
 {
 	template<typename T>
 	class MatrixParts
@@ -62,7 +62,7 @@ namespace mulmatrix
 		const Matrix<T>& second_matrix, 
 		Matrix<T>(*multiply)(const Matrix<T>&, const Matrix<T>&));
 }
-namespace mulmatrix
+namespace seqmulmatrix
 {
 	template<typename T>
 	Matrix<T> multiply_algorithm(const Matrix<T>& first_matrix,

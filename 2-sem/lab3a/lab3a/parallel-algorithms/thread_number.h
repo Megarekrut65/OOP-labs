@@ -7,13 +7,13 @@
 */
 namespace thnum
 {
-	class ThreadNumber
+	class ThdNumber
 	{
 	private:
 		std::size_t number;
 		std::mutex mut;
 	public:
-		ThreadNumber();
+		ThdNumber();
 		bool add_new_thread();
 	};
 }
