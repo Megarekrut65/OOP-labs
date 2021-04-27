@@ -66,11 +66,15 @@ namespace parsorts
         if (end - begin < 2) return;
         std::size_t middle = (end + begin) / 2;
         std::thread th;
-        if (th_number.add_new_thread())
+        if (th_number.increase())
             th = std::thread([=, &arr, &th_number](){merge_sorting(arr, begin, middle, th_number);});
         else merge_sorting(arr, begin, middle, th_number);
         merge_sorting(arr, middle, end, th_number);
-        if(th.joinable()) th.join();
+        if (th.joinable())
+        {
+            th.join();
+            th_number.decrease();
+        }
         merge(arr, begin, middle, end);
     }
     template<typename T>

@@ -141,23 +141,27 @@ namespace parmulmatrix
 	{
 		Matrix<T> res(size, size);
 		std::vector<std::thread> ths;
-		if (this->th_number.add_new_thread())
+		if (this->th_number.increase())
 			ths.push_back(std::thread([=, &res]()
 				{ copy_part_to_matrix(res, get_c11(), 0, 0, size / 2, size / 2); }));
 		else copy_part_to_matrix(res, get_c11(), 0, 0, size / 2, size / 2);
-		if (this->th_number.add_new_thread())
+		if (this->th_number.increase())
 			ths.push_back(std::thread([=, &res]()
 				{ copy_part_to_matrix(res, get_c12(), 0, size / 2, size / 2, size); }));
 		else copy_part_to_matrix(res, get_c12(), 0, size / 2, size / 2, size);
-		if (this->th_number.add_new_thread())
+		if (this->th_number.increase())
 			ths.push_back(std::thread([=, &res]()
 				{ copy_part_to_matrix(res, get_c21(), size / 2, 0, size, size / 2); }));
 		else copy_part_to_matrix(res, get_c21(), size / 2, 0, size, size / 2);
-		if (this->th_number.add_new_thread())
+		if (this->th_number.increase())
 			ths.push_back(std::thread([=, &res]()
 				{ copy_part_to_matrix(res, get_c22(), size / 2, size / 2, size, size); }));
 		else copy_part_to_matrix(res, get_c22(), size / 2, size / 2, size, size);
-		for (auto& item : ths) if (item.joinable()) item.join();
+		for (auto& item : ths)
+		{
+			if (item.joinable()) item.join();
+			this->th_number.decrease();
+		}
 		return res;
 	}
 	template<typename T>

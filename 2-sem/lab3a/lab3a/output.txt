@@ -1,0 +1,39 @@
+Size=100 {
+algorithm=sequential merge sort time=0.002541s
+algorithm=parallel merge sort time=0.003412s
+algorithm=sequential quick sort time=0.000825s
+algorithm=parallel quick sort time=0.002252s
+}
+Size=200 {
+algorithm=sequential merge sort time=0.005110s
+algorithm=parallel merge sort time=0.006566s
+algorithm=sequential quick sort time=0.002522s
+algorithm=parallel quick sort time=0.004489s
+}
+Size=400 {
+algorithm=sequential merge sort time=0.008307s
+algorithm=parallel merge sort time=0.006132s
+algorithm=sequential quick sort time=0.006702s
+algorithm=parallel quick sort time=0.009114s
+}
+Size=800 {
+algorithm=sequential merge sort time=0.012390s
+algorithm=parallel merge sort time=0.011616s
+algorithm=sequential quick sort time=0.026298s
+algorithm=parallel quick sort time=0.029958s
+}
+Size=1600 {
+algorithm=sequential merge sort time=0.025729s
+algorithm=parallel merge sort time=0.021647s
+algorithm=sequential quick sort time=0.102780s
+algorithm=parallel quick sort time=0.106007s
+}
+Size=3200 {
+algorithm=sequential merge sort time=0.050736s
+algorithm=parallel merge sort time=0.042078s
+algorithm=sequential quick sort time=0.394773s
+algorithm=parallel quick sort time=0.437605s
+}
+Size=6400 {
+algorithm=sequential merge sort time=0.106743s
+algorithm=parallel merge sort time=0.094027s

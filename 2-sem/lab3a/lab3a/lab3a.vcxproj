@@ -139,10 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="benchmark\my_file_writer.cpp" />
+    <ClCompile Include="benchmark\my_timer.cpp" />
     <ClCompile Include="lab3a.cpp" />
     <ClCompile Include="parallel-algorithms\thread_number.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="benchmark\benchmark_mode.h" />
+    <ClInclude Include="benchmark\my_file_writer.h" />
+    <ClInclude Include="benchmark\my_timer.h" />
     <ClInclude Include="libraries_and_namespaces.h" />
     <ClInclude Include="my_matrix.h" />
     <ClInclude Include="parallel-algorithms\all_sorts.h" />

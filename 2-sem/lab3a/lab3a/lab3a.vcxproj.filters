@@ -25,6 +25,12 @@
     <Filter Include="Source Files\parallel-algorithms">
       <UniqueIdentifier>{a2489a0b-c557-459b-a2dc-71ab36892631}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\benchmark">
+      <UniqueIdentifier>{a4ecc8ca-61af-4950-93b8-d088ba189061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\benchmark">
+      <UniqueIdentifier>{2402c391-0ee2-4c57-aa87-831e69021688}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lab3a.cpp">
@@ -32,6 +38,12 @@
     </ClCompile>
     <ClCompile Include="parallel-algorithms\thread_number.cpp">
       <Filter>Source Files\parallel-algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="benchmark\my_file_writer.cpp">
+      <Filter>Source Files\benchmark</Filter>
+    </ClCompile>
+    <ClCompile Include="benchmark\my_timer.cpp">
+      <Filter>Source Files\benchmark</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +74,18 @@
     <ClInclude Include="tests\testing_sort_algorithms.h">
       <Filter>Header Files\tests</Filter>
     </ClInclude>
+    <ClInclude Include="libraries_and_namespaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="my_matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sequential-algorithms\matrix_multiplication.h">
+      <Filter>Header Files\sequential-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\thread_number.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
     <ClInclude Include="parallel-algorithms\all_sorts.h">
       <Filter>Header Files\parallel-algorithms</Filter>
     </ClInclude>
@@ -71,26 +95,23 @@
     <ClInclude Include="parallel-algorithms\quick_sort.h">
       <Filter>Header Files\parallel-algorithms</Filter>
     </ClInclude>
+    <ClInclude Include="parallel-algorithms\matrix_multiplication.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
     <ClInclude Include="parallel-algorithms\simple_multiplication.h">
       <Filter>Header Files\parallel-algorithms</Filter>
     </ClInclude>
     <ClInclude Include="parallel-algorithms\strassen_multiplication.h">
       <Filter>Header Files\parallel-algorithms</Filter>
     </ClInclude>
-    <ClInclude Include="libraries_and_namespaces.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="benchmark\benchmark_mode.h">
+      <Filter>Header Files\benchmark</Filter>
     </ClInclude>
-    <ClInclude Include="my_matrix.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="benchmark\my_file_writer.h">
+      <Filter>Header Files\benchmark</Filter>
     </ClInclude>
-    <ClInclude Include="parallel-algorithms\matrix_multiplication.h">
-      <Filter>Header Files\parallel-algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="sequential-algorithms\matrix_multiplication.h">
-      <Filter>Header Files\sequential-algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="parallel-algorithms\thread_number.h">
-      <Filter>Header Files\parallel-algorithms</Filter>
+    <ClInclude Include="benchmark\my_timer.h">
+      <Filter>Header Files\benchmark</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

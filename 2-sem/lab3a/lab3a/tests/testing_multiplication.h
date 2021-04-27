@@ -20,13 +20,11 @@ TEST_CASE("testing multiplication")
 	SUBCASE("parallel simple multiplication")
 	{
 		multiply = &parmulmatrix::simple_multiplication<int>;
-		std::cout << "\npar" << std::endl;
 	}
-
-	/*SUBCASE("parallel Strassen multiplication")
+	SUBCASE("parallel Strassen multiplication")
 	{
 		multiply = &parmulmatrix::strassen_multiplication<int>;
-	}*/
+	}
 	Matrix<int> matrix1 = { { {21,42,53},
 							  {32,63,94},
 							  {17,87,14}} },

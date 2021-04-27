@@ -96,10 +96,32 @@ namespace mymatrix
 		*
 		*/
 		T get_item(std::size_t i, std::size_t j) const;
+		static Matrix<T> create_random_matrix(std::size_t row_size, std::size_t col_size, const T& max_value);
+		static Matrix<T> create_random_matrix(std::size_t size, const T& max_value);
 	};
 }
 namespace mymatrix
 {
+	template<typename T>
+	Matrix<T> Matrix<T>::create_random_matrix(
+		std::size_t row_size, std::size_t col_size, const T& max_value)
+	{
+		Matrix<T> matrix(row_size, col_size);
+		if (max_value > 0)
+		{
+			srand(unsigned(time(0)));
+			for (std::size_t i = 0; i < row_size; i++)
+				for (std::size_t j = 0; j < col_size; j++)
+					matrix[i][j] = rand() % max_value;
+		}
+		return matrix;
+	}
+	template<typename T>
+	Matrix<T> Matrix<T>::create_random_matrix(
+		std::size_t size, const T& max_value)
+	{
+		return create_random_matrix(size, size, max_value);
+	}
 	template<typename T>
 	T Matrix<T>::get_item(std::size_t i, std::size_t j)
 		const

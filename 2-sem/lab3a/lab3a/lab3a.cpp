@@ -1,9 +1,11 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include <iostream>
+#include <ctime>
 #include "tests/doctest.h"
 #include "tests/testing_sort_algorithms.h"
 #include "tests/testing_matrix.h"
 #include "tests/testing_multiplication.h"
+#include "benchmark/benchmark_mode.h"
 
 int main(int argc, char** argv)
 {
@@ -26,7 +28,8 @@ int main(int argc, char** argv)
 
     int client_stuff_return_code = 0;
     // your program - if the testing framework is integrated in your production code
-
+    benmode::BenchmarkMode<int> mode(2);
+    mode.start();
     return res + client_stuff_return_code; // the result from doctest is propagated here as well
 }
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "matrix_multiplication.h"
 
-/*
+
 namespace parmulmatrix
 {
 	template<typename T>
@@ -41,62 +41,89 @@ namespace parmulmatrix
 	StrassenSubmatrices<T>::StrassenSubmatrices(const Matrix<T>& first_matrix,const Matrix<T>& second_matrix,
 		std::size_t size, thnum::ThdNumber& th_number) : Submatrices<T>{ first_matrix, second_matrix, size, th_number }
 	{
-		matrix_m1 = create_matrix_m1();
-		matrix_m2 = create_matrix_m2();
-		matrix_m3 = create_matrix_m3();
-		matrix_m4 = create_matrix_m4();
-		matrix_m5 = create_matrix_m5();
-		matrix_m6 = create_matrix_m6();
-		matrix_m7 = create_matrix_m7();
+		std::vector<std::thread> ths;
+		if (th_number.increase())
+			ths.push_back(std::thread([&]()
+				{ matrix_m1 = create_matrix_m1(); }));
+		else matrix_m1 = create_matrix_m1();
+		if (th_number.increase())
+			ths.push_back(std::thread([&]()
+				{ matrix_m2 = create_matrix_m2(); }));
+		else matrix_m2 = create_matrix_m2();
+		if (th_number.increase())
+			ths.push_back(std::thread([&]()
+				{ matrix_m3 = create_matrix_m3(); }));
+		else matrix_m3 = create_matrix_m3();
+		if (th_number.increase())
+			ths.push_back(std::thread([&]()
+				{ matrix_m4 = create_matrix_m4(); }));
+		else matrix_m4 = create_matrix_m4();
+		if (th_number.increase())
+			ths.push_back(std::thread([&]()
+				{ matrix_m5 = create_matrix_m5(); }));
+		else matrix_m5 = create_matrix_m5();
+		if (th_number.increase())
+			ths.push_back(std::thread([&]()
+				{ matrix_m6 = create_matrix_m6(); }));
+		else matrix_m6 = create_matrix_m6();
+		if (th_number.increase())
+			ths.push_back(std::thread([&]()
+				{ matrix_m7 = create_matrix_m7(); }));
+		else matrix_m7 = create_matrix_m7();
+		for (auto& item : ths)
+		{
+			if (item.joinable()) item.join();
+			this->th_number.decrease();
+		}
 	}
 	template<typename T>
 	Matrix<T> StrassenSubmatrices<T>::create_matrix_m1()
 	{
 		return strassen_parts_multiplication(
 			this->first_matrix_parts.get11() + this->first_matrix_parts.get22(),
-			this->second_matrix_parts.get11() + this->second_matrix_parts.get22(), th_number);
+			this->second_matrix_parts.get11() + this->second_matrix_parts.get22(), this->th_number);
 	}
 	template<typename T>
 	Matrix<T> StrassenSubmatrices<T>::create_matrix_m2()
 	{
 		return strassen_parts_multiplication(
 			this->first_matrix_parts.get21() + this->first_matrix_parts.get22(),
-			this->second_matrix_parts.get11(), th_number);
+			this->second_matrix_parts.get11(), this->th_number);
 	}
 	template<typename T>
 	Matrix<T> StrassenSubmatrices<T>::create_matrix_m3()
 	{
 		return strassen_parts_multiplication(
 			this->first_matrix_parts.get11(),
-			this->second_matrix_parts.get12() - this->second_matrix_parts.get22(), th_number);
+			this->second_matrix_parts.get12() - this->second_matrix_parts.get22(), this->th_number);
 	}
 	template<typename T>
 	Matrix<T> StrassenSubmatrices<T>::create_matrix_m4()
 	{
 		return strassen_parts_multiplication(
 			this->first_matrix_parts.get22(),
-			this->second_matrix_parts.get21() - this->second_matrix_parts.get11(), th_number);
+			this->second_matrix_parts.get21() - this->second_matrix_parts.get11(), this->th_number);
 	}
 	template<typename T>
 	Matrix<T> StrassenSubmatrices<T>::create_matrix_m5()
 	{
 		return strassen_parts_multiplication(
 			this->first_matrix_parts.get11() + this->first_matrix_parts.get12(),
-			this->second_matrix_parts.get22(), th_number);
+			this->second_matrix_parts.get22(), this->th_number);
 	}
 	template<typename T>
 	Matrix<T> StrassenSubmatrices<T>::create_matrix_m6()
 	{
 		return strassen_parts_multiplication(
 			this->first_matrix_parts.get21() - this->first_matrix_parts.get11(),
-			this->second_matrix_parts.get11() + this->second_matrix_parts.get12(), th_number);
+			this->second_matrix_parts.get11() + this->second_matrix_parts.get12(), this->th_number);
 	}
 	template<typename T>
 	Matrix<T> StrassenSubmatrices<T>::create_matrix_m7()
 	{
 		return strassen_parts_multiplication(
 			this->first_matrix_parts.get12() - this->first_matrix_parts.get22(),
-			this->second_matrix_parts.get21() + this->second_matrix_parts.get22(), th_number);
+			this->second_matrix_parts.get21() + this->second_matrix_parts.get22(), this->th_number);
 	}
 	template<typename T>
 	Matrix<T> StrassenSubmatrices<T>::get_c11()
@@ -138,4 +165,4 @@ namespace parmulmatrix
 		return submatrices.merge_submatrices();
 	}
 	
-}*/
+}

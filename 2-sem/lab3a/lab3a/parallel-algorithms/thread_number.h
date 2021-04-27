@@ -14,6 +14,7 @@ namespace thnum
 		std::mutex mut;
 	public:
 		ThdNumber();
-		bool add_new_thread();
+		bool increase();
+		void decrease();
 	};
 }
