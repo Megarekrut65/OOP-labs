@@ -145,10 +145,12 @@
     <ClCompile Include="parallel-algorithms\thread_number.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="addition_matrix_functions.h" />
     <ClInclude Include="benchmark\benchmark_mode.h" />
     <ClInclude Include="benchmark\my_file_writer.h" />
     <ClInclude Include="benchmark\my_timer.h" />
     <ClInclude Include="libraries_and_namespaces.h" />
+    <ClInclude Include="matrix_parts.h" />
     <ClInclude Include="my_matrix.h" />
     <ClInclude Include="parallel-algorithms\all_sorts.h" />
     <ClInclude Include="parallel-algorithms\matrix_multiplication.h" />
@@ -156,6 +158,7 @@
     <ClInclude Include="parallel-algorithms\quick_sort.h" />
     <ClInclude Include="parallel-algorithms\simple_multiplication.h" />
     <ClInclude Include="parallel-algorithms\strassen_multiplication.h" />
+    <ClInclude Include="parallel-algorithms\submatrices.h" />
     <ClInclude Include="parallel-algorithms\thread_number.h" />
     <ClInclude Include="sequential-algorithms\all_sorts.h" />
     <ClInclude Include="sequential-algorithms\matrix_multiplication.h" />
@@ -163,6 +166,7 @@
     <ClInclude Include="sequential-algorithms\quick_sort.h" />
     <ClInclude Include="sequential-algorithms\simple_multiplication.h" />
     <ClInclude Include="sequential-algorithms\strassen_multiplication.h" />
+    <ClInclude Include="sequential-algorithms\submatrices.h" />
     <ClInclude Include="tests\doctest.h" />
     <ClInclude Include="tests\testing_sort_algorithms.h" />
     <ClInclude Include="tests\testing_matrix.h" />

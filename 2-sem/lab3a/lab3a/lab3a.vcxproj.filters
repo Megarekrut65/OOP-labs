@@ -113,5 +113,17 @@
     <ClInclude Include="benchmark\my_timer.h">
       <Filter>Header Files\benchmark</Filter>
     </ClInclude>
+    <ClInclude Include="matrix_parts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sequential-algorithms\submatrices.h">
+      <Filter>Header Files\sequential-algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="addition_matrix_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parallel-algorithms\submatrices.h">
+      <Filter>Header Files\parallel-algorithms</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

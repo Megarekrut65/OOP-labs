@@ -7,6 +7,8 @@ namespace seqsorts
 {
     /**
     *   \brief Sorts array
+    *   
+    *   Sequential version of algorithm.
     *
     *   Top-down implementation.
     *   See [Merge sort.](https://en.wikipedia.org/wiki/Merge_sort "Information about this algorithm in Wikipedia")
@@ -15,7 +17,7 @@ namespace seqsorts
     void merge_sort(std::vector<T>& arr);
     /**
     *   \brief Merges two arrays to one
-    *
+    *   
     *   \param arr - array of numbers
     *   \param begin - begin index of firts array
     *   \param middle - end index of firts and begin index of second arrays

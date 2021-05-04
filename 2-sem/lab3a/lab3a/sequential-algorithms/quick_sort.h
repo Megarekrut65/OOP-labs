@@ -26,7 +26,9 @@ namespace seqsorts
     void quick_sorting(std::vector<T>& arr, long low, long high);
     /**
     *   \brief Sorts array
-    *
+    *   
+    *   Sequential version of algorithm.
+    * 
     *   Lomuto partition scheme, rightmost pivot.
     *   See [Quick sort.](https://en.wikipedia.org/wiki/Quick_sort "Information about this algorithm in Wikipedia")
     */

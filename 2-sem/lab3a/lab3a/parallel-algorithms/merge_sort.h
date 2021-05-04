@@ -7,7 +7,9 @@ namespace parsorts
 {
     /**
     *   \brief Sorts array
-    *
+    *   
+    *   Parallel version of algorithm.
+    * 
     *   Top-down implementation.
     *   See [Merge sort.](https://en.wikipedia.org/wiki/Merge_sort "Information about this algorithm in Wikipedia")
     */

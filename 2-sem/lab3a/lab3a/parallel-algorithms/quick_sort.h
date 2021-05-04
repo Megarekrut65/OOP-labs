@@ -27,7 +27,9 @@ namespace parsorts
     void quick_sorting(std::vector<T>& arr, long low, long high, thnum::ThdNumber& th_number);
     /**
     *   \brief Sorts array
-    *
+    * 
+    *   Parallel version of algorithm.
+    * 
     *   Lomuto partition scheme, rightmost pivot.
     *   See [Quick sort.](https://en.wikipedia.org/wiki/Quick_sort "Information about this algorithm in Wikipedia")
     */

@@ -3,7 +3,15 @@
 #include <string>
 
 /**
-*   \brief Namespace for sort algorithm and addition functions
+*   \brief Namespace for sequential sorting algorithms
+*/
+namespace seqsorts{}
+/**
+*   \brief Namespace for parallel sorting algorithms
+*/
+namespace parsorts{}
+/**
+*   \brief Namespace for addition functions
 */
 namespace sorts
 {
