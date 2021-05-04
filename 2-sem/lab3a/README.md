@@ -1,4 +1,5 @@
 ﻿* The following sequantial and parallel algorithms are implemented:
+﻿
 ﻿     > Merge sort;
 ﻿     > Quick sort;
 ﻿     > Naive matrix multiplication;
