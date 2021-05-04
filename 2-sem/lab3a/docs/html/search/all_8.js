@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['quick_5fsort',['quick_sort',['../namespaceseqsorts.html#a6917464059092874da87d8a22edcd676',1,'seqsorts::quick_sort()'],['../namespaceparsorts.html#a26dfb73472a6da6e630f06f29248fae3',1,'parsorts::quick_sort()']]],
-  ['quick_5fsorting',['quick_sorting',['../namespaceseqsorts.html#ad1bf21383c552fe154daad547205f96a',1,'seqsorts::quick_sorting()'],['../namespaceparsorts.html#a7b47277ad73231ec5b244d58cdb196bc',1,'parsorts::quick_sorting()']]]
+  ['operator_2b',['operator+',['../classmymatrix_1_1_matrix.html#ab360f89aad47d30d3bf5c562b64d2df2',1,'mymatrix::Matrix']]],
+  ['operator_2d',['operator-',['../classmymatrix_1_1_matrix.html#a58d638a7e66d11a4587e49133f41b029',1,'mymatrix::Matrix']]],
+  ['operator_3c_3c',['operator&lt;&lt;',['../classmymatrix_1_1_matrix.html#ab51b7b3359932049d19389a851f2b633',1,'mymatrix::Matrix']]],
+  ['operator_3d_3d',['operator==',['../classmymatrix_1_1_matrix.html#a16b9c919edda9cd339a4dea109fcf4df',1,'mymatrix::Matrix::operator==()'],['../namespacesorts.html#a2608f268c147dbc9e90f57c9ddfee385',1,'sorts::operator==()']]],
+  ['operator_5b_5d',['operator[]',['../classmymatrix_1_1_matrix.html#acac9c26dccc1d6b6ad59096a6d12476f',1,'mymatrix::Matrix']]]
 ];

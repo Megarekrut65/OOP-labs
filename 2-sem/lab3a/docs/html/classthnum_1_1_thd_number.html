@@ -74,16 +74,68 @@ $(function() {
 <div class="title">thnum::ThdNumber Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class for saving and editing number of opened threads.  
+ <a href="classthnum_1_1_thd_number.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="thread__number_8h_source.html">thread_number.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa21ce13a689a3158f7ba061f9ce48b0b"><td class="memItemLeft" align="right" valign="top"><a id="aa21ce13a689a3158f7ba061f9ce48b0b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>increase</b> ()</td></tr>
+<tr class="memitem:a7a13565153641745f4d74108a010efe2"><td class="memItemLeft" align="right" valign="top"><a id="a7a13565153641745f4d74108a010efe2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classthnum_1_1_thd_number.html#a7a13565153641745f4d74108a010efe2">ThdNumber</a> ()</td></tr>
+<tr class="memdesc:a7a13565153641745f4d74108a010efe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:a7a13565153641745f4d74108a010efe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa21ce13a689a3158f7ba061f9ce48b0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classthnum_1_1_thd_number.html#aa21ce13a689a3158f7ba061f9ce48b0b">increase</a> ()</td></tr>
+<tr class="memdesc:aa21ce13a689a3158f7ba061f9ce48b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds opened thread.  <a href="#aa21ce13a689a3158f7ba061f9ce48b0b">More...</a><br /></td></tr>
 <tr class="separator:aa21ce13a689a3158f7ba061f9ce48b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a355b721c40d91765d9ccfa971ad75613"><td class="memItemLeft" align="right" valign="top"><a id="a355b721c40d91765d9ccfa971ad75613"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>decrease</b> ()</td></tr>
+<tr class="memitem:a355b721c40d91765d9ccfa971ad75613"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classthnum_1_1_thd_number.html#a355b721c40d91765d9ccfa971ad75613">decrease</a> ()</td></tr>
+<tr class="memdesc:a355b721c40d91765d9ccfa971ad75613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes opened thread.  <a href="#a355b721c40d91765d9ccfa971ad75613">More...</a><br /></td></tr>
 <tr class="separator:a355b721c40d91765d9ccfa971ad75613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for saving and editing number of opened threads. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a355b721c40d91765d9ccfa971ad75613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a355b721c40d91765d9ccfa971ad75613">&#9670;&nbsp;</a></span>decrease()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void thnum::ThdNumber::decrease </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes opened thread. </p>
+<p>If there are not any opened threads than will be error </p>
+
+</div>
+</div>
+<a id="aa21ce13a689a3158f7ba061f9ce48b0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa21ce13a689a3158f7ba061f9ce48b0b">&#9670;&nbsp;</a></span>increase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool thnum::ThdNumber::increase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds opened thread. </p>
+<p>If OS can open more threads than returns trueand increase number of threads else return false. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab3a/lab3a/parallel-algorithms/<a class="el" href="thread__number_8h_source.html">thread_number.h</a></li>
 <li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab3a/lab3a/parallel-algorithms/thread_number.cpp</li>

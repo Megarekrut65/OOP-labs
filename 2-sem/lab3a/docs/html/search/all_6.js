@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['operator_2b',['operator+',['../classmymatrix_1_1_matrix.html#ab360f89aad47d30d3bf5c562b64d2df2',1,'mymatrix::Matrix']]],
-  ['operator_2d',['operator-',['../classmymatrix_1_1_matrix.html#a58d638a7e66d11a4587e49133f41b029',1,'mymatrix::Matrix']]],
-  ['operator_3c_3c',['operator&lt;&lt;',['../classmymatrix_1_1_matrix.html#ab51b7b3359932049d19389a851f2b633',1,'mymatrix::Matrix']]],
-  ['operator_3d_3d',['operator==',['../classmymatrix_1_1_matrix.html#a16b9c919edda9cd339a4dea109fcf4df',1,'mymatrix::Matrix::operator==()'],['../namespacesorts.html#a2608f268c147dbc9e90f57c9ddfee385',1,'sorts::operator==()']]],
-  ['operator_5b_5d',['operator[]',['../classmymatrix_1_1_matrix.html#acac9c26dccc1d6b6ad59096a6d12476f',1,'mymatrix::Matrix']]]
+  ['increase',['increase',['../classthnum_1_1_thd_number.html#aa21ce13a689a3158f7ba061f9ce48b0b',1,'thnum::ThdNumber']]],
+  ['info',['info',['../classfwriter_1_1_file_writer.html#aec228f92d0c2bf1da1af7f17bdce23dc',1,'fwriter::FileWriter']]]
 ];

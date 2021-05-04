@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parmulmatrix',['parmulmatrix',['../namespaceparmulmatrix.html',1,'']]],
-  ['parsorts',['parsorts',['../namespaceparsorts.html',1,'']]]
+  ['mtimer',['mtimer',['../namespacemtimer.html',1,'']]],
+  ['mymatrix',['mymatrix',['../namespacemymatrix.html',1,'']]]
 ];

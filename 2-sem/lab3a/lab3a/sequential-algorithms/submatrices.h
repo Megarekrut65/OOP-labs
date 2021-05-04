@@ -14,9 +14,21 @@ namespace seqmulmatrix
 	class Submatrices
 	{
 	protected:
+		/**
+		*	\brief Returns matrix C11 as in algorithm
+		*/
 		virtual Matrix<T> get_c11() = 0;
+		/**
+		*	\brief Returns matrix C11 as in algorithm
+		*/
 		virtual Matrix<T> get_c12() = 0;
+		/**
+		*	\brief Returns matrix C11 as in algorithm
+		*/
 		virtual Matrix<T> get_c21() = 0;
+		/**
+		*	\brief Returns matrix C11 as in algorithm
+		*/
 		virtual Matrix<T> get_c22() = 0;
 		/**
 		*	\brief Copies part to matrix by indexes

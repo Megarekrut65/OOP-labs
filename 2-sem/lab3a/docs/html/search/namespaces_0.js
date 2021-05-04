@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mymatrix',['mymatrix',['../namespacemymatrix.html',1,'']]]
+  ['fwriter',['fwriter',['../namespacefwriter.html',1,'']]]
 ];
