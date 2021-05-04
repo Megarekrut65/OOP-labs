@@ -3,21 +3,60 @@
 
 namespace parmulmatrix
 {
+	/**
+	*	\brief Class for multiplication of matrices using simple parallel multiplication algorithm
+	*/
 	template<typename T>
 	class SimpleSubmatrices : public Submatrices<T>
 	{
 	private:
+		/**
+		*	\brief Gets matrix c11 (see algorithm of matrix multiplication)
+		*
+		*	Added and multiply some parts of matrices.
+		*/
 		Matrix<T> get_c11() override;
+		/**
+		*	\brief Gets matrix c12 (see algorithm of matrix multiplication)
+		*
+		*	Added and multiply some parts of matrices.
+		*/
 		Matrix<T> get_c12() override;
+		/**
+		*	\brief Gets matrix c21 (see algorithm of matrix multiplication)
+		*
+		*	Added and multiply some parts of matrices.
+		*/
 		Matrix<T> get_c21() override;
+		/**
+		*	\brief Gets matrix c22 (see algorithm of matrix multiplication)
+		*
+		*	Added and multiply some parts of matrices.
+		*/
 		Matrix<T> get_c22() override;
 	public:
+		/**
+		*	\brief Paramatrized constructor
+		*/
 		SimpleSubmatrices(const Matrix<T>& first_matrix,
 			const Matrix<T>& second_matrix,std::size_t size, thnum::ThdNumber& th_number);
 	};
+	/**
+	*	\brief Multiplies parts of square matrices with same sizes
+	*	
+	*	Parallel version of algorithm
+	*
+	*	\param first_matrix - first matrix to multiply
+	*	\param second_matrix - second matrix to multiply
+	*	\param th_number - class for saving number of open threads
+	*	\returns result of multiplication
+	*/
 	template<typename T>
 	Matrix<T> simple_parts_multiplication(const Matrix<T>& first_matrix,
 		const Matrix<T>& second_matrix, thnum::ThdNumber& th_number);
+	/**
+	*	\brief Multiplies two matrices using simple multiplication algorithm
+	*/
 	template<typename T>
 	Matrix<T> simple_multiplication(const Matrix<T>& first_matrix,
 		const Matrix<T>& second_matrix);

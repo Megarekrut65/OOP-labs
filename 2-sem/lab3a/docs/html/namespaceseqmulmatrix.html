@@ -77,8 +77,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_simple_submatrices.html">SimpleSubmatrices</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for multiplication of matrices using simple seauence multiplication algorithm.  <a href="classseqmulmatrix_1_1_simple_submatrices.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_strassen_submatrices.html">StrassenSubmatrices</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for multiplication of matrices using strassen seauence multiplication algorithm.  <a href="classseqmulmatrix_1_1_strassen_submatrices.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html">Submatrices</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Basic class for sequential multiplication algorithms.  <a href="classseqmulmatrix_1_1_submatrices.html#details">More...</a><br /></td></tr>
@@ -90,21 +92,23 @@ Functions</h2></td></tr>
 <tr class="memitem:a1c078da9c86c3bc445cddd1d2d04a403"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceseqmulmatrix.html#a1c078da9c86c3bc445cddd1d2d04a403">multiply_algorithm</a> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix, <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;(*multiply)(const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;))</td></tr>
 <tr class="memdesc:a1c078da9c86c3bc445cddd1d2d04a403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edits matrices sizes and call multiply.  <a href="#a1c078da9c86c3bc445cddd1d2d04a403">More...</a><br /></td></tr>
 <tr class="separator:a1c078da9c86c3bc445cddd1d2d04a403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeba0689d87c8638393aa4475eb78aa0"><td class="memTemplParams" colspan="2"><a id="afeba0689d87c8638393aa4475eb78aa0"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:afeba0689d87c8638393aa4475eb78aa0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>simple_parts_multiplication</b> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix)</td></tr>
+<tr class="memitem:afeba0689d87c8638393aa4475eb78aa0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:afeba0689d87c8638393aa4475eb78aa0"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceseqmulmatrix.html#afeba0689d87c8638393aa4475eb78aa0">simple_parts_multiplication</a> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix)</td></tr>
+<tr class="memdesc:afeba0689d87c8638393aa4475eb78aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies parts of square matrices with same sizes.  <a href="#afeba0689d87c8638393aa4475eb78aa0">More...</a><br /></td></tr>
 <tr class="separator:afeba0689d87c8638393aa4475eb78aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a199f6d3591b49e83b0d1f03d1434c9a6"><td class="memTemplParams" colspan="2"><a id="a199f6d3591b49e83b0d1f03d1434c9a6"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a199f6d3591b49e83b0d1f03d1434c9a6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>simple_multiplication</b> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix)</td></tr>
+<tr class="memitem:a199f6d3591b49e83b0d1f03d1434c9a6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceseqmulmatrix.html#a199f6d3591b49e83b0d1f03d1434c9a6">simple_multiplication</a> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix)</td></tr>
+<tr class="memdesc:a199f6d3591b49e83b0d1f03d1434c9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies two matrices using simple multiplication algorithm. <br /></td></tr>
 <tr class="separator:a199f6d3591b49e83b0d1f03d1434c9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca07a06cad4952bfe49d9e0f9dfc763d"><td class="memTemplParams" colspan="2"><a id="aca07a06cad4952bfe49d9e0f9dfc763d"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aca07a06cad4952bfe49d9e0f9dfc763d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>strassen_parts_multiplication</b> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix)</td></tr>
+<tr class="memitem:aca07a06cad4952bfe49d9e0f9dfc763d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aca07a06cad4952bfe49d9e0f9dfc763d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceseqmulmatrix.html#aca07a06cad4952bfe49d9e0f9dfc763d">strassen_parts_multiplication</a> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix)</td></tr>
+<tr class="memdesc:aca07a06cad4952bfe49d9e0f9dfc763d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies parts of square matrices with same sizes.  <a href="#aca07a06cad4952bfe49d9e0f9dfc763d">More...</a><br /></td></tr>
 <tr class="separator:aca07a06cad4952bfe49d9e0f9dfc763d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3545bff75635068a1f0685907510254"><td class="memTemplParams" colspan="2"><a id="ab3545bff75635068a1f0685907510254"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab3545bff75635068a1f0685907510254"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>strassen_multiplication</b> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix)</td></tr>
+<tr class="memitem:ab3545bff75635068a1f0685907510254"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceseqmulmatrix.html#ab3545bff75635068a1f0685907510254">strassen_multiplication</a> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix)</td></tr>
+<tr class="memdesc:ab3545bff75635068a1f0685907510254"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies two matrices using strassen multiplication algorithm. <br /></td></tr>
 <tr class="separator:ab3545bff75635068a1f0685907510254"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -151,6 +155,86 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="afeba0689d87c8638393aa4475eb78aa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeba0689d87c8638393aa4475eb78aa0">&#9670;&nbsp;</a></span>simple_parts_multiplication()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; seqmulmatrix::simple_parts_multiplication </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>first_matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>second_matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Multiplies parts of square matrices with same sizes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first_matrix</td><td>- first matrix to multiply </td></tr>
+    <tr><td class="paramname">second_matrix</td><td>- second matrix to multiply </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>result of multiplication </dd></dl>
+
+</div>
+</div>
+<a id="aca07a06cad4952bfe49d9e0f9dfc763d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca07a06cad4952bfe49d9e0f9dfc763d">&#9670;&nbsp;</a></span>strassen_parts_multiplication()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; seqmulmatrix::strassen_parts_multiplication </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>first_matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>second_matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Multiplies parts of square matrices with same sizes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first_matrix</td><td>- first matrix to multiply </td></tr>
+    <tr><td class="paramname">second_matrix</td><td>- second matrix to multiply </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>result of multiplication </dd></dl>
 
 </div>
 </div>

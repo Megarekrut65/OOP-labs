@@ -3,34 +3,71 @@
 
 namespace seqmulmatrix
 {
+	/**
+	*	\brief Class for multiplication of matrices using strassen seauence multiplication algorithm
+	*/
 	template<typename T>
 	class StrassenSubmatrices : public Submatrices<T>
 	{
 	private:
-		Matrix<T> matrix_m1;
-		Matrix<T> matrix_m2;
-		Matrix<T> matrix_m3;
-		Matrix<T> matrix_m4;
-		Matrix<T> matrix_m5;
-		Matrix<T> matrix_m6;
-		Matrix<T> matrix_m7;
+		Matrix<T> matrix_m1;/**< Matrix M1 in algorithm*/
+		Matrix<T> matrix_m2;/**< Matrix M2 in algorithm*/
+		Matrix<T> matrix_m3;/**< Matrix M3 in algorithm*/
+		Matrix<T> matrix_m4;/**< Matrix M4 in algorithm*/
+		Matrix<T> matrix_m5;/**< Matrix M5 in algorithm*/
+		Matrix<T> matrix_m6;/**< Matrix M6 in algorithm*/
+		Matrix<T> matrix_m7;/**< Matrix M7 in algorithm*/
+		/**
+		*	\brief Creates matrix M1
+		*/
 		Matrix<T> create_matrix_m1();
+		/**
+		*	\brief Creates matrix M2
+		*/
 		Matrix<T> create_matrix_m2();
+		/**
+		*	\brief Creates matrix M3
+		*/
 		Matrix<T> create_matrix_m3();
+		/**
+		*	\brief Creates matrix M4
+		*/
 		Matrix<T> create_matrix_m4();
+		/**
+		*	\brief Creates matrix M5
+		*/
 		Matrix<T> create_matrix_m5();
+		/**
+		*	\brief Creates matrix M6
+		*/
 		Matrix<T> create_matrix_m6();
+		/**
+		*	\brief Creates matrix M7
+		*/
 		Matrix<T> create_matrix_m7();
 		Matrix<T> get_c11() override;
 		Matrix<T> get_c12() override;
 		Matrix<T> get_c21() override;
 		Matrix<T> get_c22() override;
 	public:
+		/**
+		*	\brief Paramatrized constructor
+		*/
 		StrassenSubmatrices(const Matrix<T>& first_matrix, const Matrix<T>& second_matrix,
 			std::size_t size);
 	};
+	/**
+	*	\brief Multiplies parts of square matrices with same sizes
+	*
+	*	\param first_matrix - first matrix to multiply
+	*	\param second_matrix - second matrix to multiply
+	*	\returns result of multiplication
+	*/
 	template<typename T>
 	Matrix<T> strassen_parts_multiplication(const Matrix<T>& first_matrix,const Matrix<T>& second_matrix);
+	/**
+	*	\brief Multiplies two matrices using strassen multiplication algorithm
+	*/
 	template<typename T>
 	Matrix<T> strassen_multiplication(const Matrix<T>& first_matrix, const Matrix<T>& second_matrix);
 }
