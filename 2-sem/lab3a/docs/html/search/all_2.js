@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['check_5fcorrect_5fmatrices_5fsize',['check_correct_matrices_size',['../namespacemymatrix.html#aa58e69fe761412d8696240ca36d20701',1,'mymatrix']]],
   ['copy_5fto_5farray',['copy_to_array',['../namespacesorts.html#a1908596a25945a152880f8d3d02c3cc1',1,'sorts']]],
   ['create_5fordered_5farray',['create_ordered_array',['../namespacesorts.html#ac2ad42d8ecddb8add4f6380e65004944',1,'sorts']]],
   ['create_5frandom_5farray',['create_random_array',['../namespacesorts.html#aee3e17e6e3f49f9b69b930ac53b4fe6e',1,'sorts']]],

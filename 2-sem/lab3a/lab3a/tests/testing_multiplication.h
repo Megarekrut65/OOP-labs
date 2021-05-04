@@ -36,6 +36,7 @@ TEST_CASE("testing multiplication")
 	std::stringstream out;
 	out << res;
 	CHECK(out.str() == std::string("4941 6246 3208 \n8509 10549 5284 \n2521 4888 3156 \n"));
+	CHECK(!(multiply(matrix1, matrix2) == multiply(matrix2, matrix1)));
 	matrix2 = { { {20,11},
 				  {13,41}} };
 	CHECK_THROWS_WITH_AS(res = multiply(matrix1, matrix2),

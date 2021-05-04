@@ -94,6 +94,10 @@ namespace mymatrix
 		*/
 		Matrix<T> operator- (const Matrix<T>& matrix);
 		/**
+		*	\brief Checks quals of matrices
+		*/
+		bool operator==(const Matrix<T>& matrix);
+		/**
 		*	\brief Adds matrix to ostream
 		*/
 		template <typename T>
@@ -163,6 +167,16 @@ namespace mymatrix
 }
 namespace mymatrix
 {
+	template<typename T>
+	bool Matrix<T>::operator==(const Matrix<T>& matrix)
+	{
+		if (this->get_row_size() != matrix.get_row_size()) return false;
+		if (this->get_col_size() != matrix.get_col_size()) return false;
+		for (std::size_t i = 0; i < matrix.get_row_size(); i++)
+			for (std::size_t j = 0; j < matrix.get_col_size(); j++)
+				if (this->container[i][j] != matrix.get_item(i, j)) return false;
+		return true;
+	}
 	template<typename T>
 	Matrix<T> Matrix<T>::create_random_matrix(
 		std::size_t row_size, std::size_t col_size, const T& max_value)

@@ -4,6 +4,11 @@
 
 namespace seqmulmatrix
 {
+	/**
+	*	\brief Edits matrices sizes and call multiply
+	* 
+	*	\param multiply - function to multiply two square matrices
+	*/
 	template<typename T>
 	Matrix<T> multiply_algorithm(const Matrix<T>& first_matrix,
 		const Matrix<T>& second_matrix, 

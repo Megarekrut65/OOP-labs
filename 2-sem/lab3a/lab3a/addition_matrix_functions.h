@@ -3,13 +3,27 @@
 
 namespace mymatrix
 {
+	/**
+	*	\brief Checks whether two matrices are square and have the same size.
+	* 
+	*	If sizes will not be correct than will be error.
+	*/
 	template<typename T>
 	bool check_correct_matrices_size(const Matrix<T>& first_matrix,
 		const Matrix<T>& second_matrix);
+	/**
+	*	\brief Adds zeros to matrices so that their size is a power of two
+	*/
 	template<typename T>
 	void add_zeros_to_matrices(Matrix<T>& firts_matrix, Matrix<T>& second_matrix);
+	/**
+	*	\brief Adds zeros to matrix so that its size is a power of two
+	*/
 	template<typename T>
 	void add_zeros(Matrix<T>& matrix, std::size_t new_size);
+	/**
+	*	\brief Removes added zeros from matrix
+	*/
 	template<typename T>
 	void remove_extra_zeros(Matrix<T>& matrix, std::size_t old_size);
 }
