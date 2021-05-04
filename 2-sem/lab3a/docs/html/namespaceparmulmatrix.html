@@ -81,13 +81,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparmulmatrix_1_1_strassen_submatrices.html">StrassenSubmatrices</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparmulmatrix_1_1_submatrices.html">Submatrices</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Basic class for parallel multiplication algorithms.  <a href="classparmulmatrix_1_1_submatrices.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a03fa72a98f530320429fddfb53d99df4"><td class="memTemplParams" colspan="2"><a id="a03fa72a98f530320429fddfb53d99df4"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a03fa72a98f530320429fddfb53d99df4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>multiply_algorithm</b> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix, <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;(*multiply)(const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;, <a class="el" href="classthnum_1_1_thd_number.html">thnum::ThdNumber</a> &amp;))</td></tr>
+<tr class="memitem:a03fa72a98f530320429fddfb53d99df4"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a03fa72a98f530320429fddfb53d99df4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceparmulmatrix.html#a03fa72a98f530320429fddfb53d99df4">multiply_algorithm</a> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix, <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;(*multiply)(const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;, <a class="el" href="classthnum_1_1_thd_number.html">thnum::ThdNumber</a> &amp;))</td></tr>
+<tr class="memdesc:a03fa72a98f530320429fddfb53d99df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edits matrices sizes and call multiply.  <a href="#a03fa72a98f530320429fddfb53d99df4">More...</a><br /></td></tr>
 <tr class="separator:a03fa72a98f530320429fddfb53d99df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97a080238832512e813c37c09cee82fd"><td class="memTemplParams" colspan="2"><a id="a97a080238832512e813c37c09cee82fd"></a>
 template&lt;typename T &gt; </td></tr>
@@ -108,7 +109,52 @@ template&lt;typename T &gt; </td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Namespace for parallel multiplication algorithms. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a03fa72a98f530320429fddfb53d99df4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03fa72a98f530320429fddfb53d99df4">&#9670;&nbsp;</a></span>multiply_algorithm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; parmulmatrix::multiply_algorithm </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>first_matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>second_matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;(*)(const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;, <a class="el" href="classthnum_1_1_thd_number.html">thnum::ThdNumber</a> &amp;)&#160;</td>
+          <td class="paramname"><em>multiply</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Edits matrices sizes and call multiply. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">multiply</td><td>- parallel function to multiply two square matrices </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

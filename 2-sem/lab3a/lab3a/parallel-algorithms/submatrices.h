@@ -7,6 +7,9 @@ using namespace mymatrix;
 */
 namespace parmulmatrix
 {
+	/**
+	*	\brief Basic class for parallel multiplication algorithms
+	*/
 	template<typename T>
 	class Submatrices
 	{
@@ -15,18 +18,28 @@ namespace parmulmatrix
 		virtual Matrix<T> get_c12() = 0;
 		virtual Matrix<T> get_c21() = 0;
 		virtual Matrix<T> get_c22() = 0;
+		/**
+		*	\brief Copies part to matrix by indexes
+		*/
 		void copy_part_to_matrix(Matrix<T>& matrix,
 			const Matrix<T>& part,
 			std::size_t begin_row, std::size_t begin_column,
 			std::size_t end_row, std::size_t end_column);
-		const Matrix<T>& first_matrix;
-		const Matrix<T>& second_matrix;
-		std::size_t size;
-		MatrixParts<T> first_matrix_parts;
-		MatrixParts<T> second_matrix_parts;
+
+		const Matrix<T>& first_matrix;/**< Reference to first matrix */
+		const Matrix<T>& second_matrix;/**< Reference to second matrix */
+		std::size_t size;/**< Size of matrices */
+		MatrixParts<T> first_matrix_parts;/**< Parts of first matrix */
+		MatrixParts<T> second_matrix_parts;/**< Parts of second matrix */
 		thnum::ThdNumber& th_number;
 	public:
+		/**
+		*	\brief Paramatrized constructor
+		*/
 		Submatrices(const Matrix<T>& first_matrix, const Matrix<T>& second_matrix, std::size_t size, thnum::ThdNumber& th_number);
+		/**
+		*	\brief Copies the multiplied parts of the matrix to the result
+		*/
 		Matrix<T> merge_submatrices();
 	};
 }

@@ -76,6 +76,11 @@ $(function() {
 <div class="title">seqmulmatrix::Submatrices&lt; T &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Basic class for sequential multiplication algorithms.  
+ <a href="classseqmulmatrix_1_1_submatrices.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="sequential-algorithms_2submatrices_8h_source.html">submatrices.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for seqmulmatrix::Submatrices&lt; T &gt;:</div>
 <div class="dyncontent">
@@ -90,10 +95,12 @@ Inheritance diagram for seqmulmatrix::Submatrices&lt; T &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9da3da3c07fb4353c77aca7431dcf891"><td class="memItemLeft" align="right" valign="top"><a id="a9da3da3c07fb4353c77aca7431dcf891"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Submatrices</b> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;first_matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;second_matrix, std::size_t size)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html#a9da3da3c07fb4353c77aca7431dcf891">Submatrices</a> (const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;<a class="el" href="classseqmulmatrix_1_1_submatrices.html#ac927c28e90f7ec81676134f52be6fea2">first_matrix</a>, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;<a class="el" href="classseqmulmatrix_1_1_submatrices.html#ae9c20f9fe1c870c5fa524e886356a702">second_matrix</a>, std::size_t <a class="el" href="classseqmulmatrix_1_1_submatrices.html#a30b2580f63d3c170b542e454e0b4a450">size</a>)</td></tr>
+<tr class="memdesc:a9da3da3c07fb4353c77aca7431dcf891"><td class="mdescLeft">&#160;</td><td class="mdescRight">Paramatrized constructor. <br /></td></tr>
 <tr class="separator:a9da3da3c07fb4353c77aca7431dcf891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3deba5830a06d897ef28e6be5b51adb9"><td class="memItemLeft" align="right" valign="top"><a id="a3deba5830a06d897ef28e6be5b51adb9"></a>
-<a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>merge_submatrices</b> ()</td></tr>
+<a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html#a3deba5830a06d897ef28e6be5b51adb9">merge_submatrices</a> ()</td></tr>
+<tr class="memdesc:a3deba5830a06d897ef28e6be5b51adb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the multiplied parts of the matrix to the result. <br /></td></tr>
 <tr class="separator:a3deba5830a06d897ef28e6be5b51adb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -111,27 +118,154 @@ virtual <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;
 virtual <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_c22</b> ()=0</td></tr>
 <tr class="separator:a6901e1327c241afc5452cdba9dc92478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bbaf663de8b09d0cc666d2ad5e70aec"><td class="memItemLeft" align="right" valign="top"><a id="a5bbaf663de8b09d0cc666d2ad5e70aec"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>copy_part_to_matrix</b> (<a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;part, std::size_t begin_row, std::size_t begin_column, std::size_t end_row, std::size_t end_column)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html#a5bbaf663de8b09d0cc666d2ad5e70aec">copy_part_to_matrix</a> (<a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;matrix, const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;part, std::size_t begin_row, std::size_t begin_column, std::size_t end_row, std::size_t end_column)</td></tr>
+<tr class="memdesc:a5bbaf663de8b09d0cc666d2ad5e70aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies part to matrix by indexes. <br /></td></tr>
 <tr class="separator:a5bbaf663de8b09d0cc666d2ad5e70aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ac927c28e90f7ec81676134f52be6fea2"><td class="memItemLeft" align="right" valign="top"><a id="ac927c28e90f7ec81676134f52be6fea2"></a>
-const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>first_matrix</b></td></tr>
+<tr class="memitem:ac927c28e90f7ec81676134f52be6fea2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html#ac927c28e90f7ec81676134f52be6fea2">first_matrix</a></td></tr>
 <tr class="separator:ac927c28e90f7ec81676134f52be6fea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9c20f9fe1c870c5fa524e886356a702"><td class="memItemLeft" align="right" valign="top"><a id="ae9c20f9fe1c870c5fa524e886356a702"></a>
-const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>second_matrix</b></td></tr>
+<tr class="memitem:ae9c20f9fe1c870c5fa524e886356a702"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html#ae9c20f9fe1c870c5fa524e886356a702">second_matrix</a></td></tr>
 <tr class="separator:ae9c20f9fe1c870c5fa524e886356a702"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30b2580f63d3c170b542e454e0b4a450"><td class="memItemLeft" align="right" valign="top"><a id="a30b2580f63d3c170b542e454e0b4a450"></a>
-std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+<tr class="memitem:a30b2580f63d3c170b542e454e0b4a450"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html#a30b2580f63d3c170b542e454e0b4a450">size</a></td></tr>
 <tr class="separator:a30b2580f63d3c170b542e454e0b4a450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac02c1116d42d285b38bc6bca0224b32b"><td class="memItemLeft" align="right" valign="top"><a id="ac02c1116d42d285b38bc6bca0224b32b"></a>
-<a class="el" href="classmymatrix_1_1_matrix_parts.html">MatrixParts</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>first_matrix_parts</b></td></tr>
+<tr class="memitem:ac02c1116d42d285b38bc6bca0224b32b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix_parts.html">MatrixParts</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html#ac02c1116d42d285b38bc6bca0224b32b">first_matrix_parts</a></td></tr>
 <tr class="separator:ac02c1116d42d285b38bc6bca0224b32b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a588a3482f43e60e21608c7a1d6f90d2a"><td class="memItemLeft" align="right" valign="top"><a id="a588a3482f43e60e21608c7a1d6f90d2a"></a>
-<a class="el" href="classmymatrix_1_1_matrix_parts.html">MatrixParts</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>second_matrix_parts</b></td></tr>
+<tr class="memitem:a588a3482f43e60e21608c7a1d6f90d2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmymatrix_1_1_matrix_parts.html">MatrixParts</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classseqmulmatrix_1_1_submatrices.html#a588a3482f43e60e21608c7a1d6f90d2a">second_matrix_parts</a></td></tr>
 <tr class="separator:a588a3482f43e60e21608c7a1d6f90d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+class seqmulmatrix::Submatrices&lt; T &gt;</h3>
+
+<p>Basic class for sequential multiplication algorithms. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac927c28e90f7ec81676134f52be6fea2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac927c28e90f7ec81676134f52be6fea2">&#9670;&nbsp;</a></span>first_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt;T&gt;&amp; <a class="el" href="classseqmulmatrix_1_1_submatrices.html">seqmulmatrix::Submatrices</a>&lt; T &gt;::first_matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reference to first matrix </p>
+
+</div>
+</div>
+<a id="ac02c1116d42d285b38bc6bca0224b32b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac02c1116d42d285b38bc6bca0224b32b">&#9670;&nbsp;</a></span>first_matrix_parts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmymatrix_1_1_matrix_parts.html">MatrixParts</a>&lt;T&gt; <a class="el" href="classseqmulmatrix_1_1_submatrices.html">seqmulmatrix::Submatrices</a>&lt; T &gt;::first_matrix_parts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Parts of first matrix </p>
+
+</div>
+</div>
+<a id="ae9c20f9fe1c870c5fa524e886356a702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9c20f9fe1c870c5fa524e886356a702">&#9670;&nbsp;</a></span>second_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classmymatrix_1_1_matrix.html">Matrix</a>&lt;T&gt;&amp; <a class="el" href="classseqmulmatrix_1_1_submatrices.html">seqmulmatrix::Submatrices</a>&lt; T &gt;::second_matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reference to second matrix </p>
+
+</div>
+</div>
+<a id="a588a3482f43e60e21608c7a1d6f90d2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a588a3482f43e60e21608c7a1d6f90d2a">&#9670;&nbsp;</a></span>second_matrix_parts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmymatrix_1_1_matrix_parts.html">MatrixParts</a>&lt;T&gt; <a class="el" href="classseqmulmatrix_1_1_submatrices.html">seqmulmatrix::Submatrices</a>&lt; T &gt;::second_matrix_parts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Parts of second matrix </p>
+
+</div>
+</div>
+<a id="a30b2580f63d3c170b542e454e0b4a450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30b2580f63d3c170b542e454e0b4a450">&#9670;&nbsp;</a></span>size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t <a class="el" href="classseqmulmatrix_1_1_submatrices.html">seqmulmatrix::Submatrices</a>&lt; T &gt;::size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Size of matrices </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab3a/lab3a/sequential-algorithms/<a class="el" href="sequential-algorithms_2submatrices_8h_source.html">submatrices.h</a></li>
 </ul>
