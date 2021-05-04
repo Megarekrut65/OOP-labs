@@ -21,6 +21,12 @@ TEST_CASE("testing constructors")
 	matrix1 = Matrix<int>(4, 7);
 	CHECK(matrix1.get_row_size() == 4);
 	CHECK(matrix1.get_col_size() == 7);
+	matrix1 = Matrix<int>(0, 7);
+	CHECK(matrix1.get_row_size() == 0);
+	CHECK(matrix1.get_col_size() == 7);
+	matrix1 = Matrix<int>(7,0);
+	CHECK(matrix1.get_row_size() == 7);
+	CHECK(matrix1.get_col_size() == 0);
 	matrix1 = Matrix<int>();
 	CHECK(matrix1.get_row_size() == 0);
 	CHECK(matrix1.get_col_size() == 0);
@@ -51,6 +57,11 @@ TEST_CASE("testing get, add and remove rows/columns")
 	CHECK_THROWS_WITH_AS(matrix1.remove_columns(10),
 		"There are 6 columns but need to remove 10 columns!",
 		std::out_of_range);
+	matrix1 = Matrix<int>(0, 5);
+	matrix1.add_rows(2);
+	CHECK(matrix1.get_row_size() == 2);
+	CHECK(matrix1.get_col_size() == 5);
+	CHECK(matrix1[1][4] == 0);
 }
 TEST_CASE("testing operator[][]")
 {
