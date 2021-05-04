@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['remove_5fcolumns',['remove_columns',['../classmymatrix_1_1_matrix.html#a74ee846e730d82f8526f0dfc3ea0fab1',1,'mymatrix::Matrix']]],
-  ['remove_5fextra_5fzeros',['remove_extra_zeros',['../namespacemymatrix.html#a61e47caf6a5b1872c13aa3f1cac59fc0',1,'mymatrix']]],
-  ['remove_5frows',['remove_rows',['../classmymatrix_1_1_matrix.html#ac989e2f1823cc0cf60532b1805392ad8',1,'mymatrix::Matrix']]]
+  ['quick_5fsort',['quick_sort',['../namespaceseqsorts.html#a6917464059092874da87d8a22edcd676',1,'seqsorts::quick_sort()'],['../namespaceparsorts.html#a26dfb73472a6da6e630f06f29248fae3',1,'parsorts::quick_sort()']]],
+  ['quick_5fsorting',['quick_sorting',['../namespaceseqsorts.html#ad1bf21383c552fe154daad547205f96a',1,'seqsorts::quick_sorting()'],['../namespaceparsorts.html#a7b47277ad73231ec5b244d58cdb196bc',1,'parsorts::quick_sorting()']]]
 ];

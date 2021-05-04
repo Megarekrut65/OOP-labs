@@ -4,6 +4,9 @@
 
 namespace parmulmatrix
 {
+	/**
+	*	\brief Class for multiplication of matrices using strassen parallel multiplication algorithm
+	*/
 	template<typename T>
 	class StrassenSubmatrices : public Submatrices<T>
 	{

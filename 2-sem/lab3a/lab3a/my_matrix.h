@@ -99,6 +99,9 @@ namespace mymatrix
 		bool operator==(const Matrix<T>& matrix);
 		/**
 		*	\brief Adds matrix to ostream
+		* 
+		*	\param out - ostream
+		*	\param matrix - matrix to output
 		*/
 		template <typename T>
 		friend std::ostream& operator<< (std::ostream& out, const Matrix<T>& matrix);	

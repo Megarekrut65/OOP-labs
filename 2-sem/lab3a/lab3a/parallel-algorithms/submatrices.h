@@ -14,9 +14,21 @@ namespace parmulmatrix
 	class Submatrices
 	{
 	protected:
+		/**
+		*	\brief Returns matrix C11 as in algorithm
+		*/
 		virtual Matrix<T> get_c11() = 0;
+		/**
+		*	\brief Returns matrix C11 as in algorithm
+		*/
 		virtual Matrix<T> get_c12() = 0;
+		/**
+		*	\brief Returns matrix C11 as in algorithm
+		*/
 		virtual Matrix<T> get_c21() = 0;
+		/**
+		*	\brief Returns matrix C11 as in algorithm
+		*/
 		virtual Matrix<T> get_c22() = 0;
 		/**
 		*	\brief Copies part to matrix by indexes
@@ -31,7 +43,7 @@ namespace parmulmatrix
 		std::size_t size;/**< Size of matrices */
 		MatrixParts<T> first_matrix_parts;/**< Parts of first matrix */
 		MatrixParts<T> second_matrix_parts;/**< Parts of second matrix */
-		thnum::ThdNumber& th_number;
+		thnum::ThdNumber& th_number;/**< Number of opened threads */
 	public:
 		/**
 		*	\brief Paramatrized constructor

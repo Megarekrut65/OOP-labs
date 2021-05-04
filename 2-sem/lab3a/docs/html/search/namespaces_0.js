@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fwriter',['fwriter',['../namespacefwriter.html',1,'']]]
+  ['benmode',['benmode',['../namespacebenmode.html',1,'']]]
 ];

@@ -31,6 +31,7 @@ namespace parsorts
     *   \param arr - array of numbers
     *   \param begin - index of begin item
     *   \param end - index of end item
+    *   \param th_number - class for saving number of open threads
     */
     template<typename T>
     void merge_sorting(std::vector<T>& arr, std::size_t begin, std::size_t end, thnum::ThdNumber& th_number);

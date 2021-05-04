@@ -12,34 +12,82 @@
 using namespace mtimer;
 using namespace fwriter;
 
+/**
+*	\brief Namespace for benchmark mode
+*/
 namespace benmode
 {
+	/**
+	*	\brief Struct to union sizes for testing
+	*/
 	struct Sizes
 	{
-		std::size_t current_size;
-		std::size_t saved_size;
-		std::size_t coefficient;
-		bool more_one;
+		std::size_t current_size;/**< Current size of testing object*/
+		std::size_t saved_size;/**< Prev size of testing object*/
+		std::size_t coefficient;/**< Coefficient for increase size*/
+		bool more_one;/**< True if time is more one second*/
+		/**
+		*	\brief Paramatrized constructor
+		*/
 		Sizes(std::size_t current_size, std::size_t coefficient = 2);
+		/**
+		*	\brief Increase current size
+		* 
+		*	If the time is more than a minute, 
+		*	it uses an arithmetic progression, otherwise geometric.
+		*/
 		void increase();
 	};
+	/**
+	*	\brief Class for measurement of sorting and multiplication algorithms
+	*/
 	template<typename T>
 	class BenchmarkMode
 	{
-		std::size_t inizial_size;
-		FileWriter writer;
+		std::size_t inizial_size;/**< Inizial size of object*/
+		FileWriter writer;/**< Writes result to file*/
+		/**
+		*	\brief Measure time of work sorts algorithms
+		* 
+		*	\param functions - functions to sorts array
+		*	\param names - names of functions
+		*/
 		void measure_sorts(const std::vector<void(*)(std::vector<T>&)>& functions,
 			const std::vector<std::string>& names);
+		/**
+		*	\brief Measure time of work multiplication algorithms
+		*
+		*	\param functions - functions to multiply matrices
+		*	\param names - names of functions
+		*/
 		void measure_multiplications(
 			const std::vector<Matrix<T>(*)(const Matrix<T>&, const Matrix<T>&)>& functions,
 			const std::vector<std::string>& names);
+		/**
+		*	\brief Writes to console and file information about size
+		*/
 		void print_about_size(std::size_t size);
+		/**
+		*	\brief Writes to console and file information about algorithms measurent
+		*/
 		void print_about_algorithm(const std::string& name, float time);
 
 	public:
+		/**
+		*	\brief Default constructor
+		*/
 		BenchmarkMode();
+		/**
+		*	\brief Call measuring for all sorts functions
+		*/
 		void start_measuring_sorts_algorithms(std::size_t inizial_size = 100);
+		/**
+		*	\brief Call measuring for all multiply functions
+		*/
 		void start_measuring_multiplication_algorithms(std::size_t inizial_size = 2);
+		/**
+		*	\brief Call measuring for all sorts and multiply functions 
+		*/
 		void start_all();
 	};
 }

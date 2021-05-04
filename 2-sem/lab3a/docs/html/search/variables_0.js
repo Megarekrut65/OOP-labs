@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['first_5fmatrix',['first_matrix',['../classseqmulmatrix_1_1_submatrices.html#ac927c28e90f7ec81676134f52be6fea2',1,'seqmulmatrix::Submatrices::first_matrix()'],['../classparmulmatrix_1_1_submatrices.html#a48af976f437d45a329883233c606fe25',1,'parmulmatrix::Submatrices::first_matrix()']]],
-  ['first_5fmatrix_5fparts',['first_matrix_parts',['../classseqmulmatrix_1_1_submatrices.html#ac02c1116d42d285b38bc6bca0224b32b',1,'seqmulmatrix::Submatrices::first_matrix_parts()'],['../classparmulmatrix_1_1_submatrices.html#a3d2b8a2593ffd9c9b1a9068a8209e3aa',1,'parmulmatrix::Submatrices::first_matrix_parts()']]]
+  ['coefficient',['coefficient',['../structbenmode_1_1_sizes.html#af1f220d31a5cc50923f8454bcac43c0f',1,'benmode::Sizes']]],
+  ['current_5fsize',['current_size',['../structbenmode_1_1_sizes.html#a8a5cca6c16346cba7f871fea4f379fa0',1,'benmode::Sizes']]]
 ];

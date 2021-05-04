@@ -22,6 +22,7 @@ namespace parsorts
     *   \param arr - array of numbers
     *   \param low - index of begin item
     *   \param high - index of end item
+    *   \param th_number - class for saving number of open threads
     */
     template<typename T>
     void quick_sorting(std::vector<T>& arr, long low, long high, thnum::ThdNumber& th_number);

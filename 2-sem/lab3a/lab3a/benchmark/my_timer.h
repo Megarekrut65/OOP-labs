@@ -6,8 +6,8 @@
 */
 namespace mtimer
 {
-	using Time = std::chrono::steady_clock::time_point;
-	using Duration = std::chrono::duration<float>;
+	using Time = std::chrono::steady_clock::time_point;/**< Short name of time_point in library chrono*/
+	using Duration = std::chrono::duration<float>;/**< Short name of duration<float> in library chrono*/
 	/**
 	*	\brief Timer for measurement time of functions work
 	* 
