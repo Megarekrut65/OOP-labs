@@ -10,10 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    message.cpp \
+    my_tree_model.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    message.h \
+    my_tree_model.h \
+    programs.h \
+    servers.h
 
 FORMS += \
     mainwindow.ui
