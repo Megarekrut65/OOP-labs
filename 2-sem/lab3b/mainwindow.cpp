@@ -17,7 +17,9 @@ MainWindow::MainWindow(QWidget *parent)
     cn::Servers::add_server(server1);
     cn::Servers::add_server(server2);
     cn::Servers::add_server(server3);
-    std::cout << cn::Servers::get_server("ukraine")->get_name() << std::endl;
+    std::cout << cn::Servers::get_random_server()->get_name() << std::endl;
+    std::cout << cn::Servers::get_random_server()->get_name() << std::endl;
+    std::cout << cn::Servers::get_random_server()->get_name() << std::endl;
 
 }
 

@@ -12,4 +12,9 @@ namespace cn
         if(all_servers.contains(server_name)) return all_servers[server_name];
         return nullptr;
     }
+    std::shared_ptr<BasicServer> Servers::get_random_server()
+    {
+        auto names = all_servers.keys();
+        return all_servers[names[rand()%names.size()]];
+    }
 }

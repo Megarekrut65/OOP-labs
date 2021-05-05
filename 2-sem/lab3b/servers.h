@@ -11,6 +11,7 @@ namespace cn
     public:
         static void add_server(std::shared_ptr<BasicServer> server);
         static std::shared_ptr<BasicServer> get_server(const QString& server_name);
+        static std::shared_ptr<BasicServer> get_random_server();
     };
 }
 #endif // SERVERS_H

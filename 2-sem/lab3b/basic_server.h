@@ -21,6 +21,7 @@ namespace cn
         void create_new_wait_program(
                 ProgramType type, const QString& program_name, std::size_t period);
         QString get_name() const;
+        std::shared_ptr<BasicProgram> get_random_program();
     };
 
 }
