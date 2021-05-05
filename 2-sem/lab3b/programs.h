@@ -11,36 +11,29 @@
 */
 namespace cn
 {
-    template<typename T>
     class Program
     {
     private:
         std::stringstream buffer;
-        const std::vector<std::string>& textes;
-        std::string parent_name;
+        const QVector<QString>& textes;
+        ProgramInfo info;
+        QString create_text();
     public:
-        Program(const std::vector<std::string>& textes, const std::string& parent_name);
-        virtual void send(std::shared_ptr<Program<T>> other_program);
+        Program( const QVector<QString>& textes, const ProgramInfo& info);
+        virtual void send(std::shared_ptr<Program> other_program, MessageType type = MessageType::NONE);
         virtual void receive(const Message& message);
+        ProgramInfo get_info() const;
+        friend std::ostream& operator<<(std::ostream& out, const Program& program);
     };
-    template<typename T>
-    class SendProgram: public Program<T>
+    /*class SendProgram: public Program
     {
         void receive(const Message& message) override = 0;
     };
-    template<typename T>
-    class ReceiveProgram: public Program<T>
+    class ReceiveProgram: public Program
     {
-        void send(std::shared_ptr<Program<T>> other_program) override = 0 ;
+        void send(std::shared_ptr<Program> other_program, MessageType type = MessageType::NONE) override = 0 ;
     };
-    template<typename T>
-    class SendReceiveProgram: public Program<T>{};
-}
-namespace cn
-{
-    template<typename T>
-    Program<T>::Program(const std::vector<std::string>& textes, const std::string& parent_name):
-        textes{textes},parent_name{parent_name}{}
+    class SendReceiveProgram: public Program{};*/
 }
 
 #endif // PROGRAMS_H

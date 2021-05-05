@@ -4,14 +4,14 @@
 #include <QDateTime>
 #include <iostream>
 
-struct ObjectInfo
+struct ProgramInfo
 {
     QString server_name;
     QString program_name;
-    ObjectInfo(const QString& server_name = "none", const QString& program_name="none");
+    ProgramInfo(const QString& server_name = "none", const QString& program_name="none");
 };
-std::ostream& operator<<(std::ostream& out, const ObjectInfo& info);
-
+std::ostream& operator<<(std::ostream& out, const ProgramInfo& info);
+std::ostream& operator<<(std::ostream& out, const QString& line);
 enum class MessageType
 {
     NONE = 0,
@@ -23,16 +23,16 @@ enum class MessageType
 class Message
 {
 private:
-    ObjectInfo sender;
+    ProgramInfo sender;
     QString text;
     std::size_t size;/*!< Size of message in byte*/
     MessageType type;
     QString creating_time;
-    ObjectInfo recipient;
+    ProgramInfo recipient;
 public:
-    Message(const ObjectInfo& sender = ObjectInfo(), const QString& text = "none",
+    Message(const ProgramInfo& sender = ProgramInfo(), const QString& text = "none",
             MessageType type = MessageType::NONE,
-            const ObjectInfo& recipient = ObjectInfo(),
+            const ProgramInfo& recipient = ProgramInfo(),
             std::size_t size = 0);
     friend std::ostream& operator<<(std::ostream& out, const Message& message);
 };

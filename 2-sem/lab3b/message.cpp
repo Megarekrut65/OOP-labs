@@ -1,5 +1,10 @@
 #include "message.h"
 
+std::ostream& operator<<(std::ostream& out, const QString& line)
+{
+    out << line.toStdString();
+    return out;
+}
 QString size_to_qstring(std::size_t size)
 {
     QString types[] = {"B","KB","MB","GB"};
@@ -30,24 +35,24 @@ QString message_type_to_qstring(MessageType type)
         default: return"None";
     }
 }
-ObjectInfo::ObjectInfo(const QString& server_name, const QString& program_name)
+ProgramInfo::ProgramInfo(const QString& server_name, const QString& program_name)
     :server_name{server_name},program_name{program_name}{}
-std::ostream& operator<<(std::ostream& out, const ObjectInfo& info)
+std::ostream& operator<<(std::ostream& out, const ProgramInfo& info)
 {
-    out << "(" <<  info.server_name.toStdString() << ")" << info.program_name.toStdString();
+    out << "(" <<  info.server_name << ")" << info.program_name;
 
     return out;
 }
-Message::Message(const ObjectInfo& sender, const QString& text,
-                 MessageType type, const ObjectInfo& recipient,
+Message::Message(const ProgramInfo& sender, const QString& text,
+                 MessageType type, const ProgramInfo& recipient,
                  std::size_t size)
     :sender{sender},text{text},size{size > unsigned(text.size())?size:text.size()},type{type},
-     creating_time{QDateTime::currentDateTime().toString("yyyy-MM-dd, HH:mm:ss")},
+     creating_time{QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")},
      recipient{recipient}{}
 std::ostream& operator<<(std::ostream& out, const Message& message)
 {
-    out << "[" << message_type_to_qstring(message.type).toStdString() << "-message, sent "
-    << message.creating_time.toStdString() << ", from " <<  message.sender << " to "
-    << message.recipient << ", " << size_to_qstring(message.size).toStdString() <<"]: " << message.text.toStdString();
+    out << "[" << message_type_to_qstring(message.type) << "-message, sent "
+    << message.creating_time << ", from " <<  message.sender << " to "
+    << message.recipient << ", " << size_to_qstring(message.size) <<"]: " << message.text;
     return out;
 }

@@ -12,7 +12,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     message.cpp \
-    my_tree_model.cpp
+    my_tree_model.cpp \
+    programs.cpp
 
 HEADERS += \
     mainwindow.h \
