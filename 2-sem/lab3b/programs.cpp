@@ -2,31 +2,32 @@
 
 namespace cn
 {
-    std::ostream& operator<<(std::ostream& out, const Program& program)
+    PeriodicProgram::PeriodicProgram(
+            const QVector<QString>& textes,
+            const ProgramInfo& info, ProgramType& type):BasicProgram{textes,info,type}{}
+    void PeriodicProgram::update()
     {
-        out << "Server: " << program.info.server_name
-            << ", program: " << program.info.program_name <<", buffer:\n"
-            << program.buffer.str();
-        return out;
+
     }
-    Program::Program(const QVector<QString>& textes,  const ProgramInfo& info):
-        textes{textes},info{info}{}
-    ProgramInfo Program::get_info() const
+    RandomProgram::RandomProgram(
+            const QVector<QString>& textes,
+            const ProgramInfo& info, ProgramType& type):BasicProgram{textes,info,type}{}
+    void RandomProgram::update()
     {
-        return info;
+
     }
-    QString Program::create_text()
+    AfterProgram::AfterProgram(
+            const QVector<QString>& textes,
+            const ProgramInfo& info, ProgramType& type):BasicProgram{textes,info,type}{}
+    void AfterProgram::update()
     {
-       return textes[rand()%textes.size()];
+
     }
-    void Program::send(std::shared_ptr<Program> other_program, MessageType type)
+    WaitProgram::WaitProgram(
+            const QVector<QString>& textes,
+            const ProgramInfo& info, ProgramType& type):BasicProgram{textes,info,type}{}
+    void WaitProgram::update()
     {
-        Message message(info, create_text(), type,other_program->get_info(),
-                        rand()%SIZE_MAX);
-        other_program->receive(message);
-    }
-    void Program::receive(const Message& message)
-    {
-        buffer << message << std::endl;
+
     }
 }

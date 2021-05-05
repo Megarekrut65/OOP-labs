@@ -1,39 +1,34 @@
 #ifndef PROGRAMS_H
 #define PROGRAMS_H
-#include <memory>
-#include "message.h"
-#include <sstream>
-#include <mutex>
-#include <thread>
-#include <vector>
-/*!
-*   \brief computer network
-*/
+#include "basic_program.h"
+
 namespace cn
 {
-    class Program
+
+    class PeriodicProgram: public BasicProgram
     {
-    private:
-        std::stringstream buffer;
-        const QVector<QString>& textes;
-        ProgramInfo info;
-        QString create_text();
     public:
-        Program( const QVector<QString>& textes, const ProgramInfo& info);
-        virtual void send(std::shared_ptr<Program> other_program, MessageType type = MessageType::NONE);
-        virtual void receive(const Message& message);
-        ProgramInfo get_info() const;
-        friend std::ostream& operator<<(std::ostream& out, const Program& program);
+        PeriodicProgram(const QVector<QString>& textes, const ProgramInfo& info, ProgramType& type);
+        void update() override;
     };
-    /*class SendProgram: public Program
+    class RandomProgram: public BasicProgram
     {
-        void receive(const Message& message) override = 0;
+    public:
+        RandomProgram(const QVector<QString>& textes, const ProgramInfo& info, ProgramType& type);
+        void update() override;
     };
-    class ReceiveProgram: public Program
+    class AfterProgram: public BasicProgram
     {
-        void send(std::shared_ptr<Program> other_program, MessageType type = MessageType::NONE) override = 0 ;
+    public:
+        AfterProgram(const QVector<QString>& textes, const ProgramInfo& info, ProgramType& type);
+        void update() override;
     };
-    class SendReceiveProgram: public Program{};*/
+    class WaitProgram: public BasicProgram
+    {
+    public:
+        WaitProgram(const QVector<QString>& textes, const ProgramInfo& info, ProgramType& type);
+        void update() override;
+    };
 }
 
 #endif // PROGRAMS_H

@@ -7,18 +7,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     srand(time(0));
-    Message message(ProgramInfo("bolivia", "Zoom"),
-                    "Hello, everyone!",
-                    MessageType::INFO, ProgramInfo("ukraine","Discord"), 3454353);
-    std::cout << message << std::endl;
-    QVector<QString> textes = {
-        "Hello, wold!",
-        "How are you doing?",
-        "Mama Mia!",
-        "Guten Tag!",
-        "Are you creizy?"};
-    std::shared_ptr<cn::Program> program1 = std::make_shared<cn::Program>(textes, ProgramInfo("ukraine","Google Drive")),
-            program2 = std::make_shared<cn::Program>(textes, ProgramInfo("uk", "YouTube"));
+    cn::ProgramFactory factory;
+    std::shared_ptr<cn::BasicProgram> program1 =
+            factory.create_periodic_program(cn::ProgramType::ALL, ProgramInfo("ukraine","Google Drive")),
+            program2 = factory.create_random_program(cn::ProgramType::ALL, ProgramInfo("uk", "YouTube"));
     program1->send(program2, MessageType::ERROR);
     program1->send(program2, MessageType::INFO);
     program1->send(program2, MessageType::WARNING);
