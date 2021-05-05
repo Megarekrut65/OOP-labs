@@ -11,10 +11,15 @@ namespace cn
         QString server_name;
         ProgramFactory factory;
     public:
-        void create_new_periodic_program(ProgramType type, const QString& program_name);
-        void create_new_random_program(ProgramType type, const QString& program_name);
-        void create_new_after_program(ProgramType type, const QString& program_name);
-        void create_new_wait_program(ProgramType type, const QString& program_name);
+        BasicServer(const QString& server_name);
+        void create_new_periodic_program(
+                ProgramType type, const QString& program_name, std::size_t period);
+        void create_new_random_program(
+                ProgramType type, const QString& program_name, std::size_t period);
+        void create_new_after_program(
+                ProgramType type, const QString& program_name, std::size_t period);
+        void create_new_wait_program(
+                ProgramType type, const QString& program_name, std::size_t period);
         QString get_name() const;
     };
 

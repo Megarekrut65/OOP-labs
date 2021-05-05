@@ -16,13 +16,19 @@ namespace cn
         };
         QVector<QString> textes;
 
-        std::shared_ptr<BasicProgram> create_program(ProgramFactoryType factory_type, ProgramType type, const ProgramInfo& info);
+        std::shared_ptr<BasicProgram> create_program(
+                ProgramFactoryType factory_type, ProgramType type,
+                const ProgramInfo& info, std::size_t period);
     public:
         ProgramFactory();
-        std::shared_ptr<BasicProgram> create_periodic_program(ProgramType type, const ProgramInfo& info);
-        std::shared_ptr<BasicProgram> create_random_program(ProgramType type, const ProgramInfo& info);
-        std::shared_ptr<BasicProgram> create_after_program(ProgramType type, const ProgramInfo& info);
-        std::shared_ptr<BasicProgram> create_wait_program(ProgramType type, const ProgramInfo& info);
+        std::shared_ptr<BasicProgram> create_periodic_program(
+                ProgramType type, const ProgramInfo& info, std::size_t period);
+        std::shared_ptr<BasicProgram> create_random_program(
+                ProgramType type, const ProgramInfo& info, std::size_t period);
+        std::shared_ptr<BasicProgram> create_after_program(
+                ProgramType type, const ProgramInfo& info, std::size_t period);
+        std::shared_ptr<BasicProgram> create_wait_program(
+                ProgramType type, const ProgramInfo& info, std::size_t period);
     };
 }
 

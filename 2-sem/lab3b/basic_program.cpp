@@ -8,8 +8,9 @@ namespace cn
             << program.buffer.str();
         return out;
     }
-    BasicProgram::BasicProgram(const QVector<QString>& textes,  const ProgramInfo& info, ProgramType& type):
-        textes{textes},info{info}, type{type}{}
+    BasicProgram::BasicProgram(const QVector<QString>& textes,
+                               const ProgramInfo& info, ProgramType& type, std::size_t period):
+        textes{textes},info{info}, type{type}, period{period} {}
     ProgramInfo BasicProgram::get_info() const
     {
         return info;

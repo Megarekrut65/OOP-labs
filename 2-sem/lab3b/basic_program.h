@@ -25,9 +25,10 @@ namespace cn
         const QVector<QString>& textes;
         ProgramInfo info;
         ProgramType type;
+        std::size_t period;
         QString create_text();
     public:
-        BasicProgram( const QVector<QString>& textes, const ProgramInfo& info, ProgramType& type);
+        BasicProgram( const QVector<QString>& textes, const ProgramInfo& info, ProgramType& type, std::size_t period);
         void send(std::shared_ptr<BasicProgram> other_program, MessageType type = MessageType::NONE);
         void receive(const Message& message);
         ProgramInfo get_info() const;
