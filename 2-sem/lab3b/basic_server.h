@@ -1,7 +1,7 @@
 #ifndef BASICSERVER_H
 #define BASICSERVER_H
-#include "program_factory.h"
-#include <QMap>
+#include "programs.h"
+
 namespace cn
 {
     class BasicServer
@@ -9,17 +9,10 @@ namespace cn
     private:
         QMap<QString, std::shared_ptr<BasicProgram>> programs;
         QString server_name;
-        ProgramFactory factory;
     public:
         BasicServer(const QString& server_name);
-        void create_new_periodic_program(
-                ProgramType type, const QString& program_name, std::size_t period);
-        void create_new_random_program(
-                ProgramType type, const QString& program_name, std::size_t period);
-        void create_new_after_program(
-                ProgramType type, const QString& program_name, std::size_t period);
-        void create_new_wait_program(
-                ProgramType type, const QString& program_name, std::size_t period);
+        void add_program(const QString& program_name, std::shared_ptr<BasicProgram> program);
+        std::shared_ptr<BasicProgram> get_program(const QString& name);
         QString get_name() const;
         std::shared_ptr<BasicProgram> get_random_program();
     };

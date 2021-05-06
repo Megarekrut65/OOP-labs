@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "servers.h"
+#include "program_registry.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -17,5 +18,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    cn::ProgramRegistry registry;
+    QVector<QString> textes;
+    void set_registry();
+    void set_textes();
 };
 #endif // MAINWINDOW_H

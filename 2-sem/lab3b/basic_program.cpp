@@ -29,5 +29,7 @@ namespace cn
     {
         buffer << message << std::endl;
     }
+    BasicProgram::BasicProgram( const QVector<QString>& textes):
+        textes{textes}, info{ProgramInfo()}, type{ProgramType::ALL}, period{0}{}
 }
 

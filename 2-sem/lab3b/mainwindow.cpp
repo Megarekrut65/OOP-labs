@@ -7,22 +7,34 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     srand(time(0));
-    std::shared_ptr<cn::BasicServer> server1 = std::make_shared<cn::BasicServer>("uk"),
-            server2= std::make_shared<cn::BasicServer>("ukraine"),
-            server3= std::make_shared<cn::BasicServer>("germany");
-    server1->create_new_periodic_program(cn::ProgramType::ALL, "Google Drive", 10);
-    server1->create_new_wait_program(cn::ProgramType::ALL, "Telegram", 12);
-    server2->create_new_after_program(cn::ProgramType::ALL,"Instagram",1);
-    server3->create_new_random_program(cn::ProgramType::ALL,"Contacts",9);
-    cn::Servers::add_server(server1);
-    cn::Servers::add_server(server2);
-    cn::Servers::add_server(server3);
-    std::cout << cn::Servers::get_random_server()->get_name() << std::endl;
-    std::cout << cn::Servers::get_random_server()->get_name() << std::endl;
-    std::cout << cn::Servers::get_random_server()->get_name() << std::endl;
-
+    set_registry();
+    set_textes();
 }
-
+void MainWindow::set_textes()
+{
+    textes = {
+            "Hello, wold!",
+            "How are you doing?",
+            "Mama Mia!",
+            "Guten Tag!",
+            "Are you creizy?",
+            "Just do it!",
+            "There is amazing weather today, isn't?",
+            "Banana man...",
+            "Go away!",
+            "Potatos roal"};
+}
+void MainWindow::set_registry()
+{
+    registry.registry_type("PeriodicProgram",
+                            std::make_shared<cn::PeriodicProgram>(textes));
+    registry.registry_type("RandomProgram",
+                            std::make_shared<cn::RandomProgram>(textes));
+    registry.registry_type("AfterProgram",
+                           std::make_shared<cn::AfterProgram>(textes));
+    registry.registry_type("WaitProgram",
+                            std::make_shared<cn::WaitProgram>(textes));
+}
 MainWindow::~MainWindow()
 {
     delete ui;

@@ -2,33 +2,14 @@
 
 namespace cn
 {
-    void BasicServer::create_new_periodic_program(
-            ProgramType type, const QString& program_name, std::size_t period)
+    void BasicServer::add_program(const QString& program_name, std::shared_ptr<BasicProgram> program)
     {
-        programs[program_name] = factory.create_periodic_program(
-                    type,
-                    ProgramInfo(server_name,program_name), period);
+        programs[program_name] = program;
     }
-    void BasicServer::create_new_random_program(
-            ProgramType type, const QString& program_name, std::size_t period)
+    std::shared_ptr<BasicProgram> BasicServer::get_program(const QString& name)
     {
-        programs[program_name] = factory.create_random_program(
-                    type,
-                    ProgramInfo(server_name,program_name), period);
-    }
-    void BasicServer::create_new_after_program(
-            ProgramType type, const QString& program_name, std::size_t period)
-    {
-        programs[program_name] = factory.create_after_program(
-                    type,
-                    ProgramInfo(server_name,program_name), period);
-    }
-    void BasicServer::create_new_wait_program(
-            ProgramType type, const QString& program_name, std::size_t period)
-    {
-        programs[program_name] = factory.create_wait_program(
-                    type,
-                    ProgramInfo(server_name,program_name), period);
+        if(programs.contains(name)) return programs[name];
+        return nullptr;
     }
     QString BasicServer::get_name() const
     {

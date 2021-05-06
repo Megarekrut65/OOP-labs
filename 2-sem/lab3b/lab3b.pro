@@ -15,7 +15,7 @@ SOURCES += \
     mainwindow.cpp \
     message.cpp \
     my_tree_model.cpp \
-    program_factory.cpp \
+    program_registry.cpp \
     programs.cpp \
     servers.cpp
 
@@ -25,7 +25,7 @@ HEADERS += \
     mainwindow.h \
     message.h \
     my_tree_model.h \
-    program_factory.h \
+    program_registry.h \
     programs.h \
     servers.h
 
