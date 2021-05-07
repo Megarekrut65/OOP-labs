@@ -17,6 +17,7 @@ namespace cn
         QString get_name() const;
         std::shared_ptr<BasicProgram> get_random_program();
         void clear();
+        ~BasicServer();
     };
 
 }

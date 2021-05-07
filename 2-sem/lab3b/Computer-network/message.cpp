@@ -17,13 +17,6 @@ std::istream& operator>>(std::istream& in, ProgramInfo& info)
     in>>rubbish>>info.server_name>>rubbish>>info.program_name;
     return in;
 }
-std::ostream& operator<<(std::ostream& out, const Message& message)
-{
-    out << "[" << message_type_to_qstring(message.type) << "-message, sent "
-    << message.creating_time << ", from " <<  message.sender << " to "
-    << message.recipient << ", " << size_to_qstring(message.size) <<"]: " << message.text;
-    return out;
-}
 MessageType qstring_to_message_type(const QString& line)
 {
     if(line=="Info") return MessageType::INFO;
@@ -33,20 +26,14 @@ MessageType qstring_to_message_type(const QString& line)
 }
 QDateTime qstring_to_qdate_time(const QString& line)
 {
-
+    return QDateTime::fromString(line,"yyyy-MM-dd HH:mm:ss");
 }
-std::istream& operator>>(std::istream& in, Message& message)
+std::ostream& operator<<(std::ostream& out, const Message& message)
 {
-    char rubbish;
-    QString big_rubbish;
-    QString message_type, time,recipient;
-    in >> rubbish >> message_type >> big_rubbish >> time
-            >> big_rubbish>>message.sender >> big_rubbish
-            >> recipient >>message.size >> big_rubbish >> message.text;
-    message_type.remove("-message,");
-    time.remove(",");
-    message.recipient = recipient.remove(",");
-
+    out << "[" << message_type_to_qstring(message.type) << "-message, sent "
+    << message.creating_time << ", from " <<  message.sender << " to "
+    << message.recipient << ", " << message.size <<"]: " << message.text;
+    return out;
 }
 std::istream& operator>>(std::istream& in, QString& line)
 {

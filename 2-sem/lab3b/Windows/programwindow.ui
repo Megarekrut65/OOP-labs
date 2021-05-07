@@ -172,16 +172,6 @@
     </item>
    </layout>
   </widget>
-  <widget class="QColumnView" name="columnViewBuffer">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>130</y>
-     <width>561</width>
-     <height>271</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButtonUpdate">
    <property name="geometry">
     <rect>
@@ -193,6 +183,16 @@
    </property>
    <property name="text">
     <string>update</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidgetBuffer">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>561</width>
+     <height>271</height>
+    </rect>
    </property>
   </widget>
  </widget>

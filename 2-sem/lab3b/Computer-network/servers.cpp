@@ -23,6 +23,7 @@ namespace cn
     std::shared_ptr<BasicServer> Servers::get_random_server()
     {
         auto names = all_servers.keys();
+        if(names.size()==0) return nullptr;
         return all_servers[names[rand()%names.size()]];
     }
 }

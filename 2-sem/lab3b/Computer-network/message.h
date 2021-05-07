@@ -37,7 +37,6 @@ public:
             const ProgramInfo& recipient = ProgramInfo(),
             std::size_t size = 0);
     friend std::ostream& operator<<(std::ostream& out, const Message& message);
-    friend std::istream& operator>>(std::istream& in, Message& message);
 };
 QString size_to_qstring(std::size_t size);
 QString message_type_to_qstring(MessageType type);

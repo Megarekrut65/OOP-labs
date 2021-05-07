@@ -13,7 +13,7 @@ namespace cn
             case ProgramType::RECEIVE: return "Receive";
         default:break;
         }
-        return "Both";
+        return "Send and Receive";
     }
     ProgramType BasicProgram::get_type() const
     {
@@ -34,6 +34,10 @@ namespace cn
                                const ProgramInfo& info, ProgramType type,
                                std::size_t period, const QString& sending_type):
         textes{textes},info{info}, type{type}, period{period},sending_type{sending_type} {}
+    BasicProgram::~BasicProgram()
+    {
+        buffer.clear();
+    }
     ProgramInfo BasicProgram::get_info() const
     {
         return info;
@@ -44,6 +48,7 @@ namespace cn
     }
     void BasicProgram::send(std::shared_ptr<BasicProgram> other_program, MessageType type)
     {
+        if(!other_program) return;
         Message message(info, create_text(), type,other_program->get_info(),
                         rand()%SIZE_MAX);
         other_program->receive(message);

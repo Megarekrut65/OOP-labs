@@ -38,11 +38,9 @@ void MainWindow::set_registry()
 }
 MainWindow::~MainWindow()
 {
-    program_windows.clear();
-    cn::Servers::clear();
+    on_pushButtonRemoveAllServers_clicked();
     delete ui;
 }
-
 
 void MainWindow::on_pushButtonAddServer_clicked()
 {

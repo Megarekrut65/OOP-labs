@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "../Computer-network/servers.h"
+#include <QTimer>
+
 namespace Ui {
 class ProgramWindow;
 }
@@ -21,7 +23,9 @@ private slots:
 private:
     Ui::ProgramWindow *ui;
     std::shared_ptr<cn::BasicProgram> program;
+    std::shared_ptr<QTimer> timer;
     void set_data();
+    void set_timer();
 };
 
 #endif // PROGRAMWINDOW_H

@@ -24,9 +24,14 @@ namespace cn
         return server_name;
     }
     BasicServer::BasicServer(const QString& server_name):server_name(server_name){}
+    BasicServer::~BasicServer()
+    {
+        programs.clear();
+    }
     std::shared_ptr<BasicProgram> BasicServer::get_random_program()
     {
         auto names = programs.keys();
+        if(names.size()==0) return nullptr;
         return programs[names[rand()%names.size()]];
     }
 }
