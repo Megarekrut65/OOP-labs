@@ -2,6 +2,10 @@
 
 namespace cn
 {
+    void Servers::clear()
+    {
+        all_servers.clear();
+    }
     QMap<QString, std::shared_ptr<BasicServer>> Servers::all_servers = QMap<QString, std::shared_ptr<BasicServer>>();
     void Servers::add_server(std::shared_ptr<BasicServer> server)
     {

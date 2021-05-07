@@ -33,6 +33,10 @@ private slots:
 
     void on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column);
 
+    void on_pushButtonClearServer_clicked();
+
+    void on_pushButtonRemoveAllServers_clicked();
+
 private:
     Ui::MainWindow *ui;
     cn::ProgramRegistry registry;
@@ -44,5 +48,7 @@ private:
     void server_is_selected(bool answer);
     void program_is_selected(bool answer);
     bool is_server(QTreeWidgetItem *item);
+    void close_deleted_window(const QString& server_name);
+    void after_removing();
 };
 #endif // MAINWINDOW_H

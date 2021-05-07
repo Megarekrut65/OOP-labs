@@ -13,6 +13,7 @@ namespace cn
         static void remove_server(const QString& server_name);
         static std::shared_ptr<BasicServer> get_server(const QString& server_name);
         static std::shared_ptr<BasicServer> get_random_server();
+        static void clear();
     };
 }
 #endif // SERVERS_H

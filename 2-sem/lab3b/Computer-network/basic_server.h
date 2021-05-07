@@ -16,6 +16,7 @@ namespace cn
         std::shared_ptr<BasicProgram> get_program(const QString& name);
         QString get_name() const;
         std::shared_ptr<BasicProgram> get_random_program();
+        void clear();
     };
 
 }

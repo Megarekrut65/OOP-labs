@@ -2,6 +2,10 @@
 
 namespace cn
 {
+    void BasicServer::clear()
+    {
+        programs.clear();
+    }
     void BasicServer::remove_program(const QString& program_name)
     {
         programs[program_name] = nullptr;
