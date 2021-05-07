@@ -12,6 +12,8 @@ struct ProgramInfo
 };
 std::ostream& operator<<(std::ostream& out, const ProgramInfo& info);
 std::ostream& operator<<(std::ostream& out, const QString& line);
+std::istream& operator>>(std::istream& in, ProgramInfo& info);
+std::istream& operator>>(std::istream& in, QString& line);
 enum class MessageType
 {
     NONE = 0,
@@ -35,8 +37,11 @@ public:
             const ProgramInfo& recipient = ProgramInfo(),
             std::size_t size = 0);
     friend std::ostream& operator<<(std::ostream& out, const Message& message);
+    friend std::istream& operator>>(std::istream& in, Message& message);
 };
 QString size_to_qstring(std::size_t size);
 QString message_type_to_qstring(MessageType type);
+MessageType qstring_to_message_type(const QString& line);
+QDateTime qstring_to_qdate_time(const QString& line);
 
 #endif // MESSAGE_H

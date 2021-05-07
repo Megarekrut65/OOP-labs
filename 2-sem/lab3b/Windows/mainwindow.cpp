@@ -31,17 +31,15 @@ void MainWindow::set_textes()
 }
 void MainWindow::set_registry()
 {
-    registry.registry_type("PeriodicProgram",
-                            std::make_shared<cn::PeriodicProgram>(textes));
-    registry.registry_type("RandomProgram",
-                            std::make_shared<cn::RandomProgram>(textes));
-    registry.registry_type("AfterProgram",
-                           std::make_shared<cn::AfterProgram>(textes));
-    registry.registry_type("WaitProgram",
-                            std::make_shared<cn::WaitProgram>(textes));
+    registry.registry_type(std::make_shared<cn::PeriodicProgram>(textes));
+    registry.registry_type(std::make_shared<cn::RandomProgram>(textes));
+    registry.registry_type(std::make_shared<cn::AfterProgram>(textes));
+    registry.registry_type(std::make_shared<cn::WaitProgram>(textes));
 }
 MainWindow::~MainWindow()
 {
+    program_windows.clear();
+    cn::Servers::clear();
     delete ui;
 }
 
@@ -77,7 +75,8 @@ void MainWindow::on_pushButtonAddProgram_clicked()
         auto new_item = new QTreeWidgetItem(item);
         new_item->setText(0, program_name);
         ui->treeWidget->addTopLevelItem(new_item);
-        program_windows[server->get_name()][program_name] = std::make_shared<ProgramWindow>();
+        program_windows[server->get_name()][program_name] =
+                std::make_shared<ProgramWindow>(server->get_program(program_name));
     }
 }
 

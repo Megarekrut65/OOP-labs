@@ -12,7 +12,7 @@ class ProgramWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit ProgramWindow(QWidget *parent = nullptr);
+    explicit ProgramWindow(std::shared_ptr<cn::BasicProgram> program, QWidget *parent = nullptr);
     ~ProgramWindow();
 
 private slots:
@@ -20,6 +20,8 @@ private slots:
 
 private:
     Ui::ProgramWindow *ui;
+    std::shared_ptr<cn::BasicProgram> program;
+    void set_data();
 };
 
 #endif // PROGRAMWINDOW_H

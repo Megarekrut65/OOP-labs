@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>582</width>
-    <height>437</height>
+    <width>580</width>
+    <height>440</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>580</width>
+    <height>440</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>580</width>
+    <height>440</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -31,12 +43,12 @@
        </font>
       </property>
       <property name="text">
-       <string>Program name</string>
+       <string>Program name:</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="labelName">
       <property name="font">
        <font>
         <pointsize>11</pointsize>
@@ -55,12 +67,12 @@
        </font>
       </property>
       <property name="text">
-       <string>Ptogram type</string>
+       <string>Ptogram type:</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="labelType">
       <property name="font">
        <font>
         <pointsize>11</pointsize>
@@ -79,12 +91,12 @@
        </font>
       </property>
       <property name="text">
-       <string>Sending type</string>
+       <string>Sending type:</string>
       </property>
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="labelSendingType">
       <property name="font">
        <font>
         <pointsize>11</pointsize>
@@ -103,12 +115,12 @@
        </font>
       </property>
       <property name="text">
-       <string>Sending period</string>
+       <string>Sending period:</string>
       </property>
      </widget>
     </item>
     <item row="6" column="1">
-     <widget class="QLabel" name="label_8">
+     <widget class="QLabel" name="labelPeriod">
       <property name="font">
        <font>
         <pointsize>11</pointsize>

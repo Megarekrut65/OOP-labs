@@ -1,6 +1,28 @@
 #include "basic_program.h"
 namespace cn
 {
+    QString BasicProgram::get_sending_type() const
+    {
+        return sending_type;
+    }
+    QString type_to_string(ProgramType type)
+    {
+        switch (type)
+        {
+            case ProgramType::SEND: return "Send";
+            case ProgramType::RECEIVE: return "Receive";
+        default:break;
+        }
+        return "Both";
+    }
+    ProgramType BasicProgram::get_type() const
+    {
+        return type;
+    }
+    std::size_t BasicProgram::get_period() const
+    {
+        return period;
+    }
     std::ostream& operator<<(std::ostream& out, const BasicProgram& program)
     {
         out << "Server: " << program.info.server_name
@@ -9,8 +31,9 @@ namespace cn
         return out;
     }
     BasicProgram::BasicProgram(const QVector<QString>& textes,
-                               const ProgramInfo& info, ProgramType type, std::size_t period):
-        textes{textes},info{info}, type{type}, period{period} {}
+                               const ProgramInfo& info, ProgramType type,
+                               std::size_t period, const QString& sending_type):
+        textes{textes},info{info}, type{type}, period{period},sending_type{sending_type} {}
     ProgramInfo BasicProgram::get_info() const
     {
         return info;
@@ -29,7 +52,7 @@ namespace cn
     {
         buffer << message << std::endl;
     }
-    BasicProgram::BasicProgram( const QVector<QString>& textes):
-        textes{textes}, info{ProgramInfo()}, type{ProgramType::ALL}, period{0}{}
+    BasicProgram::BasicProgram( const QVector<QString>& textes,const QString& sending_type):
+        textes{textes}, info{ProgramInfo()}, type{ProgramType::BOTH}, period{0},sending_type{sending_type}{}
 }
 

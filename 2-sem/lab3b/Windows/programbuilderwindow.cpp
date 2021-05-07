@@ -33,7 +33,7 @@ cn::ProgramType ProgramBuilderWindow::get_type()
 {
     if(ui->radioButtonSend->isChecked()) return cn::ProgramType::SEND;
     if(ui->radioButtonReceive->isChecked()) return cn::ProgramType::RECEIVE;
-    return cn::ProgramType::ALL;
+    return cn::ProgramType::BOTH;
 }
 QString ProgramBuilderWindow::get_name()
 {
@@ -59,7 +59,7 @@ void ProgramBuilderWindow::on_pushButtonCreate_clicked()
     server->add_program(name,
                         registry.create_by_prototype(
                             ui->comboBoxSendingType->currentText(),
-                            ProgramInfo(name, server->get_name()),
+                            ProgramInfo(server->get_name(), name),
                             get_type(),
                             get_period()));
     is_added = true;

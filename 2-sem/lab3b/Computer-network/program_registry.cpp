@@ -6,6 +6,10 @@ namespace cn
     {
         programs_prototype[type] = prototype;
     }
+    void ProgramRegistry::registry_type(std::shared_ptr<BasicProgram> prototype)
+    {
+        programs_prototype[prototype->get_sending_type()] = prototype;
+    }
     std::shared_ptr<BasicProgram> ProgramRegistry::get_prototype(const QString& type)
     {
         if(programs_prototype.contains(type)) return programs_prototype[type];
