@@ -17,6 +17,7 @@ SOURCES += \
     Computer-network/servers.cpp \
     Windows/mainwindow.cpp \
     Windows/programbuilderwindow.cpp \
+    Windows/programwindow.cpp \
     app_messages.cpp \
     main.cpp
 
@@ -29,11 +30,13 @@ HEADERS += \
     Computer-network/servers.h \
     Windows/mainwindow.h \
     Windows/programbuilderwindow.h \
+    Windows/programwindow.h \
     app_messages.h
 
 FORMS += \
     Windows/mainwindow.ui \
-    Windows/programbuilderwindow.ui
+    Windows/programbuilderwindow.ui \
+    Windows/programwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -42,4 +45,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     Images/main-icon.ico \
-    Images/program-icon.ico
+    Images/program-icon.ico \
+    Images/program-window-icon.ico

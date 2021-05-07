@@ -77,13 +77,13 @@ void MainWindow::on_pushButtonAddProgram_clicked()
         auto new_item = new QTreeWidgetItem(item);
         new_item->setText(0, program_name);
         ui->treeWidget->addTopLevelItem(new_item);
+        program_windows[server->get_name()][program_name] = std::make_shared<ProgramWindow>();
     }
 }
 
 void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
 {
-    auto server = cn::Servers::get_server(item->text(column));
-    if(server)
+    if(is_server(item))
     {
         server_is_selected(true);
         program_is_selected(false);
@@ -91,10 +91,7 @@ void MainWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
     else
     {
         server_is_selected(false);
-        auto parent_server = cn::Servers::get_server(item->parent()->text(column));
-        auto program = parent_server->get_program(item->text(column));
-        if(program) program_is_selected(true);
-        else program_is_selected(false);
+        program_is_selected(true);
     }
 
 }
@@ -116,4 +113,22 @@ void MainWindow::on_pushButtonRemoveProgram_clicked()
 void MainWindow::program_is_selected(bool answer)
 {
     ui->pushButtonRemoveProgram->setEnabled(answer);
+}
+bool MainWindow::is_server(QTreeWidgetItem *item)
+{
+    return (item->parent() == nullptr);
+}
+void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    if(!is_server(item))
+    {
+        QString name = item->text(column);
+        if(program_windows.contains(item->parent()->text(0))&&
+                program_windows[item->parent()->text(0)].contains(name))
+        {
+            server_is_selected(false);
+            program_is_selected(true);
+            program_windows[item->parent()->text(0)][name]->show();
+        }
+    }
 }
