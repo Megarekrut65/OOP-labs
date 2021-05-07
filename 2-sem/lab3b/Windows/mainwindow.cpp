@@ -59,6 +59,9 @@ void MainWindow::on_pushButtonAddServer_clicked()
 
 void MainWindow::on_pushButtonAddProgram_clicked()
 {
+    ProgramBuilderWindow window;
+    window.exec();
+
     auto items = ui->treeWidget->selectedItems();
     if(items.size() == 1)
     {

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "../Computer-network/servers.h"
 #include "../Computer-network/program_registry.h"
+#include "programbuilderwindow.h"
 #include <QTreeWidget>
 #include <QInputDialog>
 QT_BEGIN_NAMESPACE

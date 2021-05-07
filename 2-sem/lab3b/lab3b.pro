@@ -16,20 +16,22 @@ SOURCES += \
     Computer-network/programs.cpp \
     Computer-network/servers.cpp \
     Windows/mainwindow.cpp \
+    Windows/programbuilderwindow.cpp \
     main.cpp
 
 HEADERS += \
     Computer-network/basic_program.h \
     Computer-network/basic_server.h \
     Computer-network/message.h \
-    Computer-network/program.h \
     Computer-network/program_registry.h \
     Computer-network/programs.h \
     Computer-network/servers.h \
-    Windows/mainwindow.h
+    Windows/mainwindow.h \
+    Windows/programbuilderwindow.h
 
 FORMS += \
-    Windows/mainwindow.ui
+    Windows/mainwindow.ui \
+    Windows/programbuilderwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -37,4 +39,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Images/main-icon.ico
+    Images/main-icon.ico \
+    Images/program-icon.ico

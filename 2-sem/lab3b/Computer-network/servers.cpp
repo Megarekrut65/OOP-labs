@@ -7,6 +7,10 @@ namespace cn
     {
         all_servers[server->get_name()] = server;
     }
+    void Servers::remove_server(const QString& server_name)
+    {
+        all_servers[server_name] = nullptr;
+    }
     std::shared_ptr<BasicServer> Servers::get_server(const QString& server_name)
     {
         if(all_servers.contains(server_name)) return all_servers[server_name];
