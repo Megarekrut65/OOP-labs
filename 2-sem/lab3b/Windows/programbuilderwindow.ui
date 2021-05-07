@@ -152,58 +152,6 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QRadioButton" name="radioButtonPeriodic">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Periodic</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="radioButtonRandom">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Random</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="radioButtonAfter">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>After</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="radioButtonWait">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Wait</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
     <item row="5" column="1">
      <spacer name="verticalSpacer_3">
       <property name="orientation">
@@ -256,6 +204,9 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item row="4" column="1">
+     <widget class="QComboBox" name="comboBoxSendingType"/>
     </item>
    </layout>
   </widget>

@@ -17,7 +17,7 @@ namespace cn
     }
     std::shared_ptr<BasicProgram> ProgramRegistry::create_by_prototype(
             const QString& type,const ProgramInfo& info,
-            ProgramType& program_type, std::size_t period)
+            const ProgramType& program_type, std::size_t period)
     {
         if(programs_prototype.contains(type))
             return programs_prototype[type]->create_program(info,program_type,period);

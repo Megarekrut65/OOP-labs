@@ -15,7 +15,7 @@ namespace cn
         std::shared_ptr<BasicProgram> get_prototype(const QString& type);
         std::shared_ptr<BasicProgram> create_by_prototype(
                 const QString& type,const ProgramInfo& info,
-                ProgramType& program_type, std::size_t period);
+                const ProgramType& program_type, std::size_t period);
         QList<QString> get_all_types();
     };
 }

@@ -17,6 +17,7 @@ SOURCES += \
     Computer-network/servers.cpp \
     Windows/mainwindow.cpp \
     Windows/programbuilderwindow.cpp \
+    app_messages.cpp \
     main.cpp
 
 HEADERS += \
@@ -27,7 +28,8 @@ HEADERS += \
     Computer-network/programs.h \
     Computer-network/servers.h \
     Windows/mainwindow.h \
-    Windows/programbuilderwindow.h
+    Windows/programbuilderwindow.h \
+    app_messages.h
 
 FORMS += \
     Windows/mainwindow.ui \

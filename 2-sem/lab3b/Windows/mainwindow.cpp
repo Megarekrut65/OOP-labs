@@ -50,7 +50,11 @@ void MainWindow::on_pushButtonAddServer_clicked()
 {
     QString text = QInputDialog::getText(this, "Create server", "Enter a server name");
     if(text.isEmpty()) return;
-    if(cn::Servers::get_server(text)) return;
+    if(cn::Servers::get_server(text))
+    {
+        AppMessages::error_message(this,"CNM","The server " + text+" has already been created!");
+        return;
+    }
     auto item = new QTreeWidgetItem(ui->treeWidget);
     item->setText(0,text);
     ui->treeWidget->addTopLevelItem(item);
@@ -59,22 +63,20 @@ void MainWindow::on_pushButtonAddServer_clicked()
 
 void MainWindow::on_pushButtonAddProgram_clicked()
 {
-    ProgramBuilderWindow window;
-    window.exec();
-
     auto items = ui->treeWidget->selectedItems();
     if(items.size() == 1)
     {
         auto item = items[0];
         auto server = cn::Servers::get_server(item->text(0));
         if(!server) return;
-        QString text = QInputDialog::getText(this, "Create program", "Enter a program name");
-        if(text.isEmpty()) return;
-        if(server->get_program(text)) return;
+        bool is_added = false;
+        QString program_name = "";
+        ProgramBuilderWindow window(registry, server,is_added,program_name, this);
+        window.exec();
+        if(!is_added) return;
         auto new_item = new QTreeWidgetItem(item);
-        new_item->setText(0,text);
+        new_item->setText(0, program_name);
         ui->treeWidget->addTopLevelItem(new_item);
-        server->add_program(text,registry.get_prototype("RandomProgram"));
     }
 }
 
