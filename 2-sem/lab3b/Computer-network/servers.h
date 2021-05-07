@@ -10,6 +10,7 @@ namespace cn
         static QMap<QString, std::shared_ptr<BasicServer>> all_servers;
     public:
         static void add_server(std::shared_ptr<BasicServer> server);
+        static void remove_server(const QString& server_name);
         static std::shared_ptr<BasicServer> get_server(const QString& server_name);
         static std::shared_ptr<BasicServer> get_random_server();
     };

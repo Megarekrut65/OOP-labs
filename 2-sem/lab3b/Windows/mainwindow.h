@@ -23,11 +23,20 @@ private slots:
 
     void on_pushButtonAddProgram_clicked();
 
+    void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
+
+    void on_pushButtonRemoveServer_clicked();
+
+    void on_pushButtonRemoveProgram_clicked();
+
 private:
     Ui::MainWindow *ui;
     cn::ProgramRegistry registry;
     QVector<QString> textes;
+    QString app_name;
     void set_registry();
     void set_textes();
+    void server_is_selected(bool answer);
+    void program_is_selected(bool answer);
 };
 #endif // MAINWINDOW_H

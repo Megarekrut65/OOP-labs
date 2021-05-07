@@ -15,7 +15,6 @@ SOURCES += \
     Computer-network/program_registry.cpp \
     Computer-network/programs.cpp \
     Computer-network/servers.cpp \
-    Tree-view/my_tree_model.cpp \
     Windows/mainwindow.cpp \
     main.cpp
 
@@ -27,7 +26,6 @@ HEADERS += \
     Computer-network/program_registry.h \
     Computer-network/programs.h \
     Computer-network/servers.h \
-    Tree-view/my_tree_model.h \
     Windows/mainwindow.h
 
 FORMS += \

@@ -2,6 +2,10 @@
 
 namespace cn
 {
+    void BasicServer::remove_program(const QString& program_name)
+    {
+        programs[program_name] = nullptr;
+    }
     void BasicServer::add_program(const QString& program_name, std::shared_ptr<BasicProgram> program)
     {
         programs[program_name] = program;

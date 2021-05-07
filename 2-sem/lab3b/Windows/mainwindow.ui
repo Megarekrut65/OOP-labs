@@ -41,7 +41,7 @@
      </property>
     </column>
    </widget>
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QGroupBox" name="groupBoxServer">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -70,10 +70,17 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="pushButtonRemoveServer">
+        <property name="text">
+         <string>Remove server</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_2">
+   <widget class="QGroupBox" name="groupBoxProgram">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -99,6 +106,13 @@
        <widget class="QPushButton" name="pushButtonAddProgram">
         <property name="text">
          <string>Add new program</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonRemoveProgram">
+        <property name="text">
+         <string>Remove program</string>
         </property>
        </widget>
       </item>
