@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     set_registry();
     set_textes();
     setWindowTitle(app_name);
+    QIcon icon("Images/main-icon.ico");
+    setWindowIcon(icon);
     server_is_selected(false);
     program_is_selected(false);
 }
