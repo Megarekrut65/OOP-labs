@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     srand(time(0));
     set_registry();
     set_textes();
+
+
 }
 void MainWindow::set_textes()
 {
@@ -40,3 +42,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_pushButtonAddServer_clicked()
+{
+    QString text = QInputDialog::getText(this, "Name", "Enter a server name");
+    auto item = new QTreeWidgetItem(ui->treeWidget);
+    item->setText(0,text);
+    ui->treeWidget->addTopLevelItem(item);
+}
+
+void MainWindow::on_pushButtonAddProgram_clicked()
+{
+
+}

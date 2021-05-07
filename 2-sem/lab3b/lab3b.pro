@@ -9,28 +9,29 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    basic_program.cpp \
-    basic_server.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    message.cpp \
-    my_tree_model.cpp \
-    program_registry.cpp \
-    programs.cpp \
-    servers.cpp
+    Computer-network/basic_program.cpp \
+    Computer-network/basic_server.cpp \
+    Computer-network/message.cpp \
+    Computer-network/program_registry.cpp \
+    Computer-network/programs.cpp \
+    Computer-network/servers.cpp \
+    Tree-view/my_tree_model.cpp \
+    Windows/mainwindow.cpp \
+    main.cpp
 
 HEADERS += \
-    basic_program.h \
-    basic_server.h \
-    mainwindow.h \
-    message.h \
-    my_tree_model.h \
-    program_registry.h \
-    programs.h \
-    servers.h
+    Computer-network/basic_program.h \
+    Computer-network/basic_server.h \
+    Computer-network/message.h \
+    Computer-network/program.h \
+    Computer-network/program_registry.h \
+    Computer-network/programs.h \
+    Computer-network/servers.h \
+    Tree-view/my_tree_model.h \
+    Windows/mainwindow.h
 
 FORMS += \
-    mainwindow.ui
+    Windows/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
