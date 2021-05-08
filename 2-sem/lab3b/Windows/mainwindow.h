@@ -50,5 +50,6 @@ private:
     bool is_server(QTreeWidgetItem *item);
     void close_deleted_window(const QString& server_name);
     void after_removing();
+    void remove_all_servers();
 };
 #endif // MAINWINDOW_H

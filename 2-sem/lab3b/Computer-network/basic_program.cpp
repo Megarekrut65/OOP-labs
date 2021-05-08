@@ -1,6 +1,20 @@
 #include "basic_program.h"
+#include "servers.h"
 namespace cn
 {
+    std::shared_ptr<BasicProgram> BasicProgram::get_other_program()
+    {
+        if(type == ProgramType::SEND ||type == ProgramType::BOTH)
+        {
+            auto server = cn::Servers::get_random_server();
+            if(server)
+            {
+                auto program = server->get_random_program();
+                if(program.get() != this) return program;
+            }
+        }
+        return nullptr;
+    }
     QString BasicProgram::get_sending_type() const
     {
         return sending_type;

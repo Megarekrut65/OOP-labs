@@ -38,7 +38,7 @@ void MainWindow::set_registry()
 }
 MainWindow::~MainWindow()
 {
-    on_pushButtonRemoveAllServers_clicked();
+    remove_all_servers();
     delete ui;
 }
 
@@ -195,17 +195,17 @@ void MainWindow::on_pushButtonClearServer_clicked()
         }
     }
 }
-
+void MainWindow::remove_all_servers()
+{
+    program_windows.clear();
+    ui->treeWidget->clear();
+    cn::Servers::clear();
+    after_removing();
+}
 void MainWindow::on_pushButtonRemoveAllServers_clicked()
 {
     bool answer = AppMessages::question_message(this,
                                   "Removing",
                                   "Do you realy want to remove all servers?");
-    if(answer)
-    {
-        program_windows.clear();
-        ui->treeWidget->clear();
-        cn::Servers::clear();
-        after_removing();
-    }
+    if(answer) remove_all_servers();
 }

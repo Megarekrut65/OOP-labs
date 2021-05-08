@@ -28,6 +28,7 @@ namespace cn
         std::size_t period;
         QString sending_type;
         QString create_text();
+        std::shared_ptr<BasicProgram> get_other_program();
     public:
         BasicProgram( const QVector<QString>& textes, const ProgramInfo& info,
                       ProgramType type, std::size_t period, const QString& sending_type);
