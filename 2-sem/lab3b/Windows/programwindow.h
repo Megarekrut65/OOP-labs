@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "../Computer-network/servers.h"
 #include <QTimer>
+#include "my_view_model.h"
 
 namespace Ui {
 class ProgramWindow;
@@ -18,14 +19,19 @@ public:
     ~ProgramWindow();
 
 private slots:
-    void on_pushButtonUpdate_clicked();
 
 private:
     Ui::ProgramWindow *ui;
     std::shared_ptr<cn::BasicProgram> program;
     std::shared_ptr<QTimer> timer;
+    std::shared_ptr<QStandardItemModel> model;
+    MyViewModel view;
+    std::size_t old_size;
     void set_data();
     void set_timer();
+    void receive_messages();
+    void add_message_to_view(const Message& message);
+    void set_model();
 };
 
 #endif // PROGRAMWINDOW_H

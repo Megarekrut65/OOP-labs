@@ -19,7 +19,8 @@ SOURCES += \
     Windows/programbuilderwindow.cpp \
     Windows/programwindow.cpp \
     app_messages.cpp \
-    main.cpp
+    main.cpp \
+    my_view_model.cpp
 
 HEADERS += \
     Computer-network/basic_program.h \
@@ -31,7 +32,8 @@ HEADERS += \
     Windows/mainwindow.h \
     Windows/programbuilderwindow.h \
     Windows/programwindow.h \
-    app_messages.h
+    app_messages.h \
+    my_view_model.h
 
 FORMS += \
     Windows/mainwindow.ui \

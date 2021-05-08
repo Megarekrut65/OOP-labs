@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>580</width>
-    <height>440</height>
+    <height>480</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>580</width>
-    <height>440</height>
+    <height>480</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>580</width>
-    <height>440</height>
+    <height>480</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -172,27 +172,32 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButtonUpdate">
+  <widget class="QTableView" name="tableViewBuffer">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>410</y>
-     <width>75</width>
-     <height>23</height>
+     <y>160</y>
+     <width>561</width>
+     <height>311</height>
     </rect>
    </property>
-   <property name="text">
-    <string>update</string>
-   </property>
   </widget>
-  <widget class="QListWidget" name="listWidgetBuffer">
+  <widget class="QCheckBox" name="checkBoxFixedPosition">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>130</y>
-     <width>561</width>
-     <height>271</height>
+     <width>171</width>
+     <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Keep fixed position</string>
    </property>
   </widget>
  </widget>

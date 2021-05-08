@@ -1,0 +1,20 @@
+#ifndef MYCOLUMNVIEW_H
+#define MYCOLUMNVIEW_H
+#include <QStandardItemModel>
+#include "Computer-network/message.h"
+#include <QMap>
+
+class MyViewModel
+{
+private:
+    std::shared_ptr<QStandardItemModel> model;
+    QMap<QString,int> item_columns;
+    void add_item_to_view(const QString& value, int row, int colmm);
+    void edit_items_in_view(const Message& message, int row);
+public:
+    MyViewModel(std::shared_ptr<QStandardItemModel> model);
+    void add_message(const Message& message);
+    void clear();
+};
+
+#endif // MYCOLUMNVIEW_H

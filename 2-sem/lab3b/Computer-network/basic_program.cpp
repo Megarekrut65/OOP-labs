@@ -40,8 +40,7 @@ namespace cn
     std::ostream& operator<<(std::ostream& out, const BasicProgram& program)
     {
         out << "Server: " << program.info.server_name
-            << ", program: " << program.info.program_name <<", buffer:\n"
-            << program.buffer.str();
+            << ", program: " << program.info.program_name;
         return out;
     }
     BasicProgram::BasicProgram(const QVector<QString>& textes,
@@ -70,7 +69,11 @@ namespace cn
     void BasicProgram::receive(const Message& message)
     {
         if(this->type == ProgramType::SEND) return;
-        buffer << message << std::endl;
+        buffer.push_back(message);
+    }
+    QVector<Message> BasicProgram::get_messages() const
+    {
+        return buffer;
     }
     BasicProgram::BasicProgram( const QVector<QString>& textes,const QString& sending_type):
         textes{textes}, info{ProgramInfo()}, type{ProgramType::BOTH}, period{0},sending_type{sending_type}{}
