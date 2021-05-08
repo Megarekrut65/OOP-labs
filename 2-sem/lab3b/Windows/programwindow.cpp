@@ -11,7 +11,7 @@ ProgramWindow::ProgramWindow(std::shared_ptr<cn::BasicProgram> program,
     ui->setupUi(this);
     if(program)
     {
-        setWindowTitle("Program");
+        setWindowTitle(program->get_info().program_name);
         QIcon icon("Images/program-window-icon.ico");
         setWindowIcon(icon);
         set_data();
