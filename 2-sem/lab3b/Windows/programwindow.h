@@ -5,6 +5,8 @@
 #include "../Computer-network/servers.h"
 #include <QTimer>
 #include "my_view_model.h"
+#include "app_messages.h"
+#include "messagetextwindow.h"
 
 namespace Ui {
 class ProgramWindow;
@@ -20,6 +22,10 @@ public:
 
 private slots:
 
+    void on_pushButtonClear_clicked();
+
+    void on_tableViewBuffer_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::ProgramWindow *ui;
     std::shared_ptr<cn::BasicProgram> program;
@@ -27,6 +33,7 @@ private:
     std::shared_ptr<QStandardItemModel> model;
     MyViewModel view;
     std::size_t old_size;
+    std::shared_ptr<MessageTextWindow> message_window;
     void set_data();
     void set_timer();
     void receive_messages();

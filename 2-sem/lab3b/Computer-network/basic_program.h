@@ -41,6 +41,7 @@ namespace cn
         std::size_t get_period() const;
         QString get_sending_type() const;
         QVector<Message> get_messages() const;
+        void clear_buffer();
         friend std::ostream& operator<<(std::ostream& out, const BasicProgram& program);
         virtual void update() = 0;
         virtual std::shared_ptr<BasicProgram> create_program(const ProgramInfo& info, ProgramType type, std::size_t period) = 0;

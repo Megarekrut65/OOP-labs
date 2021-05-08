@@ -75,6 +75,10 @@ namespace cn
     {
         return buffer;
     }
+    void BasicProgram::clear_buffer()
+    {
+        buffer.clear();
+    }
     BasicProgram::BasicProgram( const QVector<QString>& textes,const QString& sending_type):
         textes{textes}, info{ProgramInfo()}, type{ProgramType::BOTH}, period{0},sending_type{sending_type}{}
 }

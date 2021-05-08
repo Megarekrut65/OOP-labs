@@ -5,7 +5,8 @@ ProgramWindow::ProgramWindow(std::shared_ptr<cn::BasicProgram> program,
                              QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ProgramWindow),program(program),timer(nullptr),
-    model(std::make_shared<QStandardItemModel>()), view(nullptr),old_size(0)
+    model(std::make_shared<QStandardItemModel>()), view(nullptr),old_size(0),
+    message_window(std::make_shared<MessageTextWindow>())
 {
     ui->setupUi(this);
     if(program)
@@ -57,4 +58,27 @@ void ProgramWindow::receive_messages()
         add_message_to_view(messages[i + old_size]);
     if(!ui->checkBoxFixedPosition->isChecked()) ui->tableViewBuffer->scrollToBottom();
     old_size = messages.size();
+}
+
+void ProgramWindow::on_pushButtonClear_clicked()
+{
+    bool answer = AppMessages::question_message(this,
+                                  "Clearing",
+                                  "Do you realy want to clear all messages?");
+    if(answer)
+    {
+        view.clear();
+        program->clear_buffer();
+        old_size = 0;
+        ui->tableViewBuffer->setColumnWidth(model->columnCount() - 1, 200);
+        message_window->hide();
+    }
+}
+
+void ProgramWindow::on_tableViewBuffer_doubleClicked(const QModelIndex &index)
+{
+    auto messages = program->get_messages();
+    if(index.row() < messages.size()) message_window->set_message(messages[index.row()]);
+    message_window->hide();
+    message_window->show();
 }

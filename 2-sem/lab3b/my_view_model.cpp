@@ -4,13 +4,17 @@ MyViewModel::MyViewModel(std::shared_ptr<QStandardItemModel> model):model{model}
 {
     if(model)
     {
-        QStringList list = {"Message type", "Date","Time","Sender","Size","Text"};
-        model->insertColumns(0, list.size());
-        for(int i = 0; i < list.size(); i++)
-        {
-            item_columns[list[i]] = i;
-            model->setHeaderData(i,Qt::Horizontal,QObject::tr(list[i].toStdString().c_str()));
-        }
+        set_header();
+    }
+}
+void MyViewModel::set_header()
+{
+    QStringList list = {"Message type", "Date","Time","Sender","Size","Text"};
+    model->insertColumns(0, list.size());
+    for(int i = 0; i < list.size(); i++)
+    {
+        item_columns[list[i]] = i;
+        model->setHeaderData(i,Qt::Horizontal,QObject::tr(list[i].toStdString().c_str()));
     }
 }
 void MyViewModel::add_message(const Message& message)
@@ -22,7 +26,11 @@ void MyViewModel::add_message(const Message& message)
 }
 void MyViewModel::clear()
 {
-    if(model) model->clear();
+    if(model)
+    {
+        model->clear();
+        set_header();
+    }
 }
 void MyViewModel::add_item_to_view(const QString& value, int row, int colmm)
 {

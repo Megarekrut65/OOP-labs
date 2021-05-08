@@ -16,6 +16,7 @@ SOURCES += \
     Computer-network/programs.cpp \
     Computer-network/servers.cpp \
     Windows/mainwindow.cpp \
+    Windows/messagetextwindow.cpp \
     Windows/programbuilderwindow.cpp \
     Windows/programwindow.cpp \
     app_messages.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     Computer-network/programs.h \
     Computer-network/servers.h \
     Windows/mainwindow.h \
+    Windows/messagetextwindow.h \
     Windows/programbuilderwindow.h \
     Windows/programwindow.h \
     app_messages.h \
@@ -37,6 +39,7 @@ HEADERS += \
 
 FORMS += \
     Windows/mainwindow.ui \
+    Windows/messagetextwindow.ui \
     Windows/programbuilderwindow.ui \
     Windows/programwindow.ui
 
@@ -46,6 +49,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    Images/error-type.ico \
+    Images/info-type.ico \
     Images/main-icon.ico \
+    Images/none-type.ico \
     Images/program-icon.ico \
-    Images/program-window-icon.ico
+    Images/program-window-icon.ico \
+    Images/warning-type.ico
