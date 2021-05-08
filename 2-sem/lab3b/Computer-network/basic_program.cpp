@@ -62,13 +62,14 @@ namespace cn
     }
     void BasicProgram::send(std::shared_ptr<BasicProgram> other_program, MessageType type)
     {
-        if(!other_program) return;
+        if(!other_program || this->type == ProgramType::RECEIVE) return;
         Message message(info, create_text(), type,other_program->get_info(),
                         rand()%SIZE_MAX);
         other_program->receive(message);
     }
     void BasicProgram::receive(const Message& message)
     {
+        if(this->type == ProgramType::SEND) return;
         buffer << message << std::endl;
     }
     BasicProgram::BasicProgram( const QVector<QString>& textes,const QString& sending_type):
