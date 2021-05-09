@@ -46,7 +46,9 @@ namespace cn
         friend std::ostream& operator<<(std::ostream& out, const BasicProgram& program);
         friend std::istream& operator>>(std::istream& in, BasicProgram& program);
         virtual void update() = 0;
-        virtual std::shared_ptr<BasicProgram> create_program(const ProgramInfo& info, ProgramType type, std::size_t period) = 0;
+        virtual std::shared_ptr<BasicProgram> create_program(
+                const ProgramInfo& info=ProgramInfo(),
+                ProgramType type=ProgramType::BOTH, std::size_t period = 0) = 0;
     };
 }
 #endif // BASICPROGRAM_H

@@ -9,10 +9,13 @@ namespace cn
     QMap<QString, std::shared_ptr<BasicServer>> Servers::all_servers = QMap<QString, std::shared_ptr<BasicServer>>();
     void Servers::add_server(std::shared_ptr<BasicServer> server)
     {
-        all_servers[server->get_name()] = server;
+        if(server->get_name() != "")
+            all_servers[server->get_name()] = server;
     }
-    void Servers::remove_server(const QString& server_name)
+    void Servers::remove_server(const QString& server_name, const QString& folder_name)
     {
+        if(all_servers.contains(server_name) && all_servers[server_name] != nullptr)
+            all_servers[server_name]->clear_own_file(folder_name);
         all_servers[server_name] = nullptr;
     }
     std::shared_ptr<BasicServer> Servers::get_server(const QString& server_name)
@@ -28,17 +31,18 @@ namespace cn
     }
     void Servers::save_all_servers(const QString& path, const QString& folder_name)
     {
-        QList<QString> servers_list = all_servers.keys();
         std::ofstream file((folder_name+"/"+path).toStdString());
         file << "Servers:" << std::endl;
+        QList<QString> servers_list = all_servers.keys();
         for(auto& key:servers_list)
         {
-            all_servers[key]->add_to_own_file();
+            if(all_servers[key] == nullptr) continue;
+            all_servers[key]->add_to_own_file(folder_name);
             file << all_servers[key]->get_name() << std::endl;
         }
         file.close();
     }
-    void Servers::get_saved_servers(const QString& path, const QString& folder_name)
+    void Servers::get_saved_servers(ProgramRegistry& registry, const QString& path, const QString& folder_name)
     {
         std::ifstream file((folder_name+"/"+path).toStdString());
         std::string line;
@@ -47,7 +51,7 @@ namespace cn
         {
             std::getline(file, line);
             auto server = std::make_shared<BasicServer>(line.c_str());
-            server->get_from_own_file(folder_name);
+            server->get_from_own_file(registry, folder_name);
             add_server(server);
         }
         file.close();

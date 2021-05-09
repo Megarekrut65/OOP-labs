@@ -12,7 +12,7 @@ namespace cn
     }
     void BasicServer::add_program(const QString& program_name, std::shared_ptr<BasicProgram> program)
     {
-        programs[program_name] = program;
+        if(program_name != "") programs[program_name] = program;
     }
     std::shared_ptr<BasicProgram> BasicServer::get_program(const QString& name)
     {
@@ -36,22 +36,38 @@ namespace cn
     }
     std::string BasicServer::make_path(const QString& folder_name)
     {
-        return (folder_name+"/"+server_name+".txt").toStdString();
+        QString folder = folder_name == ""?"":folder_name+"/";
+        return (folder+server_name+".txt").toStdString();
     }
     void BasicServer::add_to_own_file(const QString& folder_name)
     {
         std::ofstream file(make_path(folder_name));
         QList<QString> keys = programs.keys();
         for(auto& key:keys)
-            file << *programs[key] << std::endl;
+            if(programs[key]) file << *programs[key] << std::endl;
         file.close();
     }
-    void BasicServer::get_from_own_file(const QString& folder_name)
+    void BasicServer::clear_own_file(const QString& folder_name)
+    {
+        std::remove(make_path(folder_name).c_str());
+    }
+    void BasicServer::get_from_own_file(ProgramRegistry& registry, const QString& folder_name)
     {
         std::ifstream file(make_path(folder_name));
-        QList<QString> keys = programs.keys();
-        for(auto& key:keys)
-            file >> *programs[key];
+        while(!file.eof())
+        {
+            QVector<QString> textes = {};
+            std::shared_ptr<BasicProgram> program = std::make_shared<AfterProgram>(textes);
+            file >>*program;
+            if(program->get_info().program_name == "") break;
+            auto the_program = registry.create_by_prototype(
+                        program->get_sending_type(),
+                        program->get_info(),
+                        program->get_type(),
+                        program->get_period());
+            std::cout << program->get_sending_type() << std::endl;
+            if(the_program) add_program(the_program->get_info().program_name, the_program);
+        }
         file.close();
     }
     QList<QString> BasicServer::get_programs_names()

@@ -8,8 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     srand(time(0));
-    set_registry();
     set_textes();
+    set_registry();
     setWindowTitle(app_name);
     QIcon icon("Images/main-icon.ico");
     setWindowIcon(icon);
@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 void MainWindow::read_servers_from_file()
 {
-    cn::Servers::get_saved_servers(path,folder_name);
+    cn::Servers::get_saved_servers(registry, path,folder_name);
     QList<QString> servers_names = cn::Servers::get_servers_names();
     for(auto& name:servers_names)
     {
@@ -160,7 +160,7 @@ void MainWindow::on_pushButtonRemoveServer_clicked()
         if(answer)
         {
             close_deleted_window(items[0]->text(0));
-            cn::Servers::remove_server(items[0]->text(0));
+            cn::Servers::remove_server(items[0]->text(0), folder_name);
             delete items[0];
             after_removing();
         }
