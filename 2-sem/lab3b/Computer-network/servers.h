@@ -15,6 +15,7 @@ namespace cn
         static QList<QString> get_servers_names();
         static std::shared_ptr<BasicServer> get_random_server();
         static void clear();
+        static void remove_all(const QString& folder_name);
         static void save_all_servers(const QString& path, const QString& folder_name = "");
         static void get_saved_servers(ProgramRegistry& registry, const QString& path, const QString& folder_name = "");
     };

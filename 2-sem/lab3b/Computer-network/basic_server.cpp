@@ -65,7 +65,6 @@ namespace cn
                         program->get_info(),
                         program->get_type(),
                         program->get_period());
-            std::cout << program->get_sending_type() << std::endl;
             if(the_program) add_program(the_program->get_info().program_name, the_program);
         }
         file.close();

@@ -60,4 +60,10 @@ namespace cn
     {
         return all_servers.keys();
     }
+    void Servers::remove_all(const QString& folder_name)
+    {
+        QList<QString> keys = get_servers_names();
+        for(auto& key:keys)
+            remove_server(key, folder_name);
+    }
 }

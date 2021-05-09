@@ -68,6 +68,7 @@ MainWindow::~MainWindow()
 {
     cn::Servers::save_all_servers(path,folder_name);
     remove_all_servers();
+    cn::Servers::clear();
     delete ui;
 }
 QTreeWidgetItem* MainWindow::add_server_to_tree(const QString& text)
@@ -82,7 +83,8 @@ QTreeWidgetItem* MainWindow::add_server_to_tree(const QString& text)
 void MainWindow::on_pushButtonAddServer_clicked()
 {
     QString text = QInputDialog::getText(this, "Create server", "Enter a server name");
-    if(text.isEmpty()) return;
+    if(text.isEmpty())
+        return AppMessages::error_message(this,"CNM","The server name can not be empty!");
     if(cn::Servers::get_server(text))
     {
         AppMessages::error_message(this,"CNM","The server " + text+" has already been created!");
@@ -238,7 +240,6 @@ void MainWindow::remove_all_servers()
 {
     program_windows.clear();
     ui->treeWidget->clear();
-    cn::Servers::clear();
     after_removing();
 }
 void MainWindow::on_pushButtonRemoveAllServers_clicked()
@@ -246,5 +247,9 @@ void MainWindow::on_pushButtonRemoveAllServers_clicked()
     bool answer = AppMessages::question_message(this,
                                   "Removing",
                                   "Do you realy want to remove all servers?");
-    if(answer) remove_all_servers();
+    if(answer)
+    {
+        remove_all_servers();
+        cn::Servers::remove_all(folder_name);
+    }
 }
