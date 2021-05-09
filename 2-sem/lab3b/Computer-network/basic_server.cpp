@@ -34,4 +34,28 @@ namespace cn
         if(names.size()==0) return nullptr;
         return programs[names[rand()%names.size()]];
     }
+    std::string BasicServer::make_path(const QString& folder_name)
+    {
+        return (folder_name+"/"+server_name+".txt").toStdString();
+    }
+    void BasicServer::add_to_own_file(const QString& folder_name)
+    {
+        std::ofstream file(make_path(folder_name));
+        QList<QString> keys = programs.keys();
+        for(auto& key:keys)
+            file << *programs[key] << std::endl;
+        file.close();
+    }
+    void BasicServer::get_from_own_file(const QString& folder_name)
+    {
+        std::ifstream file(make_path(folder_name));
+        QList<QString> keys = programs.keys();
+        for(auto& key:keys)
+            file >> *programs[key];
+        file.close();
+    }
+    QList<QString> BasicServer::get_programs_names()
+    {
+        return programs.keys();
+    }
 }

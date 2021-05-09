@@ -8,6 +8,7 @@
 #include "programwindow.h"
 #include <QTreeWidget>
 #include <QInputDialog>
+#include <QDir>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -42,7 +43,11 @@ private:
     cn::ProgramRegistry registry;
     QVector<QString> textes;
     QString app_name;
+    QString path;
+    QString folder_name;
     QMap<QString, QMap<QString, std::shared_ptr<ProgramWindow>>> program_windows;//first key - server name, second - program name
+    void set_folder();
+    void read_servers_from_file();
     void set_registry();
     void set_textes();
     void server_is_selected(bool answer);
@@ -51,5 +56,7 @@ private:
     void close_deleted_window(const QString& server_name);
     void after_removing();
     void remove_all_servers();
+    QTreeWidgetItem* add_server_to_tree(const QString& name);
+    void add_program_to_tree(QTreeWidgetItem* server_item, const QString& program_name);
 };
 #endif // MAINWINDOW_H

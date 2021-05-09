@@ -3,7 +3,8 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow),app_name("Computer network model")
+    , ui(new Ui::MainWindow),app_name("Computer network model"),
+      path("server-list.txt"),folder_name("Data")
 {
     ui->setupUi(this);
     srand(time(0));
@@ -14,6 +15,33 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowIcon(icon);
     server_is_selected(false);
     program_is_selected(false);
+    set_folder();
+    read_servers_from_file();
+}
+void MainWindow::read_servers_from_file()
+{
+    cn::Servers::get_saved_servers(path,folder_name);
+    QList<QString> servers_names = cn::Servers::get_servers_names();
+    for(auto& name:servers_names)
+    {
+        auto server = cn::Servers::get_server(name);
+        auto item = add_server_to_tree(server->get_name());
+        if(!item) continue;
+        QList<QString> programs_names = server->get_programs_names();
+        for(auto& program_name:programs_names)
+        {
+            auto program = server->get_program(program_name);
+            if(!program) continue;
+            add_program_to_tree(item, program->get_info().program_name);
+        }
+    }
+}
+void MainWindow::set_folder()
+{
+    if(!QDir(folder_name).exists())
+    {
+        QDir().mkdir(folder_name);
+    }
 }
 void MainWindow::set_textes()
 {
@@ -38,8 +66,17 @@ void MainWindow::set_registry()
 }
 MainWindow::~MainWindow()
 {
+    cn::Servers::save_all_servers(path,folder_name);
     remove_all_servers();
     delete ui;
+}
+QTreeWidgetItem* MainWindow::add_server_to_tree(const QString& text)
+{
+    if(text.isEmpty()) return nullptr;
+    auto item = new QTreeWidgetItem(ui->treeWidget);
+    item->setText(0,text);
+    ui->treeWidget->addTopLevelItem(item);
+    return item;
 }
 
 void MainWindow::on_pushButtonAddServer_clicked()
@@ -51,12 +88,18 @@ void MainWindow::on_pushButtonAddServer_clicked()
         AppMessages::error_message(this,"CNM","The server " + text+" has already been created!");
         return;
     }
-    auto item = new QTreeWidgetItem(ui->treeWidget);
-    item->setText(0,text);
-    ui->treeWidget->addTopLevelItem(item);
-    cn::Servers::add_server(std::make_shared<cn::BasicServer>(text));
+    auto item = add_server_to_tree(text);
+    if(item) cn::Servers::add_server(std::make_shared<cn::BasicServer>(text));
 }
-
+void MainWindow::add_program_to_tree(QTreeWidgetItem* server_item, const QString& program_name)
+{
+    auto server = cn::Servers::get_server(server_item->text(0));
+    auto new_item = new QTreeWidgetItem(server_item);
+    new_item->setText(0, program_name);
+    ui->treeWidget->addTopLevelItem(new_item);
+    program_windows[server->get_name()][program_name] =
+            std::make_shared<ProgramWindow>(server->get_program(program_name));
+}
 void MainWindow::on_pushButtonAddProgram_clicked()
 {
     auto items = ui->treeWidget->selectedItems();
@@ -70,11 +113,7 @@ void MainWindow::on_pushButtonAddProgram_clicked()
         ProgramBuilderWindow window(registry, server,is_added,program_name, this);
         window.exec();
         if(!is_added) return;
-        auto new_item = new QTreeWidgetItem(item);
-        new_item->setText(0, program_name);
-        ui->treeWidget->addTopLevelItem(new_item);
-        program_windows[server->get_name()][program_name] =
-                std::make_shared<ProgramWindow>(server->get_program(program_name));
+        add_program_to_tree(item, program_name);
     }
 }
 
