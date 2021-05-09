@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 void MainWindow::read_servers_from_file()
 {
-    cn::Servers::get_saved_servers(registry, path,folder_name);
+    cn::Servers::add_saved_servers(registry, path,folder_name);
     QList<QString> servers_names = cn::Servers::get_servers_names();
     for(auto& name:servers_names)
     {
@@ -82,16 +82,11 @@ QTreeWidgetItem* MainWindow::add_server_to_tree(const QString& text)
 
 void MainWindow::on_pushButtonAddServer_clicked()
 {
-    QString text = QInputDialog::getText(this, "Create server", "Enter a server name");
-    if(text.isEmpty())
-        return AppMessages::error_message(this,"CNM","The server name can not be empty!");
-    if(cn::Servers::get_server(text))
-    {
-        AppMessages::error_message(this,"CNM","The server " + text+" has already been created!");
-        return;
-    }
-    auto item = add_server_to_tree(text);
-    if(item) cn::Servers::add_server(std::make_shared<cn::BasicServer>(text));
+    QString text ="";
+    bool is_added = false;
+    ServerWindow server_window(text,is_added,this);
+    server_window.exec();
+    if(is_added) add_server_to_tree(text);
 }
 void MainWindow::add_program_to_tree(QTreeWidgetItem* server_item, const QString& program_name)
 {

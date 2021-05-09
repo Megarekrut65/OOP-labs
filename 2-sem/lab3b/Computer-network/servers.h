@@ -17,7 +17,7 @@ namespace cn
         static void clear();
         static void remove_all(const QString& folder_name);
         static void save_all_servers(const QString& path, const QString& folder_name = "");
-        static void get_saved_servers(ProgramRegistry& registry, const QString& path, const QString& folder_name = "");
+        static void add_saved_servers(ProgramRegistry& registry, const QString& path, const QString& folder_name = "");
     };
 }
 #endif // SERVERS_H

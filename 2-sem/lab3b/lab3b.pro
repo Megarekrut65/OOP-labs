@@ -19,6 +19,7 @@ SOURCES += \
     Windows/messagetextwindow.cpp \
     Windows/programbuilderwindow.cpp \
     Windows/programwindow.cpp \
+    Windows/serverwindow.cpp \
     app_messages.cpp \
     main.cpp \
     my_view_model.cpp
@@ -34,6 +35,7 @@ HEADERS += \
     Windows/messagetextwindow.h \
     Windows/programbuilderwindow.h \
     Windows/programwindow.h \
+    Windows/serverwindow.h \
     app_messages.h \
     my_view_model.h
 
@@ -41,7 +43,8 @@ FORMS += \
     Windows/mainwindow.ui \
     Windows/messagetextwindow.ui \
     Windows/programbuilderwindow.ui \
-    Windows/programwindow.ui
+    Windows/programwindow.ui \
+    Windows/serverwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -42,7 +42,7 @@ namespace cn
         }
         file.close();
     }
-    void Servers::get_saved_servers(ProgramRegistry& registry, const QString& path, const QString& folder_name)
+    void Servers::add_saved_servers(ProgramRegistry& registry, const QString& path, const QString& folder_name)
     {
         std::ifstream file((folder_name+"/"+path).toStdString());
         std::string line;

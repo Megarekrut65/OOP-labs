@@ -5,14 +5,23 @@
 
 namespace cn
 {
+    struct Speed
+    {
+       std::size_t upload;
+       std::size_t download;
+       Speed(std::size_t upload = 0, std::size_t download = 0);
+    };
+
     class BasicServer
     {
     private:
         QMap<QString, std::shared_ptr<BasicProgram>> programs;
         QString server_name;
+        Speed speed;
+
         std::string make_path(const QString& folder_name = "");
     public:
-        BasicServer(const QString& server_name = "none");
+        BasicServer(const QString& server_name = "none", Speed speed = Speed());
         void add_program(const QString& program_name, std::shared_ptr<BasicProgram> program);
         void remove_program(const QString& program_name);
         std::shared_ptr<BasicProgram> get_program(const QString& name);
@@ -23,6 +32,7 @@ namespace cn
         void add_to_own_file(const QString& folder_name = "");
         void get_from_own_file(ProgramRegistry& registry, const QString& folder_name = "");
         void clear_own_file(const QString& folder_name = "");
+        Speed get_speed() const;
         ~BasicServer();
     };
 

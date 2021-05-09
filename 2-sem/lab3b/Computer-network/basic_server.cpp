@@ -2,6 +2,8 @@
 
 namespace cn
 {
+    Speed::Speed(std::size_t upload, std::size_t download):
+        upload{upload},download{download}{}
     void BasicServer::clear()
     {
         programs.clear();
@@ -23,7 +25,8 @@ namespace cn
     {
         return server_name;
     }
-    BasicServer::BasicServer(const QString& server_name):server_name(server_name){}
+    BasicServer::BasicServer(const QString& server_name,Speed speed):
+        server_name{server_name}, speed{speed}{}
     BasicServer::~BasicServer()
     {
         programs.clear();
@@ -72,5 +75,9 @@ namespace cn
     QList<QString> BasicServer::get_programs_names()
     {
         return programs.keys();
+    }
+    Speed BasicServer::get_speed() const
+    {
+        return speed;
     }
 }
