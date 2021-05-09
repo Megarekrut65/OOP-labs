@@ -41,7 +41,7 @@ ProgramWindow::~ProgramWindow()
 void ProgramWindow::set_data()
 {
     ui->labelName->setText(program->get_info().program_name);
-    ui->labelType->setText(cn::type_to_string(program->get_type()));
+    ui->labelType->setText(cn::program_type_to_string(program->get_type()));
     ui->labelSendingType->setText(program->get_sending_type());
     ui->labelPeriod->setText(QString::number(program->get_period())+"ms");
 }

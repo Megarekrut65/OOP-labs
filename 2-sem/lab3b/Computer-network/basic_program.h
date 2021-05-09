@@ -17,7 +17,8 @@ namespace cn
         RECEIVE,
         BOTH
     };
-    QString type_to_string(ProgramType type);
+    QString program_type_to_string(ProgramType type);
+    ProgramType qstring_to_program_type(const QString& type);
     class BasicProgram
     {
     protected:
@@ -43,6 +44,7 @@ namespace cn
         QVector<Message> get_messages() const;
         void clear_buffer();
         friend std::ostream& operator<<(std::ostream& out, const BasicProgram& program);
+        friend std::istream& operator>>(std::istream& in, BasicProgram& program);
         virtual void update() = 0;
         virtual std::shared_ptr<BasicProgram> create_program(const ProgramInfo& info, ProgramType type, std::size_t period) = 0;
     };

@@ -19,7 +19,7 @@ namespace cn
     {
         return sending_type;
     }
-    QString type_to_string(ProgramType type)
+    QString program_type_to_string(ProgramType type)
     {
         switch (type)
         {
@@ -28,6 +28,12 @@ namespace cn
         default:break;
         }
         return "Send and Receive";
+    }
+    ProgramType qstring_to_program_type(const QString& type)
+    {
+        if(type=="Send") return ProgramType::SEND;
+        if(type=="Receive") return ProgramType::RECEIVE;
+        return ProgramType::BOTH;
     }
     ProgramType BasicProgram::get_type() const
     {
@@ -39,9 +45,34 @@ namespace cn
     }
     std::ostream& operator<<(std::ostream& out, const BasicProgram& program)
     {
-        out << "Server: " << program.info.server_name
-            << ", program: " << program.info.program_name;
+        out << "Server-name="<<program.info.server_name << std::endl
+            << "Program-name="<<program.info.program_name << std::endl
+            << "Program-type="<<program_type_to_string(program.type) << std::endl
+            << "Sending-type="<<program.sending_type <<std::endl
+            << "Sending-period="<<program.period;
         return out;
+    }
+    std::istream& operator>>(std::istream& in, BasicProgram& program)
+    {
+        std::vector<std::string> parameters = {
+            "Server-name=","Program-name=","Program-type=","Sending-type=","Sending-period="};
+        QVector<QString> program_parametrs(parameters.size());
+        for(std::size_t i = 0; i < parameters.size(); i++)
+        {
+            std::string line;
+            std::getline(in, line);
+            if(line.size()>parameters[i].size()&&
+                    line.substr(0,parameters[i].size())==parameters[i])
+            {
+                program_parametrs[i] = QString(line.substr(parameters[i].size()).c_str());
+            }
+        }
+        program.info.server_name = program_parametrs[0];
+        program.info.program_name = program_parametrs[1];
+        program.type = qstring_to_program_type(program_parametrs[2]);
+        program.sending_type = program_parametrs[3];
+        program.period = program_parametrs[4].toULongLong();
+        return in;
     }
     BasicProgram::BasicProgram(const QVector<QString>& textes,
                                const ProgramInfo& info, ProgramType type,
