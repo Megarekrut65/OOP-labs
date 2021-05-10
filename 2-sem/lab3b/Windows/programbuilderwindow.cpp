@@ -13,7 +13,7 @@ ProgramBuilderWindow::ProgramBuilderWindow(cn::ProgramRegistry& registry,
     ui->setupUi(this);
     if(!server) this->close();
     setWindowTitle("Create new Program");
-    QIcon icon("Images/program-icon.ico");
+    QIcon icon("Images/program-window-icon.ico");
     setWindowIcon(icon);
     set_sending_types();
     ui->radioButtonAll->setChecked(true);

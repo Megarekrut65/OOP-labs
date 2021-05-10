@@ -19,6 +19,7 @@ SOURCES += \
     Windows/messagetextwindow.cpp \
     Windows/programbuilderwindow.cpp \
     Windows/programwindow.cpp \
+    Windows/serverinfowindow.cpp \
     Windows/serverwindow.cpp \
     app_messages.cpp \
     main.cpp \
@@ -36,6 +37,7 @@ HEADERS += \
     Windows/messagetextwindow.h \
     Windows/programbuilderwindow.h \
     Windows/programwindow.h \
+    Windows/serverinfowindow.h \
     Windows/serverwindow.h \
     app_messages.h \
     my_view_model.h \
@@ -46,6 +48,7 @@ FORMS += \
     Windows/messagetextwindow.ui \
     Windows/programbuilderwindow.ui \
     Windows/programwindow.ui \
+    Windows/serverinfowindow.ui \
     Windows/serverwindow.ui
 
 # Default rules for deployment.
@@ -58,6 +61,6 @@ DISTFILES += \
     Images/info-type.ico \
     Images/main-icon.ico \
     Images/none-type.ico \
-    Images/program-icon.ico \
     Images/program-window-icon.ico \
+    Images/server-window-icon.ico \
     Images/warning-type.ico

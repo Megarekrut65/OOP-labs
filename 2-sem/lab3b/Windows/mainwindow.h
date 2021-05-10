@@ -2,15 +2,17 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTreeWidget>
+#include <QInputDialog>
+#include <QDir>
 #include "../Computer-network/servers.h"
 #include "../Computer-network/program_registry.h"
 #include "programbuilderwindow.h"
 #include "programwindow.h"
-#include <QTreeWidget>
-#include <QInputDialog>
-#include <QDir>
+#include "serverinfowindow.h"
 #include "serverwindow.h"
 #include "progress_bar_animation.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -42,6 +44,10 @@ private slots:
 
     void on_pushButtonSimulation_clicked();
 
+    void on_pushButtonServerInfo_clicked();
+
+    void on_pushButtonProgramInfo_clicked();
+
 private:
     Ui::MainWindow *ui;
     cn::ProgramRegistry registry;
@@ -55,6 +61,9 @@ private:
     QColor server_color;
     std::shared_ptr<QTimer> bar_animation_timer;
     ProgressBarAnimation animation;
+    std::shared_ptr<ServerInfoWindow> server_info_window;
+    void show_server(std::shared_ptr<cn::BasicServer> server);
+    void show_program(std::shared_ptr<cn::BasicProgram> program);
     void set_timer();
     void bar_animation();
     void set_folder();

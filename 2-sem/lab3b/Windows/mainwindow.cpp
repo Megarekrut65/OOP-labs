@@ -7,7 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
       servers_path("server-list.txt"),textes_path("phrases.txt"),
       folder_name("Data"),is_paused(false),
       server_color(QColor(224, 255, 255)),
-      bar_animation_timer(std::make_shared<QTimer>(this)),animation(nullptr)
+      bar_animation_timer(std::make_shared<QTimer>(this)),animation(nullptr),
+      server_info_window(std::make_shared<ServerInfoWindow>())
 {
     ui->setupUi(this);
     srand(time(0));
@@ -146,10 +147,12 @@ void MainWindow::server_is_selected(bool answer)
     ui->pushButtonAddProgram->setEnabled(answer);
     ui->pushButtonRemoveServer->setEnabled(answer);
     ui->pushButtonClearServer->setEnabled(answer);
+    ui->pushButtonServerInfo->setEnabled(answer);
 }
 void MainWindow::program_is_selected(bool answer)
 {
     ui->pushButtonRemoveProgram->setEnabled(answer);
+    ui->pushButtonProgramInfo->setEnabled(answer);
 }
 void MainWindow::close_deleted_window(const QString& server_name)
 {
@@ -207,6 +210,21 @@ bool MainWindow::is_server(QTreeWidgetItem *item)
 {
     return (item->parent() == nullptr);
 }
+void MainWindow::show_server(std::shared_ptr<cn::BasicServer> server)
+{
+    if(!server) return;
+    server_info_window->hide();
+    server_info_window->set_data(server);
+    server_info_window->show();
+}
+void MainWindow::show_program(std::shared_ptr<cn::BasicProgram> program)
+{
+    if(!program) return;
+    server_is_selected(false);
+    program_is_selected(true);
+    program_windows[program->get_info().server_name][program->get_info().program_name]->hide();
+    program_windows[program->get_info().server_name][program->get_info().program_name]->show();
+}
 void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     if(!is_server(item))
@@ -215,9 +233,7 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
         if(program_windows.contains(item->parent()->text(0))&&
                 program_windows[item->parent()->text(0)].contains(name))
         {
-            server_is_selected(false);
-            program_is_selected(true);
-            program_windows[item->parent()->text(0)][name]->show();
+            show_program(cn::Servers::get_server(item->parent()->text(0))->get_program(name));
         }
     }
 }
@@ -278,5 +294,35 @@ void MainWindow::on_pushButtonSimulation_clicked()
         ui->pushButtonSimulation->setStyleSheet("background: green; color:white;");
         bar_animation_timer->stop();
         ui->progressBar->setValue(0);
+    }
+}
+
+void MainWindow::on_pushButtonServerInfo_clicked()
+{
+    auto items = ui->treeWidget->selectedItems();
+    if(items.size() == 1)
+    {
+        auto item = items[0];
+        auto server = cn::Servers::get_server(item->text(0));
+        if(!server) return;
+        show_server(server);
+    }
+}
+
+void MainWindow::on_pushButtonProgramInfo_clicked()
+{
+    auto items = ui->treeWidget->selectedItems();
+    if(items.size() == 1)
+    {
+        auto item = items[0];
+        if(!is_server(item))
+        {
+            QString name = item->text(0);
+            if(program_windows.contains(item->parent()->text(0))&&
+                    program_windows[item->parent()->text(0)].contains(name))
+            {
+                show_program(cn::Servers::get_server(item->parent()->text(0))->get_program(name));
+            }
+        }
     }
 }

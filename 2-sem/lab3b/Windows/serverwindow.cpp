@@ -9,6 +9,8 @@ ServerWindow::ServerWindow(QString& server_name,bool& is_added,QWidget *parent) 
     is_added = false;
     server_name = "";
     setWindowTitle("Create server");
+    QIcon icon("Images/server-window-icon.ico");
+    setWindowIcon(icon);
     ui->lineEditName->setFocus();
 }
 
