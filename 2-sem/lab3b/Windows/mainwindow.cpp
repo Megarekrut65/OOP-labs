@@ -4,7 +4,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),app_name("Computer network model"),
-      path("server-list.txt"),folder_name("Data"),is_paused(false),
+      servers_path("server-list.txt"),textes_path("phrases.txt"),
+      folder_name("Data"),is_paused(false),
       server_color(QColor(224, 255, 255)),
       bar_animation_timer(std::make_shared<QTimer>(this)),animation(nullptr)
 {
@@ -34,7 +35,7 @@ void MainWindow::bar_animation()
 }
 void MainWindow::read_servers_from_file()
 {
-    cn::Servers::add_saved_servers(registry, path,folder_name);
+    cn::Servers::add_saved_servers(registry, servers_path,folder_name);
     QList<QString> servers_names = cn::Servers::get_servers_names();
     for(auto& name:servers_names)
     {
@@ -59,17 +60,14 @@ void MainWindow::set_folder()
 }
 void MainWindow::set_textes()
 {
-    textes = {
-            "Hello, wold!",
-            "How are you doing?",
-            "Mama Mia!",
-            "Guten Tag!",
-            "Are you creizy?",
-            "Just do it!",
-            "There is amazing weather today, isn't?",
-            "Banana man...",
-            "Go away!",
-            "Potatos roal"};
+    std::ifstream file((folder_name+"/"+textes_path).toStdString());
+    while(!file.eof())
+    {
+        std::string line;
+        std::getline(file, line);
+        if(line != "") textes.push_back(line.c_str());
+    }
+    file.close();
 }
 void MainWindow::set_registry()
 {
@@ -80,7 +78,7 @@ void MainWindow::set_registry()
 }
 MainWindow::~MainWindow()
 {
-    cn::Servers::save_all_servers(path,folder_name);
+    cn::Servers::save_all_servers(servers_path,folder_name);
     remove_all_servers();
     cn::Servers::clear();
     delete ui;

@@ -47,7 +47,8 @@ private:
     cn::ProgramRegistry registry;
     QVector<QString> textes;
     QString app_name;
-    QString path;
+    QString servers_path;
+    QString textes_path;
     QString folder_name;
     QMap<QString, QMap<QString, std::shared_ptr<ProgramWindow>>> program_windows;//first key - server name, second - program name
     bool is_paused;

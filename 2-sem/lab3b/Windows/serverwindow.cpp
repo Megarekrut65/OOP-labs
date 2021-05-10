@@ -9,6 +9,7 @@ ServerWindow::ServerWindow(QString& server_name,bool& is_added,QWidget *parent) 
     is_added = false;
     server_name = "";
     setWindowTitle("Create server");
+    ui->lineEditName->setFocus();
 }
 
 ServerWindow::~ServerWindow()
