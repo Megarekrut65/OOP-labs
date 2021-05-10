@@ -47,6 +47,8 @@ private:
     QString path;
     QString folder_name;
     QMap<QString, QMap<QString, std::shared_ptr<ProgramWindow>>> program_windows;//first key - server name, second - program name
+    bool is_paused;
+    QColor server_color;
     void set_folder();
     void read_servers_from_file();
     void set_registry();

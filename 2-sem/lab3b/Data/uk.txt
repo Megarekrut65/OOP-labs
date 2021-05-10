@@ -1,5 +1,0 @@
-Server-name=uk
-Program-name=Zoom
-Program-type=Send and Receive
-Sending-type=Random
-Sending-period=0

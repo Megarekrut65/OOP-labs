@@ -100,6 +100,7 @@ namespace cn
     void BasicProgram::receive(const Message& message)
     {
         if(this->type == ProgramType::SEND) return;
+        std::lock_guard<std::mutex> lock(Servers::mut);
         buffer.push_back(message);
     }
     QVector<Message> BasicProgram::get_messages() const

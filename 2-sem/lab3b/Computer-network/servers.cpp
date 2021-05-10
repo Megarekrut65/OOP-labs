@@ -2,18 +2,21 @@
 
 namespace cn
 {
+    std::mutex Servers::mut = std::mutex();
+    QMap<QString, std::shared_ptr<BasicServer>> Servers::all_servers = QMap<QString, std::shared_ptr<BasicServer>>();
     void Servers::clear()
     {
+        std::lock_guard<std::mutex> lock(Servers::mut);
         all_servers.clear();
     }
-    QMap<QString, std::shared_ptr<BasicServer>> Servers::all_servers = QMap<QString, std::shared_ptr<BasicServer>>();
-    void Servers::add_server(std::shared_ptr<BasicServer> server)
+ void Servers::add_server(std::shared_ptr<BasicServer> server)
     {
         if(server->get_name() != "")
             all_servers[server->get_name()] = server;
     }
     void Servers::remove_server(const QString& server_name, const QString& folder_name)
     {
+        std::lock_guard<std::mutex> lock(Servers::mut);
         if(all_servers.contains(server_name) && all_servers[server_name] != nullptr)
             all_servers[server_name]->clear_own_file(folder_name);
         all_servers[server_name] = nullptr;

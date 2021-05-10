@@ -5,6 +5,7 @@
 #include <sstream>
 #include <mutex>
 #include <thread>
+#include <chrono>
 #include <vector>
 /*!
 *   \brief Computer network

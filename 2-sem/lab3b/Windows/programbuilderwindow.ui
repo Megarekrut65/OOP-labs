@@ -186,6 +186,9 @@
           <pointsize>11</pointsize>
          </font>
         </property>
+        <property name="minimum">
+         <number>1000</number>
+        </property>
         <property name="maximum">
          <number>60000</number>
         </property>

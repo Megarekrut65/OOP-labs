@@ -1,12 +1,12 @@
 #include "programwindow.h"
 #include "ui_programwindow.h"
 
-ProgramWindow::ProgramWindow(std::shared_ptr<cn::BasicProgram> program,
+ProgramWindow::ProgramWindow(std::shared_ptr<cn::BasicProgram> program, bool& is_paused,
                              QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ProgramWindow),program(program),timer(nullptr),
+    ui(new Ui::ProgramWindow),program(program), timer(nullptr),
     model(std::make_shared<QStandardItemModel>()), view(nullptr),old_size(0),
-    message_window(std::make_shared<MessageTextWindow>())
+    message_window(std::make_shared<MessageTextWindow>()),is_stop(false),is_paused(is_paused)
 {
     ui->setupUi(this);
     if(program)
@@ -17,6 +17,8 @@ ProgramWindow::ProgramWindow(std::shared_ptr<cn::BasicProgram> program,
         set_data();
         set_timer();
         set_model();
+        th = std::thread([&](){send_messages();});
+        th.detach();
     }
 }
 void ProgramWindow::set_model()
@@ -30,12 +32,13 @@ void ProgramWindow::set_timer()
 {
     timer = std::make_shared<QTimer>(this);
     connect(timer.get(), &QTimer::timeout, this, &ProgramWindow::receive_messages);
-    timer->start(2000);
+    timer->start(900);
 }
 
 ProgramWindow::~ProgramWindow()
 {
     timer->stop();
+    is_stop = true;
     delete ui;
 }
 void ProgramWindow::set_data()
@@ -49,9 +52,23 @@ void ProgramWindow::add_message_to_view(const Message& message)
 {
     view.add_message(message);
 }
+void ProgramWindow::send_messages()
+{
+    while (true)
+    {
+       if(is_stop) return;
+       if(is_paused) continue;
+       for(std::size_t i = 0; i < program->get_period();i++)
+        if(!is_stop) std::this_thread::sleep_for(std::chrono::milliseconds(1));
+       else return;
+       if(is_paused) continue;
+       if(program) program->update();
+    }
+}
 void ProgramWindow::receive_messages()
 {
-    program->update();
+    if(is_paused) return;
+    if(!program) return;
     auto messages = program->get_messages();
     if(old_size == messages.size()) return;
     for(std::size_t i = 0; i < messages.size() - old_size; i++)

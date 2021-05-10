@@ -1,5 +1,0 @@
-Server-name=ukraine
-Program-name=program
-Program-type=Receive
-Sending-type=Random
-Sending-period=6

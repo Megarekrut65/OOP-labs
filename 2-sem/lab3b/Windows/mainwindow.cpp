@@ -4,7 +4,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),app_name("Computer network model"),
-      path("server-list.txt"),folder_name("Data")
+      path("server-list.txt"),folder_name("Data"),is_paused(false),
+      server_color(QColor(224, 255, 255))
 {
     ui->setupUi(this);
     srand(time(0));
@@ -76,6 +77,7 @@ QTreeWidgetItem* MainWindow::add_server_to_tree(const QString& text)
     if(text.isEmpty()) return nullptr;
     auto item = new QTreeWidgetItem(ui->treeWidget);
     item->setText(0,text);
+    item->setBackground(0,server_color);
     ui->treeWidget->addTopLevelItem(item);
     return item;
 }
@@ -95,7 +97,7 @@ void MainWindow::add_program_to_tree(QTreeWidgetItem* server_item, const QString
     new_item->setText(0, program_name);
     ui->treeWidget->addTopLevelItem(new_item);
     program_windows[server->get_name()][program_name] =
-            std::make_shared<ProgramWindow>(server->get_program(program_name));
+            std::make_shared<ProgramWindow>(server->get_program(program_name),is_paused);
 }
 void MainWindow::on_pushButtonAddProgram_clicked()
 {
