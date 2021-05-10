@@ -1,0 +1,17 @@
+Upload-speed=580
+Download-speed=1024
+Server-name=poland
+Program-name=OK
+Program-type=Send and Receive
+Sending-type=Random
+Sending-period=1000
+Server-name=poland
+Program-name=VK
+Program-type=Send and Receive
+Sending-type=After
+Sending-period=1000
+Server-name=poland
+Program-name=Zoom
+Program-type=Send and Receive
+Sending-type=After
+Sending-period=1000

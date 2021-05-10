@@ -70,7 +70,7 @@
          <number>1048576</number>
         </property>
         <property name="value">
-         <number>100</number>
+         <number>1024</number>
         </property>
        </widget>
       </item>
@@ -106,7 +106,7 @@
          <number>1048576</number>
         </property>
         <property name="value">
-         <number>100</number>
+         <number>1024</number>
         </property>
        </widget>
       </item>

@@ -1,7 +1,12 @@
-Upload-speed=100
-Download-speed=100
+Upload-speed=1
+Download-speed=1
 Server-name=uk
-Program-name=zoom
+Program-name=Faster
+Program-type=Send and Receive
+Sending-type=Periodic
+Sending-period=1
+Server-name=uk
+Program-name=youtube
 Program-type=Send and Receive
 Sending-type=After
 Sending-period=1000

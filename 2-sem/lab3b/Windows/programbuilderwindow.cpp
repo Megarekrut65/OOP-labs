@@ -18,6 +18,7 @@ ProgramBuilderWindow::ProgramBuilderWindow(cn::ProgramRegistry& registry,
     set_sending_types();
     ui->radioButtonAll->setChecked(true);
     is_added = false;
+    ui->spinBoxPeriod->setValue(1000);
 }
 
 ProgramBuilderWindow::~ProgramBuilderWindow()

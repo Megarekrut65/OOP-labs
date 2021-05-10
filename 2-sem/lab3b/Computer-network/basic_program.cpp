@@ -90,11 +90,28 @@ namespace cn
     {
        return textes[rand()%textes.size()];
     }
+    void BasicProgram::sleep_until_message_sending(const Message& message, std::shared_ptr<BasicProgram> other_program)
+    {
+        auto other_server = cn::Servers::get_server(other_program->get_info().server_name);
+        auto this_server = cn::Servers::get_server(this->get_info().server_name);
+        if(other_server.get() != this_server.get())
+        {
+            std::size_t download_speed = other_server->get_speed().download;
+            std::size_t upload_speed = this_server->get_speed().upload;
+            std::size_t load_speed = download_speed < upload_speed?download_speed:upload_speed;
+            if(load_speed == 0) load_speed = 1;
+            std::size_t time_sleep = message.get_message_size()/load_speed;
+            if(time_sleep == 0) time_sleep = 1;
+            for(std::size_t i = 0 ; i < time_sleep; i++)
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        }
+    }
     void BasicProgram::send(std::shared_ptr<BasicProgram> other_program, MessageType type)
     {
         if(!other_program || this->type == ProgramType::RECEIVE) return;
         Message message(info, create_text(), type,other_program->get_info(),
                         rand()%SIZE_MAX);
+        sleep_until_message_sending(message, other_program);
         other_program->receive(message);
     }
     void BasicProgram::receive(const Message& message)

@@ -31,6 +31,7 @@ namespace cn
         QString sending_type;
         QString create_text();
         std::shared_ptr<BasicProgram> get_other_program();
+        void sleep_until_message_sending(const Message& message, std::shared_ptr<BasicProgram> other_progtam);
     public:
         BasicProgram( const QVector<QString>& textes, const ProgramInfo& info,
                       ProgramType type, std::size_t period, const QString& sending_type);
