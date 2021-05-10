@@ -45,6 +45,7 @@ namespace cn
     void BasicServer::add_to_own_file(const QString& folder_name)
     {
         std::ofstream file(make_path(folder_name));
+        file << speed << std::endl;
         QList<QString> keys = programs.keys();
         for(auto& key:keys)
             if(programs[key]) file << *programs[key] << std::endl;
@@ -54,9 +55,37 @@ namespace cn
     {
         std::remove(make_path(folder_name).c_str());
     }
+    std::ostream& operator<<(std::ostream& out, const Speed& speed)
+    {
+        out<<"Upload-speed=" << speed.upload << std::endl;
+        out<<"Download-speed="<< speed.download;
+        return out;
+    }
+    std::istream& operator>>(std::istream& in, Speed& speed)
+    {
+        std::string speeds[] = {"Upload-speed=", "Download-speed="};
+        if(!in.eof())
+        {
+            for(auto& item:speeds)
+            {
+                std::string line;
+                std::getline(in, line);
+                if(line.size() > item.size() && line.substr(0,item.size()) == item)
+                {
+                    line = line.substr(item.size());
+                    std::size_t the_speed = QString(line.c_str()).toULongLong();
+                    if(item == speeds[0])
+                        speed.upload = the_speed;
+                    else if(item == speeds[1]) speed.download = the_speed;
+                }
+            }
+        }
+        return in;
+    }
     void BasicServer::get_from_own_file(ProgramRegistry& registry, const QString& folder_name)
     {
         std::ifstream file(make_path(folder_name));
+        file >> speed;
         while(!file.eof())
         {
             QVector<QString> textes = {};

@@ -11,7 +11,8 @@ namespace cn
        std::size_t download;
        Speed(std::size_t upload = 0, std::size_t download = 0);
     };
-
+    std::ostream& operator<<(std::ostream& out, const Speed& speed);
+    std::istream& operator>>(std::istream& in, Speed& speed);
     class BasicServer
     {
     private:

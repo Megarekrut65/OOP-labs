@@ -1,5 +1,0 @@
-Server-name=ua
-Program-name=zoom
-Program-type=Send and Receive
-Sending-type=After
-Sending-period=1000

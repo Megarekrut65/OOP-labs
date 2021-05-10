@@ -1,3 +1,2 @@
 Servers:
-ua
 uk
