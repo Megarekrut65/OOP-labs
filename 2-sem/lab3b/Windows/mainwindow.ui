@@ -47,8 +47,13 @@
       <x>350</x>
       <y>10</y>
       <width>261</width>
-      <height>141</height>
+      <height>151</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="title">
      <string>Server</string>
@@ -56,8 +61,8 @@
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>9</x>
-       <y>19</y>
+       <x>10</x>
+       <y>30</y>
        <width>241</width>
        <height>111</height>
       </rect>
@@ -68,6 +73,11 @@
       </property>
       <item row="0" column="0">
        <widget class="QPushButton" name="pushButtonAddServer">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Add new server</string>
         </property>
@@ -75,6 +85,11 @@
       </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="pushButtonRemoveServer">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Remove server</string>
         </property>
@@ -82,6 +97,11 @@
       </item>
       <item row="2" column="0">
        <widget class="QPushButton" name="pushButtonRemoveAllServers">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Remove all servers</string>
         </property>
@@ -89,6 +109,11 @@
       </item>
       <item row="2" column="1">
        <widget class="QPushButton" name="pushButtonClearServer">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Clear server</string>
         </property>
@@ -101,10 +126,15 @@
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>160</y>
+      <y>170</y>
       <width>261</width>
-      <height>91</height>
+      <height>101</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="title">
      <string>Program</string>
@@ -113,7 +143,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>30</y>
        <width>241</width>
        <height>61</height>
       </rect>
@@ -121,6 +151,11 @@
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="pushButtonAddProgram">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Add new program</string>
         </property>
@@ -128,6 +163,11 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButtonRemoveProgram">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Remove program</string>
         </property>
@@ -135,6 +175,40 @@
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>400</y>
+      <width>241</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>24</number>
+       </property>
+       <property name="textVisible">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonSimulation">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Start the simulation</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

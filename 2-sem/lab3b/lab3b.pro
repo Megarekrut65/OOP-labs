@@ -22,7 +22,8 @@ SOURCES += \
     Windows/serverwindow.cpp \
     app_messages.cpp \
     main.cpp \
-    my_view_model.cpp
+    my_view_model.cpp \
+    progress_bar_animation.cpp
 
 HEADERS += \
     Computer-network/basic_program.h \
@@ -37,7 +38,8 @@ HEADERS += \
     Windows/programwindow.h \
     Windows/serverwindow.h \
     app_messages.h \
-    my_view_model.h
+    my_view_model.h \
+    progress_bar_animation.h
 
 FORMS += \
     Windows/mainwindow.ui \

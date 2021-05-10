@@ -10,6 +10,7 @@
 #include <QInputDialog>
 #include <QDir>
 #include "serverwindow.h"
+#include "progress_bar_animation.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -39,6 +40,8 @@ private slots:
 
     void on_pushButtonRemoveAllServers_clicked();
 
+    void on_pushButtonSimulation_clicked();
+
 private:
     Ui::MainWindow *ui;
     cn::ProgramRegistry registry;
@@ -49,6 +52,10 @@ private:
     QMap<QString, QMap<QString, std::shared_ptr<ProgramWindow>>> program_windows;//first key - server name, second - program name
     bool is_paused;
     QColor server_color;
+    std::shared_ptr<QTimer> bar_animation_timer;
+    ProgressBarAnimation animation;
+    void set_timer();
+    void bar_animation();
     void set_folder();
     void read_servers_from_file();
     void set_registry();

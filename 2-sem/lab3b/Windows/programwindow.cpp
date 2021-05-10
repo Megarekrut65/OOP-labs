@@ -32,7 +32,7 @@ void ProgramWindow::set_timer()
 {
     timer = std::make_shared<QTimer>(this);
     connect(timer.get(), &QTimer::timeout, this, &ProgramWindow::receive_messages);
-    timer->start(900);
+    timer->start(200);
 }
 
 ProgramWindow::~ProgramWindow()
@@ -56,8 +56,6 @@ void ProgramWindow::send_messages()
 {
     while (true)
     {
-       if(is_stop) return;
-       if(is_paused) continue;
        for(std::size_t i = 0; i < program->get_period();i++)
         if(!is_stop) std::this_thread::sleep_for(std::chrono::milliseconds(1));
        else return;

@@ -5,7 +5,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),app_name("Computer network model"),
       path("server-list.txt"),folder_name("Data"),is_paused(false),
-      server_color(QColor(224, 255, 255))
+      server_color(QColor(224, 255, 255)),
+      bar_animation_timer(std::make_shared<QTimer>(this)),animation(nullptr)
 {
     ui->setupUi(this);
     srand(time(0));
@@ -18,6 +19,18 @@ MainWindow::MainWindow(QWidget *parent)
     program_is_selected(false);
     set_folder();
     read_servers_from_file();
+    set_timer();
+    on_pushButtonSimulation_clicked();
+
+}
+void MainWindow::set_timer()
+{
+    animation = ProgressBarAnimation(ui->progressBar,AnimationStyles::CONTINUE);
+    connect(bar_animation_timer.get(), &QTimer::timeout, this, &MainWindow::bar_animation);
+}
+void MainWindow::bar_animation()
+{
+    animation.animate();
 }
 void MainWindow::read_servers_from_file()
 {
@@ -248,5 +261,24 @@ void MainWindow::on_pushButtonRemoveAllServers_clicked()
     {
         remove_all_servers();
         cn::Servers::remove_all(folder_name);
+    }
+}
+
+void MainWindow::on_pushButtonSimulation_clicked()
+{
+    if(is_paused)
+    {
+        is_paused = false;
+        ui->pushButtonSimulation->setText("Pause the simulation");
+        ui->pushButtonSimulation->setStyleSheet("background: yellow; color:black;");
+        bar_animation_timer->start(10);
+    }
+    else
+    {
+        is_paused = true;
+        ui->pushButtonSimulation->setText("Start the simulation");
+        ui->pushButtonSimulation->setStyleSheet("background: green; color:white;");
+        bar_animation_timer->stop();
+        ui->progressBar->setValue(0);
     }
 }
