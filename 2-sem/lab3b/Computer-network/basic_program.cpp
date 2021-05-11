@@ -150,9 +150,16 @@ namespace cnet
     {
         return buffer;
     }
+    void AllMessagesInfo::clear()
+    {
+        count = 0;
+        memory = 0;
+    }
     void BasicProgram::clear_buffer()
     {
         buffer.clear();
+        sent_messages.clear();
+        received_messages.clear();
     }
     BasicProgram::BasicProgram( const QVector<QString>& textes,const QString& sending_type):
         textes{textes}, info{ProgramInfo()}, type{ProgramType::BOTH}, period{0},sending_type{sending_type}{}

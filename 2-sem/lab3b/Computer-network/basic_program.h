@@ -12,6 +12,9 @@
 */
 namespace cnet
 {
+    /*!
+    *   \brief
+    */
     class AllMessagesInfo
     {
     private:
@@ -22,27 +25,39 @@ namespace cnet
         void add(std::size_t memory);
         QString get_count() const;
         QString get_memory() const;
+        void clear();
     };
-
+    /*!
+    *   \brief
+    */
     enum class ProgramType
     {
         SEND = 0,
         RECEIVE,
         BOTH
     };
+    /*!
+    *   \brief
+    */
     QString program_type_to_string(ProgramType type);
+    /*!
+    *   \brief
+    */
     ProgramType qstring_to_program_type(const QString& type);
+    /*!
+    *   \brief
+    */
     class BasicProgram
     {
     protected:
-        QVector<Message> buffer;
-        const QVector<QString>& textes;
-        ProgramInfo info;
-        ProgramType type;
-        std::size_t period;
-        QString sending_type;
-        AllMessagesInfo sent_messages;
-        AllMessagesInfo received_messages;
+        QVector<Message> buffer;/*!< */
+        const QVector<QString>& textes;/*!< */
+        ProgramInfo info;/*!< */
+        ProgramType type;/*!< */
+        std::size_t period;/*!< */
+        QString sending_type;/*!< */
+        AllMessagesInfo sent_messages;/*!< */
+        AllMessagesInfo received_messages;/*!< */
         QString create_text();
         std::shared_ptr<BasicProgram> get_other_program();
         void sleep_until_message_sending(const Message& message, std::shared_ptr<BasicProgram> other_progtam);

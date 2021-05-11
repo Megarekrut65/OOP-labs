@@ -17,22 +17,12 @@ namespace cnet
     {
         return "("+server_name+")"+program_name;
     }
-    std::istream& operator>>(std::istream& in, ProgramInfo& info)
-    {
-        char rubbish;
-        in>>rubbish>>info.server_name>>rubbish>>info.program_name;
-        return in;
-    }
     MessageType qstring_to_message_type(const QString& line)
     {
         if(line=="Info") return MessageType::INFO;
         if(line=="Error") return MessageType::ERROR;
         if(line=="Warning") return MessageType::WARNING;
         return MessageType::NONE;
-    }
-    QDateTime qstring_to_qdate_time(const QString& line)
-    {
-        return QDateTime::fromString(line,"yyyy-MM-dd HH:mm:ss");
     }
     std::ostream& operator<<(std::ostream& out, const Message& message)
     {

@@ -4,6 +4,9 @@
 #include <QDialog>
 #include "Computer-network/basic_server.h"
 namespace Ui {
+/*!
+*   \brief
+*/
 class ServerInfoWindow;
 }
 
@@ -20,7 +23,7 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    Ui::ServerInfoWindow *ui;   
+    Ui::ServerInfoWindow *ui; /*!< */
 };
 
 #endif // SERVERINFOWINDOW_H

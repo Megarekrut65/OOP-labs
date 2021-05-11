@@ -95,6 +95,7 @@ void ProgramWindow::on_pushButtonClear_clicked()
     {
         view.clear();
         program->clear_buffer();
+        set_messages_info();
         old_size = 0;
         ui->tableViewBuffer->setColumnWidth(model->columnCount() - 1, 200);
         message_window->hide();

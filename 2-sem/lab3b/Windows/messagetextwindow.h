@@ -6,6 +6,9 @@
 #include <QIcon>
 
 namespace Ui {
+/*!
+*   \brief
+*/
 class MessageTextWindow;
 }
 
@@ -19,7 +22,7 @@ public:
     void set_message(const cnet::Message& message);
 
 private:
-    Ui::MessageTextWindow *ui;
+    Ui::MessageTextWindow *ui;/*!< */
 };
 
 #endif // MESSAGETEXTWINDOW_H

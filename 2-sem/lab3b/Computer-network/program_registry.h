@@ -5,10 +5,13 @@
 
 namespace cnet
 {
+    /*!
+    *   \brief
+    */
     class ProgramRegistry
     {
     private:
-        QMap<QString, std::shared_ptr<BasicProgram>> programs_prototype;
+        QMap<QString, std::shared_ptr<BasicProgram>> programs_prototype;/*!< */
 
     public:
         void registry_type(const QString& type, std::shared_ptr<BasicProgram> prototype);

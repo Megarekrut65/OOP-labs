@@ -2,18 +2,24 @@
 #define PROGRESSBARANIMATION_H
 #include <QProgressBar>
 
+/*!
+*   \brief
+*/
 enum class AnimationStyles
 {
-    START = 0,
-    CONTINUE
+    START = 0,/*!< */
+    CONTINUE/*!< */
 };
-
+/*!
+*   \brief
+*/
 class ProgressBarAnimation
 {
 private:
-    QProgressBar* bar;
-    bool marker;
-    AnimationStyles style;
+    QProgressBar* bar;/*!< */
+    bool marker;/*!< */
+    AnimationStyles style;/*!< */
+
     void rigth_left_start_animation();
     void rigth_left_continue_animation();
 public:

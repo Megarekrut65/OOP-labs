@@ -4,12 +4,15 @@
 
 namespace cnet
 {
+    /*!
+    *   \brief
+    */
     class Servers
     {
     private:
-        static QMap<QString, std::shared_ptr<BasicServer>> all_servers;
-        static double acceleration_factor;
-        static std::mutex mut;
+        static QMap<QString, std::shared_ptr<BasicServer>> all_servers;/*!< */
+        static double acceleration_factor;/*!< */
+        static std::mutex mut;/*!< */
     public:
         static std::mutex& get_mutex();
         static double get_acceleration_factor();

@@ -9,6 +9,9 @@
 #include "messagetextwindow.h"
 
 namespace Ui {
+/*!
+*   \brief
+*/
 class ProgramWindow;
 }
 
@@ -27,16 +30,17 @@ private slots:
     void on_tableViewBuffer_doubleClicked(const QModelIndex &index);
 
 private:
-    Ui::ProgramWindow *ui;
-    std::shared_ptr<cnet::BasicProgram> program;
-    std::shared_ptr<QTimer> timer;
-    std::shared_ptr<QStandardItemModel> model;
-    MyViewModel view;
-    std::size_t old_size;
-    std::shared_ptr<MessageTextWindow> message_window;
-    std::thread th;
-    bool is_stop;
-    bool& is_paused;
+    Ui::ProgramWindow *ui;/*!< */
+    std::shared_ptr<cnet::BasicProgram> program;/*!< */
+    std::shared_ptr<QTimer> timer;/*!< */
+    std::shared_ptr<QStandardItemModel> model;/*!< */
+    MyViewModel view;/*!< */
+    std::size_t old_size;/*!< */
+    std::shared_ptr<MessageTextWindow> message_window;/*!< */
+    std::thread th;/*!< */
+    bool is_stop;/*!< */
+    bool& is_paused;/*!< */
+
     void set_data();
     void set_messages_info();
     void set_timer();

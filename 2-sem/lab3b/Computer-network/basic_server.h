@@ -5,6 +5,9 @@
 
 namespace cnet
 {
+    /*!
+    *   \brief
+    */
     struct Speed
     {
        std::size_t upload;
@@ -13,12 +16,15 @@ namespace cnet
     };
     std::ostream& operator<<(std::ostream& out, const Speed& speed);
     std::istream& operator>>(std::istream& in, Speed& speed);
+    /*!
+    *   \brief
+    */
     class BasicServer
     {
     private:
-        QMap<QString, std::shared_ptr<BasicProgram>> programs;
-        QString server_name;
-        Speed speed;
+        QMap<QString, std::shared_ptr<BasicProgram>> programs;/*!< */
+        QString server_name;/*!< */
+        Speed speed;/*!< */
 
         std::string make_path(const QString& folder_name = "");
     public:

@@ -4,7 +4,9 @@
 
 namespace cnet
 {
-
+    /*!
+    *   \brief
+    */
     class PeriodicProgram: public BasicProgram
     {
     private:
@@ -17,6 +19,9 @@ namespace cnet
                 const ProgramInfo& info=ProgramInfo(),
                 ProgramType type=ProgramType::BOTH, std::size_t period = 0) override;
     };
+    /*!
+    *   \brief
+    */
     class RandomProgram: public BasicProgram
     {
     public:
@@ -27,6 +32,9 @@ namespace cnet
                 const ProgramInfo& info=ProgramInfo(),
                 ProgramType type=ProgramType::BOTH, std::size_t period = 0) override;
     };
+    /*!
+    *   \brief
+    */
     class AfterProgram: public BasicProgram
     {
     public:
@@ -37,6 +45,9 @@ namespace cnet
                 const ProgramInfo& info=ProgramInfo(),
                 ProgramType type=ProgramType::BOTH, std::size_t period = 0) override;
     };
+    /*!
+    *   \brief
+    */
     class WaitProgram: public BasicProgram
     {
     public:

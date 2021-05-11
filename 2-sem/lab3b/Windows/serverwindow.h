@@ -5,6 +5,9 @@
 #include "Computer-network/servers.h"
 #include "app_messages.h"
 namespace Ui {
+/*!
+*   \brief
+*/
 class ServerWindow;
 }
 
@@ -22,9 +25,9 @@ private slots:
     void on_pushButtonCancel_clicked();
 
 private:
-    Ui::ServerWindow *ui;
-    QString& server_name;
-    bool& is_added;
+    Ui::ServerWindow *ui;/*!< */
+    QString& server_name;/*!< */
+    bool& is_added;/*!< */
 };
 
 #endif // SERVERWINDOW_H

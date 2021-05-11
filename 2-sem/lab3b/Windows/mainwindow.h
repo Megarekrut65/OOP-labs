@@ -14,7 +14,11 @@
 #include "progress_bar_animation.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui {
+/*!
+*   \brief
+*/
+class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -51,20 +55,20 @@ private slots:
     void on_pushButtonSetFactor_clicked();
 
 private:
-    Ui::MainWindow *ui;
-    cnet::ProgramRegistry registry;
-    QVector<QString> textes;
-    QString app_name;
-    QString servers_path;
-    QString textes_path;
-    QString setting_path;
-    QString folder_name;
+    Ui::MainWindow *ui;/*!< */
+    cnet::ProgramRegistry registry;/*!< */
+    QVector<QString> textes;/*!< */
+    QString app_name;/*!< */
+    QString servers_path;/*!< */
+    QString textes_path;/*!< */
+    QString setting_path;/*!< */
+    QString folder_name;/*!< */
     QMap<QString, QMap<QString, std::shared_ptr<ProgramWindow>>> program_windows;//first key - server name, second - program name
-    bool is_paused;
-    QColor server_color;
-    std::shared_ptr<QTimer> bar_animation_timer;
-    ProgressBarAnimation animation;
-    std::shared_ptr<ServerInfoWindow> server_info_window;
+    bool is_paused;/*!< */
+    QColor server_color;/*!< */
+    std::shared_ptr<QTimer> bar_animation_timer;/*!< */
+    ProgressBarAnimation animation;/*!< */
+    std::shared_ptr<ServerInfoWindow> server_info_window;/*!< */
     void show_server(std::shared_ptr<cnet::BasicServer> server);
     void show_program(std::shared_ptr<cnet::BasicProgram> program);
     void set_timer();

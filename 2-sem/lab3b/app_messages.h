@@ -3,6 +3,9 @@
 #include <QMessageBox>
 #include <QString>
 
+/*!
+*   \brief
+*/
 class AppMessages
 {
 public:

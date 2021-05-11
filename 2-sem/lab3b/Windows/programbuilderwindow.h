@@ -7,6 +7,9 @@
 #include "app_messages.h"
 
 namespace Ui {
+/*!
+*   \brief
+*/
 class ProgramBuilderWindow;
 }
 
@@ -29,11 +32,12 @@ private slots:
     void on_pushButtonCancel_clicked();
 
 private:
-    Ui::ProgramBuilderWindow *ui;
-    cnet::ProgramRegistry& registry;
-    bool& is_added;
-    QString& program_name;
-    std::shared_ptr<cnet::BasicServer> server;
+    Ui::ProgramBuilderWindow *ui;/*!< */
+    cnet::ProgramRegistry& registry;/*!< */
+    bool& is_added;/*!< */
+    QString& program_name;/*!< */
+    std::shared_ptr<cnet::BasicServer> server;/*!< */
+
     void set_sending_types();
     cnet::ProgramType get_type();
     QString get_name();
