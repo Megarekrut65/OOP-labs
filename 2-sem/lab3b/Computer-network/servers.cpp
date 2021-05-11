@@ -4,16 +4,16 @@ namespace cn
 {
     std::mutex Servers::mut = std::mutex();
     QMap<QString, std::shared_ptr<BasicServer>> Servers::all_servers = QMap<QString, std::shared_ptr<BasicServer>>();
-    float Servers::acceleration_factor = 1.f;
+    double Servers::acceleration_factor = 1.f;
     std::mutex& Servers::get_mutex()
     {
         return mut;
     }
-    float Servers::get_acceleration_factor()
+    double Servers::get_acceleration_factor()
     {
         return acceleration_factor;
     }
-    void Servers::set_acceleration_factor(float acceleration_factor)
+    void Servers::set_acceleration_factor(double acceleration_factor)
     {
         Servers::acceleration_factor = acceleration_factor;
     }
@@ -81,5 +81,24 @@ namespace cn
         QList<QString> keys = get_servers_names();
         for(auto& key:keys)
             remove_server(key, folder_name);
+    }
+    void Servers::save_settings(const QString& path, const QString& folder_name)
+    {
+        std::ofstream file((folder_name+"/"+path).toStdString());
+        file <<"Acceleration-factor=" << acceleration_factor << std::endl;
+        file.close();
+    }
+    void Servers::read_settings(const QString& path, const QString& folder_name)
+    {
+        std::ifstream file((folder_name+"/"+path).toStdString());
+        std::string line, setting_line = "Acceleration-factor=";
+        std::getline(file, line);
+        if(line.size() > setting_line.size() &&
+                line.substr(0, setting_line.size()) == setting_line)
+        {
+           line =  line.substr(setting_line.size());
+           acceleration_factor = QString(line.c_str()).toDouble();
+        }
+        file.close();
     }
 }

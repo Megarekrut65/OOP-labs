@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),app_name("Computer network model"),
       servers_path("server-list.txt"),textes_path("phrases.txt"),
+      setting_path("settings.txt"),
       folder_name("Data"),is_paused(false),
       server_color(QColor(224, 255, 255)),
       bar_animation_timer(std::make_shared<QTimer>(this)),animation(nullptr),
@@ -20,10 +21,15 @@ MainWindow::MainWindow(QWidget *parent)
     server_is_selected(false);
     program_is_selected(false);
     set_folder();
+    set_factor();
     read_servers_from_file();
     set_timer();
     on_pushButtonSimulation_clicked();
-
+}
+void MainWindow::set_factor()
+{
+    cn::Servers::read_settings(setting_path,folder_name);
+    ui->doubleSpinBoxFactor->setValue(cn::Servers::get_acceleration_factor());
 }
 void MainWindow::set_timer()
 {
@@ -82,6 +88,7 @@ MainWindow::~MainWindow()
     cn::Servers::save_all_servers(servers_path,folder_name);
     remove_all_servers();
     cn::Servers::clear();
+    cn::Servers::save_settings(setting_path,folder_name);
     delete ui;
 }
 QTreeWidgetItem* MainWindow::add_server_to_tree(const QString& text)
@@ -325,4 +332,9 @@ void MainWindow::on_pushButtonProgramInfo_clicked()
             }
         }
     }
+}
+
+void MainWindow::on_pushButtonSetFactor_clicked()
+{
+    cn::Servers::set_acceleration_factor(ui->doubleSpinBoxFactor->value());
 }

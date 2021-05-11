@@ -48,6 +48,8 @@ private slots:
 
     void on_pushButtonProgramInfo_clicked();
 
+    void on_pushButtonSetFactor_clicked();
+
 private:
     Ui::MainWindow *ui;
     cn::ProgramRegistry registry;
@@ -55,6 +57,7 @@ private:
     QString app_name;
     QString servers_path;
     QString textes_path;
+    QString setting_path;
     QString folder_name;
     QMap<QString, QMap<QString, std::shared_ptr<ProgramWindow>>> program_windows;//first key - server name, second - program name
     bool is_paused;
@@ -65,6 +68,7 @@ private:
     void show_server(std::shared_ptr<cn::BasicServer> server);
     void show_program(std::shared_ptr<cn::BasicProgram> program);
     void set_timer();
+    void set_factor();
     void bar_animation();
     void set_folder();
     void read_servers_from_file();
