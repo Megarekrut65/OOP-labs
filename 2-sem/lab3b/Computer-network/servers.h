@@ -2,7 +2,7 @@
 #define SERVERS_H
 #include "basic_server.h"
 
-namespace cn
+namespace cnet
 {
     class Servers
     {

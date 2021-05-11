@@ -1,6 +1,6 @@
 #include "basic_server.h"
 
-namespace cn
+namespace cnet
 {
     Speed::Speed(std::size_t upload, std::size_t download):
         upload{upload},download{download}{}

@@ -52,7 +52,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    cn::ProgramRegistry registry;
+    cnet::ProgramRegistry registry;
     QVector<QString> textes;
     QString app_name;
     QString servers_path;
@@ -65,8 +65,8 @@ private:
     std::shared_ptr<QTimer> bar_animation_timer;
     ProgressBarAnimation animation;
     std::shared_ptr<ServerInfoWindow> server_info_window;
-    void show_server(std::shared_ptr<cn::BasicServer> server);
-    void show_program(std::shared_ptr<cn::BasicProgram> program);
+    void show_server(std::shared_ptr<cnet::BasicServer> server);
+    void show_program(std::shared_ptr<cnet::BasicProgram> program);
     void set_timer();
     void set_factor();
     void bar_animation();

@@ -3,7 +3,7 @@
 #include "programs.h"
 #include <QMap>
 
-namespace cn
+namespace cnet
 {
     class ProgramRegistry
     {

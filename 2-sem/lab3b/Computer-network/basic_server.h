@@ -3,7 +3,7 @@
 #include "program_registry.h"
 #include <fstream>
 
-namespace cn
+namespace cnet
 {
     struct Speed
     {

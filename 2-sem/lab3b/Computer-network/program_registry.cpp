@@ -1,6 +1,6 @@
 #include "program_registry.h"
 
-namespace cn
+namespace cnet
 {
     void ProgramRegistry::registry_type(const QString& type, std::shared_ptr<BasicProgram> prototype)
     {

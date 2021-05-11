@@ -4,7 +4,7 @@
 #include <QDateTime>
 #include <iostream>
 
-namespace cn
+namespace cnet
 {
     struct ProgramInfo
     {

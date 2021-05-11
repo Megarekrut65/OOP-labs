@@ -14,7 +14,7 @@ class ServerInfoWindow : public QDialog
 public:
     explicit ServerInfoWindow(QWidget *parent = nullptr);
     ~ServerInfoWindow();
-    void set_data(std::shared_ptr<cn::BasicServer> server);
+    void set_data(std::shared_ptr<cnet::BasicServer> server);
 
 private slots:
     void on_pushButton_clicked();

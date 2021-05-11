@@ -16,8 +16,8 @@ class ProgramBuilderWindow : public QDialog
 
 public:
     explicit ProgramBuilderWindow(
-            cn::ProgramRegistry& registry,
-            std::shared_ptr<cn::BasicServer> server,
+            cnet::ProgramRegistry& registry,
+            std::shared_ptr<cnet::BasicServer> server,
             bool& is_added,
             QString& program_name,
             QWidget *parent = nullptr);
@@ -30,12 +30,12 @@ private slots:
 
 private:
     Ui::ProgramBuilderWindow *ui;
-    cn::ProgramRegistry& registry;
+    cnet::ProgramRegistry& registry;
     bool& is_added;
     QString& program_name;
-    std::shared_ptr<cn::BasicServer> server;
+    std::shared_ptr<cnet::BasicServer> server;
     void set_sending_types();
-    cn::ProgramType get_type();
+    cnet::ProgramType get_type();
     QString get_name();
     std::size_t get_period();
 };

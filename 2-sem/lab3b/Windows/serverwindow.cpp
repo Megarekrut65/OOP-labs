@@ -27,17 +27,17 @@ void ServerWindow::on_pushButtonCreate_clicked()
         AppMessages::error_message(this,"Incorrect data","Name cannot be empty!");
         return;
     }
-    if(cn::Servers::get_server(server_name))
+    if(cnet::Servers::get_server(server_name))
     {
         AppMessages::error_message(this,"Incorrect data","The server "+
                                    server_name+
                                    " has already been created!");
         return;
     }
-    cn::Servers::add_server(
-                std::make_shared<cn::BasicServer>(
+    cnet::Servers::add_server(
+                std::make_shared<cnet::BasicServer>(
                     server_name,
-                    cn::Speed(
+                    cnet::Speed(
                         ui->spinBoxUpload->value(),
                         ui->spinBoxDownload->value()
                         )));

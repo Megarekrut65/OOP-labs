@@ -2,7 +2,7 @@
 #define PROGRAMS_H
 #include "basic_program.h"
 
-namespace cn
+namespace cnet
 {
 
     class PeriodicProgram: public BasicProgram

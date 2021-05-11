@@ -28,8 +28,8 @@ MainWindow::MainWindow(QWidget *parent)
 }
 void MainWindow::set_factor()
 {
-    cn::Servers::read_settings(setting_path,folder_name);
-    ui->doubleSpinBoxFactor->setValue(cn::Servers::get_acceleration_factor());
+    cnet::Servers::read_settings(setting_path,folder_name);
+    ui->doubleSpinBoxFactor->setValue(cnet::Servers::get_acceleration_factor());
 }
 void MainWindow::set_timer()
 {
@@ -42,11 +42,11 @@ void MainWindow::bar_animation()
 }
 void MainWindow::read_servers_from_file()
 {
-    cn::Servers::add_saved_servers(registry, servers_path,folder_name);
-    QList<QString> servers_names = cn::Servers::get_servers_names();
+    cnet::Servers::add_saved_servers(registry, servers_path,folder_name);
+    QList<QString> servers_names = cnet::Servers::get_servers_names();
     for(auto& name:servers_names)
     {
-        auto server = cn::Servers::get_server(name);
+        auto server = cnet::Servers::get_server(name);
         auto item = add_server_to_tree(server->get_name());
         if(!item) continue;
         QList<QString> programs_names = server->get_programs_names();
@@ -78,17 +78,17 @@ void MainWindow::set_textes()
 }
 void MainWindow::set_registry()
 {
-    registry.registry_type(std::make_shared<cn::PeriodicProgram>(textes));
-    registry.registry_type(std::make_shared<cn::RandomProgram>(textes));
-    registry.registry_type(std::make_shared<cn::AfterProgram>(textes));
-    registry.registry_type(std::make_shared<cn::WaitProgram>(textes));
+    registry.registry_type(std::make_shared<cnet::PeriodicProgram>(textes));
+    registry.registry_type(std::make_shared<cnet::RandomProgram>(textes));
+    registry.registry_type(std::make_shared<cnet::AfterProgram>(textes));
+    registry.registry_type(std::make_shared<cnet::WaitProgram>(textes));
 }
 MainWindow::~MainWindow()
 {
-    cn::Servers::save_all_servers(servers_path,folder_name);
+    cnet::Servers::save_all_servers(servers_path,folder_name);
     remove_all_servers();
-    cn::Servers::clear();
-    cn::Servers::save_settings(setting_path,folder_name);
+    cnet::Servers::clear();
+    cnet::Servers::save_settings(setting_path,folder_name);
     delete ui;
 }
 QTreeWidgetItem* MainWindow::add_server_to_tree(const QString& text)
@@ -111,7 +111,7 @@ void MainWindow::on_pushButtonAddServer_clicked()
 }
 void MainWindow::add_program_to_tree(QTreeWidgetItem* server_item, const QString& program_name)
 {
-    auto server = cn::Servers::get_server(server_item->text(0));
+    auto server = cnet::Servers::get_server(server_item->text(0));
     auto new_item = new QTreeWidgetItem(server_item);
     new_item->setText(0, program_name);
     ui->treeWidget->addTopLevelItem(new_item);
@@ -124,7 +124,7 @@ void MainWindow::on_pushButtonAddProgram_clicked()
     if(items.size() == 1)
     {
         auto item = items[0];
-        auto server = cn::Servers::get_server(item->text(0));
+        auto server = cnet::Servers::get_server(item->text(0));
         if(!server) return;
         bool is_added = false;
         QString program_name = "";
@@ -180,7 +180,7 @@ void MainWindow::on_pushButtonRemoveServer_clicked()
         if(answer)
         {
             close_deleted_window(items[0]->text(0));
-            cn::Servers::remove_server(items[0]->text(0), folder_name);
+            cnet::Servers::remove_server(items[0]->text(0), folder_name);
             delete items[0];
             after_removing();
         }
@@ -201,7 +201,7 @@ void MainWindow::on_pushButtonRemoveProgram_clicked()
         if(answer)
         {
             program_windows[items[0]->parent()->text(0)][items[0]->text(0)] = nullptr;
-            cn::Servers::get_server(items[0]->parent()->text(0))->remove_program(items[0]->text(0));
+            cnet::Servers::get_server(items[0]->parent()->text(0))->remove_program(items[0]->text(0));
             delete items[0];
             after_removing();
         }
@@ -217,14 +217,14 @@ bool MainWindow::is_server(QTreeWidgetItem *item)
 {
     return (item->parent() == nullptr);
 }
-void MainWindow::show_server(std::shared_ptr<cn::BasicServer> server)
+void MainWindow::show_server(std::shared_ptr<cnet::BasicServer> server)
 {
     if(!server) return;
     server_info_window->hide();
     server_info_window->set_data(server);
     server_info_window->show();
 }
-void MainWindow::show_program(std::shared_ptr<cn::BasicProgram> program)
+void MainWindow::show_program(std::shared_ptr<cnet::BasicProgram> program)
 {
     if(!program) return;
     server_is_selected(false);
@@ -240,7 +240,7 @@ void MainWindow::on_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int colu
         if(program_windows.contains(item->parent()->text(0))&&
                 program_windows[item->parent()->text(0)].contains(name))
         {
-            show_program(cn::Servers::get_server(item->parent()->text(0))->get_program(name));
+            show_program(cnet::Servers::get_server(item->parent()->text(0))->get_program(name));
         }
     }
 }
@@ -263,7 +263,7 @@ void MainWindow::on_pushButtonClearServer_clicked()
             {
                 items[0]->removeChild(items[0]->child(0));
             }
-            cn::Servers::get_server(items[0]->text(0))->clear();
+            cnet::Servers::get_server(items[0]->text(0))->clear();
         }
     }
 }
@@ -281,7 +281,7 @@ void MainWindow::on_pushButtonRemoveAllServers_clicked()
     if(answer)
     {
         remove_all_servers();
-        cn::Servers::remove_all(folder_name);
+        cnet::Servers::remove_all(folder_name);
     }
 }
 
@@ -310,7 +310,7 @@ void MainWindow::on_pushButtonServerInfo_clicked()
     if(items.size() == 1)
     {
         auto item = items[0];
-        auto server = cn::Servers::get_server(item->text(0));
+        auto server = cnet::Servers::get_server(item->text(0));
         if(!server) return;
         show_server(server);
     }
@@ -328,7 +328,7 @@ void MainWindow::on_pushButtonProgramInfo_clicked()
             if(program_windows.contains(item->parent()->text(0))&&
                     program_windows[item->parent()->text(0)].contains(name))
             {
-                show_program(cn::Servers::get_server(item->parent()->text(0))->get_program(name));
+                show_program(cnet::Servers::get_server(item->parent()->text(0))->get_program(name));
             }
         }
     }
@@ -336,5 +336,5 @@ void MainWindow::on_pushButtonProgramInfo_clicked()
 
 void MainWindow::on_pushButtonSetFactor_clicked()
 {
-    cn::Servers::set_acceleration_factor(ui->doubleSpinBoxFactor->value());
+    cnet::Servers::set_acceleration_factor(ui->doubleSpinBoxFactor->value());
 }

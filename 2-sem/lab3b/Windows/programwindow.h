@@ -17,7 +17,7 @@ class ProgramWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit ProgramWindow(std::shared_ptr<cn::BasicProgram> program, bool& is_paused, QWidget *parent = nullptr);
+    explicit ProgramWindow(std::shared_ptr<cnet::BasicProgram> program, bool& is_paused, QWidget *parent = nullptr);
     ~ProgramWindow();
 
 private slots:
@@ -28,7 +28,7 @@ private slots:
 
 private:
     Ui::ProgramWindow *ui;
-    std::shared_ptr<cn::BasicProgram> program;
+    std::shared_ptr<cnet::BasicProgram> program;
     std::shared_ptr<QTimer> timer;
     std::shared_ptr<QStandardItemModel> model;
     MyViewModel view;
@@ -42,7 +42,7 @@ private:
     void set_timer();
     void receive_messages();
     void send_messages();
-    void add_message_to_view(const cn::Message& message);
+    void add_message_to_view(const cnet::Message& message);
     void set_model();
 };
 

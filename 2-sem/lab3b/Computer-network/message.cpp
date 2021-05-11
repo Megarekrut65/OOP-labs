@@ -1,6 +1,6 @@
 #include "message.h"
 
-namespace cn
+namespace cnet
 {
     std::ostream& operator<<(std::ostream& out, const QString& line)
     {

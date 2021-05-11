@@ -1,8 +1,8 @@
 #include "programbuilderwindow.h"
 #include "ui_programbuilderwindow.h"
 
-ProgramBuilderWindow::ProgramBuilderWindow(cn::ProgramRegistry& registry,
-                                           std::shared_ptr<cn::BasicServer> server,
+ProgramBuilderWindow::ProgramBuilderWindow(cnet::ProgramRegistry& registry,
+                                           std::shared_ptr<cnet::BasicServer> server,
                                            bool& is_added,
                                            QString& program_name,
                                            QWidget *parent):
@@ -29,11 +29,11 @@ void ProgramBuilderWindow::set_sending_types()
     ui->comboBoxSendingType->addItems(registry.get_all_types());
     ui->comboBoxSendingType->activated(0);
 }
-cn::ProgramType ProgramBuilderWindow::get_type()
+cnet::ProgramType ProgramBuilderWindow::get_type()
 {
-    if(ui->radioButtonSend->isChecked()) return cn::ProgramType::SEND;
-    if(ui->radioButtonReceive->isChecked()) return cn::ProgramType::RECEIVE;
-    return cn::ProgramType::BOTH;
+    if(ui->radioButtonSend->isChecked()) return cnet::ProgramType::SEND;
+    if(ui->radioButtonReceive->isChecked()) return cnet::ProgramType::RECEIVE;
+    return cnet::ProgramType::BOTH;
 }
 QString ProgramBuilderWindow::get_name()
 {
@@ -59,7 +59,7 @@ void ProgramBuilderWindow::on_pushButtonCreate_clicked()
     server->add_program(name,
                         registry.create_by_prototype(
                             ui->comboBoxSendingType->currentText(),
-                            cn::ProgramInfo(server->get_name(), name),
+                            cnet::ProgramInfo(server->get_name(), name),
                             get_type(),
                             get_period()));
     is_added = true;

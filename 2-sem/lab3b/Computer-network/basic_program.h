@@ -10,7 +10,7 @@
 /*!
 *   \brief Computer network
 */
-namespace cn
+namespace cnet
 {
     class AllMessagesInfo
     {
