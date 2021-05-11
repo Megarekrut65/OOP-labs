@@ -41,7 +41,7 @@ private:
     void set_timer();
     void receive_messages();
     void send_messages();
-    void add_message_to_view(const Message& message);
+    void add_message_to_view(const cn::Message& message);
     void set_model();
 };
 

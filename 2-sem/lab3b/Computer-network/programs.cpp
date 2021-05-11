@@ -1,11 +1,11 @@
 #include "programs.h"
 namespace cn
 {
-    PeriodicProgram::PeriodicProgram(const QVector<QString>& textes):BasicProgram{textes,"Periodic"}{}
+    PeriodicProgram::PeriodicProgram(const QVector<QString>& textes):BasicProgram{textes,"Periodic sending"}{}
     PeriodicProgram::PeriodicProgram(
             const QVector<QString>& textes,
             const ProgramInfo& info, ProgramType type, std::size_t period):
-          BasicProgram{textes,info,type, period,"Periodic"}{}
+          BasicProgram{textes,info,type, period,"Periodic sending"}{}
     void PeriodicProgram::update()
     {
         auto program = this->get_other_program();
@@ -16,11 +16,11 @@ namespace cn
     {
         return std::make_shared<PeriodicProgram>(this->textes, info, type, period);
     }
-    RandomProgram::RandomProgram(const QVector<QString>& textes):BasicProgram{textes,"Random"}{}
+    RandomProgram::RandomProgram(const QVector<QString>& textes):BasicProgram{textes,"Random sending"}{}
     RandomProgram::RandomProgram(
             const QVector<QString>& textes,
             const ProgramInfo& info, ProgramType type, std::size_t period):
-        BasicProgram{textes,info,type, period,"Random"}{}
+        BasicProgram{textes,info,type, period,"Random sending"}{}
     void RandomProgram::update()
     {
         auto program = this->get_other_program();
@@ -31,11 +31,11 @@ namespace cn
     {
         return std::make_shared<RandomProgram>(this->textes, info, type, period);
     }
-    AfterProgram::AfterProgram(const QVector<QString>& textes):BasicProgram{textes,"After"}{}
+    AfterProgram::AfterProgram(const QVector<QString>& textes):BasicProgram{textes,"After receive"}{}
     AfterProgram::AfterProgram(
             const QVector<QString>& textes,
             const ProgramInfo& info, ProgramType type, std::size_t period):
-        BasicProgram{textes,info,type, period,"After"}{}
+        BasicProgram{textes,info,type, period,"After receive"}{}
     void AfterProgram::update()
     {
         auto program = this->get_other_program();
@@ -46,11 +46,11 @@ namespace cn
     {
         return std::make_shared<AfterProgram>(this->textes, info, type, period);
     }
-    WaitProgram::WaitProgram(const QVector<QString>& textes):BasicProgram{textes,"Wait"}{}
+    WaitProgram::WaitProgram(const QVector<QString>& textes):BasicProgram{textes,"Wait for receive"}{}
     WaitProgram::WaitProgram(
             const QVector<QString>& textes,
             const ProgramInfo& info, ProgramType type, std::size_t period):
-        BasicProgram{textes,info,type, period,"Wait"}{}
+        BasicProgram{textes,info,type, period,"Wait for receive"}{}
     void WaitProgram::update()
     {
         auto program = this->get_other_program();

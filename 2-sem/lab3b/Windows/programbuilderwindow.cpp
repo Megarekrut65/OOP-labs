@@ -60,7 +60,7 @@ void ProgramBuilderWindow::on_pushButtonCreate_clicked()
     server->add_program(name,
                         registry.create_by_prototype(
                             ui->comboBoxSendingType->currentText(),
-                            ProgramInfo(server->get_name(), name),
+                            cn::ProgramInfo(server->get_name(), name),
                             get_type(),
                             get_period()));
     is_added = true;

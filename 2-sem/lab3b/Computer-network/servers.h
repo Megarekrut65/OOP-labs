@@ -8,8 +8,12 @@ namespace cn
     {
     private:
         static QMap<QString, std::shared_ptr<BasicServer>> all_servers;
-    public:
+        static float acceleration_factor;
         static std::mutex mut;
+    public:
+        static std::mutex& get_mutex();
+        static float get_acceleration_factor();
+        static void set_acceleration_factor(float acceleration_factor);
         static void add_server(std::shared_ptr<BasicServer> server);
         static void remove_server(const QString& server_name, const QString& folder_name);
         static std::shared_ptr<BasicServer> get_server(const QString& server_name);

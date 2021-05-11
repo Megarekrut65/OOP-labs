@@ -15,18 +15,18 @@ MessageTextWindow::~MessageTextWindow()
 {
     delete ui;
 }
-void MessageTextWindow::set_message(const Message& message)
+void MessageTextWindow::set_message(const cn::Message& message)
 {
     ui->textEdit->setText(message.get_text());
     setWindowTitle(message_type_to_qstring(message.get_message_type())+"-message");
     QString path = "Images/";
     switch (message.get_message_type())
     {
-        case MessageType::INFO : path += "info";
+        case cn::MessageType::INFO : path += "info";
         break;
-        case MessageType::ERROR : path += "error";
+        case cn::MessageType::ERROR : path += "error";
         break;
-        case MessageType::WARNING : path += "warning";
+        case cn::MessageType::WARNING : path += "warning";
         break;
         default: path += "none";
         break;

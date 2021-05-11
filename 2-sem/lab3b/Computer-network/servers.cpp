@@ -4,6 +4,19 @@ namespace cn
 {
     std::mutex Servers::mut = std::mutex();
     QMap<QString, std::shared_ptr<BasicServer>> Servers::all_servers = QMap<QString, std::shared_ptr<BasicServer>>();
+    float Servers::acceleration_factor = 1.f;
+    std::mutex& Servers::get_mutex()
+    {
+        return mut;
+    }
+    float Servers::get_acceleration_factor()
+    {
+        return acceleration_factor;
+    }
+    void Servers::set_acceleration_factor(float acceleration_factor)
+    {
+        Servers::acceleration_factor = acceleration_factor;
+    }
     void Servers::clear()
     {
         std::lock_guard<std::mutex> lock(Servers::mut);

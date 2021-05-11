@@ -48,7 +48,7 @@ void ProgramWindow::set_data()
     ui->labelSendingType->setText(program->get_sending_type());
     ui->labelPeriod->setText(QString::number(program->get_period())+"ms");
 }
-void ProgramWindow::add_message_to_view(const Message& message)
+void ProgramWindow::add_message_to_view(const cn::Message& message)
 {
     view.add_message(message);
 }
@@ -56,7 +56,8 @@ void ProgramWindow::send_messages()
 {
     while (true)
     {
-       for(std::size_t i = 0; i < program->get_period();i++)
+        std::size_t period = program->get_period();
+       for(std::size_t i = 0; i < period;i++)
         if(!is_stop) std::this_thread::sleep_for(std::chrono::milliseconds(1));
        else return;
        if(is_paused) continue;

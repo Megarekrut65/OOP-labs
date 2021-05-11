@@ -4,51 +4,55 @@
 #include <QDateTime>
 #include <iostream>
 
-struct ProgramInfo
+namespace cn
 {
-    QString server_name;
-    QString program_name;
-    ProgramInfo(const QString& server_name = "none", const QString& program_name="none");
-    QString get_string() const;
-};
-std::ostream& operator<<(std::ostream& out, const ProgramInfo& info);
-std::ostream& operator<<(std::ostream& out, const QString& line);
-std::istream& operator>>(std::istream& in, ProgramInfo& info);
-std::istream& operator>>(std::istream& in, QString& line);
-enum class MessageType
-{
-    NONE = 0,
-    INFO,
-    ERROR,
-    WARNING
-};
+    struct ProgramInfo
+    {
+        QString server_name;
+        QString program_name;
+        ProgramInfo(const QString& server_name = "none", const QString& program_name="none");
+        QString get_string() const;
+    };
+    std::ostream& operator<<(std::ostream& out, const ProgramInfo& info);
+    std::ostream& operator<<(std::ostream& out, const QString& line);
+    std::istream& operator>>(std::istream& in, ProgramInfo& info);
+    std::istream& operator>>(std::istream& in, QString& line);
+    enum class MessageType
+    {
+        NONE = 0,
+        INFO,
+        ERROR,
+        WARNING
+    };
 
-class Message
-{
-private:
-    ProgramInfo sender;
-    QString text;
-    std::size_t size;/*!< Size of message in byte*/
-    MessageType type;
-    QString creating_time;
-    ProgramInfo recipient;
-public:
-    Message(const ProgramInfo& sender = ProgramInfo(), const QString& text = "none",
-            MessageType type = MessageType::NONE,
-            const ProgramInfo& recipient = ProgramInfo(),
-            std::size_t size = 0);
-    ProgramInfo get_sender_info() const;
-    ProgramInfo get_recipient_info() const;
-    MessageType get_message_type() const;
-    QString get_creating_time() const;
-    std::size_t get_message_size() const;
-    QString get_text() const;
-    friend std::ostream& operator<<(std::ostream& out, const Message& message);
-};
-QString size_to_qstring(std::size_t size);
-QString message_type_to_qstring(MessageType type);
-MessageType qstring_to_message_type(const QString& line);
-QDateTime qstring_to_qdate_time(const QString& line);
-QString get_date_time_format();
+    class Message
+    {
+    private:
+        ProgramInfo sender;
+        QString text;
+        std::size_t size;/*!< Size of message in byte*/
+        MessageType type;
+        QString creating_time;
+        ProgramInfo recipient;
+    public:
+        Message(const ProgramInfo& sender = ProgramInfo(), const QString& text = "none",
+                MessageType type = MessageType::NONE,
+                const ProgramInfo& recipient = ProgramInfo(),
+                std::size_t size = 0);
+        ProgramInfo get_sender_info() const;
+        ProgramInfo get_recipient_info() const;
+        MessageType get_message_type() const;
+        QString get_creating_time() const;
+        std::size_t get_message_size() const;
+        QString get_text() const;
+        friend std::ostream& operator<<(std::ostream& out, const Message& message);
+    };
+    QString size_to_qstring(std::size_t size);
+    QString message_type_to_qstring(MessageType type);
+    MessageType qstring_to_message_type(const QString& line);
+    QDateTime qstring_to_qdate_time(const QString& line);
+    QString get_date_time_format();
+
+}
 
 #endif // MESSAGE_H

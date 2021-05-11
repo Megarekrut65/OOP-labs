@@ -10,11 +10,11 @@ private:
     std::shared_ptr<QStandardItemModel> model;
     QMap<QString,int> item_columns;
     void add_item_to_view(const QString& value, int row, int colmm);
-    void edit_items_in_view(const Message& message, int row);
+    void edit_items_in_view(const cn::Message& message, int row);
     void set_header();
 public:
     MyViewModel(std::shared_ptr<QStandardItemModel> model);
-    void add_message(const Message& message);
+    void add_message(const cn::Message& message);
     void clear();
 };
 
