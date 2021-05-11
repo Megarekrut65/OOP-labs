@@ -1,0 +1,17 @@
+Upload-speed=4390
+Download-speed=14912
+Server-name=de
+Program-name=Skype
+Program-type=Send
+Sending-type=Wait for receive
+Sending-period=1000
+Server-name=de
+Program-name=Telegram
+Program-type=Receive
+Sending-type=After receive
+Sending-period=1000
+Server-name=de
+Program-name=Viber
+Program-type=Receive
+Sending-type=Random sending
+Sending-period=5000

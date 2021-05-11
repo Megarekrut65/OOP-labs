@@ -78,11 +78,13 @@ void ProgramWindow::receive_messages()
     if(is_paused) return;
     if(!program) return;
     auto messages = program->get_messages();
-    if(old_size == messages.size()) return;
-    for(std::size_t i = 0; i < messages.size() - old_size; i++)
-        add_message_to_view(messages[i + old_size]);
-    if(!ui->checkBoxFixedPosition->isChecked()) ui->tableViewBuffer->scrollToBottom();
-    old_size = messages.size();
+    if(old_size != messages.size())
+    {
+        for(std::size_t i = 0; i < messages.size() - old_size; i++)
+            add_message_to_view(messages[i + old_size]);
+        if(!ui->checkBoxFixedPosition->isChecked()) ui->tableViewBuffer->scrollToBottom();
+        old_size = messages.size();
+    }
     set_messages_info();
 }
 

@@ -1,0 +1,7 @@
+Upload-speed=999999
+Download-speed=999999
+Server-name=The best server
+Program-name=The best program
+Program-type=Send and Receive
+Sending-type=Periodic sending
+Sending-period=9999
