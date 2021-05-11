@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['clear',['clear',['../classcnm_1_1_all_messages_info.html#ab9bb0ba732ccca0e8d798e2cc4c038ae',1,'cnm::AllMessagesInfo::clear()'],['../classcnm_1_1_basic_server.html#aad65780f46c6bb2a3365c09d78fc5d8c',1,'cnm::BasicServer::clear()']]],
+  ['clear',['clear',['../classcnm_1_1_all_messages_info.html#ab9bb0ba732ccca0e8d798e2cc4c038ae',1,'cnm::AllMessagesInfo::clear()'],['../classcnm_1_1_basic_server.html#aad65780f46c6bb2a3365c09d78fc5d8c',1,'cnm::BasicServer::clear()'],['../classcnm_1_1_servers.html#a4cc70e6397ec223975f82c579a0c4a28',1,'cnm::Servers::clear()']]],
   ['clear_5fbuffer',['clear_buffer',['../classcnm_1_1_basic_program.html#abef485c8be59a8e22dc26981b2a62d8a',1,'cnm::BasicProgram']]],
   ['clear_5fown_5ffile',['clear_own_file',['../classcnm_1_1_basic_server.html#a99f4f81a4ebfc1c175596589db2abfca',1,'cnm::BasicServer']]],
   ['create_5fby_5fprototype',['create_by_prototype',['../classcnm_1_1_program_registry.html#a2bae27d99e3d03814b85bb01e84672d1',1,'cnm::ProgramRegistry']]],
