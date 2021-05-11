@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ebasicprogram',['~BasicProgram',['../classcnm_1_1_basic_program.html#a8805b9bd362809280316a543fe1abefb',1,'cnm::BasicProgram']]]
+  ['waitprogram',['WaitProgram',['../classcnm_1_1_wait_program.html#acbc0f67f2d5eb397382835764e533afb',1,'cnm::WaitProgram::WaitProgram(const QVector&lt; QString &gt; &amp;textes)'],['../classcnm_1_1_wait_program.html#a506ce80046f06518900127f437e7d074',1,'cnm::WaitProgram::WaitProgram(const QVector&lt; QString &gt; &amp;textes, const ProgramInfo &amp;info, ProgramType type, std::size_t period)']]]
 ];

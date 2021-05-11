@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['randomprogram',['RandomProgram',['../classcnet_1_1_random_program.html',1,'cnet']]]
+  ['randomprogram',['RandomProgram',['../classcnm_1_1_random_program.html',1,'cnm']]]
 ];
