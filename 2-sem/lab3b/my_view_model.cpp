@@ -17,7 +17,7 @@ void MyViewModel::set_header()
         model->setHeaderData(i,Qt::Horizontal,QObject::tr(list[i].toStdString().c_str()));
     }
 }
-void MyViewModel::add_message(const cnet::Message& message)
+void MyViewModel::add_message(const cnm::Message& message)
 {
     if(!model) return;
     int row_count = model->rowCount();
@@ -38,12 +38,12 @@ void MyViewModel::add_item_to_view(const QString& value, int row, int colmm)
     item->setText(value);
     model->setItem(row, colmm, item);
 }
-void MyViewModel::edit_items_in_view(const cnet::Message& message, int row)
+void MyViewModel::edit_items_in_view(const cnm::Message& message, int row)
 {
     add_item_to_view(message.get_sender_info().get_string(), row, item_columns["Sender"]);
-    add_item_to_view(cnet::size_to_qstring(message.get_message_size()), row, item_columns["Size"]);
+    add_item_to_view(cnm::size_to_qstring(message.get_message_size()), row, item_columns["Size"]);
     add_item_to_view(message_type_to_qstring(message.get_message_type()), row, item_columns["Message type"]);
-    QDateTime date_time = QDateTime::fromString(message.get_creating_time(), cnet::get_date_time_format());
+    QDateTime date_time = QDateTime::fromString(message.get_creating_time(), cnm::get_date_time_format());
     add_item_to_view(date_time.date().toString("yyyy-MM-dd"), row, item_columns["Date"]);
     add_item_to_view(date_time.time().toString("HH:mm:ss"), row, item_columns["Time"]);
     add_item_to_view(message.get_text(), row, item_columns["Text"]);

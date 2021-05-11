@@ -1,11 +1,21 @@
 var searchData=
 [
-  ['get_5fcreating_5ftime',['get_creating_time',['../classcnet_1_1_message.html#affe786adfdabe4b7765f15d3e7803d91',1,'cnet::Message']]],
-  ['get_5fdate_5ftime_5fformat',['get_date_time_format',['../namespacecnet.html#ac6dd46bf7062c3a0a5bba8462cbc4d0f',1,'cnet']]],
-  ['get_5fmessage_5fsize',['get_message_size',['../classcnet_1_1_message.html#a2e6e73ee22dd1cf2f838e2965e9054bc',1,'cnet::Message']]],
-  ['get_5fmessage_5ftype',['get_message_type',['../classcnet_1_1_message.html#a74098aebd68d97a61c81abde40706d36',1,'cnet::Message']]],
-  ['get_5frecipient_5finfo',['get_recipient_info',['../classcnet_1_1_message.html#aab67cbbbdc45b0871eaeeefacbfe5405',1,'cnet::Message']]],
-  ['get_5fsender_5finfo',['get_sender_info',['../classcnet_1_1_message.html#ab2607a8d446570b077529e883a3a8ec9',1,'cnet::Message']]],
-  ['get_5fstring',['get_string',['../structcnet_1_1_program_info.html#a1a5924d5f81e20a36304136bf3f5c14b',1,'cnet::ProgramInfo']]],
-  ['get_5ftext',['get_text',['../classcnet_1_1_message.html#adcbc55f3708e55fcf947335da8cf87e1',1,'cnet::Message']]]
+  ['get_5fcount',['get_count',['../classcnm_1_1_all_messages_info.html#a7c5a47394949ca70aa96eef10da484c7',1,'cnm::AllMessagesInfo']]],
+  ['get_5fcreating_5ftime',['get_creating_time',['../classcnm_1_1_message.html#affe786adfdabe4b7765f15d3e7803d91',1,'cnm::Message']]],
+  ['get_5fdate_5ftime_5fformat',['get_date_time_format',['../namespacecnm.html#aa271f1605dd9a3818b48ba1f0ae27de1',1,'cnm']]],
+  ['get_5finfo',['get_info',['../classcnm_1_1_basic_program.html#afb28f940c6b321ab2da3994682e3df1b',1,'cnm::BasicProgram']]],
+  ['get_5fmemory',['get_memory',['../classcnm_1_1_all_messages_info.html#ab9081bec183c0e7c26d631b574821e17',1,'cnm::AllMessagesInfo']]],
+  ['get_5fmessage_5fsize',['get_message_size',['../classcnm_1_1_message.html#a2e6e73ee22dd1cf2f838e2965e9054bc',1,'cnm::Message']]],
+  ['get_5fmessage_5ftype',['get_message_type',['../classcnm_1_1_message.html#a74098aebd68d97a61c81abde40706d36',1,'cnm::Message']]],
+  ['get_5fmessages',['get_messages',['../classcnm_1_1_basic_program.html#a53f6efb3ce56b1d129c70838fedd15e6',1,'cnm::BasicProgram']]],
+  ['get_5fother_5fprogram',['get_other_program',['../classcnm_1_1_basic_program.html#a8d1bb80a90e51021ffaa56b5c2f6918f',1,'cnm::BasicProgram']]],
+  ['get_5fperiod',['get_period',['../classcnm_1_1_basic_program.html#a82c32a8c83feaaabe95856c766cc7121',1,'cnm::BasicProgram']]],
+  ['get_5freceived_5fmessages_5finfo',['get_received_messages_info',['../classcnm_1_1_basic_program.html#a1e658c75bd7c8aa15b9a5c029349d489',1,'cnm::BasicProgram']]],
+  ['get_5frecipient_5finfo',['get_recipient_info',['../classcnm_1_1_message.html#aab67cbbbdc45b0871eaeeefacbfe5405',1,'cnm::Message']]],
+  ['get_5fsender_5finfo',['get_sender_info',['../classcnm_1_1_message.html#ab2607a8d446570b077529e883a3a8ec9',1,'cnm::Message']]],
+  ['get_5fsending_5ftype',['get_sending_type',['../classcnm_1_1_basic_program.html#ac086872a7c6811a4d25e1714313064e5',1,'cnm::BasicProgram']]],
+  ['get_5fsent_5fmessages_5finfo',['get_sent_messages_info',['../classcnm_1_1_basic_program.html#a027bac17fe5e757d2186e6213623b183',1,'cnm::BasicProgram']]],
+  ['get_5fstring',['get_string',['../structcnm_1_1_program_info.html#a1a5924d5f81e20a36304136bf3f5c14b',1,'cnm::ProgramInfo']]],
+  ['get_5ftext',['get_text',['../classcnm_1_1_message.html#adcbc55f3708e55fcf947335da8cf87e1',1,'cnm::Message']]],
+  ['get_5ftype',['get_type',['../classcnm_1_1_basic_program.html#a232df22f2e02c4a2f479635265e45ec4',1,'cnm::BasicProgram']]]
 ];

@@ -15,18 +15,18 @@ MessageTextWindow::~MessageTextWindow()
 {
     delete ui;
 }
-void MessageTextWindow::set_message(const cnet::Message& message)
+void MessageTextWindow::set_message(const cnm::Message& message)
 {
     ui->textEdit->setText(message.get_text());
     setWindowTitle(message_type_to_qstring(message.get_message_type())+"-message");
     QString path = "Images/";
     switch (message.get_message_type())
     {
-        case cnet::MessageType::INFO : path += "info";
+        case cnm::MessageType::INFO : path += "info";
         break;
-        case cnet::MessageType::ERROR : path += "error";
+        case cnm::MessageType::ERROR : path += "error";
         break;
-        case cnet::MessageType::WARNING : path += "warning";
+        case cnm::MessageType::WARNING : path += "warning";
         break;
         default: path += "none";
         break;

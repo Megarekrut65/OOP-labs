@@ -1,6 +1,6 @@
 #include "servers.h"
 
-namespace cnet
+namespace cnm
 {
     std::mutex Servers::mut = std::mutex();
     QMap<QString, std::shared_ptr<BasicServer>> Servers::all_servers = QMap<QString, std::shared_ptr<BasicServer>>();

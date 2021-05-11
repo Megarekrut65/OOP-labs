@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error',['ERROR',['../namespacecnet.html#af8a2f710cb8d7b54620e9721b6a350c3abb1ca97ec761fc37101737ba0aa2e7c5',1,'cnet']]]
+  ['both',['BOTH',['../namespacecnm.html#a6df6de3cc44aa05681ca602857a9279ba6328e5e3186c227a021ef2ff77e40197',1,'cnm']]]
 ];

@@ -1,5 +1,5 @@
 #include "programs.h"
-namespace cnet
+namespace cnm
 {
     PeriodicProgram::PeriodicProgram(const QVector<QString>& textes):BasicProgram{textes,"Periodic sending"}{}
     PeriodicProgram::PeriodicProgram(

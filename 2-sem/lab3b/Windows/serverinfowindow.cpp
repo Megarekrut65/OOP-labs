@@ -14,7 +14,7 @@ ServerInfoWindow::~ServerInfoWindow()
 {
     delete ui;
 }
-void ServerInfoWindow::set_data(std::shared_ptr<cnet::BasicServer> server)
+void ServerInfoWindow::set_data(std::shared_ptr<cnm::BasicServer> server)
 {
     setWindowTitle(server->get_name());
     ui->labelName->setText(server->get_name());

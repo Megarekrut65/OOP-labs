@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['message',['Message',['../classcnet_1_1_message.html#a3e5b27989e86579be5d608c35c4cceac',1,'cnet::Message']]],
-  ['message_5ftype_5fto_5fqstring',['message_type_to_qstring',['../namespacecnet.html#a4d2244d2ed8fdbb73659c3dc1a2529e8',1,'cnet']]]
+  ['basicprogram',['BasicProgram',['../classcnm_1_1_basic_program.html#a5b644a84511da9b59ee9c9232db40e4d',1,'cnm::BasicProgram::BasicProgram(const QVector&lt; QString &gt; &amp;textes, const ProgramInfo &amp;info, ProgramType type, std::size_t period, const QString &amp;sending_type)'],['../classcnm_1_1_basic_program.html#a588febd77048bba6cc484f1f7d5574cb',1,'cnm::BasicProgram::BasicProgram(const QVector&lt; QString &gt; &amp;textes, const QString &amp;sending_type)']]]
 ];

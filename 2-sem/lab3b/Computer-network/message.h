@@ -4,7 +4,7 @@
 #include <QDateTime>
 #include <iostream>
 
-namespace cnet
+namespace cnm
 {
     /*!
     *   \brief Struct for a few information about program
@@ -132,7 +132,7 @@ namespace cnet
     *   \brief Converts QString with costants names to costants
     *
     *   \param line - line with costants name
-    *   \returns type of message if line is correct else none-type
+    *   \returns type of message if line is correct else NONE-type
     */
     MessageType qstring_to_message_type(const QString& line);
     /*!
