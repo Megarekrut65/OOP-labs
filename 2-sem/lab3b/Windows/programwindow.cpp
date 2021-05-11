@@ -1,7 +1,7 @@
 #include "programwindow.h"
 #include "ui_programwindow.h"
 
-ProgramWindow::ProgramWindow(std::shared_ptr<cnet::BasicProgram> program, bool& is_paused,
+ProgramWindow::ProgramWindow(std::shared_ptr<cnm::BasicProgram> program, bool& is_paused,
                              QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ProgramWindow),program(program), timer(nullptr),
@@ -44,11 +44,11 @@ ProgramWindow::~ProgramWindow()
 void ProgramWindow::set_data()
 {
     ui->labelName->setText(program->get_info().program_name);
-    ui->labelType->setText(cnet::program_type_to_string(program->get_type()));
+    ui->labelType->setText(cnm::program_type_to_string(program->get_type()));
     ui->labelSendingType->setText(program->get_sending_type());
     ui->labelPeriod->setText(QString::number(program->get_period())+"ms");
 }
-void ProgramWindow::add_message_to_view(const cnet::Message& message)
+void ProgramWindow::add_message_to_view(const cnm::Message& message)
 {
     view.add_message(message);
 }
@@ -57,7 +57,7 @@ void ProgramWindow::send_messages()
     while (true)
     {
        std::size_t period = std::size_t(double(program->get_period())/
-                                        cnet::Servers::get_acceleration_factor());
+                                        cnm::Servers::get_acceleration_factor());
        if(period == 0) period = 1;
        for(std::size_t i = 0; i < period;i++)
         if(!is_stop) std::this_thread::sleep_for(std::chrono::milliseconds(1));

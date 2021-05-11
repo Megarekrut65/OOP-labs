@@ -71,16 +71,129 @@ $(function() {
 <div class="title">AppMessages Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Static methods to open window with error or queshion.  
+ <a href="class_app_messages.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="app__messages_8h_source.html">app_messages.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a252f2b1adb18f9970bdaa8bc546969b4"><td class="memItemLeft" align="right" valign="top"><a id="a252f2b1adb18f9970bdaa8bc546969b4"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>error_message</b> (QWidget *that, const QString &amp;title, const QString &amp;message)</td></tr>
+<tr class="memitem:a252f2b1adb18f9970bdaa8bc546969b4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_app_messages.html#a252f2b1adb18f9970bdaa8bc546969b4">error_message</a> (QWidget *that, const QString &amp;title, const QString &amp;message)</td></tr>
+<tr class="memdesc:a252f2b1adb18f9970bdaa8bc546969b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens error window and show message.  <a href="#a252f2b1adb18f9970bdaa8bc546969b4">More...</a><br /></td></tr>
 <tr class="separator:a252f2b1adb18f9970bdaa8bc546969b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af57087bc7a574af14911670ade2a0342"><td class="memItemLeft" align="right" valign="top"><a id="af57087bc7a574af14911670ade2a0342"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>question_message</b> (QWidget *that, const QString &amp;title, const QString &amp;message)</td></tr>
+<tr class="memitem:af57087bc7a574af14911670ade2a0342"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_app_messages.html#af57087bc7a574af14911670ade2a0342">question_message</a> (QWidget *that, const QString &amp;title, const QString &amp;message)</td></tr>
+<tr class="memdesc:af57087bc7a574af14911670ade2a0342"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens question window, show question and wait for answer.  <a href="#af57087bc7a574af14911670ade2a0342">More...</a><br /></td></tr>
 <tr class="separator:af57087bc7a574af14911670ade2a0342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Static methods to open window with error or queshion. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a252f2b1adb18f9970bdaa8bc546969b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a252f2b1adb18f9970bdaa8bc546969b4">&#9670;&nbsp;</a></span>error_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AppMessages::error_message </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>that</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Opens error window and show message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">that</td><td>- pointer to parent window </td></tr>
+    <tr><td class="paramname">title</td><td>- name of this window </td></tr>
+    <tr><td class="paramname">message</td><td>- message in this window </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af57087bc7a574af14911670ade2a0342"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af57087bc7a574af14911670ade2a0342">&#9670;&nbsp;</a></span>question_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AppMessages::question_message </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>that</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Opens question window, show question and wait for answer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">that</td><td>- pointer to parent window </td></tr>
+    <tr><td class="paramname">title</td><td>- name of this window </td></tr>
+    <tr><td class="paramname">message</td><td>- question in this window </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true or false by pushed button </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab3b/<a class="el" href="app__messages_8h_source.html">app_messages.h</a></li>
 <li>C:/Users/User81/source/repos/Megarekrut65/OOP-labs/2-sem/lab3b/app_messages.cpp</li>

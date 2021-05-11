@@ -76,15 +76,15 @@ namespace cnm
     *
     *   Program capabilities:
     *
-    *   - sends messages;
+    *   - send messages;
     *
-    *   - receives messages;
+    *   - receive messages;
     *
-    *   - saves received messages;
+    *   - save received messages;
     *
-    *   - saves information about sent and received messages;
+    *   - save information about sent and received messages;
     *
-    *   - sends messages by period;
+    *   - send messages by period;
     *
     *   - create same program.
     *

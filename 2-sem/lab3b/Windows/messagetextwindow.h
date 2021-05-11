@@ -19,7 +19,7 @@ class MessageTextWindow : public QDialog
 public:
     explicit MessageTextWindow(QWidget *parent = nullptr);
     ~MessageTextWindow();
-    void set_message(const cnet::Message& message);
+    void set_message(const cnm::Message& message);
 
 private:
     Ui::MessageTextWindow *ui;/*!< */

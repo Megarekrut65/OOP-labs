@@ -5,20 +5,40 @@
 #include <QMap>
 
 /*!
-*   \brief
+*   \brief Class to managment table view with messages data( cnm::Message )
 */
 class MyViewModel
 {
 private:
-    std::shared_ptr<QStandardItemModel> model;/*!< */
-    QMap<QString,int> item_columns;/*!< */
-
+    std::shared_ptr<QStandardItemModel> model;/*!< Pointer to model of view */
+    QMap<QString,int> item_columns;/*!< Map to get column id by column name */
+    /*!
+    *   \brief Adds strings to view by row and colmn
+    */
     void add_item_to_view(const QString& value, int row, int colmm);
-    void edit_items_in_view(const cnet::Message& message, int row);
+    /*!
+    *   \brief Edits message in view by row
+    */
+    void edit_items_in_view(const cnm::Message& message, int row);
+    /*!
+    *   \brief Sets header names
+    */
     void set_header();
 public:
+    /*!
+    *   \brief Adds model and set header
+    *
+    *   \param model - model of view
+    */
     MyViewModel(std::shared_ptr<QStandardItemModel> model);
-    void add_message(const cnet::Message& message);
+    /*!
+    *   \brief Adds message to view
+    *   \param message - message to add
+    */
+    void add_message(const cnm::Message& message);
+    /*!
+    *   \brief Clears view
+    */
     void clear();
 };
 

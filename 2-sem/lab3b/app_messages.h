@@ -4,13 +4,28 @@
 #include <QString>
 
 /*!
-*   \brief
+*   \brief Static methods to open window with error or queshion
 */
 class AppMessages
 {
 public:
-    static void error_message(QWidget* that, const QString& title, const QString& message);//shows error message
-    static bool question_message(QWidget* that, const QString& title, const QString& message);//shows question message
+    /*!
+    *   \brief Opens error window and show message
+    *
+    *   \param that - pointer to parent window
+    *   \param title - name of this window
+    *   \param message - message in this window
+    */
+    static void error_message(QWidget* that, const QString& title, const QString& message);
+    /*!
+    *   \brief Opens question window, show question and wait for answer
+    *
+    *   \param that - pointer to parent window
+    *   \param title - name of this window
+    *   \param message - question in this window
+    *   \returns true or false by pushed button
+    */
+    static bool question_message(QWidget* that, const QString& title, const QString& message);
 };
 
 #endif // APPMESSAGES_H

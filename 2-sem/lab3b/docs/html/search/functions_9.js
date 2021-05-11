@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['save_5fall_5fservers',['save_all_servers',['../classcnm_1_1_servers.html#afa359883ce21bb281a5e7e0f469572aa',1,'cnm::Servers']]],
-  ['save_5fsettings',['save_settings',['../classcnm_1_1_servers.html#a7d777dbfa6a4506f78dad92230c00b1a',1,'cnm::Servers']]],
-  ['send',['send',['../classcnm_1_1_basic_program.html#a3900c7ca6e1734423e23c6d889b92261',1,'cnm::BasicProgram']]],
-  ['set_5facceleration_5ffactor',['set_acceleration_factor',['../classcnm_1_1_servers.html#a18d9573d319bd61bda1da044f6fb8217',1,'cnm::Servers']]],
-  ['size_5fto_5fqstring',['size_to_qstring',['../namespacecnm.html#aade2b326cd5eaa243f3a9287c3475bdf',1,'cnm']]],
-  ['sleep_5funtil_5fmessage_5fsending',['sleep_until_message_sending',['../classcnm_1_1_basic_program.html#a2201d3eb71dfc143f828d7ec6143972d',1,'cnm::BasicProgram']]],
-  ['speed',['Speed',['../structcnm_1_1_speed.html#a3a0ca20b0c9b254cb97441fac68ebde0',1,'cnm::Speed']]]
+  ['randomprogram',['RandomProgram',['../classcnm_1_1_random_program.html#af418843ce84d5dd159fa58d26efd1ba5',1,'cnm::RandomProgram::RandomProgram(const QVector&lt; QString &gt; &amp;textes)'],['../classcnm_1_1_random_program.html#a44beee96779e7ccd36873d396c50d99c',1,'cnm::RandomProgram::RandomProgram(const QVector&lt; QString &gt; &amp;textes, const ProgramInfo &amp;info, ProgramType type, std::size_t period)']]],
+  ['read_5fsettings',['read_settings',['../classcnm_1_1_servers.html#a8356008951a7b2b209bec0c38cd4bac5',1,'cnm::Servers']]],
+  ['receive',['receive',['../classcnm_1_1_basic_program.html#a42df4663049000fd5345d9376f3af64a',1,'cnm::BasicProgram']]],
+  ['registry_5ftype',['registry_type',['../classcnm_1_1_program_registry.html#a7f43718c031fca00e1d2af874238d2ac',1,'cnm::ProgramRegistry::registry_type(const QString &amp;type, std::shared_ptr&lt; BasicProgram &gt; prototype)'],['../classcnm_1_1_program_registry.html#a177c8ea04e3209c3890af4d008d9f0b0',1,'cnm::ProgramRegistry::registry_type(std::shared_ptr&lt; BasicProgram &gt; prototype)']]],
+  ['remove_5fall',['remove_all',['../classcnm_1_1_servers.html#a66927637fd7447345a9b85530369dce2',1,'cnm::Servers']]],
+  ['remove_5fprogram',['remove_program',['../classcnm_1_1_basic_server.html#ad7f6f57288b78913fd3bbe445492de41',1,'cnm::BasicServer']]],
+  ['remove_5fserver',['remove_server',['../classcnm_1_1_servers.html#a6f3f8f6f854106c2e2da9462159be212',1,'cnm::Servers']]]
 ];

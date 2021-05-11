@@ -1,6 +1,6 @@
 #include "basic_program.h"
 #include "servers.h"
-namespace cnet
+namespace cnm
 {
     AllMessagesInfo BasicProgram::get_sent_messages_info()const
     {
@@ -28,7 +28,7 @@ namespace cnet
     {
         if(type == ProgramType::SEND ||type == ProgramType::BOTH)
         {
-            auto server = cnet::Servers::get_random_server();
+            auto server = cnm::Servers::get_random_server();
             if(server)
             {
                 auto program = server->get_random_program();
@@ -114,8 +114,8 @@ namespace cnet
     }
     void BasicProgram::sleep_until_message_sending(const Message& message, std::shared_ptr<BasicProgram> other_program)
     {
-        auto other_server = cnet::Servers::get_server(other_program->get_info().server_name);
-        auto this_server = cnet::Servers::get_server(this->get_info().server_name);
+        auto other_server = cnm::Servers::get_server(other_program->get_info().server_name);
+        auto this_server = cnm::Servers::get_server(this->get_info().server_name);
         if(other_server.get() != this_server.get())
         {
             std::size_t download_speed = other_server->get_speed().download;
@@ -124,7 +124,7 @@ namespace cnet
             if(load_speed == 0) load_speed = 1;
             std::size_t time_sleep = message.get_message_size()/load_speed;
             time_sleep = std::size_t(double(time_sleep/
-                                      cnet::Servers::get_acceleration_factor()));
+                                      cnm::Servers::get_acceleration_factor()));
             if(time_sleep == 0) time_sleep = 1;
             for(std::size_t i = 0 ; i < time_sleep; i++)
                 std::this_thread::sleep_for(std::chrono::milliseconds(1));

@@ -98,55 +98,55 @@ Inheritance diagram for cnm::BasicProgram:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abfeb5f2b592f1cd2d909950456705a23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#abfeb5f2b592f1cd2d909950456705a23">BasicProgram</a> (const QVector&lt; QString &gt; &amp;<a class="el" href="classcnm_1_1_basic_program.html#ac0406b6a2fb0306144e1aefa60ab478e">textes</a>, const <a class="el" href="structcnm_1_1_program_info.html">ProgramInfo</a> &amp;<a class="el" href="classcnm_1_1_basic_program.html#a451d7d0101616dc7d05f9c2d3ba17d47">info</a>, <a class="el" href="namespacecnm.html#a6df6de3cc44aa05681ca602857a9279b">ProgramType</a> <a class="el" href="classcnm_1_1_basic_program.html#ae1165f1570c543a5f2fd07b0d2b0eec9">type</a>, std::size_t <a class="el" href="classcnm_1_1_basic_program.html#ab563805078cc2e6fbe6ffd31b1e3667d">period</a>, const QString &amp;<a class="el" href="classcnm_1_1_basic_program.html#a39d393a2a78e2a79b18454236ff7c8c8">sending_type</a>)</td></tr>
-<tr class="memdesc:abfeb5f2b592f1cd2d909950456705a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates program with given parameters.  <a href="#abfeb5f2b592f1cd2d909950456705a23">More...</a><br /></td></tr>
-<tr class="separator:abfeb5f2b592f1cd2d909950456705a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2726fd69d991dcf2dbc862cba8ef17a"><td class="memItemLeft" align="right" valign="top"><a id="ab2726fd69d991dcf2dbc862cba8ef17a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#ab2726fd69d991dcf2dbc862cba8ef17a">BasicProgram</a> (const QVector&lt; QString &gt; &amp;<a class="el" href="classcnm_1_1_basic_program.html#ac0406b6a2fb0306144e1aefa60ab478e">textes</a>, const QString &amp;<a class="el" href="classcnm_1_1_basic_program.html#a39d393a2a78e2a79b18454236ff7c8c8">sending_type</a>)</td></tr>
-<tr class="memdesc:ab2726fd69d991dcf2dbc862cba8ef17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates empty program. Do not use empty program. <br /></td></tr>
-<tr class="separator:ab2726fd69d991dcf2dbc862cba8ef17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe41067cc8fd195a96de6af3a198dbf0"><td class="memItemLeft" align="right" valign="top"><a id="abe41067cc8fd195a96de6af3a198dbf0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#abe41067cc8fd195a96de6af3a198dbf0">~BasicProgram</a> ()</td></tr>
-<tr class="memdesc:abe41067cc8fd195a96de6af3a198dbf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears buffer. <br /></td></tr>
-<tr class="separator:abe41067cc8fd195a96de6af3a198dbf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3900c7ca6e1734423e23c6d889b92261"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a3900c7ca6e1734423e23c6d889b92261">send</a> (std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt; other_program, <a class="el" href="namespacecnm.html#a769bd0b16a91b377c9a0a71d706a2d92">MessageType</a> <a class="el" href="classcnm_1_1_basic_program.html#ae1165f1570c543a5f2fd07b0d2b0eec9">type</a>=<a class="el" href="namespacecnm.html#a769bd0b16a91b377c9a0a71d706a2d92ab50339a10e1de285ac99d4c3990b8693">MessageType::NONE</a>)</td></tr>
-<tr class="memdesc:a3900c7ca6e1734423e23c6d889b92261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends random created message to other_program.  <a href="#a3900c7ca6e1734423e23c6d889b92261">More...</a><br /></td></tr>
-<tr class="separator:a3900c7ca6e1734423e23c6d889b92261"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad28e81255c1d51da24a8d99da1c7f28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#aad28e81255c1d51da24a8d99da1c7f28">receive</a> (const <a class="el" href="classcnm_1_1_message.html">Message</a> &amp;message)</td></tr>
-<tr class="memdesc:aad28e81255c1d51da24a8d99da1c7f28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives message.  <a href="#aad28e81255c1d51da24a8d99da1c7f28">More...</a><br /></td></tr>
-<tr class="separator:aad28e81255c1d51da24a8d99da1c7f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add11f2133c8f764945f605cca87ce305"><td class="memItemLeft" align="right" valign="top"><a id="add11f2133c8f764945f605cca87ce305"></a>
-<a class="el" href="structcnm_1_1_program_info.html">ProgramInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#add11f2133c8f764945f605cca87ce305">get_info</a> () const</td></tr>
-<tr class="memdesc:add11f2133c8f764945f605cca87ce305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns info. <br /></td></tr>
-<tr class="separator:add11f2133c8f764945f605cca87ce305"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4b11448a185be35f9454a4ecc8dc7b5"><td class="memItemLeft" align="right" valign="top"><a id="af4b11448a185be35f9454a4ecc8dc7b5"></a>
-<a class="el" href="namespacecnm.html#a6df6de3cc44aa05681ca602857a9279b">ProgramType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#af4b11448a185be35f9454a4ecc8dc7b5">get_type</a> () const</td></tr>
-<tr class="memdesc:af4b11448a185be35f9454a4ecc8dc7b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns type. <br /></td></tr>
-<tr class="separator:af4b11448a185be35f9454a4ecc8dc7b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f41d45c18a24c6a6561a778780c757a"><td class="memItemLeft" align="right" valign="top"><a id="a0f41d45c18a24c6a6561a778780c757a"></a>
-std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a0f41d45c18a24c6a6561a778780c757a">get_period</a> () const</td></tr>
-<tr class="memdesc:a0f41d45c18a24c6a6561a778780c757a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns period. <br /></td></tr>
-<tr class="separator:a0f41d45c18a24c6a6561a778780c757a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac901cce9869aaafcbbd266ff57205ddc"><td class="memItemLeft" align="right" valign="top"><a id="ac901cce9869aaafcbbd266ff57205ddc"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#ac901cce9869aaafcbbd266ff57205ddc">get_sending_type</a> () const</td></tr>
-<tr class="memdesc:ac901cce9869aaafcbbd266ff57205ddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns sending_type. <br /></td></tr>
-<tr class="separator:ac901cce9869aaafcbbd266ff57205ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af752c323632cb80eaaa37a7c1481d616"><td class="memItemLeft" align="right" valign="top"><a id="af752c323632cb80eaaa37a7c1481d616"></a>
-QVector&lt; <a class="el" href="classcnm_1_1_message.html">Message</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#af752c323632cb80eaaa37a7c1481d616">get_messages</a> () const</td></tr>
-<tr class="memdesc:af752c323632cb80eaaa37a7c1481d616"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all messages. <br /></td></tr>
-<tr class="separator:af752c323632cb80eaaa37a7c1481d616"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19330224646d13b652ed216aa3aae886"><td class="memItemLeft" align="right" valign="top"><a id="a19330224646d13b652ed216aa3aae886"></a>
-<a class="el" href="classcnm_1_1_all_messages_info.html">AllMessagesInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a19330224646d13b652ed216aa3aae886">get_sent_messages_info</a> () const</td></tr>
-<tr class="memdesc:a19330224646d13b652ed216aa3aae886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns sent_messages_info. <br /></td></tr>
-<tr class="separator:a19330224646d13b652ed216aa3aae886"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a009bceae988fc020998500c78f2b5fc6"><td class="memItemLeft" align="right" valign="top"><a id="a009bceae988fc020998500c78f2b5fc6"></a>
-<a class="el" href="classcnm_1_1_all_messages_info.html">AllMessagesInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a009bceae988fc020998500c78f2b5fc6">get_received_messages_info</a> () const</td></tr>
-<tr class="memdesc:a009bceae988fc020998500c78f2b5fc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns received_messages_info. <br /></td></tr>
-<tr class="separator:a009bceae988fc020998500c78f2b5fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abef485c8be59a8e22dc26981b2a62d8a"><td class="memItemLeft" align="right" valign="top"><a id="abef485c8be59a8e22dc26981b2a62d8a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#abef485c8be59a8e22dc26981b2a62d8a">clear_buffer</a> ()</td></tr>
-<tr class="memdesc:abef485c8be59a8e22dc26981b2a62d8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears buffer and information about sent and recived messages. <br /></td></tr>
-<tr class="separator:abef485c8be59a8e22dc26981b2a62d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d1238fe7ec5f8186fe4a10c0b7e6a88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a4d1238fe7ec5f8186fe4a10c0b7e6a88">BasicProgram</a> (const QVector&lt; QString &gt; &amp;<a class="el" href="classcnm_1_1_basic_program.html#ac0406b6a2fb0306144e1aefa60ab478e">textes</a>, const <a class="el" href="structcnm_1_1_program_info.html">ProgramInfo</a> &amp;<a class="el" href="classcnm_1_1_basic_program.html#a451d7d0101616dc7d05f9c2d3ba17d47">info</a>, <a class="el" href="namespacecnm.html#a6df6de3cc44aa05681ca602857a9279b">ProgramType</a> <a class="el" href="classcnm_1_1_basic_program.html#ae1165f1570c543a5f2fd07b0d2b0eec9">type</a>, std::size_t <a class="el" href="classcnm_1_1_basic_program.html#ab563805078cc2e6fbe6ffd31b1e3667d">period</a>, const QString &amp;<a class="el" href="classcnm_1_1_basic_program.html#a39d393a2a78e2a79b18454236ff7c8c8">sending_type</a>)</td></tr>
+<tr class="memdesc:a4d1238fe7ec5f8186fe4a10c0b7e6a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates program with given parameters.  <a href="#a4d1238fe7ec5f8186fe4a10c0b7e6a88">More...</a><br /></td></tr>
+<tr class="separator:a4d1238fe7ec5f8186fe4a10c0b7e6a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45da0f8bf1ffbc44da046b47ef012dfa"><td class="memItemLeft" align="right" valign="top"><a id="a45da0f8bf1ffbc44da046b47ef012dfa"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a45da0f8bf1ffbc44da046b47ef012dfa">BasicProgram</a> (const QVector&lt; QString &gt; &amp;<a class="el" href="classcnm_1_1_basic_program.html#ac0406b6a2fb0306144e1aefa60ab478e">textes</a>, const QString &amp;<a class="el" href="classcnm_1_1_basic_program.html#a39d393a2a78e2a79b18454236ff7c8c8">sending_type</a>)</td></tr>
+<tr class="memdesc:a45da0f8bf1ffbc44da046b47ef012dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates empty program. Do not use empty program. <br /></td></tr>
+<tr class="separator:a45da0f8bf1ffbc44da046b47ef012dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e36b0292d2f4fa31a1b5d394a1f461"><td class="memItemLeft" align="right" valign="top"><a id="a72e36b0292d2f4fa31a1b5d394a1f461"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a72e36b0292d2f4fa31a1b5d394a1f461">~BasicProgram</a> ()</td></tr>
+<tr class="memdesc:a72e36b0292d2f4fa31a1b5d394a1f461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears buffer. <br /></td></tr>
+<tr class="separator:a72e36b0292d2f4fa31a1b5d394a1f461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff17a3b4afa8a83230ab560a8b8ca9f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#aff17a3b4afa8a83230ab560a8b8ca9f3">send</a> (std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt; other_program, <a class="el" href="namespacecnm.html#a769bd0b16a91b377c9a0a71d706a2d92">MessageType</a> <a class="el" href="classcnm_1_1_basic_program.html#ae1165f1570c543a5f2fd07b0d2b0eec9">type</a>=<a class="el" href="namespacecnm.html#a769bd0b16a91b377c9a0a71d706a2d92ab50339a10e1de285ac99d4c3990b8693">MessageType::NONE</a>)</td></tr>
+<tr class="memdesc:aff17a3b4afa8a83230ab560a8b8ca9f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends random created message to other_program.  <a href="#aff17a3b4afa8a83230ab560a8b8ca9f3">More...</a><br /></td></tr>
+<tr class="separator:aff17a3b4afa8a83230ab560a8b8ca9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42df4663049000fd5345d9376f3af64a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a42df4663049000fd5345d9376f3af64a">receive</a> (const <a class="el" href="classcnm_1_1_message.html">Message</a> &amp;message)</td></tr>
+<tr class="memdesc:a42df4663049000fd5345d9376f3af64a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives message.  <a href="#a42df4663049000fd5345d9376f3af64a">More...</a><br /></td></tr>
+<tr class="separator:a42df4663049000fd5345d9376f3af64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f3d57f3593f4f71c4083b9f151f6b71"><td class="memItemLeft" align="right" valign="top"><a id="a1f3d57f3593f4f71c4083b9f151f6b71"></a>
+<a class="el" href="structcnm_1_1_program_info.html">ProgramInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a1f3d57f3593f4f71c4083b9f151f6b71">get_info</a> () const</td></tr>
+<tr class="memdesc:a1f3d57f3593f4f71c4083b9f151f6b71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns info. <br /></td></tr>
+<tr class="separator:a1f3d57f3593f4f71c4083b9f151f6b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc7f1e5d842b1b552934b10614cc1644"><td class="memItemLeft" align="right" valign="top"><a id="afc7f1e5d842b1b552934b10614cc1644"></a>
+<a class="el" href="namespacecnm.html#a6df6de3cc44aa05681ca602857a9279b">ProgramType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#afc7f1e5d842b1b552934b10614cc1644">get_type</a> () const</td></tr>
+<tr class="memdesc:afc7f1e5d842b1b552934b10614cc1644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns type. <br /></td></tr>
+<tr class="separator:afc7f1e5d842b1b552934b10614cc1644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b4d3c52bf289943a6421351f50d075"><td class="memItemLeft" align="right" valign="top"><a id="a35b4d3c52bf289943a6421351f50d075"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a35b4d3c52bf289943a6421351f50d075">get_period</a> () const</td></tr>
+<tr class="memdesc:a35b4d3c52bf289943a6421351f50d075"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns period. <br /></td></tr>
+<tr class="separator:a35b4d3c52bf289943a6421351f50d075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25cd127af5022f4c140afe5584ccc0a3"><td class="memItemLeft" align="right" valign="top"><a id="a25cd127af5022f4c140afe5584ccc0a3"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a25cd127af5022f4c140afe5584ccc0a3">get_sending_type</a> () const</td></tr>
+<tr class="memdesc:a25cd127af5022f4c140afe5584ccc0a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns sending_type. <br /></td></tr>
+<tr class="separator:a25cd127af5022f4c140afe5584ccc0a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d1e682a3fe2312ed90b2a1064fb58ec"><td class="memItemLeft" align="right" valign="top"><a id="a2d1e682a3fe2312ed90b2a1064fb58ec"></a>
+QVector&lt; <a class="el" href="classcnm_1_1_message.html">Message</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a2d1e682a3fe2312ed90b2a1064fb58ec">get_messages</a> () const</td></tr>
+<tr class="memdesc:a2d1e682a3fe2312ed90b2a1064fb58ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all messages. <br /></td></tr>
+<tr class="separator:a2d1e682a3fe2312ed90b2a1064fb58ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7843df96c9ca12ae8ea495c523456930"><td class="memItemLeft" align="right" valign="top"><a id="a7843df96c9ca12ae8ea495c523456930"></a>
+<a class="el" href="classcnm_1_1_all_messages_info.html">AllMessagesInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a7843df96c9ca12ae8ea495c523456930">get_sent_messages_info</a> () const</td></tr>
+<tr class="memdesc:a7843df96c9ca12ae8ea495c523456930"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns sent_messages_info. <br /></td></tr>
+<tr class="separator:a7843df96c9ca12ae8ea495c523456930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28f7a1d973c3f2a288c7c4d2e3314323"><td class="memItemLeft" align="right" valign="top"><a id="a28f7a1d973c3f2a288c7c4d2e3314323"></a>
+<a class="el" href="classcnm_1_1_all_messages_info.html">AllMessagesInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a28f7a1d973c3f2a288c7c4d2e3314323">get_received_messages_info</a> () const</td></tr>
+<tr class="memdesc:a28f7a1d973c3f2a288c7c4d2e3314323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns received_messages_info. <br /></td></tr>
+<tr class="separator:a28f7a1d973c3f2a288c7c4d2e3314323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0a0b2d6bb2b66e9e15068e557bd62f1"><td class="memItemLeft" align="right" valign="top"><a id="ad0a0b2d6bb2b66e9e15068e557bd62f1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#ad0a0b2d6bb2b66e9e15068e557bd62f1">clear_buffer</a> ()</td></tr>
+<tr class="memdesc:ad0a0b2d6bb2b66e9e15068e557bd62f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears buffer and information about sent and recived messages. <br /></td></tr>
+<tr class="separator:ad0a0b2d6bb2b66e9e15068e557bd62f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdec31e79db60e77907a0b5cbf845679"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#acdec31e79db60e77907a0b5cbf845679">update</a> ()=0</td></tr>
 <tr class="memdesc:acdec31e79db60e77907a0b5cbf845679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends messages to random programs.  <a href="#acdec31e79db60e77907a0b5cbf845679">More...</a><br /></td></tr>
 <tr class="separator:acdec31e79db60e77907a0b5cbf845679"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,16 +156,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a17de583609f889aad4bc99472d615fdf"><td class="memItemLeft" align="right" valign="top"><a id="a17de583609f889aad4bc99472d615fdf"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a17de583609f889aad4bc99472d615fdf">create_text</a> ()</td></tr>
-<tr class="memdesc:a17de583609f889aad4bc99472d615fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns random line from phrases list. <br /></td></tr>
-<tr class="separator:a17de583609f889aad4bc99472d615fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa26a5e8446046e64bb59893db19df24c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#aa26a5e8446046e64bb59893db19df24c">get_other_program</a> ()</td></tr>
-<tr class="memdesc:aa26a5e8446046e64bb59893db19df24c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns pointer to other program.  <a href="#aa26a5e8446046e64bb59893db19df24c">More...</a><br /></td></tr>
-<tr class="separator:aa26a5e8446046e64bb59893db19df24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2201d3eb71dfc143f828d7ec6143972d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#a2201d3eb71dfc143f828d7ec6143972d">sleep_until_message_sending</a> (const <a class="el" href="classcnm_1_1_message.html">Message</a> &amp;message, std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt; other_program)</td></tr>
-<tr class="memdesc:a2201d3eb71dfc143f828d7ec6143972d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses thread while message 'sending'.  <a href="#a2201d3eb71dfc143f828d7ec6143972d">More...</a><br /></td></tr>
-<tr class="separator:a2201d3eb71dfc143f828d7ec6143972d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea2ec0cba10ce0c30d964c37d71041ab"><td class="memItemLeft" align="right" valign="top"><a id="aea2ec0cba10ce0c30d964c37d71041ab"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#aea2ec0cba10ce0c30d964c37d71041ab">create_text</a> ()</td></tr>
+<tr class="memdesc:aea2ec0cba10ce0c30d964c37d71041ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns random line from phrases list. <br /></td></tr>
+<tr class="separator:aea2ec0cba10ce0c30d964c37d71041ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1d4e9f370a08a480e32172638b72470"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#ac1d4e9f370a08a480e32172638b72470">get_other_program</a> ()</td></tr>
+<tr class="memdesc:ac1d4e9f370a08a480e32172638b72470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns pointer to other program.  <a href="#ac1d4e9f370a08a480e32172638b72470">More...</a><br /></td></tr>
+<tr class="separator:ac1d4e9f370a08a480e32172638b72470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaf4f6873ec5d6b5bfb975323de1f037"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcnm_1_1_basic_program.html#adaf4f6873ec5d6b5bfb975323de1f037">sleep_until_message_sending</a> (const <a class="el" href="classcnm_1_1_message.html">Message</a> &amp;message, std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt; other_program)</td></tr>
+<tr class="memdesc:adaf4f6873ec5d6b5bfb975323de1f037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses thread while message 'sending'.  <a href="#adaf4f6873ec5d6b5bfb975323de1f037">More...</a><br /></td></tr>
+<tr class="separator:adaf4f6873ec5d6b5bfb975323de1f037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -199,22 +199,22 @@ Friends</h2></td></tr>
 <div class="textblock"><p>Basic class for programs. </p>
 <p>Program capabilities:</p>
 <ul>
-<li>sends messages;</li>
-<li>receives messages;</li>
-<li>saves received messages;</li>
-<li>saves information about sent and received messages;</li>
-<li>sends messages by period;</li>
+<li>send messages;</li>
+<li>receive messages;</li>
+<li>save received messages;</li>
+<li>save information about sent and received messages;</li>
+<li>send messages by period;</li>
 <li>create same program. </li>
 </ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="abfeb5f2b592f1cd2d909950456705a23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfeb5f2b592f1cd2d909950456705a23">&#9670;&nbsp;</a></span>BasicProgram()</h2>
+<a id="a4d1238fe7ec5f8186fe4a10c0b7e6a88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d1238fe7ec5f8186fe4a10c0b7e6a88">&#9670;&nbsp;</a></span>BasicProgram()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">cnet::BasicProgram::BasicProgram </td>
+          <td class="memname">cnm::BasicProgram::BasicProgram </td>
           <td>(</td>
           <td class="paramtype">const QVector&lt; QString &gt; &amp;&#160;</td>
           <td class="paramname"><em>textes</em>, </td>
@@ -321,8 +321,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="aa26a5e8446046e64bb59893db19df24c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa26a5e8446046e64bb59893db19df24c">&#9670;&nbsp;</a></span>get_other_program()</h2>
+<a id="ac1d4e9f370a08a480e32172638b72470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1d4e9f370a08a480e32172638b72470">&#9670;&nbsp;</a></span>get_other_program()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +331,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt; cnet::BasicProgram::get_other_program </td>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt; cnm::BasicProgram::get_other_program </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -349,14 +349,14 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="aad28e81255c1d51da24a8d99da1c7f28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad28e81255c1d51da24a8d99da1c7f28">&#9670;&nbsp;</a></span>receive()</h2>
+<a id="a42df4663049000fd5345d9376f3af64a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42df4663049000fd5345d9376f3af64a">&#9670;&nbsp;</a></span>receive()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void cnet::BasicProgram::receive </td>
+          <td class="memname">void cnm::BasicProgram::receive </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classcnm_1_1_message.html">Message</a> &amp;&#160;</td>
           <td class="paramname"><em>message</em></td><td>)</td>
@@ -370,14 +370,14 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a3900c7ca6e1734423e23c6d889b92261"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3900c7ca6e1734423e23c6d889b92261">&#9670;&nbsp;</a></span>send()</h2>
+<a id="aff17a3b4afa8a83230ab560a8b8ca9f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff17a3b4afa8a83230ab560a8b8ca9f3">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void cnet::BasicProgram::send </td>
+          <td class="memname">void cnm::BasicProgram::send </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classcnm_1_1_basic_program.html">BasicProgram</a> &gt;&#160;</td>
           <td class="paramname"><em>other_program</em>, </td>
@@ -408,8 +408,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a2201d3eb71dfc143f828d7ec6143972d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2201d3eb71dfc143f828d7ec6143972d">&#9670;&nbsp;</a></span>sleep_until_message_sending()</h2>
+<a id="adaf4f6873ec5d6b5bfb975323de1f037"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaf4f6873ec5d6b5bfb975323de1f037">&#9670;&nbsp;</a></span>sleep_until_message_sending()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +418,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void cnet::BasicProgram::sleep_until_message_sending </td>
+          <td class="memname">void cnm::BasicProgram::sleep_until_message_sending </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classcnm_1_1_message.html">Message</a> &amp;&#160;</td>
           <td class="paramname"><em>message</em>, </td>
