@@ -2,6 +2,28 @@
 #include "servers.h"
 namespace cn
 {
+    AllMessagesInfo BasicProgram::get_sent_messages_info()const
+    {
+        return sent_messages;
+    }
+    AllMessagesInfo BasicProgram::get_received_messages_info()const
+    {
+        return received_messages;
+    }
+    AllMessagesInfo::AllMessagesInfo(std::size_t count, std::size_t memory):count{count},memory{memory}{}
+    void AllMessagesInfo::add(std::size_t memory)
+    {
+        count++;
+        this->memory+= memory;
+    }
+    QString AllMessagesInfo::get_count() const
+    {
+        return QString::number(count);
+    }
+    QString AllMessagesInfo::get_memory() const
+    {
+        return size_to_qstring(memory);
+    }
     std::shared_ptr<BasicProgram> BasicProgram::get_other_program()
     {
         if(type == ProgramType::SEND ||type == ProgramType::BOTH)
@@ -114,6 +136,7 @@ namespace cn
         Message message(info, create_text(), type,other_program->get_info(),
                         rand()%SIZE_MAX);
         sleep_until_message_sending(message, other_program);
+        sent_messages.add(message.get_message_size());
         other_program->receive(message);
     }
     void BasicProgram::receive(const Message& message)
@@ -121,6 +144,7 @@ namespace cn
         if(this->type == ProgramType::SEND) return;
         std::lock_guard<std::mutex> lock(Servers::get_mutex());
         buffer.push_back(message);
+        received_messages.add(message.get_message_size());
     }
     QVector<Message> BasicProgram::get_messages() const
     {

@@ -38,6 +38,7 @@ private:
     bool is_stop;
     bool& is_paused;
     void set_data();
+    void set_messages_info();
     void set_timer();
     void receive_messages();
     void send_messages();

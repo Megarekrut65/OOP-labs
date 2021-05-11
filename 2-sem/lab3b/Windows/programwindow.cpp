@@ -66,6 +66,13 @@ void ProgramWindow::send_messages()
        if(program) program->update();
     }
 }
+void ProgramWindow::set_messages_info()
+{
+    ui->labelSentMessage->setText(program->get_sent_messages_info().get_count());
+    ui->labelSentMemory->setText(program->get_sent_messages_info().get_memory());
+    ui->labelReceivedMessage->setText(program->get_received_messages_info().get_count());
+    ui->labelReceivedMemory->setText(program->get_received_messages_info().get_memory());
+}
 void ProgramWindow::receive_messages()
 {
     if(is_paused) return;
@@ -76,6 +83,7 @@ void ProgramWindow::receive_messages()
         add_message_to_view(messages[i + old_size]);
     if(!ui->checkBoxFixedPosition->isChecked()) ui->tableViewBuffer->scrollToBottom();
     old_size = messages.size();
+    set_messages_info();
 }
 
 void ProgramWindow::on_pushButtonClear_clicked()

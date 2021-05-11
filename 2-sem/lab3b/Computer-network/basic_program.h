@@ -12,6 +12,18 @@
 */
 namespace cn
 {
+    class AllMessagesInfo
+    {
+    private:
+        std::size_t count;
+        std::size_t memory;
+    public:
+        AllMessagesInfo(std::size_t count = 0, std::size_t memory = 0);
+        void add(std::size_t memory);
+        QString get_count() const;
+        QString get_memory() const;
+    };
+
     enum class ProgramType
     {
         SEND = 0,
@@ -29,6 +41,8 @@ namespace cn
         ProgramType type;
         std::size_t period;
         QString sending_type;
+        AllMessagesInfo sent_messages;
+        AllMessagesInfo received_messages;
         QString create_text();
         std::shared_ptr<BasicProgram> get_other_program();
         void sleep_until_message_sending(const Message& message, std::shared_ptr<BasicProgram> other_progtam);
@@ -44,6 +58,8 @@ namespace cn
         std::size_t get_period() const;
         QString get_sending_type() const;
         QVector<Message> get_messages() const;
+        AllMessagesInfo get_sent_messages_info()const;
+        AllMessagesInfo get_received_messages_info()const;
         void clear_buffer();
         friend std::ostream& operator<<(std::ostream& out, const BasicProgram& program);
         friend std::istream& operator>>(std::istream& in, BasicProgram& program);
