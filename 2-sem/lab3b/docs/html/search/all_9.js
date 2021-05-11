@@ -1,13 +1,5 @@
 var searchData=
 [
-  ['period',['period',['../classcnm_1_1_basic_program.html#ab563805078cc2e6fbe6ffd31b1e3667d',1,'cnm::BasicProgram']]],
-  ['periodicprogram',['PeriodicProgram',['../classcnm_1_1_periodic_program.html',1,'cnm::PeriodicProgram'],['../classcnm_1_1_periodic_program.html#af2788ec3421f8d5701d0d3fd254ccc04',1,'cnm::PeriodicProgram::PeriodicProgram(const QVector&lt; QString &gt; &amp;textes)'],['../classcnm_1_1_periodic_program.html#ad54c8fbfd32ebcac6948ffc2ea73d89b',1,'cnm::PeriodicProgram::PeriodicProgram(const QVector&lt; QString &gt; &amp;textes, const ProgramInfo &amp;info, ProgramType type, std::size_t period)']]],
-  ['program_5fname',['program_name',['../structcnm_1_1_program_info.html#a9e152b2f1a3bfd553c8701ab2d5f7c98',1,'cnm::ProgramInfo']]],
-  ['program_5ftype_5fto_5fstring',['program_type_to_string',['../namespacecnm.html#af6b9a3aef021100854d43703ce0610f7',1,'cnm']]],
-  ['programbuilderwindow',['ProgramBuilderWindow',['../class_program_builder_window.html',1,'']]],
-  ['programinfo',['ProgramInfo',['../structcnm_1_1_program_info.html',1,'cnm::ProgramInfo'],['../structcnm_1_1_program_info.html#a57cb15225baadf430fb9baa533b64b74',1,'cnm::ProgramInfo::ProgramInfo()']]],
-  ['programregistry',['ProgramRegistry',['../classcnm_1_1_program_registry.html',1,'cnm']]],
-  ['programtype',['ProgramType',['../namespacecnm.html#a6df6de3cc44aa05681ca602857a9279b',1,'cnm']]],
-  ['programwindow',['ProgramWindow',['../class_program_window.html',1,'']]],
-  ['progressbaranimation',['ProgressBarAnimation',['../class_progress_bar_animation.html',1,'']]]
+  ['operator_3c_3c',['operator&lt;&lt;',['../classcnm_1_1_basic_program.html#a96902bbee103648bc0a6dd02e46049f0',1,'cnm::BasicProgram::operator&lt;&lt;()'],['../classcnm_1_1_message.html#abb79787d78c9a91699bd7841005df5f7',1,'cnm::Message::operator&lt;&lt;()'],['../namespacecnm.html#ad1555a631d51c5a5464f76dbe598fc5e',1,'cnm::operator&lt;&lt;(std::ostream &amp;out, const Speed &amp;speed)'],['../namespacecnm.html#abf120dd496c27b73afe27fd4ae2d0173',1,'cnm::operator&lt;&lt;(std::ostream &amp;out, const ProgramInfo &amp;info)'],['../namespacecnm.html#adc792ab426b397ba6df3e5da856a4711',1,'cnm::operator&lt;&lt;(std::ostream &amp;out, const QString &amp;line)']]],
+  ['operator_3e_3e',['operator&gt;&gt;',['../classcnm_1_1_basic_program.html#ac5ac353d638e1b65a3fe1e3e2e776fed',1,'cnm::BasicProgram::operator&gt;&gt;()'],['../namespacecnm.html#ac620086f14740a96f64281a0a649c0a4',1,'cnm::operator&gt;&gt;(std::istream &amp;in, Speed &amp;speed)'],['../namespacecnm.html#a857ded03393b09d27bf7d9ab1744e79e',1,'cnm::operator&gt;&gt;(std::istream &amp;in, QString &amp;line)']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['received_5fmessages',['received_messages',['../classcnm_1_1_basic_program.html#a48be68c9375b68ce04b1a582f26c76dd',1,'cnm::BasicProgram']]]
+  ['period',['period',['../classcnm_1_1_basic_program.html#ab563805078cc2e6fbe6ffd31b1e3667d',1,'cnm::BasicProgram']]],
+  ['program_5fname',['program_name',['../structcnm_1_1_program_info.html#a9e152b2f1a3bfd553c8701ab2d5f7c98',1,'cnm::ProgramInfo']]]
 ];
