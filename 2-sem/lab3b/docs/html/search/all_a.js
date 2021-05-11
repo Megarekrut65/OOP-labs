@@ -8,6 +8,6 @@ var searchData=
   ['programinfo',['ProgramInfo',['../structcnm_1_1_program_info.html',1,'cnm::ProgramInfo'],['../structcnm_1_1_program_info.html#a53600eda9bd54b303135a40d5223a553',1,'cnm::ProgramInfo::ProgramInfo()']]],
   ['programregistry',['ProgramRegistry',['../classcnm_1_1_program_registry.html',1,'cnm']]],
   ['programtype',['ProgramType',['../namespacecnm.html#a6df6de3cc44aa05681ca602857a9279b',1,'cnm']]],
-  ['programwindow',['ProgramWindow',['../class_program_window.html',1,'']]],
+  ['programwindow',['ProgramWindow',['../class_program_window.html',1,'ProgramWindow'],['../class_program_window.html#a29d18ee172b75130626a930aeaabaf37',1,'ProgramWindow::ProgramWindow()']]],
   ['progressbaranimation',['ProgressBarAnimation',['../class_progress_bar_animation.html',1,'ProgressBarAnimation'],['../class_progress_bar_animation.html#aa8800c90e74fa9ea418b787521ec705a',1,'ProgressBarAnimation::ProgressBarAnimation()']]]
 ];

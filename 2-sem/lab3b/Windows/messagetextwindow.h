@@ -6,12 +6,11 @@
 #include <QIcon>
 
 namespace Ui {
-/*!
-*   \brief
-*/
 class MessageTextWindow;
 }
-
+/*!
+*   \brief Window to show message information
+*/
 class MessageTextWindow : public QDialog
 {
     Q_OBJECT
@@ -19,10 +18,13 @@ class MessageTextWindow : public QDialog
 public:
     explicit MessageTextWindow(QWidget *parent = nullptr);
     ~MessageTextWindow();
+    /*!
+    *   \brief Adds messages information to labels
+    */
     void set_message(const cnm::Message& message);
 
 private:
-    Ui::MessageTextWindow *ui;/*!< */
+    Ui::MessageTextWindow *ui;
 };
 
 #endif // MESSAGETEXTWINDOW_H
