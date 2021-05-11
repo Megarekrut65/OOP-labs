@@ -1,8 +1,10 @@
-QT       += core gui
+QT       += core gui concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++20
+
+CONFIG -= app_bundle
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -33,6 +35,8 @@ HEADERS += \
     Computer-network/program_registry.h \
     Computer-network/programs.h \
     Computer-network/servers.h \
+    Tests/doctest.h \
+    Tests/testing_program.h \
     Windows/mainwindow.h \
     Windows/messagetextwindow.h \
     Windows/programbuilderwindow.h \

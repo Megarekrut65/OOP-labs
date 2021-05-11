@@ -1,2 +1,7 @@
 Upload-speed=1024
 Download-speed=1024
+Server-name=ua
+Program-name=Zoom
+Program-type=Send and Receive
+Sending-type=Wait for receive
+Sending-period=1000
