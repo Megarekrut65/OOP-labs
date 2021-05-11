@@ -56,7 +56,9 @@ void ProgramWindow::send_messages()
 {
     while (true)
     {
-        std::size_t period = program->get_period();
+       std::size_t period = std::size_t(double(program->get_period())/
+                                        cn::Servers::get_acceleration_factor());
+       if(period == 0) period = 1;
        for(std::size_t i = 0; i < period;i++)
         if(!is_stop) std::this_thread::sleep_for(std::chrono::milliseconds(1));
        else return;

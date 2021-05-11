@@ -101,6 +101,8 @@ namespace cn
             std::size_t load_speed = download_speed < upload_speed?download_speed:upload_speed;
             if(load_speed == 0) load_speed = 1;
             std::size_t time_sleep = message.get_message_size()/load_speed;
+            time_sleep = std::size_t(double(time_sleep/
+                                      cn::Servers::get_acceleration_factor()));
             if(time_sleep == 0) time_sleep = 1;
             for(std::size_t i = 0 ; i < time_sleep; i++)
                 std::this_thread::sleep_for(std::chrono::milliseconds(1));

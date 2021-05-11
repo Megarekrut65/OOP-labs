@@ -1,1 +1,1 @@
-Acceleration-factor=10
+Acceleration-factor=1
