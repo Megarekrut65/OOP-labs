@@ -2,6 +2,7 @@
 #include "opening_mode.h"
 #include "file_functions.h"
 #include "file_mode.h"
+
 /**
 * \brief Namespace for class FileMode.
 */
@@ -20,9 +21,9 @@ namespace fmode//file mode
 	private:
 		const std::string path;/**<the path to file*/
 		omode::Mode mode;/**<the open mode, see omode::Mode*/
-		std::ios_base::_Openmode in_mode;/**the mode to input data*/
-		std::ios_base::_Openmode out_mode;/**the mode to output data*/
-		/**
+        std::ios_base::openmode in_mode;/**the mode to input data*/
+        std::ios_base::openmode out_mode;/**the mode to output data*/
+        /**
 		* \brief Finds the monsters by type of attack and creating time.
 		*
 		* For more information see this function in class om::OpeningMode.

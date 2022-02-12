@@ -2,8 +2,8 @@
 
 namespace ffs
 {
-    void check_for_file(std::string path, std::ios_base::_Openmode in_mode, 
-        std::ios_base::_Openmode out_mode)
+    void check_for_file(std::string path, std::ios_base::openmode in_mode,
+        std::ios_base::openmode out_mode)
     {
         std::ifstream file(path, in_mode);
         if (!file.is_open())

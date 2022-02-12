@@ -17,8 +17,8 @@ namespace ffs//file functions
 	* \param out_mode - output mode
 	*/
 	void check_for_file(std::string path, 
-		std::ios_base::_Openmode in_mode, 
-		std::ios_base::_Openmode out_mode);
+        std::ios_base::openmode in_mode,
+        std::ios_base::openmode out_mode);
 	/**
 	* \brief Function for correct reading line from text file.
 	* 
