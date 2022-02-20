@@ -77,6 +77,6 @@ void EditingTimer::on_btnCancel_clicked()
 
 void EditingTimer::on_seletcSound_activated(const QString &arg1)
 {
-    QString soundPath = QDir::currentPath() + "/Sounds/timer" + arg1 + ".wav";
-    QSound::play(soundPath);
+   /* QString soundPath = QDir::currentPath() + "/Sounds/timer" + arg1 + ".wav";
+    QSound::play(soundPath);*/
 }

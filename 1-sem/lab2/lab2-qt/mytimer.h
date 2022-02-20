@@ -3,7 +3,6 @@
 #define MYTIMER_H
 #include <QTime>
 #include <QDir>
-#include <QSound>
 /*!
 * Namespace for MyTimer
 */

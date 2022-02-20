@@ -93,7 +93,7 @@ QString MyTimer::get_QString_type()
 void MyTimer::signal()
 {
     if(numberOfSignals <= 0) return;
-    if(soundMode) QSound::play(pathToSound);
+    //if(soundMode) QSound::play(pathToSound);
     numberOfSignals--;
     if(numberOfSignals == 0) active = false;
 }

@@ -1,0 +1,16 @@
+debug/addingtimer.o
+debug/editingtimer.o
+debug/main.o
+debug/mainwindow.o
+debug/mycolors.o
+debug/mysounds.o
+debug/mytimer.o
+debug/notdisturbmode.o
+debug/showtimer.o
+debug/timeperiod.o
+debug/qrc_resource.o
+debug/moc_addingtimer.o
+debug/moc_editingtimer.o
+debug/moc_mainwindow.o
+debug/moc_notdisturbmode.o
+debug/moc_showtimer.o
